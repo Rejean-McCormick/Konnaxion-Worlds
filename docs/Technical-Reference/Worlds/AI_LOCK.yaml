@@ -1,0 +1,139 @@
+architecture_lock:
+  id: KX-WORLDS-1
+  version: 1.0.0
+  status: locked_target_architecture
+  implementation_state: planned_partially_anchored
+  canonical_human_spec: 00_CANONICAL_SPEC.md
+  change_requires_adr: true
+mandatory_context_docs:
+- ../GENERALinstructionsForAI.txt
+- ../BOUNDARIES_AND_OWNERSHIP.md
+- ../CONTRACTS.txt
+- 00_CANONICAL_SPEC.md
+- 01_CURRENT_STATE_BASELINE.md
+terms:
+  World: stable logical environment selected per request
+  WorldRelease: physical isolated schema pair/runtime generation of one World
+  SeedPack: versioned reproducible authored build input
+  Scenario: import/provenance unit within a WorldRelease
+  Snapshot: point-in-time runtime state capture
+  PlatformPrincipal: real authenticated global request.user
+  WorldPersona: World-scoped represented participant identity
+  SelectWorld: per-user navigation/context operation; no mutation
+  PromoteRelease: admin mutation of World.current_release
+invariants:
+- id: WLD-001
+  rule: World selection MUST NOT reset, import, rebuild, or mutate World content.
+- id: WLD-002
+  rule: Selected World MUST be explicit in the World-scoped URL/request.
+- id: WLD-003
+  rule: Multi-World mode MUST NOT silently fall back to a default World.
+- id: WLD-004
+  rule: Normal World isolation MUST use one Konnaxion deployment, not one repository/container
+    stack per World.
+- id: WLD-005
+  rule: Each WorldRelease MUST own an isolated domain schema and EkoH/Smart Vote schema.
+- id: WLD-006
+  rule: The request/task MUST pin one exact world_id + release_id for its full lifetime.
+- id: WLD-007
+  rule: World-owned ORM work MUST require explicit WorldRuntime/database scope.
+- id: WLD-008
+  rule: World schema names MUST come from validated registry state and be safely quoted.
+- id: WLD-009
+  rule: After final cutover, control/public schema MUST NOT contain World-owned fallback
+    table copies.
+- id: WLD-010
+  rule: Cache keys for World-derived data MUST include world_id and release_id where
+    release-specific.
+- id: WLD-011
+  rule: Async tasks touching World data MUST carry world_id and release_id; they MUST
+    NOT resolve an arbitrary current World at execution time.
+- id: WLD-012
+  rule: Search/embedding retrieval MUST enforce World/Release filtering before model
+    prompting or result delivery.
+- id: WLD-013
+  rule: WebSockets MUST pin and namespace World/Release context.
+- id: WLD-014
+  rule: World media/attachments MUST be World-namespaced.
+- id: WLD-015
+  rule: Platform authentication principal is global; World Personas are World-scoped.
+- id: WLD-016
+  rule: Persona bridge usernames MUST be collision-proof and generated from World
+    + actor/source key.
+- id: WLD-017
+  rule: EkoH scores/ethics/visibility/history MUST be World-local.
+- id: WLD-018
+  rule: Smart Vote MUST use source and EkoH context from the same World/Release.
+- id: WLD-019
+  rule: source fact != baseline != derived reading; derived weights MUST NOT overwrite
+    source facts.
+- id: WLD-020
+  rule: No global per-person Smart Vote weight may be introduced.
+- id: WLD-021
+  rule: SeedPack, World, WorldRelease, Scenario and Snapshot MUST remain distinct
+    concepts.
+- id: WLD-022
+  rule: scenario_key is provenance/import scope, not the World isolation boundary.
+- id: WLD-023
+  rule: Display title/name/raw username MUST NOT serve as cross-World persistent identity.
+- id: WLD-024
+  rule: Active/current Release MUST NOT be destructively rebuilt in place; build a
+    new Release then promote.
+- id: WLD-025
+  rule: Every World-scoped response MUST identify World and Release.
+- id: WLD-026
+  rule: Frontend MUST discard stale responses from another World/Release.
+- id: WLD-027
+  rule: View As MUST NOT replace request.user or silently elevate permissions.
+- id: WLD-028
+  rule: Direct foreign keys/joins between different World releases are forbidden.
+- id: WLD-029
+  rule: Cross-World comparison MUST use explicit isolated read scopes and be read-only
+    by default.
+- id: WLD-030
+  rule: Global/shared mutable data is deny-by-default and requires explicit allowlisting.
+- id: WLD-031
+  rule: Existing ethiKos/EkoH/Smart Vote ownership boundaries remain unchanged.
+- id: WLD-032
+  rule: AI/developers MUST distinguish target architecture from current implementation.
+- id: WLD-033
+  rule: Any change to a locked invariant requires an ADR and architecture version
+    update.
+- id: WLD-034
+  rule: Two-World collision tests are mandatory for isolation-related changes.
+- id: WLD-035
+  rule: Missing/inconsistent World context MUST fail closed rather than infer or repair
+    context automatically.
+- id: WLD-036
+  rule: A single user MUST be able to keep two browser tabs open on different Worlds
+    simultaneously.
+- id: WLD-037
+  rule: World selection and Release promotion MUST remain separate operations and
+    terminology.
+- id: WLD-038
+  rule: World-scoped AI/RAG retrieval MUST enforce isolation outside the language
+    model; the model is not a security boundary.
+- id: WLD-039
+  rule: World-owned derived artifacts and audit events MUST record World/Release provenance.
+- id: WLD-040
+  rule: Temporary migration adapters MUST be labeled and have a removal condition.
+forbidden_patterns_without_adr:
+- reset_and_reseed_on_world_switch
+- session_only_world_authority
+- implicit_default_world_in_multiworld
+- repo_or_container_per_world_for_normal_content
+- ad_hoc_scenario_id_columns_as_primary_isolation
+- global_ekoh_profile
+- global_smart_vote_person_weight
+- unnamespaced_cache_or_websocket
+- world_task_without_world_and_release
+- cross_world_orm_join
+- display_string_as_world_identity
+- derived_reading_written_back_to_source
+required_review_questions:
+- Is this object GLOBAL or WORLD_SCOPED?
+- If WORLD_SCOPED, where is world_id + release_id enforced?
+- What happens if World context is missing?
+- Can another World address the same natural key?
+- Does this touch source facts or derived readings?
+- Does this change a locked invariant?

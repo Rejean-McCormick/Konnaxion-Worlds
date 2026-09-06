@@ -1,0 +1,14 @@
+flowchart TB
+    UI["Next.js /w/{world_key}/..."] --> R["WorldResolver"]
+    API["/api/w/{world_key}/..."] --> R
+    R --> C["Control Plane: World + current_release"]
+    C --> RT["WorldRuntime pinned to world_id + release_id"]
+    RT --> SCOPE["world_db_scope()"]
+    SCOPE --> D["Domain schema\nkx_w_<world>_r<release>"]
+    SCOPE --> E["EkoH/Smart Vote schema\nkx_e_<world>_r<release>"]
+    SCOPE --> G["Global auth/control tables"]
+    RT --> CACHE["Redis namespaced"]
+    RT --> TASK["Celery WorldTask"]
+    RT --> SEARCH["Search / embeddings namespace"]
+    RT --> WS["WebSocket namespace"]
+    RT --> MEDIA["World media namespace"]
