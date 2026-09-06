@@ -1,0 +1,123 @@
+@startuml
+title Konnaxion — C3 Components (Worker · Celery + Redis)
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (connecteurs)
+'========================
+database "App DB\nPostgreSQL (OLTP)" as APPDB
+queue "Redis\n(broker + shared instance)" as REDIS
+cloud "Object Storage\nS3 / MinIO" as S3
+component "Email Service\n(SMTP/API)" as EMAIL
+database "Search Index\n(PostgreSQL full-text tsvector)" as SEARCH
+
+'========================
+' CONTENEUR (Worker)
+'========================
+package "Worker\n(Celery + Python 3.x)\nBROKER: REDIS_URL\nNo HTTP endpoints" as WORKER {
+
+  component "Task Router\n(Celery worker processes)" as ROUTER
+  note right of ROUTER
+    • Exécute les jobs de fond; sous-processus Celery consommant les files.
+    • Dépend de REDIS comme broker; scale horizontal via replicas.
+    • Noms de files/queues exacts : [TBD].
+  end note
+
+  component "Beat Scheduler\n(Celery Beat)" as BEAT
+  note right of BEAT
+    • Déclenche les tâches périodiques (cron-like).
+    • Exemple : OFFLINE_PACKAGE_CRON (chaque dimanche 03:00 UTC).
+  end note
+
+  '---- familles de jobs -------------------------------------------------
+
+  component "EmailTask\n(notifications)" as EMAILTASK
+  note right of EMAILTASK
+    • Envoie des e-mails transactionnels (notifications, etc.).
+    • Utilise DEFAULT_FROM_EMAIL et le service SMTP/API.
+    • Motifs d’échec / retry policy : [TBD].
+  end note
+
+  component "RecomputeEkohScores\n(nightly reputation refresh)" as EKOHJOB
+  note right of EKOHJOB
+    • Recalcule périodiquement les scores Ekoh (pondérations par expertise).
+    • Déclenchement via Celery Beat (batch nocturnes).
+    • Écrit/lecture sur App DB; aucune donnée analytique directe.
+  end note
+
+  component "SearchBulkIndexer\n(periodic batch indexing)" as INDEXJOB
+  note right of INDEXJOB
+    • Met à jour l’index de recherche full-text (tsvector Postgres).
+    • Parcours des entités modifiées depuis T-1; upsert des entrées.
+    • Fenêtrage/lotissement (batch size) : [TBD].
+  end note
+
+  component "OfflinePackageBuilder\n(KonnectED exports)" as OFFLINEJOB
+  note right of OFFLINEJOB
+    • Génère des packages hors-ligne (cours/ressources) selon un cron dédié.
+    • Lit les contenus depuis App DB; écrit les artefacts dans S3/MinIO.
+    • Format des bundles / nommage des buckets : [TBD].
+  end note
+
+  component "MediaProcessing\n(images/videos · Kreative)" as MEDIAJOB
+  note right of MEDIAJOB
+    • À l’upload, génère des dérivés (miniatures / tailles multiples).
+    • Pour vidéo/audio, transcodage (ex. ffmpeg) dans le conteneur worker.
+    • Résolutions cibles documentées; stockage final dans S3/MinIO.
+    • Files/ressources CPU-intensives isolées : [TBD queues].
+  end note
+
+  component "AnalyticsCacheCleaner\n(reports cache hygiene)" as CACHETASK
+  note right of CACHETASK
+    • Purge périodiquement les clés Redis d’analytics périmées (> 12 h).
+    • Ne touche pas aux données métier; hygiène de cache uniquement.
+  end note
+
+  '---- erreurs / observabilité -----------------------------------------
+  component "Error Handler\n(retry/backoff, dead-letter) [TBD]" as ERR
+  note right of ERR
+    • Politique de retry/backoff, DLQ et idempotency : [TBD].
+  end note
+}
+
+'========================
+' RELATIONS
+'========================
+BEAT --> ROUTER : planifie jobs (crontab) \nOFFLINE_PACKAGE_CRON, nightly recompute, etc.
+ROUTER --> REDIS : subscribe/consume\n(broker)
+EMAILTASK --> EMAIL : SMTP/API send
+EMAILTASK --> APPDB : lecture destinataires/modèles [si stockés]
+EKOHJOB --> APPDB : SELECT/UPDATE scores
+INDEXJOB --> APPDB : SELECT données source
+INDEXJOB --> SEARCH : UPDATE index tsvector
+OFFLINEJOB --> APPDB : SELECT contenus
+OFFLINEJOB --> S3 : PUT artefacts\n(packages hors-ligne)
+MEDIAJOB --> S3 : GET/PUT blobs\n(écrit dérivés)
+MEDIAJOB --> APPDB : UPDATE métadonnées (tailles/urls) [TBD]
+CACHETASK --> REDIS : SCAN/DEL clés analytics (>12h)
+
+'========================
+' LÉGENDE / CONFIG / TBD
+'========================
+note bottom
+  Environnement (extraits):
+  • REDIS_URL — utilisé par Celery (broker) & Channels (partagé).
+  • DEFAULT_FROM_EMAIL — adresse d’expéditeur par défaut.
+  • DATABASE_URL — Postgres (OLTP) pour données métier.
+  • Stockage objet — S3/MinIO (credentials/bucket : [TBD]).
+
+  Invariants & périmètre:
+  • Worker = jobs de fond transverses (e-mails, scoring, index, médias).
+  • L’ETL Analytics (Airflow) est séparé; ce worker n’orchestre pas les DAG.
+  • Pas d’API publique; exposition de métriques: [TBD].
+
+  Placeholders à compléter:
+  • Noms de queues (ex. high, default, media, analytics) — [TBD].
+  • Règles de retry/backoff, idempotency, DLQ — [TBD].
+  • Détails ffmpeg (profils/bitrates), noms de buckets S3 — [TBD].
+end note
+
+@enduml

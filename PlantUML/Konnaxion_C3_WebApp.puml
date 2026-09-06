@@ -1,0 +1,142 @@
+@startuml
+title Konnaxion — C3 Components (WebApp · Next.js)
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (connecteurs)
+'========================
+actor "End-User\n(Navigateur)" as USER
+component "reports-api\n(Django/DRF · read-only)\nGET /reports/*" as RAPI
+component "Realtime Service\n(Django Channels)\nWS /ws/reports/* (ex. /ws/reports/custom)" as RT
+component "Core API\n(Django/DRF)\n/search + contenus métier" as CORE
+
+'========================
+' CONTENEUR (WebApp Next.js)
+'========================
+package "WebApp\nNext.js 13+ (TypeScript)\nAnt Design 5 + Tailwind · i18n · WCAG\nPWA & mode faible bande passante" as WEB {
+
+  '--- couche navigation/pages
+  component "Pages / Routes\n(Shell + modules)\n/ , /my-work, /search, /reports/*,\n/projects, /learn, /debate, …" as ROUTES
+  note right of ROUTES
+    • Contient la structure d'app (layouts, menus, breadcrumbs).
+    • Routes Insights:
+      - /reports (accueil KPI)
+      - /reports/smart-vote
+      - /reports/usage
+      - /reports/perf
+      - /reports/custom (builder temps réel)
+    • Invariants de routes (réservés): /reports/* et /ws/reports/* (ne pas réutiliser sans RFC).
+  end note
+
+  '--- clients d'accès aux données
+  component "API Client\n(fetch/axios wrapper)" as APIClient
+  note right of APIClient
+    • Centralise les appels REST (baseURL, timeouts).
+    • Ajoute l'entête Authorization: Bearer <jwt> [TBD: mécanisme exact de stockage/refresh].
+    • Normalise les erreurs réseau → format UI (toast, message).
+  end note
+
+  component "Realtime Client (WS)\nuseReportStream()" as WSClient
+  note right of WSClient
+    • Ouvre un WebSocket sur /ws/reports/custom (module Insights).
+    • S'abonne au groupe reports_user_<id> pour recevoir les flux dédiés.
+    • Reconnexion/backoff & écoute close codes [TBD].
+  end note
+
+  component "State Store\nReact Query 5" as State
+  note right of State
+    • Hooks data: useReport(endpoint, params).
+    • Cache côté client (~5 minutes) + invalidation à chaque changement de filtre/période.
+    • Gère les états loading/error/success sans Redux global.
+  end note
+
+  component "Auth Guard\n[Web Guard: TBD]" as Guard
+  note right of Guard
+    • Protège les routes authentifiées (ex.: /reports/*).
+    • Récupère/valide le JWT [TBD: cookie vs storage, refresh token].
+    • Redirige vers login si non-authentifié.
+  end note
+
+  '--- UI Insights
+  component "UI Components (Insights)\nCharts & Widgets" as UIComp
+  note right of UIComp
+    • Composants principaux:
+      - <SmartVoteChart> (bar+line, 2 axes)
+      - <UsageBigNumbers>, <DomainHeatMap>
+      - <LatencySLOGauge>, <ErrorRateSparkline>
+      - <TimeRangePicker> (AntD)
+    • Utilise les tokens de thème (pas de couleurs en dur).
+  end note
+
+  component "ExportCSVButton\n(téléchargement CSV/JSON)" as ExportBtn
+  note right of ExportBtn
+    • Déclenche GET /reports/export?report=…&format=csv|json.
+    • Gère le Content-Disposition pour nommer le fichier.
+    • Limitation côté serveur: EXPORT_MAX_ROWS (garde-fou).
+  end note
+
+  '--- aspects transverses
+  component "i18n & a11y\n(WCAG)" as I18N
+  note right of I18N
+    • Internationalisation (fr/en/…); gestion RTL si nécessaire.
+    • Accessibilité: contraste, focus, lecteurs d'écran.
+  end note
+
+  component "PWA / Low-bandwidth Mode" as PWA
+  note right of PWA
+    • Mise en cache d'actifs; lazy-loading massif des vues/graphs.
+    • Mode léger textuel pour connexions limitées (KonnectED prioritaire).
+  end note
+
+  component "Error Boundary & Telemetry\n[Politique: TBD]" as Telemetry
+  note right of Telemetry
+    • Capture des exceptions UI (ErrorBoundary).
+    • Télémetrie front (ex. Sentry/APM) [TBD: outil exact].
+    • Regroupe les erreurs REST/WS pour diagnostic.
+  end note
+}
+
+'========================
+' RELATIONS (flux)
+'========================
+USER --> ROUTES : Navigation SPA/SSR\nHTTP(S) GET
+ROUTES --> Guard : Vérif. accès route
+ROUTES --> State : Récupération de données\ninvalidate/fetch
+ROUTES --> UIComp
+ROUTES --> ExportBtn
+APIClient --> RAPI : GET /reports/smart-vote|usage|perf\nGET /reports/export
+WSClient --> RT : WS /ws/reports/custom\nsubscribe reports_user_<id>
+ROUTES --> APIClient : Appels REST (params range/grouping…)
+ROUTES --> WSClient : Ouvre/ferme le WS pour /reports/custom
+ROUTES --> CORE : /search (FTS) & autres endpoints métier
+PWA .. ROUTES
+I18N .. ROUTES
+Telemetry .. ROUTES
+
+'========================
+' LÉGENDE / CONTRAINTES / TBD
+'========================
+note bottom
+  Contrats côté UI (Insights):
+  • Les pages /reports/* consomment les endpoints REST correspondants et/ou un flux WS dédié (/ws/reports/custom).
+  • Aucun identifiant personnel n'est affiché; agrégats respectant k-anonymat (≥ 10).
+
+  Objectifs UX/Perf:
+  • Latence de rendu < 200 ms après réponse API pour les vues principales.
+  • Caching front (React Query) ~ 5 min (ajustable).
+  • Tests: unitaires (formatage/axes), intégration (fetch+invalidation), E2E (home→smart-vote→export), cible ≥ 90 % lignes.
+
+  Invariants de routes:
+  • /reports/* (UI & API) et /ws/reports/* (canal WS) sont réservés au module Insights.
+
+  Placeholders (infos non spécifiées dans les docs):
+  • [TBD_AuthGuard_Web] — stockage/refresh JWT (cookie httpOnly? localStorage?).
+  • [TBD_RenderingMode] — SSR/ISR/CSR par page.
+  • [TBD_FrontEnv] — variables NEXT_PUBLIC_* (baseURL, feature flags).
+  • [TBD_FrontErrorPolicy] — backoff, retry, messages d'erreurs standardisés.
+end note
+
+@enduml

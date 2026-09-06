@@ -1,0 +1,35 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+LAYOUT_LEFT_RIGHT()
+
+Person(p_User, "User", "Person using the WebApp in a browser (reads screens, clicks buttons).")
+
+System_Boundary(sys_Konnaxion, "Konnaxion (modular monolith)") {
+  Container(c_WebApp, "WebApp", "Next.js (frontend)", "UI in the browser. Calls REST endpoints; shows pages, forms, tables and charts.")
+  Container(c_API, "API", "Django + DRF (backend)", "Main server exposing REST API (HTTP+JSON). Validates requests, applies rules, reads/writes App DB, schedules long tasks via Redis/Celery.")
+  Container(c_Realtime, "Realtime", "Django Channels (WebSocket)", "Real-time gateway. Keeps an open WebSocket so the server can push updates instantly; uses Redis pub/sub as channel layer.")
+  Container(c_Worker, "Worker", "Celery (background jobs)", "Executes long tasks outside requests: generate PDF/CSV, send emails, recompute scores; consumes tasks from Redis; writes results to App DB or Object Storage.")
+  ContainerDb(ds_oltp, "App DB", "PostgreSQL (OLTP)", "Source of truth for daily operations. Transactional tables: users, projects, votes, comments, etc.")
+  Container(c_Redis, "Redis", "Redis (in-memory)", "Two roles: (1) task queue broker for Celery, (2) pub/sub channel layer for realtime; optionally short-lived cache.")
+  System_Ext(s_ObjectStore, "Object Storage", "S3 / MinIO", "Stores files/blobs (images, PDFs, exports). Not a relational DB; API stores only file URLs/metadata.")
+  Container(c_ReportsAPI, "Reports API", "Django/DRF (read-only)", "Serves analytics endpoints (/reports/*). Read-only; returns precomputed indicators (JSON) without modifying data.")
+  ContainerDb(ds_analytics, "Analytics DB", "PostgreSQL (OLAP)", "Warehouse of aggregated data (star-like/denormalized). Optimized for fast reads by Reports API. Refreshed by ETL pipelines.")
+  Container(c_Airflow, "Airflow", "ETL orchestrator (DAGs)", "Runs data pipelines on a schedule. ETL = Extract (from App DB) -> Transform (clean/aggregate) -> Load (into Analytics DB). Each pipeline is a DAG (ordered steps without cycles).")
+}
+
+Rel(p_User, c_WebApp, "Uses the app in the browser")
+Rel(c_WebApp, c_API, "HTTP JSON (REST): /api/*")
+Rel(c_WebApp, c_ReportsAPI, "HTTP JSON: /reports/*")
+
+Rel(c_API, ds_oltp, "Read & Write")
+Rel(c_Worker, ds_oltp, "Read & Write")
+Rel(c_API, c_Redis, "Publish background tasks; small cache if needed")
+Rel(c_Worker, c_Redis, "Consume tasks")
+Rel(c_Realtime, c_Redis, "Channels pub/sub (real-time fan-out)")
+Rel(c_Realtime, c_API, "Call API for persistence/business rules")
+
+Rel(c_ReportsAPI, ds_analytics, "Read-only queries for dashboards/KPIs")
+Rel(c_ReportsAPI, c_Redis, "Short cache (e.g., 5–10 min TTL)")
+Rel(c_API, s_ObjectStore, "Upload/serve files via S3 API (pre-signed URLs)")
+
+@enduml

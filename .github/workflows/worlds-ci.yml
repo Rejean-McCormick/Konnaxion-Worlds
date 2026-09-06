@@ -1,0 +1,95 @@
+name: KX Worlds CI
+
+on:
+  pull_request:
+    paths:
+      - "backend/konnaxion/worlds/**"
+      - "backend/konnaxion/ethikos/**"
+      - "backend/konnaxion/ekoh/**"
+      - "backend/konnaxion/smart_vote/**"
+      - "backend/config/**"
+      - "backend/seed-data/worlds/**"
+      - "frontend/components/worlds/**"
+      - "frontend/lib/worlds.ts"
+      - "frontend/middleware.ts"
+      - "scripts/check_worlds_architecture.py"
+      - ".github/workflows/worlds-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "backend/konnaxion/worlds/**"
+      - "backend/konnaxion/ethikos/**"
+      - "backend/konnaxion/ekoh/**"
+      - "backend/konnaxion/smart_vote/**"
+      - "backend/config/**"
+      - "backend/seed-data/worlds/**"
+      - "frontend/components/worlds/**"
+      - "frontend/lib/worlds.ts"
+      - "frontend/middleware.ts"
+      - "scripts/check_worlds_architecture.py"
+      - ".github/workflows/worlds-ci.yml"
+
+jobs:
+  architecture-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check KX-WORLDS-1 invariants
+        run: python scripts/check_worlds_architecture.py
+      - name: Compile Python
+        run: python -m compileall -q backend/konnaxion/worlds backend/konnaxion/ethikos backend/konnaxion/ekoh backend/konnaxion/smart_vote
+
+  postgres-isolation:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: konnaxion
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d konnaxion"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/konnaxion
+      REDIS_URL: redis://127.0.0.1:6379/0
+      DJANGO_SETTINGS_MODULE: config.settings.test
+      DJANGO_SECRET_KEY: kx-worlds-ci-only-secret
+      KONNAXION_WORLDS_STRICT_ROUTING: "true"
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements/local.txt
+      - name: Install backend dependencies
+        run: pip install -r requirements/local.txt
+      - name: Django system check
+        run: python manage.py check
+      - name: Apply control-plane migrations
+        run: python manage.py migrate --noinput
+      - name: Run Worlds primitive and seed tests
+        run: pytest konnaxion/worlds/tests/test_primitives.py konnaxion/worlds/tests/test_seed_packs.py -q
+      - name: Run PostgreSQL Alpha-Beta-Alpha isolation test
+        run: pytest konnaxion/worlds/tests/test_multiworld_isolation.py -q

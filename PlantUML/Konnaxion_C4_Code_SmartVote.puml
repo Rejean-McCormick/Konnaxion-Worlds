@@ -1,0 +1,157 @@
+@startuml
+title Konnaxion — C4 Code (Smart Vote Aggregator · Django/DRF)
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (context code-level)
+'========================
+component "ethiKos Service\n(Debate / Stances)\nPOST stance (source de vote)" as ETHIKOS
+component "Realtime Service\n(Django Channels + Redis)\nDiffusion WS" as RT
+component "reports-api\n(Read-only analytics)\nGET /reports/smart-vote" as RPTAPI
+database "Analytics DB\n(PostgreSQL · star schema)\n(vw_smart_vote_30d …)" as DW
+
+'========================
+' CONTENEUR BACKEND (API)
+'========================
+package "API (Django/DRF) :: Smart Vote" as API {
+
+  '--------- API Layer ----------
+  component "[TBD] VoteViewSet\n(DRF ViewSet / endpoints d’écriture/lecture)" as VoteViewSet
+  note right of VoteViewSet
+    Rôle:
+      • Reçoit un vote (directement ou via intégration ethiKos: stance -3…+3) et déclenche l’agrégation.
+      • Applique authent/permissions DRF standards.
+    Entrées:
+      • JSON {target_type, target_id, modality, value_raw, …} [TBD champs exacts]
+    Sorties:
+      • Résultat agrégé actualisé (pondéré Ekoh) + écho du vote.
+    Endpoints:
+      • [TBD POST /votes], [TBD DELETE /votes/{id}], [TBD GET /votes?target=…]
+    Remarques:
+      • Idempotence par (user,target,modality) [TBD], validation modalité.
+  end note
+
+  component "[TBD] VoteSerializer\n(DRF Serializer)" as VoteSerializer
+  note right of VoteSerializer
+    • Valide/convertit la requête en objets métier (Vote, VoteModality).
+    • Garantit la cohérence (ex.: valeur dans l’intervalle autorisé pour la modalité).
+    • Schéma exact des champs d’API: [TBD].
+  end note
+
+  '--------- Domain/service layer ----------
+  component "SmartVoteAggregator\n(Service d’agrégation & pondération Ekoh)" as Aggregator
+  note right of Aggregator
+    Rôle:
+      • Calcule weighted_value = f(value_raw, poids_Ekoh_domaine) [formule précise: TBD].
+      • Met à jour/insère Vote et VoteResult de façon atomique (transaction DB).
+      • Émet un événement temps réel (Channels) après succès.
+    Détails:
+      • Gestion des conflits / upsert (si vote existant).
+      • Anti-doublon par (user,target,modality) [TBD].
+  end note
+
+  component "[TBD] Weighting/EkohAdapter\n(Accès aux scores Ekoh par domaine)" as EkohAdapter
+  note right of EkohAdapter
+    • Fournit le poids de l’utilisateur pour le domaine de la cible (expertise Ekoh).
+    • Source des scores/percentiles: service Ekoh interne (DB/ORM).
+    • Contrat/DAO exact: [TBD].
+  end note
+
+  component "SmartVoteBroadcaster\n(Émission d’événements WS)" as Broadcaster
+  note right of Broadcaster
+    • Construit le payload d’événement (type, payload, ts) et publie sur Channels.
+    • Noms de groupes (rooms) et schéma d’événement: [TBD].
+  end note
+
+  '--------- ORM (code-level models) ----------
+  package "ORM (Django Models)" as ORM {
+    component "Vote\n(id, user, target_type, target_id,\n raw_value, weighted_value, created_at …)" as M_Vote
+    note right of M_Vote
+      • Stocke chaque vote brut et sa version pondérée.
+      • Contraintes d’unicité/PK exactes: [TBD].
+    end note
+
+    component "VoteResult\n(id, target_type, target_id,\n sum_weighted_value, vote_count, updated_at …)" as M_VoteResult
+    note right of M_VoteResult
+      • Stocke l’agrégat par cible (somme pondérée, nombre de votes).
+      • Sert la lecture rapide côté API.
+    end note
+
+    component "VoteModality\n(id, name, parameters JSON)" as M_VoteModality
+    note right of M_VoteModality
+      • Définit la modalité (approval/ranking/rating/preferential).
+      • Paramètres (bornes, pas, etc.): [TBD].
+    end note
+
+    component "EmergingExpert\n(id, user, detection_date, score_delta …)" as M_EmergingExpert
+    note right of M_EmergingExpert
+      • Marque les utilisateurs dont l’expertise progresse rapidement.
+      • Seuils/critères exacts: [TBD param ref].
+    end note
+
+    component "IntegrationMapping\n(id, external_type, external_id,\n internal_target_type, internal_target_id)" as M_Integration
+    note right of M_Integration
+      • Fait le pont entre IDs externes (ethiKos/keenKonnect/…) et cibles internes.
+      • Utilisé au moment de convertir une stance en vote SmartVote.
+    end note
+  }
+
+  '--------- Asynchronous tasks ----------
+  component "[TBD] RecomputeEkohScoresTask\n(Celery)" as T_Ekoh
+  note right of T_Ekoh
+    • Recalcule périodiquement les scores Ekoh (batch nocturne).
+    • Déclenche une ré-agrégation si changement majeur [TBD].
+  end note
+
+  component "[TBD] RecomputeVoteResultsTask\n(Celery)" as T_Votes
+  note right of T_Votes
+    • Répare/re-aggrège en lot (backfill, anomalies).
+    • Fenêtres/patterns de reprocessing: [TBD].
+  end note
+
+  component "Error Handler\n(mappe exceptions → JSON Error)" as ErrHandler
+  note right of ErrHandler
+    • Normalise les erreurs: VALIDATION_ERROR, CONFLICT, FORBIDDEN, RATE_LIMIT [TBD].
+    • Journalise les causes (audit/observabilité).
+  end note
+}
+
+'========================
+' RELATIONS (flux)
+'========================
+ETHIKOS --> VoteViewSet : POST stance/ vote\n[endpoint exact: TBD]
+VoteViewSet --> VoteSerializer
+VoteViewSet --> Aggregator : create_or_update_vote()
+Aggregator --> EkohAdapter : get_weight(user, domain)\n[contrat exact: TBD]
+Aggregator --> M_Vote : INSERT/UPDATE
+Aggregator --> M_VoteResult : UPSERT agrégat
+Aggregator --> Broadcaster : publish_event(type,payload)\n[group name/payload: TBD]
+Broadcaster --> RT : WS push (Channels)
+RPTAPI --> DW : SELECT vw_smart_vote_30d\n(lecture analytique · séparée de l’OLTP)
+
+'========================
+' LÉGENDE / CONTRAINTES
+'========================
+note bottom
+  Paramètres & invariants (référence v14):
+  • VOTE_MODALITY_CHOICES = { approval | ranking | rating | preferential }.
+  • Échelle ethiKos: stance ∈ [-3..+3], 0 = neutre (conversion → value_raw).
+  • CONSENSUS_STRONG_THRESHOLD ≥ 75 % (affichage).
+  • EMERGING_EXPERT_THRESHOLD ≈ +15 %/30 j (détection).
+  • Quorum experts (affichage): ≥ 12 experts (percentile Ekoh ≥ 75e) [TBD exact].
+  Sécurité & intégrité:
+  • Auth DRF standard; permissions module [TBD].
+  • Transactions DB autour de l’agrégation; idempotence sur vote existant [TBD].
+  • Emission WS en sortie (aucune écriture métier via WS).
+  Placeholders (infos non précisées dans les docx):
+  • [TBD endpoints] — routes REST exactes (POST/DELETE/GET).
+  • [TBD class names] — noms module/chemins Python des classes ci-dessus.
+  • [TBD formula] — formule exacte de pondération Ekoh→weighted_value.
+  • [TBD ws event names/payloads] — contrat d’événements Channels.
+  • [TBD constraints/indexes] — contraintes d’unicité & index ORM.
+end note
+
+@enduml

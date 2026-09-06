@@ -7,7 +7,7 @@ Before World-related coding, read:
 2. `BOUNDARIES_AND_OWNERSHIP.md`
 3. `CONTRACTS.txt`
 4. `Worlds/AI_LOCK.yaml`
-5. `Worlds/00_CANONICAL_SPEC.md`
+5. `Worlds/KONNAXION_WORLDS_FULL_SPEC.md`
 6. the exact current source files to modify.
 
 Mandatory:

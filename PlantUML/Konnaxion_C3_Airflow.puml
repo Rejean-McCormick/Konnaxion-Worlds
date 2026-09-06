@@ -1,0 +1,184 @@
+@startuml
+title Konnaxion — C3 Components (Analytics · Airflow 2.9)
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (connecteurs)
+'========================
+database "App DB (OLTP)\nPostgreSQL\n[source de données métier]" as OLTP
+database "Analytics DB\nPostgreSQL 16 (DW)\n[facts/dims + vues matérialisées]" as DW
+queue "Redis 7\n(Analytics Cache)" as REDIS
+component "Prometheus API\n(source métriques perf)" as PROMAPI
+component "Prometheus\n(scrape /metrics Airflow)" as PROM
+storage "Vault / Secrets\n(connexions Airflow)" as VAULT
+
+'========================
+' CONTENEUR (Airflow)
+'========================
+package "Analytics Airflow\nAirflow 2.9 (py3.12)\n1 Scheduler · 2 Workers" as AF {
+
+  component "Scheduler\n(planifie & oriente l'exécution\nselon les DAGs et dépendances)" as SCH
+  note right of SCH
+    • Détermine quel DAG/Task doit s'exécuter et quand (cron/catchup).
+    • Ordonne l'exécution sur les workers disponibles.
+    • Gère les dépendances inter-tâches et les états (success/fail/retry).
+  end note
+
+  component "Workers (x2)\n(exécutent les tasks des DAGs)" as WKS
+  note right of WKS
+    • Prennent en charge les Operators (SQL/HTTP/Python…).
+    • Concurrence par worker; pools/priorités: [TBD_operators/pools/retries].
+  end note
+
+  component "Connections & Secrets\n(Airflow Connections via Vault CSI)" as CONN
+  note right of CONN
+    • Injecte les connexions (ex.: pg_analytics, redis_reports, prometheus_base_url).
+    • Chiffrage via AIRFLOW__CORE__FERNET_KEY.
+  end note
+
+  '------------ DAGs (à modéliser) ------------
+  component "DAG etl_smart_vote\nschedule: */10 * * * *" as DAG_SV
+  note right of DAG_SV
+    Objectif:
+      • Charger les deltas depuis l'OLTP vers smart_vote_fact (grain vote×question×date).
+    Entrées/Sorties:
+      • Source: App DB (OLTP) — tables métier liées au vote.
+      • Cible: Analytics DB — table fact smart_vote_fact.
+    Détails d'implémentation:
+      • Operators/pools/retries, SQL scripts: [TBD_operators/pools/retries] / [TBD_sql_paths].
+  end note
+
+  component "DAG etl_usage\nschedule: 0 * * * *" as DAG_USAGE
+  note right of DAG_USAGE
+    Objectif:
+      • Calculer les indicateurs d'usage (MAU, projets, docs) dans usage_mau_fact.
+    Entrées/Sorties:
+      • Source: App DB (OLTP).
+      • Cible: Analytics DB — table fact usage_mau_fact (grain user×month).
+    Détails:
+      • Fenêtrage, upserts, retries: [TBD_operators/pools/retries].
+  end note
+
+  component "DAG etl_perf\nschedule: */15 * * * *" as DAG_PERF
+  note right of DAG_PERF
+    Objectif:
+      • Ingestion des métriques de performance API (latence, erreurs) depuis Prometheus API.
+    Entrées/Sorties:
+      • Source: Prometheus (HTTP).
+      • Cible: Analytics DB — api_perf_fact (grain endpoint×hour).
+    Détails:
+      • Mapping champs/tags Prom → colonnes DW: [TBD_sql_paths].
+  end note
+
+  component "DAG refresh_mat_views\nschedule: 5 * * * *" as DAG_REFRESH
+  note right of DAG_REFRESH
+    Objectif:
+      • REFRESH MATERIALIZED VIEW des vues vw_* (ex.: vw_perf_24h, vw_smart_vote_30d, vw_usage_90d).
+    Entrées/Sorties:
+      • Cible: Analytics DB (REFRESH MV).
+    Détails:
+      • Stratégie de lock/concurrence, ordre de refresh: [TBD_sql_paths].
+  end note
+
+  component "DAG cleanup_cache\nschedule: @hourly" as DAG_CACHE
+  note right of DAG_CACHE
+    Objectif:
+      • Purger les clés Redis d’analytics périmées (> 12 h) pour hygiène du cache.
+    Entrées/Sorties:
+      • Cible: Redis (SCAN/DEL sur pattern reports:*).
+    Détails:
+      • Seuils/ratelimit/patterns exacts: [TBD].
+  end note
+
+  component "DAG purge_old_partitions\nschedule: 0 4 * * 0" as DAG_PURGE
+  note right of DAG_PURGE
+    Objectif:
+      • Supprimer les partitions trop anciennes selon la politique de rétention.
+    Rétention:
+      • smart_vote_fact: 5 ans; usage_mau_fact: 10 ans; api_perf_fact: 2 ans.
+    Détails:
+      • Fenêtre exacte, sécurité (VACUUM/ANALYZE) et journal: [TBD].
+  end note
+
+  component "/metrics (Airflow Exporter)\n(métriques scheduler/workers/DAGs)" as AF_METRICS
+  note right of AF_METRICS
+    • Expose des métriques pour Prometheus (taux de succès/échec, durée des runs).
+    • Sert aux dashboards et alertes (report-etl.json).
+  end note
+}
+
+'========================
+' RELATIONS (flux & dépendances)
+'========================
+VAULT --> CONN : Connexions & secrets\n(fernet key, URLs, credentials)
+
+SCH --> WKS : Orchestration des tasks
+SCH --> DAG_SV
+SCH --> DAG_USAGE
+SCH --> DAG_PERF
+SCH --> DAG_REFRESH
+SCH --> DAG_CACHE
+SCH --> DAG_PURGE
+
+'--- Sources / Cibles par DAG
+OLTP --> DAG_SV : Deltas vote/entités liées
+DAG_SV --> DW : Upsert smart_vote_fact
+
+OLTP --> DAG_USAGE : Données d'usage (MAU, projets, docs)
+DAG_USAGE --> DW : Upsert usage_mau_fact
+
+PROMAPI --> DAG_PERF : Requêtes métriques (HTTP)
+DAG_PERF --> DW : Upsert api_perf_fact
+
+DAG_REFRESH --> DW : REFRESH MATERIALIZED VIEW vw_*
+
+DAG_CACHE --> REDIS : SCAN/DEL keys > 12h
+
+DW --> DAG_PURGE : Inspection partitions
+DAG_PURGE --> DW : DROP partitions anciennes
+
+AF_METRICS --> PROM : scrape /metrics
+
+'========================
+' LÉGENDE / CONTRAINTES / SÉCURITÉ / TBD
+'========================
+note bottom
+  Données du DW:
+  • Facts: smart_vote_fact (vote×question×date), usage_mau_fact (user×month), api_perf_fact (endpoint×hour).
+  • Dims: dim_date, dim_domain, dim_endpoint.
+  • Vues: vw_smart_vote_30d, vw_usage_90d, vw_perf_24h.
+  • Migrations: vues créées WITH NO DATA puis peuplées par Airflow.
+
+  Sécurité & confidentialité (ETL):
+  • user_id hashé (SHA-256 + salt) dans les facts; agrégats < 10 → exclus (k-anonymat ≥ 10).
+  • Accès lecture API via rôle DB reports_reader (SELECT sur vues/dims).
+
+  Monitoring & alerting (exemples):
+  • Alertes: etl_task_fail, mat_view_refresh_duration > 60 s, reports_latency_p95 > 0.4 s,
+             reports_error_rate > 2 %, redis_cache_hit_ratio_low < 0.5.
+  • Dashboards: reports-api.json, report-etl.json.
+  • Runbooks (résumé): Retry DAG, inspecter pg_locks, VACUUM/INDEX bloat, tuning Redis.
+
+  Backup & DR:
+  • pgBackRest: full nightly + incrémental 30 min (retenu 14 j) pour Analytics PG (incl. Airflow metadata).
+  • Redis non sauvegardé (éphémère).
+
+  Config/Env (extraits):
+  • REPORTS_DB_URL → chaîne Postgres Analytics (API=RO; ETL a droits d'écriture).
+  • REDIS_URL → instance Redis partagée (cache analytics).
+  • AIRFLOW__CORE__FERNET_KEY → chiffrement des connexions Airflow.
+  • PROMETHEUS_BASE_URL → source HTTP pour etl_perf.
+  • EXPORT_MAX_ROWS (=100000) → garde-fou exports côté écosystème (référence croisée).
+
+  Placeholders à compléter:
+  • [TBD_pg_oltp_conn] — id de connexion Airflow vers l'OLTP (App DB).
+  • [TBD_operators/pools/retries] — Operators exacts, pools, backoff/retries.
+  • [TBD_sql_paths] — chemins des scripts SQL & détails de mapping.
+  • [TBD_backfill] — politique de backfill/catchup par DAG.
+  • [TBD_alerting_channels] — canaux de notification (email/Slack on failure).
+end note
+
+@enduml

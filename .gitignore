@@ -1,0 +1,167 @@
+##############################################################################
+# ROOT .gitignore (backend + frontend)
+##############################################################################
+
+##############################################################################
+# 0) Backups / local copies / generated working trees
+##############################################################################
+Backups/
+.kx_deploy_backups/
+_BUG_HARVEST_SOURCE/
+_BUG_HARVEST_REVIEW/
+**/*_Dump/
+**/*_dump/
+
+*.bak
+*.bak_*
+*.orig
+*.tmp
+*.swp
+
+# Generated concatenations / local source dumps
+**/concat_*.txt
+
+##############################################################################
+# 1) OS / Editors
+##############################################################################
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+##############################################################################
+# 2) Logs / Reports / Caches / runtime evidence
+##############################################################################
+*.log
+logs/
+coverage/
+htmlcov/
+.cache/
+.nyc_output/
+playwright-report/
+test-results/
+routes-tests.json
+use_client_report.csv
+use_client_report.json
+
+# Konnaxion generated diagnostics / campaign runs
+.bug-harvest-runs/
+.bug-harvest-wave2-runs/
+.mega-test-campaign/
+.levelupdiag/
+.levelupdiag-upgrade-backups/
+.securitydiag/
+
+# Generated frontend diagnostics and authenticated browser state
+frontend/reports/
+frontend/eslint-full.json
+frontend/storageState*.json
+
+# Generated Structurizr local index/cache
+**/.structurizr/
+
+##############################################################################
+# 3) Secrets / Environment / private keys
+##############################################################################
+.env
+.env.*
+.envs/
+!.env.example
+!env.example
+!*.example
+
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+##############################################################################
+# 4) Python
+##############################################################################
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.so
+
+venv/
+.venv/
+env/
+ENV/
+
+.pytest_cache/
+.mypy_cache/
+.tox/
+.dmypy.json
+.pyre/
+.pyright/
+.ruff_cache/
+
+*.sqlite3
+*.db
+
+##############################################################################
+# 5) Node / Frontend
+##############################################################################
+node_modules/
+.pnpm/
+.pnp/
+.pnp.js
+.pnpm-store/
+.ignored_node_modules/
+
+.next/
+out/
+dist/
+build/
+
+.eslintcache
+.prettiercache
+*.tsbuildinfo
+.turbo/
+.swc/
+.parcel-cache/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tgz
+
+##############################################################################
+# 6) Django / generated assets
+##############################################################################
+staticfiles/
+media/
+
+##############################################################################
+# 7) Cinematic generated output
+##############################################################################
+cinematic/**/output/
+
+##############################################################################
+# 8) Docker / local data
+##############################################################################
+**/local_postgres_data/
+**/local_postgres_data_backups/
+**/local_pgdata/
+**/local_pgadmin/
+**/.docker/
+docker-compose.override.yml
+compose/**/traefik/acme.json
+compose/**/nginx/certs/
+
+##############################################################################
+# 9) Archives / local helper
+##############################################################################
+*.tar.gz
+*.zip
+
+GitSink.bat

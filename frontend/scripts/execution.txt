@@ -1,0 +1,17 @@
+# 1) Dépendances + Playwright
+pwsh -File .\scripts\00-setup.ps1
+
+# 2) Frontend unit + types
+pwsh -File .\scripts\10-frontend-unit.ps1
+
+# 3) Component tests
+pwsh -File .\scripts\20-frontend-ct.ps1
+
+# 4) Smoke en prod (bloquant, recommandé)
+pwsh -File .\scripts\31-frontend-smoke-prod.ps1 -Mode gate
+
+# 5) Backend
+pwsh -File .\scripts\40-backend-tests.ps1
+
+# 6) Tout d’un coup
+pwsh -File .\scripts\50-all.ps1

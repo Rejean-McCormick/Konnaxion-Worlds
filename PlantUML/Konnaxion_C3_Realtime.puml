@@ -1,0 +1,115 @@
+@startuml
+title Konnaxion — C3 Components (Realtime via Django Channels)
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (connecteurs)
+'========================
+actor "WebApp (Next.js)\nClient temps réel" as WEB
+component "Core API (Django/DRF)\nSource d'événements applicatifs" as API
+queue "Redis 7\n(Channel Layer / Pub-Sub)" as REDIS
+component "Prometheus\n(scrape /metrics)" as PROM
+
+'========================
+' CONTENEUR (Realtime)
+'========================
+package "Realtime Service\n(Django Channels + ASGI)\nWS endpoints: /ws/…\nPush-only (pas d'écriture métier)" as RT {
+
+  component "Connection Manager\n(ASGI workers — ex. Daphne)" as CONN
+  note right of CONN
+    • Gère le handshake WebSocket et l’upgrade HTTP→WS.
+    • Affinité de connexion vers plusieurs workers (scaling horizontal).
+    • Supervise les fermetures propres (close codes) et les tentatives de reconnexion côté client.
+  end note
+
+  component "Handshake Auth\n[WS auth method: TBD]" as AUTH
+  note right of AUTH
+    • Valide l'identité pendant/juste après le handshake WS.
+    • Méthode exacte d’authentification WS: [TBD] (ex. JWT via query/header/subprotocol/cookie).
+    • En cas d’échec: refuse la connexion (401/403).
+  end note
+
+  component "Subscription / Rooms\n(Channel Groups)" as ROOMS
+  note right of ROOMS
+    • Abonne la session à des groupes (rooms) selon le contexte d’UI.
+    • Groupes connus: reports_user_<id> (Insights); autres schémas de nommage: [TBD].
+    • Diffusion via group_send(...) vers tous les abonnés.
+  end note
+
+  component "Presence Store\n(online users, room members)\n[Schema/TTL: TBD]" as PRES
+  note right of PRES
+    • Suit l’état de présence/adhésion des sessions (qui est connecté à quel groupe).
+    • Stockage clé/TTL dans Redis (format exact, expirations: [TBD]).
+    • Utilisé pour afficher les présences et pour un throttling éventuel.
+  end note
+
+  component "Notification Dispatcher\n(app events → WS messages)" as DISPATCH
+  note right of DISPATCH
+    • Reçoit des événements applicatifs (ex.: nouveau vote, mise à jour d’un débat, progression d’un builder).
+    • Résout la/les room(s) concernée(s), construit un message, puis publie via Channel Layer.
+    • Garantit l’idempotence minimale côté client (ex.: message_id, timestamp).
+    • Schéma d’événement précis (type, payload) : [TBD].
+  end note
+
+  component "Channel Layer Adapter\nchannels_redis.core.RedisChannelLayer" as CHL
+  note right of CHL
+    • Interface Channels↔Redis: gère pub/sub des group_send et la fan-out.
+    • Nécessite REDIS_URL; tolère plusieurs workers (échelle horizontale).
+  end note
+
+  component "/metrics (Prometheus Exporter)" as METRICS
+  note right of METRICS
+    • Expose métriques WS (connexions actives, messages/s, erreurs, taux d’auth).
+    • Sert aux dashboards & alertes; pilote le scale (HPA) si utilisé.
+  end note
+
+  component "Error Handler\n(close codes, backoff, mapping)" as ERR
+  note right of ERR
+    • Normalise les codes de fermeture WS et les messages d’erreur.
+    • Conseille le client sur le backoff (ex.: Retry-After via protocole d’app).
+    • Journalise le motif d’échec (catégorisation pour observabilité).
+  end note
+}
+
+'========================
+' RELATIONS
+'========================
+WEB --> CONN : WebSocket handshake\nGET /ws/… (ex.: /ws/reports/custom)
+CONN --> AUTH : Négociation/session check\n[JWT/cookie/subprotocol: TBD]
+AUTH --> ROOMS : Join/Leave de groupes\n(rooms dynamiques par contexte)
+ROOMS --> CHL : Publier/S'abonner\n(group_send / receive)
+CHL --> REDIS : Pub/Sub\n(transport des messages)
+PRES --> REDIS : Clés de présence\nschema/TTL: [TBD]
+API --> DISPATCH : App events (signals)\n[bus exact: TBD]
+DISPATCH --> ROOMS : group_send(...)\n(type, payload, timestamp)
+METRICS --> PROM : scrape /metrics
+
+'========================
+' INVARIANTS, ENDPOINTS, SLO
+'========================
+note bottom
+  Endpoints WS connus:
+  • /ws/reports/custom (Insights, flux builder/streams personnalisés).
+  • Préfixe réservé: /ws/reports/* (ne pas réutiliser sans RFC).
+  Groupes/rooms:
+  • reports_user_<id> (flux utilisateur Insights).
+  • Autres patterns de rooms (débat/chat/collab): [TBD].
+
+  Sécurité:
+  • Méthode d'auth WS: [TBD] (JWT en header/query/subprotocol/cookie).
+  • Autorisations par room (vérification côté serveur) — détails: [TBD].
+  • Aucune écriture métier via WS (push only).
+
+  SLO/observabilité (indicatifs):
+  • Taux d'échec handshake < 2 %, latence publish→deliver (P95) < 250 ms.
+  • Logs d’audit et métriques exposés via /metrics.
+
+  Config/Env (extraits):
+  • REDIS_URL (Channel Layer).
+  • Nombre de workers ASGI (scaling horizontal).
+end note
+
+@enduml

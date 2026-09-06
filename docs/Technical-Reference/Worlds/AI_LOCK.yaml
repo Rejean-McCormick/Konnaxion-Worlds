@@ -2,15 +2,12 @@ architecture_lock:
   id: KX-WORLDS-1
   version: 1.0.0
   status: locked_target_architecture
-  implementation_state: planned_partially_anchored
-  canonical_human_spec: 00_CANONICAL_SPEC.md
+  implementation_state: implemented_pending_runtime_validation
+  canonical_human_spec: KONNAXION_WORLDS_FULL_SPEC.md
   change_requires_adr: true
 mandatory_context_docs:
-- ../GENERALinstructionsForAI.txt
-- ../BOUNDARIES_AND_OWNERSHIP.md
-- ../CONTRACTS.txt
-- 00_CANONICAL_SPEC.md
-- 01_CURRENT_STATE_BASELINE.md
+- KONNAXION_WORLDS_FULL_SPEC.md
+- WORLD_SYSTEM_AI.instructions.md
 terms:
   World: stable logical environment selected per request
   WorldRelease: physical isolated schema pair/runtime generation of one World

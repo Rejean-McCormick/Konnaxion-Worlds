@@ -1,0 +1,90 @@
+# =========================
+# Dependencies
+# =========================
+node_modules/
+.pnp/
+.pnp.js
+.pnpm-store/
+
+# =========================
+# Next.js / React builds
+# =========================
+.next/
+out/
+dist/
+build/
+*.tgz
+.next.tgz
+
+# =========================
+# Env files (secrets)
+# =========================
+.env
+.env.*
+!.env.example
+!env.example
+!env.*.example
+
+# =========================
+# Logs
+# =========================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# =========================
+# Testing / Coverage / Generated Reports
+# =========================
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+artifacts/
+routes-tests.json
+use_client_report.csv
+use_client_report.json
+
+# IMPORTANT:
+# Do NOT ignore reports/ because frontend/app/reports contains real Next.js routes.
+# reports/
+
+# =========================
+# Tooling caches
+# =========================
+.swc/
+.eslintcache
+.turbo/
+.cache/
+.parcel-cache/
+
+# =========================
+# TypeScript incremental build info
+# =========================
+*.tsbuildinfo
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+.idea/
+*.iml
+
+# =========================
+# Misc
+# =========================
+*.bak
+*.tmp
+
+# Ethikos delivery workflow auth state
+storageState.delivery.json

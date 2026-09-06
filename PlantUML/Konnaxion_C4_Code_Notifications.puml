@@ -1,0 +1,183 @@
+@startuml
+title Konnaxion — C4 Code (Notifications · in-app + email [+ Slack])
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (connecteurs)
+'========================
+actor "WebApp (Next.js)\nCentre de notifications" as WEB
+database "App DB (OLTP)\nNotifications & préférences" as APPDB
+component "Email Service\n(SMTP ou API provider)" as EMAIL
+component "Slack Webhook [Optionnel]\n(Modération)" as SLACK
+queue "Redis\n(Celery broker/backend)" as REDIS
+
+'========================
+' SOURCES D'ÉVÉNEMENTS (hors module)
+'========================
+component "KonnectED — CertificationService\n(« certification délivrée »)" as CERTSVC
+component "ethiKos — Moderation Queue\n(éléments signalés)" as MODQ
+
+'========================
+' CONTENEUR BACKEND (API · Django/DRF)
+'========================
+package "API (Django/DRF) :: Notifications" as API {
+
+  '--------- API layer ----------
+  component "NotificationsViewSet [DRF]\n(list/mark-as-read/filters)\n[Routes exactes: TBD]" as NotifView
+  note right of NotifView
+    Rôle:
+      • Expose l’API pour lister les notifications in-app et les marquer comme lues.
+      • Filtrage (unread only, module, date range) [TBD].
+    Entrées:
+      • GET /notifications[?unread=1], POST /notifications/:id/read [TBD].
+    Sorties:
+      • JSON (liste {id, message, ts, read_flag, module, entity_id…}).
+    Sécurité:
+      • IsAuthenticated; pagination & tri [TBD].
+  end note
+
+  component "Error Handler\n(mapping → JSON Error)" as ErrHandler
+  note right of ErrHandler
+    • Normalise: VALIDATION_ERROR, FORBIDDEN, NOT_FOUND, RATE_LIMITED [TBD].
+    • Journalise l’erreur (audit/observabilité).
+  end note
+
+  '--------- Application / Domain ----------
+  component "NotifyService\n(orchestrateur d’envoi multi-canal)" as NotifySvc
+  note right of NotifySvc
+    Rôle:
+      • Reçoit un événement applicatif (type, user cible, payload).
+      • Construit l’objet Notification (in-app) et choisit les canaux (email, Slack [modération]).
+      • Enfile les tâches Celery (EmailTask) et persiste la notification.
+    Entrées:
+      • event_type, user_id, context/module, entity_id, template_id [TBD].
+    Sorties:
+      • Notification DB + job d’envoi email [+ webhook Slack optionnel].
+  end note
+
+  component "TemplateRenderer\n(subject/body i18n)" as TplRenderer
+  note right of TplRenderer
+    • Rendu des e-mails à partir d’un template + contexte (en, fr, es, ar).
+    • Source des templates (fichiers/DB): [TBD paths/ids].
+    • Variables attendues par type d’événement: [TBD].
+  end note
+
+  component "NotificationPolicy\n(préférences & canaux)" as Policy
+  note right of Policy
+    • Détermine si l’utilisateur reçoit e-mail, in-app, Slack (modérateurs), selon préférences/rôles.
+    • Modèle NotificationPreference exact: [TBD].
+  end note
+
+  component "AuditLogger\n(sécurité/traçabilité)" as Audit
+  note right of Audit
+    • Trace les émissions (who/what/when/channel) et les lectures (mark-as-read).
+    • Destination: table audit_request_log / pipeline central [TBD].
+  end note
+
+  '--------- ORM (code-level models) ----------
+  package "ORM (Django Models)" as ORM {
+    component "Notification\n(id, user_id, module, entity_id,\n message, ts, read_flag)" as M_Notification
+    note right of M_Notification
+      • Stocke le « feed » in-app par utilisateur.
+      • Index: (user_id, ts desc), (user_id, read_flag) [TBD exact].
+    end note
+
+    component "NotificationPreference [TBD]\n(user_id, channel_flags, quiet_hours…)" as M_Pref
+    note right of M_Pref
+      • Enregistre les préférences d’abonnement par canal/type.
+      • Schéma exact et valeurs par défaut: [TBD].
+    end note
+
+    component "DeliveryResult [TBD]\n(notification_id, channel, status,\n provider_id, error_code, ts)" as M_Delivery
+    note right of M_Delivery
+      • Garde la trace de l’envoi (succès/échec, code provider).
+      • Utile pour re-try/forensics.
+    end note
+  }
+}
+
+'========================
+' CONTENEUR WORKER (Celery)
+'========================
+package "Worker (Celery)\nTâches d’envoi asynchrones" as WORKER {
+
+  component "EmailTask\n(envoi e-mail via provider)" as EmailTask
+  note right of EmailTask
+    • Construit le message (subject/body/locale) via TemplateRenderer.
+    • Envoie via SMTP/API; met à jour DeliveryResult.
+    • Politique de retry/backoff & DLQ: [TBD].
+  end note
+
+  component "SlackNotifier [Optionnel]\n(webhook modération)" as SlackTask
+  note right of SlackTask
+    • Formate et publie un message Slack pour les entrées de moderation queue.
+    • Secret/URL & canal: [TBD].
+  end note
+}
+
+'========================
+' RELATIONS (flux principaux)
+'========================
+' 1) Triggers/captures d’événements
+CERTSVC --> NotifySvc : event 'CERTIFICATION_GRANTED'\n(user_id, context, payload)
+MODQ --> NotifySvc : event 'CONTENT_FLAGGED'\n(content_id, reason, moderators…)
+
+' 2) Orchestration de l’émission
+NotifySvc --> Policy : vérifier préférences/roles
+NotifySvc --> M_Notification : create feed item
+NotifySvc --> TplRenderer : render(subject, body, locale)
+NotifySvc --> REDIS : enqueue EmailTask (si canal e-mail)
+NotifySvc --> SlackTask : trigger webhook (si modération)
+
+' 3) Exécution asynchrone
+REDIS --> WORKER : dispatch Celery jobs
+EmailTask --> EMAIL : SMTP/API send
+EmailTask --> M_Delivery : upsert status/provider_id/error
+SlackTask --> SLACK : POST webhook
+
+' 4) API de lecture/état
+WEB --> NotifView : GET list / POST mark_as_read\n(JSON over HTTPS)
+NotifView --> M_Notification : SELECT/UPDATE
+NotifView --> Audit : log read/mark events
+
+'========================
+' LÉGENDE / CONTRAINTES / ENV / TBD
+'========================
+note bottom
+  Canaux et portée:
+  • In-app (feed unifié) + e-mail; Slack réservé à la modération (optionnel).
+  • Les notifications sont transverses aux modules (KonnectED, ethiKos, …).
+
+  I18n & Templates:
+  • Langues supportées: en, fr, es, ar.
+  • Emplacement/ID des templates, variables de contexte: [TBD].
+
+  Endpoints (à confirmer):
+  • [TBD] GET /notifications?unread=1
+  • [TBD] POST /notifications/{id}/read
+  • [TBD] GET /notifications/stats
+
+  Sécurité & permissions:
+  • IsAuthenticated requis; visibilité limitée à user_id = self.
+  • Rôles modérateurs reçoivent Slack pour MODERATION_QUEUE (Policy).
+
+  Observabilité:
+  • Audit des émissions et des lectures (user_id, path, ip, ts, outcome).
+  • DeliveryResult pour corréler succès/échec provider (e-mail/Slack).
+
+  Environnement (à préciser):
+  • DEFAULT_FROM_EMAIL, EMAIL_BACKEND/SMTP_*
+  • REDIS_URL (broker Celery), SLACK_WEBHOOK_URL [Option]
+  • FEATURE_NOTIF_SLACK=false|true, NOTIF_RETRY_POLICY [TBD]
+
+  Placeholders (infos non précisées dans les docs):
+  • [TBD] Routes DRF exactes & schémas JSON (OpenAPI).
+  • [TBD] Modèle NotificationPreference (structure/canaux).
+  • [TBD] Retry/backoff Celery & DLQ; Codes d’erreur normalisés.
+  • [TBD] Templates & pipeline de rendu (fichiers/DB).
+end note
+
+@enduml

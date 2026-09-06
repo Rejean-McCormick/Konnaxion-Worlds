@@ -1,0 +1,14 @@
+{
+  "schema_version": "cinematic-tour/v1",
+  "id": "ethikos-v413-walkthrough",
+  "title": "Konnaxion / Ethikos — V4.1.3 Walkthrough",
+  "files": {
+    "script": "script.json",
+    "audio": "narration.mp3",
+    "cues": "cues.json",
+    "timeline": "timeline.json",
+    "targets": "targets.json"
+  },
+  "output": {"directory": "output"},
+  "auth": {"storage_state": "auth.json"}
+}

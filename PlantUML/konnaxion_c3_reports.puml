@@ -1,0 +1,32 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+LAYOUT_LEFT_RIGHT()
+
+Person(p_User, "User")
+Container(c_WebApp, "WebApp", "Next.js", "Browser UI")
+
+' External dependencies
+ContainerDb(ds_analytics, "Analytics DB", "PostgreSQL", "Aggregated data (OLAP)")
+Container(c_Redis, "Redis", "Redis", "Short-lived cache")
+Container(s_ObjectStore, "Object Storage", "S3 / MinIO", "Exports (optional)")
+
+Container_Boundary(reports, "Reports API (read-only)") {
+  Component(c_endpoints, "Reports Endpoints", "Django/DRF", "HTTP /reports/*; validates input; orchestrates queries")
+  Component(c_queries,   "Query Engine",     "SQL",        "Builds SQL for KPIs/analytics; pagination/filtering")
+  Component(c_cache,     "Cache Layer",      "Redis",      "Caches frequent results (e.g., 5–10 min)")
+  Component(c_export,    "Exporter",         "Django/DRF", "Generates CSV/Excel/JSON; streams or stores to Object Storage")
+  Component(c_authz,     "Read-Only AuthZ",  "Django/DRF", "Checks who can see which dataset (privacy/roles)")
+}
+
+' User flow
+Rel(p_User, c_WebApp, "Uses")
+Rel(c_WebApp, c_endpoints, "HTTP JSON")
+
+' Data path
+Rel(c_endpoints, c_queries, "Compose requests")
+Rel(c_queries, ds_analytics, "Read-only SQL")
+Rel(c_endpoints, c_cache, "Get/Set cache")
+Rel(c_export, s_ObjectStore, "Upload file (optional)")
+Rel(c_endpoints, c_export, "Trigger export")
+
+@enduml

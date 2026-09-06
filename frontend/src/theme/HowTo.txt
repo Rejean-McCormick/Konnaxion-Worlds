@@ -1,0 +1,228 @@
+Here is what each theme parameter actually controls in your app, based on how it is wired through `ThemeContext`, Ant Design, and `CommonWidget.module.css`.
+
+---
+
+## 1. Top-level theme object fields
+
+These live on each theme object (`lightTheme`, `darkTheme`, `cyberTheme`, etc.) and on the AntD-based ones in `src/theme/*.ts`.  
+
+**Metadata**
+
+* `label`
+  Used only for display in the theme switcher button (`ThemeSwitcher`), e.g. “Light”, “Dark”, “Funky Disco”.  
+* `icon`
+  Emoji/icon displayed next to the label in `ThemeSwitcher`.  
+
+**Algorithm**
+
+* `algorithm`
+  Passed directly to `ConfigProvider.theme.algorithm`. Controls Ant Design’s base light/dark algorithm (how it derives full color palette and component styles from your seed tokens).  
+
+---
+
+## 2. Global Ant Design color tokens
+
+These are read from the theme object (`raw`) and mapped into `tokenOverrides`, then given to `ConfigProvider.theme.token`. They influence every AntD component (buttons, inputs, cards, etc.). 
+
+### Core semantic colors
+
+* `colorPrimary` → `token.colorPrimary`
+  Primary brand / action color: primary buttons, selected controls, sliders, etc.  
+
+* `colorPrimaryBg` → `token.colorPrimaryBg`
+  Soft background for primary elements (e.g. filled tags, subtle primary backgrounds). 
+
+* `colorPrimaryHover` → `token.colorPrimaryHover`
+  Hover state of primary actions (buttons, links). 
+
+* `colorPrimaryActive` → `token.colorPrimaryActive`
+  Active/pressed state of primary actions. 
+
+* `colorInfo` → `token.colorInfo`
+
+* `colorSuccess` → `token.colorSuccess`
+
+* `colorWarning` → `token.colorWarning`
+
+* `colorError` → `token.colorError`
+
+These control colors for AntD `Alert`, validation states, status badges, etc. They are also used indirectly by `CommonWidget` semantic variants (see section 4).  
+
+### Background colors
+
+Mapped to AntD layout and container backgrounds: 
+
+* `colorBgBase` → `token.colorBgBase`
+  Root background for body.
+* `colorBgLayout` → `token.colorBgLayout`
+  Main layout background behind content.
+* `colorBgContainer` → `token.colorBgContainer`
+  Default card/panel background.
+* `colorBgElevated` → `token.colorBgElevated`
+  Elevated surfaces (modals, dropdowns, etc.).
+* `colorBgMask` → `token.colorBgMask`
+  Overlay / modal backdrop.
+* `colorBgSpotlight` → `token.colorBgSpotlight`
+  Used for spotlight/highlight surfaces.
+* `colorBgSolid` → `token.colorBgSolid`
+* `colorBgSolidHover` → `token.colorBgSolidHover`
+  Solid-style backgrounds and their hover state.
+* `colorBgPopconfirm` → `token.colorBgPopconfirm` and also Popconfirm component background via `componentsOverrides.Popconfirm.colorBgElevated`.  
+
+### Text colors
+
+Mapped to AntD `token` and used by all typography in AntD components: 
+
+* `colorText` → `token.colorText` (default body text).
+* `colorTextBase` → `token.colorTextBase` (base neutral text).
+* `colorTextSecondary` → `token.colorTextSecondary` (muted descriptions).
+* `colorTextTertiary` → `token.colorTextTertiary` (subtle hints).
+* `colorTextPlaceholder` → `token.colorTextPlaceholder` (input placeholders).
+* `colorTextDisabled` → `token.colorTextDisabled` (disabled labels).
+
+### Borders & separators
+
+* `colorBorder` → `token.colorBorder`
+  Border color for inputs, cards, etc.
+* `colorSplit` → `token.colorSplit`
+  Divider/line color between sections. 
+
+### Shadows, radii, typography
+
+* `boxShadow`, `boxShadowSecondary` → `token.boxShadow`, `token.boxShadowSecondary`
+  Default outer shadows for panels and secondary shadows. 
+
+* `borderRadius` → `token.borderRadius`
+
+* `borderRadiusLG` → `token.borderRadiusLG`
+  Default corner rounding for most components and large ones. 
+
+* `controlHeight` → `token.controlHeight`
+  Default vertical height for inputs/buttons. 
+
+* `fontFamily` → `token.fontFamily`
+
+* `fontSize` → `token.fontSize`
+
+* `fontSizeLG` → `token.fontSizeLG`
+  Global typography family and base sizes used by AntD. 
+
+* `paddingContentHorizontalLG`, `paddingContentVerticalLG` → `token.paddingContentHorizontalLG`, `token.paddingContentVerticalLG`
+  Default larger paddings for card content and similar containers. 
+
+---
+
+## 3. Component-specific theme parameters
+
+These are mapped in `ThemeContext` into `theme.components` overrides. 
+
+### Layout / Sider
+
+* `layoutColorBgSider` → `components.Layout.siderBg`
+  Background color of the AntD `Layout.Sider` (side navigation).  
+
+### Menu (side/top navigation menus)
+
+The code normalizes the “raw” keys into Menu tokens: 
+
+* `colorMenuItemText` or `menuItemTextColor` → `components.Menu.itemColor`
+  Default text color of menu items.
+* `colorMenuItemHoverBg` or `menuItemHoverBg` → `components.Menu.itemHoverBg`
+  Background when hovering a menu item.
+* `colorMenuItemSelectedBg` or `menuItemSelectedBg` → `components.Menu.itemSelectedBg`
+  Background of the currently selected menu item.
+* `colorMenuItemSelectedText` or `menuItemSelectedText` → `components.Menu.itemSelectedColor`
+  Text color for the selected menu item.
+* `menuBg` → `components.Menu.itemBg`
+  Base background for the menu area. 
+
+### Dropdown
+
+* `dropdownBg` → `components.Dropdown.colorBgElevated`
+  Background of dropdown menus.
+* `dropdownItemHoverBg` → `components.Dropdown.controlItemBgHover`
+  Background when hovering items in dropdown menus. 
+
+### Popconfirm
+
+* `colorBgPopconfirm` → `components.Popconfirm.colorBgElevated`
+  Background of Popconfirm popups. 
+
+### Table
+
+* `tableHeaderBg` → `components.Table.headerBg`
+  Background of AntD table headers. 
+
+---
+
+## 4. Custom CSS variables & `CommonWidget`
+
+`ThemeContext` exports some theme parameters as CSS custom properties on `<html>`:  
+
+* `bgMain` → `--bg-main`
+* `bgLight` → `--bg-light`
+* `bgDark` → `--bg-dark`
+* `textMain` → `--text-main`
+* `accent` → `--accent`
+
+These are then used (via fallbacks) by `CommonWidget.module.css` to derive widget styling:  
+
+Internal widget variables (derived from theme):
+
+* `--_bg`
+  Base widget background; defaults to `--widget-bg`, `colorBgContainer`, or AntD container bg.
+* `--_fg`
+  Main widget text color; falls back to AntD `colorText`.
+* `--_muted`
+  Muted/secondary text (subtitles, footer).
+* `--_border`
+  Border color around the widget.
+* `--_accent`
+  Accent color used for focus rings, badges, and accent bar (`.widgetAccent`). If not explicitly set, falls back to `colorPrimary` / AntD primary.
+* `--_title-fg`, `--_subtitle-fg`
+  Colors for `widgetTitle` and `widgetSubtitle`.
+
+Additional custom widget parameters:
+
+* `--widget-bg`, `--widget-fg`, `--widget-muted`, `--widget-border`, `--widget-accent`, etc.
+  Per-widget overrides (if set) that shadow the theme-level defaults.
+
+Status-specific mapping:
+
+* `.widgetSuccess` → `--_accent` derived from `colorSuccess` or AntD success color.
+* `.widgetWarning` → from `colorWarning`.
+* `.widgetError` → from `colorError`.
+* `.widgetInfo` → from `colorInfo`. 
+
+These determine the accent color for that widget’s border, skeleton, and focus ring.
+
+### Cyber/dark theme CSS integration
+
+The `<html>` element gets `data-theme={themeType}` and a `theme-{themeType}` class. 
+
+`CommonWidget.module.css` then adds extra styling for:
+
+* `[data-theme='dark']` / `.theme-dark`:
+  Uses AntD `colorBgElevated` and `colorText`/`colorTextSecondary` to set a darker widget background, light text, and stronger border/shadow. 
+* `[data-theme='cyber']` / `.theme-cyber`:
+  Uses fixed neon values and `--cyber-*` variables (if provided) to create neon “cyber” look (bg, fg, accent, border, glow). 
+
+So in practice:
+
+* **Theme selection (`themeType`)** controls which data-theme/class is applied.
+* **Theme fields (`bgMain`, `textMain`, `accent`, etc.)** feed CSS variables consumed by widgets and any custom CSS using `var(--bg-main)` etc.
+* **AntD color tokens (`color*`)** drive the default look of AntD components and also supply fallbacks and semantic colors for widgets.
+
+---
+
+## 5. Summary by parameter group
+
+To recap, in this codebase:
+
+* **`label`, `icon`** → only affect the ThemeSwitcher button text/icon. 
+* **`algorithm`** → selects AntD’s light/dark algorithm. 
+* **`color*` tokens** (primary/info/success/warning/error, backgrounds, text, borders) → feed AntD `ConfigProvider.theme.token` and thereby control colors for all AntD UI plus widget status colors. 
+* **`layoutColorBgSider`, `colorMenuItem*`, `menuBg`, `dropdownBg`, `dropdownItemHoverBg`, `tableHeaderBg`, `colorBgPopconfirm`** → mapped into `components.Layout`, `components.Menu`, `components.Dropdown`, `components.Table`, `components.Popconfirm` to fine-tune sidebars, menus, dropdowns, tables, and popconfirms. 
+* **`bgMain`, `bgLight`, `bgDark`, `textMain`, `accent`** → exported as CSS vars on `<html>` and used by `CommonWidget` and any custom styles referencing `var(--bg-main)` etc.  
+
+If you want, I can produce a compact table (parameter → AntD token/CSS var → visual effect) that you can paste into your theme docs.

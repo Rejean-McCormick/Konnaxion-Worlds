@@ -1,0 +1,165 @@
+@startuml
+title Konnaxion — C4 Code (Realtime Consumers · Django Channels)
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (connecteurs)
+'========================
+actor "WebApp (Next.js)\nClient WS" as WEB
+component "Core API (Django/DRF)\nModules métier (ex. ethiKos)" as CORE
+queue "Redis\n(channels_redis · Channel Layer)" as REDIS
+
+'========================
+' CONTENEUR (Realtime · Django Channels)
+'========================
+package "Realtime (ASGI · Django Channels)" as RT {
+
+  component "ASGI Application\n(routing + middleware)" as ASGIAPP
+  note right of ASGIAPP
+    • Point d’entrée ASGI pour Channels (exécuté par Daphne/uvicorn).
+    • Charge le routing et la pile middleware.
+    • Supporte plusieurs workers (scaling horizontal).
+  end note
+
+  component "Routing [TBD]\n(routing.py: URL → Consumer)" as ROUTING
+  note right of ROUTING
+    • Mappe les chemins WS vers les Consumers.
+    • Patterns exacts (re_path/path) : [TBD].
+  end note
+
+  component "AuthMiddlewareStack [TBD]\n(JWT handshake / scopes)" as AUTHMW
+  note right of AUTHMW
+    • Valide l’identité lors du handshake WS (JWT/cookie/subprotocol) : [TBD].
+    • Détermine les permissions d’abonnement aux rooms : [TBD].
+  end note
+
+  component "Channel Layer Adapter\nchannels_redis.core.RedisChannelLayer" as CHL
+  note right of CHL
+    • Interface Channels↔Redis pour group_add, group_send, group_discard.
+    • Utilise REDIS_URL; sans état (support multi-workers).
+  end note
+
+  '------------- INSIGHTS / REPORTS -------------
+  component "ReportsCustomConsumer\nWS: /ws/reports/custom" as ReportsConsumer
+  note right of ReportsConsumer
+    Rôle:
+      • Gère la socket /ws/reports/custom.
+      • Authentifie l’utilisateur [TBD] et rejoint le groupe reports_user_<id>.
+      • Reçoit et envoie des messages (datasets “custom builder”).
+    Groupes:
+      • reports_user_<id> (documenté).
+    Contrats WS:
+      • Schéma subscribe/unsubscribe/payload : [TBD].
+  end note
+
+  component "ReportStreamBroadcaster\n(service interne)" as ReportsBroadcaster
+  note right of ReportsBroadcaster
+    • Publie des mises à jour de jeux de données vers reports_user_<id>.
+    • Construit le message (type, payload, ts) — schéma exact : [TBD].
+    • Appelle CHL.group_send(...).
+  end note
+
+  '------------- ETHIKOS / SMART VOTE -------------
+  component "EthikosTopicResultsConsumer\n(live results par sujet)" as EthikosConsumer
+  note right of EthikosConsumer
+    Rôle:
+      • Diffuse aux abonnés les résultats d’un sujet de débat.
+      • Écoute les events group_send émis après enregistrement d’une stance.
+    Groupes:
+      • Nom du groupe (convention exacte) : [TBD] (ex.: ethikos_topic_<id>?).
+    Contrats WS:
+      • Types de messages (results_update, error, …) : [TBD].
+  end note
+
+  component "StanceSavedSignalHandler\n(Django signal → push)" as StanceSignal
+  note right of StanceSignal
+    • Abonné au signal post-save d’EthikosStance.
+    • Récupère les résultats recalculés et invoque CHL.group_send(...).
+    • Détermine la/les rooms à notifier (convention nommage : [TBD]).
+  end note
+
+  '------------- TRANSVERSAL -------------
+  component "PresenceStore [TBD]\n(registre de présence/rooms)" as Presence
+  note right of Presence
+    • Suit qui est connecté et à quelles rooms.
+    • Schéma clés/TTL (Redis) et timeouts: [TBD].
+  end note
+
+  component "Error Handler\n(close codes, mapping JSON)" as Err
+  note right of Err
+    • Centralise les erreurs côté Consumers (auth, format, permissions).
+    • Émet des close codes WS et payloads d’erreur standardisés : [TBD].
+  end note
+
+  component "EventSchemas [TBD]\n(type, version, payload)" as Schema
+  note right of Schema
+    • Catalogue des types d’événements (ex.: report_update, results_update).
+    • Versionnement / compat descendante : [TBD].
+  end note
+
+  component "RateLimit/Backpressure [TBD]\n(throttle WS)" as Throttle
+  note right of Throttle
+    • Protège contre le flood (messages/s par socket, taille max).
+    • Politique & compteurs (en mémoire/Redis) : [TBD].
+  end note
+}
+
+'========================
+' RELATIONS (flux)
+'========================
+WEB --> ReportsConsumer : WS handshake\nGET /ws/reports/custom
+WEB --> EthikosConsumer : WS handshake\nGET /ws/[TBD route ethikos]
+ASGIAPP --> ROUTING
+ASGIAPP --> AUTHMW
+ReportsConsumer --> CHL : group_add/group_send/group_discard
+EthikosConsumer --> CHL : group_add/group_send/group_discard
+Presence --> REDIS : set/get TTL [TBD]
+CHL --> REDIS : pub/sub transport
+
+' Triggers depuis le Core (ethiKos)
+CORE --> StanceSignal : post_save(EthikosStance)
+StanceSignal --> CHL : group_send(topic_group, results_payload)
+
+' Broacast Reports
+CORE --> ReportsBroadcaster : new dataset ready [TBD bus]
+ReportsBroadcaster --> CHL : group_send(reports_user_<id>, payload)
+
+'========================
+' LÉGENDE / INVARIANTS / ENV / TBD
+'========================
+note bottom
+  Invariants & routes:
+  • Préfixe réservé: /ws/reports/* (Insights). Route documentée: /ws/reports/custom.
+  • Groupe documenté: reports_user_<id>. Nommage des rooms Ethikos: [TBD].
+  • Aucune PII ne doit transiter; alignement avec contraintes Insights (k-anon) — politique WS: [TBD].
+
+  Sécurité:
+  • Auth WS via AuthMiddlewareStack — méthode exacte (JWT header/query/subprotocol/cookie) : [TBD].
+  • Permissions par room (vérif côté serveur) : [TBD].
+
+  Scalabilité:
+  • Plusieurs workers ASGI/Daphne; Channel Layer Redis sans état.
+  • REDIS_URL partagé (Channels/Celery).
+
+  Contrats WS (à formaliser):
+  • Message envelope: {type, version, payload, ts, request_id?} : [TBD].
+  • Souscriptions: subscribe {room: ...} / unsubscribe {room: ...} : [TBD].
+  • Erreurs: {error_code, message, retry_after?} : [TBD].
+
+  Observabilité:
+  • Compteurs: connexions actives, messages/s, erreurs auth, latence publish→deliver P95 : [TBD].
+  • Logs/audit handshake & join/leave : [TBD].
+
+  Variables d’environnement:
+  • REDIS_URL (Channel Layer), WS_RATE_LIMIT_* [TBD]
+  • FEATURE_WS_ETHIKOS=true|false [TBD]
+
+  Placeholders à compléter:
+  • [TBD] routing.py (patterns), méthodes d’auth WS, schémas d’événements,
+    conventions de rooms Ethikos, présence/TTL, throttling/backpressure.
+end note
+
+@enduml

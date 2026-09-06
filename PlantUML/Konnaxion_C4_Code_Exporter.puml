@@ -1,0 +1,170 @@
+@startuml
+title Konnaxion — C4 Code (Exporter · reports-api · CSV/JSON · read-only)
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (connecteurs)
+'========================
+actor "WebApp (Next.js)\n/pages/reports/*" as WEB
+queue "Redis 7\n(cache export · TTL 60s)" as REDIS
+database "Analytics DB\nPostgreSQL 16 (DW)\n(facts/dims + vues matérialisées)" as DW
+
+'========================
+' CONTENEUR BACKEND (reports-api)
+'========================
+package "reports-api (Django/DRF)\nIsAuthenticated · RBAC (ADMIN+ pour export)\nSLO export p95 ≤ 800 ms" as RAPI {
+
+  '----- API façade -----
+  component "ExportController [DRF]\nGET /reports/export?report=…&format=csv|json\n(range, grouping, endpoint?, domain_code?)" as ExportCtrl
+  note right of ExportCtrl
+    Rôle:
+      • Point d’entrée HTTP pour les exports de rapports Insights.
+      • Valide les paramètres (report, format, range ≤ 90j, filtres).
+      • Ordonne le flux: PolicyGuard → CacheLayer → (QueryBuilder) → Writer.
+      • Pose les en-têtes de réponse (incl. Content-Disposition pour CSV).
+    Sorties:
+      • Stream HTTP (text/csv ou application/json).
+  end note
+
+  component "PolicyGuard\n(AuthZ & throttling)" as Policy
+  note right of Policy
+    • Permissions: IsAuthenticated globalement; ADMIN+ requis pour /reports/export.
+    • Throttling: 60 req/min/user [TBD si différent côté export].
+    • Réponses d’erreur normalisées si refus.
+  end note
+
+  component "AuditLogger\n(request → audit log)" as Audit
+  note right of Audit
+    • Journalise: user_id, path, ip, ts, outcome (succès/échec).
+    • Stockage/indices/rétention exacts: [TBD].
+  end note
+
+  component "ErrorMapper\n(JSON Error 0.2)" as Err
+  note right of Err
+    • Mappe vers un format d’erreur standardisé:
+      - INVALID_RANGE (range > 90j)
+      - UNSUPPORTED_FORMAT (format ≠ csv|json)
+      - ENDPOINT_UNKNOWN (report invalide)
+      - EXPORT_FORBIDDEN (RBAC)
+    • Schéma d’erreur détaillé (codes/messages): [TBD].
+  end note
+
+  '----- cache & moteur -----
+  component "CacheLayer (Redis)\nclé: reports:{endpoint}:{sha256(params)}\nTTL export = 60 s" as Cache
+  note right of Cache
+    • GET avant DB; SET après calcul (TTL 60 s).
+    • Tâche de nettoyage hors-processus: purge des clés > 12 h.
+    • Différenciation éventuelle par format (csv/json): [TBD].
+  end note
+
+  component "QueryBuilder\n(paramètres → SQL paramétré)" as QB
+  note right of QB
+    Rôle:
+      • Traduit (range, grouping, endpoint/domain_code) en SQL sûr (bind params).
+      • Choisit la source: vues matérialisées (vw_*) ou tables de faits selon le rapport.
+      • Varie la granularité (day|week) selon grouping.
+    Détails:
+      • Fichiers/chemins SQL exacts: [TBD /sql/*.sql].
+      • Enums/valeurs contrôlées (domain_code, endpoint): [TBD].
+  end note
+
+  component "SqlTemplates\n(vw_smart_vote_30d.sql, vw_usage_90d.sql,\n vw_perf_24h.sql, …)" as Tpl
+  note right of Tpl
+    • Regroupe les requêtes SQL par endpoint et par grouping.
+    • Versionnement / emplacement exact: [TBD].
+  end note
+
+  '----- writers (stream) -----
+  component "CsvWriter\n(stream CSV + headers)" as CsvW
+  note right of CsvW
+    • Sérialise ligne par ligne le résultat de la requête.
+    • Ajoute: Content-Disposition: attachment; filename=\"report_<type>_<date>.csv\".
+    • Encodage/séparateur/quoting/BOM: [TBD].
+  end note
+
+  component "JsonWriter\n(stream JSON)" as JsonW
+  note right of JsonW
+    • Sérialise en JSON.
+    • Mode exact: array-of-rows vs NDJSON [TBD].
+    • Gestion des nombres/grandes séries (précision, arrondis): [TBD].
+  end note
+
+  component "ExportGuard\n(garde-fou de volume)" as Guard
+  note right of Guard
+    • Limite dure EXPORT_MAX_ROWS = 100 000.
+    • Coupe/termine le flux au-delà (avec log/audit).
+  end note
+}
+
+'========================
+' SCHÉMA (côté DW analytique — lecture seule)
+'========================
+package "DW — schéma analytique (read-only)" as DWSCH {
+  component "vw_smart_vote_30d\n(vue matérialisée)" as VW_SV
+  component "vw_usage_90d\n(vue matérialisée)" as VW_USG
+  component "vw_perf_24h\n(vue matérialisée)" as VW_PERF
+  component "smart_vote_fact\n(grain vote×question×date)" as F_SV
+  component "usage_mau_fact\n(grain user×month)" as F_USG
+  component "api_perf_fact\n(grain endpoint×hour)" as F_PERF
+  component "dim_date, dim_domain, dim_endpoint\n(dimensions)" as DIMS
+}
+
+'========================
+' RELATIONS (flux)
+'========================
+WEB --> ExportCtrl : GET /reports/export\n(report, format, range, grouping, …)
+ExportCtrl --> Policy : check IsAuthenticated + ADMIN+
+ExportCtrl --> Audit : log request
+
+' cache
+ExportCtrl --> Cache : GET reports:{endpoint}:{sha256(params)}
+Cache --> REDIS
+
+' alt cache hit
+Cache --> ExportCtrl : payload (hit)\n→ renvoi immédiat
+
+' else miss
+ExportCtrl --> QB : build_query(params)\n→ SQL + binds
+QB --> Tpl : select_template(endpoint, grouping)\n[TBD chemins]
+QB --> DW : SELECT (vues/tables)\n(read-only via rôle reports_reader)
+DW --> Guard : curseur de résultats
+Guard --> CsvW : stream (si format=csv)
+Guard --> JsonW : stream (si format=json)
+CsvW --> ExportCtrl : write chunked response\n+ Content-Disposition (CSV)
+JsonW --> ExportCtrl : write chunked response
+ExportCtrl --> Cache : SET payload (TTL 60 s)
+
+'========================
+' LÉGENDE / CONTRAINTES / ENV / TBD
+'========================
+note bottom
+  Invariants fonctionnels:
+  • range ≤ 90 jours (sinon 400 INVALID_RANGE).
+  • Formats supportés: csv, json; autres → 400 UNSUPPORTED_FORMAT.
+  • TTL export = 60 s; clé cache = reports:{endpoint}:{sha256(params)}.
+
+  SLO & observabilité:
+  • Objectif p95 ≤ 800 ms (mesuré post cache-miss).
+  • Audit de chaque export (user_id, path, ip, ts, outcome).
+  • Alertes performance/erreurs (détails dashboard/metrics: [TBD]).
+
+  Sécurité & gouvernance:
+  • RBAC: ADMIN+ requis pour /reports/export; IsAuthenticated global.
+  • Lecture seule sur DW (rôle DB reports_reader).
+  • Aucune PII: user_id hashé (SHA-256 + salt) & k-anonymat ≥ 10 (imposé côté ETL).
+
+  Paramètres / Env:
+  • REPORTS_DB_URL (Postgres analytique · RO), REDIS_URL (cache).
+  • EXPORT_MAX_ROWS = 100000.
+  • Chemins SQL, enums (domain_code, endpoint), JSON framing, CSV encodage → [TBD].
+
+  Placeholders à compléter:
+  • [TBD] /sql/*.sql (templates), enums contrôlés, schémas d’erreur complets,
+    policy de throttling spécifique export, back-pressure (chunk size, buffer),
+    stratégie cache différenciée par format.
+end note
+
+@enduml

@@ -1,0 +1,176 @@
+@startuml
+title Konnaxion — C4 Code (Search & Listing · DRF + PostgreSQL FTS)
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (connecteurs)
+'========================
+actor "WebApp (Next.js)\n/pages/search" as WEB
+database "App DB (PostgreSQL OLTP)\nGlobal Content Index + FTS (tsvector)" as APPDB
+queue "Redis [Optionnel]\n(Celery broker pour indexation)" as REDIS
+
+'========================
+' CONTENEUR BACKEND (API · Django/DRF)
+'========================
+package "Core API (Django/DRF)\nJWT requis · SEARCH_BACKEND=postgres" as API {
+
+  '----- façade / API -----
+  component "SearchController [DRF]\n[Route exacte: TBD]\nGET /api/search?q=…&type[]=…&domain=…&page=…&page_size=…&sort=…" as Ctrl
+  note right of Ctrl
+    Rôle:
+      • Point d’entrée HTTP pour la recherche globale trans-modules.
+      • Orchestre la requête: AuthGuard → FilterParser → QuerySetAdapter → Sorter → Pager → DTO.
+    Entrées:
+      • q (plein texte), filtres (type[], domain, tags…), pagination, tri. [TBD schéma exact]
+    Sorties:
+      • JSON {results: [{type,id,title,summary,url,tags,score}], page, page_size, total} [TBD]
+    Contraintes:
+      • JWT obligatoire (IsAuthenticated). Rate-limit spécifique: [TBD].
+  end note
+
+  component "AuthGuard\n(permissions DRF/JWT)" as Auth
+  note right of Auth
+    • Vérifie Authorization: Bearer <jwt>.
+    • Éventuels scopes/permissions par type de contenu: [TBD].
+  end note
+
+  component "ErrorMapper\n(JSON Error 0.x)" as Err
+  note right of Err
+    • Normalise: MISSING_QUERY, INVALID_FILTER, PAGE_OUT_OF_RANGE, RATE_LIMITED [TBD].
+    • Structure d’erreur (codes/messages) et i18n: [TBD].
+  end note
+
+  '----- parsing / construction requête -----
+  component "FilterParser\n(parse & valide filtres)" as FilterParser
+  note right of FilterParser
+    Rôle:
+      • Transforme les query params en contraintes de recherche (domaines, catégories, modules, tags).
+      • Valide formats/valeurs (whitelist par champ).
+    Détails:
+      • Opérateurs (AND/OR), plage de dates, champs filtrables exacts: [TBD].
+  end note
+
+  component "QuerySetAdapter\n(ORM ↔ FTS Postgres)" as QSA
+  note right of QSA
+    Rôle:
+      • Construit la requête FTS sécurisée (to_tsvector / plainto_tsquery, bind params).
+      • Joint/alimente la Global Content Index (titres, descriptions, tags, module).
+      • Applique les filtres du FilterParser.
+    Détails:
+      • Mapping champs→colonnes index, dictionnaires linguistiques/stemming: [TBD].
+      • Politique d’échappement/poids ts_rank: [TBD].
+  end note
+
+  component "Sorter\n(pertinence & alternatives)" as Sorter
+  note right of Sorter
+    • Classement par pertinence FTS (ts_rank/weights).
+    • Tri alternatifs: date desc, popularité [TBD].
+    • Ordre par défaut et clés autorisées: [TBD].
+  end note
+
+  component "Pager\n(pagination DRF)" as Pager
+  note right of Pager
+    • Paginate les résultats (page/page_size).
+    • page_size par défaut & max: [TBD] ; mode “infinite-scroll”: [TBD].
+  end note
+
+  component "DTOs\n(canon multi-type)" as DTO
+  note right of DTO
+    • Formate la sortie par type (projection minimale: title, summary, url, tags, score).
+    • Enrichissements spécifiques (ex. badges, highlights): [TBD].
+  end note
+}
+
+'========================
+' SCHÉMA / INDEX (côté base)
+'========================
+package "Search Data Layer (dans App DB)" as INDEX {
+  component "Global Content Index\n(table/vue unifiée)" as IDX
+  note right of IDX
+    • Agrège les champs clés (title, description, tags, module, domain, url, updated_at…).
+    • Actualisée à la création/édition des contenus; bulk rebuild en tâche de fond.
+  end note
+
+  component "FTS Objects\n(tsvector, GIN/GIST index)" as FTS
+  note right of FTS
+    • Index plein texte Postgres (to_tsvector) sur titres/descriptions/tags.
+    • Pondération par champ (A/B/C/D) & dictionnaires par langue: [TBD].
+  end note
+}
+
+'========================
+' INDEXATION (asynchrone · Celery)
+'========================
+package "Index Maintenance (Celery)" as CELERY {
+  component "BulkIndexTask\n(rebuild complet)" as T_Bulk
+  note right of T_Bulk
+    • Reconstruit l’index global (batch).
+    • Fenêtre/planification (cron): [TBD].
+  end note
+
+  component "IncrementalIndexTask\n(post-save hooks)" as T_Incr
+  note right of T_Incr
+    • Met à jour l’index lors de créations/éditions de contenus.
+    • Déduplication/retards (coalesce) pour rafales: [TBD].
+  end note
+}
+
+'========================
+' RELATIONS (flux)
+'========================
+WEB --> Ctrl : GET /api/search?q=…&filters…\n(JSON over HTTPS)
+Ctrl --> Auth
+Ctrl --> FilterParser : parse(params)
+FilterParser --> QSA : constraints
+QSA --> APPDB : SELECT … WHERE tsvector @@ tsquery\n+ filtres (domain,type,tags…)
+APPDB --> QSA : rows
+QSA --> Sorter : rank(rows)
+Sorter --> Pager : slice(page,page_size)
+Pager --> DTO : build payload
+DTO --> Ctrl : JSON {results, page, page_size, total}
+Ctrl --> WEB : 200 OK
+
+' Indexation (asynchrone)
+CELERY -[hidden]-> REDIS
+T_Bulk --> APPDB : rebuild index\n(INSERT/UPDATE IDX, REFRESH FTS)
+T_Incr --> APPDB : upsert rows\n(IDX + FTS)
+
+'========================
+' LÉGENDE / CONTRAINTES / ENV / TBD
+'========================
+note bottom
+  Invariants:
+  • Authentification requise (JWT). SEARCH_BACKEND = "postgres".
+  • Source de vérité: App DB; recherche via FTS (tsvector + tsquery).
+
+  Paramètres & Contrats (à préciser):
+  • Endpoints exacts backend (ex.: /api/search) — [TBD].
+  • Paramètres: q (obligatoire), type[], domain, page, page_size, sort — [TBD valeurs/validation].
+  • Schéma de réponse canonique multi-type — [TBD].
+  • Rate-limit/SLO pour /search — [TBD].
+
+  Pertinence & Langues:
+  • Stratégie de ranking (ts_rank, weights par champ) — [TBD].
+  • Dictionnaires/stemming par langue (en, fr, es, ar) — [TBD].
+
+  Pagination & Tri:
+  • page_size défaut et maximum — [TBD]; tris autorisés (relevance|date|popularity) — [TBD].
+
+  Caching:
+  • Politique de cache (Redis/HTTP) pour la recherche — [TBD].
+
+  Sécurité:
+  • Filtrage par permissions (visibilité par module/espace) — [TBD].
+
+  Observabilité:
+  • Métriques (hits, latence p95, erreurs), journalisation requêtes — [TBD].
+
+  Placeholders à compléter:
+  • [TBD] endpoints précis, schémas JSON, mapping champs→index, ranking weights,
+    page_size, rate limits, règles de cache, dictionnaires FTS, tris autorisés.
+end note
+
+@enduml

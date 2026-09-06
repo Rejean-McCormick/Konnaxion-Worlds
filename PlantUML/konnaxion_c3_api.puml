@@ -1,0 +1,43 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+LAYOUT_LEFT_RIGHT()
+
+Person(p_User, "User")
+Container(c_WebApp, "WebApp", "Next.js", "Browser UI")
+
+' External dependencies
+ContainerDb(ds_oltp, "App DB", "PostgreSQL", "Operational data (OLTP)")
+Container(c_Redis, "Redis", "Redis", "Queue + pub/sub")
+Container(s_ObjectStore, "Object Storage", "S3 / MinIO", "Files/blobs")
+Container(c_Worker, "Worker", "Celery", "Background jobs")
+
+Container_Boundary(api, "API (Django + DRF)") {
+  Component(c_auth,         "Auth & Accounts",      "Django/DRF", "Login, tokens, permissions, user profiles")
+  Component(c_projects,     "Projects / Content",   "Django/DRF", "Create/read/update core content objects")
+  Component(c_votes,        "Voting & Reputation",  "Django/DRF", "Record votes, compute/update scores")
+  Component(c_comments,     "Comments & Discussions","Django/DRF", "Threads, replies, moderation")
+  Component(c_files,        "Files & Media",        "Django/DRF", "Upload/download via S3; store metadata in DB")
+  Component(c_notifications,"Notifications",        "Django/DRF + Celery", "Schedule emails/alerts via Redis -> Worker")
+  Component(c_admin,        "Admin & Settings",     "Django Admin/DRF", "Backoffice configuration")
+}
+
+' User flow
+Rel(p_User, c_WebApp, "Uses")
+Rel(c_WebApp, c_auth, "HTTP JSON")
+Rel(c_WebApp, c_projects, "HTTP JSON")
+Rel(c_WebApp, c_votes, "HTTP JSON")
+Rel(c_WebApp, c_comments, "HTTP JSON")
+Rel(c_WebApp, c_files, "HTTP JSON")
+Rel(c_WebApp, c_admin, "HTTP JSON")
+
+' Data and background
+Rel(c_auth, ds_oltp, "Read/Write")
+Rel(c_projects, ds_oltp, "Read/Write")
+Rel(c_votes, ds_oltp, "Read/Write")
+Rel(c_comments, ds_oltp, "Read/Write")
+Rel(c_files, s_ObjectStore, "Upload/serve files")
+Rel(c_files, ds_oltp, "Store file metadata")
+Rel(c_notifications, c_Redis, "Enqueue tasks")
+Rel(c_Worker, ds_oltp, "Read/Write results")
+
+@enduml

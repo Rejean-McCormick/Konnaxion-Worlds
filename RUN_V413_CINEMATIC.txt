@@ -1,0 +1,9 @@
+Run these from an activated/installed Cinematic Engine environment after the real Playwright smoke passes:
+
+python -m cinematic_engine.cli validate C:\mycode\Konnaxion\Konnaxion\cinematic\tours\ethikos-v413\tour.json --check-app
+python -m cinematic_engine.cli rehearse C:\mycode\Konnaxion\Konnaxion\cinematic\tours\ethikos-v413\tour.json
+python -m cinematic_engine.cli record C:\mycode\Konnaxion\Konnaxion\cinematic\tours\ethikos-v413\tour.json
+python -m cinematic_engine.cli render C:\mycode\Konnaxion\Konnaxion\cinematic\tours\ethikos-v413\tour.json
+
+Expected final output:
+C:\mycode\Konnaxion\Konnaxion\cinematic\tours\ethikos-v413\output\final.mp4

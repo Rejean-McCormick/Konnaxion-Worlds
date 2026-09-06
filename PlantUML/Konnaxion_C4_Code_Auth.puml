@@ -1,0 +1,176 @@
+@startuml
+title Konnaxion — C4 Code (Auth · Django/DRF + JWT)
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (connecteurs)
+'========================
+actor "WebApp (Next.js)\nClient" as WEB
+database "App DB (OLTP)\nUsers, Groups, Permissions" as APPDB
+component "Email Service\n(SMTP/API)" as EMAIL
+queue "Redis [Optionnel]\n(rate limit / blacklist / sessions) [TBD]" as REDIS
+
+'========================
+' CONTENEUR BACKEND (API Auth)
+'========================
+package "API Auth (Django/DRF)\nJWT pour tous les modules" as AUTH {
+
+  '--------- API layer ----------
+  component "AuthViewSet [DRF]\n(login/register/me/logout/refresh/reset)\n[Routes exactes: TBD]" as AuthView
+  note right of AuthView
+    Rôle:
+      • Expose les endpoints d’authentification (JSON).
+      • Ordonne la logique vers TokenService, UserRepo, RBAC et Email.
+    Entrées:
+      • Login: {username/email, password}
+      • Register: {email, password, profile…} [TBD]
+      • Refresh: {refresh_token} [TBD]
+      • Reset start/confirm: {email}/{token,new_password} [TBD]
+    Sorties:
+      • {access_token, refresh_token?, user} ; ou erreurs normalisées.
+    Sécurité:
+      • AllowAny pour login/register/reset start; IsAuthenticated pour me/logout; autres: [TBD].
+  end note
+
+  component "Error Handler\n(JSON Error mapping)" as ErrHandler
+  note right of ErrHandler
+    • Normalise les erreurs: INVALID_CREDENTIALS, TOKEN_EXPIRED,
+      TOKEN_INVALID, ACCOUNT_LOCKED, VALIDATION_ERROR, RATE_LIMITED [TBD].
+    • Journalise les causes pour l’audit/observabilité.
+  end note
+
+  '--------- Services ----------
+  component "TokenService / JWTProvider\n(émission/validation tokens)" as TokenSvc
+  note right of TokenSvc
+    • Émet/valide les JWT pour l’écosystème.
+    • Paramètres: algorithme [TBD HS256/RS256], TTL access [TBD],
+      TTL refresh [TBD], rotation/blacklist [TBD].
+    • Sources de clés/secrets: settings/env [TBD].
+  end note
+
+  component "RBAC / Permission Classes\n(IsAuthenticated, rôles/groupes)" as RBAC
+  note right of RBAC
+    • Applique IsAuthenticated par défaut.
+    • Vérifie les rôles/groupes (ex.: ADMIN requis pour /reports/export côté analytics).
+    • Matrice de permissions exacte côté Auth: [TBD].
+  end note
+
+  component "RateLimiter [DRF Throttling]\n(User/IP throttles)" as Throttle
+  note right of Throttle
+    • Protège contre le brute force et l’abus.
+    • Ex.: 60 req/min/user (référence analytique) ; valeurs Auth spécifiques: [TBD].
+    • Stockage/compteur: cache Django/Redis [TBD].
+  end note
+
+  component "AuditLogger\n(requests & security events)" as Audit
+  note right of Audit
+    • Journalise: user_id, ip, path, ts, outcome (succès/échec).
+    • Événements sensibles: login fail/success, reset start/confirm, logout.
+    • Destination: table audit_request_log / pipeline central [TBD].
+  end note
+
+  component "PasswordResetService\n(tokens & workflows)" as ResetSvc
+  note right of ResetSvc
+    • Génère/valide des tokens de réinitialisation (durée de vie [TBD]).
+    • Orchestration: start (email), confirm (nouveau mot de passe).
+    • Stockage/blacklist de tokens: [TBD].
+  end note
+
+  component "EmailTemplateRenderer\n(templates Auth)" as TplRenderer
+  note right of TplRenderer
+    • Prépare les emails d’auth: reset password, vérification [TBD].
+    • Utilise DEFAULT_FROM_EMAIL ; i18n des sujets/contenus.
+  end note
+
+  component "UserRepository\n(DAO/Service sur User, Group, Permission)" as UserRepo
+  note right of UserRepo
+    • Crée/cherche/mets à jour les utilisateurs.
+    • Lie les groupes/permissions pour RBAC.
+    • Politique de verrouillage après N échecs: [TBD].
+  end note
+
+  '--------- ORM (code-level models) ----------
+  package "ORM (Django Models)" as ORM {
+    component "User\n(id, email/username, password_hash,\n is_active, last_login, profile…)" as M_User
+    note right of M_User
+      • Modèle utilisateur étendu (profil commun).
+      • Champs exacts & profils étendus: [TBD].
+    end note
+
+    component "Group\n(name)\nPermission\n(codename, app_label)" as M_RBAC
+    note right of M_RBAC
+      • RBAC via Group/Permission standard Django.
+      • Mappage aux rôles métier (admin/moderator/user): [TBD].
+    end note
+
+    component "PasswordResetToken [TBD]\n(user, token, expires_at, used?)" as M_Reset
+    note right of M_Reset
+      • Persistant ou dérivé (signé) selon implémentation [TBD].
+    end note
+
+    component "TokenBlacklist [TBD]\n(jti, user, revoked_at, expires_at)" as M_Blacklist
+    note right of M_Blacklist
+      • Liste de révocation pour refresh/accès (si rotation activée).
+      • Backend exact (DB/Redis): [TBD].
+    end note
+  }
+}
+
+'========================
+' RELATIONS (flux principaux)
+'========================
+WEB --> AuthView : Login/Register/Me/Logout/Refresh/Reset\n(JSON over HTTPS)
+AuthView --> Throttle : Vérifier quotas/brute-force
+AuthView --> UserRepo : lookup/create/update user
+AuthView --> RBAC : Vérifier permissions (IsAuthenticated/roles)
+AuthView --> TokenSvc : issue/validate tokens\n(access, refresh [TBD])
+AuthView --> ResetSvc : start/confirm reset
+ResetSvc --> TplRenderer : Render templates email
+TplRenderer --> EMAIL : Send email (SMTP/API)
+AuthView --> Audit : Log security events
+UserRepo --> APPDB : CRUD User/Group/Permission/Token
+TokenSvc --> REDIS : blacklist/store counters [TBD]
+Throttle --> REDIS : compteurs throttling [TBD]
+
+'========================
+' LÉGENDE / CONTRAINTES / ENV / TBD
+'========================
+note bottom
+  Endpoints (exemples — à confirmer):
+  • [TBD] POST /auth/login, POST /auth/register, GET /auth/me, POST /auth/logout
+  • [TBD] POST /auth/token/refresh, POST /auth/password/reset, POST /auth/password/confirm
+  Contrats JSON (à préciser): schémas request/response et codes d’erreur.
+
+  JWT (paramètres — à préciser):
+  • Algorithme: [TBD HS256/RS256]
+  • TTL access: [TBD] ; TTL refresh: [TBD]
+  • Rotation/blacklist: [TBD] ; stockage jti: [TBD DB/Redis]
+  • Transport: Authorization: Bearer <token> (cookies httpOnly optionnels: [TBD])
+
+  Permissions & Rôles:
+  • Par défaut: IsAuthenticated pour les endpoints protégés.
+  • Groupes/permissions mappés aux rôles (admin/moderator/user) — détails: [TBD].
+
+  Rate limiting & Sécurité:
+  • Throttles dédiés à l’auth (login/reset) — valeurs: [TBD]
+  • Politique de verrouillage après N échecs — N et durée: [TBD]
+
+  Emails & modèles:
+  • DEFAULT_FROM_EMAIL = noreply@… (réglage global)
+  • Templates reset/vérification localisés — chemins/ids: [TBD]
+
+  Observabilité & Audit:
+  • Table/pipe d’audit: user_id, ip, path, ts, outcome
+  • Table d’erreurs normalisées: codes & messages (JSON Error 0.x) — mapping: [TBD]
+
+  Variables d’environnement (à compléter):
+  • DJANGO_SECRET_KEY, DEFAULT_FROM_EMAIL
+  • JWT_SECRET / JWT_PRIVATE_KEY / JWT_PUBLIC_KEY [TBD]
+  • RATE_LIMITS_AUTH_LOGIN / AUTH_RESET_TTL [TBD]
+  • EMAIL_BACKEND / SMTP_* [TBD]
+end note
+
+@enduml

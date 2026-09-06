@@ -1,0 +1,103 @@
+
+
+## 1. Palette rules
+
+1. **Primary brand color**
+
+   * `#1e6864` is the **only accent** used in system graphics (icons, hero illustrations, badges, etc.).
+2. **Neutrals for almost everything**
+
+   * Icons, outlines, placeholders, UI pictograms: **grayscale only** except for:
+
+     * active / selected state
+     * very rare emphasis (e.g. one highlight per hero illustration)
+3. **No secondary palette**
+
+   * Do not invent additional accent colors.
+   * Backgrounds and components already have their own colors from your UI; images should not fight that. 
+
+---
+
+## 2. Icons (all modules)
+
+Target: **neutral first, brand only on interaction**.
+
+1. **Base icon (default state)**
+
+   * Stroke: neutral gray (e.g. `#666`, `#777`).
+   * Fill: none (outline icons only).
+   * Background: transparent.
+2. **Hover / active / selected states**
+
+   * Only then use `#1e6864` for the stroke or small filled parts.
+   * Never mix brand color with another accent inside the same icon.
+3. **Special icons (badges, Smart‑Vote, etc.)**
+
+   * Keep outer shapes neutral; use `#1e6864` only for:
+
+     * central symbol (star/check) or
+     * ring/border of the badge.
+
+So if you’re generating icons, think:
+
+> “Simple neutral outline icon on transparent background; when selected, recolor lines to #1e6864.”
+
+---
+
+## 3. Hero / section illustrations
+
+1. **Color use**
+
+   * Base: very light neutrals (off‑white, light gray).
+   * Accents: **only** `#1e6864` for key shapes (graphs, key figure, or one main object).
+   * Do not introduce other accent hues.
+2. **Balance with UI**
+
+   * Keep illustrations **low‑saturation** overall; they sit behind text and Ant Design components, which already inherit color from the theme.
+
+Practical rule:
+
+> “90–95% of pixels neutral, 5–10% in #1e6864.”
+
+---
+
+## 4. Thumbnails, covers, placeholders
+
+1. **System‑generated covers / thumbnails** (projects, courses, debates, consultations, etc.):
+
+   * Neutral or grayscale base imagery.
+   * One subtle bar/shape in `#1e6864` (e.g. a top strip, underline, or accent corner).
+2. **Placeholders (no image yet)**
+
+   * Flat neutral panel + neutral outline icon (document, image, user).
+   * Avoid using the brand color in placeholders; it should remain special for real content.
+
+---
+
+## 5. Avatars & profile / seed artwork
+
+1. **Default avatars**
+
+   * Circle with neutral background.
+   * Initial or symbol in `#1e6864`.
+2. **System seed artworks / profile covers**
+
+   * If we generate them, they should mostly be neutral or soft‑tinted, with `#1e6864` as the main accent (clothing, border, or one strong shape).
+
+User‑uploaded art, project photos, etc. are free to be any color; the **system** assets are the ones constrained by this palette.
+
+---
+
+## 6. Certificates & badges
+
+1. **Certificates**
+
+   * Background: white / light neutral.
+   * Border and key lines: `#1e6864`.
+   * No gold/silver secondary colors; use thickness/geometry (not hue) to signal importance. 
+2. **Reputation / Ekoh badges**
+
+   * Shape outline: neutral.
+   * Small inner symbol or ring: `#1e6864` for “Expert” or “verified” state.
+
+

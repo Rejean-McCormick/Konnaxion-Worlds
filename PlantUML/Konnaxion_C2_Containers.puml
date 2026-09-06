@@ -1,0 +1,52 @@
+@startuml
+' Konnaxion – C4 Level 2 (Containers)
+' One-line definitions, no custom macros beyond C4-PlantUML
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+LAYOUT_LEFT_RIGHT()
+
+' People
+Person(p_User, "User", "Uses Konnaxion in a web browser.")
+
+' System boundary
+System_Boundary(sys, "Konnaxion (modular monolith)") {
+  Container(c_WebApp, "WebApp", "Next.js", "Browser UI. Calls API and reports. Uses WebSocket for realtime updates.")
+  Container(c_API, "API", "Django + DRF", "REST endpoints (HTTP+JSON). Validates requests, applies rules, reads/writes App DB, enqueues background jobs.")
+  Container(c_Realtime, "Realtime", "Django Channels", "WebSocket gateway. Broadcasts updates via Redis pub/sub.")
+  Container(c_Worker, "Worker", "Celery", "Background jobs processor. Consumes tasks from Redis. Writes results to App DB or Object Storage.")
+  ContainerDb(ds_AppDB, "App DB", "PostgreSQL (OLTP)", "Transactional source of truth for daily operations (users, projects, votes, comments, etc.).")
+  Container(c_Redis, "Redis", "Redis", "Two roles: Celery task queue broker; pub/sub channel layer for realtime. Optional short cache.")
+  Container(c_ReportsAPI, "reports-api", "Django/DRF (read-only)", "Analytics endpoints (/reports/*). Read-only. Returns precomputed indicators. Cache TTL 600s.")
+  ContainerDb(ds_AnalyticsDB, "Analytics DB", "PostgreSQL (OLAP)", "Aggregated, denormalized tables optimized for fast reads by reports-api.")
+  Container(c_Airflow, "Airflow", "ETL orchestrator", "Runs scheduled DAGs. ETL: Extract from App DB/Prometheus -> Transform -> Load into Analytics DB.")
+  System_Ext(s_ObjectStore, "Object Storage", "S3 / MinIO", "Stores files/blobs (images, PDFs, exports).")
+  System_Ext(s_Prom, "Prometheus", "Metrics", "Time-series metrics scraped from services for performance analytics.")
+}
+
+' Core user flows
+Rel(p_User, c_WebApp, "Uses in browser")
+Rel(c_WebApp, c_API, "HTTP/JSON: /api/*")
+Rel(c_WebApp, c_ReportsAPI, "HTTP/JSON: /reports/*")
+Rel(c_WebApp, c_Realtime, "WebSocket (subscribe)")
+
+' Data and async
+Rel(c_API, ds_AppDB, "Read/Write")
+Rel(c_Worker, ds_AppDB, "Read/Write")
+Rel(c_API, c_Redis, "Enqueue tasks")
+Rel(c_Worker, c_Redis, "Consume tasks")
+Rel(c_Realtime, c_Redis, "Pub/Sub (channel layer)")
+Rel(c_Realtime, c_API, "Call for persistence/business rules")
+
+' Files
+Rel(c_API, s_ObjectStore, "Upload/serve via S3 API")
+
+' Analytics
+Rel(c_ReportsAPI, ds_AnalyticsDB, "Read-only queries")
+Rel(c_ReportsAPI, c_Redis, "Cache TTL 600s")
+
+' ETL
+Rel(c_Airflow, ds_AppDB, "Extract (read-only)")
+Rel(c_Airflow, s_Prom, "Extract metrics")
+Rel(c_Airflow, ds_AnalyticsDB, "Load (write)")
+Rel(c_Airflow, c_Redis, "Purge cache after refresh", "optional")
+
+@enduml

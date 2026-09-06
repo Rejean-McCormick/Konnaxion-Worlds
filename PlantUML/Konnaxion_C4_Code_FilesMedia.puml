@@ -1,0 +1,198 @@
+@startuml
+title Konnaxion — C4 Code (Files & Media · Upload, Storage, Processing)
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (connecteurs)
+'========================
+actor "End-User\n(Navigateur / Client)" as USER
+cloud "Object Storage\nS3 / MinIO" as S3
+cloud "CDN [Optionnel]\n(distribution publique)" as CDN
+queue "Redis\n(Celery broker)" as REDIS
+component "ffmpeg\n(outils système vidéo)" as FFMPEG
+component "Antivirus [Optionnel]\n(clamav/ICAP/etc.)" as AV
+
+'========================
+' CONTENEUR BACKEND (API · Django/DRF)
+'========================
+package "API (Django/DRF) :: Files & Media" as API {
+
+  '----------- API layer ----------
+  component "[TBD] FileUploadView\n(POST fichier)" as UploadView
+  note right of UploadView
+    Rôle:
+      • Reçoit un fichier (multipart/form-data ou direct upload signé [TBD]).
+      • Valide taille/type selon le contexte fonctionnel (Blueprint, Artwork, Archive).
+      • Auth + ACL (ex.: membre du projet pour /projects/:id/resources).
+      • Délègue à MediaService puis renvoie métadonnées & URLs.
+    Entrées:
+      • Fichier binaire + champs (context, project_id/artwork_id, nsfw_flag…).
+    Sorties:
+      • JSON {id, url_public, url_signed?, variants[], mime, size, …}.
+    Endpoints exacts:
+      • [TBD POST /projects/:id/resources], [TBD POST /kreative/artworks], [TBD /archive/traditions]…
+  end note
+
+  component "[TBD] FileDownloadView\n(GET fichier)" as DownloadView
+  note right of DownloadView
+    • Sert les fichiers privés via URLs signées (TTL) ou redirige vers CDN/public.
+    • Gère range requests/ETag [TBD].
+  end note
+
+  component "[TBD] FileDeleteView\n(DELETE fichier)" as DeleteView
+  note right of DeleteView
+    • Vérifie ACL (auteur/admin/propriétaire projet).
+    • Supprime l'objet (S3/MinIO) + métadonnées DB (soft/hard delete [TBD]).
+  end note
+
+  component "ValidationPolicy\n(taille/type/NSFW)" as Validation
+  note right of Validation
+    • Contraintes:
+      - Blueprint: MAX 150 MB ; types = .pdf, .png, .jpg, .glb, .gltf, .stl.
+      - Artwork (image): MAX 50 MB ; dérivés 256/1024/2048 px.
+      - NSFW_FLAG_REQUIRED (si applicable).
+    • Extensible par contexte (Konservation, Kreative, keenKonnect…).
+  end note
+
+  component "Auth & ACL Guard\n(permissions contextuelles)" as ACL
+  note right of ACL
+    • Vérifie authentification (JWT) et droits sur l’entité cible.
+    • Ex.: seuls les membres d’un projet peuvent ajouter des blueprints.
+  end note
+
+  '----------- Service layer ----------
+  component "MediaService\n(orchestration upload + métadonnées)" as MediaService
+  note right of MediaService
+    Rôle:
+      • Choisit le backend (S3/MinIO vs stockage local) et écrit le blob.
+      • Crée/maj l’entrée DB (métadonnées: taille, mime, variantes).
+      • Déclenche les tâches Celery (images/vidéos/scan).
+    Entrées: file stream, context (resource/artwork/archive), opts (public/private, nsfw).
+    Sorties: record DB + URLs (publiques/signes).
+  end note
+
+  component "StorageClient\n(S3Client/LocalAdapter)" as StorageClient
+  note right of StorageClient
+    • put/get/delete d’objets ; génère URLs signées (TTL) [TBD_SIGNED_URL_TTL].
+    • Paramètres S3/MinIO (endpoint, bucket, clés) : [TBD env].
+  end note
+
+  component "Error Handler\n(mapping exceptions → JSON)" as Err
+  note right of Err
+    • Normalise: VALIDATION_ERROR, UNSUPPORTED_MEDIA_TYPE, FORBIDDEN, QUOTA_EXCEEDED [TBD].
+    • Journalise pour audit/observabilité.
+  end note
+
+  '----------- ORM (code-level models) ----------
+  package "ORM (Django Models)" as ORM {
+    component "ProjectResource\n(id, project, title?, description?,\n file_path|external_url, file_type, uploaded_by?, uploaded_at)" as M_ProjectResource
+    note right of M_ProjectResource
+      • Ressource de projet (blueprints, docs, modèles 3D).
+      • file_type ∈ {image, document, 3d_model, other}.
+    end note
+
+    component "KreativeArtwork\n(id, artist, title, description?,\n media_file, media_type, …)" as M_Artwork
+    note right of M_Artwork
+      • Œuvres média (images/vidéos/audio), supporte dérivés multiples.
+    end note
+
+    component "TraditionEntry\n(id, …, media_file)" as M_Tradition
+    note right of M_Tradition
+      • Entrées d’archives (Konservation) avec média associé.
+    end note
+  }
+}
+
+'========================
+' CONTENEUR WORKER (Celery)
+'========================
+package "Worker (Celery)\n(tasks de traitement asynchrone)" as WORKER {
+
+  component "[TBD] GenerateImageDerivativesTask\n(256/1024/2048 px)" as T_Deriv
+  note right of T_Deriv
+    • Génère les dérivés d’images (miniatures, écran, HD).
+    • Met à jour les champs variants/urls dans le modèle associé.
+  end note
+
+  component "[TBD] TranscodeVideoTask\n(ffmpeg → MP4/WebM + poster)" as T_Video
+  note right of T_Video
+    • Transcode les vidéos en profils web-friendly.
+    • Extrait un poster/preview ; met à jour les métadonnées DB.
+  end note
+
+  component "[Option] ScanUploadedMediaTask\n(antivirus)" as T_Scan
+  note right of T_Scan
+    • Analyse anti-malware des fichiers lourds/sensibles.
+    • Blocage/quarantaine selon résultat [TBD policy].
+  end note
+
+  component "[Option] ConvertCADtoGLTFTask\n(CAD → glTF)" as T_GLTF
+  note right of T_GLTF
+    • Convertit des fichiers CAD en glTF pour prévisualisation 3D web.
+    • Met à jour le record avec l’asset converti.
+  end note
+}
+
+'========================
+' RELATIONS (flux)
+'========================
+USER --> UploadView : POST fichier\n(multipart / direct-upload [TBD])
+UploadView --> ACL : vérifier droits
+UploadView --> Validation : valider taille/type/nsfw
+UploadView --> MediaService : orchestrer upload
+MediaService --> StorageClient : put(object)\n→ chemin/URL
+StorageClient --> S3 : PUT/GET/DELETE\nobjets
+
+' Création métadonnées
+MediaService --> ORM : create/update\n(ProjectResource | KreativeArtwork | TraditionEntry)
+
+' Déclenchement traitements
+MediaService --> REDIS : enqueue Celery tasks
+REDIS --> WORKER : dispatch jobs
+
+' Traitement images / vidéos / scan
+T_Deriv --> S3 : write variants
+T_Deriv --> ORM : update variants/metas
+T_Video --> FFMPEG : transcodage
+T_Video --> S3 : write renditions/poster
+T_Video --> ORM : update renditions/metas
+T_Scan --> AV : analyse fichier
+T_Scan --> ORM : flag statut (clean/quarantine) [TBD]
+T_GLTF --> S3 : write glTF
+T_GLTF --> ORM : update preview/metas
+
+' Distribution publique (optionnelle)
+S3 --> CDN : origine (pull) [Optionnel]
+
+'========================
+' LÉGENDE / CONTRAINTES / ENV / TBD
+'========================
+note bottom
+  Contraintes de validation (extraits):
+  • Blueprint (ProjectResource): MAX_BLUEPRINT_UPLOAD_MB = 150 ; types = .pdf,.png,.jpg,.glb,.gltf,.stl
+  • Artwork (image): ARTWORK_MAX_IMAGE_MB = 50 ; dérivés = [256,1024,2048] (côté worker)
+  • NSFW_FLAG_REQUIRED = true/false selon contexte
+
+  Sécurité & ACL:
+  • Auth requise (JWT) ; ACL par contexte (ex.: membre du projet).
+  • Téléchargement privé via URLs signées (TTL) ou via CDN public (si public).
+
+  Environnement (à préciser):
+  • [TBD_STORAGE_ENDPOINT], [TBD_STORAGE_BUCKET], [TBD_STORAGE_REGION]
+  • [TBD_STORAGE_ACCESS_KEY], [TBD_STORAGE_SECRET_KEY]
+  • [TBD_SIGNED_URL_TTL], [TBD_CDN_BASE_URL]
+  • MEDIA_ROOT = /app/media/ (fallback local)
+
+  Placeholders (infos non précisées dans les docs):
+  • [TBD routes] — chemins REST exacts (POST/GET/DELETE).
+  • [TBD serializers/DTO] — schémas request/response.
+  • [TBD quotas] — limites par utilisateur/espace.
+  • [TBD retry/backoff] — stratégie Celery & DLQ.
+  • [TBD video presets] — codecs, bitrate, profils ffmpeg.
+  • [TBD storage class] — S3 standard/IA/Glacier, politiques de cycle de vie.
+end note
+
+@enduml

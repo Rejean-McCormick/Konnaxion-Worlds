@@ -1,0 +1,23 @@
+/* FILE: frontend/components/layout-components/Menu.css */
+
+/* Section title (group name): bold, simple, no lines */
+.k-sidebar-section-header {
+  font-weight: 600;
+  padding: 8px 16px 4px;
+  margin-top: 8px;
+  color: var(--ant-color-text);
+  font-size: 13px;
+  /* keep it neutral so the item icons/text stand out */
+}
+
+/* Items in a section: slight indent under the header */
+.k-sidebar-section-item {
+  padding-left: 32px !important; /* align neatly under the header text/icon */
+  font-size: 13px;
+}
+
+/* Use default Ant Design selected state; no custom lines */
+.k-sidebar-section-item.ant-menu-item-selected {
+  /* you can tweak this if you want a softer highlight */
+  /* background: var(--ant-color-fill-secondary); */
+}

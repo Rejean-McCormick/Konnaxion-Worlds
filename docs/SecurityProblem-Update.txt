@@ -1,0 +1,455 @@
+You should treat this as **incident recovery + rebuild**, not just “add security.” Your own notes say the attacker reached the `deploy` user, launched malicious Docker containers, added cron persistence, attempted a sudo backdoor user, created `/tmp/sshd`, and exposed secrets. That means the current VPS cannot be trusted long-term. 
+
+## Priority 1 — Stop trusting the current VPS
+
+Do **not** keep hardening the same server as the final fix.
+
+Your best path is:
+
+1. Create a **new VPS**.
+2. Do **not clone the old disk**.
+3. Deploy only from clean Git/source.
+4. Restore only a verified DB dump and required media.
+5. Rotate every secret.
+6. Lock SSH and firewall before exposing the app.
+
+This matches the recommendation in your incident notes: migrate to a fresh VPS, avoid cloning the old server, rotate secrets, use SSH keys only, disable password login, add cloud firewall + UFW, stop exposing port `3000`, and enable backups/snapshots. 
+
+## Priority 2 — Rotate compromised secrets
+
+Assume these are compromised:
+
+```text
+SSH keys / deploy access
+deploy password, if any
+DJANGO_SECRET_KEY
+POSTGRES_PASSWORD
+DATABASE_URL
+Neon/database credential
+all API keys on the VPS
+Django admin passwords
+deployment tokens
+Git/provider tokens
+```
+
+Your deployment guide also warns not to paste `.env` values, database URLs, Postgres passwords, Django secret keys, API keys, tokens, or private keys into chat/logs; if a secret appears in logs, rotate it. 
+
+Minimum rotation order:
+
+```bash
+# 1. Generate new Django secret locally, not on the hacked server
+python - <<'PY'
+from django.core.management.utils import get_random_secret_key
+print(get_random_secret_key())
+PY
+```
+
+Then update on the **new VPS only**:
+
+```text
+backend/.envs/.production/.django
+backend/.envs/.production/.postgres
+frontend/.env.production
+provider dashboards for Neon/API keys/tokens
+```
+
+Also reset:
+
+```text
+Django superuser password
+all staff/admin accounts
+Git deploy keys
+SSH keypair used by deploy
+database password
+any Sentry, email, storage, or payment provider credentials
+```
+
+## Priority 3 — Firewall before app deployment
+
+On the **new VPS**, expose only:
+
+```text
+22/tcp    SSH, ideally only from your IP
+80/tcp    HTTP
+443/tcp   HTTPS
+```
+
+Do **not** expose:
+
+```text
+3000/tcp  Next.js direct access
+5555/tcp  Traefik dashboard
+5432/tcp  Postgres
+6379/tcp  Redis
+8000/tcp  Django/Gunicorn
+Docker daemon TCP ports
+```
+
+Your current guide says Traefik exposes `80/443/5555`, Next.js responds on `3000`, and Django/Postgres/Redis run in Docker. Those are exactly the ports to tighten: public users should reach only Traefik on `80/443`; everything else should be private. 
+
+Use this baseline:
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y ufw fail2ban unattended-upgrades
+
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# Replace with your real home/office IP if possible
+sudo ufw allow from <YOUR_PUBLIC_IP>/32 to any port 22 proto tcp
+
+# If your IP changes often, temporarily use this instead:
+# sudo ufw allow 22/tcp
+
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+
+sudo ufw deny 3000/tcp
+sudo ufw deny 5555/tcp
+sudo ufw deny 5432/tcp
+sudo ufw deny 6379/tcp
+
+sudo ufw enable
+sudo ufw status verbose
+```
+
+Fail2Ban is useful because it watches logs such as SSH auth logs and bans IPs with repeated failed authentication attempts by updating firewall rules. ([GitHub][1])
+
+## Priority 4 — Lock SSH
+
+Create a new SSH key on your local machine:
+
+```powershell
+ssh-keygen -t ed25519 -a 100 -C "konnaxion-new-vps-2026"
+```
+
+On the VPS:
+
+```bash
+sudo adduser deploy
+sudo mkdir -p /home/deploy/.ssh
+sudo nano /home/deploy/.ssh/authorized_keys
+sudo chown -R deploy:deploy /home/deploy/.ssh
+sudo chmod 700 /home/deploy/.ssh
+sudo chmod 600 /home/deploy/.ssh/authorized_keys
+```
+
+Then harden SSH:
+
+```bash
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup.$(date +%Y%m%d_%H%M%S)
+
+sudo tee /etc/ssh/sshd_config.d/99-konnaxion-hardening.conf >/dev/null <<'EOF'
+PermitRootLogin no
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+PubkeyAuthentication yes
+AllowUsers deploy
+X11Forwarding no
+AllowTcpForwarding no
+ClientAliveInterval 300
+ClientAliveCountMax 2
+MaxAuthTries 3
+EOF
+
+sudo sshd -t
+sudo systemctl reload ssh
+```
+
+Keep your current SSH session open. Open a second terminal and test:
+
+```powershell
+ssh deploy@NEW_SERVER_IP
+```
+
+OpenSSH’s configuration supports disabling password authentication and keyboard-interactive authentication; disabling both matters because keyboard-interactive/PAM can otherwise serve a similar role to password auth. ([man7.org][2])
+
+## Priority 5 — Do not let `deploy` control Docker freely
+
+This is important because the previous breach used Docker containers. Your notes show malicious containers and image `negoroo/amco:123`, and the attacker used cron to restart those containers. 
+
+Avoid this pattern:
+
+```bash
+sudo usermod -aG docker deploy
+```
+
+Docker’s own docs warn that the `docker` group grants root-level privileges, and Docker says the daemon normally requires root privileges unless using rootless mode. ([Docker Documentation][3])
+
+Better options:
+
+### Simple safer option
+
+Use `deploy` for files, but require sudo password for Docker commands:
+
+```bash
+sudo deluser deploy docker || true
+sudo gpasswd -d deploy docker || true
+```
+
+Then deploy with:
+
+```bash
+sudo docker compose -f docker-compose.production.yml up -d --build
+```
+
+### Stronger option
+
+Use a separate admin user for deployment, and make the app files owned by a non-sudo user:
+
+```text
+ops     = can sudo, used only for maintenance/deploy
+deploy  = owns app files, cannot sudo, not in docker group
+```
+
+### Best option later
+
+Move deployment to a CI/CD runner with limited SSH access, or use Docker rootless mode. Docker rootless mode runs the Docker daemon and containers as a non-root user to reduce the impact of daemon/container runtime vulnerabilities. ([Docker Documentation][4])
+
+## Priority 6 — Fix public exposure of frontend and Traefik
+
+Your guide currently starts frontend with:
+
+```bash
+pnpm start --hostname 0.0.0.0 --port 3000
+```
+
+That is okay for temporary testing, but not for production. For production, either bind frontend to localhost:
+
+```bash
+pnpm start --hostname 127.0.0.1 --port 3000
+```
+
+or put the frontend in Docker behind the same Docker network as Traefik.
+
+Public should be:
+
+```text
+https://konnaxion.com
+https://www.konnaxion.com
+```
+
+Not:
+
+```text
+http://server-ip:3000
+http://server-ip:5555
+http://server-ip:5432
+http://server-ip:6379
+```
+
+Also disable or protect the Traefik dashboard. If `5555` is dashboard/admin, it should be removed from public exposure or protected by IP allowlist + authentication.
+
+## Priority 7 — Add persistence/backdoor checks to your normal routine
+
+Run this on the old VPS before abandoning it, and on the new VPS after deployment:
+
+```bash
+echo "== users =="
+cut -d: -f1,3,7 /etc/passwd | sort
+
+echo "== sudoers =="
+sudo ls -la /etc/sudoers.d
+sudo grep -R . /etc/sudoers.d /etc/sudoers 2>/dev/null
+
+echo "== cron =="
+sudo crontab -l || true
+crontab -l || true
+sudo ls -la /etc/cron.* /var/spool/cron/crontabs 2>/dev/null
+
+echo "== suspicious tmp/shm =="
+sudo find /tmp /dev/shm -maxdepth 2 -type f -executable -ls 2>/dev/null
+
+echo "== ports =="
+sudo ss -tulpen
+
+echo "== docker =="
+docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}" 2>/dev/null || true
+docker images 2>/dev/null || true
+
+echo "== systemd custom services =="
+systemctl list-unit-files | grep -Ei 'konnaxion|docker|ssh|miner|amco|tmp|shm|unknown' || true
+```
+
+Specifically look for recurrence of:
+
+```text
+amco_*
+negoroo/amco
+supportxmr
+rx/0
+/tmp/sshd
+pakchoi
+/dev/shm executable files
+unexpected crontabs
+unexpected sudoers files
+```
+
+Those match the previous compromise indicators. 
+
+## Priority 8 — Safer deployment flow
+
+Use this deployment model:
+
+```text
+Local machine:
+1. Build and test.
+2. Create clean Git archive.
+3. Upload archive.
+
+New VPS:
+1. Extract into fresh release directory.
+2. Restore only clean env files.
+3. Build containers.
+4. Run migrations.
+5. Start services.
+6. Validate only through 80/443.
+```
+
+Your guide already recommends a clean `git archive` deployment and warns not to commit deployment archives such as `.tar.gz` or `.zip`. 
+
+Use versioned releases instead of replacing the same directory blindly:
+
+```bash
+sudo mkdir -p /opt/konnaxion/releases /opt/konnaxion/shared
+sudo chown -R deploy:deploy /opt/konnaxion
+
+RELEASE=$(date +%Y%m%d_%H%M%S)
+mkdir -p /opt/konnaxion/releases/$RELEASE
+tar -xzf konnaxion-deploy.tar.gz -C /opt/konnaxion/releases/$RELEASE
+
+ln -sfn /opt/konnaxion/releases/$RELEASE /opt/konnaxion/current
+```
+
+Store env files outside the release:
+
+```text
+/opt/konnaxion/shared/.envs/.production/.django
+/opt/konnaxion/shared/.envs/.production/.postgres
+/opt/konnaxion/shared/frontend/.env.production
+```
+
+Then symlink them into the current release.
+
+## Priority 9 — Add automatic updates and basic monitoring
+
+Enable security updates:
+
+```bash
+sudo dpkg-reconfigure --priority=low unattended-upgrades
+sudo systemctl enable --now unattended-upgrades
+```
+
+Add simple daily checks:
+
+```bash
+sudo apt install -y logwatch rkhunter
+```
+
+Basic monitoring commands:
+
+```bash
+docker ps
+docker stats --no-stream
+sudo journalctl -p warning..alert --since "24 hours ago"
+sudo grep "Failed password" /var/log/auth.log | tail -50
+sudo ufw status numbered
+```
+
+Add alerts later via:
+
+```text
+UptimeRobot / Better Stack / Healthchecks.io
+Sentry for Django
+provider CPU/RAM alerts
+daily backup success alerts
+```
+
+## Priority 10 — Backups that do not preserve malware
+
+Use backups for:
+
+```text
+Postgres dump
+media/uploads
+configuration templates
+```
+
+Do not back up/restore:
+
+```text
+entire old disk
+/tmp
+/dev/shm
+crontabs from old server
+unknown systemd services
+old authorized_keys
+old sudoers files
+old Docker volumes unless verified
+```
+
+Postgres backup example:
+
+```bash
+cd /home/deploy/apps/Konnaxion/backend
+
+docker compose -f docker-compose.production.yml exec postgres \
+  pg_dump -U konnaxion -d konnaxion \
+  > /home/deploy/backups/konnaxion_$(date +%Y%m%d_%H%M%S).sql
+```
+
+Then copy the dump off-server:
+
+```powershell
+scp deploy@OLD_SERVER_IP:/home/deploy/backups/konnaxion_YYYYMMDD_HHMMSS.sql .
+```
+
+## Recommended final target
+
+For production, aim for this:
+
+```text
+Cloud firewall:
+  allow 80/443 from world
+  allow 22 only from your IP
+  deny everything else
+
+VPS:
+  SSH key only
+  root login disabled
+  password login disabled
+  UFW enabled
+  Fail2Ban enabled
+  unattended security updates enabled
+
+App:
+  Traefik only public entrypoint
+  Next.js not public on 3000
+  Django not public directly
+  Postgres not public
+  Redis not public
+  Traefik dashboard disabled or private
+  secrets rotated
+  env files not committed or pasted
+
+Docker:
+  deploy user not casually in docker group
+  no remote Docker TCP socket
+  trusted images only
+  regular image/container audit
+
+Recovery:
+  fresh VPS
+  clean Git deploy
+  DB dump only
+  media only
+  backups/snapshots enabled
+```
+
+The most important change is this: **do not try to save the old VPS as your trusted production server.** Use it only as a temporary source for DB/media extraction, then retire it.
+
+[1]: https://github.com/fail2ban/fail2ban?utm_source=chatgpt.com "Fail2Ban: ban hosts that cause multiple authentication errors"
+[2]: https://man7.org/linux/man-pages/man5/sshd_config.5.html?utm_source=chatgpt.com "sshd_config(5) - Linux manual page"
+[3]: https://docs.docker.com/engine/install/linux-postinstall/?utm_source=chatgpt.com "Linux post-installation steps for Docker Engine"
+[4]: https://docs.docker.com/engine/security/rootless/?utm_source=chatgpt.com "Rootless mode"

@@ -1,0 +1,213 @@
+/* FILE: backend/konnaxion/static/css/konnaxion-auth.css */
+/* static/css/konnaxion-auth.css */
+
+/* Brand tokens - teal-only palette */
+:root {
+  --kx-teal: #1e6864;
+  --kx-teal-soft: #2b827e;
+  --kx-teal-deep: #124340;
+  --kx-teal-surface: #0c2624;
+  --kx-teal-border: #3a908b;
+  --kx-teal-muted: #6ba7a4;
+}
+
+/* App-like dark background using teal palette only */
+body.bg-light {
+  background-color: var(--kx-teal-surface);
+  color: #e5e7eb;
+}
+
+/* Auth card */
+.kx-auth-card.card {
+  border-radius: 1.15rem;
+  border: 1px solid rgba(58, 144, 139, 0.6); /* var(--kx-teal-border) with alpha */
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.75);
+  background-color: rgba(12, 38, 36, 0.96); /* var(--kx-teal-surface) slightly lighter */
+  color: #e5e7eb;
+  backdrop-filter: blur(22px);
+}
+
+/* Typography */
+.kx-auth-title {
+  font-weight: 600;
+}
+
+.kx-auth-subtitle {
+  color: #9ca3af;
+}
+
+.kx-auth-muted {
+  color: #9ca3af;
+}
+
+/* Logo circle */
+.kx-auth-logo-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  /* Light chip so the teal logo is visible */
+  background-color: #f9fafb; /* or #ffffff */
+  border: 1px solid rgba(30, 104, 100, 0.45); /* subtle teal border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.06),
+    0 12px 28px rgba(0, 0, 0, 0.7);
+}
+
+.kx-auth-logo-circle .kx-auth-logo-img {
+  width: 26px;
+  height: 26px;
+  display: block;
+  object-fit: contain;
+}
+
+
+/* Links */
+.kx-auth-link {
+  color: var(--kx-teal-soft);
+  font-weight: 500;
+  text-decoration: none;
+  text-decoration-color: transparent;
+  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+
+.kx-auth-link:hover {
+  color: var(--kx-teal-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--kx-teal-muted);
+}
+
+.kx-auth-form a {
+  color: var(--kx-teal-soft);          /* your teal palette */
+  text-decoration: none;
+}
+
+.kx-auth-form a:hover {
+  color: var(--kx-teal-muted);
+  text-decoration: underline;
+}
+
+/* Divider */
+.kx-auth-divider-line {
+  height: 1px;
+  background-color: rgba(148, 163, 184, 0.6);
+}
+
+.kx-auth-divider-label {
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+}
+
+/* Form controls */
+.kx-auth-form .form-control {
+  background-color: rgba(6, 28, 26, 0.98);
+  border-color: rgba(148, 163, 184, 0.65);
+  color: #e5e7eb;
+  border-radius: 999px;
+  padding-inline: 1rem;
+  padding-block: 0.6rem;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.kx-auth-form .form-control::placeholder {
+  color: #6b7280;
+}
+
+.kx-auth-form .form-control:focus {
+  background-color: rgba(8, 35, 33, 1);
+  border-color: var(--kx-teal);
+  box-shadow: 0 0 0 0.22rem rgba(30, 104, 100, 0.45);
+}
+
+/* Checkboxes etc. */
+.kx-auth-form .form-check-input:focus {
+  box-shadow: 0 0 0 0.22rem rgba(30, 104, 100, 0.45);
+  border-color: var(--kx-teal);
+}
+
+.kx-auth-form .form-check-input:checked {
+  background-color: var(--kx-teal);
+  border-color: var(--kx-teal);
+}
+
+/* Primary submit button */
+.btn-primary.kx-auth-submit {
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background-color: var(--kx-teal);
+  border-color: var(--kx-teal-border);
+  color: #f9fafb;
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(12, 38, 36, 0.6);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.btn-primary.kx-auth-submit:hover {
+  background-color: var(--kx-teal-deep);
+  border-color: var(--kx-teal);
+  transform: translateY(-1px);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(12, 38, 36, 0.8);
+}
+
+.btn-primary.kx-auth-submit:active {
+  transform: translateY(0);
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(12, 38, 36, 0.7);
+}
+
+/* Social provider buttons */
+.socialaccount_providers {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.socialaccount_providers li {
+  margin-bottom: 0.5rem;
+}
+
+.socialaccount_providers .btn {
+  width: 100%;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  border-color: rgba(148, 163, 184, 0.7);
+  color: #e5e7eb;
+  background-color: rgba(8, 35, 33, 0.97);
+  transition:
+    border-color 0.18s ease,
+    background-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.12s ease;
+}
+
+.socialaccount_providers .btn:hover {
+  background-color: rgba(12, 38, 36, 1);
+  border-color: var(--kx-teal-border);
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(12, 38, 36, 0.9);
+  transform: translateY(-1px);
+}

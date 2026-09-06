@@ -1,0 +1,282 @@
+# ethiKos v2 — Boundaries and articulation with Kintsugi elements
+
+## 0) Purpose and scope
+
+**ethiKos v2** is Konnaxion’s deliberation + decision-formation module. It converts noisy, emotional, fragmented inputs into **decision-ready outputs** that remain **legible, auditable, contestable, and implementable**.
+
+This document defines:
+
+* the **pipeline** (Stage 0→5) and what each stage must output,
+* the **submodules** (Korum, Konsultations) and their **hard boundaries**,
+* how ethiKos integrates with **Smart Vote** and **EkoH** (Kollective Intelligence),
+* how “foreign tools” integrate **without merges** (Annex/Mimic + adapters),
+* the **canonical objects**, contracts, and minimum audit requirements.
+
+Normative terms: **MUST / SHOULD / MAY**.
+
+---
+
+## 1) Core principle: single truth, multiple readings
+
+ethiKos preserves legitimacy by keeping a **baseline** outcome visible (raw stance/ballot), while allowing additional **Smart Vote readings** (lenses) that are explicitly declared and reproducible.
+
+* **Baseline** = the canonical unweighted aggregation of recorded events (stances/ballots).
+* **Reading/Lens** = an explicitly declared transformation/aggregation (e.g., cohort-filtered, competence-weighted), computed by **Smart Vote** and bound to an audit context (often an **EkoH snapshot**).
+
+---
+
+## 2) Component boundaries (non-negotiables)
+
+### 2.1 Ownership matrix (who owns the truth)
+
+**Korum (ethiKos) owns**
+
+* Debate topics, arguments, stance scale (−3…+3), moderation on debate artifacts.
+* Canonical “stance events” for deliberation.
+
+**Konsultations (ethiKos) owns**
+
+* Consultations, citizen suggestions/intake, ballot capture, result snapshots, impact tracking.
+* Canonical “ballot events” for consultation.
+
+**Smart Vote (Kollective Intelligence) owns**
+
+* Computation + publication of outcomes as **readings** (baseline + lenses).
+* It MUST be **read-only** on upstream facts: it never mutates Korum/Konsultations records.
+
+**EkoH (Kollective Intelligence) owns**
+
+* Expertise/ethics ledger context (domain vectors, ethics multipliers, cohort eligibility, snapshot/audit).
+* EkoH is **not** the voting engine.
+
+### 2.2 Write rules (to prevent “tool capture”)
+
+* Foreign tools **MUST NOT** write to Korum/Konsultations core tables.
+* Smart Vote **MUST** write only derived artifacts (readings, breakdowns), never upstream facts.
+* Any weighted/filtered outcome **MUST** be reproducible via:
+  `Reading = f(BaselineEvents, LensDeclaration, SnapshotContext?)`
+
+---
+
+## 3) The ethiKos pipeline (v2)
+
+ethiKos is a workflow kernel. Each stage must produce a reusable output.
+
+### Stage 0 — Intake (Konsultations)
+
+**Goal:** capture issues early; dedupe; scope; constraints; stakeholders; initial prioritization.
+**Outputs (MUST):**
+
+* `ProblemStatement` (scope in/out, constraints, stakeholders)
+* `IntakeQueue` (normalized submissions + dedupe links)
+* `TopicTags` (domains / policy areas)
+
+### Stage 1 — Discovery / Consultation (Konsultations)
+
+**Goal:** make the landscape visible before debate becomes noise; surface convergence.
+**Outputs (MUST):**
+
+* `OptionSet` (candidate proposals/options)
+* `ConstraintSet` (hard constraints, non-negotiables)
+* Optional: `ConsensusMapArtifact` (clustered positions, bridges)
+
+### Stage 2 — Deliberation (Korum)
+
+**Goal:** move from reactions to reasons; make arguments comparable.
+**Outputs (MUST):**
+
+* `ArgumentGraph` (threaded reasons/objections/evidence links)
+* `StanceEvents` (−3…+3, per user per topic)
+* `ModerationLog` (appeals, flags, actions)
+
+### Stage 3 — Drafting (ethiKos capability; keep separate from Korum/Konsultations)
+
+**Goal:** convert deliberation into decision-ready text.
+**Outputs (MUST):**
+
+* `Draft` + `VersionHistory`
+* `Amendments` (structured changes)
+* `RationalePacket` (why this wording, tradeoffs, open questions)
+
+### Stage 4 — Decision (Smart Vote)
+
+**Goal:** run protocol-based decisions; publish baseline + declared readings.
+**Outputs (MUST):**
+
+* `BaselineResult`
+* `ReadingResults[]` (each with `reading_key`, `lens_declaration`, and `snapshot_ref` if used)
+* `DecisionRecord` (thresholds, dates, eligible cohorts, audit refs)
+
+### Stage 5 — Accountability (Konsultations + handoff)
+
+**Goal:** decisions don’t evaporate.
+**Outputs (MUST):**
+
+* `ImpactTrack` entries (actions, owners, status)
+* Links/handoff into execution workspaces (e.g., keenKonnect)
+* Public accountability snapshot(s)
+
+---
+
+## 4) Submodules (v2 definitions)
+
+### 4.1 Konsultations (Public Consultations & Feedback)
+
+**Role:** Intake + Discovery + Ballot capture + Impact tracking.
+
+**Stable services (code-names remain stable):**
+
+* `public_consultation`
+* `citizen_suggestion`
+* `weighted_consultation_vote` *(rename in UI copy: “Smart Vote ballots + readings”)*
+* `consultation_result_visualization`
+* `impact_tracking`
+
+**Key rule:** Konsultations stores **baseline ballots**. Any “weighted_value” is a **Smart Vote reading**, bound to an explicit lens and (if applicable) an `ekoh_snapshot_id`.
+
+### 4.2 Korum (Structured Debates)
+
+**Role:** Deliberation + stance capture + argument structure.
+
+**Stable services:**
+
+* `structured_debate`
+* `ai_clone_management` *(optional / service-level; may exist without OLTP tables)*
+* `comparative_argument_analysis` *(optional / service-level)*
+* `public_debate_archive` *(optional / service-level)*
+* `automated_debate_summary` *(optional / service-level)*
+
+**Key rule:** Korum produces stance + argument facts; Smart Vote publishes readings of those facts.
+
+### 4.3 Drafting (v2 addition; keep it bounded)
+
+Drafting SHOULD be implemented as a small, sovereign capability:
+
+* Draft object(s), amendments, version history, citations back to arguments/suggestions.
+* It MUST NOT be “embedded inside” Korum or Konsultations tables; keep it separately addressable and replaceable.
+
+---
+
+## 5) Canonical objects (internal contracts)
+
+ethiKos v2 SHOULD standardize a minimal vocabulary that every UI and adapter maps to:
+
+* `Topic`
+* `Option`
+* `Constraint`
+* `Argument` (threaded, pro/con optional)
+* `StanceEvent` (−3…+3)
+* `BallotEvent` (modality-specific)
+* `Draft`, `Amendment`, `Version`
+* `LensDeclaration` (what the reading is allowed to use)
+* `Reading` (Smart Vote output)
+* `SnapshotRef` (e.g., `ekoh_snapshot_id`, plus config hash)
+
+---
+
+## 6) Lenses/readings (Smart Vote) and auditability
+
+### 6.1 LensDeclaration (MUST be explicit)
+
+A lens declaration MUST specify:
+
+* allowed inputs (e.g., baseline ballots only; stance events only),
+* segmentation rules (e.g., cohort filters),
+* weighting rules (if any),
+* required audit refs (e.g., `ekoh_snapshot_id`),
+* a stable `lens_hash` (content-addressable).
+
+### 6.2 Minimum fields to store per reading (MUST)
+
+For each published reading:
+
+* `reading_key` (e.g., `baseline`, `ekoh_weighted_v1`)
+* `lens_hash`
+* `snapshot_ref` (nullable; required if EkoH used)
+* `computed_at`, `topic/consultation_id`
+* `results_payload` (JSON snapshot)
+
+---
+
+## 7) Foreign tools: Annex vs Mimic (clean integration)
+
+ethiKos v2 adopts a strict integration model:
+
+### Mimic (native pattern)
+
+Use when:
+
+* you need sovereignty, one coherent UX, long-term stability.
+* you want canonical records to be native ethiKos truth.
+
+### Annex (adapter/sidecar)
+
+Use when:
+
+* the external tool is mature and you want it as an optional sidecar.
+* you need replaceability and no dual truth.
+
+**Annex MUST use adapters**:
+
+* `ExternalArtifact` (append-only raw payload + provenance)
+* `ProjectionMapping` (external_id → internal canonical ids)
+* optional “projection” into canonical objects via ethiKos services (not direct DB writes)
+
+**Patterns credited (inspiration, not dependency):**
+
+* Polis-style “agree/disagree/pass” elicitation and opinion mapping. ([metagov.org][1])
+* Loomio’s staged flow (discuss → sense check → proposal). ([loomio.com][2])
+* Citizen OS topic phases (idea gathering → pro/con → voting → action). ([Citizen OS][3])
+* Decidim’s modular approach (proposals, debates, consultations, accountability, assemblies). ([decidim.org][4])
+* Argument mapping approach (pro/con tree) as a deliberation pattern reference. ([Kialo][5])
+
+---
+
+## 8) Routes and public surfaces (recommended)
+
+* Module hub: `/platforms/konnaxion/ethikos`
+* Operate layer: `/platforms/konnaxion/ethikos/kintsugi`
+* Reference placeholder: `/platforms/konnaxion/ethikos/kompendio`
+* Korum: `/platforms/konnaxion/ethikos/korum`
+* Konsultations: `/platforms/konnaxion/ethikos/konsultations`
+* Consultation hub (product route): `/consult` (owned by ethiKos)
+* Decision layer: `/platforms/konnaxion/kollective-intelligence` (Smart Vote + EkoH)
+
+Naming conventions:
+
+* UI/text: **Smart Vote**
+* code identifiers: `SmartVote` / `smartvote`
+* URLs: `smart-vote`
+
+---
+
+## 9) Backward compatibility (do not break what exists)
+
+ethiKos v2 is a **documentation + boundary upgrade** first.
+
+**MUST keep stable:**
+
+* existing service code-names (Korum/Konsultations),
+* existing core tables and routes already in production.
+
+**SHOULD add only non-breaking fields/tables:**
+
+* audit fields for readings (`reading_key`, `lens_hash`, `ekoh_snapshot_id`/`snapshot_ref`)
+* `ExternalArtifact` + `ProjectionMapping`
+* Drafting tables (new capability) without touching existing Korum/Konsultations schemas
+
+---
+
+## 10) What to update in your current docs/pages (minimal set)
+
+* **Kintsugi page**: include Sections 2, 5, 6, 7 as the authoritative “Boundaries & Contracts”.
+* **Korum / Konsultations pages**: add a short “Contract” block that points back to Kintsugi.
+* **ethikos hub page**: keep it user-facing; add one paragraph clarifying Decision = Kollective Intelligence.
+
+---
+
+[1]: https://metagov.org/delib-tools/polis?utm_source=chatgpt.com "Pol.is | Metagov"
+[2]: https://www.loomio.com/the-loomio-process?utm_source=chatgpt.com "The Loomio Process - Loomio"
+[3]: https://citizenos.com/platform/?utm_source=chatgpt.com "Platform - Citizen OS"
+[4]: https://decidim.org/modules/?utm_source=chatgpt.com "Modules | Decidim"
+[5]: https://www.kialo-edu.com/features?utm_source=chatgpt.com "Site Features | Tools for saving time and enhancing learning | Kialo Edu"

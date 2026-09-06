@@ -1,0 +1,8 @@
+{
+  "schema_version": "cinematic-project/v1",
+  "project": {"name": "Konnaxion"},
+  "application": {"base_url": "http://localhost:3000"},
+  "cinematic": {"directory": "cinematic"},
+  "browser": {"engine": "chromium", "width": 1920, "height": 1080, "headless": false},
+  "tools": {"ffmpeg": null}
+}

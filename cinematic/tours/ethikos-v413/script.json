@@ -1,0 +1,45 @@
+{
+  "schema_version": "cinematic-script/v1",
+  "blocks": [
+    {
+      "id": "opening",
+      "title": "Opening",
+      "text": "Ethikos, inside Konnaxion, turns difficult public questions into structured collective intelligence. This walkthrough follows one decision through evidence, disagreement, expertise, conflict disclosure, and an advisory reading—without hiding the baseline and without transferring authority away from the human decision-maker."
+    },
+    {
+      "id": "autonomy",
+      "title": "Canada–United States strategic autonomy",
+      "text": "We begin with a strategic question: should Canada reduce its dependence on the United States, even if that raises short-term costs? Ethikos keeps positions, arguments, sources, and participants distinct, so disagreement remains inspectable. The goal is not consensus. It is decision-ready coherence."
+    },
+    {
+      "id": "scene",
+      "title": "Governance enters the argument",
+      "text": "Within the debate, King Klown proposes a radically different AI-infrastructure model. Réjean immediately raises a governance constraint: consult affected Indigenous nations and local communities before announcing strategic sites. King Klown answers, 'It's already announced.' The proposal becomes public: dedicated AI power priced to make today's competition obsolete, inclusive international access, and a Canada-based AI-native encyclopedia built with KristALL. The Inquisitor intervenes for premature disclosure."
+    },
+    {
+      "id": "ekoh",
+      "title": "Réjean EkoH context",
+      "text": "Government then asks whether the proposal is technically feasible. Réjean's EkoH context shows why his contribution matters here: public rating status, domain expertise, and alignment to this question. But expertise is not a permanent rank. Strength in one domain does not make anyone authoritative everywhere. Expertise follows the question."
+    },
+    {
+      "id": "trump-context",
+      "title": "Emergent access question and conflict context",
+      "text": "The infrastructure debate generates a separate governance question: should strategic AI services deny access to Donald Trump or organizations acting on his behalf? Ethikos separates opinion from conflict context. In this fictional demo, a background record documents King Klown's prior anti-Trump and anti-capitalist activism. That record is visibly labeled as fictional context and remains attached to the disclosure as evidence, not promoted into a new argument."
+    },
+    {
+      "id": "recusal",
+      "title": "Voluntary recusal",
+      "text": "King Klown declares the conflict and voluntarily recuses himself from the EkoH and Smart Vote advisory reading. His public position and arguments remain in the baseline; only the advisory lens changes. Conflict is not erased or hidden. It is made explicit, and the system changes how that contribution is used."
+    },
+    {
+      "id": "readings",
+      "title": "Baseline versus question-relevant expertise",
+      "text": "Now compare the readings. The public baseline contains seven source stances. The question-relevant advisory reading contains six participants, with one declared recusal. In this demo, the baseline and expertise-weighted reading point in different directions. That divergence is the point: no one becomes more important everywhere. Expertise follows the question. Expertise informs judgment; it does not silently acquire sovereignty."
+    },
+    {
+      "id": "closing",
+      "title": "Pulse and conclusion",
+      "text": "Pulse returns to the health of the conversation. Ethikos does not decide for government. Konnaxion helps decision-makers see more evidence, context, and trade-offs before they decide."
+    }
+  ]
+}

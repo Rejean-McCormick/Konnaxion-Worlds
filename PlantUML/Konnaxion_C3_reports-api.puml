@@ -1,0 +1,147 @@
+@startuml
+title Konnaxion — C3 Components (reports-api) — read-only analytics service
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+'========================
+' EXTERNES (connecteurs)
+'========================
+actor "Reports UI (Frontend)\n/dashboard /reports/*" as UI
+database "Analytics DB\nPostgreSQL 16 (read-only)\n[star-schema: facts + dims + mat views]" as PG
+queue "Redis 7\n(cache TTL par défaut 600 s)" as REDIS
+component "Airflow 2.9\n(ETL & maintenance)" as AIRFLOW
+component "Prometheus\n(scrape /metrics)" as PROM
+
+'========================
+' CONTENEUR (reports-api)
+'========================
+package "reports-api\n(Django 4.2 + DRF 3.15)\nALL endpoints require JWT\nRate-limit: 60 req/min/user" as REPORTS_API {
+
+  '--- couche sécurité & QoS
+  component "AuthN / RateLimit\n(Middleware)" as AUTH
+  note right of AUTH
+    • Valide JWT (IsAuthenticated sur tous les endpoints).
+    • Applique le rate-limit (60 req/min par utilisateur).
+    • Répond 401/403/429 si échec.
+  end note
+
+  component "AuthZ & Audit\n(Permissions + Journal)" as AUTHZ
+  note right of AUTHZ
+    • /reports/export réservé aux rôles ADMIN+.
+    • Écrit une entrée d’audit (user_id, path, ip, ts).
+    • Pas de PII en sortie; k-anonymat ≥ 10 (logique côté data/ETL).
+  end note
+
+  '--- contrôleurs d’endpoints
+  package "Endpoints (Controllers)" as CTRLS {
+    component "GET /reports/smart-vote\nparams: range, grouping\nTTL cache: 600 s" as EP_SMART
+    note right of EP_SMART
+      Retourne séries {labels[], votes[], avg_score[]}.
+      Flux: check cache → requête SQL (views mat.) → set cache.
+      Fenêtre temporelle max 90 j (sinon 400 INVALID_RANGE).
+    end note
+
+    component "GET /reports/usage\nparams: range, grouping, domain_code?\nTTL cache: 600 s" as EP_USAGE
+    note right of EP_USAGE
+      Retourne {labels[], mau[], projects[], docs[]}.
+      Requêtes en lecture seule sur schéma analytique.
+    end note
+
+    component "GET /reports/perf\nparams: range, endpoint?\nTTL cache: 300 s" as EP_PERF
+    note right of EP_PERF
+      Retourne {labels[], p95_latency[], error_rate[]}.
+      Sert les métriques API agrégées (24 h).
+    end note
+
+    component "GET /reports/export\nparams: report, format=csv|json\nTTL cache: 60 s" as EP_EXPORT
+    note right of EP_EXPORT
+      Stream de fichier; fixe l’en-tête
+      Content-Disposition: attachment; filename="report_<type>_<date>.csv".
+      Limite dure EXPORT_MAX_ROWS (ex. 100000).
+    end note
+  }
+
+  '--- moteur de requêtes & cache
+  component "Query Engine (SQL)\n(read-only sur vues mat. & tables étoile)" as QENG
+  note right of QENG
+    • Génère les SELECT paramétrés vers:
+      - vw_smart_vote_30d
+      - vw_usage_90d
+      - vw_perf_24h
+    • Accède en lecture seule via rôle DB dédié (reports_reader).
+  end note
+
+  component "Cache Layer (Redis)\nclé: reports:{endpoint}:{sha256(params)}\nTTL défaut: 600 s" as CACHE
+  note right of CACHE
+    • GET avant requête DB; si miss, SET avec TTL.
+    • Tâche de nettoyage: purge des clés > 12 h.
+  end note
+
+  '--- export & erreurs
+  component "Exporter (CSV/JSON)\n(streaming + garde-fous)" as EXPORTER
+  note right of EXPORTER
+    • Produit CSV/JSON (stream).
+    • Respecte EXPORT_MAX_ROWS.
+    • Réutilise les résultats du Query Engine (pas d’écriture DB).
+  end note
+
+  component "Error Handler\n(JSON Error 0.2)" as ERR
+  note right of ERR
+    • INVALID_RANGE (400) — range > 90 j ou bornes invalides.
+    • UNSUPPORTED_FORMAT (400) — format ≠ csv,json.
+    • ENDPOINT_UNKNOWN (400) — filtre endpoint invalide.
+    • EXPORT_FORBIDDEN (403) — rôle < ADMIN pour /export.
+  end note
+
+  component "/metrics (Prometheus Exporter)" as METRICS
+  note right of METRICS
+    Expose les métriques de performance/erreurs
+    pour dashboards & alertes; utilisé aussi par HPA.
+  end note
+}
+
+'========================
+' RELATIONS
+'========================
+UI --> AUTH : HTTP(S) requests\nAuthorization: Bearer <jwt>
+AUTH --> AUTHZ
+AUTHZ --> CTRLS
+CTRLS --> QENG
+CTRLS --> CACHE : GET/SET\n(selon flux)
+QENG --> PG : SQL read-only\n(views & dims)
+CACHE --> REDIS
+METRICS --> PROM : scrape\n/metrics
+AIRFLOW --> PG : maintient facts/partitions\n& REFRESH mat views
+AIRFLOW --> REDIS : tâche cleanup_cache (purge > 12 h)
+
+' Séquence type (vue C3, simplifiée) pour smart-vote:
+' UI -> /reports/smart-vote -> Cache GET (hit? return)
+' miss -> SELECT vw_smart_vote_30d -> Cache SET TTL 600 -> 200 JSON
+
+'========================
+' LÉGENDE / INVARIANTS / TBD
+'========================
+note bottom
+  Invariants de routage:
+  • Espace réservé /reports/* (UI & API).
+  • Canal /ws/reports/* réservé (le temps réel n'est pas servi par reports-api).
+
+  SLO (API):
+  • GET smart-vote/usage/perf: P95 ≤ 400 ms, erreurs ≤ 1 %.
+  • GET export: P95 ≤ 800 ms, erreurs ≤ 1 % (latence mesurée post-cache-miss).
+
+  Env (extraits):
+  • REPORTS_DB_URL (PostgreSQL analytique — user read-only)
+  • REDIS_URL (cache partagé)
+  • EXPORT_MAX_ROWS (= 100000)
+
+  [TBD — non spécifié dans les docs]
+  • Noms exacts des classes Python (ex. Controllers, QueryBuilder, CsvWriter).
+  • Détails des templates SQL (fichiers, paramètres).
+  • Politique de pagination (page/limit, Link headers) si applicable.
+  • Emplacement de l’OpenAPI (route du schema ou fichier .json).
+end note
+
+@enduml

@@ -1,0 +1,314 @@
+[
+  {
+    "code": "01",
+    "name": "Education",
+    "parent_code": null,
+    "depth": 0
+  },
+  {
+    "code": "011",
+    "name": "Education",
+    "parent_code": "01",
+    "depth": 1
+  },
+  {
+    "code": "0111",
+    "name": "Education science",
+    "parent_code": "011",
+    "depth": 2
+  },
+  {
+    "code": "0112",
+    "name": "Training for pre-school teachers",
+    "parent_code": "011",
+    "depth": 2
+  },
+  {
+    "code": "0113",
+    "name": "Teacher training without subject specialisation",
+    "parent_code": "011",
+    "depth": 2
+  },
+  {
+    "code": "0114",
+    "name": "Teacher training with subject specialisation",
+    "parent_code": "011",
+    "depth": 2
+  },
+  {
+    "code": "02",
+    "name": "Arts and humanities",
+    "parent_code": null,
+    "depth": 0
+  },
+  {
+    "code": "021",
+    "name": "Arts",
+    "parent_code": "02",
+    "depth": 1
+  },
+  {
+    "code": "022",
+    "name": "Humanities (except languages)",
+    "parent_code": "02",
+    "depth": 1
+  },
+  {
+    "code": "0223",
+    "name": "Philosophy and ethics",
+    "parent_code": "022",
+    "depth": 2
+  },
+  {
+    "code": "023",
+    "name": "Languages",
+    "parent_code": "02",
+    "depth": 1
+  },
+  {
+    "code": "0231",
+    "name": "Language acquisition",
+    "parent_code": "023",
+    "depth": 2
+  },
+  {
+    "code": "0232",
+    "name": "Literature and linguistics",
+    "parent_code": "023",
+    "depth": 2
+  },
+  {
+    "code": "03",
+    "name": "Social sciences, journalism and information",
+    "parent_code": null,
+    "depth": 0
+  },
+  {
+    "code": "031",
+    "name": "Social and behavioural sciences",
+    "parent_code": "03",
+    "depth": 1
+  },
+  {
+    "code": "0311",
+    "name": "Economics",
+    "parent_code": "031",
+    "depth": 2
+  },
+  {
+    "code": "0312",
+    "name": "Political sciences and civics",
+    "parent_code": "031",
+    "depth": 2
+  },
+  {
+    "code": "0313",
+    "name": "Psychology",
+    "parent_code": "031",
+    "depth": 2
+  },
+  {
+    "code": "0314",
+    "name": "Sociology and cultural studies",
+    "parent_code": "031",
+    "depth": 2
+  },
+  {
+    "code": "032",
+    "name": "Journalism and information",
+    "parent_code": "03",
+    "depth": 1
+  },
+  {
+    "code": "0321",
+    "name": "Journalism and reporting",
+    "parent_code": "032",
+    "depth": 2
+  },
+  {
+    "code": "04",
+    "name": "Business, administration and law",
+    "parent_code": null,
+    "depth": 0
+  },
+  {
+    "code": "041",
+    "name": "Business and administration",
+    "parent_code": "04",
+    "depth": 1
+  },
+  {
+    "code": "0413",
+    "name": "Management and administration",
+    "parent_code": "041",
+    "depth": 2
+  },
+  {
+    "code": "042",
+    "name": "Law",
+    "parent_code": "04",
+    "depth": 1
+  },
+  {
+    "code": "0421",
+    "name": "Law",
+    "parent_code": "042",
+    "depth": 2
+  },
+  {
+    "code": "05",
+    "name": "Natural sciences, mathematics and statistics",
+    "parent_code": null,
+    "depth": 0
+  },
+  {
+    "code": "052",
+    "name": "Environment",
+    "parent_code": "05",
+    "depth": 1
+  },
+  {
+    "code": "0521",
+    "name": "Environmental sciences",
+    "parent_code": "052",
+    "depth": 2
+  },
+  {
+    "code": "054",
+    "name": "Mathematics and statistics",
+    "parent_code": "05",
+    "depth": 1
+  },
+  {
+    "code": "0542",
+    "name": "Statistics",
+    "parent_code": "054",
+    "depth": 2
+  },
+  {
+    "code": "06",
+    "name": "Information and Communication Technologies (ICTs)",
+    "parent_code": null,
+    "depth": 0
+  },
+  {
+    "code": "061",
+    "name": "Information and Communication Technologies (ICTs)",
+    "parent_code": "06",
+    "depth": 1
+  },
+  {
+    "code": "0612",
+    "name": "Database and network design and administration",
+    "parent_code": "061",
+    "depth": 2
+  },
+  {
+    "code": "0613",
+    "name": "Software and applications development and analysis",
+    "parent_code": "061",
+    "depth": 2
+  },
+  {
+    "code": "07",
+    "name": "Engineering, manufacturing and construction",
+    "parent_code": null,
+    "depth": 0
+  },
+  {
+    "code": "071",
+    "name": "Engineering and engineering trades",
+    "parent_code": "07",
+    "depth": 1
+  },
+  {
+    "code": "0713",
+    "name": "Electricity and energy",
+    "parent_code": "071",
+    "depth": 2
+  },
+  {
+    "code": "072",
+    "name": "Manufacturing and processing",
+    "parent_code": "07",
+    "depth": 1
+  },
+  {
+    "code": "0722",
+    "name": "Materials (glass, paper, plastic and wood)",
+    "parent_code": "072",
+    "depth": 2
+  },
+  {
+    "code": "073",
+    "name": "Architecture and construction",
+    "parent_code": "07",
+    "depth": 1
+  },
+  {
+    "code": "0731",
+    "name": "Architecture and town planning",
+    "parent_code": "073",
+    "depth": 2
+  },
+  {
+    "code": "08",
+    "name": "Agriculture, forestry, fisheries and veterinary",
+    "parent_code": null,
+    "depth": 0
+  },
+  {
+    "code": "081",
+    "name": "Agriculture",
+    "parent_code": "08",
+    "depth": 1
+  },
+  {
+    "code": "09",
+    "name": "Health and welfare",
+    "parent_code": null,
+    "depth": 0
+  },
+  {
+    "code": "092",
+    "name": "Welfare",
+    "parent_code": "09",
+    "depth": 1
+  },
+  {
+    "code": "0921",
+    "name": "Care of the elderly and of disabled adults",
+    "parent_code": "092",
+    "depth": 2
+  },
+  {
+    "code": "0922",
+    "name": "Child care and youth services",
+    "parent_code": "092",
+    "depth": 2
+  },
+  {
+    "code": "0923",
+    "name": "Social work and counselling",
+    "parent_code": "092",
+    "depth": 2
+  },
+  {
+    "code": "10",
+    "name": "Services",
+    "parent_code": null,
+    "depth": 0
+  },
+  {
+    "code": "103",
+    "name": "Security services",
+    "parent_code": "10",
+    "depth": 1
+  },
+  {
+    "code": "1032",
+    "name": "Protection of persons and property",
+    "parent_code": "103",
+    "depth": 2
+  }
+]
