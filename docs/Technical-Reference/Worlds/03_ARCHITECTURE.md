@@ -43,6 +43,45 @@ media/object storage
 
 These services are shared infrastructure but all World-derived state is namespaced.
 
+### 2.1 Initial production topology for ~120 Worlds
+
+The operational baseline is one deployed Konnaxion stack capable of serving approximately 120 registered Worlds:
+
+```text
+ONE SERVER / VPS (initial baseline)
+  reverse proxy / TLS
+  Next.js
+  Django/DRF
+  Celery workers
+  Redis
+  PostgreSQL
+  search/vector services as enabled
+  World-scoped media storage
+
+120 logical Worlds
+  -> registry rows in control plane
+  -> one current WorldRelease each
+  -> isolated schema pair per stored Release
+```
+
+The number of Worlds does not imply 120 running application stacks. World selection is resolved per request, so different users and browser tabs MAY concurrently use different Worlds through the same Django/Next.js deployment.
+
+Scaling beyond one physical server MAY split PostgreSQL, Redis, Celery, frontend, backend, search or object storage onto separate hosts. This is infrastructure scaling, not World-per-host deployment.
+
+### 2.2 Capacity dimensions
+
+Capacity MUST be planned using separate dimensions:
+- registered World count;
+- retained Release count per World;
+- schema/table/storage footprint;
+- concurrent requests/users by World;
+- Celery/background workload;
+- search/vector index size;
+- media footprint;
+- snapshot/backup retention.
+
+A release-retention policy is therefore part of production sizing. Keeping many historical Releases for all 120 Worlds can dominate database object count and storage even when user traffic is low.
+
 ## 3. Canonical backend owner
 
 Create a dedicated canonical backend package:

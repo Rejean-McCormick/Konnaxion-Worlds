@@ -11,6 +11,9 @@ import {
   switchWorldPath,
 } from '@/lib/worlds'
 
+const RECENT_WORLDS_KEY = 'konnaxion:recent-worlds'
+const MAX_RECENT_WORLDS = 8
+
 type ReleaseSummary = {
   id: number
   release_number: number
@@ -28,11 +31,34 @@ type WorldSummary = {
   can_manage: boolean
 }
 
+function readRecentWorlds(): string[] {
+  if (typeof window === 'undefined') return []
+  try {
+    const value = JSON.parse(window.localStorage.getItem(RECENT_WORLDS_KEY) ?? '[]')
+    return Array.isArray(value) ? value.filter(item => typeof item === 'string') : []
+  } catch {
+    return []
+  }
+}
+
+function rememberWorld(key: string, existing: string[]): string[] {
+  const next = [key, ...existing.filter(item => item !== key)].slice(0, MAX_RECENT_WORLDS)
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem(RECENT_WORLDS_KEY, JSON.stringify(next))
+  }
+  return next
+}
+
 export default function WorldSwitcher() {
   const pathname = usePathname() ?? '/'
   const currentKey = getWorldKeyFromPathname(pathname)
   const [worlds, setWorlds] = useState<WorldSummary[]>([])
+  const [recentKeys, setRecentKeys] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setRecentKeys(readRecentWorlds())
+  }, [])
 
   useEffect(() => {
     let cancelled = false
@@ -56,6 +82,25 @@ export default function WorldSwitcher() {
     () => worlds.find(world => world.key === currentKey) ?? null,
     [currentKey, worlds],
   )
+
+  const orderedWorlds = useMemo(() => {
+    const recentRank = new Map(recentKeys.map((key, index) => [key, index]))
+    return [...worlds].sort((left, right) => {
+      const leftRank = recentRank.get(left.key)
+      const rightRank = recentRank.get(right.key)
+      if (leftRank !== undefined || rightRank !== undefined) {
+        if (leftRank === undefined) return 1
+        if (rightRank === undefined) return -1
+        return leftRank - rightRank
+      }
+      return left.title.localeCompare(right.title)
+    })
+  }, [recentKeys, worlds])
+
+  useEffect(() => {
+    if (!currentKey) return
+    setRecentKeys(existing => rememberWorld(currentKey, existing))
+  }, [currentKey])
 
   useEffect(() => {
     let reloading = false
@@ -81,6 +126,7 @@ export default function WorldSwitcher() {
 
   const onChange = (key: string) => {
     if (key === currentKey) return
+    setRecentKeys(existing => rememberWorld(key, existing))
     const target = switchWorldPath(pathname, key)
     const query = typeof window !== 'undefined' ? window.location.search : ''
     // Deliberately hard-navigate. This clears every client cache and prevents
@@ -97,12 +143,19 @@ export default function WorldSwitcher() {
         aria-label="Active World"
         loading={loading}
         value={currentKey ?? undefined}
-        placeholder="Select World"
+        placeholder="Search or select World"
+        showSearch
+        allowClear={false}
         onChange={onChange}
-        style={{ minWidth: 180, maxWidth: 280 }}
-        options={worlds.map(world => ({
+        filterOption={(input, option) => {
+          const searchText = String((option as { searchText?: string })?.searchText ?? '')
+          return searchText.includes(input.trim().toLowerCase())
+        }}
+        style={{ minWidth: 220, maxWidth: 340 }}
+        options={orderedWorlds.map(world => ({
           value: world.key,
           label: world.title,
+          searchText: `${world.title} ${world.key}`.toLowerCase(),
           disabled:
             !world.current_release ||
             world.current_release.status !== 'current' ||

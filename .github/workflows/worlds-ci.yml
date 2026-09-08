@@ -89,7 +89,13 @@ jobs:
         run: python manage.py check
       - name: Apply control-plane migrations
         run: python manage.py migrate --noinput
-      - name: Run Worlds primitive and seed tests
-        run: pytest konnaxion/worlds/tests/test_primitives.py konnaxion/worlds/tests/test_seed_packs.py -q
+      - name: Run Worlds primitive, queue, catalog and health tests
+        run: >-
+          pytest
+          konnaxion/worlds/tests/test_primitives.py
+          konnaxion/worlds/tests/test_seed_packs.py
+          konnaxion/worlds/tests/test_build_jobs.py
+          konnaxion/worlds/tests/test_health_scale.py
+          -q
       - name: Run PostgreSQL Alpha-Beta-Alpha isolation test
         run: pytest konnaxion/worlds/tests/test_multiworld_isolation.py -q

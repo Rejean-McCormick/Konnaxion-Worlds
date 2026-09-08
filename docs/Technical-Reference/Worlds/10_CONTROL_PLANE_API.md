@@ -22,6 +22,17 @@ GET /api/control/worlds/
 
 Returns only Worlds visible/manageable to the principal.
 
+At ~120 Worlds the endpoint MAY still return a compact list in one response, but the API SHOULD support filtering/search without requiring full Release history. Recommended query capabilities include:
+
+```text
+?q=hydro
+&status=active
+&visibility=public
+&has_current_release=true
+```
+
+If response size or membership counts grow beyond this target, cursor/page pagination MAY be introduced without changing World identity or routing semantics.
+
 Suggested response:
 
 ```json
@@ -61,9 +72,44 @@ Input:
 }
 ```
 
-Returns build ID / Release ID.
+Returns **HTTP 202** with a persistent `WorldBuildJob`. The `release_id` is null while the job is still queued and appears as soon as the worker creates the Release.
 
-Build should execute as a controlled job and store logs.
+Example:
+
+```json
+{
+  "id": 412,
+  "world_id": 18,
+  "release_id": null,
+  "seed_pack_key": "cuny-political-philosophy",
+  "seed_version": "1.3.0",
+  "status": "queued",
+  "queue_name": "world-build"
+}
+```
+
+Poll with:
+
+```http
+GET /api/control/worlds/{world_key}/build-jobs/
+GET /api/control/worlds/{world_key}/build-jobs/{job_id}/
+```
+
+Production build/provision/import executes through Celery. The existing worker consumes the logical `world-build` queue; no second worker/container is required for the low-RAM baseline. PostgreSQL advisory-lock slots enforce the build concurrency limit across worker processes.
+
+Job states:
+
+```text
+queued -> building -> validating -> ready | failed
+```
+
+Default:
+
+```text
+KONNAXION_WORLD_BUILD_CONCURRENCY=1
+```
+
+Raising that setting later permits controlled parallel builds (up to the configured worker capacity). Bulk creation of many Worlds remains queue/concurrency limited.
 
 ## 5. Promote Release
 

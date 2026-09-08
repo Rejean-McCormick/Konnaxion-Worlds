@@ -140,6 +140,27 @@ Hard navigation intentionally clears:
 - in-memory query caches;
 - components tied to old World.
 
+For a deployment with ~120 Worlds, switch latency MUST remain a normal navigation/request cost. A World switch MUST NOT wait for:
+- container startup/shutdown;
+- Django/Next.js restart;
+- migrations;
+- schema provisioning;
+- Seed Pack import;
+- snapshot restore;
+- release build.
+
+The target sequence is:
+
+```text
+user selects World B
+→ navigate to /w/world-b/...
+→ backend resolves World B current_release
+→ establish WorldRuntime + schema scope
+→ serve World B
+```
+
+Different concurrent requests MAY resolve different Worlds. There is no server-global selected World.
+
 Later SPA optimization is allowed only after stale-response protection exists.
 
 ## 9. No hidden authority

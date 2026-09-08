@@ -1,11 +1,11 @@
-71133df7ec1aa5adfb415c128015aef46ffadd95db7a43cd03d7a6283d52b887  ./.github/workflows/worlds-ci.yml
+f847578b145625aba22179fc1b95c8f53bd367cf322f5173578e75922ba9f27c  ./.github/workflows/worlds-ci.yml
 7b7d804163388f1ff85b97c48c9c2e1307d034398ef45817c31fd2f45adf856a  ./.gitignore
 213e3dc9886a4dca55bb501ca76fab3632ced2e00475c7ac7e2bda7e3742b149  ./.smartignore
 b951a479d073f558e9bd87542615b038d7b6aaf84100974da22a64533696b442  ./CODE_SNAPSHOT_MANIFEST.md
 b3dab2d7eff9305b57497e2d916ba055633fce4aede1f162d4162643eb49fb02  ./KONNAXION_BUILD_CONSOLE.pyw
 09286ae9d93e1e41374dd7f0eb375719c0c2f9c3f60a95c4831dca6c845a7391  ./KONNAXION_MEGA_TEST_CAMPAIGN.pyw
 de675d14c84b1a9ce3425dd6467b854882ca51f77c78d9595dad0732d7393f6f  ./Konnaxion_Ethikos_Seed_Manager.pyw
-ea8ff14e6d81f935428e7b31483b9fdb191ccdf234ecc925b938770f66b52e37  ./Konnaxion_World_Manager.pyw
+9e48912a62fa591147ac891f1007ce381a10b509b284721b9220aa326a3fb39a  ./Konnaxion_World_Manager.pyw
 705e70aee7acc3f4ab4c946c9d03cfb66cadf55de5be16716cbb9f9adcd3238a  ./LICENSE
 862042ee0b5ad2309066194be0b241c6f23f66879e38def086da84e56c669a73  ./PlantUML/Konnaxion_C2_Containers.puml
 5664fc7b57f3e4925de4ec203ad75ab868ef77fa686023e9a5be93d5fdf2963b  ./PlantUML/Konnaxion_C3_Airflow.puml
@@ -34,9 +34,8 @@ a23ce8beb27ace02cabdc867a7f75c03949960db9d4022fd4a3017c1ea01af83  ./RUN_KONNAXIO
 37f2f497f45b17995386173a9b4e5c47476382665f86cb7cf927afeb76f79b0e  ./RUN_V413_SMOKE.cmd
 672c3ef6d89b6154f42f145015ed0f9939a3bf65fbf606845d6b0d8fddb8278d  ./RUN_backend_local.bat
 b0ac72acb9b1abb08bfdc2e925f5e39bb4259f2737aab5290d490fa0c5824f10  ./RUN_frontend_local.bat
-c0ba795f6b9c603a48455d8dcea68b435f8672bcb5b1a1fba233b40bc97e178d  ./SHA256SUMS.txt
 d5634aeeee3314974b2bdb313951e69c293a493ffe8138689e6c8ff3f03306e1  ./Structurizr/workspace.dsl
-3bb9b028c32f55d682919adcc3f7541e8b6036cdc2419287e9f680edf2fdc7d6  ./WORLDS_IMPLEMENTATION_FINAL.md
+5f3a19055d339bcdd5848206cd8b34cb4f58776ee870686845a806a693e843ee  ./WORLDS_IMPLEMENTATION_FINAL.md
 002bee2499e13ecee992702df2313b807629f3a6b91d176110581f4a07ba1272  ./backend/.devcontainer/bashrc.override.sh
 925c268bf592d9e8a352bf484b84b88deed41dcb9000d8d119e3318ef600df3b  ./backend/.devcontainer/devcontainer.json
 7c622841c09b28dced27ac96e3699cb3c00978bcbd1e43f1d1b2ae1d32b7644b  ./backend/.dockerignore
@@ -54,14 +53,14 @@ a89e9c48a75ab4b625a1ebf6ceb56980985cb5de75c9c644d9f008e05e46db31  ./backend/READ
 03936cb7deb54047182f9981b029cb2fcdaac5e2031d79252f30a96a7db35964  ./backend/compose/local/django/Dockerfile
 cab0f6780274f3de5b4afbaf331b19aa3e94b656d98105fac3c772d2be35f881  ./backend/compose/local/django/celery/beat/start
 b4f3089aef79a76f90f94b17ba430d873c951f79bfc12a317ebcbf306b393212  ./backend/compose/local/django/celery/flower/start
-d9c02e878b30f1f53dcfd729275f73c51aed7bb5988679eb369d41cd03df6cc4  ./backend/compose/local/django/celery/worker/start
+1c43ca77858dbc292ee470b520a8bdc28ff5dc352e1d4b618faa2dacc2f18e45  ./backend/compose/local/django/celery/worker/start
 053d10602c85ceff15e92a50c1981e12bf145180c542c7d07e4bd8c8690489db  ./backend/compose/local/django/start
 5ffb75f93e3d5617f02e6f7422edd29dde021a6314d00823d20063eebb80d217  ./backend/compose/local/docs/Dockerfile
 b04ad11975a799fe4d4d4cac7ab213dcb584ba979551bb9252273c33e5eec59b  ./backend/compose/local/docs/start
 99409510e49dda0e94aa4cc97e79a7842188f957d4a185251a646a1b7a272bd3  ./backend/compose/production/django/Dockerfile
 6cffe6a44b65c240cb8e3fb70eb36f34a2456e43da4bf6cc7e5327ab55caf1ae  ./backend/compose/production/django/celery/beat/start
 ba4f3d4ced9020de3390e35cd411aa672a3aba40a0f6128b4565479acc4c7dec  ./backend/compose/production/django/celery/flower/start
-96d2e0c47a8c37567a0d29f895808378fcbb928e67948f2cd7d0b41fd5b3c658  ./backend/compose/production/django/celery/worker/start
+3f01708b4e2bb8047776e1eedba681f768340541d4923378050861dd0616ae02  ./backend/compose/production/django/celery/worker/start
 211ceca6c1466065640047b3e922cf6c360fd616db91f265f9f4be9693a04837  ./backend/compose/production/django/entrypoint
 42ac7c5ffe97db3ea6f1d010a7a5f8aeb05e67046dfa01fc4b7864f9dfab3341  ./backend/compose/production/django/start
 b26e3389216010af60ca124e581ec7b5f1bc46fd44806ac56121047d556a0a4e  ./backend/compose/production/nginx/Dockerfile
@@ -82,7 +81,7 @@ c199f000dc940c48491b8f2ef44edde59877d75417edd2ac46e6deb9a8820149  ./backend/comp
 d5878c7b35a7c175d3a5c18008b0d1cb2e85b12ebf11917d6c40ddde1d2758c3  ./backend/config/asgi.py
 61d3b5cc2546afd6983f3453fc7b6c0f13d074ebe2a3a747753cff71b74713b2  ./backend/config/celery_app.py
 3fde1492caacbf958609760180ebb338a2a32158bb260324703197d1dbcc030b  ./backend/config/settings/__init__.py
-f83eafacb44393b456f1a874ad6d1a7ca55802aa7f78b69d7c8570655a468987  ./backend/config/settings/base.py
+d28e3a238b78dc845b69ee2b39c5899e5111c9512c54f4d01f89e19fd92602bc  ./backend/config/settings/base.py
 43ad0113d35359943258cb6d1c909d7e80a90c56139f5d7f6746c4e0d638b0ef  ./backend/config/settings/local.py
 ac6318e49d7dc8c2366cd4f4e9b8a3803982ee5491babe7c578158e841aab0f3  ./backend/config/settings/production.py
 aaec33a2fb35f61b6e627ea3547de1073629c2ae3fa779cbf82990d07e1f08bf  ./backend/config/settings/settings_addons.py
@@ -362,33 +361,36 @@ dcd985da5b721a8b45eda95acd3d8c12a72c2e09813ee6b5330338306a3a9dd4  ./backend/konn
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./backend/konnaxion/utils/__init__.py
 c30ac7f338dd1d28fe7f16942198943d6df6779a216aeba87fb02e516cc2c253  ./backend/konnaxion/utils/models.py
 1f3923fec115c1a118a9185ec4846383cbc8b38ee2e32aaa6592048252f9ed2a  ./backend/konnaxion/worlds/__init__.py
-78da7844503fc5545a23ca6ee7b6b20bfe1e2a5c4cfa93e3e004f0b42b1269fe  ./backend/konnaxion/worlds/admin.py
-93c3f35ee150a1227f1e122d236e83c6f266c3c764b2e9e396029c81fba613e5  ./backend/konnaxion/worlds/api_views.py
+890e015deb07464bbde462b60688bda8770374947791b3d2270422ec46d6e3ce  ./backend/konnaxion/worlds/admin.py
+c4c192f87793c6d44204899c98d8243abb17d3d17335d3db48d4c48041cbab08  ./backend/konnaxion/worlds/api_views.py
 4017a5a694625c7c5bccef88cecc08fae05d0ac755b31f127839e3bfbf2d36dc  ./backend/konnaxion/worlds/apps.py
 22e929da204e1ffe21bf0adfb2d16dbcfb4608bcbbd1adfdc3c08a2e3b62e041  ./backend/konnaxion/worlds/db.py
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./backend/konnaxion/worlds/management/__init__.py
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./backend/konnaxion/worlds/management/commands/__init__.py
-8bffa5ca47f93f03ac8b0c83e85474c8da15865ca430e6b3b60e540a47e1696d  ./backend/konnaxion/worlds/management/commands/worlds_build.py
+0314da2075a7cb43a083e1ffef723fb68d0badfbc27f3558a14c775b9b8aa217  ./backend/konnaxion/worlds/management/commands/worlds_build.py
 377388c64f9b0d0629321e8155eb911d8f93e72c956571c5f5561855b4b15fde  ./backend/konnaxion/worlds/management/commands/worlds_health.py
 9abbbecf7d86819e220735ff9930291f6a58b09c04ec0be4178689e3765f02a1  ./backend/konnaxion/worlds/management/commands/worlds_list.py
 887729b97b8d39691a4105613593dede342c21a98333dfb0c997f94f23145fca  ./backend/konnaxion/worlds/management/commands/worlds_promote.py
+f9753bcf5b111bff25d8f4f1ffaf1f7afdfcde3ca1c0d6baad8ec432b62a3dac  ./backend/konnaxion/worlds/management/commands/worlds_queue_catalog.py
 9ed9d1e46f33ac4f182a630be9265e55c0c08623ec1fedaa21dc5566d737d8d3  ./backend/konnaxion/worlds/management/commands/worlds_snapshot.py
 7efd00df7fe0b322634c6a19fd805cc46de9ecaf8959abb27959a8578a1aff97  ./backend/konnaxion/worlds/middleware.py
 866407b3046a0d458552006cb5316ed1fe513d2c20e34e23420286327f341d93  ./backend/konnaxion/worlds/migration_context.py
 6275ee45d88fbe926bc7dd1bce2e9fe683b0b2c427fb33e73ab203fd0d076930  ./backend/konnaxion/worlds/migrations/0001_initial.py
 10010f2f369f50b7710ef77304c7eb056c0346f0e60d7676219a75a1094534e4  ./backend/konnaxion/worlds/migrations/0002_harden_world_invariants.py
+93f1e81effb801034eaec7929fd38549c4098eb327c1e7cec0008b154607b34f  ./backend/konnaxion/worlds/migrations/0003_world_build_job.py
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./backend/konnaxion/worlds/migrations/__init__.py
-dd74ae3fba73d05a0e58cab325b131221fe1ab102a0602fa28a2bcae1762e72d  ./backend/konnaxion/worlds/models.py
+ae974b12f4530b4eb19c0f1e683a8c5f7d19296615fb7d747e015e8b32159057  ./backend/konnaxion/worlds/models.py
 bae3acca081bc25c8e46c0f4b9a11041922cc489086ce6470db00fe4dac57362  ./backend/konnaxion/worlds/permissions.py
 a3ac8b95b03e25a5a0778e82d3ce9e3bfe9cb0b4e122e841480b0e0074c3aca1  ./backend/konnaxion/worlds/resolver.py
 8194ee40fba65e8ce081fcaa479cb0b7fdfcba6e8b8dfb312adf34836da01939  ./backend/konnaxion/worlds/runtime.py
 8e1e9221e6e5f52011e7c23ed642df250361f64eba949954e35989381ee0160b  ./backend/konnaxion/worlds/runtime_urls.py
-2091cdc7f1a3bdeab7187f3a20739c925d1f56f77085ea1536aa51dfa4d1de4e  ./backend/konnaxion/worlds/serializers.py
+5d5ae4c191a7faf63dd5cb47cc2a1bbf9d21e6ec571dd6c25b6bc7e05038c569  ./backend/konnaxion/worlds/serializers.py
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./backend/konnaxion/worlds/services/__init__.py
 434dcf69c0ccbf32782a47907d4b5b3f2892594906fc59a4e12fe2ec91746fc0  ./backend/konnaxion/worlds/services/audit.py
-3b7d35b8babe087dd93a34b37d55969c3933f42d541563b4b200ceeb0b4cf460  ./backend/konnaxion/worlds/services/builder.py
+da864400241738e094701f0ff042dfc9dabd497dedca0595b58e58b0b7fee56e  ./backend/konnaxion/worlds/services/build_queue.py
+669c1fe4bf260a6134bd4964121fc8557e43fbd759ae3506e6bae96091a321fb  ./backend/konnaxion/worlds/services/builder.py
 387b0cc8c1b9945b6eaf2ab34552d6201e290183a7ed84f539d6e9bdfa2e588e  ./backend/konnaxion/worlds/services/cache.py
-5002180e4debc698b3c54ffdd5cc20c45f77021e80a255c6b930be6a43f2aabd  ./backend/konnaxion/worlds/services/health.py
+3eaa81a2fb6d3c26074d9ffad417b1766200c14b6be5009474b37af4df0d05b7  ./backend/konnaxion/worlds/services/health.py
 6eee0815859b8a2fa5ddf87141eee2bf102d0cd0b369c38905467f88b61595ca  ./backend/konnaxion/worlds/services/media.py
 cff326c00d1ecc646e2f780b369ec1ea44a6b4384ed6b10fd3f9d0de318876e2  ./backend/konnaxion/worlds/services/naming.py
 0e93f144e1d369330d41ba8e7c611ab779e288183f72fec3b302ce3f26a9c68d  ./backend/konnaxion/worlds/services/personas.py
@@ -397,11 +399,14 @@ c2260591641235284898f5ff5531eb179710d1d1c14beae980b863869afc2c80  ./backend/konn
 ae7289e75be98ee21c053c4473f6ccd4226b382a9a67a5434f725541dddc5289  ./backend/konnaxion/worlds/services/seed_packs.py
 89d949ed2bbbd91267bf56d381ea6bfe195b2de2915fbe5acf6daf67d96ac771  ./backend/konnaxion/worlds/services/snapshots.py
 bcf419f49815185a2f1d13473c13aa6b3d47c5a88f68b543de6eaf1809d7f8de  ./backend/konnaxion/worlds/services/tasks.py
+14f932025ad28bd222caff925f5b063928cf622c9ad23c66c5415ed5e380d0d0  ./backend/konnaxion/worlds/tasks.py
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./backend/konnaxion/worlds/tests/__init__.py
+68dc57c4b8d6c4bab9e9222f3ea067a4ff818425fb055e2891800e03bcb2cec0  ./backend/konnaxion/worlds/tests/test_build_jobs.py
+70bb5b1abd6bdd7b271a0e4e4c9c3bffcebff66cb424f2ff7ba7c9ea72ea0cb0  ./backend/konnaxion/worlds/tests/test_health_scale.py
 f0ec8b98c0533af11c973197e152c45b5eba1a22dc19ac50ff9833bb2c2d5dff  ./backend/konnaxion/worlds/tests/test_multiworld_isolation.py
 464cf17f9dc444ddce961b5992b7fbef2d327985ba07017018210b0a1ed6ea6f  ./backend/konnaxion/worlds/tests/test_primitives.py
 33329642f5af0093ce7613fab5733b992057ab72c902231c1d325aca54747a9b  ./backend/konnaxion/worlds/tests/test_seed_packs.py
-3a997cbd382a74b8c0d7f0345d1b01a589399723a36a42b6753c46af611bde6f  ./backend/konnaxion/worlds/urls.py
+9453f0bcaabcb5def9f5ed548fd80fc57dde312885246615c2d83bf3196ee540  ./backend/konnaxion/worlds/urls.py
 81cb272748c66e6a21794f8be6ba53b3bca13fed9cedf0361a6671440403709d  ./backend/locale/README.md
 3fad5c67b1b462278caa598ffaead5e6338c8865fe13c1e65a57b89fd89700d7  ./backend/locale/en_US/LC_MESSAGES/django.po
 fab954a7fbdacebc80245bf415f7e73cd982777d1f30c87e578fa019a41f76cf  ./backend/locale/fr_FR/LC_MESSAGES/django.po
@@ -416,11 +421,6 @@ a7341bd60ab227ed532688e6c4b95848997189e8893edcb4f246f0411d899d22  ./backend/mana
 f18673409ef084a977adf3fc4595a3e795fe5d708c58cb8593f0a9a6a4ab3978  ./backend/scripts/populate_all_models.py
 e9d7989e2bddc1324f370e50cc9ed4849d20e9919119328cd465c3e20f8b8207  ./backend/scripts/populate_demo_data.py
 10500dc4257a0bde36682a4a571b39b9b1dc0d18d43b86069343ef47727daf55  ./backend/scripts/populate_users.py
-b0db91bbe06fbad786fd74c1410456d62e9aa832a2fd5a98c120c8ecfce1f5b8  ./backend/seed-data/worlds/README.md
-47675f2f8a168e1368f1cea305d29d2dfe3479fc17d44a225be72420b4e65cb4  ./backend/seed-data/worlds/demo-alpha/scenario.json
-50f71f1c91a90122e23d6c13f03c625d85aec3145c7c0c78297066519eb92852  ./backend/seed-data/worlds/demo-alpha/world.yaml
-c62fd13772c1bb7735c8fdbcaf7df33ba955d90914b7ad9bce3391f99969dcb1  ./backend/seed-data/worlds/demo-beta/scenario.json
-7c51771b37e5e729aa1262aefa81faf679340ebf550392a0c14dabbf1a83d34c  ./backend/seed-data/worlds/demo-beta/world.yaml
 d021222a8f9ac637143073b931b1de94e2f0be3cfaf3c30fd25f22b381f9ac78  ./backend/tests/__init__.py
 34f38d76092799b51d756a24c5d00b5fcb17d74fd514dfbea7b20458f7732c9f  ./backend/tests/test_merge_production_dotenvs_in_dotenv.py
 4cbb579d96271aeb262a067f71e498604d6def93731c17e076de385621236620  ./backend/tests/test_smoke_platform.py
@@ -439,19 +439,26 @@ de6fd3ad554b4790b5eba7c1e7b77dc973c1ffba3f3046deface343d5e4530f6  ./docs/Securit
 acdc325f59c3024d02b7328b9bbf200fc20284466056e93ef0f9b1eede17c185  ./docs/Technical-Reference/CONTRACTS.txt
 f02a05b34d531d192b4d93d0df13d9525865994570f42abfdf2cc4691e7f09ca  ./docs/Technical-Reference/DEV_DOCKER_CHEATSHEET.md
 39927f7512ec343dee7681c771e5b04c5cc57cac83361a93e5ecaec6345a50ac  ./docs/Technical-Reference/DRAFT teambuilder concept.txt
+f1c1e1499b2ee0cf2024a62bc520414a9a46423ceab9d3b823d9cda411996e3c  ./docs/Technical-Reference/DocV14/Konnaxion v14 +ê+â-Â Full-Stack Technical Specification.md
+c6c29da09ba6894bb8cc9a4df7e01ee782364c07c51ebabf04b9eedca769bf9b  ./docs/Technical-Reference/DocV14/Konnaxion v14 +ê+â-Â Functional Code-Name Inventory (Services & Hooks).md
+326132be634b5addcbc55b6e289a7734cbf46e7479c55307fc5714fa750d9a2b  ./docs/Technical-Reference/DocV14/Konnaxion v14 +ê+â-Â Global Parameter Reference.md
+c3ae55ad2bfcd4470ed0b6b36993f302c241b37c4afd95252fc416a8cd0154ca  ./docs/Technical-Reference/DocV14/Konnaxion v14 +ê+â-Â Insights Module Config Parameters.md
+4ed6bfee4df2a7222d8522b06a6ac25b53f2cdf7510bcd7b420c13516f6f0687  ./docs/Technical-Reference/DocV14/Konnaxion v14 +ê+â-Â Insights Module UI Spec (Reporting & Analytics Frontend).md
+c4be2b966519983d61a2b792f7c754356e2159a61253572255e0409b226d3659  ./docs/Technical-Reference/DocV14/Konnaxion v14 +ê+â-Â Site Navigation Map (Top-Level Routes).md
 1cced7fe40d7b347082b4e0a77ba4ce66d1cff5fc1c90ac55bf252a223de1ff2  ./docs/Technical-Reference/DocV14/Konnaxion v14 - Database Schema Reference (Custom Tables).md
 7fc886985ca3a70c61f6e1f35dae3ec678b91f0070b8e7721dc66b137cb8bbb7  ./docs/Technical-Reference/DocV14/Konnaxion v14 - Database Schema Reference.md
 b75e935391a572b81009cab09a1ff3c363298cfb291ed349bce7844d440263d9  ./docs/Technical-Reference/DocV14/Konnaxion v14 - Documentation Index.md
 d476204db3043cd1036c38e8b5761f321d04883410829471957f5bb1b9bcfdeb  ./docs/Technical-Reference/DocV14/Konnaxion v14 - Full-Stack Technical Specification.md
 468d701e6bdad1287efaa8537cdeabcf3a7ca7b1f1f5b2d6ff372fbd80156b77  ./docs/Technical-Reference/DocV14/Konnaxion v14 - Insights UI Reference.md
 08da5ac8ab74c81bb3eb990f9c67cc6c321a88640f79803678eb269049c6de37  ./docs/Technical-Reference/DocV14/Konnaxion v14 - Site Navigation Map.md
-f1c1e1499b2ee0cf2024a62bc520414a9a46423ceab9d3b823d9cda411996e3c  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÔÇô Full-Stack Technical Specification.md
-c6c29da09ba6894bb8cc9a4df7e01ee782364c07c51ebabf04b9eedca769bf9b  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÔÇô Functional Code-Name Inventory (Services & Hooks).md
-326132be634b5addcbc55b6e289a7734cbf46e7479c55307fc5714fa750d9a2b  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÔÇô Global Parameter Reference.md
-c3ae55ad2bfcd4470ed0b6b36993f302c241b37c4afd95252fc416a8cd0154ca  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÔÇô Insights Module Config Parameters.md
-4ed6bfee4df2a7222d8522b06a6ac25b53f2cdf7510bcd7b420c13516f6f0687  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÔÇô Insights Module UI Spec (Reporting & Analytics Frontend).md
-c4be2b966519983d61a2b792f7c754356e2159a61253572255e0409b226d3659  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÔÇô Site Navigation Map (Top-Level Routes).md
-1a31d465c1795c67d25a1708a3e5725cfa738214c1c011a5dbdbf3bbe1b9879a  ./docs/Technical-Reference/DocV14/KonnaxionÔÇ» v14ÔÇ»-ÔÇ»Documentation INDEX.docx.md
+f1c1e1499b2ee0cf2024a62bc520414a9a46423ceab9d3b823d9cda411996e3c  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÃˆÃƒÂ¶ Full-Stack Technical Specification.md
+c6c29da09ba6894bb8cc9a4df7e01ee782364c07c51ebabf04b9eedca769bf9b  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÃˆÃƒÂ¶ Functional Code-Name Inventory (Services & Hooks).md
+326132be634b5addcbc55b6e289a7734cbf46e7479c55307fc5714fa750d9a2b  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÃˆÃƒÂ¶ Global Parameter Reference.md
+c3ae55ad2bfcd4470ed0b6b36993f302c241b37c4afd95252fc416a8cd0154ca  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÃˆÃƒÂ¶ Insights Module Config Parameters.md
+4ed6bfee4df2a7222d8522b06a6ac25b53f2cdf7510bcd7b420c13516f6f0687  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÃˆÃƒÂ¶ Insights Module UI Spec (Reporting & Analytics Frontend).md
+c4be2b966519983d61a2b792f7c754356e2159a61253572255e0409b226d3659  ./docs/Technical-Reference/DocV14/Konnaxion v14 ÃˆÃƒÂ¶ Site Navigation Map (Top-Level Routes).md
+1a31d465c1795c67d25a1708a3e5725cfa738214c1c011a5dbdbf3bbe1b9879a  ./docs/Technical-Reference/DocV14/Konnaxion+ê+âÔòù v14+ê+âÔòù-+ê+âÔòùDocumentation INDEX.docx.md
+1a31d465c1795c67d25a1708a3e5725cfa738214c1c011a5dbdbf3bbe1b9879a  ./docs/Technical-Reference/DocV14/KonnaxionÃˆÃƒâ•— v14ÃˆÃƒâ•—-ÃˆÃƒâ•—Documentation INDEX.docx.md
 bb1d5b7bc1eed33e8b0c04421076ee28a01dc3ac35dd71763b0c646a68add9d1  ./docs/Technical-Reference/EkoH Smart Vote/EkoH - System Overview.md
 7ee22efbcd42297f264ecb5fe0ce36d43e96b733cdb745ff81c3cab4be016298  ./docs/Technical-Reference/EkoH Smart Vote/EkoH and Smart Vote - Data Model.md
 619b1bcab623d2d5fdd9df15732e1a8551e6558d0d1c8f072f531107eec2b6c6  ./docs/Technical-Reference/EkoH Smart Vote/EkoH and Smart Vote - Technical Specification.md
@@ -505,20 +512,52 @@ c7df0e8bc0735da99e97b1b309b9703cb1e81c8d84b6e5e865fc920e0519c3ba  ./docs/Technic
 963cbdf59802313cc32f201c5eb90a3d302c75bc1a585073d1316cde076bc061  ./docs/Technical-Reference/Kintsugi_Kompendio/keenKonnect-kompendio-v1.md.md
 b7d9a4f6b166a2b623edd8281e1748c074c07d6367be8d8e71240d47abe5fe1c  ./docs/Technical-Reference/Konnaxion_Frontend_Deployment_Runbook.md
 9528942956549a6d69f6508183386f0148d2168aeb4c30bdf33e5acd308ae359  ./docs/Technical-Reference/UpdateBackendAndMigrateAndDocker.md
-1b221bfe92b9d5310eb364838c41c170a4b85aae1ae3f9fb42877c982ff266ee  ./docs/Technical-Reference/Worlds/AI_LOCK.yaml
-a7ed8f6d89515adf4b45a11200254cac3c9bc93ecc1b90f6690af92720bb1b8a  ./docs/Technical-Reference/Worlds/KONNAXION_WORLDS_FULL_SPEC.md
-b24ed108bc1c13a659ecc40c61d6858cc1036e2108eca4d03148aef09c1794aa  ./docs/Technical-Reference/Worlds/WORLD_SYSTEM_AI.instructions.md
+49d0019b3bf2d133dca265ef4f4540b459c7abe95ac16821eb1eb1374ab81c38  ./docs/Technical-Reference/Worlds/00_CANONICAL_SPEC.md
+c2735c08c1d25894732d068c89b524e9c93fead807ae9e41323b258eecb9c1ca  ./docs/Technical-Reference/Worlds/01_CURRENT_STATE_BASELINE.md
+37ba3ea86b4e71a35c29c11faac8dcfdc977f8cad9276f36388725cc18583333  ./docs/Technical-Reference/Worlds/02_GLOSSARY.md
+46b0e4c6e372744673470dda27d2bbf8d17c27c79c06b3407a4c172f818cd8ae  ./docs/Technical-Reference/Worlds/03_ARCHITECTURE.md
+6148579dfc29be21f83af8f023ba401c023e2eaca12539e331f80302eeff62ed  ./docs/Technical-Reference/Worlds/04_DATA_OWNERSHIP_MATRIX.md
+4a1b2b2b82a3ac7abee391093570231d3d6047fe725fb55de4c0a27109cbf0c8  ./docs/Technical-Reference/Worlds/05_DATA_MODEL.md
+aa7b725793e7fe1abed6b53fb87c20eb74d5d10657648191358077e875bcbf77  ./docs/Technical-Reference/Worlds/06_RUNTIME_CONTEXT_AND_ROUTING.md
+0fc00cd929a52617e260f47251af7465f639aade90bd7f297512787ff3790e8d  ./docs/Technical-Reference/Worlds/07_SEEDS_RELEASES_SNAPSHOTS.md
+beda217a79584ed212e17eda15fa20dc1b1a5ed17d1f1b38a23fb7e00419691f  ./docs/Technical-Reference/Worlds/08_ACCOUNTS_PERSONAS_EKOH_SMARTVOTE.md
+1a5e23bffc9b5b8d1aafe69c7ff6bbadd921559766b965f0bde183e650199e97  ./docs/Technical-Reference/Worlds/09_INFRASTRUCTURE_SCOPING.md
+f2d8edfd081c8a9a0c19b93c8fab139b5cfc1458be85ed002375dd457fc1dae7  ./docs/Technical-Reference/Worlds/10_CONTROL_PLANE_API.md
+d6c0443a558e65366f97591d72350ff937f98ec9bb589d12b8b50b2b69932f50  ./docs/Technical-Reference/Worlds/11_WORLD_MANAGER_UI.md
+0868463cb7f7a6164fd544b9fb07385bb2591f34f27565cd13ec0e0281effab6  ./docs/Technical-Reference/Worlds/12_SECURITY_AND_FAILURE_MODES.md
+cd740a109b370f43b97a176cef493a83c21c7ffd83f724c50dc7d4dd0788c045  ./docs/Technical-Reference/Worlds/13_TEST_AND_ACCEPTANCE_PLAN.md
+49fcd2c87357bd58fa8cf8ae571fe53e5362ef2e356bb205340d7cd9ce85e0bd  ./docs/Technical-Reference/Worlds/14_MIGRATION_PLAN.md
+fc71b90ce5335aacb30a38103714176c1e7f8fd1b20b1dcc413524e2b6f9d307  ./docs/Technical-Reference/Worlds/15_OPERATIONS_RUNBOOK.md
+09796a5a52d4587513c43531b26270dd07104b453a8e2148a73ffe3c73486281  ./docs/Technical-Reference/Worlds/16_AI_LOCK_ANTI_DRIFT.md
+c6ad2eb812dc910f3732861ce10d664b3c3ccc10eeddaf7fd8eb908b467e63d5  ./docs/Technical-Reference/Worlds/17_ADR_REGISTER.md
+d387b323cd79045f07e5b2fd5b2df1b81755e8940e41f0638e5d9c1914da9a7b  ./docs/Technical-Reference/Worlds/18_IMPLEMENTATION_CHECKLIST.md
+d7933fd401594ac423da09a0118d801d0e3cfec622aec94159546d13a3c10704  ./docs/Technical-Reference/Worlds/19_PRODUCTION_SCALE_120_WORLDS.md
+844b3c4080059290020c862e571e5bae94e3d8a9245449ebed8dcf38f1088237  ./docs/Technical-Reference/Worlds/AI_LOCK.yaml
+58e4164ed5fcc4a01f0720dad65a1a7b0db17f6f32c41e36c2f935c4bf2aeaaf  ./docs/Technical-Reference/Worlds/KONNAXION_WORLDS_FULL_SPEC.md
+ca11f2f7b7be12d1a3bfa6f25b3487ef366fe2901378d7035efc32532321047f  ./docs/Technical-Reference/Worlds/WORLD_SYSTEM_AI.instructions.md
 a607b62c281c801fb28eeaf9a96b18a10276c341883c07c7b52330d7cee97861  ./docs/Technical-Reference/namecheap-vps.md
-0e2c4c8f8e03271c4cb4aadf4a251f2fc73f0274c50b331b4076ba4974156164  ./docs/Technical-Reference/sub-modules_description/CertifiKation (Skills & Certification) ÔÇö subÔÇæmodule under KonnectED.md
-d453587adfdd1c7539cc0a4fad5cf78a0f3091489b37c21490c9f5f9f6cf4cd3  ./docs/Technical-Reference/sub-modules_description/EkoH (Reputation & Expertise) ÔÇö first subÔÇæmodule under Kollective Intelligence.md
-aef33cd7db93563af3c1b80d007ce0e7c2d1fa20cb7d0c1050148c0ce9a0e936  ./docs/Technical-Reference/sub-modules_description/Knowledge (Collaborative Learning Library) ÔÇö subÔÇæmodule under KonnectED.md
-c53fd55540998251d14d5393a7145c9ffb8bff6189318d517465b9069a9b76b4  ./docs/Technical-Reference/sub-modules_description/Konservation (Creative Content & Cultural Preservation) ÔÇö subÔÇæmodule under Kreative.md
-7d6797a4990341fb3a192eaa0028ffaa1ee914be2fbd3ca5e7756237125d439b  ./docs/Technical-Reference/sub-modules_description/Konstruct (Project Collaboration Spaces) ÔÇö first subÔÇæmodule under keenKonnect.md
-96adc1892beaa1c7c54c29a3e8cbccad231c01c4c1e197c2f28f5804cfcce1da  ./docs/Technical-Reference/sub-modules_description/Konsultations (Public Consultations & Feedback) ÔÇö subÔÇæmodule under ethiKos.md
-3ef6ab7d58148953ba57674d1dc3b1e42c0cddfbe0bff1e10957c49fe3bd46a7  ./docs/Technical-Reference/sub-modules_description/Kontact (Collaboration & Networking) ÔÇö subÔÇæmodule under Kreative.md
-49ee8217c6990b0a92de2733b63d8510f2b07553c00a8b2428ea7c6d8e547516  ./docs/Technical-Reference/sub-modules_description/Korum (Structured Debates) ÔÇö subÔÇæmodule under ethiKos.md
-09c5bae5620e6c4f2030afc625bf98c09c50188d0eba195f18034b68a644e9ec  ./docs/Technical-Reference/sub-modules_description/Smart Vote (Weighted Voting System) ÔÇö second subÔÇæmodule under Kollective Intelligence.md
-e99819e876a36e7f6c00147cd9e44cad8efb199ab06d899a224f10b1b7366cc8  ./docs/Technical-Reference/sub-modules_description/Stockage (Secure Repository & Versioned Storage) ÔÇö second subÔÇæmodule under keenKonnect.md
+0e2c4c8f8e03271c4cb4aadf4a251f2fc73f0274c50b331b4076ba4974156164  ./docs/Technical-Reference/sub-modules_description/CertifiKation (Skills & Certification) +ê+â+À sub+ê+â-Ámodule under KonnectED.md
+0e2c4c8f8e03271c4cb4aadf4a251f2fc73f0274c50b331b4076ba4974156164  ./docs/Technical-Reference/sub-modules_description/CertifiKation (Skills & Certification) ÃˆÃƒÃ· subÃˆÃƒÂµmodule under KonnectED.md
+d453587adfdd1c7539cc0a4fad5cf78a0f3091489b37c21490c9f5f9f6cf4cd3  ./docs/Technical-Reference/sub-modules_description/EkoH (Reputation & Expertise) +ê+â+À first sub+ê+â-Ámodule under Kollective Intelligence.md
+d453587adfdd1c7539cc0a4fad5cf78a0f3091489b37c21490c9f5f9f6cf4cd3  ./docs/Technical-Reference/sub-modules_description/EkoH (Reputation & Expertise) ÃˆÃƒÃ· first subÃˆÃƒÂµmodule under Kollective Intelligence.md
+aef33cd7db93563af3c1b80d007ce0e7c2d1fa20cb7d0c1050148c0ce9a0e936  ./docs/Technical-Reference/sub-modules_description/Knowledge (Collaborative Learning Library) +ê+â+À sub+ê+â-Ámodule under KonnectED.md
+aef33cd7db93563af3c1b80d007ce0e7c2d1fa20cb7d0c1050148c0ce9a0e936  ./docs/Technical-Reference/sub-modules_description/Knowledge (Collaborative Learning Library) ÃˆÃƒÃ· subÃˆÃƒÂµmodule under KonnectED.md
+c53fd55540998251d14d5393a7145c9ffb8bff6189318d517465b9069a9b76b4  ./docs/Technical-Reference/sub-modules_description/Konservation (Creative Content & Cultural Preservation) +ê+â+À sub+ê+â-Ámodule under Kreative.md
+c53fd55540998251d14d5393a7145c9ffb8bff6189318d517465b9069a9b76b4  ./docs/Technical-Reference/sub-modules_description/Konservation (Creative Content & Cultural Preservation) ÃˆÃƒÃ· subÃˆÃƒÂµmodule under Kreative.md
+7d6797a4990341fb3a192eaa0028ffaa1ee914be2fbd3ca5e7756237125d439b  ./docs/Technical-Reference/sub-modules_description/Konstruct (Project Collaboration Spaces) +ê+â+À first sub+ê+â-Ámodule under keenKonnect.md
+7d6797a4990341fb3a192eaa0028ffaa1ee914be2fbd3ca5e7756237125d439b  ./docs/Technical-Reference/sub-modules_description/Konstruct (Project Collaboration Spaces) ÃˆÃƒÃ· first subÃˆÃƒÂµmodule under keenKonnect.md
+96adc1892beaa1c7c54c29a3e8cbccad231c01c4c1e197c2f28f5804cfcce1da  ./docs/Technical-Reference/sub-modules_description/Konsultations (Public Consultations & Feedback) +ê+â+À sub+ê+â-Ámodule under ethiKos.md
+96adc1892beaa1c7c54c29a3e8cbccad231c01c4c1e197c2f28f5804cfcce1da  ./docs/Technical-Reference/sub-modules_description/Konsultations (Public Consultations & Feedback) ÃˆÃƒÃ· subÃˆÃƒÂµmodule under ethiKos.md
+3ef6ab7d58148953ba57674d1dc3b1e42c0cddfbe0bff1e10957c49fe3bd46a7  ./docs/Technical-Reference/sub-modules_description/Kontact (Collaboration & Networking) +ê+â+À sub+ê+â-Ámodule under Kreative.md
+3ef6ab7d58148953ba57674d1dc3b1e42c0cddfbe0bff1e10957c49fe3bd46a7  ./docs/Technical-Reference/sub-modules_description/Kontact (Collaboration & Networking) ÃˆÃƒÃ· subÃˆÃƒÂµmodule under Kreative.md
+49ee8217c6990b0a92de2733b63d8510f2b07553c00a8b2428ea7c6d8e547516  ./docs/Technical-Reference/sub-modules_description/Korum (Structured Debates) +ê+â+À sub+ê+â-Ámodule under ethiKos.md
+49ee8217c6990b0a92de2733b63d8510f2b07553c00a8b2428ea7c6d8e547516  ./docs/Technical-Reference/sub-modules_description/Korum (Structured Debates) ÃˆÃƒÃ· subÃˆÃƒÂµmodule under ethiKos.md
+09c5bae5620e6c4f2030afc625bf98c09c50188d0eba195f18034b68a644e9ec  ./docs/Technical-Reference/sub-modules_description/Smart Vote (Weighted Voting System) +ê+â+À second sub+ê+â-Ámodule under Kollective Intelligence.md
+09c5bae5620e6c4f2030afc625bf98c09c50188d0eba195f18034b68a644e9ec  ./docs/Technical-Reference/sub-modules_description/Smart Vote (Weighted Voting System) ÃˆÃƒÃ· second subÃˆÃƒÂµmodule under Kollective Intelligence.md
+e99819e876a36e7f6c00147cd9e44cad8efb199ab06d899a224f10b1b7366cc8  ./docs/Technical-Reference/sub-modules_description/Stockage (Secure Repository & Versioned Storage) +ê+â+À second sub+ê+â-Ámodule under keenKonnect.md
+e99819e876a36e7f6c00147cd9e44cad8efb199ab06d899a224f10b1b7366cc8  ./docs/Technical-Reference/sub-modules_description/Stockage (Secure Repository & Versioned Storage) ÃˆÃƒÃ· second subÃˆÃƒÂµmodule under keenKonnect.md
+f5d0e050fe559cc9b7528b08c4db68abc15dd3dedfbd42c875b6ba517449f26c  ./examples/world-pack.example.yaml
+7c65b2dbee512764c68b775a7b7aba7d7a54d29ce9055d827c058267ac6aa0d7  ./examples/worlds-architecture.mmd
 fdee607251d44c3f899fb9ef74c71666fe2d45e89e67ef77e471ea6d414cde78  ./frontend/.all-contributorsrc
 9bee950a3d5d5890b8740b23d171f71b2e63384d9da079deb5cdaaf749f666af  ./frontend/.dockerignore
 bf75bb352acab62a94897906614b9073276fa1cd0f042cf4c30879f1b5815d8a  ./frontend/.gitignore
@@ -735,7 +774,7 @@ ea99bf24517a13736ca9bf37ca9ab617c6c62dc7f826b36c320edc049c72b30c  ./frontend/com
 a6bd933c7a5c1aae0924bfe822a38d79e07f89b53973f6fc3cc888a8d109372f  ./frontend/components/user-components/UserVisit.tsx
 8aa361ddcac0a7a9cf5ca77aff1197effd4c8893273008ff8f9e7f8c7547d5c4  ./frontend/components/user-components/index.tsx
 87fb982e920a1c8762049fdf2ca51e41d25b677057fde4db2e5053c0e3b33cd5  ./frontend/components/user-components/style.tsx
-2daa808c02a5df5f35a2807e3d3c10eb47532223334f9bd356e655ff106a00fe  ./frontend/components/worlds/WorldSwitcher.tsx
+5e28d95649165efef228b7164291af5d785c8ac7f2372fbb8700ca73a45d15dd  ./frontend/components/worlds/WorldSwitcher.tsx
 f57ad387fb39077690c3d84a017ca924b7943369cce54a1d6ba068daa6d3bd48  ./frontend/components/worlds/WorldViewAsSwitcher.tsx
 c18365d960351ea2c5924f2077a8a7e8740b71b7b359716b78bd99f488e6e747  ./frontend/concat_frontend.py
 c14f234c9623a4dc6d0eff435b3685e76b32b677ac566f850220c99054b9361e  ./frontend/context/ThemeContext.tsx

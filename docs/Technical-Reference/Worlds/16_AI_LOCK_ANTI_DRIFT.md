@@ -60,7 +60,10 @@ Without ADR, AI MUST NOT replace the design with:
 - shared Redis keys;
 - async tasks that resolve "current World" at execution time;
 - cross-World ORM joins;
-- display title/name/username as cross-World identity.
+- display title/name/username as cross-World identity;
+- one app/container/server process per World as the normal 120-World scaling model;
+- lifecycle build/import/provision work in the user World-switch path;
+- exhaustive all-World deep validation inside ordinary liveness/readiness probes.
 
 ## 5. Naming lock
 
@@ -125,6 +128,8 @@ Missing World context is a bug, not a signal to infer one.
 Every isolation-related change requires at least one test using two Worlds with deliberately colliding display keys.
 
 One-World happy-path tests are insufficient.
+
+For production-scale changes, also verify the approximately 120-World catalog target, A -> B -> C -> A switching, concurrent clients in different Worlds, and bounded lightweight health checks.
 
 ## 10. Importer rules
 

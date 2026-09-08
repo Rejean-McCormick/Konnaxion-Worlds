@@ -160,7 +160,40 @@ Switch to B.
 Return delayed A response.
 Assert UI remains B.
 
-## 16. CI gates
+## 16. 120-World scale acceptance
+
+Before declaring the server deployment ready for the intended production scale, maintain a generated/fixture campaign with **120 registered Worlds** (minimal synthetic content is acceptable for the scale portion).
+
+Required assertions:
+1. all 120 Worlds can coexist in the registry without per-World application/container stacks;
+2. each active World resolves its own current Release and schema pair;
+3. switching among a representative sequence such as `A -> B -> C -> A` performs no build/import/reset/restart and restores A's unchanged state;
+4. two or more concurrent clients can remain in different Worlds simultaneously;
+5. World list/search remains responsive and returns correct visibility/permission filtering;
+6. lightweight liveness/readiness does not iterate expensive deep validation across all 120 Worlds;
+7. deep health can validate all current Releases separately and report the exact failing World/Release;
+8. bulk build jobs obey concurrency limits and do not starve ordinary World runtime requests;
+9. retained historical Releases obey the configured retention/storage policy;
+10. switching does not globally flush Redis, restart workers, or alter another user's World context.
+
+The 120-World test complements, but does not replace, the deliberately colliding two-World isolation tests. Scale tests prove operability; collision tests prove isolation correctness.
+
+## 17. Production switch acceptance
+
+The defining end-user sequence is:
+
+```text
+open World A
+record visible state/checksum
+switch to World B
+switch to World C
+switch back to World A
+assert original A state is unchanged
+```
+
+The sequence MUST succeed through the deployed server using normal public routes. No operator action is allowed between switches.
+
+## 18. CI gates
 
 Required CI groups:
 

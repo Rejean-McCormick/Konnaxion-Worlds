@@ -1,6 +1,6 @@
 architecture_lock:
   id: KX-WORLDS-1
-  version: 1.0.0
+  version: 1.1.0
   status: locked_target_architecture
   implementation_state: implemented_pending_runtime_validation
   canonical_human_spec: KONNAXION_WORLDS_FULL_SPEC.md
@@ -114,6 +114,14 @@ invariants:
   rule: World-owned derived artifacts and audit events MUST record World/Release provenance.
 - id: WLD-040
   rule: Temporary migration adapters MUST be labeled and have a removal condition.
+- id: WLD-041
+  rule: Production architecture MUST support the intended approximately 120 registered Worlds inside one logical shared Konnaxion deployment; World count MUST NOT imply one app/container stack per World.
+- id: WLD-042
+  rule: SelectWorld MUST remain ordinary request/navigation routing and MUST NOT start/stop services or trigger build, import, reset, migration, restore, or schema provisioning.
+- id: WLD-043
+  rule: Long-running Release lifecycle operations MUST be isolated from the user World-switch path and production SHOULD apply explicit job concurrency/resource limits.
+- id: WLD-044
+  rule: Server liveness/readiness MUST remain bounded and MUST NOT depend on exhaustive deep validation of every registered World on each probe.
 forbidden_patterns_without_adr:
 - reset_and_reseed_on_world_switch
 - session_only_world_authority
@@ -134,3 +142,5 @@ required_review_questions:
 - Can another World address the same natural key?
 - Does this touch source facts or derived readings?
 - Does this change a locked invariant?
+- Does this still work with approximately 120 registered Worlds in one shared deployment?
+- Does any World switch path trigger lifecycle work or infrastructure restart?

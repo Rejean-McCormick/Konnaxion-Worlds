@@ -158,7 +158,41 @@ Dashboards default to one World when viewed inside `/w/{world}/...`.
 
 Cross-World analytics is an explicit control-plane/reporting view.
 
-## 10. Logging
+## 10. Production job isolation at 120-World scale
+
+Release build/provision/import work is operationally different from user World switching.
+
+For production control-plane requests, long-running operations SHOULD execute as explicit jobs outside the interactive request path. A build job MUST pin its target World/Release and MUST NOT change the current Release until validation and explicit promotion succeed.
+
+Recommended shape:
+
+```text
+POST build
+→ create/identify WorldRelease + build job
+→ worker provisions schemas
+→ scoped migrations
+→ Seed Pack import
+→ derived-index rebuild
+→ validation
+→ READY
+→ explicit promote
+```
+
+Multiple World builds MAY run concurrently only within configured resource limits. Production SHOULD provide queue/concurrency limits so bulk preparation of 120 Worlds cannot starve ordinary runtime traffic.
+
+## 11. Health checks at 120-World scale
+
+Server liveness/readiness MUST remain lightweight and MUST NOT perform exhaustive schema validation across all Worlds on every probe.
+
+Separate:
+- **liveness** — process responds;
+- **readiness** — core dependencies such as PostgreSQL/Redis are reachable and required migrations/configuration are valid;
+- **registry health** — compact status of Worlds/current Releases;
+- **deep World health** — canaries, schema validation, isolation checks and expensive audits, executed on demand or periodically.
+
+A reverse proxy/orchestrator health probe MUST NOT become slower in proportion to the number of registered Worlds.
+
+## 12. Logging
 
 Structured logs should include:
 

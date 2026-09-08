@@ -25,6 +25,9 @@ Mandatory:
 - no direct cross-World ORM join.
 - build new Release then promote; never destructively rebuild current.
 - two-World collision tests are required.
+- production target is ~120 registered Worlds in one shared logical deployment; never introduce per-World stacks.
+- World switch must remain normal navigation/request routing and must never trigger build/import/reset/migration/provision/restart.
+- keep lightweight server health separate from deep all-World validation.
 
 Never assume target classes/routes already exist. Inspect code first.
 

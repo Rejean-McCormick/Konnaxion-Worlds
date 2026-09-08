@@ -38,6 +38,13 @@ for world in World.objects.select_related("current_release").order_by("key"):
             }
             for r in world.releases.order_by("-release_number")
         ],
+        "build_jobs": [
+            {
+                "id": j.id, "status": j.status, "release_id": j.release_id,
+                "seed": j.seed_pack_key, "seed_version": j.seed_version,
+            }
+            for j in world.build_jobs.order_by("-created_at")[:5]
+        ],
     })
 print("__KX_RESULT__=" + json.dumps({
     "architecture_lock": "KX-WORLDS-1",
@@ -70,17 +77,39 @@ print("__KX_RESULT__=" + json.dumps({"ok": True, "created": created, "id": world
 
 BUILD_CODE = r'''
 import json, sys
-from konnaxion.worlds.models import World
-from konnaxion.worlds.services.builder import build_world_release
+from konnaxion.worlds.models import World, WorldBuildJob
+from konnaxion.worlds.services.build_queue import enqueue_world_build_job
+from konnaxion.worlds.services.seed_packs import get_seed_pack
 payload = json.load(sys.stdin)
 world = World.objects.get(key=payload["world_key"])
-release = build_world_release(
-    world=world,
-    seed_pack_key=payload["seed_pack_key"],
-    seed_version=payload.get("seed_version"),
-    promote=bool(payload.get("promote")),
-)
-print("__KX_RESULT__=" + json.dumps({"ok": True, "release_id": release.id, "release_number": release.release_number, "status": release.status}))
+pack, _record = get_seed_pack(payload["seed_pack_key"], payload.get("seed_version"))
+promote_after_build = bool(payload.get("promote"))
+job = world.build_jobs.filter(
+    status__in=(
+        WorldBuildJob.STATUS_QUEUED,
+        WorldBuildJob.STATUS_BUILDING,
+        WorldBuildJob.STATUS_VALIDATING,
+    ),
+    seed_pack_key=pack.world_key,
+    seed_version=pack.version,
+    promote_after_build=promote_after_build,
+).first()
+if job is None:
+    job = WorldBuildJob.objects.create(
+        world=world,
+        seed_pack_key=pack.world_key,
+        seed_version=pack.version,
+        promote_after_build=promote_after_build,
+        metadata_json={"architecture_lock": "KX-WORLDS-1", "seed_checksum": pack.checksum},
+    )
+    enqueue_world_build_job(job)
+print("__KX_RESULT__=" + json.dumps({
+    "ok": True,
+    "build_job_id": job.id,
+    "status": job.status,
+    "queue": job.queue_name,
+    "celery_task_id": job.celery_task_id,
+}))
 '''.strip()
 
 PROMOTE_CODE = r'''
@@ -228,7 +257,7 @@ class WorldManager(tk.Tk):
         self.world_tree.heading("release", text="Release")
         self.world_tree.heading("seed", text="Seed")
         self.world_tree.column("#0", width=210)
-        self.world_tree.column("status", width=90)
+        self.world_tree.column("status", width=145)
         self.world_tree.column("release", width=90)
         self.world_tree.column("seed", width=160)
         self.world_tree.pack(fill="both", expand=True)
@@ -374,7 +403,7 @@ class WorldManager(tk.Tk):
         pack_label = f"{pack}@{version}" if version else pack
         if not messagebox.askyesno(APP_TITLE, f"Build {pack_label} into {world}?\nPromote: {promote}", parent=self):
             return
-        self._set_status("Building immutable release…")
+        self._set_status("Queueing immutable release build…")
         result = self._call(BUILD_CODE, {"world_key": world, "seed_pack_key": pack, "seed_version": version, "promote": promote})
         self._log(json.dumps(result, indent=2))
         self.refresh()
@@ -480,7 +509,14 @@ class WorldManager(tk.Tk):
             release = world.get("release") or {}
             rel = "—" if not release else f"r{release.get('number')}" + (" *" if release.get("dirty") else "")
             seed = "—" if not release else f"{release.get('seed') or ''}@{release.get('seed_version') or ''}"
-            self.world_tree.insert("", "end", iid=world["key"], text=world["title"], values=(world["status"], rel, seed))
+            active_jobs = [
+                job for job in world.get("build_jobs", [])
+                if job.get("status") in {"queued", "building", "validating"}
+            ]
+            status_text = world["status"]
+            if active_jobs:
+                status_text = f"{status_text} / {active_jobs[0]['status']}"
+            self.world_tree.insert("", "end", iid=world["key"], text=world["title"], values=(status_text, rel, seed))
         for item in self.pack_tree.get_children():
             self.pack_tree.delete(item)
         for pack in data.get("packs", []):

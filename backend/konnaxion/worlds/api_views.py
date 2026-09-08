@@ -13,6 +13,7 @@ from .models import (
     SeedPackRecord,
     World,
     WorldAuditEvent,
+    WorldBuildJob,
     WorldMembership,
     WorldPersona,
     WorldPersonaBridge,
@@ -22,6 +23,7 @@ from .models import (
 from .serializers import (
     SeedPackRecordSerializer,
     WorldAuditEventSerializer,
+    WorldBuildJobSerializer,
     WorldMembershipSerializer,
     WorldPersonaSerializer,
     WorldReleaseSerializer,
@@ -30,15 +32,15 @@ from .serializers import (
 )
 from .resolver import can_manage_world
 from .services.audit import audit
+from .services.build_queue import enqueue_world_build_job
 from .services.builder import (
     WorldBuildError,
-    build_world_release,
     clone_release_state,
     promote_release,
     purge_release,
 )
-from .services.health import world_system_health
-from .services.seed_packs import SeedPackError, discover_seed_packs
+from .services.health import world_liveness, world_readiness, world_registry_health, world_system_health
+from .services.seed_packs import SeedPackError, discover_seed_packs, get_seed_pack
 from .services.schema import validate_release_schemas
 from .services.snapshots import create_snapshot, restore_snapshot
 
@@ -82,11 +84,32 @@ def _manage_or_403(request, world: World):
     return None
 
 
+def _request_bool(value, *, default: bool = False) -> bool:
+    if value is None:
+        return default
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return bool(value)
+    normalized = str(value).strip().lower()
+    if normalized in {"1", "true", "yes", "on"}:
+        return True
+    if normalized in {"0", "false", "no", "off", ""}:
+        return False
+    return default
+
+
 class WorldCollectionView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
         worlds = _visible_worlds(request.user)
+        query = str(request.query_params.get("q") or "").strip()
+        if query:
+            worlds = worlds.filter(Q(key__icontains=query) | Q(title__icontains=query))
+        requested_status = str(request.query_params.get("status") or "").strip().lower()
+        if requested_status in dict(World.STATUS_CHOICES):
+            worlds = worlds.filter(status=requested_status)
         return Response(WorldSerializer(worlds, many=True, context={"request": request}).data)
 
     def post(self, request):
@@ -154,20 +177,109 @@ class WorldBuildReleaseView(APIView):
         denied = _manage_or_403(request, world)
         if denied:
             return denied
-        seed_key = request.data.get("seed_pack_key")
+        if world.status == World.STATUS_ARCHIVED:
+            return Response({"error": "WORLD_ARCHIVED"}, status=409)
+
+        seed_key = str(request.data.get("seed_pack_key") or "").strip().lower()
         if not seed_key:
             return Response({"error": "seed_pack_key is required"}, status=400)
+        seed_version = str(request.data.get("seed_version") or "").strip() or None
+
+        # Validate/resolve the requested pack before creating a persistent queue job.
+        # The expensive schema/migration/import work still happens only in Celery.
         try:
-            release = build_world_release(
-                world=world,
-                seed_pack_key=str(seed_key),
-                seed_version=request.data.get("seed_version"),
-                actor=request.user,
-                promote=bool(request.data.get("promote", False)),
+            pack, _record = get_seed_pack(seed_key, seed_version)
+        except SeedPackError as exc:
+            return Response({"error": "WORLD_SEED_INVALID", "detail": str(exc)}, status=400)
+
+        promote_after_build = _request_bool(request.data.get("promote"))
+        existing_job = world.build_jobs.filter(
+            status__in=(
+                WorldBuildJob.STATUS_QUEUED,
+                WorldBuildJob.STATUS_BUILDING,
+                WorldBuildJob.STATUS_VALIDATING,
+            ),
+            seed_pack_key=pack.world_key,
+            seed_version=pack.version,
+            promote_after_build=promote_after_build,
+        ).first()
+        if existing_job is not None:
+            return Response(
+                WorldBuildJobSerializer(existing_job).data,
+                status=status.HTTP_202_ACCEPTED,
             )
-        except (SeedPackError, WorldBuildError, ValueError) as exc:
-            return Response({"error": "WORLD_BUILD_FAILED", "detail": str(exc)}, status=400)
-        return Response(WorldReleaseSerializer(release).data, status=201)
+
+        job = WorldBuildJob.objects.create(
+            world=world,
+            requested_by=request.user,
+            seed_pack_key=pack.world_key,
+            seed_version=pack.version,
+            promote_after_build=promote_after_build,
+            metadata_json={
+                "architecture_lock": "KX-WORLDS-1",
+                "seed_checksum": pack.checksum,
+                "scenario_count": len(pack.scenario_paths),
+            },
+        )
+        audit(
+            event_type="release_build_job_queued",
+            world=world,
+            actor=request.user,
+            metadata={"build_job_id": job.id, "seed": f"{pack.world_key}@{pack.version}"},
+        )
+        try:
+            enqueue_world_build_job(job)
+        except Exception as exc:
+            job.status = WorldBuildJob.STATUS_FAILED
+            job.error_text = str(exc)
+            job.finished_at = timezone.now()
+            job.save(update_fields=["status", "error_text", "finished_at", "updated_at"])
+            audit(
+                event_type="release_build_job_failed",
+                world=world,
+                actor=request.user,
+                metadata={"build_job_id": job.id, "error": str(exc), "stage": "enqueue"},
+            )
+            return Response(
+                {
+                    "error": "WORLD_BUILD_QUEUE_UNAVAILABLE",
+                    "detail": str(exc),
+                    "job": WorldBuildJobSerializer(job).data,
+                },
+                status=503,
+            )
+
+        return Response(WorldBuildJobSerializer(job).data, status=status.HTTP_202_ACCEPTED)
+
+
+class WorldBuildJobListView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, world_key: str):
+        try:
+            world = _get_world(world_key)
+        except World.DoesNotExist:
+            return Response({"error": "WORLD_NOT_FOUND"}, status=404)
+        denied = _manage_or_403(request, world)
+        if denied:
+            return denied
+        jobs = world.build_jobs.select_related("release", "requested_by")[:200]
+        return Response(WorldBuildJobSerializer(jobs, many=True).data)
+
+
+class WorldBuildJobDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, world_key: str, job_id: int):
+        try:
+            world = _get_world(world_key)
+            job = world.build_jobs.select_related("release", "requested_by").get(pk=job_id)
+        except (World.DoesNotExist, WorldBuildJob.DoesNotExist):
+            return Response({"error": "WORLD_BUILD_JOB_NOT_FOUND"}, status=404)
+        denied = _manage_or_403(request, world)
+        if denied:
+            return denied
+        return Response(WorldBuildJobSerializer(job).data)
 
 
 class WorldReleasePromoteView(APIView):
@@ -529,6 +641,31 @@ class WorldAuditListView(APIView):
             return denied
         events = world.audit_events.select_related("actor")[:500]
         return Response(WorldAuditEventSerializer(events, many=True).data)
+
+
+class WorldLivenessView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        return Response(world_liveness())
+
+
+class WorldReadinessView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        report = world_readiness()
+        return Response(report, status=200 if report.get("ok") else 503)
+
+
+class WorldRegistryHealthView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        if not request.user.is_staff:
+            return Response({"error": "WORLD_ACCESS_DENIED"}, status=403)
+        report = world_registry_health()
+        return Response(report, status=200 if report.get("ok") else 503)
 
 
 class WorldSystemHealthView(APIView):

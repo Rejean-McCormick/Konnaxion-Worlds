@@ -2,7 +2,8 @@
 
 ## Architecture
 
-- [ ] `KX-WORLDS-1` docs committed.
+- [ ] `KX-WORLDS-1` v1.1 docs committed.
+- [ ] Production target documented: one logical deployment supporting ~120 registered Worlds.
 - [ ] Existing AI/domain ownership docs referenced.
 - [ ] `konnaxion.worlds` canonical owner created.
 - [ ] No alternate scenario-column multi-tenancy introduced.
@@ -72,6 +73,8 @@
 ## Frontend
 
 - [ ] World switcher.
+- [ ] World switcher search/type-ahead usable with ~120 Worlds.
+- [ ] recent/favorite or equivalent fast-access UX for large catalog.
 - [ ] hard-navigation v1.
 - [ ] query/cache reset.
 - [ ] stale-response rejection.
@@ -81,6 +84,10 @@
 ## Releases/ops
 
 - [ ] build new Release.
+- [ ] production build/provision/import runs outside user World-switch path.
+- [ ] queued build concurrency/resource limit.
+- [ ] lightweight liveness/readiness separated from deep all-World health.
+- [ ] Release retention policy suitable for ~120 Worlds.
 - [ ] validation report.
 - [ ] promote pointer.
 - [ ] dirty marker.
@@ -105,6 +112,10 @@
 - [ ] public fallback guard.
 - [ ] stale frontend response.
 - [ ] snapshot/restore.
+- [ ] 120 registered Worlds scale campaign.
+- [ ] A -> B -> C -> A production switch acceptance.
+- [ ] concurrent clients in different Worlds.
+- [ ] switch proves no build/import/reset/restart/global cache flush.
 
 ## AI drift
 

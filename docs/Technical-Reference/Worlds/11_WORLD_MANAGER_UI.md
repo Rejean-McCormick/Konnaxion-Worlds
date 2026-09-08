@@ -90,11 +90,30 @@ WORLD [ CUNY Philosophy ▼ ]
 
 Selection is navigation only.
 
-Possible list:
-- CUNY Philosophy;
-- Hydro / AI Governance;
-- Québec Democracy;
-- Clean Sandbox.
+For small installations, a simple list is acceptable. For the production target of ~120 Worlds, the selector MUST remain usable without scrolling through an unstructured 120-item list.
+
+Required UX at that scale:
+- type-ahead search by title/key;
+- current World clearly visible;
+- recent Worlds and/or favorites SHOULD be surfaced;
+- optional category/tag/status filtering;
+- inaccessible, archived or release-less Worlds MUST NOT appear as ordinary selectable active destinations;
+- switching remains a hard navigation in v1.
+
+Example:
+
+```text
+WORLD [ Québec Democracy ▼ ]
+
+Search: [ hydro____________ ]
+Recent
+  Québec Democracy
+  CUNY Philosophy
+
+Results
+  Hydro / AI Governance
+  Hydro / Water Policy
+```
 
 If the target World does not support the exact current route, navigate to that World's dashboard.
 
@@ -147,3 +166,31 @@ Migration fingerprint: pass / mismatch
 ```
 
 This makes system drift visible to humans, not only CI.
+
+## 10. 120-World operations view
+
+The World Manager SHOULD support bulk operational visibility without encouraging bulk destructive actions.
+
+Recommended list columns/filters:
+- World key/title;
+- status;
+- current Release number/state;
+- dirty flag;
+- last validation time/result;
+- Seed Pack/version;
+- last snapshot;
+- storage/size estimate when available.
+
+Recommended aggregate counters:
+
+```text
+Worlds: 120
+Active: 112
+Maintenance: 3
+Archived: 5
+Without current Release: 0
+Unhealthy current Releases: 0
+Build jobs: 2 running / 4 queued
+```
+
+Bulk build/validate operations SHOULD use queued jobs with explicit concurrency limits. `Select/Open World` remains an individual navigation operation and MUST never become a bulk server activation command.

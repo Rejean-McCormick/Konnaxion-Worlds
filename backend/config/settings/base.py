@@ -414,6 +414,23 @@ KONNAXION_WORLD_DOMAIN_APPS = (
 )
 KONNAXION_WORLD_EKOH_APPS = ("ekoh", "smart_vote")
 
+# World Release lifecycle queue. Expensive builds are serialized by default to
+# protect a small single-server deployment; increasing the slot count later
+# enables controlled parallel builds without changing the API or job model.
+KONNAXION_WORLD_BUILD_CONCURRENCY = max(
+    1, min(env.int("KONNAXION_WORLD_BUILD_CONCURRENCY", default=1), 16)
+)
+KONNAXION_WORLD_BUILD_RETRY_SECONDS = max(
+    1, env.int("KONNAXION_WORLD_BUILD_RETRY_SECONDS", default=5)
+)
+KONNAXION_WORLD_BUILD_SOFT_TIME_LIMIT = max(
+    60, env.int("KONNAXION_WORLD_BUILD_SOFT_TIME_LIMIT", default=30 * 60)
+)
+KONNAXION_WORLD_BUILD_TIME_LIMIT = max(
+    KONNAXION_WORLD_BUILD_SOFT_TIME_LIMIT + 60,
+    env.int("KONNAXION_WORLD_BUILD_TIME_LIMIT", default=45 * 60),
+)
+
 # ethiKos Demo Importer
 # ------------------------------------------------------------------------------
 ETHIKOS_DEMO_IMPORTER_ENABLED = env.bool(

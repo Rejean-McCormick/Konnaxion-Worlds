@@ -1,7 +1,7 @@
 # Konnaxion Worlds — Canonical Specification
 
 **Lock:** `KX-WORLDS-1`  
-**Version:** `1.0.0`  
+**Version:** `1.1.0`  
 **Status:** LOCKED TARGET ARCHITECTURE  
 **Keywords:** MUST, MUST NOT, SHOULD, SHOULD NOT, MAY are normative.
 
@@ -55,6 +55,22 @@ N LOGICAL WORLDS
 N WORLD RELEASES
 N ISOLATED SCHEMA PAIRS
 ```
+
+### 2.1 Production scale target
+
+The production design target is **at least 120 registered Worlds in one logical Konnaxion deployment**.
+
+The normal baseline MAY run the shared Konnaxion stack on one production server/VPS when measured CPU, RAM, storage, I/O and concurrency permit. The architecture MUST NOT depend on one physical host: shared services MAY later scale horizontally without changing the World isolation model.
+
+At the 120-World target:
+- a World remains a data/runtime boundary, never a deployment boundary;
+- selecting a World MUST NOT start/stop containers or services;
+- selecting a World MUST NOT build, import, reset, restore, migrate or provision schemas;
+- all registered/current World Releases MAY coexist in PostgreSQL;
+- only request/task traffic for a World consumes active runtime work at that moment, apart from explicitly scheduled background jobs;
+- capacity planning MUST distinguish **registered Worlds**, **stored Releases**, **concurrent active users**, **background jobs**, and **data volume**.
+
+A design that requires one repository, one Docker stack, one process-global active World, or one server process per World is non-conforming.
 
 Each physical `WorldRelease` MUST own:
 - one World-domain PostgreSQL schema;

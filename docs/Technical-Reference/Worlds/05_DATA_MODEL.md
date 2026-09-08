@@ -77,6 +77,40 @@ Constraints:
 - failed release cannot be promoted;
 - release from another World cannot become current.
 
+## 2A. WorldBuildJob
+
+Persistent control-plane queue state for long-running Release builds:
+
+```python
+class WorldBuildJob(models.Model):
+    world
+    release              # null while queued
+    requested_by
+    seed_pack_key
+    seed_version
+    promote_after_build
+    status
+    celery_task_id
+    queue_name
+    concurrency_slot
+    attempts
+    error_text
+    metadata_json
+    created_at
+    updated_at
+    started_at
+    finished_at
+```
+
+Status:
+- `queued`;
+- `building`;
+- `validating`;
+- `ready`;
+- `failed`.
+
+`WorldBuildJob` is deliberately separate from `WorldRelease`: a queued job may not have created its Release yet. The low-RAM production default allows one build slot globally; the slot limit is configurable without changing the data model.
+
 ## 3. SeedPackRecord
 
 Registry/provenance, not raw content storage:

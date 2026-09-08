@@ -1,10 +1,10 @@
-# Konnaxion Worlds — Final Implementation Package
+# Konnaxion Worlds — Implementation Package
 
-Architecture lock: `KX-WORLDS-1`
+Architecture lock: `KX-WORLDS-1`  
+Documentation: `v1.1.0`  
+Production catalog target: approximately **120 registered switchable Worlds** in one logical deployment.
 
-This snapshot implements the Konnaxion multi-World control plane and runtime isolation architecture.
-
-## Included
+## Implemented
 
 - `World`, `WorldRelease`, `SeedPackRecord`, memberships, personas/bridges, snapshots and audit models.
 - Per-release PostgreSQL domain/EkoH schemas and transaction-local `search_path` routing.
@@ -16,36 +16,112 @@ This snapshot implements the Konnaxion multi-World control plane and runtime iso
 - World Manager desktop utility.
 - Collision fixtures and Alpha → Beta → Alpha PostgreSQL isolation acceptance test.
 - Canonical Worlds documentation and AI anti-drift lock.
-- GitHub Actions workflow `.github/workflows/worlds-ci.yml` for architecture, Django, migrations and PostgreSQL isolation validation.
 
-## Local validation completed in the artifact environment
+## v1.1 production-scale additions
+
+### Persistent asynchronous builds
+
+`WorldBuildJob` records the lifecycle independently from `WorldRelease`:
 
 ```text
-KX-WORLDS-1 architecture check PASSED
-Python compileall PASSED
-frontend/lib/worlds.ts TypeScript check PASSED
+queued -> building -> validating -> ready | failed
 ```
 
-## Validation delegated to CI
-
-The artifact environment does not contain Django/DRF/Celery/psycopg, so the full integration suite cannot be executed locally here. The included CI job provisions PostgreSQL 16 + Redis, installs `backend/requirements/local.txt`, then runs:
+`POST /api/control/worlds/{world_key}/releases/build/` now returns HTTP `202` and queues the heavy work through Celery. Polling endpoints:
 
 ```text
+GET /api/control/worlds/{world_key}/build-jobs/
+GET /api/control/worlds/{world_key}/build-jobs/{job_id}/
+```
+
+The desktop `Konnaxion_World_Manager.pyw` uses the same queue and no longer executes Seed Pack builds directly.
+
+### Low-RAM build serialization
+
+Default:
+
+```text
+KONNAXION_WORLD_BUILD_CONCURRENCY=1
+```
+
+The normal Celery worker consumes both `celery` and `world-build`; no second worker/container is added. PostgreSQL advisory locks provide:
+
+- one per-job lock to reject duplicate/redelivered execution;
+- a configurable global build-slot pool;
+- one expensive build at a time by default;
+- optional controlled parallelism later by raising the setting.
+
+Worker prefetch is set to `1` to avoid reserving many queued build jobs in memory.
+
+### Catalog preparation
+
+A single-World CLI build also queues by default:
+
+```bash
+python manage.py worlds_build <world_key> <seed_pack_key> --promote
+```
+
+Use `--sync` only for explicit maintenance/debug when an inline build is intentionally required.
+
+Queue an entire Seed Pack catalog:
+
+```bash
+python manage.py worlds_queue_catalog --create-missing --promote
+```
+
+Useful options:
+
+```text
+--world <key>   limit to selected Worlds; repeatable
+--force         rebuild even if current checksum already matches
+--public        make newly-created Worlds public
+```
+
+Queuing many Worlds does not make them build simultaneously. Execution still obeys `KONNAXION_WORLD_BUILD_CONCURRENCY`.
+
+### Health split
+
+Normal monitoring no longer performs deep validation of all current Releases:
+
+```text
+GET /api/control/health/live/      constant-cost process liveness
+GET /api/control/health/ready/     PostgreSQL + cache/Redis readiness
+GET /api/control/health/registry/  cheap staff-only catalog state
+GET /api/control/health/deep/      staff-only all-current-Release validation
+```
+
+The previous `/api/control/health/` remains as a backward-compatible deep-health alias.
+
+### ~120-World selector
+
+The frontend selector now supports type-ahead search by title/key and remembers recent Worlds locally while retaining hard navigation across the World boundary.
+
+The control-plane World list also accepts:
+
+```text
+?q=<title-or-key>
+&status=<active|maintenance|archived>
+```
+
+(Archived Worlds remain excluded from ordinary selectable visibility by the existing control-plane rules.)
+
+## Validation in this artifact environment
+
+Completed:
+
+```text
+Python compileall: PASS
+Static presence/integration checks: PASS
+```
+
+Full Django/Celery/PostgreSQL tests could not run in this artifact environment because its Python environment does not contain Django (`ModuleNotFoundError: django`). The CI workflow has been updated to execute the new build-job/catalog/health tests after dependencies are installed.
+
+Before server rollout, run:
+
+```bash
 python manage.py check
 python manage.py migrate --noinput
-pytest konnaxion/worlds/tests/test_primitives.py konnaxion/worlds/tests/test_seed_packs.py -q
-pytest konnaxion/worlds/tests/test_multiworld_isolation.py -q
+pytest konnaxion/worlds/tests -q
 ```
 
-Do not promote this architecture as production-validated until that CI job is green on the target repository.
-
-## Primary files
-
-- `backend/konnaxion/worlds/`
-- `backend/seed-data/worlds/`
-- `frontend/components/worlds/`
-- `frontend/lib/worlds.ts`
-- `Konnaxion_World_Manager.pyw`
-- `docs/Technical-Reference/Worlds/`
-- `scripts/check_worlds_architecture.py`
-- `.github/workflows/worlds-ci.yml`
+and then the production PostgreSQL isolation/120-World acceptance campaign.

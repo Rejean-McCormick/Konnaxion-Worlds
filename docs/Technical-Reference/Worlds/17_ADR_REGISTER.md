@@ -69,3 +69,20 @@ Changing an accepted decision requires a superseding ADR.
 ## ADR-WLD-015 — Existing domain ownership remains unchanged
 
 **Decision:** Worlds is infrastructure, not a replacement owner for ethiKos/EkoH/Smart Vote.
+
+
+## ADR-WLD-016 — 120-World production target on one logical deployment
+
+**Decision:** the production architecture targets at least 120 registered Worlds inside one shared Konnaxion deployment. The initial deployment may place the shared stack on one server/VPS when capacity measurements permit.  
+**Rejected default:** one repository, container stack, application process, or physical server per World.
+
+World selection remains request-scoped navigation and never starts/stops infrastructure or performs build/import/reset/provision operations.
+
+## ADR-WLD-017 — Long-running World lifecycle work is outside the switch path
+
+**Decision:** Release build, schema provisioning, migration, Seed Pack import, deep validation, snapshot and restore are control-plane lifecycle operations. Production UI/API SHOULD execute long-running lifecycle work as queued/controlled jobs with explicit resource concurrency.  
+**Reason:** preparing or updating a large World catalog must not block or destabilize ordinary runtime switching.
+
+## ADR-WLD-018 — Lightweight server health is separate from deep all-World validation
+
+**Decision:** liveness/readiness probes MUST remain bounded and must not perform exhaustive validation of all registered Worlds on every probe. Deep World/schema health is a separate on-demand or scheduled operation.

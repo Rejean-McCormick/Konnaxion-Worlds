@@ -1,5 +1,28 @@
 # Operations Runbook
 
+## 0. Production deployment target — one stack, ~120 Worlds
+
+Initial production objective:
+
+```text
+one server/VPS
+one Konnaxion deployment
+~120 registered Worlds
+one shared frontend/backend/worker/cache/database stack
+per-World current Release + isolated schema pair
+```
+
+This is an operational baseline, not a requirement that all services remain forever on one physical machine. If load requires it, shared services may be moved/scaled independently while preserving one logical Konnaxion deployment.
+
+Before onboarding the full World catalog, record:
+- server CPU/RAM/disk and database limits;
+- expected concurrent users;
+- expected data size per World;
+- Release retention count;
+- snapshot retention;
+- Celery build/runtime concurrency;
+- search/vector/media footprint.
+
 ## 1. Build a new World from Seed Pack
 
 1. Validate Pack manifest.
@@ -16,19 +39,26 @@
 12. Mark `ready`.
 13. Operator explicitly promotes when desired.
 
-## 2. Open a World
+## 2. Open / switch World
 
 User action:
 
 ```text
 select World
 → navigate to /w/{world_key}/...
+→ resolve current Release
+→ serve scoped data
 ```
 
-No build.
-No reset.
-No import.
-No cache flush.
+No build.  
+No reset.  
+No import.  
+No migration.  
+No schema provisioning.  
+No service/container restart.  
+No global cache flush.
+
+Switching A -> B affects only that user's request/navigation context. Other users may continue using A, C, or any other World concurrently.
 
 ## 3. Promote a Release
 
@@ -142,7 +172,83 @@ Do not use public/shared table.
 
 Mark Release unhealthy and block runtime routing.
 
-## 14. Demo checklist
+## 14. Prepare the 120-World catalog
+
+Do not prepare 120 Worlds by manually opening/switching each one.
+
+Use the control plane/build job workflow:
+1. discover/validate Seed Packs;
+2. create missing World registry records;
+3. enqueue Release builds with a configured concurrency limit;
+4. monitor queued/building/validating/failed jobs;
+5. promote only validated Releases;
+6. run deep World health across all current Releases;
+7. confirm every intended active World has exactly one valid current Release;
+8. apply Release/snapshot retention policy;
+9. run representative switch and concurrency acceptance tests.
+
+Bulk preparation MUST NOT modify already-current healthy Releases unless an explicit new build/promotion is requested.
+
+Normal single-World CLI builds are queued by default:
+
+```bash
+python manage.py worlds_build <world_key> <seed_pack_key> --promote
+```
+
+`--sync` is an explicit maintenance/debug escape hatch for an inline build.
+
+Current implementation command for a Seed-Pack catalog:
+
+```bash
+python manage.py worlds_queue_catalog --create-missing --promote
+```
+
+The command queues all eligible builds; it does not execute them in parallel itself. The default server setting is:
+
+```text
+KONNAXION_WORLD_BUILD_CONCURRENCY=1
+```
+
+This is the preferred low-RAM baseline. Increase it only after measuring server headroom. `--world <key>` limits the queue operation to selected Worlds and `--force` intentionally rebuilds a World whose current Release already matches the Seed Pack checksum.
+
+## 15. Health monitoring
+
+Use lightweight probes for normal server monitoring:
+- process liveness;
+- PostgreSQL/Redis readiness;
+- routing/config readiness.
+
+Run expensive all-World validation separately:
+- on deployment/cutover;
+- after bulk build/migration operations;
+- on a periodic maintenance schedule;
+- on demand during incidents.
+
+Deep health output must identify `world_key`, `release_id` and failed invariant/canary so one bad World does not hide behind an aggregate boolean.
+
+## 16. Release retention at scale
+
+For 120 Worlds, historical Releases multiply schema/table/storage count. Define explicit retention, for example:
+- current Release: always retain;
+- previous known-good Release: retain;
+- Releases referenced by protected snapshots: retain;
+- older unreferenced frozen/failed Releases: eligible for audited purge after retention window.
+
+The exact numeric retention policy is deployment-specific, but an unbounded retain-every-release policy MUST NOT be assumed operationally free.
+
+## 17. Production switch checklist
+
+Before declaring the deployment ready:
+- at least representative Worlds A/B/C are current and healthy;
+- World selector can find entries in the ~120-World catalog;
+- A -> B -> C -> A works through public server routes;
+- A state is unchanged on return;
+- a second concurrent client can remain in another World;
+- no switch triggers build/import/reset/restart;
+- stale-response protection is active;
+- server liveness/readiness remains lightweight.
+
+## 18. Demo checklist
 
 Before presentation:
 - World status active;

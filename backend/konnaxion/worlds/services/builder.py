@@ -100,6 +100,7 @@ def build_world_release(
     seed_version: str | None = None,
     actor=None,
     promote: bool = False,
+    progress_callback=None,
 ) -> WorldRelease:
     if world.status == World.STATUS_ARCHIVED:
         raise WorldBuildError("Archived Worlds cannot be rebuilt until explicitly restored.")
@@ -119,6 +120,8 @@ def build_world_release(
         "build_metadata_json",
     ])
     audit(event_type="release_build_started", world=world, release=release, actor=actor)
+    if progress_callback is not None:
+        progress_callback(release)
 
     try:
         domain_fp, ekoh_fp = provision_release_schemas(release)
@@ -126,6 +129,8 @@ def build_world_release(
         release.domain_migration_fingerprint = domain_fp
         release.ekoh_migration_fingerprint = ekoh_fp
         release.save(update_fields=["status", "domain_migration_fingerprint", "ekoh_migration_fingerprint"])
+        if progress_callback is not None:
+            progress_callback(release)
 
         import_report = _import_pack_scenarios(release=release, pack=pack, actor=actor)
         validation = validate_release_schemas(release)
@@ -137,6 +142,8 @@ def build_world_release(
         release.validation_report_json = validation
         release.build_finished_at = timezone.now()
         release.save(update_fields=["status", "validation_report_json", "build_finished_at"])
+        if progress_callback is not None:
+            progress_callback(release)
         audit(event_type="release_ready", world=world, release=release, actor=actor, metadata=validation)
         if promote:
             promote_release(world=world, release=release, actor=actor)
@@ -146,6 +153,8 @@ def build_world_release(
         release.build_finished_at = timezone.now()
         release.validation_report_json = {"ok": False, "error": str(exc)}
         release.save(update_fields=["status", "build_finished_at", "validation_report_json"])
+        if progress_callback is not None:
+            progress_callback(release)
         audit(
             event_type="release_build_failed",
             world=world,

@@ -270,6 +270,78 @@ class WorldSnapshot(models.Model):
             raise ValidationError("Snapshot frozen release must belong to the same World.")
 
 
+class WorldBuildJob(models.Model):
+    """Persistent control-plane job for a Seed Pack -> WorldRelease build.
+
+    Jobs are deliberately separate from ``WorldRelease``: a queued build may not
+    have created a Release yet, and the queue state must survive HTTP requests and
+    browser/manager restarts.
+    """
+
+    STATUS_QUEUED = "queued"
+    STATUS_BUILDING = "building"
+    STATUS_VALIDATING = "validating"
+    STATUS_READY = "ready"
+    STATUS_FAILED = "failed"
+    STATUS_CHOICES = tuple(
+        (value, value.title())
+        for value in (
+            STATUS_QUEUED,
+            STATUS_BUILDING,
+            STATUS_VALIDATING,
+            STATUS_READY,
+            STATUS_FAILED,
+        )
+    )
+    TERMINAL_STATUSES = (STATUS_READY, STATUS_FAILED)
+
+    world = models.ForeignKey(World, on_delete=models.CASCADE, related_name="build_jobs")
+    release = models.ForeignKey(
+        WorldRelease,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="build_jobs",
+    )
+    requested_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="world_build_jobs_requested",
+    )
+    seed_pack_key = models.CharField(max_length=120)
+    seed_version = models.CharField(max_length=64, blank=True)
+    promote_after_build = models.BooleanField(default=False)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_QUEUED)
+    celery_task_id = models.CharField(max_length=255, blank=True)
+    queue_name = models.CharField(max_length=80, default="world-build")
+    concurrency_slot = models.PositiveSmallIntegerField(null=True, blank=True)
+    attempts = models.PositiveIntegerField(default=0)
+    error_text = models.TextField(blank=True)
+    metadata_json = models.JSONField(default=dict, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    started_at = models.DateTimeField(null=True, blank=True)
+    finished_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=("status", "created_at"), name="ix_world_buildjob_state"),
+            models.Index(fields=("world", "status"), name="ix_world_buildjob_world"),
+        ]
+        ordering = ("-created_at",)
+
+    def clean(self) -> None:
+        super().clean()
+        if self.release_id and self.world_id and self.release.world_id != self.world_id:
+            raise ValidationError("Build job release must belong to the same World.")
+
+    def __str__(self) -> str:
+        version = self.seed_version or "latest"
+        return f"{self.world.key}:{self.seed_pack_key}@{version} [{self.status}]"
+
+
 class WorldAuditEvent(models.Model):
     world = models.ForeignKey(World, null=True, blank=True, on_delete=models.SET_NULL, related_name="audit_events")
     release = models.ForeignKey(

@@ -4,6 +4,7 @@ from .models import (
     SeedPackRecord,
     World,
     WorldAuditEvent,
+    WorldBuildJob,
     WorldMembership,
     WorldPersona,
     WorldRelease,
@@ -31,6 +32,21 @@ class WorldReleaseSerializer(serializers.ModelSerializer):
             "is_dirty", "dirty_since", "build_started_at", "build_finished_at",
             "promoted_at", "validation_report_json", "build_reason", "parent_release_id",
             "created_at",
+        )
+        read_only_fields = fields
+
+
+class WorldBuildJobSerializer(serializers.ModelSerializer):
+    release = WorldReleaseSummarySerializer(read_only=True)
+
+    class Meta:
+        model = WorldBuildJob
+        fields = (
+            "id", "world_id", "release_id", "release", "requested_by_id",
+            "seed_pack_key", "seed_version", "promote_after_build", "status",
+            "celery_task_id", "queue_name", "concurrency_slot", "attempts",
+            "error_text", "metadata_json", "created_at", "updated_at",
+            "started_at", "finished_at",
         )
         read_only_fields = fields
 
