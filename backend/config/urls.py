@@ -33,6 +33,15 @@ urlpatterns += [
     # ------------------------------------------------------------------
     path("api/control/", include("konnaxion.worlds.urls")),
 
+    # Orgo -> Konnaxion provider bridge (service-token authenticated).
+    # The endpoint resolves/pins the target World internally; it is deliberately
+    # outside /api/w/... because WorldRouteMiddleware authenticates human access
+    # before DRF/provider authentication runs.
+    path(
+        "api/integrations/orgo/konnaxion/",
+        include("konnaxion.ethikos.orgo_bridge_urls"),
+    ),
+
     # ------------------------------------------------------------------
     # Konnaxion Worlds — runtime scope
     # Middleware pins these routes to one immutable WorldRelease.

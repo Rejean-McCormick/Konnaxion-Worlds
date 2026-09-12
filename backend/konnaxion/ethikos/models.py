@@ -465,3 +465,42 @@ class DiscussionVisibilitySetting(models.Model):
 
     def __str__(self) -> str:
         return f"Visibility · {self.topic}"
+
+
+class OrgoImpactPublication(models.Model):
+    """Konnaxion-owned publication receipt created from the Orgo bridge.
+
+    Rows live in the active World's domain schema because ``ethikos`` is a
+    World-owned app. Orgo identifiers are references only; they are never
+    foreign keys into the Orgo database.
+    """
+
+    STATUS_PUBLISHED = "published"
+
+    operation_id = models.UUIDField(unique=True)
+    organization_id = models.UUIDField()
+    idempotency_key = models.CharField(max_length=200, unique=True)
+    correlation_id = models.CharField(max_length=255)
+    subject_type = models.CharField(max_length=80)
+    subject_id = models.UUIDField()
+    artifact_type = models.CharField(max_length=80, default="impact_update")
+    external_reference = models.CharField(max_length=255, unique=True)
+    checkpoint = models.CharField(max_length=80, blank=True)
+    demo_id = models.CharField(max_length=160, blank=True)
+    epistemic_status = models.CharField(max_length=80, blank=True)
+    status = models.CharField(max_length=32, default=STATUS_PUBLISHED)
+    payload_hash = models.CharField(max_length=64)
+    request_json = models.JSONField(default=dict)
+    receipt_json = models.JSONField(default=dict)
+    published_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("-published_at",)
+        indexes = [
+            models.Index(fields=["demo_id", "checkpoint"], name="eth_orgo_demo_ckpt_idx"),
+            models.Index(fields=["correlation_id"], name="eth_orgo_corr_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return self.external_reference

@@ -9,6 +9,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import connection, transaction
 from django.db.migrations.executor import MigrationExecutor
+from django.db.migrations.loader import MigrationLoader
 
 from ..db import validate_schema_name
 from ..migration_context import override_ekoh_migration_schema
@@ -84,21 +85,100 @@ def _ensure_local_migration_recorder(schema: str) -> None:
             )
 
 
+def _safe_dependency_marker_nodes(target_apps: tuple[str, ...]) -> set[tuple[str, str]]:
+    """Return non-target migrations safe to mark as externally applied.
+
+    A non-target migration that depends on any target-app migration must not be
+    pre-marked as applied in the World schema. Doing so creates an impossible
+    migration state while the target app is still being replayed (for example
+    users.0003 depends on kreative.0002).
+
+    Fail closed if a target leaf itself requires such an interleaved non-target
+    migration; applying that migration inside the World schema could mutate a
+    control-plane table through search_path fallback.
+    """
+    labels = set(target_apps)
+    loader = MigrationLoader(connection, ignore_no_migrations=True)
+
+    target_nodes = [node for node in loader.graph.nodes if node[0] in labels]
+    blocked: set[tuple[str, str]] = set()
+    for node in target_nodes:
+        blocked.update(loader.graph.backwards_plan(node))
+
+    target_leaves: list[tuple[str, str]] = []
+    for label in target_apps:
+        target_leaves.extend(loader.graph.leaf_nodes(label))
+
+    required: set[tuple[str, str]] = set()
+    for target in target_leaves:
+        required.update(loader.graph.forwards_plan(target))
+
+    unsafe_required = sorted(
+        node
+        for node in required
+        if node[0] not in labels and node in blocked
+    )
+    if unsafe_required:
+        details = ", ".join(f"{app}.{name}" for app, name in unsafe_required)
+        raise RuntimeError(
+            "World migration graph interleaves control-plane migrations after "
+            f"World-owned migrations: {details}"
+        )
+
+    return {
+        node
+        for node in loader.graph.nodes
+        if node[0] not in labels and node not in blocked
+    }
+
+
+def _deduplicate_migration_records(schema: str) -> int:
+    """Keep exactly one ledger row for each (app, migration) pair.
+
+    ``django_migrations`` has no uniqueness constraint on ``(app, name)``.
+    World replay may therefore encounter duplicate dependency markers after an
+    interrupted or repeated setup.  The duplicates do not represent additional
+    schema changes, so retaining the oldest row is canonical and idempotent.
+    """
+    q_schema = _q(schema)
+    with connection.cursor() as cursor:
+        cursor.execute(
+            f"DELETE FROM {q_schema}.django_migrations AS duplicate "
+            f"USING {q_schema}.django_migrations AS keeper "
+            "WHERE duplicate.app = keeper.app "
+            "AND duplicate.name = keeper.name "
+            "AND duplicate.id > keeper.id"
+        )
+        return int(cursor.rowcount or 0)
+
+
 def _seed_dependency_migration_records(schema: str, target_apps: tuple[str, ...]) -> None:
     control = _control_schema()
     q_schema = _q(schema)
     q_control = _q(control)
+    safe_nodes = _safe_dependency_marker_nodes(target_apps)
     with connection.cursor() as cursor:
         cursor.execute("SELECT to_regclass(%s)", [f"{control}.django_migrations"])
         if cursor.fetchone()[0] is None:
             return
         cursor.execute(
-            f"INSERT INTO {q_schema}.django_migrations (app, name, applied) "
             f"SELECT app, name, applied FROM {q_control}.django_migrations "
-            "WHERE NOT (app = ANY(%s)) "
-            "ON CONFLICT DO NOTHING",
+            "WHERE NOT (app = ANY(%s))",
             [list(target_apps)],
         )
+        rows = [
+            (app, name, applied)
+            for app, name, applied in cursor.fetchall()
+            if (app, name) in safe_nodes
+        ]
+        if rows:
+            cursor.executemany(
+                f"INSERT INTO {q_schema}.django_migrations (app, name, applied) "
+                "SELECT %s, %s, %s WHERE NOT EXISTS ("
+                f"SELECT 1 FROM {q_schema}.django_migrations "
+                "WHERE app = %s AND name = %s)",
+                [(app, name, applied, app, name) for app, name, applied in rows],
+            )
 
 
 def _latest_targets(executor: MigrationExecutor, app_labels: tuple[str, ...]):
@@ -137,6 +217,7 @@ def migrate_app_group_into_schema(
     schemas = (primary_schema, *fallback_schemas)
     with _migration_scope(*schemas, ekoh_schema=ekoh_schema_override):
         _ensure_local_migration_recorder(primary_schema)
+        _deduplicate_migration_records(primary_schema)
         _seed_dependency_migration_records(primary_schema, app_labels)
         executor = MigrationExecutor(connection)
         targets = _latest_targets(executor, app_labels)

@@ -216,24 +216,24 @@ The exact command names may vary by environment, but the following categories ar
 
 ```bash id="mwm1re"
 cd backend
-uv run python manage.py check
-uv run python manage.py migrate
-uv run python manage.py runserver
+.\.venv\Scripts\python.exe manage.py check
+.\.venv\Scripts\python.exe manage.py migrate
+.\.venv\Scripts\python.exe manage.py runserver
 ```
 
 ### 7.2 Backend tests
 
 ```bash id="e4s35n"
 cd backend
-uv run pytest
+.\.venv\Scripts\python.exe -m pytest
 ```
 
 If a narrower target is needed:
 
 ```bash id="1sk7z7"
 cd backend
-uv run pytest backend/tests/
-uv run pytest backend/tests/test_smoke_platform.py
+.\.venv\Scripts\python.exe -m pytest backend/tests/
+.\.venv\Scripts\python.exe -m pytest backend/tests/test_smoke_platform.py
 ```
 
 ### 7.3 Frontend build
@@ -261,7 +261,7 @@ npm run smoke
 
 ```bash id="bs4oz2"
 cd backend
-uv run python manage.py makemigrations --check --dry-run
+.\.venv\Scripts\python.exe manage.py makemigrations --check --dry-run
 ```
 
 This command is mandatory before considering Kintsugi schema work stable.
@@ -902,9 +902,9 @@ The preview bug must not be used to redesign the entire route family.
 Before and after Kintsugi schema work:
 
 ```bash id="3f0w01"
-uv run python manage.py makemigrations --check --dry-run
-uv run python manage.py migrate
-uv run pytest
+.\.venv\Scripts\python.exe manage.py makemigrations --check --dry-run
+.\.venv\Scripts\python.exe manage.py migrate
+.\.venv\Scripts\python.exe -m pytest
 ```
 
 Required assertions:

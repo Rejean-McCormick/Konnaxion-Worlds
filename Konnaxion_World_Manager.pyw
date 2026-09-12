@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import json
+import os
 import queue
-import shutil
 import subprocess
 import threading
 from pathlib import Path
@@ -11,7 +11,9 @@ from tkinter import messagebox, simpledialog, ttk
 
 APP_TITLE = "Konnaxion — World Manager"
 ARCHITECTURE_LOCK = "KX-WORLDS-1"
-DEFAULT_COMPOSE_REL = Path("backend") / "docker-compose.local.yml"
+BACKEND_REL = Path("backend")
+MANAGE_REL = BACKEND_REL / "manage.py"
+VENV_PY_REL = BACKEND_REL / ".venv" / "Scripts" / "python.exe"
 RESULT_MARKER = "__KX_RESULT__="
 
 LIST_CODE = r'''
@@ -77,38 +79,22 @@ print("__KX_RESULT__=" + json.dumps({"ok": True, "created": created, "id": world
 
 BUILD_CODE = r'''
 import json, sys
-from konnaxion.worlds.models import World, WorldBuildJob
-from konnaxion.worlds.services.build_queue import enqueue_world_build_job
-from konnaxion.worlds.services.seed_packs import get_seed_pack
+from konnaxion.worlds.models import World
+from konnaxion.worlds.services.builder import build_world_release
 payload = json.load(sys.stdin)
 world = World.objects.get(key=payload["world_key"])
-pack, _record = get_seed_pack(payload["seed_pack_key"], payload.get("seed_version"))
-promote_after_build = bool(payload.get("promote"))
-job = world.build_jobs.filter(
-    status__in=(
-        WorldBuildJob.STATUS_QUEUED,
-        WorldBuildJob.STATUS_BUILDING,
-        WorldBuildJob.STATUS_VALIDATING,
-    ),
-    seed_pack_key=pack.world_key,
-    seed_version=pack.version,
-    promote_after_build=promote_after_build,
-).first()
-if job is None:
-    job = WorldBuildJob.objects.create(
-        world=world,
-        seed_pack_key=pack.world_key,
-        seed_version=pack.version,
-        promote_after_build=promote_after_build,
-        metadata_json={"architecture_lock": "KX-WORLDS-1", "seed_checksum": pack.checksum},
-    )
-    enqueue_world_build_job(job)
+release = build_world_release(
+    world=world,
+    seed_pack_key=payload["seed_pack_key"],
+    seed_version=payload.get("seed_version") or None,
+    promote=bool(payload.get("promote")),
+)
 print("__KX_RESULT__=" + json.dumps({
     "ok": True,
-    "build_job_id": job.id,
-    "status": job.status,
-    "queue": job.queue_name,
-    "celery_task_id": job.celery_task_id,
+    "release_id": release.id,
+    "release_number": release.release_number,
+    "status": release.status,
+    "promoted": bool(payload.get("promote")),
 }))
 '''.strip()
 
@@ -221,8 +207,12 @@ class WorldManager(tk.Tk):
         self.title(APP_TITLE)
         self.geometry("1120x760")
         self.minsize(900, 620)
-        self.repo_var = tk.StringVar(value=str(self._detect_repo() or ""))
-        self.status_var = tk.StringVar(value=f"{ARCHITECTURE_LOCK} — Ready")
+        detected_repo = self._detect_repo()
+        self.repo_var = tk.StringVar(value=str(detected_repo or ""))
+        detected_db, db_source = self._detect_database_url(detected_repo)
+        self.db_var = tk.StringVar(value=detected_db or "")
+        self.db_source = db_source or "not configured"
+        self.status_var = tk.StringVar(value=f"{ARCHITECTURE_LOCK} — venv/pip — DB: {self.db_source}")
         self._queue: queue.Queue[tuple[str, object]] = queue.Queue()
         self._busy = False
         self._registry: dict = {"worlds": [], "packs": []}
@@ -234,13 +224,19 @@ class WorldManager(tk.Tk):
         root = ttk.Frame(self, padding=12)
         root.pack(fill="both", expand=True)
         ttk.Label(root, text="Konnaxion World Manager", font=("Segoe UI", 17, "bold")).pack(anchor="w")
-        ttk.Label(root, text="One Konnaxion · isolated WorldReleases · no reset-on-toggle · KX-WORLDS-1").pack(anchor="w", pady=(2, 10))
+        ttk.Label(root, text="venv/pip · Neon/PostgreSQL · isolated WorldReleases · KX-WORLDS-1").pack(anchor="w", pady=(2, 10))
 
         path_row = ttk.Frame(root)
         path_row.pack(fill="x")
         ttk.Label(path_row, text="Repository", width=12).pack(side="left")
         ttk.Entry(path_row, textvariable=self.repo_var).pack(side="left", fill="x", expand=True, padx=6)
         ttk.Button(path_row, text="Refresh", command=lambda: self._run_async(self.refresh)).pack(side="left")
+
+        db_row = ttk.Frame(root)
+        db_row.pack(fill="x", pady=(6, 0))
+        ttk.Label(db_row, text="Database", width=12).pack(side="left")
+        ttk.Entry(db_row, textvariable=self.db_var, show="*").pack(side="left", fill="x", expand=True, padx=6)
+        ttk.Label(db_row, text="Neon/PostgreSQL — secret masked").pack(side="left")
 
         panes = ttk.Panedwindow(root, orient="horizontal")
         panes.pack(fill="both", expand=True, pady=10)
@@ -298,7 +294,9 @@ class WorldManager(tk.Tk):
             ("Restore", self.restore_world),
             ("Health", self.health),
         ):
-            ttk.Button(actions, text=label, command=lambda c=command: self._run_async(c)).pack(side="left", padx=4)
+            # Tk widgets/dialogs must always run on Tk's main thread.
+            # Each action collects UI input here, then offloads only DB/subprocess work.
+            ttk.Button(actions, text=label, command=command).pack(side="left", padx=4)
 
         status = ttk.Frame(root)
         status.pack(fill="x", pady=(8, 4))
@@ -310,44 +308,101 @@ class WorldManager(tk.Tk):
         self.log.pack(fill="both", expand=False)
 
     def _detect_repo(self) -> Path | None:
-        candidates = [Path(__file__).resolve().parent, Path.cwd(), Path(r"C:\mycode\Konnaxion")]
+        candidates = [
+            Path(__file__).resolve().parent,
+            Path.cwd(),
+            Path(r"C:\mycode\Konnaxion\Konnaxion_Worlds"),
+            Path(r"C:\mycode\Konnaxion"),
+        ]
         for candidate in candidates:
-            if (candidate / DEFAULT_COMPOSE_REL).is_file() and (candidate / "backend" / "manage.py").is_file():
+            if (candidate / MANAGE_REL).is_file():
                 return candidate
         return None
 
+    @staticmethod
+    def _read_env_value(path: Path, key: str) -> str | None:
+        if not path.is_file():
+            return None
+        try:
+            for raw in path.read_text(encoding="utf-8-sig", errors="replace").splitlines():
+                line = raw.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                name, value = line.split("=", 1)
+                if name.strip() == key:
+                    return value.strip().strip('"').strip("'") or None
+        except OSError:
+            return None
+        return None
+
+    def _detect_database_url(self, repo: Path | None) -> tuple[str | None, str | None]:
+        for name in ("KONNAXION_DATABASE_URL", "DATABASE_URL"):
+            value = os.environ.get(name, "").strip()
+            if value:
+                return value, name
+
+        if repo:
+            for rel in (Path("backend/.env"),):
+                value = self._read_env_value(repo / rel, "DATABASE_URL")
+                if value:
+                    return value, str(rel)
+
+        return None, None
+
     def _repo(self) -> Path:
         root = Path(self.repo_var.get().strip().strip('"')).resolve()
-        if not (root / DEFAULT_COMPOSE_REL).is_file():
-            raise RuntimeError("Invalid Konnaxion repository root.")
+        if not (root / MANAGE_REL).is_file():
+            raise RuntimeError("Invalid Konnaxion repository root: backend/manage.py not found.")
         return root
 
-    def _docker(self) -> str:
-        exe = shutil.which("docker")
-        if not exe:
-            raise RuntimeError("Docker is not available.")
-        return exe
+    def _python(self) -> Path:
+        python = self._repo() / VENV_PY_REL
+        if not python.is_file():
+            raise RuntimeError(
+                "Konnaxion backend/.venv is missing. Create the standard virtual environment first "
+                "and install backend/requirements/local.txt."
+            )
+        return python
 
-    def _compose(self, *args: str) -> list[str]:
-        return [self._docker(), "compose", "-f", str(self._repo() / DEFAULT_COMPOSE_REL), *args]
+    def _runtime_env(self) -> dict[str, str]:
+        database_url = self.db_var.get().strip()
+        if not database_url:
+            raise RuntimeError(
+                "Konnaxion DATABASE_URL is empty. Set KONNAXION_DATABASE_URL, "
+                "backend/.env, or paste the Neon/PostgreSQL URL in the masked Database field."
+            )
+        env = os.environ.copy()
+        env["DATABASE_URL"] = database_url
+        env["KONNAXION_DATABASE_URL"] = database_url
+        env["USE_DOCKER"] = "no"
+        env["DJANGO_SETTINGS_MODULE"] = "config.settings.local"
+        env.setdefault("REDIS_URL", "redis://127.0.0.1:6379/0")
+        return env
+
+    def _manage(self, *args: str, input_text: str | None = None, timeout: int = 900) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            [str(self._python()), "manage.py", *args],
+            cwd=self._repo() / BACKEND_REL,
+            env=self._runtime_env(),
+            input=input_text,
+            text=True,
+            capture_output=True,
+            timeout=timeout,
+        )
 
     def _ensure_backend(self) -> None:
-        proc = subprocess.run(self._compose("up", "-d", "django", "db"), cwd=self._repo() / "backend", text=True, capture_output=True)
+        # Only the World control plane is migrated here. Domain/EkoH schemas are
+        # provisioned by the canonical builder into each isolated WorldRelease.
+        proc = self._manage("migrate", "worlds", "--noinput", timeout=300)
         if proc.returncode:
-            raise RuntimeError(proc.stdout + proc.stderr)
-        proc = subprocess.run(self._compose("exec", "-T", "django", "python", "manage.py", "migrate", "--noinput"), cwd=self._repo() / "backend", text=True, capture_output=True)
-        if proc.returncode:
-            raise RuntimeError("Django migrations failed:\n" + proc.stdout + proc.stderr)
+            raise RuntimeError("World control-plane migrations failed:\n" + proc.stdout + proc.stderr)
 
     def _call(self, code: str, payload: dict | None = None) -> dict:
         self._ensure_backend()
-        proc = subprocess.run(
-            self._compose("exec", "-T", "django", "python", "manage.py", "shell", "-c", code),
-            cwd=self._repo() / "backend",
-            input=json.dumps(payload or {}, ensure_ascii=False),
-            text=True,
-            capture_output=True,
-            timeout=900,
+        proc = self._manage(
+            "shell", "-c", code,
+            input_text=json.dumps(payload or {}, ensure_ascii=False),
+            timeout=1800,
         )
         output = proc.stdout + proc.stderr
         if proc.returncode:
@@ -386,47 +441,77 @@ class WorldManager(tk.Tk):
         self._set_status("Loading registry…")
         data = self._call(LIST_CODE)
         self._queue.put(("registry", data))
-        self._set_status("Ready")
+        self._set_status(f"venv/pip ready — DB: {self.db_source}")
 
     def create_world(self) -> None:
+        if self._busy:
+            return
         key = simpledialog.askstring(APP_TITLE, "World key (slug):", parent=self)
         if not key:
             return
         title = simpledialog.askstring(APP_TITLE, "Title:", initialvalue=key, parent=self) or key
-        self._call(CREATE_CODE, {"key": key.strip(), "title": title.strip(), "visibility": "private"})
-        self._log(f"Created World {key}")
-        self.refresh()
+        payload = {"key": key.strip(), "title": title.strip(), "visibility": "private"}
+
+        def work() -> None:
+            self._call(CREATE_CODE, payload)
+            self._log(f"Created World {payload['key']}")
+            self.refresh()
+
+        self._run_async(work)
 
     def build_release(self, promote: bool = False) -> None:
+        if self._busy:
+            return
         world = self._selected_world()
         pack, version = self._selected_pack()
         pack_label = f"{pack}@{version}" if version else pack
         if not messagebox.askyesno(APP_TITLE, f"Build {pack_label} into {world}?\nPromote: {promote}", parent=self):
             return
-        self._set_status("Queueing immutable release build…")
-        result = self._call(BUILD_CODE, {"world_key": world, "seed_pack_key": pack, "seed_version": version, "promote": promote})
-        self._log(json.dumps(result, indent=2))
-        self.refresh()
+        payload = {"world_key": world, "seed_pack_key": pack, "seed_version": version, "promote": promote}
+
+        def work() -> None:
+            self._set_status("Building immutable release synchronously in local venv…")
+            result = self._call(BUILD_CODE, payload)
+            self._log(json.dumps(result, indent=2))
+            self.refresh()
+
+        self._run_async(work)
 
     def snapshot(self) -> None:
+        if self._busy:
+            return
         world = self._selected_world()
         label = simpledialog.askstring(APP_TITLE, "Snapshot label:", initialvalue="before-demo", parent=self)
         if not label:
             return
-        result = self._call(SNAPSHOT_CODE, {"world_key": world, "label": label})
-        self._log(json.dumps(result, indent=2))
-        self.refresh()
+        payload = {"world_key": world, "label": label}
+
+        def work() -> None:
+            result = self._call(SNAPSHOT_CODE, payload)
+            self._log(json.dumps(result, indent=2))
+            self.refresh()
+
+        self._run_async(work)
 
     def promote_selected_release(self) -> None:
+        if self._busy:
+            return
         world = self._selected_world()
         release_id = self._selected_release_id()
         if not messagebox.askyesno(APP_TITLE, "Promote selected READY release?", parent=self):
             return
-        result = self._call(PROMOTE_CODE, {"world_key": world, "release_id": release_id})
-        self._log(json.dumps(result, indent=2))
-        self.refresh()
+        payload = {"world_key": world, "release_id": release_id}
+
+        def work() -> None:
+            result = self._call(PROMOTE_CODE, payload)
+            self._log(json.dumps(result, indent=2))
+            self.refresh()
+
+        self._run_async(work)
 
     def rollback(self) -> None:
+        if self._busy:
+            return
         world = self._selected_world()
         release_id = self._selected_release_id()
         if not messagebox.askyesno(
@@ -435,11 +520,18 @@ class WorldManager(tk.Tk):
             parent=self,
         ):
             return
-        result = self._call(ROLLBACK_CODE, {"world_key": world, "release_id": release_id})
-        self._log(json.dumps(result, indent=2))
-        self.refresh()
+        payload = {"world_key": world, "release_id": release_id}
+
+        def work() -> None:
+            result = self._call(ROLLBACK_CODE, payload)
+            self._log(json.dumps(result, indent=2))
+            self.refresh()
+
+        self._run_async(work)
 
     def purge_selected_release(self) -> None:
+        if self._busy:
+            return
         world = self._selected_world()
         release_id = self._selected_release_id()
         if not messagebox.askyesno(
@@ -449,41 +541,73 @@ class WorldManager(tk.Tk):
             parent=self,
         ):
             return
-        result = self._call(PURGE_CODE, {"world_key": world, "release_id": release_id})
-        self._log(json.dumps(result, indent=2))
-        self.refresh()
+        payload = {"world_key": world, "release_id": release_id}
+
+        def work() -> None:
+            result = self._call(PURGE_CODE, payload)
+            self._log(json.dumps(result, indent=2))
+            self.refresh()
+
+        self._run_async(work)
 
     def clone_world(self) -> None:
+        if self._busy:
+            return
         source = self._selected_world()
         target = simpledialog.askstring(APP_TITLE, "New World key:", parent=self)
         if not target:
             return
         title = simpledialog.askstring(APP_TITLE, "New World title:", initialvalue=target, parent=self) or target
-        result = self._call(CLONE_CODE, {"source_key": source, "target_key": target.strip(), "title": title.strip()})
-        self._log(json.dumps(result, indent=2))
-        self.refresh()
+        payload = {"source_key": source, "target_key": target.strip(), "title": title.strip()}
+
+        def work() -> None:
+            result = self._call(CLONE_CODE, payload)
+            self._log(json.dumps(result, indent=2))
+            self.refresh()
+
+        self._run_async(work)
 
     def archive_world(self) -> None:
+        if self._busy:
+            return
         world = self._selected_world()
         if not messagebox.askyesno(
             APP_TITLE, "Archive this World? Runtime access will be disabled.", icon="warning", parent=self
         ):
             return
-        result = self._call(ARCHIVE_CODE, {"world_key": world})
-        self._log(json.dumps(result, indent=2))
-        self.refresh()
+        payload = {"world_key": world}
+
+        def work() -> None:
+            result = self._call(ARCHIVE_CODE, payload)
+            self._log(json.dumps(result, indent=2))
+            self.refresh()
+
+        self._run_async(work)
 
     def restore_world(self) -> None:
+        if self._busy:
+            return
         world = self._selected_world()
-        result = self._call(RESTORE_WORLD_CODE, {"world_key": world})
-        self._log(json.dumps(result, indent=2))
-        self.refresh()
+        payload = {"world_key": world}
+
+        def work() -> None:
+            result = self._call(RESTORE_WORLD_CODE, payload)
+            self._log(json.dumps(result, indent=2))
+            self.refresh()
+
+        self._run_async(work)
 
     def health(self) -> None:
-        result = self._call(HEALTH_CODE)
-        self._log(json.dumps(result, indent=2))
-        if not result.get("ok"):
-            raise RuntimeError("World health check reports an isolation failure.")
+        if self._busy:
+            return
+
+        def work() -> None:
+            result = self._call(HEALTH_CODE)
+            self._log(json.dumps(result, indent=2))
+            if not result.get("ok"):
+                raise RuntimeError("World health check reports an isolation failure.")
+
+        self._run_async(work)
 
     def _run_async(self, fn) -> None:
         if self._busy:

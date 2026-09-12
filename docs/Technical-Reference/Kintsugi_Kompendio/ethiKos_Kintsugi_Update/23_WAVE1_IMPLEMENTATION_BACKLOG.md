@@ -971,9 +971,9 @@ frontend/services/__tests__/*.test.ts
 
 ```bash
 cd C:\mycode\Konnaxion\Konnaxion\backend
-uv run python manage.py makemigrations --check --dry-run
-uv run python manage.py migrate --plan
-uv run pytest
+.\.venv\Scripts\python.exe manage.py makemigrations --check --dry-run
+.\.venv\Scripts\python.exe manage.py migrate --plan
+.\.venv\Scripts\python.exe -m pytest
 ```
 
 ```bash
