@@ -22,6 +22,8 @@ from .models import (
     ArgumentSuggestion,
     DiscussionParticipantRole,
     DiscussionVisibilitySetting,
+    DecisionProtocol,
+    DecisionRecord,
     EthikosArgument,
     EthikosCategory,
     EthikosStance,
@@ -39,6 +41,8 @@ __all__ = [
     "ArgumentSuggestionSerializer",
     "DiscussionParticipantRoleSerializer",
     "DiscussionVisibilitySettingSerializer",
+    "DecisionProtocolSerializer",
+    "DecisionRecordSerializer",
 ]
 
 
@@ -631,3 +635,92 @@ class DiscussionVisibilitySettingSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         )
+
+class DecisionProtocolSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DecisionProtocol
+        fields = (
+            "id",
+            "key",
+            "label",
+            "description",
+            "protocol_type",
+            "is_active",
+            "created_at",
+            "updated_at",
+        )
+        read_only_fields = ("id", "created_at", "updated_at")
+
+
+class DecisionRecordSerializer(serializers.ModelSerializer):
+    created_by = serializers.StringRelatedField(read_only=True)
+    created_by_id = serializers.IntegerField(read_only=True)
+    artifact_id = serializers.CharField(read_only=True)
+
+    class Meta:
+        model = DecisionRecord
+        fields = (
+            "id",
+            "topic",
+            "protocol",
+            "title",
+            "description",
+            "status",
+            "opened_at",
+            "closed_at",
+            "published_at",
+            "revision",
+            "baseline_result_json",
+            "reading_result_refs",
+            "published_payload",
+            "artifact_id",
+            "artifact_digest",
+            "created_by",
+            "created_by_id",
+            "created_at",
+            "updated_at",
+        )
+        read_only_fields = (
+            "id",
+            "published_at",
+            "revision",
+            "published_payload",
+            "artifact_id",
+            "artifact_digest",
+            "created_by",
+            "created_by_id",
+            "created_at",
+            "updated_at",
+        )
+
+    def validate_reading_result_refs(self, value):
+        if not isinstance(value, list):
+            raise serializers.ValidationError("reading_result_refs must be a list.")
+        if any(not isinstance(item, (str, int)) for item in value):
+            raise serializers.ValidationError("reading_result_refs items must be string/int references.")
+        return value
+
+    def validate(self, attrs: dict[str, Any]) -> dict[str, Any]:
+        current_status = getattr(self.instance, "status", DecisionRecord.STATUS_DRAFT)
+        next_status = attrs.get("status", current_status)
+        closed_at = attrs.get("closed_at", getattr(self.instance, "closed_at", None))
+
+        if self.instance is not None and current_status == DecisionRecord.STATUS_PUBLISHED:
+            # Published payload/digest are immutable. Archiving changes discoverability,
+            # not the frozen artifact itself.
+            attempted = set(attrs) - {"status"}
+            if attempted or next_status not in {
+                DecisionRecord.STATUS_PUBLISHED,
+                DecisionRecord.STATUS_ARCHIVED,
+            }:
+                raise serializers.ValidationError(
+                    "Published DecisionRecord is immutable; only archive transition is allowed."
+                )
+
+        if next_status == DecisionRecord.STATUS_PUBLISHED and current_status != DecisionRecord.STATUS_PUBLISHED:
+            raise serializers.ValidationError(
+                {"status": "Use the publish action so artifact snapshot/digest are frozen atomically."}
+            )
+        if next_status == DecisionRecord.STATUS_CLOSED and closed_at is None:
+            raise serializers.ValidationError({"closed_at": "closed_at is required when status=closed."})
+        return attrs

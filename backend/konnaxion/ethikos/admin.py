@@ -18,6 +18,7 @@ from .models import (
     ArgumentSuggestion,
     DiscussionParticipantRole,
     DiscussionVisibilitySetting,
+    InteractionEmission,
     EthikosArgument,
     EthikosCategory,
     EthikosStance,
@@ -564,6 +565,40 @@ class DiscussionVisibilitySettingAdmin(TimestampMixin):
         request: HttpRequest,
     ) -> QuerySet[DiscussionVisibilitySetting]:
         return super().get_queryset(request).select_related("topic", "changed_by")
+
+
+@admin.register(InteractionEmission)
+class InteractionEmissionAdmin(admin.ModelAdmin):
+    """Read-only operational view of durable IK delivery state."""
+
+    list_display = (
+        "interaction_id",
+        "profile_id",
+        "target_system",
+        "subject_type",
+        "subject_id",
+        "status",
+        "attempts",
+        "created_at",
+        "delivered_at",
+    )
+    list_filter = ("status", "profile_id", "target_system", "created_at")
+    search_fields = (
+        "interaction_id",
+        "idempotency_key",
+        "subject_id",
+        "request_fingerprint",
+    )
+    ordering = ("-created_at",)
+
+    def get_readonly_fields(self, request: HttpRequest, obj=None) -> Sequence[str]:
+        return tuple(field.name for field in self.model._meta.fields)
+
+    def has_add_permission(self, request: HttpRequest) -> bool:
+        return False
+
+    def has_delete_permission(self, request: HttpRequest, obj=None) -> bool:
+        return False
 
 
 # ───────── Fallback auto-registration ─────────

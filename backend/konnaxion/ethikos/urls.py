@@ -49,6 +49,10 @@ register_required("arguments", "ArgumentViewSet", basename="ethikos-argument")
 # Existing optional category surface.
 register_optional("categories", "CategoryViewSet", basename="ethikos-category")
 
+# Konsultations / Decide canonical additions.
+register_required("decision-protocols", "DecisionProtocolViewSet", basename="ethikos-decision-protocol")
+register_required("decision-records", "DecisionRecordViewSet", basename="ethikos-decision-record")
+
 
 urlpatterns = [
     path("", include("konnaxion.ethikos.demo_import.urls")),

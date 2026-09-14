@@ -467,6 +467,192 @@ class DiscussionVisibilitySetting(models.Model):
         return f"Visibility · {self.topic}"
 
 
+class DecisionProtocol(models.Model):
+    """Konsultations/Decide-owned rules for opening and publishing a decision."""
+
+    SIMPLE_MAJORITY = "simple_majority"
+    STANCE_DISTRIBUTION = "stance_distribution"
+    CONSENT_CHECK = "consent_check"
+    RANKED_OPTION = "ranked_option"
+    EXPERTISE_WEIGHTED_READING = "expertise_weighted_reading"
+    MANUAL_PUBLICATION = "manual_publication"
+    PROTOCOL_TYPE_CHOICES = tuple(
+        (value, value.replace("_", " ").title())
+        for value in (
+            SIMPLE_MAJORITY,
+            STANCE_DISTRIBUTION,
+            CONSENT_CHECK,
+            RANKED_OPTION,
+            EXPERTISE_WEIGHTED_READING,
+            MANUAL_PUBLICATION,
+        )
+    )
+
+    key = models.SlugField(max_length=120, unique=True)
+    label = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    protocol_type = models.CharField(max_length=64, choices=PROTOCOL_TYPE_CHOICES)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("label", "key")
+
+    def __str__(self) -> str:
+        return self.label
+
+
+class DecisionRecord(models.Model):
+    """Canonical published decision artifact for governed external handoff.
+
+    The record is Konnaxion-owned. Publication freezes ``published_payload`` and
+    ``artifact_digest``. External systems receive an IK ArtifactRef; they never
+    write this table directly.
+    """
+
+    STATUS_DRAFT = "draft"
+    STATUS_OPEN = "open"
+    STATUS_CLOSED = "closed"
+    STATUS_PUBLISHED = "published"
+    STATUS_ARCHIVED = "archived"
+    STATUS_CHOICES = tuple(
+        (value, value.title())
+        for value in (
+            STATUS_DRAFT,
+            STATUS_OPEN,
+            STATUS_CLOSED,
+            STATUS_PUBLISHED,
+            STATUS_ARCHIVED,
+        )
+    )
+
+    topic = models.ForeignKey(
+        EthikosTopic,
+        null=True,
+        blank=True,
+        on_delete=models.PROTECT,
+        related_name="decision_records",
+    )
+    protocol = models.ForeignKey(
+        DecisionProtocol,
+        null=True,
+        blank=True,
+        on_delete=models.PROTECT,
+        related_name="decision_records",
+    )
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    status = models.CharField(max_length=16, choices=STATUS_CHOICES, default=STATUS_DRAFT)
+    opened_at = models.DateTimeField(null=True, blank=True)
+    closed_at = models.DateTimeField(null=True, blank=True)
+    published_at = models.DateTimeField(null=True, blank=True)
+    revision = models.PositiveIntegerField(default=1)
+    baseline_result_json = models.JSONField(default=dict, blank=True)
+    reading_result_refs = models.JSONField(default=list, blank=True)
+    published_payload = models.JSONField(default=dict, blank=True)
+    artifact_digest = models.CharField(max_length=64, blank=True)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="ethikos_decision_records_created",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("-created_at",)
+        indexes = [
+            models.Index(fields=["topic"], name="eth_decision_topic_idx"),
+            models.Index(fields=["status"], name="eth_decision_status_idx"),
+            models.Index(fields=["created_by"], name="eth_decision_creator_idx"),
+            models.Index(fields=["opened_at"], name="eth_decision_opened_idx"),
+            models.Index(fields=["closed_at"], name="eth_decision_closed_idx"),
+        ]
+        constraints = [
+            models.CheckConstraint(
+                condition=(
+                    ~models.Q(status__in=(STATUS_CLOSED, STATUS_PUBLISHED))
+                    | models.Q(closed_at__isnull=False)
+                ),
+                name="eth_decision_closed_requires_time",
+            ),
+            models.CheckConstraint(
+                condition=(
+                    ~models.Q(status=STATUS_PUBLISHED)
+                    | models.Q(published_at__isnull=False)
+                ),
+                name="eth_decision_published_requires_time",
+            ),
+        ]
+
+    @property
+    def artifact_id(self) -> str:
+        return f"konnaxion:decision_record:{self.pk}"
+
+    def __str__(self) -> str:
+        return self.title
+
+
+class InteractionEmission(models.Model):
+    """World-owned durable outbound IK delivery intent.
+
+    This is delivery state, not business state. A delivered emission does not
+    imply that the remote business workflow has reached terminal success.
+    """
+
+    STATUS_QUEUED = "queued"
+    STATUS_SENDING = "sending"
+    STATUS_DELIVERED = "delivered"
+    STATUS_RETRYING = "retrying"
+    STATUS_DEAD = "dead"
+    STATUS_CHOICES = tuple(
+        (value, value.title())
+        for value in (
+            STATUS_QUEUED,
+            STATUS_SENDING,
+            STATUS_DELIVERED,
+            STATUS_RETRYING,
+            STATUS_DEAD,
+        )
+    )
+    TERMINAL_STATUSES = (STATUS_DELIVERED, STATUS_DEAD)
+
+    interaction_id = models.UUIDField(unique=True)
+    profile_id = models.CharField(max_length=160)
+    profile_version = models.CharField(max_length=80)
+    target_system = models.CharField(max_length=120)
+    target_organization = models.CharField(max_length=200, blank=True)
+    target_world = models.CharField(max_length=200, blank=True)
+    subject_type = models.CharField(max_length=120)
+    subject_id = models.CharField(max_length=500)
+    idempotency_key = models.CharField(max_length=500, unique=True)
+    request_fingerprint = models.CharField(max_length=80)
+    envelope_json = models.JSONField(default=dict)
+    status = models.CharField(max_length=16, choices=STATUS_CHOICES, default=STATUS_QUEUED)
+    attempts = models.PositiveIntegerField(default=0)
+    next_attempt_at = models.DateTimeField(null=True, blank=True)
+    last_error_code = models.CharField(max_length=120, blank=True)
+    last_error_detail = models.TextField(blank=True)
+    receipt_json = models.JSONField(default=dict, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    delivered_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ("created_at",)
+        indexes = [
+            models.Index(fields=["status", "next_attempt_at"], name="eth_ik_emit_state_idx"),
+            models.Index(fields=["profile_id", "created_at"], name="eth_ik_emit_profile_idx"),
+            models.Index(fields=["subject_type", "subject_id"], name="eth_ik_emit_subject_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id}:{self.subject_type}:{self.subject_id} [{self.status}]"
+
+
 class OrgoImpactPublication(models.Model):
     """Konnaxion-owned publication receipt created from the Orgo bridge.
 

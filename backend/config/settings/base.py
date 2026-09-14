@@ -414,6 +414,20 @@ KONNAXION_WORLD_DOMAIN_APPS = (
 )
 KONNAXION_WORLD_EKOH_APPS = ("ekoh", "smart_vote")
 
+# Interaction Kernel outbound binding. These settings configure transport only;
+# business ownership and idempotency remain in the World-owned domain schema.
+IK_ORGO_INTERACTIONS_URL = env("IK_ORGO_INTERACTIONS_URL", default="")
+IK_ORGO_TOKEN = env("IK_ORGO_TOKEN", default="")
+IK_ORGO_TARGET_ORGANIZATION = env("IK_ORGO_TARGET_ORGANIZATION", default="")
+IK_ORGO_TARGET_WORLD = env("IK_ORGO_TARGET_WORLD", default="")
+IK_HTTP_TIMEOUT_SECONDS = max(1.0, env.float("IK_HTTP_TIMEOUT_SECONDS", default=10.0))
+IK_DELIVERY_MAX_ATTEMPTS = max(1, env.int("IK_DELIVERY_MAX_ATTEMPTS", default=8))
+IK_DELIVERY_RETRY_BASE_SECONDS = max(1, env.int("IK_DELIVERY_RETRY_BASE_SECONDS", default=5))
+IK_DELIVERY_RETRY_MAX_SECONDS = max(
+    IK_DELIVERY_RETRY_BASE_SECONDS,
+    env.int("IK_DELIVERY_RETRY_MAX_SECONDS", default=15 * 60),
+)
+
 # World Release lifecycle queue. Expensive builds are serialized by default to
 # protect a small single-server deployment; increasing the slot count later
 # enables controlled parallel builds without changing the API or job model.

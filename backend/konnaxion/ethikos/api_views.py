@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from typing import Optional
 
+from django.conf import settings
 from django.db.models import Count
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
@@ -29,12 +30,15 @@ from .models import (
     ArgumentSuggestion,
     DiscussionParticipantRole,
     DiscussionVisibilitySetting,
+    DecisionProtocol,
+    DecisionRecord,
     EthikosArgument,
     EthikosCategory,
     EthikosStance,
     EthikosTopic,
 )
 from .permissions import (
+    EthikosAdminOnly,
     OwnerOrEthikosAdminOrReadOnly,
     OwnerOrEthikosModeratorOrReadOnly,
 )
@@ -44,10 +48,20 @@ from .serializers import (
     ArgumentSuggestionSerializer,
     DiscussionParticipantRoleSerializer,
     DiscussionVisibilitySettingSerializer,
+    DecisionProtocolSerializer,
+    DecisionRecordSerializer,
     EthikosArgumentSerializer,
     EthikosCategorySerializer,
     EthikosStanceSerializer,
     EthikosTopicSerializer,
+)
+
+from konnaxion.integrations.interaction_kernel.services import (
+    DecisionLifecycleError,
+    IKIdempotencyConflict,
+    build_konnaxion_export,
+    enqueue_decision_execution,
+    publish_decision_record,
 )
 
 
@@ -947,3 +961,105 @@ class DiscussionVisibilitySettingViewSet(viewsets.ModelViewSet):
     def perform_update(self, serializer) -> None:
         setting = serializer.save(changed_by=self.request.user)
         _touch_topic_activity(setting.topic)
+
+
+# ---- Konsultations / Decide -------------------------------------------------
+
+class DecisionProtocolViewSet(viewsets.ModelViewSet):
+    queryset = DecisionProtocol.objects.all().order_by("label", "key")
+    serializer_class = DecisionProtocolSerializer
+
+    def get_permissions(self):
+        if self.request.method in {"GET", "HEAD", "OPTIONS"}:
+            return [permissions.AllowAny()]
+        return [EthikosAdminOnly()]
+
+
+class DecisionRecordViewSet(viewsets.ModelViewSet):
+    queryset = DecisionRecord.objects.select_related("topic", "protocol", "created_by")
+    serializer_class = DecisionRecordSerializer
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+        OwnerOrEthikosAdminOrReadOnly,
+    ]
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        topic_id = _coerce_optional_int(self.request.query_params.get("topic"), "topic")
+        if topic_id is not None:
+            qs = qs.filter(topic_id=topic_id)
+        status_param = self.request.query_params.get("status")
+        if status_param:
+            valid = {choice[0] for choice in DecisionRecord.STATUS_CHOICES}
+            if status_param not in valid:
+                raise ValidationError({"status": "Invalid decision status."})
+            qs = qs.filter(status=status_param)
+        return qs
+
+    def perform_create(self, serializer) -> None:
+        serializer.save(created_by=self.request.user)
+
+    @action(detail=True, methods=["post"], permission_classes=[OwnerOrEthikosAdminOrReadOnly])
+    def publish(self, request, pk=None):
+        decision = self.get_object()
+        self.check_object_permissions(request, decision)
+        try:
+            decision = publish_decision_record(decision_id=decision.pk)
+        except DecisionLifecycleError as exc:
+            raise ValidationError({"status": str(exc)}) from exc
+        return Response(self.get_serializer(decision).data, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=["post"], permission_classes=[OwnerOrEthikosAdminOrReadOnly])
+    def execute(self, request, pk=None):
+        decision = self.get_object()
+        self.check_object_permissions(request, decision)
+        target_organization = str(
+            request.data.get("target_organization")
+            or getattr(settings, "IK_ORGO_TARGET_ORGANIZATION", "")
+            or ""
+        ).strip()
+        target_world = str(
+            request.data.get("target_world")
+            or getattr(settings, "IK_ORGO_TARGET_WORLD", "")
+            or ""
+        ).strip() or None
+        execution_scope = request.data.get("execution_scope")
+        if not target_organization:
+            raise ValidationError(
+                {"target_organization": "Provide target_organization or configure IK_ORGO_TARGET_ORGANIZATION."}
+            )
+        if execution_scope is not None and not isinstance(execution_scope, dict):
+            raise ValidationError({"execution_scope": "Must be an object when provided."})
+        try:
+            emission = enqueue_decision_execution(
+                decision_id=decision.pk,
+                target_organization=target_organization,
+                target_world=target_world,
+                execution_scope=execution_scope,
+            )
+        except DecisionLifecycleError as exc:
+            raise ValidationError({"decision": str(exc)}) from exc
+        except IKIdempotencyConflict as exc:
+            return Response(
+                {"error": "IK_IDEMPOTENCY_CONFLICT", "detail": str(exc)},
+                status=status.HTTP_409_CONFLICT,
+            )
+        return Response(
+            {
+                "interaction_id": str(emission.interaction_id),
+                "profile": f"{emission.profile_id}@{emission.profile_version}",
+                "status": emission.status,
+                "idempotency_key": emission.idempotency_key,
+                "request_fingerprint": emission.request_fingerprint,
+            },
+            status=status.HTTP_202_ACCEPTED,
+        )
+
+    @action(detail=True, methods=["get"], permission_classes=[permissions.AllowAny])
+    def export(self, request, pk=None):
+        decision = self.get_object()
+        try:
+            payload = build_konnaxion_export(decision=decision)
+        except DecisionLifecycleError as exc:
+            raise ValidationError({"decision": str(exc)}) from exc
+        return Response(payload, status=status.HTTP_200_OK)

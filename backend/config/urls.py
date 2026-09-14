@@ -41,6 +41,12 @@ urlpatterns += [
         "api/integrations/orgo/konnaxion/",
         include("konnaxion.ethikos.orgo_bridge_urls"),
     ),
+    # Interaction Kernel compatibility ingress. It maps IK envelopes into
+    # the existing provider-owned Orgo impact bridge contract.
+    path(
+        "api/integrations/ik/konnaxion/",
+        include("konnaxion.ethikos.ik_bridge_urls"),
+    ),
 
     # ------------------------------------------------------------------
     # Konnaxion Worlds — runtime scope
