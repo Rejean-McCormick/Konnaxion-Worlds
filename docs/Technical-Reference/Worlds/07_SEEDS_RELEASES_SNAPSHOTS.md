@@ -178,3 +178,9 @@ Possible meanings:
 The UI and API must state which operation is being performed.
 
 "Reset World" must never mean "delete whatever demo data has a prefix."
+
+## Cross-ecosystem naming guard
+
+`Seed Pack`, `WorldRelease` and `Snapshot` are Konnaxion Worlds lifecycle artifacts. They MUST NOT be renamed or documented as Kristal `Runtime Pack`, `Working Exchange`, `Reference Exchange` or `Exchange`.
+
+`promote_release()` changes the Konnaxion-local `World.current_release` pointer. It does not perform host Runtime Pack activation and does not confer Kristal authority recognition.

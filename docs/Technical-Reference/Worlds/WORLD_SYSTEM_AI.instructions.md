@@ -32,3 +32,11 @@ Mandatory:
 Never assume target classes/routes already exist. Inspect code first.
 
 If a requested implementation conflicts with `AI_LOCK.yaml`, do not silently redesign. Draft an ADR, name the invariant, and wait for the architecture decision.
+
+ECOSYSTEM BOUNDARY GUARDS
+- Worlds control plane is Konnaxion-local, never kOA-global.
+- Seed Pack != Kristal Runtime Pack.
+- WorldRelease != Kristal Working/Reference Exchange.
+- Snapshot != Kristal Exchange.
+- Promote Release != physical Runtime Pack activation.
+- Do not invent IK/Orgo/Kristal adapters from target architecture text; require executable evidence.

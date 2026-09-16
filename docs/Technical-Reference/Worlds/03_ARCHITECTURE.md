@@ -1,5 +1,8 @@
 # Architecture
 
+> **Boundary note:** The term **control plane** in this document is local to Konnaxion Worlds. It is not the kOA Digital Ecosystem control plane, an Orgo control plane, an Interaction Kernel coordinator, a Kristal authority, or the kOA-Linux host activation owner.
+
+
 ## 1. High-level topology
 
 ```text

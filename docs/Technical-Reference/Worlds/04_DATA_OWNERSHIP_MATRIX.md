@@ -69,3 +69,14 @@ ExpertiseCategory.objects.filter(code=domain_code)
 ```
 
 without making mutable scores shared across Worlds.
+
+## Ecosystem boundary ownership
+
+| State / concern | Authoritative owner | Worlds rule |
+|---|---|---|
+| Konnaxion civic/domain state | Konnaxion domain owner | World-scoped where declared by this matrix |
+| World / WorldRelease / Seed Pack registry / Snapshot | Konnaxion Worlds | Never transferred to Orgo/Kristal/IK |
+| IK transport/envelope semantics | Interaction Kernel protocol | Protocol does not own domain state |
+| Orgo Signal/Workflow/Case/Task/IntegrationOperation | Orgo | Not aliases of World or civic objects |
+| Kristal epistemic artifacts | Kristal | Not aliases of Seed Pack/WorldRelease/Snapshot |
+| Physical Runtime Pack activation when kOA-Linux is present | kOA-Linux | Worlds promotion must not duplicate this state |

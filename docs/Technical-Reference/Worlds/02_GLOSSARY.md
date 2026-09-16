@@ -197,3 +197,17 @@ ekoh_schema
 ## View As
 
 Presentation feature that changes the displayed/acting World Persona without changing `request.user`.
+
+## Ecosystem artifact distinctions
+
+These names are not aliases across systems:
+
+```text
+Konnaxion Worlds Seed Pack   != Kristal Runtime Pack
+Konnaxion Worlds WorldRelease != Kristal Working/Reference Exchange
+Konnaxion Worlds Snapshot     != Kristal Exchange
+Promote WorldRelease          != Runtime Pack activation
+Worlds Control Plane          != kOA ecosystem control plane
+```
+
+Future mappings require an explicit Interaction Kernel/Profile contract and may not erase the source artifact identity.

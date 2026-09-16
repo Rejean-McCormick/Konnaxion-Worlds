@@ -123,3 +123,12 @@
 - [ ] invariant IDs referenced in PR/task.
 - [ ] ADR required for architecture change.
 - [ ] current vs target explicitly labeled.
+
+## Ecosystem boundary / documentation alignment
+
+- [x] Worlds control plane documented as Konnaxion-local, not ecosystem-global.
+- [x] Seed Pack distinguished from Kristal Runtime Pack.
+- [x] WorldRelease distinguished from Kristal Working/Reference Exchange.
+- [x] Snapshot distinguished from Kristal Exchange.
+- [x] Promote Release distinguished from physical Runtime Pack activation.
+- [ ] Any future IK adapter has dedicated profile-level integration tests before being called qualified.

@@ -99,3 +99,19 @@ A content-identifiable set of EkoH contextual inputs used for a reading. If a re
 ## External ecosystem system
 
 Orgo, Kristal, SemantiK Architect and kOA-Linux are external ecosystem systems relative to the Konnaxion domain. Integration does not give them direct write access to Konnaxion internal state.
+
+## Interaction Kernel (IK)
+
+**Interaction Kernel (IK)** is the distributed interoperability protocol between independently owned kOA ecosystem systems. It is not a central server, a Konnaxion control plane, or an owner of Konnaxion state.
+
+## DecisionRecord
+
+A **DecisionRecord** is the target immutable/read-model Konnaxion handoff contract for a finalized civic/governance decision. It remains Konnaxion-owned. Sending it with `governance.decision.execute/1.0.0` expresses execution intent to Orgo; it does not make the DecisionRecord an Orgo Case.
+
+## Runtime Pack activation
+
+Physical Runtime Pack verify/stage/activate/rollback has exactly one authoritative owner per deployment. When kOA-Linux is present, that owner is kOA-Linux. Konnaxion may retain desired/application selection without duplicating the host activation state.
+
+## “Single Truth” in Konnaxion
+
+In the phrase **Single Truth, Multiple Readings**, `Truth` means uniquely owned source/civic state inside the relevant Konnaxion domain. It is not a Kristal epistemic status and does not imply universal truth authority.

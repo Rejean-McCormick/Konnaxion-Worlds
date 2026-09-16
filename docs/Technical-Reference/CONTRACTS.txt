@@ -106,10 +106,24 @@ Canonical API families include:
 The current code exposes Konnaxion administration/reporting routes and a
 TeamBuilder API/application. These remain Konnaxion-owned application surfaces.
 
-9. EXTERNAL SYSTEMS
+9. EXTERNAL SYSTEMS / INTERACTION KERNEL
 
-No active Orgo, Kristal or SemantiK Architect adapter is present in the current
-Konnaxion code snapshot. Do not invent direct API paths for them.
+The current Konnaxion documentation snapshot does not establish an active
+IK-conformant Orgo, Kristal or SemantiK Architect adapter as qualified. Do not
+invent direct API paths for them.
 
-When those boundaries are implemented, they must use explicit contracts and
-must not share internal tables as the integration mechanism.
+Interaction Kernel (IK) is the distributed interoperability protocol, not a
+central service or shared database owner. Target Konnaxion/Orgo profiles are:
+- Konnaxion -> Orgo: governance.decision.execute/1.0.0
+- Orgo -> Konnaxion: accountability.impact.publish/1.0.0
+
+The target Konnaxion handoff to Orgo uses an immutable/read-model DecisionRecord.
+Decision publication does not itself imply execution. No Case<->Topic or
+Task<->Consultation identity is permitted.
+
+The supplied IK migration material references a legacy/existing orgo_bridge_* J30
+surface and OrgoImpactPublication. Verify that surface in executable code before
+describing it as current IK-conformant behavior.
+
+All external boundaries must use explicit contracts and must not share internal
+tables as the integration mechanism.

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This note identifies the code areas that should be changed so the implementation matches the current Konnaxion architecture.
+This note identifies code areas that should be changed so the implementation matches the current Konnaxion architecture. It is an architecture/code-alignment ledger, not a release-status report. Current executable qualification evidence is recorded in `QUALIFICATION_STATUS.md`.
 
 ## 1. Canonical EkoH taxonomy reference
 
@@ -163,15 +163,19 @@ Do not mix ethiKos stances, Smart Vote ballots and Smart Vote derived readings i
 
 Active router/admin comments and API documentation should name the actual domain responsibility (`structured deliberation`, `argument source`, `argument impact`, etc.). Database migration filenames do not need cosmetic rewriting.
 
-## 12. External ecosystem boundaries are not implemented yet
+## 12. External ecosystem boundaries / Interaction Kernel
 
-No active Konnaxion adapter was found for Orgo, Kristal or SemantiK Architect.
+The current Konnaxion documentation snapshot does not establish an active **IK-conformant** adapter for Orgo, Kristal or SemantiK Architect as qualified. The supplied IK migration material references an existing/historical `orgo_bridge_*` J30 implementation and `OrgoImpactPublication`; verify that surface in executable code before treating it as current.
 
-When those are implemented, add dedicated boundary packages/adapters rather than importing their internal models.
+Use dedicated boundary packages/adapters rather than importing another system's internal models.
 
 ### Orgo boundary
 
-Needs explicit command/query/event/receipt semantics and correlation/idempotency. No Case↔Topic or Task↔Consultation identity.
+Target profiles:
+- `governance.decision.execute/1.0.0` for Konnaxion `DecisionRecord` → Orgo execution intent;
+- `accountability.impact.publish/1.0.0` for Orgo accountability/impact → Konnaxion.
+
+Require explicit envelope/profile validation, correlation, idempotency and durable delivery semantics. No Case↔Topic or Task↔Consultation identity.
 
 ### Kristal boundary
 
@@ -196,3 +200,17 @@ Preserve these patterns:
 - Smart Vote reading baseline and advisory result are separate;
 - privacy filtering is performed server-side;
 - frontend `decide.ts` does not copy the baseline into the reading when the endpoint returns no reading.
+
+## 14. Qualification-tool alignment is tracked separately
+
+The 2026-09-15 full qualification exposed several issues that are not architecture changes and therefore should not be mixed into sections 1–13:
+
+- frontend ESLint is not currently green;
+- the canonical full-scan still allows Jest to pass with no tests;
+- the full-scan browser phase does not reproduce the same backend/seed orchestration that makes N05 pass;
+- backend release qualification should use a clean test DB rather than inheriting `--reuse-db` state;
+- older EkoH tests need the same `ekoh_smartvote` schema scope used by current services/tests;
+- two Capsule Manager `secrets_not_default` security-gate tests are failing;
+- LevelUpDiag N09 currently conflates HTTP reachability with endpoint validity.
+
+These are qualification/tooling or test-fixture closure items. Their current evidence and closure rules are maintained in `QUALIFICATION_STATUS.md`.

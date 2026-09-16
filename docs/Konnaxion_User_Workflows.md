@@ -122,4 +122,4 @@ Kontrol is an administrative UI, not a replacement owner for every domain it dis
 
 ## 12. External system workflows
 
-No concrete Orgo/Kristal/SemantiK Architect workflow is implemented in the current Konnaxion snapshot. When added, the UI/backend must call an explicit adapter and preserve both systems' ownership boundaries.
+No concrete IK-conformant Orgo/Kristal/SemantiK Architect workflow is established as qualified by the current Konnaxion documentation snapshot. Target Konnaxion↔Orgo contracts use `governance.decision.execute/1.0.0` and `accountability.impact.publish/1.0.0`; the UI/backend must call an explicit adapter and preserve each system's ownership boundaries.

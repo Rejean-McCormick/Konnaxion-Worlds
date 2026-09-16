@@ -86,3 +86,15 @@ World selection remains request-scoped navigation and never starts/stops infrast
 ## ADR-WLD-018 — Lightweight server health is separate from deep all-World validation
 
 **Decision:** liveness/readiness probes MUST remain bounded and must not perform exhaustive validation of all registered Worlds on every probe. Deep World/schema health is a separate on-demand or scheduled operation.
+
+## ADR-WLD-019 — Worlds control plane is Konnaxion-local
+
+**Decision:** `control plane` in the Worlds architecture refers only to Konnaxion's World registry/lifecycle/platform state. It does not become a kOA-wide control plane or acquire Orgo, Kristal, Interaction Kernel or kOA-Linux authority.
+
+## ADR-WLD-020 — Worlds artifacts are not Kristal artifacts
+
+**Decision:** `Seed Pack`, `WorldRelease` and `Snapshot` remain Konnaxion Worlds artifact identities. They are not aliases of Kristal Runtime Pack, Working Exchange, Reference Exchange or Exchange. Any future mapping requires an explicit integration contract/Profile.
+
+## ADR-WLD-021 — Release promotion is not host activation
+
+**Decision:** promoting `World.current_release` is a Konnaxion-local lifecycle mutation. It is not physical Runtime Pack verify/stage/activate/rollback. When kOA-Linux is present, host activation remains kOA-Linux-owned.

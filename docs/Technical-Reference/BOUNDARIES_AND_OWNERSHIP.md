@@ -112,9 +112,16 @@ Owns its problem, builder-session, team and team-member state. It is a Konnaxion
 
 Administrative application surface for Konnaxion moderation, roles/users, audit and platform-level views. Presentation in Kontrol does not move ownership of the underlying domain state.
 
-## 3. Konnaxion ↔ Orgo
+## 3. Konnaxion ↔ Orgo through Interaction Kernel
 
-There is no implemented Orgo integration in the current Konnaxion code snapshot. Therefore no current Konnaxion object is declared identical to an Orgo object.
+The current Konnaxion documentation snapshot does not establish an **active IK-conformant Orgo adapter** as qualified. The supplied Interaction Kernel migration material references an existing/historical `orgo_bridge_*` J30 implementation and `OrgoImpactPublication`; treat that as a compatibility surface to verify in executable code, not as proof of current IK conformance.
+
+The target ecosystem profiles are:
+
+- Konnaxion → Orgo: `governance.decision.execute/1.0.0`, carrying explicit execution intent for an immutable/read-model `DecisionRecord`;
+- Orgo → Konnaxion: `accountability.impact.publish/1.0.0`, carrying operational/accountability impact back through a Konnaxion-owned adapter boundary.
+
+No current Konnaxion object is declared identical to an Orgo object.
 
 Required invariant for a future boundary:
 
@@ -136,6 +143,8 @@ Orgo intent
 ```
 
 When Konnaxion requires governed work in Orgo, it emits a request/event; it does not create or edit Orgo Case/Task rows directly.
+
+Interaction Kernel is a distributed protocol, not a shared owner. Konnaxion remains authoritative for civic/governance state and Orgo remains authoritative for Signal/Workflow/Case/Task/IntegrationOperation state.
 
 ## 4. Konnaxion ↔ Kristal
 

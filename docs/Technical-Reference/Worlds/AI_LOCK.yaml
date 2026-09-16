@@ -144,3 +144,13 @@ required_review_questions:
 - Does this change a locked invariant?
 - Does this still work with approximately 120 registered Worlds in one shared deployment?
 - Does any World switch path trigger lifecycle work or infrastructure restart?
+
+
+ecosystem_boundary:
+  worlds_control_plane_scope: konnaxion_local
+  interaction_kernel_is_owner: false
+  seed_pack_is_kristal_runtime_pack: false
+  world_release_is_kristal_exchange: false
+  snapshot_is_kristal_exchange: false
+  promote_release_is_runtime_pack_activation: false
+  koa_linux_owns_host_runtime_pack_activation_when_present: true

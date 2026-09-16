@@ -1,36 +1,35 @@
-# Konnaxion — Documentation
+# Konnaxion Worlds — Documentation
 
 ## Scope
 
-Konnaxion is an **ecosystem system** of the kOA Digital Ecosystem and a **platform** in its own product scope. It owns its civic/public domain state and its application surfaces. It is not the kOA Digital Ecosystem itself, and it does not absorb the authority of Orgo, Kristal, SemantiK Architect or kOA-Linux when integrated with them.
+Konnaxion Worlds is the multi-World isolation/runtime capability of Konnaxion. It does not create a second Konnaxion authority and it does not replace Konnaxion domain ownership.
 
-Within Konnaxion, the word **module** is only a convenient product/UI term. Architecture documents use the more precise terms **domain**, **application**, **service**, **component**, **gateway** and **external ecosystem system**.
+The Worlds package defines how multiple isolated civic environments coexist inside one logical Konnaxion deployment. The local Worlds **control plane** is strictly Konnaxion-internal platform state; it is not the kOA Digital Ecosystem control plane, not an Orgo control plane, not an Interaction Kernel coordinator, not a Kristal authority, and not a kOA-Linux host-activation authority.
 
-## Canonical reading order
+## Documentation authority
 
-1. `Technical-Reference/DocV14/Konnaxion v14 - Full-Stack Technical Specification.md`
-2. `Technical-Reference/GLOSSARY.md`
-3. `Technical-Reference/BOUNDARIES_AND_OWNERSHIP.md`
-4. `Technical-Reference/CONTRACTS.txt`
-5. `Technical-Reference/EkoH Smart Vote/EkoH and Smart Vote - Technical Specification.md`
-6. `Technical-Reference/CODE_ALIGNMENT_NOTES.md`
-7. `Technical-Reference/DocV14/Konnaxion v14 - Site Navigation Map.md`
-8. `Konnaxion_User_Workflows.md`
+Read the Worlds documentation in this order:
 
-## Architectural invariants
+1. `Technical-Reference/Worlds/20_QUALIFICATION_STATUS.md`
+2. `Technical-Reference/Worlds/00_CANONICAL_SPEC.md`
+3. `Technical-Reference/Worlds/17_ADR_REGISTER.md`
+4. `Technical-Reference/Worlds/01_CURRENT_STATE_BASELINE.md`
+5. `Technical-Reference/Worlds/02_GLOSSARY.md`
+6. `Technical-Reference/Worlds/03_ARCHITECTURE.md`
+7. `Technical-Reference/Worlds/04_DATA_OWNERSHIP_MATRIX.md`
+8. `Technical-Reference/Worlds/05_DATA_MODEL.md` through `19_PRODUCTION_SCALE_120_WORLDS.md`
+9. `Technical-Reference/Worlds/KONNAXION_WORLDS_FULL_SPEC.md` (generated consolidation)
 
-- One authoritative owner per state.
-- No direct write across ownership boundaries.
-- Source facts and derived readings are distinct.
-- A reading never retroactively becomes a source fact.
-- EkoH context does not become a civic vote.
-- Smart Vote does not silently replace a public baseline.
-- External systems integrate through explicit contracts, not shared internal tables.
-- Presentation does not transfer authority.
-- A Konnaxion deployment inside kOA-Linux remains Konnaxion-owned at the domain level.
+The Konnaxion core baseline used by this package is documented in `Technical-Reference/Worlds/KONNAXION_BASELINE.md`. Konnaxion core documentation remains authoritative for Konnaxion-wide domain/ownership rules.
 
-## Core Konnaxion rule
+## Status rule
 
-> **Single Truth, Multiple Readings.**
+`LOCKED TARGET ARCHITECTURE` describes the intended Worlds design. It does not mean the full production target is qualified. Current qualification must be read from `20_QUALIFICATION_STATUS.md` and executable evidence.
 
-A stable source event or civic state may be interpreted through one or more explicitly declared readings. The reading identifies the method and context used to derive it; it does not mutate the source.
+## Critical terminology
+
+- `WorldRelease` is a Konnaxion Worlds runtime/data generation. It is **not** a Kristal Reference Exchange.
+- `Seed Pack` is authored reproducible World input. It is **not** a Kristal Runtime Pack.
+- `Snapshot` is a Konnaxion Worlds state capture. It is **not** a Kristal Exchange.
+- `Promote Release` updates `World.current_release`. It is **not** physical Runtime Pack activation.
+- `Select/Open World` is navigation/context selection and is not activation.

@@ -1,4 +1,4 @@
-# Current State Baseline — 2026-09-08 Snapshot
+# Current State Baseline — source-inspected 2026-09-08; documentation aligned 2026-09-16
 
 This document records the **observed implementation state** in the repository snapshot reviewed on 2026-09-08. It distinguishes implemented anchors from production validation still required.
 
@@ -134,7 +134,7 @@ The snapshot contains:
 - PostgreSQL multi-World isolation tests, including deliberately colliding identities/data;
 - switch-back isolation assertions (`A -> B -> A`).
 
-The architecture remains **implemented pending runtime/production validation** because repository presence and unit/integration code are not equivalent to proving the deployed server configuration.
+The architecture has **implemented anchors, with Worlds-specific qualification still pending for the full production target**. Repository presence and unit/integration code are not equivalent to proving the deployed server configuration. See `20_QUALIFICATION_STATUS.md` for the evidence vocabulary and open gates.
 
 ## 9. Production gates still open
 

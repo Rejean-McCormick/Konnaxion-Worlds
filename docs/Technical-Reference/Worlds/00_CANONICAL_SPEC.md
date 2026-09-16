@@ -1,7 +1,7 @@
 # Konnaxion Worlds — Canonical Specification
 
 **Lock:** `KX-WORLDS-1`  
-**Version:** `1.1.0`  
+**Version:** `1.2.0`  
 **Status:** LOCKED TARGET ARCHITECTURE  
 **Keywords:** MUST, MUST NOT, SHOULD, SHOULD NOT, MAY are normative.
 
@@ -102,6 +102,18 @@ Target global state includes:
 
 World-owned civic content MUST NOT be stored in the control-plane schema after final cutover.
 
+### 3.1 Ecosystem boundary of the Worlds control plane
+
+The Worlds control plane is **Konnaxion-local** platform state. It MUST NOT be described as:
+
+- the kOA Digital Ecosystem control plane;
+- an Orgo control plane;
+- an Interaction Kernel coordinator or owner;
+- a Kristal authority/recognition service;
+- a kOA-Linux host/runtime activation authority.
+
+Interaction Kernel is an interoperability protocol between systems. It does not own `World`, `WorldRelease`, Seed Pack, Snapshot or Konnaxion civic state.
+
 ## 4. World selection vs Release promotion
 
 These are different operations.
@@ -121,6 +133,19 @@ These are different operations.
 - requires audit and permission checks.
 
 AI and implementation code MUST NOT use the word `activate` ambiguously for both concepts.
+
+Promote Release is not Kristal Runtime Pack activation, Reference Exchange recognition, publication, or kOA-Linux physical activation. It is a Konnaxion-local pointer mutation selecting which `WorldRelease` serves a logical World.
+
+
+## 4.1 Cross-ecosystem artifact distinction
+
+A **Seed Pack** is a Konnaxion Worlds build input. It is not a Kristal Runtime Pack.
+
+A **WorldRelease** is a Konnaxion Worlds runtime/data generation. It is not a Kristal Working Exchange or Reference Exchange.
+
+A **Snapshot** is a Konnaxion Worlds state capture. It is not a Kristal Exchange.
+
+Any future bridge between these artifact families MUST use an explicit Integration Kernel/Profile contract and MUST preserve each system's identity and ownership semantics.
 
 ## 5. Explicit World context
 

@@ -84,11 +84,16 @@ Current primary families include:
 
 Inspect the actual App Router page before inventing a new path.
 
-8. EXTERNAL SYSTEMS
+8. EXTERNAL SYSTEMS / INTERACTION KERNEL
 
 Orgo, Kristal, SemantiK Architect and kOA-Linux are separate ecosystem systems.
-There is no active Konnaxion adapter for Orgo/Kristal/Architect in the current
-snapshot.
+Interaction Kernel (IK) is their distributed interoperability protocol, not a
+central owner. The current Konnaxion documentation snapshot does not establish
+an active IK-conformant adapter as qualified.
+
+Target Konnaxion/Orgo profiles are governance.decision.execute/1.0.0 and
+accountability.impact.publish/1.0.0. Treat them as target contracts unless
+executable adapter evidence proves current conformance.
 
 Never invent direct shared-database integration.
 Never map Orgo Case to EthikosTopic or Orgo Task to a Konnaxion consultation by

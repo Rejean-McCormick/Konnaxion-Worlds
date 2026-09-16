@@ -86,6 +86,8 @@ derived reading
 
 The reading does not rewrite the source.
 
+Here, “Truth” means the uniquely owned source/civic state inside the relevant Konnaxion domain. It is not a Kristal epistemic status or universal truth authority.
+
 ### 4.3 EkoH is context, not sovereignty
 
 Expertise and ethics signals are contextual and bounded. They do not become a universal rank or a fixed global voting power.
@@ -401,9 +403,11 @@ The exact current route inventory is maintained in `Konnaxion v14 - Site Navigat
 
 ## 16. External boundaries
 
-### 16.1 Orgo
+### 16.1 Interaction Kernel and Orgo
 
-No current code adapter is present. Future integration must use explicit command/query/event/artifact/receipt contracts. No shared database write is permitted.
+Interaction Kernel (IK) is the distributed interoperability protocol, not a central owner. The current Konnaxion documentation snapshot does not establish an active IK-conformant Orgo adapter as qualified. The supplied IK migration material references an existing/historical `orgo_bridge_*` J30 surface and `OrgoImpactPublication`; verify it in executable code before describing it as current behavior.
+
+Target profiles are `governance.decision.execute/1.0.0` for immutable/read-model `DecisionRecord` execution intent from Konnaxion to Orgo, and `accountability.impact.publish/1.0.0` for accountability/impact publication from Orgo to Konnaxion. No shared database write is permitted.
 
 ### 16.2 Kristal
 
