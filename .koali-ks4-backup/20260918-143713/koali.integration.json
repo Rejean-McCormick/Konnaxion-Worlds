@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "productId": "konnaxion",
+  "owner": "Konnaxion",
+  "variables": {
+    "webPort": {
+      "type": "port",
+      "env": "KOALI_KONNAXION_PORT",
+      "default": 4301
+    },
+    "apiPort": {
+      "type": "port",
+      "env": "KOALI_KONNAXION_BACKEND_PORT",
+      "default": 8301
+    }
+  },
+  "surface": {
+    "embedBase": "http://127.0.0.1:${webPort}"
+  },
+  "processes": [
+    {
+      "id": "api",
+      "cwd": "backend",
+      "command": {
+        "env": "KOALI_PYTHON",
+        "win32": "python.exe",
+        "default": "python3"
+      },
+      "args": [
+        "-m",
+        "uvicorn",
+        "config.asgi:application",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "${apiPort}",
+        "--reload"
+      ],
+      "env": {
+        "DJANGO_SETTINGS_MODULE": "config.settings.local"
+      },
+      "probeId": "api"
+    },
+    {
+      "id": "web",
+      "cwd": "frontend",
+      "command": "pnpm",
+      "shell": {
+        "win32": true,
+        "default": false
+      },
+      "args": [
+        "run",
+        "dev",
+        "--",
+        "--hostname",
+        "127.0.0.1",
+        "--port",
+        "${webPort}"
+      ],
+      "env": {
+        "PORT": "${webPort}",
+        "NEXT_PUBLIC_API_BASE": "http://127.0.0.1:${apiPort}/api",
+        "NEXT_PUBLIC_BACKEND_BASE": "http://127.0.0.1:${apiPort}",
+        "NEXT_PUBLIC_KONNAXION_API_ORIGIN": "http://127.0.0.1:${apiPort}",
+        "API_PROXY_BASE": "http://127.0.0.1:${apiPort}/api"
+      },
+      "probeId": "web"
+    }
+  ],
+  "probes": [
+    {
+      "id": "api",
+      "url": "http://127.0.0.1:${apiPort}/health/ready/",
+      "required": true,
+      "statuses": [
+        200
+      ],
+      "timeoutMs": 1800
+    },
+    {
+      "id": "web",
+      "url": "http://127.0.0.1:${webPort}/healthz",
+      "required": true,
+      "statuses": [
+        200
+      ],
+      "timeoutMs": 1800
+    }
+  ]
+}
