@@ -12,8 +12,8 @@ from tkinter import messagebox, simpledialog, ttk
 APP_TITLE = "Konnaxion — World Manager"
 ARCHITECTURE_LOCK = "KX-WORLDS-1"
 BACKEND_REL = Path("backend")
-MANAGE_REL = BACKEND_REL / "manage.py"
-VENV_PY_REL = BACKEND_REL / ".venv" / "Scripts" / "python.exe"
+MANAGE_REL = BACKEND_REL / "worlds_manage.py"
+VENV_PY_REL = Path(".venv") / "Scripts" / "python.exe"
 RESULT_MARKER = "__KX_RESULT__="
 
 LIST_CODE = r'''
@@ -212,7 +212,7 @@ class WorldManager(tk.Tk):
         detected_db, db_source = self._detect_database_url(detected_repo)
         self.db_var = tk.StringVar(value=detected_db or "")
         self.db_source = db_source or "not configured"
-        self.status_var = tk.StringVar(value=f"{ARCHITECTURE_LOCK} — venv/pip — DB: {self.db_source}")
+        self.status_var = tk.StringVar(value=f"{ARCHITECTURE_LOCK} — standalone venv — DB: {self.db_source}")
         self._queue: queue.Queue[tuple[str, object]] = queue.Queue()
         self._busy = False
         self._registry: dict = {"worlds": [], "packs": []}
@@ -224,7 +224,7 @@ class WorldManager(tk.Tk):
         root = ttk.Frame(self, padding=12)
         root.pack(fill="both", expand=True)
         ttk.Label(root, text="Konnaxion World Manager", font=("Segoe UI", 17, "bold")).pack(anchor="w")
-        ttk.Label(root, text="venv/pip · Neon/PostgreSQL · isolated WorldReleases · KX-WORLDS-1").pack(anchor="w", pady=(2, 10))
+        ttk.Label(root, text="standalone · Neon/PostgreSQL · isolated WorldReleases · KX-WORLDS-1").pack(anchor="w", pady=(2, 10))
 
         path_row = ttk.Frame(root)
         path_row.pack(fill="x")
@@ -312,7 +312,6 @@ class WorldManager(tk.Tk):
             Path(__file__).resolve().parent,
             Path.cwd(),
             Path(r"C:\mycode\Konnaxion\Konnaxion_Worlds"),
-            Path(r"C:\mycode\Konnaxion"),
         ]
         for candidate in candidates:
             if (candidate / MANAGE_REL).is_file():
@@ -336,31 +335,31 @@ class WorldManager(tk.Tk):
         return None
 
     def _detect_database_url(self, repo: Path | None) -> tuple[str | None, str | None]:
-        for name in ("KONNAXION_DATABASE_URL", "DATABASE_URL"):
+        for name in ("KONNAXION_WORLDS_DATABASE_URL", "DATABASE_URL"):
             value = os.environ.get(name, "").strip()
             if value:
                 return value, name
 
         if repo:
-            for rel in (Path("backend/.env"),):
-                value = self._read_env_value(repo / rel, "DATABASE_URL")
-                if value:
-                    return value, str(rel)
+            for rel in (Path(".env"),):
+                for key in ("KONNAXION_WORLDS_DATABASE_URL", "DATABASE_URL"):
+                    value = self._read_env_value(repo / rel, key)
+                    if value:
+                        return value, f"{rel}:{key}"
 
         return None, None
 
     def _repo(self) -> Path:
         root = Path(self.repo_var.get().strip().strip('"')).resolve()
         if not (root / MANAGE_REL).is_file():
-            raise RuntimeError("Invalid Konnaxion repository root: backend/manage.py not found.")
+            raise RuntimeError("Invalid Konnaxion Worlds root: backend/worlds_manage.py not found.")
         return root
 
     def _python(self) -> Path:
         python = self._repo() / VENV_PY_REL
         if not python.is_file():
             raise RuntimeError(
-                "Konnaxion backend/.venv is missing. Create the standard virtual environment first "
-                "and install backend/requirements/local.txt."
+                "Konnaxion Worlds .venv is missing. Run SETUP_KONNAXION_WORLDS.ps1 first."
             )
         return python
 
@@ -368,20 +367,19 @@ class WorldManager(tk.Tk):
         database_url = self.db_var.get().strip()
         if not database_url:
             raise RuntimeError(
-                "Konnaxion DATABASE_URL is empty. Set KONNAXION_DATABASE_URL, "
-                "backend/.env, or paste the Neon/PostgreSQL URL in the masked Database field."
+                "Konnaxion Worlds database URL is empty. Set KONNAXION_WORLDS_DATABASE_URL, "
+                ".env, or paste the Neon/PostgreSQL URL in the masked Database field."
             )
         env = os.environ.copy()
         env["DATABASE_URL"] = database_url
-        env["KONNAXION_DATABASE_URL"] = database_url
+        env["KONNAXION_WORLDS_DATABASE_URL"] = database_url
         env["USE_DOCKER"] = "no"
-        env["DJANGO_SETTINGS_MODULE"] = "config.settings.local"
-        env.setdefault("REDIS_URL", "redis://127.0.0.1:6379/0")
+        env["DJANGO_SETTINGS_MODULE"] = "worlds_config.settings"
         return env
 
     def _manage(self, *args: str, input_text: str | None = None, timeout: int = 900) -> subprocess.CompletedProcess[str]:
         return subprocess.run(
-            [str(self._python()), "manage.py", *args],
+            [str(self._python()), "worlds_manage.py", *args],
             cwd=self._repo() / BACKEND_REL,
             env=self._runtime_env(),
             input=input_text,
@@ -391,9 +389,9 @@ class WorldManager(tk.Tk):
         )
 
     def _ensure_backend(self) -> None:
-        # Only the World control plane is migrated here. Domain/EkoH schemas are
-        # provisioned by the canonical builder into each isolated WorldRelease.
-        proc = self._manage("migrate", "worlds", "--noinput", timeout=300)
+        # Apply the standalone control-plane migrations. Release-local schemas are
+        # provisioned separately by the Worlds builder.
+        proc = self._manage("migrate", "--noinput", timeout=300)
         if proc.returncode:
             raise RuntimeError("World control-plane migrations failed:\n" + proc.stdout + proc.stderr)
 
@@ -441,7 +439,7 @@ class WorldManager(tk.Tk):
         self._set_status("Loading registry…")
         data = self._call(LIST_CODE)
         self._queue.put(("registry", data))
-        self._set_status(f"venv/pip ready — DB: {self.db_source}")
+        self._set_status(f"standalone ready — DB: {self.db_source}")
 
     def create_world(self) -> None:
         if self._busy:
