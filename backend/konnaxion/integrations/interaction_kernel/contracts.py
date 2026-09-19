@@ -88,11 +88,11 @@ def build_decision_execute_envelope(
 
 
 def validate_impact_publish_envelope(envelope: Mapping[str, Any]) -> None:
-    """Validate the IK subset required by the existing impact bridge.
+    """Validate the IK subset required by the standalone impact boundary.
 
     Full IK schema validation belongs in the standalone IK runtime. This local
     adapter deliberately validates only the invariants required to safely map
-    into Konnaxion's already-hardened legacy bridge contract.
+    into the standalone Konnaxion Worlds request contract.
     """
 
     if envelope.get("specversion") != IK_SPEC_VERSION:
@@ -119,10 +119,10 @@ def validate_impact_publish_envelope(envelope: Mapping[str, Any]) -> None:
     if not envelope.get("idempotency_key"):
         raise IKContractError("IK_INVALID_ENVELOPE", "idempotency_key is required")
     if not source.get("organization"):
-        raise IKContractError("IK_INVALID_ENVELOPE", "source.organization is required by the compatibility bridge")
+        raise IKContractError("IK_INVALID_ENVELOPE", "source.organization is required")
 
 
-def impact_publish_to_legacy_request(envelope: Mapping[str, Any]) -> dict[str, Any]:
+def impact_publish_to_request(envelope: Mapping[str, Any]) -> dict[str, Any]:
     validate_impact_publish_envelope(envelope)
     source = envelope["source"]
     subject = envelope["subject"]
