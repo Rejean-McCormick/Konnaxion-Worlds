@@ -1,0 +1,114 @@
+SMART DUMPER INDEX
+==================
+generated_at: 2026-09-19T16:22:11-04:00
+source_root: C:\mycode\Konnaxion\Konnaxion_Worlds
+zip_file: Konnaxion_Worlds_Standalone_Fixed.zip
+embedded_index: SMARTDUMP_INDEX.txt
+file_count: 102
+total_bytes: 474941
+compression: ZIP_DEFLATED level 1
+
+FILES
+-----
+.env.example	417 bytes
+GitSink.bat	781 bytes
+Konnaxion_World_Manager.pyw	28292 bytes
+SETUP_KONNAXION_WORLDS.ps1	1240 bytes
+SMARTDUMP_INDEX.txt	6218 bytes
+STANDALONE_BOOTSTRAP.md	438 bytes
+VALIDATE_KONNAXION_WORLDS.ps1	1022 bytes
+backend/konnaxion/integrations/__init__.py	56 bytes
+backend/konnaxion/integrations/interaction_kernel/README.md	1884 bytes
+backend/konnaxion/integrations/interaction_kernel/__init__.py	555 bytes
+backend/konnaxion/integrations/interaction_kernel/contracts.py	7379 bytes
+backend/konnaxion/integrations/interaction_kernel/fingerprint.py	742 bytes
+backend/konnaxion/integrations/interaction_kernel/interaction-kernel.lock.json	612 bytes
+backend/konnaxion/integrations/interaction_kernel/jcs.py	3433 bytes
+backend/konnaxion/integrations/interaction_kernel/runtime_pack.py	609 bytes
+backend/konnaxion/integrations/interaction_kernel/services.py	5291 bytes
+backend/konnaxion/integrations/interaction_kernel/transport.py	2723 bytes
+backend/konnaxion/worlds/__init__.py	95 bytes
+backend/konnaxion/worlds/admin.py	517 bytes
+backend/konnaxion/worlds/api_views.py	28842 bytes
+backend/konnaxion/worlds/apps.py	192 bytes
+backend/konnaxion/worlds/db.py	1821 bytes
+backend/konnaxion/worlds/management/__init__.py	0 bytes
+backend/konnaxion/worlds/management/commands/__init__.py	0 bytes
+backend/konnaxion/worlds/management/commands/worlds_build.py	4043 bytes
+backend/konnaxion/worlds/management/commands/worlds_health.py	521 bytes
+backend/konnaxion/worlds/management/commands/worlds_list.py	712 bytes
+backend/konnaxion/worlds/management/commands/worlds_promote.py	932 bytes
+backend/konnaxion/worlds/management/commands/worlds_queue_catalog.py	5575 bytes
+backend/konnaxion/worlds/management/commands/worlds_snapshot.py	822 bytes
+backend/konnaxion/worlds/middleware.py	5220 bytes
+backend/konnaxion/worlds/migrations/0001_initial.py	11820 bytes
+backend/konnaxion/worlds/migrations/0002_harden_world_invariants.py	1936 bytes
+backend/konnaxion/worlds/migrations/0003_world_build_job.py	3539 bytes
+backend/konnaxion/worlds/migrations/__init__.py	0 bytes
+backend/konnaxion/worlds/models.py	14668 bytes
+backend/konnaxion/worlds/permissions.py	456 bytes
+backend/konnaxion/worlds/resolver.py	3598 bytes
+backend/konnaxion/worlds/runtime.py	1304 bytes
+backend/konnaxion/worlds/runtime_urls.py	357 bytes
+backend/konnaxion/worlds/serializers.py	5219 bytes
+backend/konnaxion/worlds/services/__init__.py	0 bytes
+backend/konnaxion/worlds/services/audit.py	636 bytes
+backend/konnaxion/worlds/services/build_queue.py	3915 bytes
+backend/konnaxion/worlds/services/builder.py	14194 bytes
+backend/konnaxion/worlds/services/cache.py	632 bytes
+backend/konnaxion/worlds/services/health.py	5627 bytes
+backend/konnaxion/worlds/services/media.py	560 bytes
+backend/konnaxion/worlds/services/naming.py	634 bytes
+backend/konnaxion/worlds/services/personas.py	7912 bytes
+backend/konnaxion/worlds/services/schema.py	10918 bytes
+backend/konnaxion/worlds/services/search.py	820 bytes
+backend/konnaxion/worlds/services/seed_packs.py	8320 bytes
+backend/konnaxion/worlds/services/snapshots.py	2590 bytes
+backend/konnaxion/worlds/services/tasks.py	3183 bytes
+backend/konnaxion/worlds/tasks.py	8387 bytes
+backend/konnaxion/worlds/tests/__init__.py	0 bytes
+backend/konnaxion/worlds/tests/test_build_jobs.py	5701 bytes
+backend/konnaxion/worlds/tests/test_health_scale.py	1465 bytes
+backend/konnaxion/worlds/tests/test_multiworld_isolation.py	2552 bytes
+backend/konnaxion/worlds/tests/test_primitives.py	1518 bytes
+backend/konnaxion/worlds/tests/test_seed_packs.py	1493 bytes
+backend/konnaxion/worlds/urls.py	2668 bytes
+backend/requirements-worlds.txt	103 bytes
+backend/seed-data/worlds/README.md	448 bytes
+backend/seed-data/worlds/demo-alpha/scenario.json	1533 bytes
+backend/seed-data/worlds/demo-alpha/world.yaml	278 bytes
+backend/seed-data/worlds/demo-beta/scenario.json	1531 bytes
+backend/seed-data/worlds/demo-beta/world.yaml	276 bytes
+backend/seed-data/worlds/uckk-a014/README.md	955 bytes
+backend/seed-data/worlds/uckk-a014/scenarios/uckk-a014.json	11738 bytes
+backend/seed-data/worlds/uckk-a014/world.yaml	1091 bytes
+backend/worlds_config/__init__.py	65 bytes
+backend/worlds_config/asgi.py	173 bytes
+backend/worlds_config/celery.py	238 bytes
+backend/worlds_config/settings.py	5296 bytes
+backend/worlds_config/urls.py	341 bytes
+backend/worlds_config/wsgi.py	173 bytes
+backend/worlds_manage.py	289 bytes
+docs/Technical-Reference/Worlds/00_CANONICAL_SPEC.md	12147 bytes
+docs/Technical-Reference/Worlds/02_GLOSSARY.md	4451 bytes
+docs/Technical-Reference/Worlds/03_ARCHITECTURE.md	6282 bytes
+docs/Technical-Reference/Worlds/04_DATA_OWNERSHIP_MATRIX.md	3894 bytes
+docs/Technical-Reference/Worlds/05_DATA_MODEL.md	4161 bytes
+docs/Technical-Reference/Worlds/06_RUNTIME_CONTEXT_AND_ROUTING.md	4158 bytes
+docs/Technical-Reference/Worlds/07_SEEDS_RELEASES_SNAPSHOTS.md	3991 bytes
+docs/Technical-Reference/Worlds/08_ACCOUNTS_PERSONAS_EKOH_SMARTVOTE.md	3571 bytes
+docs/Technical-Reference/Worlds/09_INFRASTRUCTURE_SCOPING.md	4914 bytes
+docs/Technical-Reference/Worlds/10_CONTROL_PLANE_API.md	4828 bytes
+docs/Technical-Reference/Worlds/11_WORLD_MANAGER_UI.md	4573 bytes
+docs/Technical-Reference/Worlds/12_SECURITY_AND_FAILURE_MODES.md	3754 bytes
+docs/Technical-Reference/Worlds/13_TEST_AND_ACCEPTANCE_PLAN.md	5054 bytes
+docs/Technical-Reference/Worlds/15_OPERATIONS_RUNBOOK.md	7292 bytes
+docs/Technical-Reference/Worlds/16_AI_LOCK_ANTI_DRIFT.md	5757 bytes
+docs/Technical-Reference/Worlds/17_ADR_REGISTER.md	4793 bytes
+docs/Technical-Reference/Worlds/18_IMPLEMENTATION_CHECKLIST.md	3924 bytes
+docs/Technical-Reference/Worlds/19_PRODUCTION_SCALE_120_WORLDS.md	5576 bytes
+docs/Technical-Reference/Worlds/AI_LOCK.yaml	7144 bytes
+docs/Technical-Reference/Worlds/KONNAXION_WORLDS_FULL_SPEC.md	109166 bytes
+docs/Technical-Reference/Worlds/WORLD_SYSTEM_AI.instructions.md	2012 bytes
+examples/world-pack.example.yaml	726 bytes
+examples/worlds-architecture.mmd	639 bytes

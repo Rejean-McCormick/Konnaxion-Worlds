@@ -45,9 +45,8 @@ def world_readiness() -> dict:
         result["ok"] = False
         result["errors"].append(f"database: {exc}")
 
-    # The production cache is Redis and Celery uses the same Redis service as
-    # broker/result backend. A tiny expiring cache round-trip is bounded and
-    # catches the common single-server dependency failure without scanning Worlds.
+    # Probe whichever cache backend this standalone deployment configured.
+    # Local development defaults to LocMem; production may opt into Redis.
     try:
         probe_key = "konnaxion:worlds:readiness"
         cache.set(probe_key, "ok", timeout=5)
@@ -55,7 +54,7 @@ def world_readiness() -> dict:
             raise RuntimeError("cache probe did not round-trip")
     except Exception as exc:
         result["ok"] = False
-        result["errors"].append(f"cache/redis: {exc}")
+        result["errors"].append(f"cache: {exc}")
     return result
 
 

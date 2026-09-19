@@ -103,7 +103,7 @@ def build_world_release(
     release.seed_checksum = pack.checksum
     release.scenario_schema_version = pack.scenario_schema_version
     release.build_metadata_json = {
-        "architecture_lock": "KX-WORLDS-2",
+        "architecture_lock": "KX-WORLDS-1",
         "manifest": str(pack.manifest_path),
         "scenario_count": len(pack.scenario_paths),
     }
