@@ -15,20 +15,6 @@ _WORLD_ROUTE_RE = re.compile(
     r"^/(?:api/)?w/(?P<world_key>[a-z0-9](?:[a-z0-9-]{0,118}[a-z0-9])?)(?:/|$)"
 )
 
-_WORLD_OWNED_LEGACY_PREFIXES = (
-    "/api/ethikos/",
-    "/api/deliberate/",
-    "/api/v1/ekoh/",
-    "/api/v1/smart-vote/",
-    "/api/keenkonnect/",
-    "/api/projects/",
-    "/api/konnected/",
-    "/api/kreative/",
-    "/api/kollective/",
-    "/api/teambuilder/",
-    "/api/reports/",
-)
-
 _SAFE_METHODS = {"GET", "HEAD", "OPTIONS", "TRACE"}
 _NON_DIRTY_RUNTIME_PATHS = ("/runtime/view-as/",)
 
@@ -113,14 +99,6 @@ class WorldRouteMiddleware:
         match = _WORLD_ROUTE_RE.match(path)
 
         if match is None:
-            if getattr(settings, "KONNAXION_WORLDS_STRICT_ROUTING", False) and path.startswith(
-                _WORLD_OWNED_LEGACY_PREFIXES
-            ):
-                return _error(
-                    "WORLD_CONTEXT_REQUIRED",
-                    "Use /api/w/{world_key}/... for World-owned APIs.",
-                    status=400,
-                )
             return self.get_response(request)
 
         world_key = match.group("world_key")

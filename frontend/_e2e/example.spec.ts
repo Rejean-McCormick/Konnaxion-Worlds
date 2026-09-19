@@ -1,8 +1,0 @@
-// FILE: frontend/_e2e/example.spec.ts
-import { expect, test } from "@playwright/test"
-
-test("has title", async ({ page }) => {
-  await page.goto("./")
-
-  await expect(page).toHaveTitle(/Next.js Enterprise Boilerplate/)
-})

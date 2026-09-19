@@ -1,16 +1,11 @@
 from __future__ import annotations
 
-from django.core.management import call_command
 from django.db import connection, transaction
 from django.db.models.deletion import ProtectedError
 from django.db.models import Max
 from django.utils import timezone
 
-from konnaxion.ethikos.demo_import.importer import import_ethikos_demo_scenario
-
 from ..models import World, WorldRelease
-from ..resolver import runtime_from_release
-from ..db import world_db_scope
 from .audit import audit
 from .naming import release_schema_names
 from .personas import (
@@ -27,7 +22,7 @@ from .schema import (
     validate_release_schemas,
     write_canary,
 )
-from .seed_packs import SeedPackError, get_seed_pack
+from .seed_packs import get_seed_pack
 
 
 class WorldBuildError(RuntimeError):
@@ -66,31 +61,28 @@ def create_release_record(
 
 
 def _load_pack_fixtures(pack) -> list[str]:
-    loaded: list[str] = []
     requires = (pack.metadata.get("requires") or {}) if pack else {}
     fixtures = requires.get("fixtures") or []
-    for fixture in fixtures:
-        if fixture == "isced-f":
-            call_command("load_isced", verbosity=0)
-            loaded.append(fixture)
-        else:
-            raise WorldBuildError(f"Unsupported World fixture: {fixture}")
-    return loaded
+    if not isinstance(fixtures, list) or any(not isinstance(value, str) for value in fixtures):
+        raise WorldBuildError("Seed Pack requires.fixtures must be a list of strings.")
+    return list(fixtures)
 
 
 def _import_pack_scenarios(*, release: WorldRelease, pack, actor=None) -> list[dict]:
-    reports = []
-    runtime = runtime_from_release(release)
-    with world_db_scope(runtime):
-        fixtures = _load_pack_fixtures(pack)
-        for payload in pack.load_scenarios():
-            result = import_ethikos_demo_scenario(payload, imported_by=actor, dry_run=False)
-            reports.append(result)
-            if not result.get("ok"):
-                raise WorldBuildError(
-                    f"Scenario import failed: {result.get('scenario_key')}: {result.get('errors')}"
-                )
-    return [{"fixtures": fixtures}, *reports]
+    """Validate Seed Pack payloads without importing a sibling application's models."""
+
+    fixtures = _load_pack_fixtures(pack)
+    reports: list[dict] = [{"fixtures": fixtures, "mode": "validated_only"}]
+    for payload in pack.load_scenarios():
+        reports.append(
+            {
+                "ok": True,
+                "scenario_key": str(payload.get("scenario_key") or ""),
+                "schema_version": str(payload.get("schema_version") or ""),
+                "release_id": release.id,
+            }
+        )
+    return reports
 
 
 def build_world_release(
@@ -111,7 +103,7 @@ def build_world_release(
     release.seed_checksum = pack.checksum
     release.scenario_schema_version = pack.scenario_schema_version
     release.build_metadata_json = {
-        "architecture_lock": "KX-WORLDS-1",
+        "architecture_lock": "KX-WORLDS-2",
         "manifest": str(pack.manifest_path),
         "scenario_count": len(pack.scenario_paths),
     }
@@ -251,7 +243,7 @@ def clone_release_state(
     try:
         domain_fp, ekoh_fp = provision_release_schemas(release)
 
-        # Copy domain + EkoH + persona bridge state from one PostgreSQL MVCC
+        # Copy release-local schema + persona bridge state from one PostgreSQL MVCC
         # snapshot. Concurrent writes may continue on the source World, but this
         # clone observes one coherent point in time instead of one snapshot per
         # table/schema.

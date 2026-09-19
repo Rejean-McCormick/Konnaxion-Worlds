@@ -1,0 +1,1131 @@
+# Worlds separation cleanup report
+
+- Cleaner: `2.2.0-exact-paths-drift-tolerant`
+- Applied: `2026-09-19T15:21:24-04:00`
+- Snapshot source: `Code_snapshot_Konnaxion_Worlds.zip`
+- Full snapshot path inventory matched before apply: `False`
+- Inventory drift was tolerated; only embedded exact paths were eligible for deletion.
+- Backup: `C:\mycode\Konnaxion\_worlds_separation_backups\Konnaxion_Worlds-before-separation-20260919-152119.zip`
+- Deleted exact files: **1113**
+- Moves: **0**
+
+## Deleted exact paths
+
+- `.github/workflows/worlds-ci.yml`
+- `.gitignore`
+- `.koali-ks4-backup/20260918-135622/backend/config/urls.py`
+- `.koali-ks4-backup/20260918-143713/koali.integration.json`
+- `.smartignore`
+- `AGENTS.md`
+- `CODE_SNAPSHOT_MANIFEST.md`
+- `IK_UPDATE_MANIFEST.json`
+- `KONNAXION_BUILD_CONSOLE.pyw`
+- `KONNAXION_MEGA_TEST_CAMPAIGN.pyw`
+- `KONNAXION_WORLDS_IK_UPDATE.md`
+- `KONNAXION_WORLD_MANAGER_NEON_FIX_v1_MANIFEST.md`
+- `KX_WORLD_SCHEMA_DEP_FIX_v1.md`
+- `Konnaxion_Ethikos_Seed_Manager.pyw`
+- `LICENSE`
+- `NO_UV_MIGRATION.md`
+- `PREPARE_KONNAXION_LOCAL.ps1`
+- `PlantUML/Konnaxion_C2_Containers.puml`
+- `PlantUML/Konnaxion_C3_Airflow.puml`
+- `PlantUML/Konnaxion_C3_Realtime.puml`
+- `PlantUML/Konnaxion_C3_WebApp.puml`
+- `PlantUML/Konnaxion_C3_Worker.puml`
+- `PlantUML/Konnaxion_C3_reports-api.puml`
+- `PlantUML/Konnaxion_C4_Code_Auth.puml`
+- `PlantUML/Konnaxion_C4_Code_ETL_DAGs.puml`
+- `PlantUML/Konnaxion_C4_Code_Exporter.puml`
+- `PlantUML/Konnaxion_C4_Code_FilesMedia.puml`
+- `PlantUML/Konnaxion_C4_Code_Notifications.puml`
+- `PlantUML/Konnaxion_C4_Code_RealtimeConsumers.puml`
+- `PlantUML/Konnaxion_C4_Code_ReportsQueryEngine.puml`
+- `PlantUML/Konnaxion_C4_Code_SearchListing.puml`
+- `PlantUML/Konnaxion_C4_Code_SmartVote.puml`
+- `PlantUML/konnaxion_c3_api.puml`
+- `PlantUML/konnaxion_c3_reports.puml`
+- `PlantUML/konnaxion_c4_verbose_v2.puml`
+- `README.md`
+- `RUN_ETHIKOS_DELIVERY_WORKFLOW.ps1`
+- `RUN_ETHIKOS_DELIVERY_WORKFLOW_ONECLICK.pyw`
+- `RUN_KONNAXION_BUG_HARVEST.pyw`
+- `RUN_KONNAXION_BUG_HARVEST_WAVE2.pyw`
+- `RUN_V413_CINEMATIC.txt`
+- `RUN_V413_SMOKE.cmd`
+- `RUN_backend_local.bat`
+- `RUN_frontend_local.bat`
+- `SHA256SUMS.txt`
+- `Structurizr/workspace.dsl`
+- `VALIDATE_KONNAXION_NO_UV.ps1`
+- `VALIDATE_KONNAXION_WORLD_MANAGER_THREADSAFE.ps1`
+- `VALIDATE_KONNAXION_WORLD_MIGRATION_LEDGER_FIX.ps1`
+- `VALIDATE_KONNAXION_WORLD_SCHEMA_DEP_FIX.ps1`
+- `VALIDATE_UCKK_A014_SEED.ps1`
+- `WORLDS_IMPLEMENTATION_FINAL.md`
+- `backend/.devcontainer/bashrc.override.sh`
+- `backend/.devcontainer/devcontainer.json`
+- `backend/.dockerignore`
+- `backend/.editorconfig`
+- `backend/.gitattributes`
+- `backend/.github/dependabot.yml`
+- `backend/.github/workflows/ci.yml`
+- `backend/.gitignore`
+- `backend/.pre-commit-config.yaml`
+- `backend/.python-version`
+- `backend/.readthedocs.yml`
+- `backend/Generate-ERD.ps1`
+- `backend/LICENSE`
+- `backend/README.md`
+- `backend/compose/local/django/Dockerfile`
+- `backend/compose/local/django/celery/beat/start`
+- `backend/compose/local/django/celery/flower/start`
+- `backend/compose/local/django/celery/worker/start`
+- `backend/compose/local/django/start`
+- `backend/compose/local/docs/Dockerfile`
+- `backend/compose/local/docs/start`
+- `backend/compose/production/django/Dockerfile`
+- `backend/compose/production/django/celery/beat/start`
+- `backend/compose/production/django/celery/flower/start`
+- `backend/compose/production/django/celery/worker/start`
+- `backend/compose/production/django/entrypoint`
+- `backend/compose/production/django/start`
+- `backend/compose/production/nginx/Dockerfile`
+- `backend/compose/production/nginx/default.conf`
+- `backend/compose/production/postgres/Dockerfile`
+- `backend/compose/production/postgres/maintenance/_sourced/constants.sh`
+- `backend/compose/production/postgres/maintenance/_sourced/countdown.sh`
+- `backend/compose/production/postgres/maintenance/_sourced/messages.sh`
+- `backend/compose/production/postgres/maintenance/_sourced/yes_no.sh`
+- `backend/compose/production/postgres/maintenance/backup`
+- `backend/compose/production/postgres/maintenance/backups`
+- `backend/compose/production/postgres/maintenance/restore`
+- `backend/compose/production/postgres/maintenance/rmbackup`
+- `backend/compose/production/traefik/Dockerfile`
+- `backend/compose/production/traefik/traefik.yml`
+- `backend/config/__init__.py`
+- `backend/config/api_router.py`
+- `backend/config/asgi.py`
+- `backend/config/celery_app.py`
+- `backend/config/koali_health.py`
+- `backend/config/settings/__init__.py`
+- `backend/config/settings/base.py`
+- `backend/config/settings/local.py`
+- `backend/config/settings/production.py`
+- `backend/config/settings/settings_addons.py`
+- `backend/config/settings/test.py`
+- `backend/config/urls.py`
+- `backend/config/websocket.py`
+- `backend/config/world_api_router.py`
+- `backend/config/wsgi.py`
+- `backend/django_api_scanner.py`
+- `backend/docker-compose.docs.yml`
+- `backend/docker-compose.local.yml`
+- `backend/docker-compose.production.yml`
+- `backend/docs/Makefile`
+- `backend/docs/__init__.py`
+- `backend/docs/conf.py`
+- `backend/docs/howto.rst`
+- `backend/docs/index.rst`
+- `backend/docs/make.bat`
+- `backend/docs/users.rst`
+- `backend/end-points-scanner.py`
+- `backend/env.example`
+- `backend/how to pull endpoints from backend.txt`
+- `backend/how to run tests.txt`
+- `backend/infra/db/partition_helper.sql`
+- `backend/justfile`
+- `backend/konnaxion/__init__.py`
+- `backend/konnaxion/conftest.py`
+- `backend/konnaxion/contrib/__init__.py`
+- `backend/konnaxion/contrib/sites/__init__.py`
+- `backend/konnaxion/contrib/sites/migrations/0001_initial.py`
+- `backend/konnaxion/contrib/sites/migrations/0002_alter_domain_unique.py`
+- `backend/konnaxion/contrib/sites/migrations/0003_set_site_domain_and_name.py`
+- `backend/konnaxion/contrib/sites/migrations/0004_alter_options_ordering_domain.py`
+- `backend/konnaxion/contrib/sites/migrations/__init__.py`
+- `backend/konnaxion/ekoh/__init__.py`
+- `backend/konnaxion/ekoh/admin.py`
+- `backend/konnaxion/ekoh/admin_partition.py`
+- `backend/konnaxion/ekoh/apps.py`
+- `backend/konnaxion/ekoh/db.py`
+- `backend/konnaxion/ekoh/fixtures/isced_f_2013.json`
+- `backend/konnaxion/ekoh/management/commands/load_isced.py`
+- `backend/konnaxion/ekoh/migrations/0001_initial.py`
+- `backend/konnaxion/ekoh/migrations/0002_remove_expertisecategory_idx_cat_path_and_more.py`
+- `backend/konnaxion/ekoh/migrations/0003_rating_visibility_and_access.py`
+- `backend/konnaxion/ekoh/migrations/__init__.py`
+- `backend/konnaxion/ekoh/models/__init__.py`
+- `backend/konnaxion/ekoh/models/access.py`
+- `backend/konnaxion/ekoh/models/audit.py`
+- `backend/konnaxion/ekoh/models/config.py`
+- `backend/konnaxion/ekoh/models/privacy.py`
+- `backend/konnaxion/ekoh/models/scores.py`
+- `backend/konnaxion/ekoh/models/taxonomy.py`
+- `backend/konnaxion/ekoh/serializers/__init__.py`
+- `backend/konnaxion/ekoh/serializers/profile.py`
+- `backend/konnaxion/ekoh/services/__init__.py`
+- `backend/konnaxion/ekoh/services/contextual_analysis.py`
+- `backend/konnaxion/ekoh/services/multidimensional_scoring.py`
+- `backend/konnaxion/ekoh/services/rating_access.py`
+- `backend/konnaxion/ekoh/tasks/__init__.py`
+- `backend/konnaxion/ekoh/tasks/contextual.py`
+- `backend/konnaxion/ekoh/tasks/recalc.py`
+- `backend/konnaxion/ekoh/tests/__init__.py`
+- `backend/konnaxion/ekoh/tests/test_models.py`
+- `backend/konnaxion/ekoh/tests/test_rating_access.py`
+- `backend/konnaxion/ekoh/tests/test_services.py`
+- `backend/konnaxion/ekoh/tests/test_tasks.py`
+- `backend/konnaxion/ekoh/urls.py`
+- `backend/konnaxion/ekoh/views/__init__.py`
+- `backend/konnaxion/ekoh/views/profile.py`
+- `backend/konnaxion/ethikos/__init__.py`
+- `backend/konnaxion/ethikos/admin.py`
+- `backend/konnaxion/ethikos/api_views.py`
+- `backend/konnaxion/ethikos/apps.py`
+- `backend/konnaxion/ethikos/constants.py`
+- `backend/konnaxion/ethikos/demo_import/__init__.py`
+- `backend/konnaxion/ethikos/demo_import/importer.py`
+- `backend/konnaxion/ethikos/demo_import/schema.py`
+- `backend/konnaxion/ethikos/demo_import/serializers.py`
+- `backend/konnaxion/ethikos/demo_import/urls.py`
+- `backend/konnaxion/ethikos/demo_import/views.py`
+- `backend/konnaxion/ethikos/ik_bridge_urls.py`
+- `backend/konnaxion/ethikos/ik_bridge_views.py`
+- `backend/konnaxion/ethikos/management/__init__.py`
+- `backend/konnaxion/ethikos/management/commands/__init__.py`
+- `backend/konnaxion/ethikos/management/commands/ik_redrive_emission.py`
+- `backend/konnaxion/ethikos/management/commands/orgo_bridge_setup.py`
+- `backend/konnaxion/ethikos/management/commands/seed_ethikos_workflow.py`
+- `backend/konnaxion/ethikos/migrations/0001_initial.py`
+- `backend/konnaxion/ethikos/migrations/0002_initial.py`
+- `backend/konnaxion/ethikos/migrations/0003_kintsugi_wave1_korum.py`
+- `backend/konnaxion/ethikos/migrations/0004_demoscenarioimport.py`
+- `backend/konnaxion/ethikos/migrations/0005_demo_import_v3_object_types.py`
+- `backend/konnaxion/ethikos/migrations/0006_orgo_impact_publication.py`
+- `backend/konnaxion/ethikos/migrations/0007_interaction_kernel_decisions.py`
+- `backend/konnaxion/ethikos/migrations/__init__.py`
+- `backend/konnaxion/ethikos/models.py`
+- `backend/konnaxion/ethikos/models_demo.py`
+- `backend/konnaxion/ethikos/orgo_bridge_contract.py`
+- `backend/konnaxion/ethikos/orgo_bridge_urls.py`
+- `backend/konnaxion/ethikos/orgo_bridge_views.py`
+- `backend/konnaxion/ethikos/permissions.py`
+- `backend/konnaxion/ethikos/serializers.py`
+- `backend/konnaxion/ethikos/tasks.py`
+- `backend/konnaxion/ethikos/tests.py`
+- `backend/konnaxion/ethikos/tests/test_demo_import_api.py`
+- `backend/konnaxion/ethikos/tests/test_demo_import_schema.py`
+- `backend/konnaxion/ethikos/tests/test_demo_importer.py`
+- `backend/konnaxion/ethikos/tests/test_interaction_kernel_contract.py`
+- `backend/konnaxion/ethikos/tests/test_kintsugi_korum_api.py`
+- `backend/konnaxion/ethikos/tests/test_kintsugi_korum_models.py`
+- `backend/konnaxion/ethikos/tests/test_orgo_bridge_contract.py`
+- `backend/konnaxion/ethikos/urls.py`
+- `backend/konnaxion/ethikos/views.py`
+- `backend/konnaxion/keenkonnect/__init__.py`
+- `backend/konnaxion/keenkonnect/admin.py`
+- `backend/konnaxion/keenkonnect/api_views.py`
+- `backend/konnaxion/keenkonnect/apps.py`
+- `backend/konnaxion/keenkonnect/migrations/0001_initial.py`
+- `backend/konnaxion/keenkonnect/migrations/__init__.py`
+- `backend/konnaxion/keenkonnect/models.py`
+- `backend/konnaxion/keenkonnect/serializers.py`
+- `backend/konnaxion/keenkonnect/tests.py`
+- `backend/konnaxion/keenkonnect/views.py`
+- `backend/konnaxion/kollective_intelligence/__init__.py`
+- `backend/konnaxion/kollective_intelligence/admin.py`
+- `backend/konnaxion/kollective_intelligence/api_views.py`
+- `backend/konnaxion/kollective_intelligence/apps.py`
+- `backend/konnaxion/kollective_intelligence/migrations/0001_alter_confidentialitysetting_user_and_more.py`
+- `backend/konnaxion/kollective_intelligence/migrations/0001_initial.py`
+- `backend/konnaxion/kollective_intelligence/migrations/00xx_expertise_tags_api.py`
+- `backend/konnaxion/kollective_intelligence/migrations/__init__.py`
+- `backend/konnaxion/kollective_intelligence/models.py`
+- `backend/konnaxion/kollective_intelligence/serializers.py`
+- `backend/konnaxion/kollective_intelligence/tests.py`
+- `backend/konnaxion/kollective_intelligence/views.py`
+- `backend/konnaxion/konnected/__init__.py`
+- `backend/konnaxion/konnected/admin.py`
+- `backend/konnaxion/konnected/api_views.py`
+- `backend/konnaxion/konnected/apps.py`
+- `backend/konnaxion/konnected/migrations/0001_initial.py`
+- `backend/konnaxion/konnected/migrations/0002_offline_packages.py`
+- `backend/konnaxion/konnected/migrations/0003_offlinepackage_bundle_path_offlinepackage_created_by_and_more.py`
+- `backend/konnaxion/konnected/migrations/0004_mentorprofile_mentorshiprequest.py`
+- `backend/konnaxion/konnected/migrations/__init__.py`
+- `backend/konnaxion/konnected/models.py`
+- `backend/konnaxion/konnected/serializers.py`
+- `backend/konnaxion/konnected/tasks.py`
+- `backend/konnaxion/konnected/test_api_surface.py`
+- `backend/konnaxion/konnected/tests.py`
+- `backend/konnaxion/konnected/views.py`
+- `backend/konnaxion/kontrol/analytics_views.py`
+- `backend/konnaxion/kontrol/apps.py`
+- `backend/konnaxion/kontrol/migrations/0001_initial.py`
+- `backend/konnaxion/kontrol/migrations/0002_konsensusconfig_alter_auditlog_options_and_more.py`
+- `backend/konnaxion/kontrol/migrations/__init__.py`
+- `backend/konnaxion/kontrol/models.py`
+- `backend/konnaxion/kontrol/serializers.py`
+- `backend/konnaxion/kontrol/smart_vote_report.py`
+- `backend/konnaxion/kontrol/urls.py`
+- `backend/konnaxion/kontrol/views.py`
+- `backend/konnaxion/kreative/__init__.py`
+- `backend/konnaxion/kreative/admin.py`
+- `backend/konnaxion/kreative/api_views.py`
+- `backend/konnaxion/kreative/apps.py`
+- `backend/konnaxion/kreative/commands/backfill_credential_paths.py`
+- `backend/konnaxion/kreative/commands/backfill_kreative_media_paths.py`
+- `backend/konnaxion/kreative/migrations/0001_initial.py`
+- `backend/konnaxion/kreative/migrations/0002_archivedocument_culturalpartner_digitalarchive_and_more.py`
+- `backend/konnaxion/kreative/migrations/0003_alter_kreativeartwork_media_file_and_more.py`
+- `backend/konnaxion/kreative/migrations/__init__.py`
+- `backend/konnaxion/kreative/models.py`
+- `backend/konnaxion/kreative/serializers.py`
+- `backend/konnaxion/kreative/tests.py`
+- `backend/konnaxion/kreative/views.py`
+- `backend/konnaxion/moderation/api_views.py`
+- `backend/konnaxion/moderation/migrations/0001_initial.py`
+- `backend/konnaxion/moderation/migrations/0002_remove_auditlogentry_entity_content_type_and_more.py`
+- `backend/konnaxion/moderation/migrations/__init__.py`
+- `backend/konnaxion/moderation/models.py`
+- `backend/konnaxion/moderation/serializers.py`
+- `backend/konnaxion/moderation/tests.py`
+- `backend/konnaxion/settings/base.py`
+- `backend/konnaxion/smart_vote/__init__.py`
+- `backend/konnaxion/smart_vote/admin.py`
+- `backend/konnaxion/smart_vote/apps.py`
+- `backend/konnaxion/smart_vote/migrations/0001_initial.py`
+- `backend/konnaxion/smart_vote/migrations/0002_consultation.py`
+- `backend/konnaxion/smart_vote/migrations/0003_vote_orm.py`
+- `backend/konnaxion/smart_vote/migrations/0004_source_consultation_binding.py`
+- `backend/konnaxion/smart_vote/migrations/0005_reconcile_vote_schema.py`
+- `backend/konnaxion/smart_vote/migrations/__init__.py`
+- `backend/konnaxion/smart_vote/models/__init__.py`
+- `backend/konnaxion/smart_vote/models/consultation.py`
+- `backend/konnaxion/smart_vote/models/consultation_relevance.py`
+- `backend/konnaxion/smart_vote/models/core.py`
+- `backend/konnaxion/smart_vote/models/source_binding.py`
+- `backend/konnaxion/smart_vote/serializers/__init__.py`
+- `backend/konnaxion/smart_vote/serializers/ballot.py`
+- `backend/konnaxion/smart_vote/services/__init__.py`
+- `backend/konnaxion/smart_vote/services/reading_service.py`
+- `backend/konnaxion/smart_vote/services/weight_calculator.py`
+- `backend/konnaxion/smart_vote/tasks/__init__.py`
+- `backend/konnaxion/smart_vote/tasks/aggregator.py`
+- `backend/konnaxion/smart_vote/tests/__init__.py`
+- `backend/konnaxion/smart_vote/tests/test_aggregator.py`
+- `backend/konnaxion/smart_vote/tests/test_reading_service.py`
+- `backend/konnaxion/smart_vote/tests/test_schema_contract.py`
+- `backend/konnaxion/smart_vote/tests/test_tasks.py`
+- `backend/konnaxion/smart_vote/urls.py`
+- `backend/konnaxion/smart_vote/views/__init__.py`
+- `backend/konnaxion/smart_vote/views/cast.py`
+- `backend/konnaxion/smart_vote/views/reading.py`
+- `backend/konnaxion/static/css/konnaxion-auth.css`
+- `backend/konnaxion/static/css/project.css`
+- `backend/konnaxion/static/fonts/.gitkeep`
+- `backend/konnaxion/static/images/favicons/site.webmanifest`
+- `backend/konnaxion/static/js/project.js`
+- `backend/konnaxion/teambuilder/admin.py`
+- `backend/konnaxion/teambuilder/apps.py`
+- `backend/konnaxion/teambuilder/factories.py`
+- `backend/konnaxion/teambuilder/logic.py`
+- `backend/konnaxion/teambuilder/migrations/0001_initial.py`
+- `backend/konnaxion/teambuilder/migrations/__init__.py`
+- `backend/konnaxion/teambuilder/models.py`
+- `backend/konnaxion/teambuilder/problem_logic.py`
+- `backend/konnaxion/teambuilder/serializers.py`
+- `backend/konnaxion/teambuilder/tests/test_problems_api.py`
+- `backend/konnaxion/teambuilder/views.py`
+- `backend/konnaxion/templates/403.html`
+- `backend/konnaxion/templates/403_csrf.html`
+- `backend/konnaxion/templates/404.html`
+- `backend/konnaxion/templates/500.html`
+- `backend/konnaxion/templates/account/base_manage_password.html`
+- `backend/konnaxion/templates/account/login.html`
+- `backend/konnaxion/templates/account/signup.html`
+- `backend/konnaxion/templates/allauth/elements/alert.html`
+- `backend/konnaxion/templates/allauth/elements/badge.html`
+- `backend/konnaxion/templates/allauth/elements/button.html`
+- `backend/konnaxion/templates/allauth/elements/field.html`
+- `backend/konnaxion/templates/allauth/elements/fields.html`
+- `backend/konnaxion/templates/allauth/elements/panel.html`
+- `backend/konnaxion/templates/allauth/elements/table.html`
+- `backend/konnaxion/templates/allauth/layouts/entrance.html`
+- `backend/konnaxion/templates/allauth/layouts/manage.html`
+- `backend/konnaxion/templates/base.html`
+- `backend/konnaxion/templates/pages/about.html`
+- `backend/konnaxion/templates/pages/home.html`
+- `backend/konnaxion/templates/users/user_detail.html`
+- `backend/konnaxion/templates/users/user_form.html`
+- `backend/konnaxion/trust/api_views.py`
+- `backend/konnaxion/trust/migrations/0001_initial.py`
+- `backend/konnaxion/trust/migrations/0002_alter_credential_file_alter_credential_notes.py`
+- `backend/konnaxion/trust/migrations/__init__.py`
+- `backend/konnaxion/trust/models.py`
+- `backend/konnaxion/trust/serializers.py`
+- `backend/konnaxion/trust/tests.py`
+- `backend/konnaxion/urls.py`
+- `backend/konnaxion/users/__init__.py`
+- `backend/konnaxion/users/adapters.py`
+- `backend/konnaxion/users/admin.py`
+- `backend/konnaxion/users/api/__init__.py`
+- `backend/konnaxion/users/api/serializers.py`
+- `backend/konnaxion/users/api/views.py`
+- `backend/konnaxion/users/apps.py`
+- `backend/konnaxion/users/context_processors.py`
+- `backend/konnaxion/users/forms.py`
+- `backend/konnaxion/users/migrations/0001_initial.py`
+- `backend/konnaxion/users/migrations/0002_user_avatar.py`
+- `backend/konnaxion/users/migrations/0003_remove_user_avatar_user_profile_artwork.py`
+- `backend/konnaxion/users/migrations/0004_user_avatar.py`
+- `backend/konnaxion/users/migrations/0005_user_account_type_user_is_ethikos_elite_and_more.py`
+- `backend/konnaxion/users/migrations/__init__.py`
+- `backend/konnaxion/users/models.py`
+- `backend/konnaxion/users/tasks.py`
+- `backend/konnaxion/users/tests/__init__.py`
+- `backend/konnaxion/users/tests/api/__init__.py`
+- `backend/konnaxion/users/tests/api/test_openapi.py`
+- `backend/konnaxion/users/tests/api/test_urls.py`
+- `backend/konnaxion/users/tests/api/test_views.py`
+- `backend/konnaxion/users/tests/factories.py`
+- `backend/konnaxion/users/tests/test_admin.py`
+- `backend/konnaxion/users/tests/test_forms.py`
+- `backend/konnaxion/users/tests/test_models.py`
+- `backend/konnaxion/users/tests/test_tasks.py`
+- `backend/konnaxion/users/tests/test_urls.py`
+- `backend/konnaxion/users/tests/test_views.py`
+- `backend/konnaxion/users/urls.py`
+- `backend/konnaxion/users/views.py`
+- `backend/konnaxion/utils/__init__.py`
+- `backend/konnaxion/utils/models.py`
+- `backend/konnaxion/worlds/migration_context.py`
+- `backend/locale/README.md`
+- `backend/locale/en_US/LC_MESSAGES/django.po`
+- `backend/locale/fr_FR/LC_MESSAGES/django.po`
+- `backend/locale/pt_BR/LC_MESSAGES/django.po`
+- `backend/manage.py`
+- `backend/merge_production_dotenvs_in_dotenv.py`
+- `backend/pyproject.toml`
+- `backend/requirements/base.txt`
+- `backend/requirements/local.txt`
+- `backend/requirements/production.txt`
+- `backend/scan_encoding.py`
+- `backend/scripts/populate_all_models.py`
+- `backend/scripts/populate_demo_data.py`
+- `backend/scripts/populate_users.py`
+- `backend/tests/__init__.py`
+- `backend/tests/test_merge_production_dotenvs_in_dotenv.py`
+- `backend/tests/test_smoke_platform.py`
+- `cinematic.project.json`
+- `cinematic/tours/ethikos-v413/cues.json`
+- `cinematic/tours/ethikos-v413/script.json`
+- `cinematic/tours/ethikos-v413/targets.json`
+- `cinematic/tours/ethikos-v413/timeline.json`
+- `cinematic/tours/ethikos-v413/tour.json`
+- `docs/Konnaxion_UserWorkflow_Documentation_v0_1.md`
+- `docs/Konnaxion_User_Workflows.md`
+- `docs/README.md`
+- `docs/SecurityProblem-Update.txt`
+- `docs/Technical-Reference/AUTH_COMMON_IDENTITY_IMPLEMENTATION.md`
+- `docs/Technical-Reference/BOUNDARIES_AND_OWNERSHIP.md`
+- `docs/Technical-Reference/CODE_ALIGNMENT_NOTES.md`
+- `docs/Technical-Reference/CONTRACTS.txt`
+- `docs/Technical-Reference/DEV_DOCKER_CHEATSHEET.md`
+- `docs/Technical-Reference/DRAFT teambuilder concept.txt`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ++°++÷-È÷╝ Full-Stack Technical Specification.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ++°++÷-È÷╝ Functional Code-Name Inventory (Services & Hooks).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ++°++÷-È÷╝ Global Parameter Reference.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ++°++÷-È÷╝ Insights Module Config Parameters.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ++°++÷-È÷╝ Insights Module UI Spec (Reporting & Analytics Frontend).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ++°++÷-È÷╝ Site Navigation Map (Top-Level Routes).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 +Û+Ô-┬ Full-Stack Technical Specification.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 +Û+Ô-┬ Functional Code-Name Inventory (Services & Hooks).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 +Û+Ô-┬ Global Parameter Reference.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 +Û+Ô-┬ Insights Module Config Parameters.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 +Û+Ô-┬ Insights Module UI Spec (Reporting & Analytics Frontend).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 +Û+Ô-┬ Site Navigation Map (Top-Level Routes).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 - Database Schema Reference (Custom Tables).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 - Database Schema Reference.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 - Documentation Index.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 - Full-Stack Technical Specification.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 - Functional Code-Name Inventory (Services & Hooks).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 - Global Parameter Reference.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 - Insights Module Config Parameters.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 - Insights Module UI Spec (Reporting & Analytics Frontend).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 - Insights UI Reference.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 - Site Navigation Map (Top-Level Routes).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 - Site Navigation Map.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ÈÃ¶ Full-Stack Technical Specification.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ÈÃ¶ Functional Code-Name Inventory (Services & Hooks).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ÈÃ¶ Global Parameter Reference.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ÈÃ¶ Insights Module Config Parameters.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ÈÃ¶ Insights Module UI Spec (Reporting & Analytics Frontend).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ÈÃ¶ Site Navigation Map (Top-Level Routes).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 È÷ú+¼È÷ú+¾È÷╝+Ú Full-Stack Technical Specification.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 È÷ú+¼È÷ú+¾È÷╝+Ú Functional Code-Name Inventory (Services & Hooks).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 È÷ú+¼È÷ú+¾È÷╝+Ú Global Parameter Reference.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 È÷ú+¼È÷ú+¾È÷╝+Ú Insights Module Config Parameters.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 È÷ú+¼È÷ú+¾È÷╝+Ú Insights Module UI Spec (Reporting & Analytics Frontend).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 È÷ú+¼È÷ú+¾È÷╝+Ú Site Navigation Map (Top-Level Routes).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ├ê├â┬Â Full-Stack Technical Specification.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ├ê├â┬Â Functional Code-Name Inventory (Services & Hooks).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ├ê├â┬Â Global Parameter Reference.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ├ê├â┬Â Insights Module Config Parameters.md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ├ê├â┬Â Insights Module UI Spec (Reporting & Analytics Frontend).md`
+- `docs/Technical-Reference/DocV14/Konnaxion v14 ├ê├â┬Â Site Navigation Map (Top-Level Routes).md`
+- `docs/Technical-Reference/DocV14/Konnaxion++°++÷+ÛÈÃ¨-┐ v14++°++÷+ÛÈÃ¨-┐-++°++÷+ÛÈÃ¨-┐Documentation INDEX.docx.md`
+- `docs/Technical-Reference/DocV14/Konnaxion+Û+ÔÈ‗¨ v14+Û+ÔÈ‗¨-+Û+ÔÈ‗¨Documentation INDEX.docx.md`
+- `docs/Technical-Reference/DocV14/KonnaxionÈÃ╗ v14ÈÃ╗-ÈÃ╗Documentation INDEX.docx.md`
+- `docs/Technical-Reference/DocV14/KonnaxionÈ÷ú+¼È÷ú+¾+÷+ª+ª v14È÷ú+¼È÷ú+¾+÷+ª+ª-È÷ú+¼È÷ú+¾+÷+ª+ªDocumentation INDEX.docx.md`
+- `docs/Technical-Reference/DocV14/Konnaxion├ê├âÔòù v14├ê├âÔòù-├ê├âÔòùDocumentation INDEX.docx.md`
+- `docs/Technical-Reference/EkoH Smart Vote/EkoH - System Overview.md`
+- `docs/Technical-Reference/EkoH Smart Vote/EkoH and Smart Vote - Data Model.md`
+- `docs/Technical-Reference/EkoH Smart Vote/EkoH and Smart Vote - Technical Specification.md`
+- `docs/Technical-Reference/EkoH Smart Vote/Smart Vote - Reading Contract.md`
+- `docs/Technical-Reference/EkoH Smart Vote/ekoh-module-file-architecture.md`
+- `docs/Technical-Reference/EkoH Smart Vote/ekoh-smart-vote-canonical-db-schema-v1-1.md`
+- `docs/Technical-Reference/EkoH Smart Vote/ekoh-smart-vote-definitive-module-documentation-set-v1-0.md`
+- `docs/Technical-Reference/EkoH Smart Vote/ekoh-system-overview-smart-vote-ecosystem.md`
+- `docs/Technical-Reference/EkoH Smart Vote/konnaxion-smart-vote-weighted-voting-system-structure-and-logic-internal-white-paper.md`
+- `docs/Technical-Reference/EkoH Smart Vote/smart-vote-consultation-simulations.md`
+- `docs/Technical-Reference/EkoH Smart Vote/smart-vote-empower-ux-naming-guidelines.md`
+- `docs/Technical-Reference/EkoH Smart Vote/smart-vote-system-in-konnaxion-technical-specification.md`
+- `docs/Technical-Reference/GENERALinstructionsForAI.txt`
+- `docs/Technical-Reference/GLOSSARY.md`
+- `docs/Technical-Reference/GuideForVisualStyle.txt`
+- `docs/Technical-Reference/HowToNest-wrap-shell.md`
+- `docs/Technical-Reference/INTERACTION_KERNEL_INTEGRATION.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/Konnaxion-kintsugi-and-kompendio-open-source-integration-map-v1.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/KonnectED-kintsugi-upgrade-plan-v1.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/KonnectED-kompendio-upgrade-plan-v1.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/SmartVote-EkoH-kintsugi-upgrade-v1.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos-kintsugi-boundaries-and-articulation-v2.txt`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos-kintsugi-upgrade-plan-v1.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/00_KINTSUGI_START_HERE.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/01_ETHIKOS_KINTSUGI_EXECUTION_STRATEGY.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/02_SOURCE_OF_TRUTH_AND_DRIFT_CONTROL.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/03_BOUNDARIES_AND_OWNERSHIP_CONTRACTS.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/04_CANONICAL_NAMING_AND_VARIABLES.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/05_CURRENT_STATE_BASELINE.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/06_ROUTE_BY_ROUTE_ETHIKOS_UPGRADE_PLAN.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/07_API_AND_SERVICE_CONTRACTS.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/08_DATA_MODEL_AND_MIGRATION_PLAN.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/09_SMART_VOTE_EKOH_READING_CONTRACT.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/10_FIRST_PASS_INTEGRATION_MATRIX.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/11_MIMIC_VS_ANNEX_RULEBOOK.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/12_CANONICAL_OBJECTS_AND_EVENTS.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/13_PAYLOAD_SHAPES_AND_SERIALIZER_CONTRACTS.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/14_FRONTEND_ALIGNMENT_CONTRACT.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/15_BACKEND_ALIGNMENT_CONTRACT.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/16_TEST_AND_SMOKE_CONTRACT.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/17_KNOWN_BUGS_AND_NON_KINTSUGI_ITEMS.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/18_ADR_REGISTER.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/19_OSS_CODE_READING_PLAN.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/20_AI_GENERATION_GUARDRAILS.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/21_KIALO_STYLE_ARGUMENT_MAPPING_CONTRACT.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/22_IMPLEMENTATION_BACKLOG_TEMPLATE.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/23_WAVE1_IMPLEMENTATION_BACKLOG.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/24_WAVE1_SLICE_REGISTER.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/25_WAVE1_QA_CHECKLIST.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/ethiKos_Kintsugi_Update/27_EKOH_RATING_VISIBILITY_AND_ACCESS_CONTRACT.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/keenKonnect-kintsugi-upgrade-v1.md.md`
+- `docs/Technical-Reference/Kintsugi_Kompendio/keenKonnect-kompendio-v1.md.md`
+- `docs/Technical-Reference/Konnaxion_Frontend_Deployment_Runbook.md`
+- `docs/Technical-Reference/QUALIFICATION_STATUS.md`
+- `docs/Technical-Reference/UpdateBackendAndMigrateAndDocker.md`
+- `docs/Technical-Reference/Worlds/01_CURRENT_STATE_BASELINE.md`
+- `docs/Technical-Reference/Worlds/14_MIGRATION_PLAN.md`
+- `docs/Technical-Reference/Worlds/20_QUALIFICATION_STATUS.md`
+- `docs/Technical-Reference/Worlds/KONNAXION_BASELINE.md`
+- `docs/Technical-Reference/namecheap-vps.md`
+- `docs/Technical-Reference/sub-modules_description/CertifiKation (Skills & Certification) ++°++÷+È÷÷ sub++°++÷-È÷ªmodule under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/CertifiKation (Skills & Certification) +Û+Ô+└ sub+Û+Ô-┴module under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/CertifiKation (Skills & Certification) - sub-module under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/CertifiKation (Skills & Certification) ÈÃ÷ subÈÃµmodule under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/CertifiKation (Skills & Certification) È÷ú+¼È÷ú+¾È÷ú+Ã subÈ÷ú+¼È÷ú+¾È÷╝+³module under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/CertifiKation (Skills & Certification) ├ê├â├À sub├ê├â┬Ámodule under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/EkoH (Reputation & Expertise) ++°++÷+È÷÷ first sub++°++÷-È÷ªmodule under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/EkoH (Reputation & Expertise) +Û+Ô+└ first sub+Û+Ô-┴module under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/EkoH (Reputation & Expertise) - first sub-module under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/EkoH (Reputation & Expertise) ÈÃ÷ first subÈÃµmodule under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/EkoH (Reputation & Expertise) È÷ú+¼È÷ú+¾È÷ú+Ã first subÈ÷ú+¼È÷ú+¾È÷╝+³module under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/EkoH (Reputation & Expertise) ├ê├â├À first sub├ê├â┬Ámodule under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/Knowledge (Collaborative Learning Library) ++°++÷+È÷÷ sub++°++÷-È÷ªmodule under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/Knowledge (Collaborative Learning Library) +Û+Ô+└ sub+Û+Ô-┴module under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/Knowledge (Collaborative Learning Library) - sub-module under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/Knowledge (Collaborative Learning Library) ÈÃ÷ subÈÃµmodule under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/Knowledge (Collaborative Learning Library) È÷ú+¼È÷ú+¾È÷ú+Ã subÈ÷ú+¼È÷ú+¾È÷╝+³module under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/Knowledge (Collaborative Learning Library) ├ê├â├À sub├ê├â┬Ámodule under KonnectED.md`
+- `docs/Technical-Reference/sub-modules_description/Konservation (Creative Content & Cultural Preservation) ++°++÷+È÷÷ sub++°++÷-È÷ªmodule under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Konservation (Creative Content & Cultural Preservation) +Û+Ô+└ sub+Û+Ô-┴module under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Konservation (Creative Content & Cultural Preservation) - sub-module under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Konservation (Creative Content & Cultural Preservation) ÈÃ÷ subÈÃµmodule under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Konservation (Creative Content & Cultural Preservation) È÷ú+¼È÷ú+¾È÷ú+Ã subÈ÷ú+¼È÷ú+¾È÷╝+³module under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Konservation (Creative Content & Cultural Preservation) ├ê├â├À sub├ê├â┬Ámodule under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Konstruct (Project Collaboration Spaces) ++°++÷+È÷÷ first sub++°++÷-È÷ªmodule under keenKonnect.md`
+- `docs/Technical-Reference/sub-modules_description/Konstruct (Project Collaboration Spaces) +Û+Ô+└ first sub+Û+Ô-┴module under keenKonnect.md`
+- `docs/Technical-Reference/sub-modules_description/Konstruct (Project Collaboration Spaces) - first sub-module under keenKonnect.md`
+- `docs/Technical-Reference/sub-modules_description/Konstruct (Project Collaboration Spaces) ÈÃ÷ first subÈÃµmodule under keenKonnect.md`
+- `docs/Technical-Reference/sub-modules_description/Konstruct (Project Collaboration Spaces) È÷ú+¼È÷ú+¾È÷ú+Ã first subÈ÷ú+¼È÷ú+¾È÷╝+³module under keenKonnect.md`
+- `docs/Technical-Reference/sub-modules_description/Konstruct (Project Collaboration Spaces) ├ê├â├À first sub├ê├â┬Ámodule under keenKonnect.md`
+- `docs/Technical-Reference/sub-modules_description/Konsultations (Public Consultations & Feedback) ++°++÷+È÷÷ sub++°++÷-È÷ªmodule under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Konsultations (Public Consultations & Feedback) +Û+Ô+└ sub+Û+Ô-┴module under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Konsultations (Public Consultations & Feedback) - sub-module under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Konsultations (Public Consultations & Feedback) ÈÃ÷ subÈÃµmodule under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Konsultations (Public Consultations & Feedback) È÷ú+¼È÷ú+¾È÷ú+Ã subÈ÷ú+¼È÷ú+¾È÷╝+³module under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Konsultations (Public Consultations & Feedback) ├ê├â├À sub├ê├â┬Ámodule under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Kontact (Collaboration & Networking) ++°++÷+È÷÷ sub++°++÷-È÷ªmodule under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Kontact (Collaboration & Networking) +Û+Ô+└ sub+Û+Ô-┴module under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Kontact (Collaboration & Networking) - sub-module under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Kontact (Collaboration & Networking) ÈÃ÷ subÈÃµmodule under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Kontact (Collaboration & Networking) È÷ú+¼È÷ú+¾È÷ú+Ã subÈ÷ú+¼È÷ú+¾È÷╝+³module under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Kontact (Collaboration & Networking) ├ê├â├À sub├ê├â┬Ámodule under Kreative.md`
+- `docs/Technical-Reference/sub-modules_description/Korum (Structured Debates) ++°++÷+È÷÷ sub++°++÷-È÷ªmodule under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Korum (Structured Debates) +Û+Ô+└ sub+Û+Ô-┴module under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Korum (Structured Debates) - sub-module under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Korum (Structured Debates) ÈÃ÷ subÈÃµmodule under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Korum (Structured Debates) È÷ú+¼È÷ú+¾È÷ú+Ã subÈ÷ú+¼È÷ú+¾È÷╝+³module under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Korum (Structured Debates) ├ê├â├À sub├ê├â┬Ámodule under ethiKos.md`
+- `docs/Technical-Reference/sub-modules_description/Smart Vote (Weighted Voting System) ++°++÷+È÷÷ second sub++°++÷-È÷ªmodule under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/Smart Vote (Weighted Voting System) +Û+Ô+└ second sub+Û+Ô-┴module under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/Smart Vote (Weighted Voting System) - second sub-module under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/Smart Vote (Weighted Voting System) ÈÃ÷ second subÈÃµmodule under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/Smart Vote (Weighted Voting System) È÷ú+¼È÷ú+¾È÷ú+Ã second subÈ÷ú+¼È÷ú+¾È÷╝+³module under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/Smart Vote (Weighted Voting System) ├ê├â├À second sub├ê├â┬Ámodule under Kollective Intelligence.md`
+- `docs/Technical-Reference/sub-modules_description/Stockage (Secure Repository & Versioned Storage) ++°++÷+È÷÷ second sub++°++÷-È÷ªmodule under keenKonnect.md`
+- `docs/Technical-Reference/sub-modules_description/Stockage (Secure Repository & Versioned Storage) +Û+Ô+└ second sub+Û+Ô-┴module under keenKonnect.md`
+- `docs/Technical-Reference/sub-modules_description/Stockage (Secure Repository & Versioned Storage) - second sub-module under keenKonnect.md`
+- `docs/Technical-Reference/sub-modules_description/Stockage (Secure Repository & Versioned Storage) ÈÃ÷ second subÈÃµmodule under keenKonnect.md`
+- `docs/Technical-Reference/sub-modules_description/Stockage (Secure Repository & Versioned Storage) È÷ú+¼È÷ú+¾È÷ú+Ã second subÈ÷ú+¼È÷ú+¾È÷╝+³module under keenKonnect.md`
+- `docs/Technical-Reference/sub-modules_description/Stockage (Secure Repository & Versioned Storage) ├ê├â├À second sub├ê├â┬Ámodule under keenKonnect.md`
+- `frontend/.all-contributorsrc`
+- `frontend/.dockerignore`
+- `frontend/.gitignore`
+- `frontend/.prettierignore`
+- `frontend/.releaserc`
+- `frontend/Dockerfile.capsule`
+- `frontend/LICENSE`
+- `frontend/README.md`
+- `frontend/_e2e/ethikos-korum-deliberate.spec.ts`
+- `frontend/_e2e/example.spec.ts`
+- `frontend/api.ts`
+- `frontend/app/_api/admin/moderation/route.ts`
+- `frontend/app/_api/admin/stats/route.ts`
+- `frontend/app/_api/health/route.ts`
+- `frontend/app/_api/search/route.ts`
+- `frontend/app/ekoh/EkohPageShell.tsx`
+- `frontend/app/ekoh/achievements-badges/earned-badges-display/page.tsx`
+- `frontend/app/ekoh/dashboard/page.tsx`
+- `frontend/app/ekoh/expertise-areas/view-current-expertise/page.tsx`
+- `frontend/app/ekoh/layout.tsx`
+- `frontend/app/ekoh/overview-analytics/current-ekoh-score/page.tsx`
+- `frontend/app/ekoh/voting-influence/current-voting-weight/page.tsx`
+- `frontend/app/ethikos/EthikosPageShell.tsx`
+- `frontend/app/ethikos/admin/audit/page.tsx`
+- `frontend/app/ethikos/admin/demo-importer/page.tsx`
+- `frontend/app/ethikos/admin/moderation/page.tsx`
+- `frontend/app/ethikos/admin/roles/page.tsx`
+- `frontend/app/ethikos/decide/elite/page.tsx`
+- `frontend/app/ethikos/decide/methodology/page.tsx`
+- `frontend/app/ethikos/decide/public/page.tsx`
+- `frontend/app/ethikos/decide/results/page.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_components/ArgumentComposerCard.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_components/ArgumentThreadCard.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_components/EkohParticipantDrawer.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_components/EmergentQuestionCard.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_components/EmptySelectionCard.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_components/KorumPanelsGrid.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_components/ParticipantRolesPanel.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_components/SmartVoteReadingsPanel.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_components/StanceComposerCard.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_components/TopicStates.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_components/TopicSummaryPanel.tsx`
+- `frontend/app/ethikos/deliberate/[topic]/_hooks/useTopicThreadController.ts`
+- `frontend/app/ethikos/deliberate/[topic]/_lib/topicThreadUtils.ts`
+- `frontend/app/ethikos/deliberate/[topic]/page.tsx`
+- `frontend/app/ethikos/deliberate/elite/page.tsx`
+- `frontend/app/ethikos/deliberate/guidelines/page.tsx`
+- `frontend/app/ethikos/impact/feedback/page.tsx`
+- `frontend/app/ethikos/impact/outcomes/page.tsx`
+- `frontend/app/ethikos/impact/tracker/page.tsx`
+- `frontend/app/ethikos/insights/page.tsx`
+- `frontend/app/ethikos/layout.tsx`
+- `frontend/app/ethikos/learn/changelog/page.tsx`
+- `frontend/app/ethikos/learn/glossary/page.tsx`
+- `frontend/app/ethikos/learn/guides/page.tsx`
+- `frontend/app/ethikos/pulse/health/page.tsx`
+- `frontend/app/ethikos/pulse/live/page.tsx`
+- `frontend/app/ethikos/pulse/overview/page.tsx`
+- `frontend/app/ethikos/pulse/trends/page.tsx`
+- `frontend/app/ethikos/trust/badges/page.tsx`
+- `frontend/app/ethikos/trust/credentials/page.tsx`
+- `frontend/app/ethikos/trust/profile/page.tsx`
+- `frontend/app/keenkonnect/KeenPageShell.tsx`
+- `frontend/app/keenkonnect/ai-team-matching/find-teams/page.tsx`
+- `frontend/app/keenkonnect/ai-team-matching/match-preferences/page.tsx`
+- `frontend/app/keenkonnect/ai-team-matching/my-matches/page.tsx`
+- `frontend/app/keenkonnect/dashboard/page.tsx`
+- `frontend/app/keenkonnect/knowledge/browse-repository/page.tsx`
+- `frontend/app/keenkonnect/knowledge/document-management/page.tsx`
+- `frontend/app/keenkonnect/knowledge/search-filter-documents/page.tsx`
+- `frontend/app/keenkonnect/knowledge/upload-new-document/page.tsx`
+- `frontend/app/keenkonnect/layout.tsx`
+- `frontend/app/keenkonnect/projects/browse-projects/page.tsx`
+- `frontend/app/keenkonnect/projects/create-new-project/page.tsx`
+- `frontend/app/keenkonnect/projects/my-projects/page.tsx`
+- `frontend/app/keenkonnect/projects/project-workspace/page.tsx`
+- `frontend/app/keenkonnect/sustainability-impact/submit-impact-reports/page.tsx`
+- `frontend/app/keenkonnect/sustainability-impact/sustainability-dashboard/page.tsx`
+- `frontend/app/keenkonnect/sustainability-impact/track-project-impact/page.tsx`
+- `frontend/app/keenkonnect/user-reputation/account-preferences/page.tsx`
+- `frontend/app/keenkonnect/user-reputation/manage-expertise-areas/page.tsx`
+- `frontend/app/keenkonnect/user-reputation/view-reputation-ekoh/page.tsx`
+- `frontend/app/keenkonnect/workspaces/browse-available-workspaces/page.tsx`
+- `frontend/app/keenkonnect/workspaces/launch-new-workspace/page.tsx`
+- `frontend/app/keenkonnect/workspaces/my-workspaces/page.tsx`
+- `frontend/app/konnected/KonnectedPageShell.tsx`
+- `frontend/app/konnected/certifications/certification-programs/page.tsx`
+- `frontend/app/konnected/certifications/exam-dashboard-results/page.tsx`
+- `frontend/app/konnected/certifications/exam-preparation/page.tsx`
+- `frontend/app/konnected/certifications/exam-registration/page.tsx`
+- `frontend/app/konnected/community-discussions/active-threads/page.tsx`
+- `frontend/app/konnected/community-discussions/moderation/page.tsx`
+- `frontend/app/konnected/community-discussions/start-new-discussion/page.tsx`
+- `frontend/app/konnected/community-discussions/thread/[topicId]/page.tsx`
+- `frontend/app/konnected/dashboard/page.tsx`
+- `frontend/app/konnected/knowledge/contribute/page.tsx`
+- `frontend/app/konnected/layout.tsx`
+- `frontend/app/konnected/learning-library/[resourceId]/page.tsx`
+- `frontend/app/konnected/learning-library/browse-resources/page.tsx`
+- `frontend/app/konnected/learning-library/offline-content/page.tsx`
+- `frontend/app/konnected/learning-library/recommended-resources/page.tsx`
+- `frontend/app/konnected/learning-library/search-filters/page.tsx`
+- `frontend/app/konnected/learning-paths/create-learning-path/page.tsx`
+- `frontend/app/konnected/learning-paths/manage-existing-paths/page.tsx`
+- `frontend/app/konnected/learning-paths/my-learning-path/page.tsx`
+- `frontend/app/konnected/mentorship/page.tsx`
+- `frontend/app/konnected/teams-collaboration/activity-planner/page.tsx`
+- `frontend/app/konnected/teams-collaboration/my-teams/page.tsx`
+- `frontend/app/konnected/teams-collaboration/project-workspaces/page.tsx`
+- `frontend/app/konnected/teams-collaboration/team-builder/page.tsx`
+- `frontend/app/konsensus/activity-feed/ActivityFeedClient.tsx`
+- `frontend/app/konsensus/activity-feed/page.tsx`
+- `frontend/app/konsensus/admin/AdminClient.tsx`
+- `frontend/app/konsensus/admin/page.tsx`
+- `frontend/app/konsensus/dashboard/page.tsx`
+- `frontend/app/konsensus/leaderboards/LeaderboardsClient.tsx`
+- `frontend/app/konsensus/leaderboards/page.tsx`
+- `frontend/app/konsensus/page.tsx`
+- `frontend/app/kontrol/KontrolPageShell.tsx`
+- `frontend/app/kontrol/audit-log/page.tsx`
+- `frontend/app/kontrol/dashboard/page.tsx`
+- `frontend/app/kontrol/konsensus/page.tsx`
+- `frontend/app/kontrol/layout.tsx`
+- `frontend/app/kontrol/moderation/community/page.tsx`
+- `frontend/app/kontrol/moderation/queue/page.tsx`
+- `frontend/app/kontrol/roles/page.tsx`
+- `frontend/app/kontrol/users/all/page.tsx`
+- `frontend/app/kreative/collaborative-spaces/find-spaces/page.tsx`
+- `frontend/app/kreative/collaborative-spaces/my-spaces/page.tsx`
+- `frontend/app/kreative/collaborative-spaces/start-new-space/page.tsx`
+- `frontend/app/kreative/community-showcases/featured-projects/page.tsx`
+- `frontend/app/kreative/community-showcases/submit-to-showcase/page.tsx`
+- `frontend/app/kreative/community-showcases/top-creators/page.tsx`
+- `frontend/app/kreative/creative-hub/explore-ideas/page.tsx`
+- `frontend/app/kreative/creative-hub/inspiration-gallery/page.tsx`
+- `frontend/app/kreative/creative-hub/submit-creative-work/page.tsx`
+- `frontend/app/kreative/dashboard/page.tsx`
+- `frontend/app/kreative/idea-incubator/collaborate-on-ideas/page.tsx`
+- `frontend/app/kreative/idea-incubator/create-new-idea/page.tsx`
+- `frontend/app/kreative/idea-incubator/my-ideas/page.tsx`
+- `frontend/app/kreative/kreativePageShell.tsx`
+- `frontend/app/kreative/layout.tsx`
+- `frontend/app/kreative/mentorship/page.tsx`
+- `frontend/app/kreative/traditions-archive/page.tsx`
+- `frontend/app/layout.tsx`
+- `frontend/app/page.tsx`
+- `frontend/app/reports/ReportsPageShell.tsx`
+- `frontend/app/reports/custom/page.tsx`
+- `frontend/app/reports/layout.tsx`
+- `frontend/app/reports/page.tsx`
+- `frontend/app/reports/perf/page.tsx`
+- `frontend/app/reports/smart-vote/page.tsx`
+- `frontend/app/reports/usage/page.tsx`
+- `frontend/app/search/GlobalSearchClient.tsx`
+- `frontend/app/search/page.tsx`
+- `frontend/app/teambuilder/[sessionId]/page.tsx`
+- `frontend/app/teambuilder/create/CreateSessionClient.tsx`
+- `frontend/app/teambuilder/create/page.tsx`
+- `frontend/app/teambuilder/humans/conflicts/page.tsx`
+- `frontend/app/teambuilder/humans/constraints/page.tsx`
+- `frontend/app/teambuilder/humans/modes/page.tsx`
+- `frontend/app/teambuilder/humans/page.tsx`
+- `frontend/app/teambuilder/layout.tsx`
+- `frontend/app/teambuilder/page.tsx`
+- `frontend/app/teambuilder/problems/[problemId]/page.tsx`
+- `frontend/app/teambuilder/problems/create/page.tsx`
+- `frontend/app/teambuilder/problems/page.tsx`
+- `frontend/app/teambuilder/problems/taxonomy/page.tsx`
+- `frontend/codemods/remove-mainlayout-page-return.js`
+- `frontend/components/Button/Button.stories.tsx`
+- `frontend/components/Button/Button.tsx`
+- `frontend/components/CustomComment.tsx`
+- `frontend/components/Loading.tsx`
+- `frontend/components/PageContainer.tsx`
+- `frontend/components/TagsList.tsx`
+- `frontend/components/Tooltip/Tooltip.tsx`
+- `frontend/components/charts/ChartCard.tsx`
+- `frontend/components/compat/Comment.tsx`
+- `frontend/components/compat/Icon.tsx`
+- `frontend/components/dashboard-components/CommentCard.tsx`
+- `frontend/components/dashboard-components/LikeCard.tsx`
+- `frontend/components/dashboard-components/LineChart.tsx`
+- `frontend/components/dashboard-components/StatisticCard.tsx`
+- `frontend/components/dashboard-components/UserCard.tsx`
+- `frontend/components/dashboard-components/UserPieChart.tsx`
+- `frontend/components/dashboard-components/VisitCard.tsx`
+- `frontend/components/dashboard-components/index.tsx`
+- `frontend/components/dashboard-components/style.tsx`
+- `frontend/components/dashboard/TeamBuilderCard.tsx`
+- `frontend/components/layout-components/Drawer.tsx`
+- `frontend/components/layout-components/Header.tsx`
+- `frontend/components/layout-components/LogoTitle.tsx`
+- `frontend/components/layout-components/Main.tsx`
+- `frontend/components/layout-components/MainLayout.tsx`
+- `frontend/components/layout-components/Menu.css`
+- `frontend/components/layout-components/Menu.tsx`
+- `frontend/components/layout-components/Sider.tsx`
+- `frontend/components/map-components/ControlPanel.tsx`
+- `frontend/components/map-components/Map.tsx`
+- `frontend/components/map-components/MapMarker.tsx`
+- `frontend/components/map-components/StaticMap.tsx`
+- `frontend/components/map-components/index.tsx`
+- `frontend/components/shared/utils.tsx`
+- `frontend/components/teambuilder/AlgorithmConfig.tsx`
+- `frontend/components/teambuilder/CandidateSelector.tsx`
+- `frontend/components/teambuilder/TeamBuilderPageShell.tsx`
+- `frontend/components/teambuilder/TeamBuilderSidebar.tsx`
+- `frontend/components/teambuilder/TeamCard.tsx`
+- `frontend/components/user-components/UserComments.tsx`
+- `frontend/components/user-components/UserLikes.tsx`
+- `frontend/components/user-components/UserProfile.tsx`
+- `frontend/components/user-components/UserVisit.tsx`
+- `frontend/components/user-components/index.tsx`
+- `frontend/components/user-components/style.tsx`
+- `frontend/concat_frontend.py`
+- `frontend/context/ThemeContext.tsx`
+- `frontend/ct/insights/SmartVoteChart.ct.tsx`
+- `frontend/e2e/smoke/smoke.spec.ts`
+- `frontend/env.local.example`
+- `frontend/env.mjs`
+- `frontend/env.production.example`
+- `frontend/eslint.config.mjs`
+- `frontend/features/ethikos/demo-importer/DemoImporterPanel.tsx`
+- `frontend/features/ethikos/demo-importer/ImportResultPanel.tsx`
+- `frontend/features/ethikos/demo-importer/JsonScenarioEditor.tsx`
+- `frontend/features/ethikos/demo-importer/api.ts`
+- `frontend/features/ethikos/demo-importer/types.ts`
+- `frontend/hooks/useExpertiseTags.ts`
+- `frontend/hooks/usePageTitle.ts`
+- `frontend/hooks/useReputationEvents.ts`
+- `frontend/instrumentation.ts`
+- `frontend/jest.config.ts`
+- `frontend/jest.polyfills.js`
+- `frontend/jest.setup.js`
+- `frontend/kv14_backup_exclude_fix.cmd`
+- `frontend/lib/api-client.ts`
+- `frontend/middleware.ts`
+- `frontend/modules/account/UserSettings.tsx`
+- `frontend/modules/admin/components/ModerationQueue.tsx`
+- `frontend/modules/admin/components/UserStats.tsx`
+- `frontend/modules/admin/components/index.ts`
+- `frontend/modules/admin/hooks/index.ts`
+- `frontend/modules/admin/hooks/useModeration.ts`
+- `frontend/modules/admin/hooks/useStats.ts`
+- `frontend/modules/admin/pages/AdminConsole.tsx`
+- `frontend/modules/admin/pages/index.ts`
+- `frontend/modules/ekoh/achievements-badges/earned-badges-display/components/CommonWidget/page.tsx`
+- `frontend/modules/ekoh/components/EkohAccessNotice.tsx`
+- `frontend/modules/ekoh/components/EkohDomainRatings.tsx`
+- `frontend/modules/ekoh/components/EkohRatingDrawer.tsx`
+- `frontend/modules/ekoh/dashboard/components/CommonWidget/page.tsx`
+- `frontend/modules/ekoh/expertise-areas/view-current-expertise/components/CommonWidget/page.tsx`
+- `frontend/modules/ekoh/overview-analytics/current-ekoh-score/components/CommonWidget/page.tsx`
+- `frontend/modules/ekoh/voting-influence/current-voting-weight/components/CommonWidget/page.tsx`
+- `frontend/modules/ethikos/ReputationProfile.tsx`
+- `frontend/modules/ethikos/admin/audit/page.tsx`
+- `frontend/modules/ethikos/admin/moderation/page.tsx`
+- `frontend/modules/ethikos/admin/roles/page.tsx`
+- `frontend/modules/ethikos/components/ArgumentSourcesPanel.tsx`
+- `frontend/modules/ethikos/components/ArgumentTree.tsx`
+- `frontend/modules/ethikos/components/DiscussionVisibilityPanel.tsx`
+- `frontend/modules/ethikos/components/ImpactVoteControl.tsx`
+- `frontend/modules/ethikos/components/ParticipantRoleBadge.tsx`
+- `frontend/modules/ethikos/components/SuggestionQueue.tsx`
+- `frontend/modules/ethikos/decide/elite/page.tsx`
+- `frontend/modules/ethikos/decide/methodology/page.tsx`
+- `frontend/modules/ethikos/decide/public/page.tsx`
+- `frontend/modules/ethikos/decide/results/page.tsx`
+- `frontend/modules/ethikos/deliberate/[topic]/page.tsx`
+- `frontend/modules/ethikos/deliberate/elite/page.tsx`
+- `frontend/modules/ethikos/deliberate/guidelines/page.tsx`
+- `frontend/modules/ethikos/impact/feedback/page.tsx`
+- `frontend/modules/ethikos/impact/outcomes/page.tsx`
+- `frontend/modules/ethikos/impact/tracker/page.tsx`
+- `frontend/modules/ethikos/learn/changelog/page.tsx`
+- `frontend/modules/ethikos/learn/glossary/page.tsx`
+- `frontend/modules/ethikos/learn/guides/page.tsx`
+- `frontend/modules/ethikos/pulse/health/page.tsx`
+- `frontend/modules/ethikos/pulse/live/page.tsx`
+- `frontend/modules/ethikos/pulse/overview/page.tsx`
+- `frontend/modules/ethikos/pulse/trends/page.tsx`
+- `frontend/modules/ethikos/trust/badges/page.tsx`
+- `frontend/modules/ethikos/trust/credentials/page.tsx`
+- `frontend/modules/ethikos/trust/profile/page.tsx`
+- `frontend/modules/global/components/AppShell.tsx`
+- `frontend/modules/global/components/GlobalSearchBar.tsx`
+- `frontend/modules/global/components/index.ts`
+- `frontend/modules/global/hooks/index.ts`
+- `frontend/modules/global/hooks/useGlobalSearch.ts`
+- `frontend/modules/global/pages/MyWork.tsx`
+- `frontend/modules/global/pages/Search.tsx`
+- `frontend/modules/global/pages/index.ts`
+- `frontend/modules/insights/components/DomainHeatMap.tsx`
+- `frontend/modules/insights/components/ErrorRateSparkline.tsx`
+- `frontend/modules/insights/components/ExportCSVButton.tsx`
+- `frontend/modules/insights/components/LatencySLOGauge.tsx`
+- `frontend/modules/insights/components/SmartVoteChart.tsx`
+- `frontend/modules/insights/components/TimeRangePicker.tsx`
+- `frontend/modules/insights/components/UsageBigNumbers.tsx`
+- `frontend/modules/insights/components/__stories__/SmartVoteChart.stories.tsx`
+- `frontend/modules/insights/components/index.ts`
+- `frontend/modules/insights/hooks/__tests__/useReport.test.tsx`
+- `frontend/modules/insights/hooks/index.ts`
+- `frontend/modules/insights/hooks/useReport.ts`
+- `frontend/modules/insights/hooks/useReportStream.ts`
+- `frontend/modules/insights/pages/CustomBuilderPage.tsx`
+- `frontend/modules/insights/pages/InsightsHomePage.tsx`
+- `frontend/modules/insights/pages/PerfDashboard.tsx`
+- `frontend/modules/insights/pages/SmartVoteDashboard.tsx`
+- `frontend/modules/insights/pages/UsageDashboard.tsx`
+- `frontend/modules/insights/pages/index.ts`
+- `frontend/modules/insights/types/liveReportState.ts`
+- `frontend/modules/keenkonnect/ai-team-matching/find-teams/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/ai-team-matching/match-preferences/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/ai-team-matching/my-matches/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/dashboard/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/knowledge/browse-repository/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/knowledge/document-management/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/knowledge/search-filter-documents/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/knowledge/upload-new-document/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/projects/browse-projects/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/projects/create-new-project/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/projects/my-projects/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/projects/project-workspace/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/sustainability-impact/submit-impact-reports/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/sustainability-impact/sustainability-dashboard/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/sustainability-impact/track-project-impact/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/user-reputation/account-preferences/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/user-reputation/manage-expertise-areas/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/user-reputation/view-reputation-ekoh/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/workspaces/browse-available-workspaces/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/workspaces/launch-new-workspace/components/CommonWidget/page.tsx`
+- `frontend/modules/keenkonnect/workspaces/my-workspaces/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/certifications/certification-programs/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/certifications/exam-dashboard-results/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/certifications/exam-preparation/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/certifications/exam-registration/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/community-discussions/active-threads/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/community-discussions/moderation/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/community-discussions/start-new-discussion/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/dashboard/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/learning-library/browse-resources/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/learning-library/offline-content/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/learning-library/recommended-resources/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/learning-library/search-filters/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/learning-paths/create-learning-path/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/learning-paths/manage-existing-paths/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/learning-paths/my-learning-path/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/teams-collaboration/activity-planner/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/teams-collaboration/my-teams/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/teams-collaboration/project-workspaces/components/CommonWidget/page.tsx`
+- `frontend/modules/konnected/teams-collaboration/team-builder/components/CommonWidget/page.tsx`
+- `frontend/modules/konsensus/components/PollBarChart.tsx`
+- `frontend/modules/konsensus/components/VoteButtons.tsx`
+- `frontend/modules/konsensus/components/index.ts`
+- `frontend/modules/konsensus/hooks/index.ts`
+- `frontend/modules/konsensus/hooks/useLivePoll.ts`
+- `frontend/modules/konsensus/hooks/usePoll.ts`
+- `frontend/modules/konsensus/pages/PollPage.tsx`
+- `frontend/modules/konsensus/pages/index.ts`
+- `frontend/modules/konsultations/components/ConsultationForm.tsx`
+- `frontend/modules/konsultations/components/ConsultationList.tsx`
+- `frontend/modules/konsultations/components/ConsultationVotePanel.tsx`
+- `frontend/modules/konsultations/components/ImpactTimeline.tsx`
+- `frontend/modules/konsultations/components/ResultsChart.tsx`
+- `frontend/modules/konsultations/components/ResultsDashboard.tsx`
+- `frontend/modules/konsultations/components/SuggestionBoard.tsx`
+- `frontend/modules/konsultations/components/SuggestionsBoard.tsx`
+- `frontend/modules/konsultations/components/index.ts`
+- `frontend/modules/konsultations/hooks/index.ts`
+- `frontend/modules/konsultations/hooks/useConsultation.ts`
+- `frontend/modules/konsultations/hooks/useConsultationResults.ts`
+- `frontend/modules/konsultations/hooks/useConsultationVote.ts`
+- `frontend/modules/konsultations/hooks/useConsultations.ts`
+- `frontend/modules/konsultations/hooks/useImpact.ts`
+- `frontend/modules/konsultations/hooks/useSuggestions.ts`
+- `frontend/modules/konsultations/pages/ConsultationDetailPage.tsx`
+- `frontend/modules/konsultations/pages/ConsultationHub.tsx`
+- `frontend/modules/konsultations/pages/ConsultationsHomePage.tsx`
+- `frontend/modules/konsultations/pages/ResultsPage.tsx`
+- `frontend/modules/konsultations/pages/SuggestionPage.tsx`
+- `frontend/modules/konsultations/pages/index.ts`
+- `frontend/modules/kontact/components/OpportunityList.tsx`
+- `frontend/modules/kontact/components/ProfileCard.tsx`
+- `frontend/modules/kontact/components/index.ts`
+- `frontend/modules/kontact/hooks/index.ts`
+- `frontend/modules/kontact/hooks/useOpportunities.ts`
+- `frontend/modules/kontact/hooks/useProfiles.ts`
+- `frontend/modules/kontact/pages/ConnectCenter.tsx`
+- `frontend/modules/kontact/pages/PublicProfile.tsx`
+- `frontend/modules/kontact/pages/index.ts`
+- `frontend/modules/kreative/collaborative-spaces/find-spaces/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/collaborative-spaces/my-spaces/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/collaborative-spaces/start-new-space/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/community-showcases/featured-projects/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/community-showcases/submit-to-showcase/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/community-showcases/top-creators/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/creative-hub/explore-ideas/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/creative-hub/inspiration-gallery/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/creative-hub/submit-creative-work/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/dashboard/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/idea-incubator/collaborate-on-ideas/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/idea-incubator/create-new-idea/components/CommonWidget/page.tsx`
+- `frontend/modules/kreative/idea-incubator/my-ideas/components/CommonWidget/page.tsx`
+- `frontend/next-env.d.ts`
+- `frontend/next.config.ts`
+- `frontend/package.json`
+- `frontend/playwright-smokeREADME.txt`
+- `frontend/playwright.config.ts`
+- `frontend/playwright.ct.config.ts`
+- `frontend/playwright.delivery.config.ts`
+- `frontend/playwright.harvest.config.ts`
+- `frontend/playwright.smoke.config.ts`
+- `frontend/postcss.config.js`
+- `frontend/prettier.config.js`
+- `frontend/renovate.json`
+- `frontend/report-bundle-size.js`
+- `frontend/reset.d.ts`
+- `frontend/routes/index.ts`
+- `frontend/routes/routesEkoh.tsx`
+- `frontend/routes/routesEthikos.tsx`
+- `frontend/routes/routesKeenkonnect.tsx`
+- `frontend/routes/routesKonnected.tsx`
+- `frontend/routes/routesKontrol.tsx`
+- `frontend/routes/routesKreative.tsx`
+- `frontend/routes/routesTeambuilder.tsx`
+- `frontend/routes/types.ts`
+- `frontend/scripts/00-setup.ps1`
+- `frontend/scripts/10-frontend-unit.ps1`
+- `frontend/scripts/20-frontend-ct.ps1`
+- `frontend/scripts/30-frontend-smoke-dev.ps1`
+- `frontend/scripts/31-frontend-smoke-prod.ps1`
+- `frontend/scripts/40-backend-tests.ps1`
+- `frontend/scripts/50-all.ps1`
+- `frontend/scripts/concat-pages.ps1`
+- `frontend/scripts/execution.txt`
+- `frontend/scripts/find-routes.mjs`
+- `frontend/scripts/find-unstyled-pages.mjs`
+- `frontend/scripts/scan-endpoints.mjs`
+- `frontend/scripts/scan-layout-anomalies.mjs`
+- `frontend/scripts/scan-pages.ps1`
+- `frontend/scripts/unwrap-mainlayout.mjs`
+- `frontend/services/_request.ts`
+- `frontend/services/admin.ts`
+- `frontend/services/audit.ts`
+- `frontend/services/decide.mock.ts`
+- `frontend/services/decide.ts`
+- `frontend/services/deliberate.ts`
+- `frontend/services/ekoh.ts`
+- `frontend/services/ethikos.ts`
+- `frontend/services/impact.ts`
+- `frontend/services/index.ts`
+- `frontend/services/kreative.ts`
+- `frontend/services/learn.ts`
+- `frontend/services/projects.ts`
+- `frontend/services/pulse.ts`
+- `frontend/services/readings.ts`
+- `frontend/services/teambuilder/index.ts`
+- `frontend/services/teambuilder/types.ts`
+- `frontend/services/trust.ts`
+- `frontend/services/user.ts`
+- `frontend/shared/CommonWidget.module.css`
+- `frontend/shared/QueryProvider.tsx`
+- `frontend/shared/api.ts`
+- `frontend/shared/downloadCsv.ts`
+- `frontend/shared/errors.ts`
+- `frontend/shared/layout/MainLayout.tsx`
+- `frontend/shared/services/admin.ts`
+- `frontend/shared/services/search.ts`
+- `frontend/smoke/smoke.spec.ts`
+- `frontend/src/components/CommonWidget/page.tsx`
+- `frontend/src/components/ThemeSwitcher.tsx`
+- `frontend/src/dayjs-setup.ts`
+- `frontend/src/theme/HowTo.txt`
+- `frontend/src/theme/index.ts`
+- `frontend/src/theme/obsolete/cyberTheme.ts`
+- `frontend/src/theme/obsolete/darkTheme.ts`
+- `frontend/src/theme/obsolete/funkyTheme.ts`
+- `frontend/src/theme/obsolete/index.ts`
+- `frontend/src/theme/obsolete/kktheme.ts`
+- `frontend/src/theme/obsolete/lightTheme.ts`
+- `frontend/src/theme/obsolete/mauveRainbowTheme.ts`
+- `frontend/src/theme/obsolete/minimalTheme.ts`
+- `frontend/src/theme/obsolete/modernTheme.ts`
+- `frontend/src/theme/obsolete/oceanTheme.ts`
+- `frontend/src/theme/obsolete/sunsetTheme.ts`
+- `frontend/src/theme/obsolete/types.ts`
+- `frontend/src/theme/theme01.ts`
+- `frontend/src/theme/theme02.ts`
+- `frontend/src/theme/theme03.ts`
+- `frontend/src/theme/theme04.ts`
+- `frontend/src/theme/theme05.ts`
+- `frontend/src/theme/theme06.ts`
+- `frontend/src/theme/theme07.ts`
+- `frontend/src/theme/theme08.ts`
+- `frontend/src/theme/types.ts`
+- `frontend/src/types/index.ts`
+- `frontend/styles/tailwind.css`
+- `frontend/tailwind.config.js`
+- `frontend/tests/auth.setup.ts`
+- `frontend/tests/ethikos-authenticated-workflow.spec.ts`
+- `frontend/tests/ethikos-delivery-workflow.spec.ts`
+- `frontend/tests/ethikos-wave1-demo.spec.ts`
+- `frontend/tests/ethikos-wave1-workflow.spec.ts`
+- `frontend/tests/platform-harvest-wave2.spec.ts`
+- `frontend/tests/platform-harvest-workflow.spec.ts`
+- `frontend/tests/routes.spec.ts`
+- `frontend/tools/codemod_protable_render.ts`
+- `frontend/tools/full-scan.ps1`
+- `frontend/tools/hot to.txt`
+- `frontend/tsconfig.json`
+- `frontend/tsconfig.typecheck.json`
+- `frontend/types/activity.ts`
+- `frontend/types/index.ts`
+- `frontend/widgets/header/ActiveHeaderWidget.tsx`
+- `frontend/widgets/header/ClockWidget.tsx`
+- `koali.integration.json`
+- `koali/start-api.ps1`
+- `kv14_backup.cmd`
+- `package.json`
+- `scripts/check_worlds_architecture.py`
+- `scripts/metricAnalyzer.py`
+- `scripts/wrapModuleShells.ts`
+- `tools/add_file_path_header.py`
+
+## Next step
+
+Rebuild the standalone bootstrap/configuration around the retained Worlds-owned code.
+This cleaner intentionally does not restore imports or compatibility shims from the main application.
