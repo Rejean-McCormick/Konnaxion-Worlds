@@ -87,6 +87,12 @@ Do not invent synonyms in code that blur these boundaries.
 
 World infrastructure does not change Konnaxion owners.
 
+Post-separation hard boundary:
+- `Konnaxion_Worlds` MUST NOT contain the Konnaxion↔Orgo product Interaction Kernel boundary;
+- it MUST NOT define `DecisionRecord`, `InteractionEmission`, impact-ingress models or ethiKos delivery workers;
+- it MAY expose World/Release identifiers as routing/provenance data to the main product through an explicit contract;
+- the main `Konnaxion` repository remains the authoritative owner of those product-domain objects and integrations.
+
 Preserve:
 - ethiKos owns deliberation source state;
 - EkoH owns expertise/ethics context;

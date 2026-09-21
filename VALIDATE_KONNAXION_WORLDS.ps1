@@ -19,6 +19,19 @@ foreach ($Relative in $Required) {
     }
 }
 
+
+$Forbidden = @(
+    "backend\konnaxion\integrations\interaction_kernel",
+    "backend\konnaxion\ethikos\tasks.py",
+    "backend\konnaxion\ethikos\ik_bridge_views.py",
+    "backend\konnaxion\ethikos\ik_bridge_urls.py"
+)
+foreach ($Relative in $Forbidden) {
+    if (Test-Path (Join-Path $Root $Relative)) {
+        throw "Main-product runtime file must not exist in Konnaxion_Worlds: $Relative"
+    }
+}
+
 Push-Location (Join-Path $Root "backend")
 try {
     & $Python -m compileall -q konnaxion worlds_config worlds_manage.py

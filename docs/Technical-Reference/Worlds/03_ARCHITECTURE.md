@@ -236,3 +236,10 @@ Preferred rules:
 - canonical fixtures such as ISCED may be duplicated reproducibly into each EkoH schema from one canonical fixture source.
 
 Duplication of deterministic fixtures is acceptable and safer than accidental cross-World mutable sharing.
+## Post-separation product boundary
+
+`Konnaxion_Worlds` owns World/WorldRelease/routing/provenance infrastructure only.
+The main `Konnaxion` repository owns ethiKos `DecisionRecord`, durable Interaction
+Kernel emission, impact ingress and the Konnaxion↔Orgo product integration.
+This repository must not import or recreate that runtime.
+
