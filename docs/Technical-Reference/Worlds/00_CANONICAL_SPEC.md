@@ -33,7 +33,9 @@ Returning to CUNY MUST restore the same CUNY state, subject only to legitimate m
 
 ## 2. Core architecture
 
-Konnaxion remains one codebase and one deployed application stack.
+> **Post-separation repository note (2026-09-21):** `Konnaxion_Worlds` is now a standalone sibling infrastructure repository. It owns World/WorldRelease/routing/provenance mechanics only. The main `Konnaxion` repository owns ethiKos, DecisionRecord, durable Interaction Kernel emission and impact ingress. "One Konnaxion codebase" below means one authoritative main-product implementation per domain; it MUST NOT be interpreted as permission to duplicate main-product runtime code into this repository.
+
+Konnaxion remains one authoritative product implementation and one logical deployed application stack.
 
 Normal World isolation MUST NOT be implemented by:
 - copying the Konnaxion repository;
