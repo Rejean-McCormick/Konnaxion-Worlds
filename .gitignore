@@ -1,1 +1,27 @@
 /SmartSnap.pyw
+
+# Local helper
+GitSink.bat
+
+# Python / tests
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local environments / runtime
+.env
+.env.*
+!.env.example
+!*.example
+*.log
+*.tmp
+*.swp
+*.bak
+*.bak_*
+*.bak-*
