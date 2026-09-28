@@ -1,0 +1,6 @@
+# Konnaxion Worlds snapshot-only exclusions.
+# These files may remain versioned in Git.
+
+CODE_SNAPSHOT_MANIFEST.md
+SMARTDUMP_INDEX.txt
+SEPARATION_CLEANUP_REPORT.md
