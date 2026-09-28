@@ -25,6 +25,8 @@ Repository boundary: this engine repository intentionally does **not** ship the 
 
 The product-host integration UI (`UniverseSwitcher`, `WorldSwitcher`, route rewrites, browser stale-response guards) is owned by the main `Konnaxion` repository and consumes this engine through its HTTP/runtime contract. This prevents a second frontend implementation from drifting beside the product shell.
 
+The repository-level invariant is stronger than a component blacklist: while this repository is the engine package, a top-level `frontend/` tree is forbidden. Any future reusable browser SDK must live in its own versioned package and be introduced by ADR; it must not be vendored here.
+
 Before committing boundary changes, run:
 
 ```text
