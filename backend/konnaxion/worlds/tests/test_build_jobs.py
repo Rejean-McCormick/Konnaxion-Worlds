@@ -9,7 +9,7 @@ from rest_framework.test import APIRequestFactory, force_authenticate
 
 from konnaxion.worlds import api_views
 from konnaxion.worlds.api_views import WorldBuildReleaseView, WorldCollectionView
-from konnaxion.worlds.models import World, WorldBuildJob, WorldRelease
+from konnaxion.worlds.models import Universe, World, WorldBuildJob, WorldRelease
 from konnaxion.worlds.services.build_queue import world_build_concurrency
 
 pytestmark = pytest.mark.django_db
@@ -27,7 +27,8 @@ def test_world_build_concurrency_defaults_to_one_and_is_bounded():
 def test_build_api_queues_job_without_building_release(monkeypatch):
     User = get_user_model()
     owner = User.objects.create_user(username="world-build-owner")
-    world = World.objects.create(key="queued-world", title="Queued World", created_by=owner)
+    universe = Universe.objects.create(key="builds", title="Builds")
+    world = World.objects.create(universe=universe, key="queued-world", title="Queued World", created_by=owner)
 
     pack = SimpleNamespace(
         world_key="queued-world",
@@ -72,9 +73,13 @@ def test_build_api_queues_job_without_building_release(monkeypatch):
 
 
 def test_catalog_search_remains_simple_at_120_worlds():
+    universe = Universe.objects.create(
+        key="catalog", title="Catalog", visibility=Universe.VISIBILITY_PUBLIC
+    )
     World.objects.bulk_create(
         [
             World(
+                universe=universe,
                 key=f"catalog-{index:03d}",
                 title=f"Catalog World {index:03d}",
                 visibility=World.VISIBILITY_PUBLIC,
@@ -96,7 +101,8 @@ def test_build_task_transitions_persisted_job_to_ready(monkeypatch):
 
     User = get_user_model()
     owner = User.objects.create_user(username="world-task-owner")
-    world = World.objects.create(key="task-world", title="Task World", created_by=owner)
+    universe = Universe.objects.create(key="tasks", title="Tasks")
+    world = World.objects.create(universe=universe, key="task-world", title="Task World", created_by=owner)
     job = WorldBuildJob.objects.create(
         world=world,
         requested_by=owner,

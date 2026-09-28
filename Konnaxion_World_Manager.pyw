@@ -10,7 +10,7 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog, ttk
 
 APP_TITLE = "Konnaxion — World Manager"
-ARCHITECTURE_LOCK = "KX-WORLDS-1"
+ARCHITECTURE_LOCK = "KX-UNIVERSES-1"
 BACKEND_REL = Path("backend")
 MANAGE_REL = BACKEND_REL / "worlds_manage.py"
 VENV_PY_REL = Path(".venv") / "Scripts" / "python.exe"
@@ -18,14 +18,15 @@ RESULT_MARKER = "__KX_RESULT__="
 
 LIST_CODE = r'''
 import json
-from konnaxion.worlds.models import World
+from konnaxion.worlds.models import Universe, World
 from konnaxion.worlds.services.seed_packs import discover_seed_packs
 packs = discover_seed_packs(persist=True)
 worlds = []
-for world in World.objects.select_related("current_release").order_by("key"):
+for world in World.objects.select_related("universe", "current_release").order_by("universe__key", "key"):
     release = world.current_release
     worlds.append({
         "id": world.id, "key": world.key, "title": world.title,
+        "universe": {"id": world.universe_id, "key": world.universe.key, "title": world.universe.title},
         "status": world.status, "visibility": world.visibility,
         "release": None if release is None else {
             "id": release.id, "number": release.release_number,
@@ -49,7 +50,7 @@ for world in World.objects.select_related("current_release").order_by("key"):
         ],
     })
 print("__KX_RESULT__=" + json.dumps({
-    "architecture_lock": "KX-WORLDS-1",
+    "architecture_lock": "KX-UNIVERSES-1",
     "worlds": worlds,
     "packs": [{"key": p.world_key, "title": p.title, "version": p.version, "checksum": p.checksum} for p in packs],
 }, default=str))
@@ -59,13 +60,16 @@ CREATE_CODE = r'''
 import json, sys
 from django.core.exceptions import ValidationError
 from konnaxion.worlds.models import World
+from konnaxion.worlds.services.universes import get_or_create_universe_for_tooling
 payload = json.load(sys.stdin)
 key = str(payload["key"]).strip().lower()
+universe = get_or_create_universe_for_tooling(payload.get("universe_key"))
 if World.objects.filter(key=key).exists():
     world = World.objects.get(key=key)
     created = False
 else:
     world = World(
+        universe=universe,
         key=key,
         title=payload.get("title") or key,
         description=payload.get("description", ""),
@@ -154,6 +158,7 @@ target_key = str(payload["target_key"]).strip().lower()
 if World.objects.filter(key=target_key).exists():
     raise RuntimeError(f"World already exists: {target_key}")
 target = World(
+    universe=source.universe,
     key=target_key, title=payload.get("title") or target_key,
     description=source.description, visibility=source.visibility, parent_world=source,
 )
@@ -224,7 +229,7 @@ class WorldManager(tk.Tk):
         root = ttk.Frame(self, padding=12)
         root.pack(fill="both", expand=True)
         ttk.Label(root, text="Konnaxion World Manager", font=("Segoe UI", 17, "bold")).pack(anchor="w")
-        ttk.Label(root, text="standalone · Neon/PostgreSQL · isolated WorldReleases · KX-WORLDS-1").pack(anchor="w", pady=(2, 10))
+        ttk.Label(root, text="standalone · Universe → World → Release · KX-UNIVERSES-1").pack(anchor="w", pady=(2, 10))
 
         path_row = ttk.Frame(root)
         path_row.pack(fill="x")
@@ -247,13 +252,15 @@ class WorldManager(tk.Tk):
         panes.add(middle, weight=3)
         panes.add(right, weight=2)
 
-        self.world_tree = ttk.Treeview(left, columns=("status", "release", "seed"), show="tree headings", selectmode="browse")
+        self.world_tree = ttk.Treeview(left, columns=("universe", "status", "release", "seed"), show="tree headings", selectmode="browse")
         self.world_tree.heading("#0", text="World")
+        self.world_tree.heading("universe", text="Universe")
         self.world_tree.heading("status", text="Status")
         self.world_tree.heading("release", text="Release")
         self.world_tree.heading("seed", text="Seed")
-        self.world_tree.column("#0", width=210)
-        self.world_tree.column("status", width=145)
+        self.world_tree.column("#0", width=190)
+        self.world_tree.column("universe", width=150)
+        self.world_tree.column("status", width=130)
         self.world_tree.column("release", width=90)
         self.world_tree.column("seed", width=160)
         self.world_tree.pack(fill="both", expand=True)
@@ -447,8 +454,18 @@ class WorldManager(tk.Tk):
         key = simpledialog.askstring(APP_TITLE, "World key (slug):", parent=self)
         if not key:
             return
+        universe_key = simpledialog.askstring(
+            APP_TITLE,
+            "Universe key (slug; blank uses temporary legacy Universe):",
+            parent=self,
+        )
         title = simpledialog.askstring(APP_TITLE, "Title:", initialvalue=key, parent=self) or key
-        payload = {"key": key.strip(), "title": title.strip(), "visibility": "private"}
+        payload = {
+            "universe_key": (universe_key or "").strip(),
+            "key": key.strip(),
+            "title": title.strip(),
+            "visibility": "private",
+        }
 
         def work() -> None:
             self._call(CREATE_CODE, payload)
@@ -638,7 +655,11 @@ class WorldManager(tk.Tk):
             status_text = world["status"]
             if active_jobs:
                 status_text = f"{status_text} / {active_jobs[0]['status']}"
-            self.world_tree.insert("", "end", iid=world["key"], text=world["title"], values=(status_text, rel, seed))
+            universe = world.get("universe") or {}
+            self.world_tree.insert(
+                "", "end", iid=world["key"], text=world["title"],
+                values=(universe.get("title") or universe.get("key") or "—", status_text, rel, seed),
+            )
         for item in self.pack_tree.get_children():
             self.pack_tree.delete(item)
         for pack in data.get("packs", []):

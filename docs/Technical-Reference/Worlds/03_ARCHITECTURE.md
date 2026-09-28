@@ -1,5 +1,10 @@
 # Architecture
 
+> **KX-UNIVERSES-1 extension:** Read `20_UNIVERSES.md` before applying this document.
+> It supersedes older assumptions that World identity is globally keyed or that `/w/{world_key}` is the final canonical route.
+> All WorldRelease isolation invariants in this document remain in force.
+
+
 > **Boundary note:** The term **control plane** in this document is local to Konnaxion Worlds. It is not the kOA Digital Ecosystem control plane, an Orgo control plane, an Interaction Kernel coordinator, a Kristal authority, or the kOA-Linux host activation owner.
 
 
@@ -129,20 +134,11 @@ Worlds is a cross-cutting infrastructure owner.
 
 Do not put the World registry inside `konnaxion.ethikos`.
 
-## 4. Frontend structure
+## 4. Host frontend integration
 
-Suggested:
+The browser shell is **not** owned by this engine repository. In the current Konnaxion product host, Universe/World navigation lives in the main `Konnaxion` repository (for example its `frontend/components/worlds/` integration and Next.js route adapters).
 
-```text
-frontend/app/w/[world]/...
-frontend/modules/worlds/
-frontend/components/worlds/WorldSwitcher.tsx
-frontend/app/kontrol/worlds/...
-```
-
-The World switcher may be globally visible, but the control/management UI naturally belongs in the Kontrol administrative surface.
-
-Presentation ownership in Kontrol does not move backend World ownership away from `konnaxion.worlds`.
+`Konnaxion_Worlds` owns the control-plane/runtime contract consumed by that UI. Do not recreate a second maintained web frontend here. A reusable frontend SDK requires a separate versioned package and ADR.
 
 ## 5. Database schemas
 

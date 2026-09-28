@@ -1,5 +1,10 @@
 # Architecture Decision Record Register — Worlds
 
+> **KX-UNIVERSES-1 extension:** Read `20_UNIVERSES.md` before applying this document.
+> It supersedes older assumptions that World identity is globally keyed or that `/w/{world_key}` is the final canonical route.
+> All WorldRelease isolation invariants in this document remain in force.
+
+
 These decisions define `KX-WORLDS-1`.
 
 Changing an accepted decision requires a superseding ADR.
@@ -98,3 +103,41 @@ World selection remains request-scoped navigation and never starts/stops infrast
 ## ADR-WLD-021 — Release promotion is not host activation
 
 **Decision:** promoting `World.current_release` is a Konnaxion-local lifecycle mutation. It is not physical Runtime Pack verify/stage/activate/rollback. When kOA-Linux is present, host activation remains kOA-Linux-owned.
+
+## KX-UNIVERSES-1 decisions
+
+### ADR-UNI-001 — Universe is a coherence/governance boundary
+
+**Decision:** Universe groups Worlds for navigation, membership, governance and discovery. It owns no shared World business-data schema.
+
+### ADR-UNI-002 — World remains the isolation boundary
+
+**Decision:** adding Universe does not weaken World/WorldRelease database, cache, task, search, WebSocket, media or AI/RAG isolation.
+
+### ADR-UNI-003 — Functional topology is a graph
+
+**Decision:** use `WorldRelation` for live functional relationships. Do not encode arbitrary live sub-World hierarchy through `parent_world`.
+
+### ADR-UNI-004 — `parent_world` remains provenance
+
+**Decision:** `parent_world` continues to mean fork/lineage history.
+
+### ADR-UNI-005 — Inter-World exchange is explicit
+
+**Decision:** use provenance-bearing `WorldPublication`/integration services instead of direct cross-World joins.
+
+### ADR-UNI-006 — Canonical route contains Universe and World
+
+**Decision:** target routes are `/u/{universe}/w/{world}` and `/api/u/{universe}/w/{world}`. World-only routes are migration compatibility.
+
+### ADR-UNI-007 — World keys become Universe-scoped only after route migration
+
+**Decision:** keep global `World.key` uniqueness in Phase U1; move to `(universe,key)` only after ambiguous World-only routing is retired.
+
+### ADR-UNI-008 — Konnaxion_Worlds is sole engine/spec owner
+
+**Decision:** main Konnaxion is a host/consumer. It may own adapters and navigation, but not a duplicate backend engine or canonical Universe/World spec.
+
+### ADR-UNI-009 — Project Integration is a World, not a shared database
+
+**Decision:** multidisciplinary projects may use a central integration World for cross-domain decisions/risks/schedule; detailed discipline state remains in specialist Worlds and crosses boundaries explicitly.

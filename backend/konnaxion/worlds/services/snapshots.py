@@ -27,7 +27,7 @@ def create_snapshot(*, world, label: str, actor=None) -> WorldSnapshot:
             target_status=WorldRelease.STATUS_FROZEN,
         )
         manifest = {
-            "architecture_lock": "KX-WORLDS-1",
+            "architecture_lock": "KX-UNIVERSES-1",
             "source_release_id": source.id,
             "frozen_release_id": frozen.id,
             "source_release_number": source.release_number,

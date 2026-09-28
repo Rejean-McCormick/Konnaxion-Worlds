@@ -14,6 +14,8 @@ class WorldContextConflict(RuntimeError):
 
 @dataclass(frozen=True, slots=True)
 class WorldRuntime:
+    universe_id: int
+    universe_key: str
     world_id: int
     world_key: str
     release_id: int
@@ -35,7 +37,7 @@ def get_world_runtime() -> WorldRuntime | None:
 def require_world_runtime() -> WorldRuntime:
     runtime = get_world_runtime()
     if runtime is None:
-        raise WorldContextRequired("A Konnaxion World context is required.")
+        raise WorldContextRequired("A Konnaxion Universe/World context is required.")
     return runtime
 
 
@@ -43,8 +45,10 @@ def set_world_runtime(runtime: WorldRuntime):
     existing = get_world_runtime()
     if existing is not None and existing != runtime:
         raise WorldContextConflict(
-            f"Cannot enter {runtime.world_key}/r{runtime.release_number} while "
-            f"already scoped to {existing.world_key}/r{existing.release_number}."
+            "Cannot enter "
+            f"{runtime.universe_key}/{runtime.world_key}/r{runtime.release_number} while "
+            "already scoped to "
+            f"{existing.universe_key}/{existing.world_key}/r{existing.release_number}."
         )
     return _current_world_runtime.set(runtime)
 

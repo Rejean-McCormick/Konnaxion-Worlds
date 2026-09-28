@@ -9,5 +9,10 @@ def root(_request):
 urlpatterns = [
     path("", root),
     path("api/control/", include("konnaxion.worlds.urls")),
+    path(
+        "api/u/<slug:universe_key>/w/<slug:world_key>/",
+        include("konnaxion.worlds.runtime_urls"),
+    ),
+    # Phase-U1 compatibility route.
     path("api/w/<slug:world_key>/", include("konnaxion.worlds.runtime_urls")),
 ]

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from dataclasses import replace
 
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
@@ -10,13 +11,46 @@ from django.utils import timezone
 from .db import world_db_scope
 from .models import WorldPersonaBridge, WorldRelease
 from .resolver import WorldUnavailable, resolve_world_runtime
+from .services.schema import WorldSchemaNotReady, assert_runtime_schema_ready
 
-_WORLD_ROUTE_RE = re.compile(
-    r"^/(?:api/)?w/(?P<world_key>[a-z0-9](?:[a-z0-9-]{0,118}[a-z0-9])?)(?:/|$)"
+_KEY = r"[a-z0-9](?:[a-z0-9-]{0,118}[a-z0-9])?"
+_UNIVERSE_WORLD_ROUTE_RE = re.compile(
+    rf"^/(?:api/)?u/(?P<universe_key>{_KEY})/w/(?P<world_key>{_KEY})(?:/|$)"
+)
+_LEGACY_WORLD_ROUTE_RE = re.compile(
+    rf"^/(?:api/)?w/(?P<world_key>{_KEY})(?:/|$)"
 )
 
 _SAFE_METHODS = {"GET", "HEAD", "OPTIONS", "TRACE"}
 _NON_DIRTY_RUNTIME_PATHS = ("/runtime/view-as/",)
+_RUNTIME_CONTROL_SUFFIXES = ("/runtime/", "/runtime/view-as/")
+
+_WORLD_OWNED_API_PREFIXES = (
+    "/api/ethikos",
+    "/api/deliberate",
+    "/api/teambuilder",
+    "/api/keenkonnect",
+    # Legacy alias of /api/keenkonnect/projects/. It is still World-owned.
+    "/api/projects",
+    "/api/konnected",
+    "/api/kreative",
+    "/api/kollective",
+    "/api/v1/ekoh",
+    "/api/v1/smart-vote",
+    "/api/reports",
+    "/api/admin/moderation",
+    "/api/admin/konsensus-config",
+)
+
+
+def _requires_world_route(path: str) -> bool:
+    # Match an API ownership boundary, not a raw string prefix (for example,
+    # /api/projects-old must not be classified as /api/projects).
+    normalized = path.rstrip("/") or "/"
+    return any(
+        normalized == prefix or normalized.startswith(f"{prefix}/")
+        for prefix in _WORLD_OWNED_API_PREFIXES
+    )
 
 
 def _error(code: str, detail: str, *, status: int) -> JsonResponse:
@@ -96,21 +130,47 @@ class WorldRouteMiddleware:
 
     def __call__(self, request):
         path = request.path_info or "/"
-        match = _WORLD_ROUTE_RE.match(path)
+        match = _UNIVERSE_WORLD_ROUTE_RE.match(path) or _LEGACY_WORLD_ROUTE_RE.match(path)
 
         if match is None:
+            if (
+                getattr(settings, "KONNAXION_WORLDS_ENFORCE_SCOPED_API", False)
+                and _requires_world_route(path)
+            ):
+                return _error(
+                    "WORLD_REQUIRED",
+                    "This API is World-owned. Use /api/u/<universe_key>/w/<world_key>/... "
+                    "(or the temporary /api/w/<world_key>/ compatibility route).",
+                    status=400,
+                )
             return self.get_response(request)
 
+        universe_key = match.groupdict().get("universe_key")
         world_key = match.group("world_key")
         try:
-            runtime = resolve_world_runtime(world_key=world_key, user=getattr(request, "user", None))
+            runtime = resolve_world_runtime(
+                universe_key=universe_key,
+                world_key=world_key,
+                user=getattr(request, "user", None),
+            )
         except PermissionDenied as exc:
             return _error("WORLD_ACCESS_DENIED", str(exc), status=403)
         except WorldUnavailable as exc:
             return _error("WORLD_NOT_FOUND", str(exc), status=404)
 
         request.world_runtime = runtime
+        request.universe_key = runtime.universe_key
         request.world_key = runtime.world_key
+
+        # Runtime metadata remains inspectable while a release is being repaired,
+        # but no World-owned ORM route may execute until the release-local schema
+        # pair has complete scoped migrations/tables. This prevents PostgreSQL
+        # from satisfying a missing World table from public.
+        if not any(path.endswith(suffix) for suffix in _RUNTIME_CONTROL_SUFFIXES):
+            try:
+                assert_runtime_schema_ready(runtime)
+            except WorldSchemaNotReady as exc:
+                return _error("WORLD_SCHEMA_NOT_READY", str(exc), status=503)
 
         with world_db_scope(runtime):
             _load_view_as(request, runtime)
@@ -120,17 +180,10 @@ class WorldRouteMiddleware:
                 WorldRelease.objects.filter(pk=runtime.release_id).update(
                     is_dirty=True, dirty_since=now
                 )
-                runtime = runtime.__class__(
-                    world_id=runtime.world_id,
-                    world_key=runtime.world_key,
-                    release_id=runtime.release_id,
-                    release_number=runtime.release_number,
-                    domain_schema=runtime.domain_schema,
-                    ekoh_schema=runtime.ekoh_schema,
-                    is_dirty=True,
-                )
+                runtime = replace(runtime, is_dirty=True)
 
         response = _scope_streaming_response(response, runtime)
+        response["X-Konnaxion-Universe"] = runtime.universe_key
         response["X-Konnaxion-World"] = runtime.world_key
         response["X-Konnaxion-World-Release"] = str(runtime.release_number)
         response["X-Konnaxion-World-Release-Id"] = str(runtime.release_id)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
-from django.db.models import Exists, OuterRef, Q
+from django.db.models import Count, Exists, OuterRef, Q
 from django.utils import timezone
 from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -11,26 +12,36 @@ from rest_framework.views import APIView
 
 from .models import (
     SeedPackRecord,
+    Universe,
+    UniverseMembership,
     World,
     WorldAuditEvent,
     WorldBuildJob,
     WorldMembership,
     WorldPersona,
     WorldPersonaBridge,
+    WorldPublication,
+    WorldRelation,
     WorldRelease,
     WorldSnapshot,
+    WorldSubscription,
 )
 from .serializers import (
     SeedPackRecordSerializer,
+    UniverseMembershipSerializer,
+    UniverseSerializer,
     WorldAuditEventSerializer,
     WorldBuildJobSerializer,
     WorldMembershipSerializer,
     WorldPersonaSerializer,
+    WorldPublicationSerializer,
+    WorldRelationSerializer,
     WorldReleaseSerializer,
     WorldSerializer,
     WorldSnapshotSerializer,
+    WorldSubscriptionSerializer,
 )
-from .resolver import can_manage_world
+from .resolver import can_access_universe, can_manage_universe, can_manage_world
 from .services.audit import audit
 from .services.build_queue import enqueue_world_build_job
 from .services.builder import (
@@ -47,8 +58,23 @@ from .services.snapshots import create_snapshot, restore_snapshot
 User = get_user_model()
 
 
+def _visible_universes(user):
+    qs = Universe.objects.exclude(status=Universe.STATUS_ARCHIVED)
+    if user and user.is_authenticated:
+        if user.is_staff or user.is_superuser:
+            return qs
+        return qs.filter(
+            Q(visibility=Universe.VISIBILITY_PUBLIC)
+            | Q(created_by=user)
+            | Q(memberships__user=user, memberships__is_active=True)
+        ).distinct()
+    return qs.filter(visibility=Universe.VISIBILITY_PUBLIC)
+
+
 def _visible_worlds(user):
-    qs = World.objects.select_related("current_release").exclude(status=World.STATUS_ARCHIVED)
+    qs = World.objects.select_related("universe", "current_release").exclude(
+        status=World.STATUS_ARCHIVED
+    ).exclude(universe__status=Universe.STATUS_ARCHIVED)
     if user and user.is_authenticated:
         if user.is_staff or user.is_superuser:
             return qs
@@ -58,20 +84,29 @@ def _visible_worlds(user):
             is_active=True,
             role__in=(WorldMembership.ROLE_OWNER, WorldMembership.ROLE_MAINTAINER),
         )
+        universe_access = (
+            Q(universe__visibility=Universe.VISIBILITY_PUBLIC)
+            | Q(universe__created_by=user)
+            | Q(universe__memberships__user=user, universe__memberships__is_active=True)
+        )
+        world_access = (
+            Q(visibility=World.VISIBILITY_PUBLIC)
+            | Q(created_by=user)
+            | Q(memberships__user=user, memberships__is_active=True)
+        )
         return (
-            qs.filter(
-                Q(visibility=World.VISIBILITY_PUBLIC)
-                | Q(created_by=user)
-                | Q(memberships__user=user, memberships__is_active=True)
-            )
+            qs.filter(universe_access & world_access)
             .annotate(can_manage_membership=Exists(manage_memberships))
             .distinct()
         )
-    return qs.filter(visibility=World.VISIBILITY_PUBLIC)
+    return qs.filter(
+        universe__visibility=Universe.VISIBILITY_PUBLIC,
+        visibility=World.VISIBILITY_PUBLIC,
+    )
 
 
 def _get_world(key: str) -> World:
-    return World.objects.select_related("current_release").get(key=key)
+    return World.objects.select_related("universe", "current_release").get(key=key)
 
 
 def _can_manage(user, world: World) -> bool:
@@ -99,11 +134,250 @@ def _request_bool(value, *, default: bool = False) -> bool:
     return default
 
 
+class UniverseCollectionView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        universes = _visible_universes(request.user).annotate(world_count=Count("worlds", distinct=True))
+        query = str(request.query_params.get("q") or "").strip()
+        if query:
+            universes = universes.filter(Q(key__icontains=query) | Q(title__icontains=query))
+        return Response(UniverseSerializer(universes, many=True, context={"request": request}).data)
+
+    def post(self, request):
+        if not request.user.is_authenticated or not request.user.is_staff:
+            return Response({"error": "UNIVERSE_ACCESS_DENIED"}, status=403)
+        serializer = UniverseSerializer(data=request.data, context={"request": request})
+        serializer.is_valid(raise_exception=True)
+        universe = serializer.save(created_by=request.user)
+        UniverseMembership.objects.get_or_create(
+            universe=universe,
+            user=request.user,
+            defaults={"role": UniverseMembership.ROLE_OWNER},
+        )
+        return Response(UniverseSerializer(universe, context={"request": request}).data, status=201)
+
+
+class UniverseDetailView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, universe_key: str):
+        try:
+            universe = _visible_universes(request.user).annotate(
+                world_count=Count("worlds", distinct=True)
+            ).get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        return Response(UniverseSerializer(universe, context={"request": request}).data)
+
+    def patch(self, request, universe_key: str):
+        try:
+            universe = Universe.objects.get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        if not can_manage_universe(request.user, universe):
+            return Response({"error": "UNIVERSE_ACCESS_DENIED"}, status=403)
+        serializer = UniverseSerializer(
+            universe, data=request.data, partial=True, context={"request": request}
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
+
+class UniverseWorldCollectionView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, universe_key: str):
+        try:
+            universe = _visible_universes(request.user).get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        worlds = _visible_worlds(request.user).filter(universe=universe)
+        return Response(WorldSerializer(worlds, many=True, context={"request": request}).data)
+
+    def post(self, request, universe_key: str):
+        try:
+            universe = Universe.objects.get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        if not can_manage_universe(request.user, universe):
+            return Response({"error": "UNIVERSE_ACCESS_DENIED"}, status=403)
+        payload = dict(request.data)
+        payload["universe_key"] = universe.key
+        serializer = WorldSerializer(data=payload, context={"request": request})
+        serializer.is_valid(raise_exception=True)
+        world = serializer.save(created_by=request.user)
+        WorldMembership.objects.get_or_create(
+            world=world,
+            user=request.user,
+            defaults={"role": WorldMembership.ROLE_OWNER},
+        )
+        audit(event_type="world_created", world=world, actor=request.user)
+        return Response(WorldSerializer(world, context={"request": request}).data, status=201)
+
+
+class UniverseRelationCollectionView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, universe_key: str):
+        try:
+            universe = _visible_universes(request.user).get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        visible_ids = _visible_worlds(request.user).filter(universe=universe).values_list("id", flat=True)
+        relations = universe.world_relations.filter(
+            source_world_id__in=visible_ids, target_world_id__in=visible_ids
+        ).select_related("source_world", "target_world", "universe")
+        return Response(WorldRelationSerializer(relations, many=True).data)
+
+    def post(self, request, universe_key: str):
+        try:
+            universe = Universe.objects.get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        if not can_manage_universe(request.user, universe):
+            return Response({"error": "UNIVERSE_ACCESS_DENIED"}, status=403)
+        serializer = WorldRelationSerializer(data=request.data, context={"universe": universe})
+        serializer.is_valid(raise_exception=True)
+        relation = serializer.save(universe=universe)
+        return Response(WorldRelationSerializer(relation).data, status=201)
+
+
+class UniversePublicationCollectionView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, universe_key: str):
+        try:
+            universe = _visible_universes(request.user).get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        visible_ids = _visible_worlds(request.user).filter(universe=universe).values_list("id", flat=True)
+        rows = WorldPublication.objects.filter(source_world_id__in=visible_ids).select_related(
+            "source_world", "source_release"
+        )
+        return Response(WorldPublicationSerializer(rows, many=True).data)
+
+    def post(self, request, universe_key: str):
+        try:
+            universe = Universe.objects.get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        serializer = WorldPublicationSerializer(data=request.data, context={"universe": universe})
+        serializer.is_valid(raise_exception=True)
+        source_world = serializer.validated_data["source_world"]
+        if not can_manage_world(request.user, source_world):
+            return Response({"error": "WORLD_ACCESS_DENIED"}, status=403)
+        publication = serializer.save(created_by=request.user)
+        return Response(WorldPublicationSerializer(publication).data, status=201)
+
+
+class UniverseSubscriptionCollectionView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, universe_key: str):
+        try:
+            universe = _visible_universes(request.user).get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        visible_ids = _visible_worlds(request.user).filter(universe=universe).values_list("id", flat=True)
+        rows = WorldSubscription.objects.filter(
+            consumer_world_id__in=visible_ids, source_world_id__in=visible_ids
+        ).select_related("consumer_world", "source_world")
+        return Response(WorldSubscriptionSerializer(rows, many=True).data)
+
+    def post(self, request, universe_key: str):
+        try:
+            universe = Universe.objects.get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        serializer = WorldSubscriptionSerializer(data=request.data, context={"universe": universe})
+        serializer.is_valid(raise_exception=True)
+        consumer = serializer.validated_data["consumer_world"]
+        if not can_manage_world(request.user, consumer):
+            return Response({"error": "WORLD_ACCESS_DENIED"}, status=403)
+        subscription = serializer.save()
+        return Response(WorldSubscriptionSerializer(subscription).data, status=201)
+
+
+class UniverseMembershipCollectionView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, universe_key: str):
+        try:
+            universe = Universe.objects.get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        if not can_manage_universe(request.user, universe):
+            return Response({"error": "UNIVERSE_ACCESS_DENIED"}, status=403)
+        rows = universe.memberships.select_related("user").order_by("user__username")
+        return Response(UniverseMembershipSerializer(rows, many=True).data)
+
+    def post(self, request, universe_key: str):
+        try:
+            universe = Universe.objects.get(key=universe_key)
+        except Universe.DoesNotExist:
+            return Response({"error": "UNIVERSE_NOT_FOUND"}, status=404)
+        if not can_manage_universe(request.user, universe):
+            return Response({"error": "UNIVERSE_ACCESS_DENIED"}, status=403)
+        user_id = request.data.get("user_id")
+        username = request.data.get("username")
+        try:
+            user = User.objects.get(pk=user_id) if user_id else User.objects.get(username=username)
+        except User.DoesNotExist:
+            return Response({"error": "USER_NOT_FOUND"}, status=404)
+        role = str(request.data.get("role") or UniverseMembership.ROLE_VIEWER)
+        valid_roles = {value for value, _ in UniverseMembership.ROLE_CHOICES}
+        if role not in valid_roles:
+            return Response({"error": "UNIVERSE_ROLE_INVALID"}, status=400)
+        existing = UniverseMembership.objects.filter(universe=universe, user=user).first()
+        if (
+            existing and existing.is_active and existing.role == UniverseMembership.ROLE_OWNER
+            and role != UniverseMembership.ROLE_OWNER
+            and not UniverseMembership.objects.filter(
+                universe=universe, is_active=True, role=UniverseMembership.ROLE_OWNER
+            ).exclude(pk=existing.pk).exists()
+        ):
+            return Response({"error": "UNIVERSE_LAST_OWNER_REQUIRED"}, status=409)
+        membership, created = UniverseMembership.objects.update_or_create(
+            universe=universe, user=user, defaults={"role": role, "is_active": True}
+        )
+        return Response(
+            UniverseMembershipSerializer(membership).data,
+            status=201 if created else 200,
+        )
+
+
+class UniverseMembershipDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, universe_key: str, membership_id: int):
+        try:
+            universe = Universe.objects.get(key=universe_key)
+            membership = universe.memberships.get(pk=membership_id)
+        except (Universe.DoesNotExist, UniverseMembership.DoesNotExist):
+            return Response({"error": "UNIVERSE_MEMBERSHIP_NOT_FOUND"}, status=404)
+        if not can_manage_universe(request.user, universe):
+            return Response({"error": "UNIVERSE_ACCESS_DENIED"}, status=403)
+        if (
+            membership.is_active and membership.role == UniverseMembership.ROLE_OWNER
+            and not UniverseMembership.objects.filter(
+                universe=universe, is_active=True, role=UniverseMembership.ROLE_OWNER
+            ).exclude(pk=membership.pk).exists()
+        ):
+            return Response({"error": "UNIVERSE_LAST_OWNER_REQUIRED"}, status=409)
+        membership.delete()
+        return Response(status=204)
+
+
 class WorldCollectionView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
         worlds = _visible_worlds(request.user)
+        universe_key = str(request.query_params.get("universe") or "").strip().lower()
+        if universe_key:
+            worlds = worlds.filter(universe__key=universe_key)
         query = str(request.query_params.get("q") or "").strip()
         if query:
             worlds = worlds.filter(Q(key__icontains=query) | Q(title__icontains=query))
@@ -216,7 +490,7 @@ class WorldBuildReleaseView(APIView):
             seed_version=pack.version,
             promote_after_build=promote_after_build,
             metadata_json={
-                "architecture_lock": "KX-WORLDS-1",
+                "architecture_lock": "KX-UNIVERSES-1",
                 "seed_checksum": pack.checksum,
                 "scenario_count": len(pack.scenario_paths),
             },
@@ -421,6 +695,7 @@ class WorldCloneView(APIView):
         if World.objects.filter(key=normalized_target_key).exists():
             return Response({"error": "WORLD_ALREADY_EXISTS"}, status=409)
         target = World(
+            universe=source_world.universe,
             key=normalized_target_key,
             title=title,
             description=str(request.data.get("description") or source_world.description),
@@ -681,13 +956,18 @@ class WorldSystemHealthView(APIView):
 class WorldRuntimeView(APIView):
     permission_classes = [AllowAny]
 
-    def get(self, request, world_key: str):
+    def get(self, request, world_key: str | None = None, universe_key: str | None = None):
         runtime = request.world_runtime
-        world = World.objects.get(pk=runtime.world_id)
+        world = World.objects.select_related("universe").get(pk=runtime.world_id)
         release = WorldRelease.objects.get(pk=runtime.release_id)
         persona = getattr(request, "world_persona", None)
         return Response({
-            "architecture_lock": "KX-WORLDS-1",
+            "architecture_lock": "KX-UNIVERSES-1",
+            "universe": {
+                "id": runtime.universe_id,
+                "key": runtime.universe_key,
+                "title": world.universe.title,
+            },
             "world": {"id": world.id, "key": world.key, "title": world.title},
             "release": {
                 "id": release.id,
@@ -698,13 +978,21 @@ class WorldRuntimeView(APIView):
                 "persona_id": persona.id,
                 "display_name": persona.display_name,
             },
+            "capabilities": {
+                "data_plane_enabled": bool(
+                    getattr(settings, "KONNAXION_WORLDS_DATA_PLANE_ENABLED", False)
+                ),
+                "scoped_api_enforced": bool(
+                    getattr(settings, "KONNAXION_WORLDS_ENFORCE_SCOPED_API", False)
+                ),
+            },
         })
 
 
 class WorldRuntimePersonaListView(APIView):
     permission_classes = [AllowAny]
 
-    def get(self, request, world_key: str):
+    def get(self, request, world_key: str | None = None, universe_key: str | None = None):
         runtime = request.world_runtime
         persona_ids = WorldPersonaBridge.objects.filter(
             release_id=runtime.release_id
@@ -716,7 +1004,7 @@ class WorldRuntimePersonaListView(APIView):
 class WorldViewAsView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def post(self, request, world_key: str):
+    def post(self, request, world_key: str | None = None, universe_key: str | None = None):
         runtime = request.world_runtime
         persona_id = request.data.get("persona_id")
         state = dict(request.session.get("konnaxion_world_view_as", {}))
