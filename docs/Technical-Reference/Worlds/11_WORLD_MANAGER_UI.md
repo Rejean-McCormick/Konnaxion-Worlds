@@ -1,5 +1,10 @@
 # World Manager UI
 
+> **KX-UNIVERSES-1 extension:** Read `20_UNIVERSES.md` before applying this document.
+> It supersedes older assumptions that World identity is globally keyed or that `/w/{world_key}` is the final canonical route.
+> All WorldRelease isolation invariants in this document remain in force.
+
+
 The existing `Konnaxion_Ethikos_Seed_Manager.pyw` should evolve into a **Konnaxion World Manager**.
 
 It should stop presenting "one selected seed" as the top-level object.

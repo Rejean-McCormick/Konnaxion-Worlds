@@ -1,5 +1,10 @@
 # Runtime Context and Routing
 
+> **KX-UNIVERSES-1 extension:** Read `20_UNIVERSES.md` before applying this document.
+> It supersedes older assumptions that World identity is globally keyed or that `/w/{world_key}` is the final canonical route.
+> All WorldRelease isolation invariants in this document remain in force.
+
+
 ## 1. Why World context must be explicit
 
 A process-global `active_world` is unsafe:
@@ -15,18 +20,20 @@ Therefore World is request/task context.
 UI:
 
 ```text
-/w/{world_key}/ethikos/...
-/w/{world_key}/ekoh/...
-/w/{world_key}/keenkonnect/...
+/u/{universe_key}/w/{world_key}/ethikos/...
+/u/{universe_key}/w/{world_key}/ekoh/...
+/u/{universe_key}/w/{world_key}/keenkonnect/...
 ```
 
 API:
 
 ```text
-/api/w/{world_key}/ethikos/...
-/api/w/{world_key}/v1/ekoh/...
-/api/w/{world_key}/v1/smart-vote/...
+/api/u/{universe_key}/w/{world_key}/ethikos/...
+/api/u/{universe_key}/w/{world_key}/v1/ekoh/...
+/api/u/{universe_key}/w/{world_key}/v1/smart-vote/...
 ```
+
+Phase U1 retains `/w/{world_key}` and `/api/w/{world_key}` only as compatibility routes while `World.key` remains globally unique.
 
 Control-plane API remains unscoped:
 
@@ -39,8 +46,8 @@ Control-plane API remains unscoped:
 Resolution order:
 
 ```text
-route world_key
-→ lookup World
+route universe_key + world_key
+→ lookup Universe + World
 → permission/visibility check
 → resolve current_release once
 → validate release status
@@ -52,6 +59,8 @@ Example immutable context:
 ```python
 @dataclass(frozen=True)
 class WorldRuntime:
+    universe_id: int
+    universe_key: str
     world_id: int
     world_key: str
     release_id: int

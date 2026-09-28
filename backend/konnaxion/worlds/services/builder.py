@@ -1,11 +1,16 @@
 from __future__ import annotations
 
+from django.conf import settings
 from django.db import connection, transaction
 from django.db.models.deletion import ProtectedError
 from django.db.models import Max
 from django.utils import timezone
+from django.utils.module_loading import import_string
 
+
+from ..db import world_db_scope
 from ..models import World, WorldRelease
+from ..resolver import runtime_from_release
 from .audit import audit
 from .naming import release_schema_names
 from .personas import (
@@ -69,19 +74,54 @@ def _load_pack_fixtures(pack) -> list[str]:
 
 
 def _import_pack_scenarios(*, release: WorldRelease, pack, actor=None) -> list[dict]:
-    """Validate Seed Pack payloads without importing a sibling application's models."""
+    """Import host-domain scenarios through an explicit adapter when configured.
 
+    Konnaxion_Worlds owns the release boundary, not ethiKos or any other host
+    domain. Standalone deployments therefore validate scenario payloads only.
+    Product hosts MAY configure ``KONNAXION_WORLDS_SCENARIO_IMPORTER`` with a
+    dotted callable accepting ``payload``, ``imported_by`` and ``dry_run``.
+    """
     fixtures = _load_pack_fixtures(pack)
-    reports: list[dict] = [{"fixtures": fixtures, "mode": "validated_only"}]
-    for payload in pack.load_scenarios():
-        reports.append(
-            {
-                "ok": True,
-                "scenario_key": str(payload.get("scenario_key") or ""),
-                "schema_version": str(payload.get("schema_version") or ""),
-                "release_id": release.id,
-            }
-        )
+    importer_path = str(
+        getattr(settings, "KONNAXION_WORLDS_SCENARIO_IMPORTER", "") or ""
+    ).strip()
+    if not importer_path:
+        reports: list[dict] = [{"fixtures": fixtures, "mode": "validated_only"}]
+        for payload in pack.load_scenarios():
+            reports.append(
+                {
+                    "ok": True,
+                    "scenario_key": str(payload.get("scenario_key") or ""),
+                    "schema_version": str(payload.get("schema_version") or ""),
+                    "release_id": release.id,
+                }
+            )
+        return reports
+
+    importer = import_string(importer_path)
+    reports = [{"fixtures": fixtures, "mode": "host_adapter_import", "adapter": importer_path}]
+    runtime = runtime_from_release(release)
+    with world_db_scope(runtime):
+        for payload in pack.load_scenarios():
+            result = importer(payload, imported_by=actor, dry_run=False)
+            if not isinstance(result, dict) or not result.get("ok"):
+                raise WorldBuildError(
+                    "World scenario import failed for "
+                    f"{payload.get('scenario_key') or '<unknown>'}: "
+                    f"{(result or {}).get('errors') if isinstance(result, dict) else result}"
+                )
+            reports.append(
+                {
+                    "ok": True,
+                    "scenario_key": str(payload.get("scenario_key") or ""),
+                    "schema_version": str(payload.get("schema_version") or ""),
+                    "release_id": release.id,
+                    "summary": result.get("summary", {}),
+                    "created_count": len(result.get("created", [])),
+                    "updated_count": len(result.get("updated", [])),
+                    "warning_count": len(result.get("warnings", [])),
+                }
+            )
     return reports
 
 
@@ -103,7 +143,7 @@ def build_world_release(
     release.seed_checksum = pack.checksum
     release.scenario_schema_version = pack.scenario_schema_version
     release.build_metadata_json = {
-        "architecture_lock": "KX-WORLDS-1",
+        "architecture_lock": "KX-UNIVERSES-1",
         "manifest": str(pack.manifest_path),
         "scenario_count": len(pack.scenario_paths),
     }
@@ -116,11 +156,22 @@ def build_world_release(
         progress_callback(release)
 
     try:
-        domain_fp, ekoh_fp = provision_release_schemas(release)
+        provisioning = provision_release_schemas(release)
         release.status = WorldRelease.STATUS_VALIDATING
-        release.domain_migration_fingerprint = domain_fp
-        release.ekoh_migration_fingerprint = ekoh_fp
-        release.save(update_fields=["status", "domain_migration_fingerprint", "ekoh_migration_fingerprint"])
+        release.domain_migration_fingerprint = provisioning.domain_migration_fingerprint
+        release.ekoh_migration_fingerprint = provisioning.auxiliary_migration_fingerprint
+        release.fixture_checksum = provisioning.fixture_checksum
+        release.build_metadata_json = {
+            **(release.build_metadata_json or {}),
+            "provisioning": provisioning.as_dict(),
+        }
+        release.save(update_fields=[
+            "status",
+            "domain_migration_fingerprint",
+            "ekoh_migration_fingerprint",
+            "fixture_checksum",
+            "build_metadata_json",
+        ])
         if progress_callback is not None:
             progress_callback(release)
 
@@ -241,7 +292,7 @@ def clone_release_state(
     release.save(update_fields=["seed_pack_key", "seed_version", "seed_checksum", "scenario_schema_version"])
     audit(event_type="release_build_started", world=target_world, release=release, actor=actor, metadata={"clone_source": source.id})
     try:
-        domain_fp, ekoh_fp = provision_release_schemas(release)
+        provisioning = provision_release_schemas(release)
 
         # Copy release-local schema + persona bridge state from one PostgreSQL MVCC
         # snapshot. Concurrent writes may continue on the source World, but this
@@ -258,15 +309,24 @@ def clone_release_state(
             remapped_domain = remap_global_user_references(release.domain_schema, user_mapping)
             remapped_ekoh = remap_global_user_references(release.ekoh_schema, user_mapping)
             write_canary(
-                schema=release.domain_schema, world_id=target_world.id,
-                release_id=release.id, schema_kind="domain"
+                schema=release.domain_schema,
+                world_id=target_world.id,
+                release_id=release.id,
+                schema_kind="domain",
+                seed_checksum=release.seed_checksum,
+                migration_fingerprint=provisioning.domain_migration_fingerprint,
             )
             write_canary(
-                schema=release.ekoh_schema, world_id=target_world.id,
-                release_id=release.id, schema_kind="ekoh"
+                schema=release.ekoh_schema,
+                world_id=target_world.id,
+                release_id=release.id,
+                schema_kind="auxiliary",
+                seed_checksum=release.seed_checksum,
+                migration_fingerprint=provisioning.auxiliary_migration_fingerprint,
             )
-        release.domain_migration_fingerprint = domain_fp
-        release.ekoh_migration_fingerprint = ekoh_fp
+        release.domain_migration_fingerprint = provisioning.domain_migration_fingerprint
+        release.ekoh_migration_fingerprint = provisioning.auxiliary_migration_fingerprint
+        release.fixture_checksum = provisioning.fixture_checksum
         validation = validate_release_schemas(release)
         validation["persona_user_remap"] = {
             "users": len(user_mapping),
@@ -281,6 +341,7 @@ def clone_release_state(
         release.save(update_fields=[
             "status", "validation_report_json", "build_finished_at",
             "domain_migration_fingerprint", "ekoh_migration_fingerprint",
+            "fixture_checksum",
         ])
         audit(event_type="release_ready", world=target_world, release=release, actor=actor, metadata={"clone_source": source.id})
         return release

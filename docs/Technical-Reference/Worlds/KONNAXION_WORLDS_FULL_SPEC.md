@@ -1,5 +1,10 @@
 # Konnaxion Worlds — Full Specification
 
+> **KX-UNIVERSES-1 extension:** Read `20_UNIVERSES.md` before applying this document.
+> It supersedes older assumptions that World identity is globally keyed or that `/w/{world_key}` is the final canonical route.
+> All WorldRelease isolation invariants in this document remain in force.
+
+
 **Generated consolidation:** 2026-09-16  
 **Architecture lock:** KX-WORLDS-1  
 **Documentation version:** 1.2.0  
@@ -498,21 +503,9 @@ These provide World/Release-aware primitives for cache keys, task context, searc
 
 These anchors do not by themselves prove that every legacy/current Konnaxion call site is fully migrated. Production validation must still prove there is no unscoped bypass.
 
-## 5. Implemented frontend World switching
+## 5. Host frontend World switching
 
-Observed frontend files include:
-
-```text
-frontend/components/worlds/WorldSwitcher.tsx
-frontend/components/worlds/WorldViewAsSwitcher.tsx
-frontend/lib/worlds.ts
-```
-
-Observed behavior includes:
-- fetching visible Worlds from the control plane;
-- extracting the selected World from `/w/{world_key}/...`;
-- hard navigation when switching Worlds;
-- API-path World scoping in browser clients;
+The observed browser integration belongs to the main `Konnaxion` host, not to this engine repository. The host is responsible for Universe/World switchers, hard navigation, route adaptation, and browser response guards while consuming the engine contract. `Konnaxion_Worlds` MUST NOT carry a duplicate maintained copy of those product UI files.
 - rejection of stale responses from another World/Release;
 - separation of World selection from `View As` persona selection.
 
@@ -929,20 +922,9 @@ Worlds is a cross-cutting infrastructure owner.
 
 Do not put the World registry inside `konnaxion.ethikos`.
 
-## 4. Frontend structure
+## 4. Host frontend integration
 
-Suggested:
-
-```text
-frontend/app/w/[world]/...
-frontend/modules/worlds/
-frontend/components/worlds/WorldSwitcher.tsx
-frontend/app/kontrol/worlds/...
-```
-
-The World switcher may be globally visible, but the control/management UI naturally belongs in the Kontrol administrative surface.
-
-Presentation ownership in Kontrol does not move backend World ownership away from `konnaxion.worlds`.
+The Konnaxion browser shell is host-owned. `Konnaxion_Worlds` owns the API/runtime contract and canonical specification, while the main `Konnaxion` repository owns the product-specific Universe/World navigation UI. Do not maintain a second web UI copy in this repository.
 
 ## 5. Database schemas
 

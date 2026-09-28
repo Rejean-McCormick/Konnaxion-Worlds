@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "konnaxion-worlds"
+version = "0.2.0"
+description = "Canonical Konnaxion Universe/World/WorldRelease engine"
+requires-python = ">=3.12"
+dependencies = [
+  "Django>=5.1,<6",
+  "djangorestframework>=3.15,<4",
+  "psycopg[binary]>=3.2,<4",
+  "PyYAML>=6,<7",
+  "celery[redis]>=5.4,<6",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["konnaxion.worlds*"]
+namespaces = true

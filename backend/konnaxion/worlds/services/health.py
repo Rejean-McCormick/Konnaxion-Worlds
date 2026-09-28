@@ -5,14 +5,19 @@ from django.core.cache import cache
 from django.db import connection
 from django.db.models import Count, Q
 
-from ..models import World, WorldBuildJob, WorldRelease
+from ..models import Universe, World, WorldBuildJob, WorldRelease
 from .schema import validate_release_schemas
+
+
+def strict_world_routing_enabled() -> bool:
+    """Return the actual fail-closed setting enforced by WorldRouteMiddleware."""
+    return bool(getattr(settings, "KONNAXION_WORLDS_ENFORCE_SCOPED_API", False))
 
 
 def world_liveness() -> dict:
     """Constant-cost process liveness; deliberately does not touch the catalog."""
     return {
-        "architecture_lock": "KX-WORLDS-1",
+        "architecture_lock": "KX-UNIVERSES-1",
         "kind": "liveness",
         "ok": True,
     }
@@ -21,13 +26,19 @@ def world_liveness() -> dict:
 def world_readiness() -> dict:
     """Bounded readiness check for the control plane and PostgreSQL dependency."""
     result = {
-        "architecture_lock": "KX-WORLDS-1",
+        "architecture_lock": "KX-UNIVERSES-1",
         "kind": "readiness",
         "database_vendor": connection.vendor,
-        "strict_routing": bool(getattr(settings, "KONNAXION_WORLDS_STRICT_ROUTING", False)),
+        "strict_routing": strict_world_routing_enabled(),
         "ok": True,
         "errors": [],
     }
+    if not result["strict_routing"]:
+        result["ok"] = False
+        result["errors"].append(
+            "World-owned APIs are not fail-closed; enable KONNAXION_WORLDS_ENFORCE_SCOPED_API."
+        )
+
     if connection.vendor != "postgresql":
         result["ok"] = False
         result["errors"].append(
@@ -61,7 +72,7 @@ def world_readiness() -> dict:
 def world_registry_health() -> dict:
     """Cheap catalog/control-plane health without opening or validating schemas."""
     result = {
-        "architecture_lock": "KX-WORLDS-1",
+        "architecture_lock": "KX-UNIVERSES-1",
         "kind": "registry",
         "ok": True,
         "errors": [],
@@ -74,6 +85,12 @@ def world_registry_health() -> dict:
         )
         return result
 
+    universe_counts = Universe.objects.aggregate(
+        total=Count("id"),
+        active=Count("id", filter=Q(status=Universe.STATUS_ACTIVE)),
+        maintenance=Count("id", filter=Q(status=Universe.STATUS_MAINTENANCE)),
+        archived=Count("id", filter=Q(status=Universe.STATUS_ARCHIVED)),
+    )
     world_counts = World.objects.aggregate(
         total=Count("id"),
         active=Count("id", filter=Q(status=World.STATUS_ACTIVE)),
@@ -87,14 +104,20 @@ def world_registry_health() -> dict:
         validating=Count("id", filter=Q(status=WorldBuildJob.STATUS_VALIDATING)),
         failed=Count("id", filter=Q(status=WorldBuildJob.STATUS_FAILED)),
     )
-    result["counts"] = {"worlds": world_counts, "build_jobs": job_counts}
+    result["counts"] = {"universes": universe_counts, "worlds": world_counts, "build_jobs": job_counts}
 
     broken = []
-    for world in World.objects.select_related("current_release").only(
-        "id", "key", "status", "current_release_id", "current_release__id",
+    for world in World.objects.select_related("universe", "current_release").only(
+        "id", "key", "status", "universe_id", "universe__key", "universe__status", "current_release_id", "current_release__id",
         "current_release__world_id", "current_release__status",
     ):
         release = world.current_release
+        if world.universe.status == Universe.STATUS_ARCHIVED and world.status != World.STATUS_ARCHIVED:
+            broken.append({
+                "universe_key": world.universe.key,
+                "world_key": world.key,
+                "reason": "live_world_inside_archived_universe",
+            })
         if release is None:
             if world.status == World.STATUS_ACTIVE:
                 broken.append({"world_key": world.key, "reason": "active_without_current_release"})
@@ -121,20 +144,30 @@ def world_system_health() -> dict:
     canaries and migration fingerprint validation scale with the World catalog.
     """
     result = {
-        "architecture_lock": "KX-WORLDS-1",
+        "architecture_lock": "KX-UNIVERSES-1",
         "kind": "deep",
         "database_vendor": connection.vendor,
-        "strict_routing": bool(getattr(settings, "KONNAXION_WORLDS_STRICT_ROUTING", False)),
+        "strict_routing": strict_world_routing_enabled(),
         "worlds": [],
         "ok": True,
+        "errors": [],
     }
+    if not result["strict_routing"]:
+        result["ok"] = False
+        result["errors"].append(
+            "World-owned APIs are not fail-closed; enable KONNAXION_WORLDS_ENFORCE_SCOPED_API."
+        )
+
     if connection.vendor != "postgresql":
         result["ok"] = False
-        result["errors"] = ["Konnaxion Worlds requires PostgreSQL schema/search_path support."]
+        result["errors"].append(
+            "Konnaxion Worlds requires PostgreSQL schema/search_path support."
+        )
         return result
 
-    for world in World.objects.select_related("current_release").order_by("key"):
+    for world in World.objects.select_related("universe", "current_release").order_by("universe__key", "key"):
         row = {
+            "universe_key": world.universe.key,
             "key": world.key,
             "status": world.status,
             "current_release_id": world.current_release_id,

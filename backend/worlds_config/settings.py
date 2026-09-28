@@ -140,7 +140,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_PASSWORD_VALIDATORS = []
 
 KONNAXION_CONTROL_SCHEMA = os.environ.get("KONNAXION_WORLDS_CONTROL_SCHEMA", "public")
-KONNAXION_WORLDS_STRICT_ROUTING = _bool("KONNAXION_WORLDS_STRICT_ROUTING", True)
+KONNAXION_WORLDS_ENFORCE_SCOPED_API = _bool("KONNAXION_WORLDS_ENFORCE_SCOPED_API", True)
 KONNAXION_WORLD_SEED_ROOT = str(BACKEND_DIR / "seed-data" / "worlds")
 KONNAXION_WORLD_BUILD_CONCURRENCY = int(os.environ.get("KONNAXION_WORLD_BUILD_CONCURRENCY", "1"))
 
@@ -151,3 +151,14 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
     ],
 }
+
+# Optional host-domain adapters. Standalone Konnaxion_Worlds leaves these empty.
+KONNAXION_WORLDS_SCENARIO_IMPORTER = os.environ.get(
+    "KONNAXION_WORLDS_SCENARIO_IMPORTER", ""
+).strip()
+KONNAXION_WORLDS_FIXTURE_LOADER = os.environ.get(
+    "KONNAXION_WORLDS_FIXTURE_LOADER", ""
+).strip()
+KONNAXION_WORLDS_FIXTURE_CHECKSUM_PROVIDER = os.environ.get(
+    "KONNAXION_WORLDS_FIXTURE_CHECKSUM_PROVIDER", ""
+).strip()

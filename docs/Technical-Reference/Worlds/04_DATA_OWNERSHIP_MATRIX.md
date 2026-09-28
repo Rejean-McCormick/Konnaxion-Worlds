@@ -1,5 +1,10 @@
 # Data Ownership Matrix
 
+> **KX-UNIVERSES-1 extension:** Read `20_UNIVERSES.md` before applying this document.
+> It supersedes older assumptions that World identity is globally keyed or that `/w/{world_key}` is the final canonical route.
+> All WorldRelease isolation invariants in this document remain in force.
+
+
 This matrix defines **target ownership**, not the exact migration order.
 
 | Domain / data | Target scope | Notes |

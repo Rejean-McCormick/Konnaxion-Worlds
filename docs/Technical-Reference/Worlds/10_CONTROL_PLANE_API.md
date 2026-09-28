@@ -1,5 +1,10 @@
 # Control Plane and Runtime API
 
+> **KX-UNIVERSES-1 extension:** Read `20_UNIVERSES.md` before applying this document.
+> It supersedes older assumptions that World identity is globally keyed or that `/w/{world_key}` is the final canonical route.
+> All WorldRelease isolation invariants in this document remain in force.
+
+
 ## 1. Separation
 
 Two API families:

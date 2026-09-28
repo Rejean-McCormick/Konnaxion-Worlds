@@ -1,3 +1,4 @@
-"""Konnaxion Worlds control plane and runtime isolation."""
+"""Konnaxion Universes/Worlds control plane and runtime isolation."""
 
-ARCHITECTURE_LOCK = "KX-WORLDS-1"
+FOUNDATION_LOCK = "KX-WORLDS-1"
+ARCHITECTURE_LOCK = "KX-UNIVERSES-1"

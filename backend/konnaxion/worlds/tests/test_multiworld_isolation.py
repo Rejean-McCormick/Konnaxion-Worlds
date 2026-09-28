@@ -6,7 +6,7 @@ import pytest
 from django.contrib.auth import get_user_model
 from django.db import connection
 
-from konnaxion.worlds.models import World
+from konnaxion.worlds.models import Universe, World
 from konnaxion.worlds.services.builder import build_world_release, promote_release, purge_release
 from konnaxion.worlds.services.schema import read_canary
 
@@ -23,8 +23,9 @@ def test_alpha_beta_release_isolation_end_to_end():
     User = get_user_model()
     suffix = uuid4().hex[:8]
     owner = User.objects.create_user(username=f"world-owner-{suffix}")
-    alpha = World.objects.create(key=f"alpha-{suffix}", title="Alpha", created_by=owner)
-    beta = World.objects.create(key=f"beta-{suffix}", title="Beta", created_by=owner)
+    universe = Universe.objects.create(key=f"isolation-{suffix}", title="Isolation", created_by=owner)
+    alpha = World.objects.create(universe=universe, key=f"alpha-{suffix}", title="Alpha", created_by=owner)
+    beta = World.objects.create(universe=universe, key=f"beta-{suffix}", title="Beta", created_by=owner)
     releases = []
     try:
         alpha_release = build_world_release(world=alpha, seed_pack_key="demo-alpha", actor=owner)

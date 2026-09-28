@@ -1,16 +1,26 @@
 from django.contrib import admin
 
 from .models import (
-    SeedPackRecord, World, WorldAuditEvent, WorldBuildJob, WorldMembership, WorldPersona,
-    WorldPersonaBridge, WorldRelease, WorldSnapshot,
+    SeedPackRecord,
+    Universe,
+    UniverseMembership,
+    World,
+    WorldAuditEvent,
+    WorldBuildJob,
+    WorldMembership,
+    WorldPersona,
+    WorldPersonaBridge,
+    WorldPublication,
+    WorldRelation,
+    WorldRelease,
+    WorldSnapshot,
+    WorldSubscription,
 )
 
-admin.site.register(World)
-admin.site.register(WorldRelease)
-admin.site.register(WorldBuildJob)
-admin.site.register(SeedPackRecord)
-admin.site.register(WorldMembership)
-admin.site.register(WorldPersona)
-admin.site.register(WorldPersonaBridge)
-admin.site.register(WorldSnapshot)
-admin.site.register(WorldAuditEvent)
+for model in (
+    Universe, UniverseMembership,
+    World, WorldRelease, WorldBuildJob, SeedPackRecord, WorldMembership,
+    WorldPersona, WorldPersonaBridge, WorldSnapshot, WorldAuditEvent,
+    WorldRelation, WorldPublication, WorldSubscription,
+):
+    admin.site.register(model)

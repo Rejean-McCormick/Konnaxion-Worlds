@@ -32,6 +32,9 @@ foreach ($Relative in $Forbidden) {
     }
 }
 
+& $Python (Join-Path $Root "scripts\check_repo_boundaries.py")
+if ($LASTEXITCODE -ne 0) { throw "Repository boundary check failed." }
+
 Push-Location (Join-Path $Root "backend")
 try {
     & $Python -m compileall -q konnaxion worlds_config worlds_manage.py

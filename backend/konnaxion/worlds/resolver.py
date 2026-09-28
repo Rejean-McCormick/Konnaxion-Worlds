@@ -3,12 +3,39 @@ from __future__ import annotations
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
 
-from .models import World, WorldMembership, WorldRelease
+from .models import Universe, UniverseMembership, World, WorldMembership, WorldRelease
 from .runtime import WorldRuntime
 
 
 class WorldUnavailable(Http404):
-    """Raised when a World must not be served to the current request."""
+    """Raised when a Universe/World must not be served to the current request."""
+
+
+def can_manage_universe(user, universe: Universe) -> bool:
+    if not user or not getattr(user, "is_authenticated", False):
+        return False
+    if user.is_staff or user.is_superuser or universe.created_by_id == user.pk:
+        return True
+    return UniverseMembership.objects.filter(
+        universe=universe,
+        user=user,
+        is_active=True,
+        role__in=(UniverseMembership.ROLE_OWNER, UniverseMembership.ROLE_MAINTAINER),
+    ).exists()
+
+
+def can_access_universe(user, universe: Universe) -> bool:
+    if universe.visibility == Universe.VISIBILITY_PUBLIC:
+        return True
+    if user and getattr(user, "is_authenticated", False):
+        if can_manage_universe(user, universe):
+            return True
+        return UniverseMembership.objects.filter(
+            universe=universe,
+            user=user,
+            is_active=True,
+        ).exists()
+    return False
 
 
 def can_manage_world(user, world: World) -> bool:
@@ -25,6 +52,10 @@ def can_manage_world(user, world: World) -> bool:
 
 
 def can_access_world(user, world: World) -> bool:
+    # Universe is an outer governance boundary. A public World inside a private
+    # Universe is not visible to users who cannot enter that Universe.
+    if not can_access_universe(user, world.universe):
+        return False
     if world.visibility == World.VISIBILITY_PUBLIC:
         return True
     if user and getattr(user, "is_authenticated", False):
@@ -38,37 +69,32 @@ def can_access_world(user, world: World) -> bool:
     return False
 
 
-def resolve_world_runtime(*, world_key: str, user=None) -> WorldRuntime:
-    try:
-        world = World.objects.select_related("current_release").get(key=world_key)
-    except World.DoesNotExist as exc:
-        raise WorldUnavailable(f"Unknown Konnaxion World: {world_key}") from exc
-
+def _runtime_for_world(world: World, *, user=None) -> WorldRuntime:
+    universe = world.universe
+    if universe.status == Universe.STATUS_ARCHIVED:
+        raise WorldUnavailable(f"Universe {universe.key} is archived.")
+    if universe.status == Universe.STATUS_MAINTENANCE and not can_manage_universe(user, universe):
+        raise WorldUnavailable(f"Universe {universe.key} is in maintenance mode.")
     if world.status == World.STATUS_ARCHIVED:
-        raise WorldUnavailable(f"World {world_key} is archived.")
-
+        raise WorldUnavailable(f"World {world.key} is archived.")
     if not can_access_world(user, world):
         raise PermissionDenied("You do not have access to this World.")
-
-    # Maintenance is deliberately fail-closed for ordinary viewers. Owners,
-    # maintainers and staff can still inspect the World while repairing it.
     if world.status == World.STATUS_MAINTENANCE and not can_manage_world(user, world):
-        raise WorldUnavailable(f"World {world_key} is in maintenance mode.")
+        raise WorldUnavailable(f"World {world.key} is in maintenance mode.")
 
     release = world.current_release
     if release is None:
-        raise WorldUnavailable(f"World {world_key} has no current release.")
+        raise WorldUnavailable(f"World {world.key} has no current release.")
     if release.world_id != world.id:
         raise WorldUnavailable("World current release points to another World.")
-    # A runtime pointer is only valid when the pointed release is CURRENT.
-    # READY/FROZEN releases may exist, but must never become user-visible merely
-    # because a control-plane pointer drifted.
     if release.status != WorldRelease.STATUS_CURRENT:
         raise WorldUnavailable(
-            f"World {world_key} current release is not CURRENT ({release.status})."
+            f"World {world.key} current release is not CURRENT ({release.status})."
         )
 
     return WorldRuntime(
+        universe_id=universe.id,
+        universe_key=universe.key,
         world_id=world.id,
         world_key=world.key,
         release_id=release.id,
@@ -79,16 +105,33 @@ def resolve_world_runtime(*, world_key: str, user=None) -> WorldRuntime:
     )
 
 
-def runtime_from_release(release: WorldRelease) -> WorldRuntime:
-    """Build an explicit runtime for control-plane/build/task operations.
+def resolve_world_runtime(*, world_key: str, user=None, universe_key: str | None = None) -> WorldRuntime:
+    qs = World.objects.select_related("universe", "current_release")
+    try:
+        if universe_key is None:
+            # Phase U1 compatibility route. World.key remains globally unique until
+            # the old /w/<world>/ route is retired.
+            world = qs.get(key=world_key)
+        else:
+            world = qs.get(key=world_key, universe__key=universe_key)
+    except World.DoesNotExist as exc:
+        if universe_key:
+            detail = f"Unknown Konnaxion World: {universe_key}/{world_key}"
+        else:
+            detail = f"Unknown Konnaxion World: {world_key}"
+        raise WorldUnavailable(detail) from exc
+    return _runtime_for_world(world, user=user)
 
-    This helper intentionally does not require ``release.status == current``:
-    builders, validators, snapshots and release-pinned tasks must be able to
-    operate on non-current releases when they name the exact release.
-    """
+
+def runtime_from_release(release: WorldRelease) -> WorldRuntime:
+    """Build an explicit runtime for control-plane/build/task operations."""
+    world = release.world
+    universe = world.universe
     return WorldRuntime(
+        universe_id=universe.id,
+        universe_key=universe.key,
         world_id=release.world_id,
-        world_key=release.world.key,
+        world_key=world.key,
         release_id=release.id,
         release_number=release.release_number,
         domain_schema=release.domain_schema,

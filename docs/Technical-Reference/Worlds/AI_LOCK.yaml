@@ -1,14 +1,17 @@
 architecture_lock:
-  id: KX-WORLDS-1
-  version: 1.1.0
+  id: KX-UNIVERSES-1
+  foundation: KX-WORLDS-1
+  version: 2.0.0
   status: locked_target_architecture
   implementation_state: implemented_pending_runtime_validation
-  canonical_human_spec: KONNAXION_WORLDS_FULL_SPEC.md
+  canonical_human_spec: 20_UNIVERSES.md
   change_requires_adr: true
 mandatory_context_docs:
+- 20_UNIVERSES.md
 - KONNAXION_WORLDS_FULL_SPEC.md
 - WORLD_SYSTEM_AI.instructions.md
 terms:
+  Universe: coherence/navigation/governance boundary containing Worlds; not a data schema
   World: stable logical environment selected per request
   WorldRelease: physical isolated schema pair/runtime generation of one World
   SeedPack: versioned reproducible authored build input
@@ -18,6 +21,9 @@ terms:
   WorldPersona: World-scoped represented participant identity
   SelectWorld: per-user navigation/context operation; no mutation
   PromoteRelease: admin mutation of World.current_release
+  WorldRelation: explicit graph edge between Worlds in one Universe; grants no data access
+  WorldPublication: versioned provenance-bearing output intentionally exposed by one World
+  WorldSubscription: explicit consumption contract between Worlds in one Universe
 invariants:
 - id: WLD-001
   rule: World selection MUST NOT reset, import, rebuild, or mutate World content.
@@ -122,6 +128,26 @@ invariants:
   rule: Long-running Release lifecycle operations MUST be isolated from the user World-switch path and production SHOULD apply explicit job concurrency/resource limits.
 - id: WLD-044
   rule: Server liveness/readiness MUST remain bounded and MUST NOT depend on exhaustive deep validation of every registered World on each probe.
+- id: UNI-001
+  rule: Every World MUST belong to exactly one Universe in normal KX-UNIVERSES-1 operation.
+- id: UNI-002
+  rule: Universe MUST NOT be used as a shared business-data schema or weaken WorldRelease isolation.
+- id: UNI-003
+  rule: Worlds in the same Universe MUST remain isolated; direct cross-World ORM/SQL joins are forbidden.
+- id: UNI-004
+  rule: WorldRelation MUST stay inside one Universe and MUST NOT grant data access.
+- id: UNI-005
+  rule: Inter-World transfer MUST be explicit and retain source World/Release provenance.
+- id: UNI-006
+  rule: World.parent_world remains fork/lineage provenance and MUST NOT become a live sub-World hierarchy.
+- id: UNI-007
+  rule: Canonical runtime identity MUST include Universe + World + Release, while infrastructure namespaces remain pinned to World + Release.
+- id: UNI-008
+  rule: Canonical target routes are /u/{universe_key}/w/{world_key}; /w/{world_key} is migration compatibility only.
+- id: UNI-009
+  rule: Global World.key uniqueness MUST remain until legacy ambiguous World-only routes are retired; only then MAY uniqueness scope to (universe,key).
+- id: UNI-010
+  rule: Konnaxion_Worlds is the sole canonical engine/spec owner; the main Konnaxion repository MUST NOT vendor a second engine or canonical spec copy.
 forbidden_patterns_without_adr:
 - reset_and_reseed_on_world_switch
 - session_only_world_authority
@@ -133,9 +159,16 @@ forbidden_patterns_without_adr:
 - unnamespaced_cache_or_websocket
 - world_task_without_world_and_release
 - cross_world_orm_join
+- universe_shared_business_schema
+- world_relation_as_permission
+- parent_world_as_live_hierarchy
+- duplicate_worlds_engine_in_host_repo
+- duplicate_product_worlds_frontend_in_engine
 - display_string_as_world_identity
 - derived_reading_written_back_to_source
 required_review_questions:
+- Which Universe owns this World, and is Universe only governance/navigation context?
+- Is this operation isolated to one World/Release or an explicit provenance-bearing cross-World contract?
 - Is this object GLOBAL or WORLD_SCOPED?
 - If WORLD_SCOPED, where is world_id + release_id enforced?
 - What happens if World context is missing?

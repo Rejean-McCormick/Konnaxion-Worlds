@@ -5,6 +5,7 @@ from django.utils import timezone
 
 from konnaxion.worlds.models import World, WorldBuildJob
 from konnaxion.worlds.services.build_queue import enqueue_world_build_job
+from konnaxion.worlds.services.universes import get_or_create_universe_for_tooling
 from konnaxion.worlds.services.seed_packs import SeedPackError, discover_seed_packs
 
 
@@ -15,6 +16,7 @@ class Command(BaseCommand):
     )
 
     def add_arguments(self, parser):
+        parser.add_argument("--universe", help="Universe key for newly created Worlds; defaults to temporary legacy container.")
         parser.add_argument(
             "--create-missing",
             action="store_true",
@@ -67,6 +69,7 @@ class Command(BaseCommand):
                     skipped += 1
                     continue
                 world = World.objects.create(
+                    universe=get_or_create_universe_for_tooling(options.get("universe")),
                     key=pack.world_key,
                     title=pack.title,
                     visibility=(
@@ -74,6 +77,13 @@ class Command(BaseCommand):
                     ),
                 )
                 created += 1
+
+            requested_universe = str(options.get("universe") or "").strip().lower()
+            if requested_universe and world.universe.key != requested_universe:
+                raise CommandError(
+                    f"World {world.key!r} belongs to Universe {world.universe.key!r}, "
+                    f"not {requested_universe!r}."
+                )
 
             if world.status == World.STATUS_ARCHIVED:
                 self.stdout.write(self.style.WARNING(f"SKIP {world.key}: archived."))
@@ -113,7 +123,7 @@ class Command(BaseCommand):
                 seed_version=pack.version,
                 promote_after_build=bool(options["promote"]),
                 metadata_json={
-                    "architecture_lock": "KX-WORLDS-1",
+                    "architecture_lock": "KX-UNIVERSES-1",
                     "source": "worlds_queue_catalog",
                     "seed_checksum": pack.checksum,
                     "scenario_count": len(pack.scenario_paths),

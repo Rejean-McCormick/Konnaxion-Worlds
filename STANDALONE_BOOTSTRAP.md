@@ -7,3 +7,6 @@ This repository owns its Django bootstrap. It does not import or execute the mai
 - Django CLI: `.venv\Scripts\python.exe backend\worlds_manage.py ...`
 - Settings: `backend/worlds_config/settings.py`
 - Database: `KONNAXION_WORLDS_DATABASE_URL` (PostgreSQL required for World schema operations)
+
+- Scoped API safety: `KONNAXION_WORLDS_ENFORCE_SCOPED_API=true` (default; fail closed)
+- Current architecture lock: `KX-UNIVERSES-1` (`KX-WORLDS-1` remains the foundation lock)

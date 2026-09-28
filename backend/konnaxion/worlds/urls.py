@@ -5,6 +5,16 @@ from . import api_views
 app_name = "worlds"
 
 urlpatterns = [
+    path("universes/", api_views.UniverseCollectionView.as_view(), name="universe-list"),
+    path("universes/<slug:universe_key>/", api_views.UniverseDetailView.as_view(), name="universe-detail"),
+    path("universes/<slug:universe_key>/worlds/", api_views.UniverseWorldCollectionView.as_view(), name="universe-world-list"),
+    path("universes/<slug:universe_key>/memberships/", api_views.UniverseMembershipCollectionView.as_view(), name="universe-membership-list"),
+    path("universes/<slug:universe_key>/memberships/<int:membership_id>/", api_views.UniverseMembershipDetailView.as_view(), name="universe-membership-detail"),
+    path("universes/<slug:universe_key>/relations/", api_views.UniverseRelationCollectionView.as_view(), name="universe-relation-list"),
+    path("universes/<slug:universe_key>/publications/", api_views.UniversePublicationCollectionView.as_view(), name="universe-publication-list"),
+    path("universes/<slug:universe_key>/subscriptions/", api_views.UniverseSubscriptionCollectionView.as_view(), name="universe-subscription-list"),
+    # Phase-U1 compatibility endpoints. World.key remains globally unique until
+    # /w/<world>/ has been retired and the uniqueness constraint is scoped.
     path("worlds/", api_views.WorldCollectionView.as_view(), name="world-list"),
     path("worlds/<slug:world_key>/", api_views.WorldDetailView.as_view(), name="world-detail"),
     path("worlds/<slug:world_key>/releases/", api_views.WorldReleaseListView.as_view(), name="release-list"),
@@ -27,6 +37,5 @@ urlpatterns = [
     path("health/ready/", api_views.WorldReadinessView.as_view(), name="health-ready"),
     path("health/registry/", api_views.WorldRegistryHealthView.as_view(), name="health-registry"),
     path("health/deep/", api_views.WorldSystemHealthView.as_view(), name="health-deep"),
-    # Backward-compatible explicit-admin deep health endpoint.
     path("health/", api_views.WorldSystemHealthView.as_view(), name="health"),
 ]

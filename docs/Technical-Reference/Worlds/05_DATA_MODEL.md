@@ -1,13 +1,36 @@
 # Target Data Model
 
+> **KX-UNIVERSES-1 extension:** Read `20_UNIVERSES.md` before applying this document.
+> It supersedes older assumptions that World identity is globally keyed or that `/w/{world_key}` is the final canonical route.
+> All WorldRelease isolation invariants in this document remain in force.
+
+
 Canonical owner: `konnaxion.worlds`.
 
 Names below are target conceptual names; exact Django field naming may adapt to project conventions without changing semantics.
 
-## 1. World
+## 1. Universe
+
+```python
+class Universe(models.Model):
+    key
+    title
+    description
+    status
+    visibility
+    default_world
+    created_by
+    metadata_json
+```
+
+Universe is governance/navigation/coherence only. It does not own a shared business-data schema.
+See `20_UNIVERSES.md` for memberships, relations, publications and subscriptions.
+
+## 2. World
 
 ```python
 class World(models.Model):
+    universe
     key
     title
     description
@@ -21,7 +44,7 @@ class World(models.Model):
 ```
 
 Constraints:
-- `key` globally unique;
+- Phase U1: `key` globally unique for legacy-route compatibility; target after legacy-route retirement: `(universe, key)` unique;
 - only one `current_release`;
 - current release must belong to same World;
 - archived World cannot accept normal writes.
@@ -31,7 +54,7 @@ Suggested status:
 - `maintenance`;
 - `archived`.
 
-## 2. WorldRelease
+## 3. WorldRelease
 
 ```python
 class WorldRelease(models.Model):
@@ -77,7 +100,7 @@ Constraints:
 - failed release cannot be promoted;
 - release from another World cannot become current.
 
-## 2A. WorldBuildJob
+## 3A. WorldBuildJob
 
 Persistent control-plane queue state for long-running Release builds:
 
