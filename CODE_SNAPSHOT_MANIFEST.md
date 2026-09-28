@@ -1,14 +1,15 @@
 # Code snapshot
 
-- generated_at: 2026-09-28T15:23:07.468695+00:00
+- generated_at: 2026-09-28 (corrected after cross-repository KX-UNIVERSES-1 audit)
 - repository: Konnaxion_Worlds
 - archive_layout: repository-relative paths
+- note: manifest intentionally excludes itself
 
 ## Snapshot files
 - `.env.example` (426 bytes)
 - `GitSink.bat` (781 bytes)
 - `Konnaxion_World_Manager.pyw` (29213 bytes)
-- `README.md` (2216 bytes)
+- `README.md` (2503 bytes)
 - `SEPARATION_CLEANUP_REPORT.md` (70437 bytes)
 - `SETUP_KONNAXION_WORLDS.ps1` (1240 bytes)
 - `SMARTDUMP_INDEX.txt` (6218 bytes)
@@ -102,10 +103,10 @@
 - `docs/Technical-Reference/Worlds/17_ADR_REGISTER.md` (6929 bytes)
 - `docs/Technical-Reference/Worlds/18_IMPLEMENTATION_CHECKLIST.md` (4213 bytes)
 - `docs/Technical-Reference/Worlds/19_PRODUCTION_SCALE_120_WORLDS.md` (5576 bytes)
-- `docs/Technical-Reference/Worlds/20_UNIVERSES.md` (10938 bytes)
+- `docs/Technical-Reference/Worlds/20_UNIVERSES.md` (11033 bytes)
 - `docs/Technical-Reference/Worlds/AI_LOCK.yaml` (9189 bytes)
 - `docs/Technical-Reference/Worlds/KONNAXION_WORLDS_FULL_SPEC.md` (109295 bytes)
 - `docs/Technical-Reference/Worlds/WORLD_SYSTEM_AI.instructions.md` (2933 bytes)
 - `examples/world-pack.example.yaml` (726 bytes)
 - `examples/worlds-architecture.mmd` (639 bytes)
-- `scripts/check_repo_boundaries.py` (1126 bytes)
+- `scripts/check_repo_boundaries.py` (1071 bytes)

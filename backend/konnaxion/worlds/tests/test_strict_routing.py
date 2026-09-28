@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 from django.test import RequestFactory, override_settings
 
 from konnaxion.worlds.middleware import WorldRouteMiddleware, _requires_world_route
@@ -49,7 +51,7 @@ def test_middleware_rejects_unscoped_world_owned_api_when_strict():
         response = WorldRouteMiddleware(app)(request)
 
     assert response.status_code == 400
-    assert response.json()["error"] == "WORLD_REQUIRED"
+    assert json.loads(response.content)["error"] == "WORLD_REQUIRED"
     assert reached["value"] is False
 
 
@@ -64,7 +66,7 @@ def test_global_api_remains_unscoped_when_strict():
         response = WorldRouteMiddleware(app)(request)
 
     assert response.status_code == 200
-    assert response.json() == {"ok": True}
+    assert json.loads(response.content) == {"ok": True}
 
 
 def test_health_uses_same_setting_as_middleware():

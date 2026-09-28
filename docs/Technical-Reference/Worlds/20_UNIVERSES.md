@@ -315,4 +315,4 @@ The canonical engine repository owns the **navigation/runtime contract**, not a 
 - `Konnaxion_Worlds`: Universe/World models, APIs, resolver, middleware, release isolation, relations/publications/subscriptions, canonical documentation.
 - `Konnaxion`: host-specific `UniverseSwitcher`/`WorldSwitcher`, Next.js route integration, browser stale-response protection, and product-shell presentation.
 
-A second maintained `frontend/components/worlds/*` or `frontend/lib/worlds.ts` implementation MUST NOT be recreated inside `Konnaxion_Worlds` while Konnaxion remains the product host. A future reusable frontend SDK would require its own independently versioned package and an ADR before ownership can change.
+A top-level `frontend/` implementation MUST NOT exist inside `Konnaxion_Worlds` while Konnaxion remains the product host. Konnaxion owns the product browser shell, including Universe/World switching and stale-response guards. A future reusable frontend SDK would require its own independently versioned package and an ADR before ownership can change; it MUST NOT be vendored into this engine repository.
