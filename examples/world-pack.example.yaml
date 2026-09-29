@@ -1,35 +1,22 @@
 world_contract: kx-world-pack/v1
-
 world_key: cuny-political-philosophy
 title: CUNY Political Philosophy
-description: >
-  Demonstration World containing independent political-philosophy discussion
-  threads and sourced reconstructed positions.
-
+description: Demonstration World containing independent political-philosophy discussion threads and sourced reconstructed
+  positions.
 pack_version: 1.3.0
-
 requires:
   ethikos_scenario_schema: ethikos-demo-scenario/v3
   fixtures:
-    - isced-f
-
+  - isced-f
+  host_contracts:
+  - kx-world-personas/v1
 scenarios:
-  - key: political-philosophy
-    path: scenarios/political-philosophy.json
-
-persona_policy:
-  internal_username: "w_{world_token}__{actor_key}"
-  real_person_representation: reconstructed_position
-
-derived_data:
-  smart_vote:
-    build_readings: true
-  search:
-    build_index: true
-
+- scenarios/political-philosophy.json
 metadata:
   owner: demo
   tags:
-    - philosophy
-    - democracy
-    - cuny
+  - philosophy
+  - democracy
+  - cuny
+  note: Persona semantics belong to scenario.metadata.actor_profiles under kx-world-personas/v1; derived runtime
+    data is host-owned, not a Seed Pack pseudo-contract.

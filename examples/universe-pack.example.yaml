@@ -1,0 +1,28 @@
+universe_contract: kx-universe-pack/v1
+universe_key: demo-universe
+title: Demo Universe
+description: Composition of independently isolated Worlds.
+pack_version: 1.0.0
+visibility: private
+default_world: demo-alpha
+requires:
+  world_contract: kx-world-pack/v1
+  host_contracts:
+  - kx-world-personas/v1
+worlds:
+- world_key: demo-alpha
+  seed_pack_key: demo-alpha
+  seed_version: 1.0.0
+  visibility: private
+- world_key: demo-beta
+  seed_pack_key: demo-beta
+  seed_version: 1.0.0
+  visibility: private
+relations:
+- source: demo-alpha
+  target: demo-beta
+  type: references
+  title: Example relation
+subscriptions: []
+metadata:
+  architecture_lock: KX-UNIVERSES-1
