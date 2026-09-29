@@ -184,3 +184,8 @@ The UI and API must state which operation is being performed.
 `Seed Pack`, `WorldRelease` and `Snapshot` are Konnaxion Worlds lifecycle artifacts. They MUST NOT be renamed or documented as Kristal `Runtime Pack`, `Working Exchange`, `Reference Exchange` or `Exchange`.
 
 `promote_release()` changes the Konnaxion-local `World.current_release` pointer. It does not perform host Runtime Pack activation and does not confer Kristal authority recognition.
+
+
+## 11. Universe composition
+
+World Seed Packs remain the lifecycle artifact for isolated WorldReleases. Multi-World installation/composition uses `kx-universe-pack/v1` as documented in `21_UNIVERSE_PACKS.md`. A Universe Pack references exact World Pack versions; it never merges their schemas or business data.
