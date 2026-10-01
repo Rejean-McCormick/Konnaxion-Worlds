@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 import queue
+import shutil
 import subprocess
 import threading
 from pathlib import Path
@@ -14,13 +15,15 @@ ARCHITECTURE_LOCK = "KX-UNIVERSES-1"
 BACKEND_REL = Path("backend")
 MANAGE_REL = BACKEND_REL / "worlds_manage.py"
 VENV_PY_REL = Path(".venv") / "Scripts" / "python.exe"
+SETUP_REL = Path("SETUP_KONNAXION_WORLDS.ps1")
 RESULT_MARKER = "__KX_RESULT__="
 
 LIST_CODE = r'''
 import json
 from konnaxion.worlds.models import Universe, World
 from konnaxion.worlds.services.seed_packs import discover_seed_packs
-packs = discover_seed_packs(persist=True)
+from konnaxion.worlds.services.universe_packs import discover_universe_packs
+packs = discover_seed_packs(persist=False)
 worlds = []
 for world in World.objects.select_related("universe", "current_release").order_by("universe__key", "key"):
     release = world.current_release
@@ -45,14 +48,24 @@ for world in World.objects.select_related("universe", "current_release").order_b
             {
                 "id": j.id, "status": j.status, "release_id": j.release_id,
                 "seed": j.seed_pack_key, "seed_version": j.seed_version,
+                "progress": (j.metadata_json or {}).get("progress") or {},
+                "error": j.error_text, "updated_at": j.updated_at,
             }
             for j in world.build_jobs.order_by("-created_at")[:5]
         ],
     })
+universe_packs = discover_universe_packs()
 print("__KX_RESULT__=" + json.dumps({
     "architecture_lock": "KX-UNIVERSES-1",
     "worlds": worlds,
     "packs": [{"key": p.world_key, "title": p.title, "version": p.version, "checksum": p.checksum} for p in packs],
+    "universe_packs": [
+        {
+            "key": p.universe_key, "title": p.title, "version": p.version,
+            "world_count": len(p.worlds), "relation_count": len(p.relations),
+        }
+        for p in universe_packs
+    ],
 }, default=str))
 '''.strip()
 
@@ -220,16 +233,17 @@ class WorldManager(tk.Tk):
         self.status_var = tk.StringVar(value=f"{ARCHITECTURE_LOCK} — standalone venv — DB: {self.db_source}")
         self._queue: queue.Queue[tuple[str, object]] = queue.Queue()
         self._busy = False
-        self._registry: dict = {"worlds": [], "packs": []}
+        self._backend_ready = False
+        self._registry: dict = {"worlds": [], "packs": [], "universe_packs": []}
         self._build_ui()
         self.after(100, self._drain)
-        self.after(250, lambda: self._run_async(self.refresh))
+        self.after(250, lambda: self._run_async(self._startup))
 
     def _build_ui(self) -> None:
         root = ttk.Frame(self, padding=12)
         root.pack(fill="both", expand=True)
         ttk.Label(root, text="Konnaxion World Manager", font=("Segoe UI", 17, "bold")).pack(anchor="w")
-        ttk.Label(root, text="standalone · Universe → World → Release · KX-UNIVERSES-1").pack(anchor="w", pady=(2, 10))
+        ttk.Label(root, text="auto runtime · Universe → World → Release · KX-UNIVERSES-1").pack(anchor="w", pady=(2, 10))
 
         path_row = ttk.Frame(root)
         path_row.pack(fill="x")
@@ -242,6 +256,32 @@ class WorldManager(tk.Tk):
         ttk.Label(db_row, text="Database", width=12).pack(side="left")
         ttk.Entry(db_row, textvariable=self.db_var, show="*").pack(side="left", fill="x", expand=True, padx=6)
         ttk.Label(db_row, text="Neon/PostgreSQL — secret masked").pack(side="left")
+
+        universe_row = ttk.Frame(root)
+        universe_row.pack(fill="x", pady=(6, 0))
+        ttk.Label(universe_row, text="Universe Pack", width=12).pack(side="left")
+        self.universe_pack_var = tk.StringVar(value="")
+        self.universe_pack_combo = ttk.Combobox(
+            universe_row, textvariable=self.universe_pack_var, state="readonly", width=48
+        )
+        self.universe_pack_combo.pack(side="left", fill="x", expand=True, padx=6)
+        ttk.Label(universe_row, text="Workers").pack(side="left", padx=(6, 2))
+        self.local_workers_var = tk.IntVar(value=2)
+        ttk.Spinbox(
+            universe_row, from_=1, to=8, textvariable=self.local_workers_var, width=4
+        ).pack(side="left", padx=(0, 6))
+        ttk.Button(
+            universe_row, text="Apply parallel + watch", command=self.apply_selected_universe
+        ).pack(side="left")
+        ttk.Button(
+            universe_row, text="Storage", command=self.show_storage
+        ).pack(side="left", padx=(6, 0))
+        ttk.Button(
+            universe_row, text="GC failed+orphan", command=self.gc_failed_releases
+        ).pack(side="left", padx=(6, 0))
+        ttk.Button(
+            universe_row, text="GC frozen", command=self.gc_frozen_releases
+        ).pack(side="left", padx=(6, 0))
 
         panes = ttk.Panedwindow(root, orient="horizontal")
         panes.pack(fill="both", expand=True, pady=10)
@@ -348,11 +388,17 @@ class WorldManager(tk.Tk):
                 return value, name
 
         if repo:
-            for rel in (Path(".env"),):
+            candidates = [
+                (repo / ".env", ".env"),
+                # Common sibling layout used by the hosted Konnaxion checkout.
+                (repo.parent / "Konnaxion" / "backend" / ".env", "../Konnaxion/backend/.env"),
+                (repo.parent / "Konnaxion" / ".env", "../Konnaxion/.env"),
+            ]
+            for path, label in candidates:
                 for key in ("KONNAXION_WORLDS_DATABASE_URL", "DATABASE_URL"):
-                    value = self._read_env_value(repo / rel, key)
+                    value = self._read_env_value(path, key)
                     if value:
-                        return value, f"{rel}:{key}"
+                        return value, f"{label}:{key}"
 
         return None, None
 
@@ -362,52 +408,204 @@ class WorldManager(tk.Tk):
             raise RuntimeError("Invalid Konnaxion Worlds root: backend/worlds_manage.py not found.")
         return root
 
-    def _python(self) -> Path:
-        python = self._repo() / VENV_PY_REL
+    @staticmethod
+    def _powershell_executable() -> str:
+        # Prefer PowerShell 7 when available; Windows PowerShell remains a safe fallback.
+        for name in ("pwsh.exe", "pwsh", "powershell.exe", "powershell"):
+            found = shutil.which(name)
+            if found:
+                return found
+        raise RuntimeError("PowerShell was not found; cannot bootstrap Konnaxion Worlds automatically.")
+
+    def _bootstrap_venv(self) -> Path:
+        repo = self._repo()
+        python = repo / VENV_PY_REL
+        if python.is_file():
+            return python
+
+        setup = repo / SETUP_REL
+        if not setup.is_file():
+            raise RuntimeError(
+                f"Konnaxion Worlds .venv is missing and setup script was not found: {setup}"
+            )
+
+        self._set_status("First run — creating Konnaxion Worlds .venv automatically…")
+        self._log(f"[setup] .venv missing; auto-launching {setup}")
+        cmd = [
+            self._powershell_executable(),
+            "-NoLogo",
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            str(setup),
+        ]
+        setup_env = os.environ.copy()
+        detected_db = self.db_var.get().strip()
+        if detected_db:
+            # Keep credentials out of the process command line. The setup recipe
+            # consumes the inherited environment when it needs to seed .env.
+            setup_env["KONNAXION_WORLDS_DATABASE_URL"] = detected_db
+            setup_env["DATABASE_URL"] = detected_db
+        creationflags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+        proc = subprocess.Popen(
+            cmd,
+            cwd=repo,
+            env=setup_env,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1,
+            creationflags=creationflags,
+        )
+        assert proc.stdout is not None
+        for line in proc.stdout:
+            line = line.rstrip()
+            if line:
+                self._log(f"[setup] {line}")
+        rc = proc.wait()
+        if rc != 0:
+            raise RuntimeError(
+                f"Automatic Konnaxion Worlds setup failed with exit code {rc}. "
+                f"See the Manager log above. Script: {setup}"
+            )
         if not python.is_file():
             raise RuntimeError(
-                "Konnaxion Worlds .venv is missing. Run SETUP_KONNAXION_WORLDS.ps1 first."
+                "Setup completed but .venv\\Scripts\\python.exe was not created."
             )
+
+        self._log("[setup] standalone .venv ready")
         return python
 
-    def _runtime_env(self) -> dict[str, str]:
+    def _detect_host_runtime(self) -> dict[str, object] | None:
+        """Prefer the real Konnaxion host runtime when the sibling checkout exists.
+
+        Hosted mode is the correct runtime for product-owned Seed Packs and host
+        adapters. It also avoids bootstrapping a second Django environment merely
+        to inspect the same control plane.
+        """
+        repo = self._repo()
+        backend = repo.parent / "Konnaxion" / "backend"
+        python = backend / ".venv" / "Scripts" / "python.exe"
+        manage = backend / "manage.py"
+        if python.is_file() and manage.is_file():
+            return {
+                "kind": "host",
+                "python": python,
+                "manage": manage,
+                "cwd": backend,
+                "label": f"Konnaxion host ({backend})",
+            }
+        return None
+
+    def _runtime(self) -> dict[str, object]:
+        host = self._detect_host_runtime()
+        if host is not None:
+            return host
+        repo = self._repo()
+        python = repo / VENV_PY_REL
+        if not python.is_file():
+            python = self._bootstrap_venv()
+        return {
+            "kind": "standalone",
+            "python": python,
+            "manage": repo / MANAGE_REL,
+            "cwd": repo / BACKEND_REL,
+            "label": f"Konnaxion_Worlds standalone ({repo})",
+        }
+
+    def _python(self) -> Path:
+        return Path(self._runtime()["python"])
+
+    def _startup(self) -> None:
+        runtime = self._runtime()
+        self._log(f"[runtime] using {runtime['label']}")
+        self._set_status(f"Runtime ready — {runtime['kind']} — loading registry…")
+        if runtime["kind"] == "standalone" and not self.db_var.get().strip():
+            self._set_status("Standalone environment ready — set Database URL, then Refresh")
+            self._log(
+                "[setup] environment ready; no PostgreSQL URL was detected. "
+                "Paste it in the masked Database field and click Refresh."
+            )
+            return
+        self.refresh()
+
+    def _runtime_env(self, runtime: dict[str, object] | None = None) -> dict[str, str]:
+        runtime = runtime or self._runtime()
         database_url = self.db_var.get().strip()
-        if not database_url:
+        env = os.environ.copy()
+        if database_url:
+            env["DATABASE_URL"] = database_url
+            env["KONNAXION_WORLDS_DATABASE_URL"] = database_url
+        elif runtime["kind"] == "standalone":
             raise RuntimeError(
                 "Konnaxion Worlds database URL is empty. Set KONNAXION_WORLDS_DATABASE_URL, "
                 ".env, or paste the Neon/PostgreSQL URL in the masked Database field."
             )
-        env = os.environ.copy()
-        env["DATABASE_URL"] = database_url
-        env["KONNAXION_WORLDS_DATABASE_URL"] = database_url
         env["USE_DOCKER"] = "no"
-        env["DJANGO_SETTINGS_MODULE"] = "worlds_config.settings"
+        if runtime["kind"] == "standalone":
+            env["DJANGO_SETTINGS_MODULE"] = "worlds_config.settings"
+        else:
+            # The host manage.py owns its settings selection and loads its own .env.
+            env.pop("DJANGO_SETTINGS_MODULE", None)
         return env
 
     def _manage(self, *args: str, input_text: str | None = None, timeout: int = 900) -> subprocess.CompletedProcess[str]:
+        runtime = self._runtime()
         return subprocess.run(
-            [str(self._python()), "worlds_manage.py", *args],
-            cwd=self._repo() / BACKEND_REL,
-            env=self._runtime_env(),
+            [str(runtime["python"]), str(runtime["manage"]), *args],
+            cwd=runtime["cwd"],
+            env=self._runtime_env(runtime),
             input=input_text,
             text=True,
             capture_output=True,
             timeout=timeout,
         )
 
+    def _manage_stream(self, *args: str) -> int:
+        runtime = self._runtime()
+        proc = subprocess.Popen(
+            [str(runtime["python"]), str(runtime["manage"]), *args],
+            cwd=runtime["cwd"],
+            env=self._runtime_env(runtime),
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            bufsize=1,
+        )
+        assert proc.stdout is not None
+        for line in proc.stdout:
+            self._log(line.rstrip())
+        return proc.wait()
+
     def _ensure_backend(self) -> None:
-        # Apply the standalone control-plane migrations. Release-local schemas are
-        # provisioned separately by the Worlds builder.
+        if self._backend_ready:
+            return
+        runtime = self._runtime()
+        if runtime["kind"] == "host":
+            # Hosted Konnaxion owns control-plane migrations. A GUI refresh must
+            # never run migrations or mutate schema state implicitly.
+            self._backend_ready = True
+            return
+        self._set_status("Preparing standalone control plane…")
+        self._log("[startup] applying standalone control-plane migrations (one time)")
         proc = self._manage("migrate", "--noinput", timeout=300)
+        if proc.stdout.strip():
+            for line in proc.stdout.splitlines():
+                self._log(f"[migrate] {line}")
         if proc.returncode:
             raise RuntimeError("World control-plane migrations failed:\n" + proc.stdout + proc.stderr)
+        self._backend_ready = True
+        self._log("[startup] standalone control plane ready")
 
     def _call(self, code: str, payload: dict | None = None) -> dict:
         self._ensure_backend()
+        runtime = self._runtime()
         proc = self._manage(
             "shell", "-c", code,
             input_text=json.dumps(payload or {}, ensure_ascii=False),
-            timeout=1800,
+            timeout=300,
         )
         output = proc.stdout + proc.stderr
         if proc.returncode:
@@ -436,6 +634,13 @@ class WorldManager(tk.Tk):
         key, version = value.rsplit("@", 1)
         return key, version or None
 
+    def _selected_universe_pack(self) -> tuple[str, str]:
+        value = self.universe_pack_var.get().strip()
+        if not value or "@" not in value:
+            raise RuntimeError("Select a Universe Pack first.")
+        key, version = value.rsplit("@", 1)
+        return key, version
+
     def _selected_release_id(self) -> int:
         items = self.release_tree.selection()
         if not items:
@@ -443,10 +648,17 @@ class WorldManager(tk.Tk):
         return int(items[0])
 
     def refresh(self) -> None:
+        runtime = self._runtime()
         self._set_status("Loading registry…")
+        self._log(f"[registry] loading via {runtime['label']}")
         data = self._call(LIST_CODE)
         self._queue.put(("registry", data))
-        self._set_status(f"standalone ready — DB: {self.db_source}")
+        self._log(
+            f"[registry] loaded {len(data.get('worlds', []))} Worlds, "
+            f"{len(data.get('packs', []))} Seed Packs, "
+            f"{len(data.get('universe_packs', []))} Universe Packs"
+        )
+        self._set_status(f"ready — {runtime['kind']} — DB: {self.db_source}")
 
     def create_world(self) -> None:
         if self._busy:
@@ -488,6 +700,89 @@ class WorldManager(tk.Tk):
             self._set_status("Building immutable release synchronously in local venv…")
             result = self._call(BUILD_CODE, payload)
             self._log(json.dumps(result, indent=2))
+            self.refresh()
+
+        self._run_async(work)
+
+    def apply_selected_universe(self) -> None:
+        if self._busy:
+            return
+        key, version = self._selected_universe_pack()
+        if not messagebox.askyesno(
+            APP_TITLE,
+            f"Apply Universe {key}@{version} with {max(1, int(self.local_workers_var.get()))} local workers?\n\n"
+            "Builds are persisted as WorldBuildJob rows and final promotion stays atomic.",
+            parent=self,
+        ):
+            return
+
+        def work() -> None:
+            self._set_status(f"Applying Universe {key}@{version} — queued progress…")
+            workers = max(1, int(self.local_workers_var.get()))
+            rc = self._manage_stream(
+                "worlds_apply_universe", key,
+                "--pack-version", version,
+                "--local-workers", str(workers),
+                "--promote",
+            )
+            if rc:
+                raise RuntimeError(f"Universe apply failed with exit code {rc}.")
+            self.refresh()
+
+        self._run_async(work)
+
+    def show_storage(self) -> None:
+        if self._busy:
+            return
+
+        def work() -> None:
+            self._set_status("Inspecting WorldRelease storage…")
+            rc = self._manage_stream("worlds_storage")
+            if rc:
+                raise RuntimeError(f"Storage inspection failed with exit code {rc}.")
+
+        self._run_async(work)
+
+    def gc_failed_releases(self) -> None:
+        if self._busy:
+            return
+        key, _version = self._selected_universe_pack()
+        if not messagebox.askyesno(
+            APP_TITLE,
+            f"Purge non-current FAILED and orphaned BUILDING/VALIDATING release schemas for Universe {key}?\n\n"
+            "Active build jobs and CURRENT releases are never touched.",
+            parent=self,
+        ):
+            return
+
+        def work() -> None:
+            self._set_status(f"Reclaiming failed/orphaned release storage for {key}…")
+            rc = self._manage_stream(
+                "worlds_gc", "--universe", key, "--failed", "--incomplete", "--execute"
+            )
+            if rc:
+                raise RuntimeError(f"Failed/orphaned-release cleanup exited with code {rc}.")
+            self.refresh()
+
+        self._run_async(work)
+
+    def gc_frozen_releases(self) -> None:
+        if self._busy:
+            return
+        key, _version = self._selected_universe_pack()
+        if not messagebox.askyesno(
+            APP_TITLE,
+            f"Purge non-current FROZEN release schemas for Universe {key}?\n\n"
+            "Snapshots that retain a release are protected and CURRENT releases are never touched.",
+            parent=self,
+        ):
+            return
+
+        def work() -> None:
+            self._set_status(f"Reclaiming frozen release storage for {key}…")
+            rc = self._manage_stream("worlds_gc", "--universe", key, "--frozen", "--execute")
+            if rc:
+                raise RuntimeError(f"Frozen-release cleanup exited with code {rc}.")
             self.refresh()
 
         self._run_async(work)
@@ -654,12 +949,24 @@ class WorldManager(tk.Tk):
             ]
             status_text = world["status"]
             if active_jobs:
-                status_text = f"{status_text} / {active_jobs[0]['status']}"
+                job = active_jobs[0]
+                progress = job.get("progress") or {}
+                stage = progress.get("stage") or job.get("status")
+                percent = progress.get("percent")
+                suffix = f" {percent}%" if percent is not None else ""
+                status_text = f"{status_text} / {stage}{suffix}"
             universe = world.get("universe") or {}
             self.world_tree.insert(
                 "", "end", iid=world["key"], text=world["title"],
                 values=(universe.get("title") or universe.get("key") or "—", status_text, rel, seed),
             )
+        universe_values = [
+            f"{p['key']}@{p['version']}" for p in data.get("universe_packs", [])
+        ]
+        self.universe_pack_combo["values"] = universe_values
+        if universe_values and self.universe_pack_var.get() not in universe_values:
+            self.universe_pack_var.set(universe_values[0])
+
         for item in self.pack_tree.get_children():
             self.pack_tree.delete(item)
         for pack in data.get("packs", []):

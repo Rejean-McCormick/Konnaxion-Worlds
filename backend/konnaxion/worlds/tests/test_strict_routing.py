@@ -4,7 +4,11 @@ import json
 
 from django.test import RequestFactory, override_settings
 
-from konnaxion.worlds.middleware import WorldRouteMiddleware, _requires_world_route
+from konnaxion.worlds.middleware import (
+    WorldRouteMiddleware,
+    _requires_world_route,
+    universe_key_from_hostname,
+)
 from konnaxion.worlds.services.health import strict_world_routing_enabled
 
 
@@ -74,3 +78,37 @@ def test_health_uses_same_setting_as_middleware():
         assert strict_world_routing_enabled() is True
     with override_settings(KONNAXION_WORLDS_ENFORCE_SCOPED_API=False):
         assert strict_world_routing_enabled() is False
+
+def test_universe_hostname_resolver_is_generic_and_apex_safe():
+    with override_settings(
+        KONNAXION_UNIVERSE_HOST_ROUTING_ENABLED=True,
+        KONNAXION_UNIVERSE_BASE_DOMAINS=["konnaxion.com"],
+    ):
+        assert universe_key_from_hostname("unesco.konnaxion.com") == "unesco"
+        assert universe_key_from_hostname("kristal-farms.konnaxion.com") == "kristal-farms"
+        assert universe_key_from_hostname("konnaxion.com") is None
+        assert universe_key_from_hostname("www.konnaxion.com") is None
+        assert universe_key_from_hostname("x.y.konnaxion.com") is None
+
+
+def test_middleware_rejects_hostname_path_universe_conflict_before_resolution():
+    reached = {"value": False}
+
+    def app(_request):
+        reached["value"] = True
+        raise AssertionError("host/path conflict must reject before the view")
+
+    request = RequestFactory().get(
+        "/api/u/levis/w/demo-world/runtime/",
+        HTTP_HOST="unesco.konnaxion.com",
+    )
+    with override_settings(
+        KONNAXION_UNIVERSE_HOST_ROUTING_ENABLED=True,
+        KONNAXION_UNIVERSE_BASE_DOMAINS=["konnaxion.com"],
+    ):
+        response = WorldRouteMiddleware(app)(request)
+
+    assert response.status_code == 400
+    assert json.loads(response.content)["error"] == "UNIVERSE_HOST_PATH_CONFLICT"
+    assert reached["value"] is False
+

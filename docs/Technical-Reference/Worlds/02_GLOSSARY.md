@@ -208,11 +208,11 @@ Presentation feature that changes the displayed/acting World Persona without cha
 These names are not aliases across systems:
 
 ```text
-Konnaxion Worlds Seed Pack   != Kristal Runtime Pack
-Konnaxion Worlds WorldRelease != Kristal Working/Reference Exchange
-Konnaxion Worlds Snapshot     != Kristal Exchange
-Promote WorldRelease          != Runtime Pack activation
-Worlds Control Plane          != kOA ecosystem control plane
+Konnaxion Worlds Seed Pack    != Kristal v6 kristal_state/build artifact
+Konnaxion Worlds WorldRelease  != Kristal v6 state revision/exchange artifact
+Konnaxion Worlds Snapshot      != Kristal v6 kristal_state
+Promote WorldRelease           != Kristal actionability or host Runtime Pack activation
+Worlds Control Plane           != kOA ecosystem control plane
 ```
 
-Future mappings require an explicit Interaction Kernel/Profile contract and may not erase the source artifact identity.
+Mappings require an explicit Interaction Kernel/Profile contract, may not erase source artifact identity, and may not treat Kristal `actionability` as execution authority.

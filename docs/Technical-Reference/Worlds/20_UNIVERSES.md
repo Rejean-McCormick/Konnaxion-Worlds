@@ -202,6 +202,30 @@ Phase U1 compatibility routes remain:
 The middleware resolves canonical routes with both keys. Legacy routes resolve by globally unique
 World key only during the compatibility phase.
 
+### Optional Universe host selection
+
+A product host MAY additionally map one explicit first-level subdomain to the
+Universe key:
+
+```text
+<universe>.konnaxion.com -> Universe.key == <universe>
+```
+
+This is a routing input only. It MUST NOT create a database, runtime, proxy, or
+tenant per hostname. Worlds remain path/runtime scoped.
+
+When host routing is enabled:
+
+- the apex domain and `www` do not imply a Universe;
+- `/w/{world_key}/...` MAY use the host-selected Universe to disambiguate the World;
+- `/u/{universe_key}/w/{world_key}/...` remains canonical and valid;
+- if both hostname and path declare a Universe, they MUST match;
+- a mismatch MUST fail closed with `UNIVERSE_HOST_PATH_CONFLICT`;
+- nested subdomains MUST NOT be interpreted as World identity.
+
+DNS provisioning is an infrastructure concern. Explicit CNAME/A records per
+Universe are valid and do not require wildcard DNS or wildcard TLS.
+
 Every World-scoped HTTP response SHOULD expose:
 
 ```text

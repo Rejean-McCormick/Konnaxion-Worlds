@@ -88,3 +88,67 @@ def test_universe_seed_root_follows_world_seed_root(settings, tmp_path):
         KONNAXION_WORLD_SEED_ROOT=str(world_root),
     ):
         assert universe_seed_root() == (world_root.parent / "universes").resolve()
+
+
+@pytest.mark.django_db
+def test_reconcile_topology_is_idempotent_for_existing_relation(tmp_path):
+    from konnaxion.worlds.models import Universe, World, WorldRelation
+    from konnaxion.worlds.services.universe_packs import _reconcile_topology
+
+    root = tmp_path / "universes"
+    path = _write_pack(root, {
+        "universe_contract": UNIVERSE_PACK_CONTRACT,
+        "universe_key": "topology-demo",
+        "title": "Topology Demo",
+        "pack_version": "1.0.0",
+        "worlds": [
+            {"world_key": "topology-a", "seed_version": "1.0.0"},
+            {"world_key": "topology-b", "seed_version": "1.0.0"},
+        ],
+        "relations": [
+            {"source": "topology-a", "target": "topology-b", "type": "references", "title": "A to B"}
+        ],
+    })
+    pack = load_universe_pack(path, configured_root=root)
+    universe = Universe.objects.create(key="topology-demo", title="Topology Demo")
+    a = World.objects.create(universe=universe, key="topology-a", title="A")
+    b = World.objects.create(universe=universe, key="topology-b", title="B")
+    worlds = {a.key: a, b.key: b}
+
+    _reconcile_topology(pack=pack, universe=universe, worlds=worlds)
+    _reconcile_topology(pack=pack, universe=universe, worlds=worlds)
+
+    assert WorldRelation.objects.count() == 1
+    relation = WorldRelation.objects.get()
+    assert relation.title == "A to B"
+    assert relation.relation_type == "references"
+
+
+def test_apply_universe_command_accepts_queue_wait_options():
+    from konnaxion.worlds.management.commands.worlds_apply_universe import Command
+
+    parser = Command().create_parser("manage.py", "worlds_apply_universe")
+    options = parser.parse_args([
+        "demo-universe",
+        "--pack-version", "1.2.3",
+        "--queue", "--wait", "--promote",
+        "--poll-seconds", "1.5",
+    ])
+    assert options.queue is True
+    assert options.wait is True
+    assert options.promote is True
+    assert options.poll_seconds == 1.5
+
+
+def test_apply_universe_command_accepts_local_workers():
+    from konnaxion.worlds.management.commands.worlds_apply_universe import Command
+
+    parser = Command().create_parser("manage.py", "worlds_apply_universe")
+    options = parser.parse_args([
+        "demo-universe",
+        "--pack-version", "1.2.3",
+        "--local-workers", "2",
+        "--promote",
+    ])
+    assert options.local_workers == 2
+    assert options.promote is True

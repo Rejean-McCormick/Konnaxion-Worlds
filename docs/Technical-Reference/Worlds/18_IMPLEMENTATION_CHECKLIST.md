@@ -132,8 +132,9 @@
 ## Ecosystem boundary / documentation alignment
 
 - [x] Worlds control plane documented as Konnaxion-local, not ecosystem-global.
-- [x] Seed Pack distinguished from Kristal Runtime Pack.
-- [x] WorldRelease distinguished from Kristal Working/Reference Exchange.
-- [x] Snapshot distinguished from Kristal Exchange.
-- [x] Promote Release distinguished from physical Runtime Pack activation.
+- [x] Seed Pack/WorldRelease/Snapshot distinguished from Kristal v6 `kristal_state` and Kristal artifact identities.
+- [x] Promote Release distinguished from Kristal `actionability` and physical Runtime Pack activation.
+- [x] Kristal `automatic` documented as automation eligibility, never execution authority.
+- [x] World/Release runtime scope distinguished from Kristal v6 `applicability`.
+- [x] Kristal projections required to preserve stable Universe/World/Release provenance.
 - [ ] Any future IK adapter has dedicated profile-level integration tests before being called qualified.

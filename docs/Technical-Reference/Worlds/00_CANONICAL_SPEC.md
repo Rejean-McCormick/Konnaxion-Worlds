@@ -6,7 +6,7 @@
 
 
 **Lock:** `KX-WORLDS-1`  
-**Version:** `1.2.0`  
+**Version:** `1.3.0`  
 **Status:** LOCKED TARGET ARCHITECTURE  
 **Keywords:** MUST, MUST NOT, SHOULD, SHOULD NOT, MAY are normative.
 
@@ -141,18 +141,20 @@ These are different operations.
 
 AI and implementation code MUST NOT use the word `activate` ambiguously for both concepts.
 
-Promote Release is not Kristal Runtime Pack activation, Reference Exchange recognition, publication, or kOA-Linux physical activation. It is a Konnaxion-local pointer mutation selecting which `WorldRelease` serves a logical World.
+Promote Release is not Kristal v6 actionability, Kristal artifact validation/recognition, publication, or kOA-Linux physical activation. It is a Konnaxion-local pointer mutation selecting which `WorldRelease` serves a logical World.
 
 
 ## 4.1 Cross-ecosystem artifact distinction
 
-A **Seed Pack** is a Konnaxion Worlds build input. It is not a Kristal Runtime Pack.
+A **Seed Pack** is a Konnaxion Worlds build input. It is not a Kristal v6 `kristal_state` or a Kristal build artifact.
 
-A **WorldRelease** is a Konnaxion Worlds runtime/data generation. It is not a Kristal Working Exchange or Reference Exchange.
+A **WorldRelease** is a Konnaxion Worlds runtime/data generation. It is not a Kristal v6 state revision or exchange artifact.
 
-A **Snapshot** is a Konnaxion Worlds state capture. It is not a Kristal Exchange.
+A **Snapshot** is a Konnaxion Worlds runtime-state capture. It is not a Kristal v6 `kristal_state`.
 
-Any future bridge between these artifact families MUST use an explicit Integration Kernel/Profile contract and MUST preserve each system's identity and ownership semantics.
+Any bridge between these artifact families MUST use an explicit Interaction Kernel/Profile contract, preserve each system's identity and ownership semantics, and follow the v6 actionability/authority rules in `22_KRISTAL_V6_BOUNDARY.md`.
+
+See `22_KRISTAL_V6_BOUNDARY.md` for the normative Kristal v6 projection and execution-authority boundary.
 
 ## 5. Explicit World context
 

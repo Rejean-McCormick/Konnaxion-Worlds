@@ -199,3 +199,15 @@ Build jobs: 2 running / 4 queued
 ```
 
 Bulk build/validate operations SHOULD use queued jobs with explicit concurrency limits. `Select/Open World` remains an individual navigation operation and MUST never become a bulk server activation command.
+
+## 11. Universe Pack operations
+
+The desktop World Manager SHOULD expose discovered Universe Packs and provide a parallel apply/watch action. For standalone/local operation the action maps to:
+
+```text
+worlds_apply_universe <key> --pack-version <version> --local-workers 2 --promote
+```
+
+The local worker count is operator-selectable. Jobs are still persisted `WorldBuildJob` records and run in isolated child Django processes; the manager does not implement a second build engine. Hosted deployments may instead use `--queue --wait --promote` with the `world-build` Celery queue.
+
+The World list should surface the latest active job's fine-grained stage/percentage rather than only the coarse `building` / `validating` state.

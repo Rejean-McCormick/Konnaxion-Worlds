@@ -1,0 +1,13 @@
+Konnaxion_Worlds Universe Build Orchestrator v0.3.2
+
+Observed runtime failures fixed/hardened from the 2026-09-30 Neon 512 MiB run:
+- storage preflight now prefers provider pg_cluster_size() instead of current database size
+- preflight adds configurable reserve (default 32 MiB) and concurrency headroom
+- worlds_storage reports provider capacity metric/source and reclaimable incomplete releases
+- worlds_gc --incomplete safely targets orphan BUILDING/VALIDATING releases
+- purge success is not reclassified as failure by best-effort bridge-user cleanup/audit
+- child/Celery build failure bookkeeping preserves the original provider error when the DB connection is closed
+- advisory unlocks fail safe by closing the broken session
+- World Manager adds GC failed+orphan and GC frozen actions
+
+No new Django model migration is required.

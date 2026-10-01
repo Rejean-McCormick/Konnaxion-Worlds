@@ -181,9 +181,9 @@ The UI and API must state which operation is being performed.
 
 ## Cross-ecosystem naming guard
 
-`Seed Pack`, `WorldRelease` and `Snapshot` are Konnaxion Worlds lifecycle artifacts. They MUST NOT be renamed or documented as Kristal `Runtime Pack`, `Working Exchange`, `Reference Exchange` or `Exchange`.
+`Seed Pack`, `WorldRelease` and `Snapshot` are Konnaxion Worlds lifecycle artifacts. They MUST NOT be renamed or documented as Kristal v6 `kristal_state` objects or Kristal state/exchange artifacts.
 
-`promote_release()` changes the Konnaxion-local `World.current_release` pointer. It does not perform host Runtime Pack activation and does not confer Kristal authority recognition.
+`promote_release()` changes the Konnaxion-local `World.current_release` pointer. It does not perform host Runtime Pack activation, does not derive from Kristal `actionability`, and does not confer Kristal validation/recognition authority.
 
 
 ## 11. Universe composition

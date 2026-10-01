@@ -83,5 +83,5 @@ without making mutable scores shared across Worlds.
 | World / WorldRelease / Seed Pack registry / Snapshot | Konnaxion Worlds | Never transferred to Orgo/Kristal/IK |
 | IK transport/envelope semantics | Interaction Kernel protocol | Protocol does not own domain state |
 | Orgo Signal/Workflow/Case/Task/IntegrationOperation | Orgo | Not aliases of World or civic objects |
-| Kristal epistemic artifacts | Kristal | Not aliases of Seed Pack/WorldRelease/Snapshot |
+| Kristal v6 `kristal_state` and Kristal artifacts | Kristal | Not aliases of Seed Pack/WorldRelease/Snapshot; actionability does not transfer execution authority |
 | Physical Runtime Pack activation when kOA-Linux is present | kOA-Linux | Worlds promotion must not duplicate this state |

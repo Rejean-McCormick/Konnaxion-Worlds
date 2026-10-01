@@ -1,0 +1,8 @@
+Konnaxion_Worlds v0.3.4
+
+- Fixes World Manager appearing stuck after first-run setup.
+- Prefers sibling Konnaxion backend/.venv + manage.py when present.
+- Hosted refresh does not run migrations.
+- Registry refresh is read-only and logs its stage/counts.
+- Standalone migrations run only once per Manager session.
+- Auto-setup can consume detected DB URL via inherited environment without exposing it on the command line.

@@ -8,8 +8,9 @@ Before Universe/World-related coding, read:
 3. `CONTRACTS.txt` when present in the host repo
 4. `Worlds/AI_LOCK.yaml`
 5. `Worlds/20_UNIVERSES.md`
-6. `Worlds/KONNAXION_WORLDS_FULL_SPEC.md`
-7. the exact current source files to modify.
+6. `Worlds/22_KRISTAL_V6_BOUNDARY.md`
+7. `Worlds/KONNAXION_WORLDS_FULL_SPEC.md`
+8. the exact current source files to modify.
 
 Mandatory:
 - Universe is governance/navigation/coherence, never a shared business-data schema.
@@ -35,6 +36,10 @@ Mandatory:
 - production target remains ~120 registered Worlds in one shared logical deployment; never introduce per-World stacks.
 - keep lightweight server health separate from deep all-World validation.
 - canonical engine/spec owner is the `Konnaxion_Worlds` repository/package; main Konnaxion MUST NOT vendor a second backend engine or canonical spec copy.
+- Kristal Standard 6.0.0 is the current knowledge-state boundary; Worlds artifacts remain distinct from `kristal_state`.
+- Kristal `actionability.mode = automatic` is never sufficient authority to mutate Konnaxion Worlds state.
+- preserve stable Universe/World/Release provenance in any Kristal projection.
+- do not rename Konnaxion database/runtime `scope` primitives to `applicability`; they are not the same concept.
 
 Never assume target classes/routes already exist. Inspect code first.
 
