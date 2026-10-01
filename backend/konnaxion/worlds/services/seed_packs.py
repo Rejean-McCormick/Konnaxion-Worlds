@@ -63,6 +63,33 @@ class SeedPack:
         return scenarios
 
 
+@dataclass(frozen=True, slots=True)
+class SeedPackCatalog:
+    """One discovery/hash pass that can be reused across a bulk operation.
+
+    Universe builds used to call ``get_seed_pack`` repeatedly.  ``get_seed_pack``
+    discovers and hashes the complete catalog, so an N-World apply performed the
+    same filesystem work O(N) times.  A catalog makes the expensive discovery
+    explicit and reusable without introducing a long-lived/stale process cache.
+    """
+
+    packs: tuple[SeedPack, ...]
+    by_identity: dict[tuple[str, str], SeedPack]
+    by_key: dict[str, tuple[SeedPack, ...]]
+
+    def resolve(self, key: str, version: str | None = None) -> SeedPack:
+        normalized = str(key).strip().lower()
+        if version is not None:
+            pack = self.by_identity.get((normalized, str(version).strip()))
+            if pack is None:
+                raise SeedPackError(f"Seed Pack not found: {normalized}@{version}")
+            return pack
+        candidates = self.by_key.get(normalized, ())
+        if not candidates:
+            raise SeedPackError(f"Seed Pack not found: {normalized}@latest")
+        return max(candidates, key=lambda p: _semver_key(p.version))
+
+
 def seed_root() -> Path:
     configured = getattr(settings, "KONNAXION_WORLD_SEED_ROOT", None)
     if configured:
@@ -202,12 +229,62 @@ def discover_seed_packs(*, persist: bool = True) -> list[SeedPack]:
     return packs
 
 
-def get_seed_pack(key: str, version: str | None = None) -> tuple[SeedPack, SeedPackRecord]:
-    key = str(key).strip().lower()
-    packs = discover_seed_packs(persist=True)
-    candidates = [p for p in packs if p.world_key == key and (version is None or p.version == version)]
-    if not candidates:
-        raise SeedPackError(f"Seed Pack not found: {key}@{version or 'latest'}")
-    pack = max(candidates, key=lambda p: _semver_key(p.version))
+def discover_seed_pack_catalog(*, persist: bool = True) -> SeedPackCatalog:
+    """Discover/validate/hash every pack once and index it for bulk operations."""
+
+    packs = tuple(discover_seed_packs(persist=persist))
+    by_identity = {(pack.world_key, pack.version): pack for pack in packs}
+    grouped: dict[str, list[SeedPack]] = {}
+    for pack in packs:
+        grouped.setdefault(pack.world_key, []).append(pack)
+    by_key = {
+        key: tuple(sorted(values, key=lambda p: _semver_key(p.version)))
+        for key, values in grouped.items()
+    }
+    return SeedPackCatalog(packs=packs, by_identity=by_identity, by_key=by_key)
+
+
+def get_seed_pack(
+    key: str,
+    version: str | None = None,
+    *,
+    catalog: SeedPackCatalog | None = None,
+) -> tuple[SeedPack, SeedPackRecord]:
+    catalog = catalog or discover_seed_pack_catalog(persist=True)
+    pack = catalog.resolve(key, version)
     record = SeedPackRecord.objects.get(key=pack.world_key, version=pack.version)
+    return pack, record
+
+
+def get_registered_seed_pack(key: str, version: str) -> tuple[SeedPack, SeedPackRecord]:
+    """Load one already-discovered exact pack without rescanning the catalog.
+
+    Queue jobs are created only after discovery persisted ``SeedPackRecord``. A
+    worker can therefore hash/validate the one requested pack rather than every
+    pack in the repository. If files changed after queueing, fail closed and
+    require rediscovery instead of silently building different bytes under the
+    same recorded identity.
+    """
+
+    normalized = str(key).strip().lower()
+    exact_version = str(version or "").strip()
+    if not exact_version:
+        raise SeedPackError("Registered Seed Pack lookup requires an exact version.")
+    try:
+        record = SeedPackRecord.objects.get(key=normalized, version=exact_version)
+    except SeedPackRecord.DoesNotExist as exc:
+        raise SeedPackError(
+            f"Seed Pack is not registered: {normalized}@{exact_version}. Rediscover packs first."
+        ) from exc
+    pack = load_seed_pack(record.manifest_path, configured_root=seed_root())
+    if pack.world_key != normalized or pack.version != exact_version:
+        raise SeedPackError(
+            f"Registered Seed Pack identity drift: expected {normalized}@{exact_version}, "
+            f"found {pack.world_key}@{pack.version}."
+        )
+    if record.checksum and record.checksum != pack.checksum:
+        raise SeedPackError(
+            f"Registered Seed Pack checksum changed for {normalized}@{exact_version}; "
+            "rediscover/requeue before building."
+        )
     return pack, record

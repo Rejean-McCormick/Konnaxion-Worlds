@@ -180,7 +180,7 @@ def _missing_tables(schema: str, expected: set[str]) -> list[str]:
     return sorted(expected - actual)
 
 
-def provision_release_schemas(release):
+def provision_release_schemas(release, *, progress_callback=None):
     """Canonical release provisioner: scoped migrations + deterministic fixture.
 
     This replaces the temporary structure-cloning adapter. The release schemas
@@ -189,7 +189,7 @@ def provision_release_schemas(release):
     the scoped runner without editing migration history.
     """
 
-    report = provision_release(release)
+    report = provision_release(release, progress_callback=progress_callback)
     write_canary(
         schema=release.domain_schema,
         world_id=release.world_id,

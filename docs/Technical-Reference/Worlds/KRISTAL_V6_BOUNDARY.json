@@ -1,0 +1,52 @@
+{
+  "contract_id": "konnaxion.worlds.kristal-v6-boundary",
+  "contract_version": "1.0.0",
+  "kristal_standard": "6.0.0",
+  "architecture_lock": "KX-UNIVERSES-1",
+  "worlds_authority": {
+    "owns": [
+      "Universe",
+      "World",
+      "WorldRelease",
+      "SeedPack",
+      "Snapshot",
+      "WorldBuildJob"
+    ],
+    "does_not_own": [
+      "KristalState",
+      "InteractionKernel",
+      "OrgoWorkflow",
+      "host_runtime_pack_activation"
+    ]
+  },
+  "artifact_identity": {
+    "seed_pack_is_kristal_state": false,
+    "world_release_is_kristal_state": false,
+    "snapshot_is_kristal_state": false,
+    "promotion_is_kristal_actionability": false
+  },
+  "projection_rules": {
+    "preserve_source_identity": true,
+    "preserve_universe_world_release_provenance": true,
+    "display_name_is_persistent_identity": false,
+    "implicit_current_world_allowed": false,
+    "record_role_examples": {
+      "observed_world_state": "observed_state",
+      "derived_world_state": "derived_state",
+      "worlds_policy": "organizational_rule",
+      "external_authoritative_rule": "authoritative_constraint"
+    }
+  },
+  "actionability": {
+    "classification_is_execution_authority": false,
+    "automatic_requires_owner_admission": true,
+    "automatic_bypasses_authorization": false,
+    "automatic_bypasses_world_release_pinning": false,
+    "automatic_bypasses_lifecycle_guards": false,
+    "cross_system_mutation_requires_explicit_profile": true
+  },
+  "terminology": {
+    "konnaxion_runtime_scope_is_kristal_applicability": false,
+    "keep_world_db_scope_name": true
+  }
+}

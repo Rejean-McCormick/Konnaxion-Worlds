@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from celery import shared_task
 from django.conf import settings
-from django.db import transaction
+from django.db import connection, transaction
 from django.db.models import F
 from django.utils import timezone
 
@@ -15,6 +15,7 @@ from .services.build_queue import (
     try_acquire_world_build_slot,
 )
 from .services.builder import build_world_release
+from .services.seed_packs import get_registered_seed_pack
 
 
 def _progress_job(job_id: int, release: WorldRelease) -> None:
@@ -25,9 +26,17 @@ def _progress_job(job_id: int, release: WorldRelease) -> None:
         WorldRelease.STATUS_CURRENT: WorldBuildJob.STATUS_READY,
         WorldRelease.STATUS_FAILED: WorldBuildJob.STATUS_FAILED,
     }
+    job = WorldBuildJob.objects.filter(pk=job_id).first()
+    if job is None:
+        return
+    metadata = dict(job.metadata_json or {})
+    progress = dict((release.build_metadata_json or {}).get("progress") or {})
+    if progress:
+        metadata["progress"] = progress
     updates = {
         "release_id": release.id,
         "status": status_map.get(release.status, WorldBuildJob.STATUS_BUILDING),
+        "metadata_json": metadata,
         "updated_at": timezone.now(),
     }
     if release.status in {WorldRelease.STATUS_READY, WorldRelease.STATUS_CURRENT}:
@@ -167,6 +176,19 @@ def build_world_release_task(self, job_id: int):
         )
 
         try:
+            # The queue producer already discovered/persisted this exact pack.
+            # Load only that pack here instead of rescanning/hashing the entire
+            # Seed Pack catalog once per Celery job.
+            resolved_pack, seed_record = get_registered_seed_pack(
+                job.seed_pack_key,
+                job.seed_version,
+            )
+            expected_checksum = str((job.metadata_json or {}).get("seed_checksum") or "")
+            if expected_checksum and resolved_pack.checksum != expected_checksum:
+                raise RuntimeError(
+                    f"Queued Seed Pack checksum drift for {job.seed_pack_key}@{job.seed_version}: "
+                    f"expected {expected_checksum}, got {resolved_pack.checksum}."
+                )
             release = build_world_release(
                 world=job.world,
                 seed_pack_key=job.seed_pack_key,
@@ -174,26 +196,42 @@ def build_world_release_task(self, job_id: int):
                 actor=actor,
                 promote=job.promote_after_build,
                 progress_callback=lambda current: _progress_job(job.id, current),
+                resolved_pack=resolved_pack,
+                seed_record=seed_record,
             )
         except Exception as exc:
-            # ``build_world_release`` already records Release failure when a
-            # Release exists. This also covers failures before Release creation.
-            current_release_id = WorldBuildJob.objects.filter(pk=job.id).values_list(
-                "release_id", flat=True
-            ).first()
-            WorldBuildJob.objects.filter(pk=job.id).update(
-                status=WorldBuildJob.STATUS_FAILED,
-                error_text=str(exc),
-                finished_at=timezone.now(),
-                updated_at=timezone.now(),
-            )
-            audit(
-                event_type="release_build_job_failed",
-                world=job.world,
-                release_id=current_release_id,
-                actor=actor,
-                metadata={"build_job_id": job.id, "error": str(exc)},
-            )
+            # Provider hard-limit/DDL errors can poison the worker connection.
+            # Reconnect once and make failure bookkeeping best-effort so the
+            # original build exception remains the task failure.
+            failure_text = str(exc)
+            try:
+                if not connection.in_atomic_block:
+                    connection.close()
+                    connection.ensure_connection()
+                current_release_id = WorldBuildJob.objects.filter(pk=job.id).values_list(
+                    "release_id", flat=True
+                ).first()
+                WorldBuildJob.objects.filter(pk=job.id).update(
+                    status=WorldBuildJob.STATUS_FAILED,
+                    error_text=failure_text,
+                    finished_at=timezone.now(),
+                    updated_at=timezone.now(),
+                )
+                try:
+                    audit(
+                        event_type="release_build_job_failed",
+                        world=job.world,
+                        release_id=current_release_id,
+                        actor=actor,
+                        metadata={"build_job_id": job.id, "error": failure_text},
+                    )
+                except Exception:
+                    pass
+            except Exception:
+                try:
+                    connection.close()
+                except Exception:
+                    pass
             raise
 
         WorldBuildJob.objects.filter(pk=job.id).update(

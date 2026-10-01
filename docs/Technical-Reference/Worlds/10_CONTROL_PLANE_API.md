@@ -233,6 +233,6 @@ WORLD_SNAPSHOT_FAILED
 
 ## Ecosystem boundary note
 
-Every API in this document is a **Konnaxion Worlds local control/runtime API**. It is not an Interaction Kernel API. If a future operation crosses into Orgo, Kristal, SemantiK Architect or kOA-Linux, the cross-system handoff must occur through that system's explicit integration contract/Profile rather than by reusing Worlds control-plane endpoints as an ecosystem bus.
+Every API in this document is a **Konnaxion Worlds local control/runtime API**. It is not an Interaction Kernel API. If a future operation crosses into Orgo, Kristal, SemantiK Architect or kOA-Linux, the cross-system handoff must occur through that system's explicit integration contract/Profile rather than by reusing Worlds control-plane endpoints as an ecosystem bus. Kristal v6 `actionability.mode = automatic` may classify a projected action as automation-eligible, but it MUST NOT be accepted as authorization to call these APIs; Konnaxion authentication, authorization, idempotency and lifecycle invariants remain authoritative.
 
 UI/API labels SHOULD use **Promote Release**, not `Activate`, for changing `World.current_release`.

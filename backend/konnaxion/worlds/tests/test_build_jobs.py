@@ -147,6 +147,11 @@ def test_build_task_transitions_persisted_job_to_ready(monkeypatch):
         return release
 
     monkeypatch.setattr(world_tasks, "build_world_release", fake_build_world_release)
+    monkeypatch.setattr(
+        world_tasks,
+        "get_registered_seed_pack",
+        lambda key, version: (SimpleNamespace(world_key=key, version=version, checksum=""), SimpleNamespace()),
+    )
 
     result = world_tasks.build_world_release_task.run(job.id)
     job.refresh_from_db()

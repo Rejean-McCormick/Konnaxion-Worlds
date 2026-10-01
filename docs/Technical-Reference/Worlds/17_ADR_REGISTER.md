@@ -98,11 +98,23 @@ World selection remains request-scoped navigation and never starts/stops infrast
 
 ## ADR-WLD-020 — Worlds artifacts are not Kristal artifacts
 
-**Decision:** `Seed Pack`, `WorldRelease` and `Snapshot` remain Konnaxion Worlds artifact identities. They are not aliases of Kristal Runtime Pack, Working Exchange, Reference Exchange or Exchange. Any future mapping requires an explicit integration contract/Profile.
+**Decision:** `Seed Pack`, `WorldRelease` and `Snapshot` remain Konnaxion Worlds artifact identities. They are not aliases of Kristal v6 `kristal_state`, state revisions or exchange/build artifacts. Any mapping requires an explicit integration contract/Profile and preserves the source identity.
 
 ## ADR-WLD-021 — Release promotion is not host activation
 
 **Decision:** promoting `World.current_release` is a Konnaxion-local lifecycle mutation. It is not physical Runtime Pack verify/stage/activate/rollback. When kOA-Linux is present, host activation remains kOA-Linux-owned.
+
+## ADR-WLD-022 — Kristal v6 actionability is not Konnaxion execution authority
+
+**Decision:** Kristal v6 `actionability` may classify a projected assertion/action as `automatic`, `human_review`, `human_decision`, `manual`, `prohibited`, `insufficient_information`, or `not_applicable`. This classification does not itself authorize a Konnaxion Worlds mutation. Any execution remains subject to the owning Konnaxion operation, authorization, World/Release pinning, lifecycle invariants and, for cross-system operations, an explicit qualified Interaction Kernel/Profile boundary.
+
+## ADR-WLD-023 — Kristal projections preserve Universe/World/Release provenance
+
+**Decision:** when Konnaxion World-derived state is projected into a Kristal v6 `kristal_state`, the projection must preserve stable Universe/World/Release provenance and must not use display names as persistent identity. `applicability`, statement `coordinates`, provenance/artifact references, or an explicit Profile mapping may carry that context. No single carrier is mandated by Worlds; the integration Profile owns the exact mapping.
+
+## ADR-WLD-024 — Konnaxion runtime scope terminology is not Kristal v5 scope
+
+**Decision:** existing `world_db_scope`, task scope, cache scope and World/Release routing scope remain Konnaxion isolation terminology. Kristal v6's migration from its legacy epistemic `scope` field to `applicability` does not trigger a Konnaxion rename because the concepts are different.
 
 ## KX-UNIVERSES-1 decisions
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import re
 from dataclasses import replace
 
@@ -42,6 +43,76 @@ _WORLD_OWNED_API_PREFIXES = (
     "/api/admin/konsensus-config",
 )
 
+
+
+def _setting_or_env(name: str, default=None):
+    value = getattr(settings, name, None)
+    if value not in (None, ""):
+        return value
+    return os.getenv(name, default)
+
+
+def _host_routing_enabled() -> bool:
+    raw = _setting_or_env("KONNAXION_UNIVERSE_HOST_ROUTING_ENABLED", False)
+    if isinstance(raw, bool):
+        return raw
+    return str(raw or "").strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _universe_base_domains() -> tuple[str, ...]:
+    raw = _setting_or_env("KONNAXION_UNIVERSE_BASE_DOMAINS", "")
+    if isinstance(raw, str):
+        items = re.split(r"[,;\s]+", raw)
+    else:
+        items = [str(item) for item in (raw or ())]
+    values: list[str] = []
+    for item in items:
+        domain = str(item).strip().lower().rstrip(".")
+        if domain and domain not in values:
+            values.append(domain)
+    return tuple(values)
+
+
+def _request_hostname(request) -> str:
+    host = str(request.get_host() or "").strip().lower().rstrip(".")
+    if host.startswith("["):
+        return ""
+    if host.count(":") == 1:
+        host = host.rsplit(":", 1)[0]
+    return host
+
+
+def universe_key_from_hostname(hostname: str) -> str | None:
+    """Resolve one Universe key from ``<universe>.<base-domain>``.
+
+    The apex and ``www`` are infrastructure hosts, not Universes. Nested
+    subdomains remain unsupported so a World can never be inferred from DNS.
+    """
+
+    if not _host_routing_enabled():
+        return None
+
+    host = str(hostname or "").strip().lower().rstrip(".")
+    if host.startswith("["):
+        return None
+    if host.count(":") == 1:
+        host = host.rsplit(":", 1)[0]
+
+    for base_domain in _universe_base_domains():
+        if host in {base_domain, f"www.{base_domain}"}:
+            return None
+        suffix = f".{base_domain}"
+        if not host.endswith(suffix):
+            continue
+        subdomain = host[: -len(suffix)]
+        if "." in subdomain or not re.fullmatch(_KEY, subdomain):
+            return None
+        return subdomain
+    return None
+
+
+def _universe_key_from_request_host(request) -> str | None:
+    return universe_key_from_hostname(_request_hostname(request))
 
 def _requires_world_route(path: str) -> bool:
     # Match an API ownership boundary, not a raw string prefix (for example,
@@ -130,9 +201,14 @@ class WorldRouteMiddleware:
 
     def __call__(self, request):
         path = request.path_info or "/"
+        host_universe_key = _universe_key_from_request_host(request)
+        request.universe_host_key = host_universe_key
+
         match = _UNIVERSE_WORLD_ROUTE_RE.match(path) or _LEGACY_WORLD_ROUTE_RE.match(path)
 
         if match is None:
+            if host_universe_key:
+                request.universe_key = host_universe_key
             if (
                 getattr(settings, "KONNAXION_WORLDS_ENFORCE_SCOPED_API", False)
                 and _requires_world_route(path)
@@ -145,7 +221,19 @@ class WorldRouteMiddleware:
                 )
             return self.get_response(request)
 
-        universe_key = match.groupdict().get("universe_key")
+        path_universe_key = match.groupdict().get("universe_key")
+        if (
+            host_universe_key
+            and path_universe_key
+            and host_universe_key != path_universe_key
+        ):
+            return _error(
+                "UNIVERSE_HOST_PATH_CONFLICT",
+                "Hostname Universe and path Universe must match.",
+                status=400,
+            )
+
+        universe_key = path_universe_key or host_universe_key
         world_key = match.group("world_key")
         try:
             runtime = resolve_world_runtime(

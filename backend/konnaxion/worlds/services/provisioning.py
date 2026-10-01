@@ -7,7 +7,7 @@ from dataclasses import dataclass
 
 from django.apps import apps
 from django.conf import settings
-from django.db import connection
+from django.db import connection, transaction
 from django.db.migrations.executor import MigrationExecutor
 from django.db.migrations.loader import MigrationLoader
 from django.utils.module_loading import import_string
@@ -71,23 +71,20 @@ def _installed(labels: tuple[str, ...]) -> tuple[str, ...]:
     return tuple(installed)
 
 
-def _show_search_path() -> str:
-    with connection.cursor() as cursor:
-        cursor.execute("SHOW search_path")
-        return str(cursor.fetchone()[0])
+def _set_local_search_path(schema: str) -> None:
+    """Pin search_path for the current transaction only.
 
+    Release provisioning may run through a transaction-pooling proxy (for
+    example Neon pooled endpoints). Session-level ``SET search_path`` is unsafe
+    there because consecutive statements can land on different PostgreSQL
+    backend sessions. ``SET LOCAL`` inside an outer transaction both pins the
+    backend for the whole migration group and resets automatically on commit or
+    rollback.
+    """
 
-def _set_search_path(schema: str) -> None:
     control = _control_schema()
     with connection.cursor() as cursor:
-        cursor.execute(f"SET search_path TO {_q(schema)}, {_q(control)}")
-
-
-def _restore_search_path(value: str) -> None:
-    # SHOW search_path returns server-generated SQL syntax such as '"$user", public'.
-    # It is not user-controlled and is restored verbatim to the same connection.
-    with connection.cursor() as cursor:
-        cursor.execute(f"SET search_path TO {value}")
+        cursor.execute(f"SET LOCAL search_path TO {_q(schema)}, {_q(control)}")
 
 
 def _migration_loader_from_control_schema() -> MigrationLoader:
@@ -99,12 +96,11 @@ def _migration_loader_from_control_schema() -> MigrationLoader:
     graph construction.
     """
 
-    previous = _show_search_path()
-    try:
-        _set_search_path(_control_schema())
+    # Keep this lookup transaction-scoped so it is safe through transaction
+    # poolers as well as direct PostgreSQL connections.
+    with transaction.atomic():
+        _set_local_search_path(_control_schema())
         return MigrationLoader(connection, ignore_no_migrations=True)
-    finally:
-        _restore_search_path(previous)
 
 
 def _safe_control_migration_rows() -> list[tuple[str, str, object]]:
@@ -238,18 +234,23 @@ def _scoped_migration_sql_wrapper(
 
 @contextmanager
 def _migration_scope(schema: str, *, rewrite_legacy_auxiliary: bool = False):
+    """Run one migration group in a transaction-pinned release schema.
+
+    The outer transaction is intentional. It makes ``SET LOCAL search_path``
+    authoritative for the complete Django migration executor run, including on
+    transaction-pooling PostgreSQL proxies, and prevents partially applied DDL
+    from being committed when a migration fails.
+    """
+
     validate_schema_name(schema)
-    previous = _show_search_path()
     wrapper = _scoped_migration_sql_wrapper(
         schema,
         rewrite_legacy_auxiliary=rewrite_legacy_auxiliary,
     )
-    try:
-        _set_search_path(schema)
+    with transaction.atomic():
+        _set_local_search_path(schema)
         with connection.execute_wrapper(wrapper):
             yield
-    finally:
-        _restore_search_path(previous)
 
 
 def _leaf_targets(executor: MigrationExecutor, app_labels: tuple[str, ...]) -> list[tuple[str, str]]:
@@ -391,28 +392,36 @@ def load_host_fixture_for_release(release) -> str:
     return checksum
 
 
-def provision_release(release) -> ProvisioningReport:
+def provision_release(release, *, progress_callback=None) -> ProvisioningReport:
     if connection.vendor != "postgresql":
         raise RuntimeError("Konnaxion Worlds scoped migrations require PostgreSQL.")
 
     from .schema import create_schema
 
+    if progress_callback is not None:
+        progress_callback("creating_schemas", 1, 4, "Creating release schemas")
     create_schema(release.domain_schema)
     create_schema(release.ekoh_schema)
 
     domain_labels = _installed(DOMAIN_MIGRATION_APPS)
     auxiliary_labels = _installed(AUXILIARY_MIGRATION_APPS)
 
+    if progress_callback is not None:
+        progress_callback("migrating_domain", 2, 4, "Applying domain migrations")
     domain_fp = run_scoped_migrations(
         schema=release.domain_schema,
         app_labels=domain_labels,
         rewrite_legacy_auxiliary=False,
     )
+    if progress_callback is not None:
+        progress_callback("migrating_auxiliary", 3, 4, "Applying EkoH / Smart Vote migrations")
     auxiliary_fp = run_scoped_migrations(
         schema=release.ekoh_schema,
         app_labels=auxiliary_labels,
         rewrite_legacy_auxiliary=True,
     )
+    if progress_callback is not None:
+        progress_callback("loading_fixtures", 4, 4, "Loading canonical host fixtures")
     fixture_checksum = load_host_fixture_for_release(release)
 
     return ProvisioningReport(

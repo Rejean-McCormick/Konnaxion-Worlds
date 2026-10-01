@@ -1,7 +1,7 @@
 architecture_lock:
   id: KX-UNIVERSES-1
   foundation: KX-WORLDS-1
-  version: 2.0.0
+  version: 2.1.0
   status: locked_target_architecture
   implementation_state: implemented_pending_runtime_validation
   canonical_human_spec: 20_UNIVERSES.md
@@ -9,6 +9,7 @@ architecture_lock:
 mandatory_context_docs:
 - 20_UNIVERSES.md
 - KONNAXION_WORLDS_FULL_SPEC.md
+- 22_KRISTAL_V6_BOUNDARY.md
 - WORLD_SYSTEM_AI.instructions.md
 terms:
   Universe: coherence/navigation/governance boundary containing Worlds; not a data schema
@@ -24,6 +25,9 @@ terms:
   WorldRelation: explicit graph edge between Worlds in one Universe; grants no data access
   WorldPublication: versioned provenance-bearing output intentionally exposed by one World
   WorldSubscription: explicit consumption contract between Worlds in one Universe
+  KristalStateV6: Kristal Standard 6.0.0 canonical knowledge/state representation; not a Konnaxion lifecycle artifact
+  KristalActionability: classification of an action path; never execution authority by itself
+  KristalApplicability: applicability envelope for a Kristal assertion; not Konnaxion database/runtime scope
 invariants:
 - id: WLD-001
   rule: World selection MUST NOT reset, import, rebuild, or mutate World content.
@@ -128,6 +132,16 @@ invariants:
   rule: Long-running Release lifecycle operations MUST be isolated from the user World-switch path and production SHOULD apply explicit job concurrency/resource limits.
 - id: WLD-044
   rule: Server liveness/readiness MUST remain bounded and MUST NOT depend on exhaustive deep validation of every registered World on each probe.
+- id: WLD-045
+  rule: SeedPack, WorldRelease and Snapshot MUST remain distinct from Kristal v6 kristal_state and Kristal artifact identities.
+- id: WLD-046
+  rule: Kristal v6 actionability.mode=automatic MUST NOT be treated as sufficient authority to mutate Konnaxion Worlds state.
+- id: WLD-047
+  rule: Any Kristal projection of World-derived state MUST preserve stable Universe, World and exact Release provenance and MUST NOT infer identity from display names.
+- id: WLD-048
+  rule: Cross-system mutation originating from a Kristal projection MUST pass the owning Konnaxion authorization/admission path and any required qualified Interaction Kernel Profile.
+- id: WLD-049
+  rule: Konnaxion runtime/database scope terminology MUST NOT be renamed to Kristal applicability merely because Kristal v6 changed its own schema vocabulary.
 - id: UNI-001
   rule: Every World MUST belong to exactly one Universe in normal KX-UNIVERSES-1 operation.
 - id: UNI-002
@@ -177,6 +191,9 @@ required_review_questions:
 - Does this change a locked invariant?
 - Does this still work with approximately 120 registered Worlds in one shared deployment?
 - Does any World switch path trigger lifecycle work or infrastructure restart?
+- If Kristal actionability is present, where is the separate Konnaxion execution authorization/admission decision?
+- If World state is projected to Kristal, where are Universe, World and exact Release provenance preserved?
+- Is any Konnaxion runtime/database scope being confused with Kristal applicability?
 
 
 ecosystem_boundary:
@@ -187,3 +204,8 @@ ecosystem_boundary:
   snapshot_is_kristal_exchange: false
   promote_release_is_runtime_pack_activation: false
   koa_linux_owns_host_runtime_pack_activation_when_present: true
+  kristal_standard: 6.0.0
+  kristal_state_is_worlds_artifact: false
+  kristal_actionability_is_execution_authority: false
+  kristal_applicability_is_world_db_scope: false
+  world_projection_preserves_release_provenance: true

@@ -9,7 +9,7 @@ from django.utils.module_loading import import_string
 
 
 from ..db import world_db_scope
-from ..models import World, WorldRelease
+from ..models import SeedPackRecord, World, WorldRelease
 from ..resolver import runtime_from_release
 from .audit import audit
 from .naming import release_schema_names
@@ -32,6 +32,38 @@ from .seed_packs import get_seed_pack
 
 class WorldBuildError(RuntimeError):
     pass
+
+
+def _record_build_progress(
+    release: WorldRelease,
+    *,
+    stage: str,
+    step: int,
+    steps_total: int,
+    message: str,
+    progress_callback=None,
+    stage_step: int | None = None,
+    stage_steps_total: int | None = None,
+) -> None:
+    progress = {
+        "stage": stage,
+        "step": int(step),
+        "steps_total": int(steps_total),
+        "percent": int(round((int(step) / max(1, int(steps_total))) * 100)),
+        "message": message,
+        "updated_at": timezone.now().isoformat(),
+    }
+    if stage_step is not None:
+        progress["stage_step"] = int(stage_step)
+    if stage_steps_total is not None:
+        progress["stage_steps_total"] = int(stage_steps_total)
+    release.build_metadata_json = {
+        **(release.build_metadata_json or {}),
+        "progress": progress,
+    }
+    release.save(update_fields=["build_metadata_json"])
+    if progress_callback is not None:
+        progress_callback(release)
 
 
 def _next_release_number(world: World) -> int:
@@ -73,7 +105,7 @@ def _load_pack_fixtures(pack) -> list[str]:
     return list(fixtures)
 
 
-def _import_pack_scenarios(*, release: WorldRelease, pack, actor=None) -> list[dict]:
+def _import_pack_scenarios(*, release: WorldRelease, pack, actor=None, progress_callback=None) -> list[dict]:
     """Import host-domain scenarios through an explicit adapter when configured.
 
     Konnaxion_Worlds owns the release boundary, not ethiKos or any other host
@@ -87,7 +119,10 @@ def _import_pack_scenarios(*, release: WorldRelease, pack, actor=None) -> list[d
     ).strip()
     if not importer_path:
         reports: list[dict] = [{"fixtures": fixtures, "mode": "validated_only"}]
-        for payload in pack.load_scenarios():
+        scenarios = pack.load_scenarios()
+        for index, payload in enumerate(scenarios, start=1):
+            if progress_callback is not None:
+                progress_callback(index, len(scenarios), str(payload.get("scenario_key") or "scenario"))
             reports.append(
                 {
                     "ok": True,
@@ -101,8 +136,11 @@ def _import_pack_scenarios(*, release: WorldRelease, pack, actor=None) -> list[d
     importer = import_string(importer_path)
     reports = [{"fixtures": fixtures, "mode": "host_adapter_import", "adapter": importer_path}]
     runtime = runtime_from_release(release)
+    scenarios = pack.load_scenarios()
     with world_db_scope(runtime):
-        for payload in pack.load_scenarios():
+        for index, payload in enumerate(scenarios, start=1):
+            if progress_callback is not None:
+                progress_callback(index, len(scenarios), str(payload.get("scenario_key") or "scenario"))
             result = importer(payload, imported_by=actor, dry_run=False)
             if not isinstance(result, dict) or not result.get("ok"):
                 raise WorldBuildError(
@@ -133,10 +171,26 @@ def build_world_release(
     actor=None,
     promote: bool = False,
     progress_callback=None,
+    resolved_pack=None,
+    seed_record: SeedPackRecord | None = None,
 ) -> WorldRelease:
     if world.status == World.STATUS_ARCHIVED:
         raise WorldBuildError("Archived Worlds cannot be rebuilt until explicitly restored.")
-    pack, record = get_seed_pack(seed_pack_key, seed_version)
+
+    if resolved_pack is None:
+        pack, record = get_seed_pack(seed_pack_key, seed_version)
+    else:
+        pack = resolved_pack
+        if pack.world_key != str(seed_pack_key).strip().lower():
+            raise WorldBuildError(
+                f"Resolved Seed Pack key mismatch: expected {seed_pack_key!r}, got {pack.world_key!r}."
+            )
+        if seed_version is not None and pack.version != str(seed_version).strip():
+            raise WorldBuildError(
+                f"Resolved Seed Pack version mismatch: expected {seed_version!r}, got {pack.version!r}."
+            )
+        record = seed_record or SeedPackRecord.objects.get(key=pack.world_key, version=pack.version)
+
     release = create_release_record(world=world, seed_pack=record, reason="seed_build")
     release.seed_pack_key = pack.world_key
     release.seed_version = pack.version
@@ -152,11 +206,32 @@ def build_world_release(
         "build_metadata_json",
     ])
     audit(event_type="release_build_started", world=world, release=release, actor=actor)
-    if progress_callback is not None:
-        progress_callback(release)
+    _record_build_progress(
+        release,
+        stage="preparing",
+        step=1,
+        steps_total=5,
+        message=f"Resolved {pack.world_key}@{pack.version}; release r{release.release_number} created",
+        progress_callback=progress_callback,
+    )
 
     try:
-        provisioning = provision_release_schemas(release)
+        def provisioning_progress(stage: str, current: int, total: int, message: str) -> None:
+            _record_build_progress(
+                release,
+                stage=stage,
+                step=2,
+                steps_total=5,
+                message=message,
+                progress_callback=progress_callback,
+                stage_step=current,
+                stage_steps_total=total,
+            )
+
+        provisioning = provision_release_schemas(
+            release,
+            progress_callback=provisioning_progress,
+        )
         release.status = WorldRelease.STATUS_VALIDATING
         release.domain_migration_fingerprint = provisioning.domain_migration_fingerprint
         release.ekoh_migration_fingerprint = provisioning.auxiliary_migration_fingerprint
@@ -172,10 +247,44 @@ def build_world_release(
             "fixture_checksum",
             "build_metadata_json",
         ])
-        if progress_callback is not None:
-            progress_callback(release)
 
-        import_report = _import_pack_scenarios(release=release, pack=pack, actor=actor)
+        def import_progress(current: int, total: int, scenario_key: str) -> None:
+            _record_build_progress(
+                release,
+                stage="importing",
+                step=3,
+                steps_total=5,
+                message=f"Importing scenario {scenario_key}",
+                progress_callback=progress_callback,
+                stage_step=current,
+                stage_steps_total=total,
+            )
+
+        _record_build_progress(
+            release,
+            stage="importing",
+            step=3,
+            steps_total=5,
+            message="Importing World scenarios",
+            progress_callback=progress_callback,
+            stage_step=0,
+            stage_steps_total=max(1, len(pack.scenario_paths)),
+        )
+        import_report = _import_pack_scenarios(
+            release=release,
+            pack=pack,
+            actor=actor,
+            progress_callback=import_progress,
+        )
+
+        _record_build_progress(
+            release,
+            stage="validating",
+            step=4,
+            steps_total=5,
+            message="Validating release schemas, migrations, canaries and isolation",
+            progress_callback=progress_callback,
+        )
         validation = validate_release_schemas(release)
         validation["imports"] = import_report
         if not validation.get("ok"):
@@ -185,26 +294,60 @@ def build_world_release(
         release.validation_report_json = validation
         release.build_finished_at = timezone.now()
         release.save(update_fields=["status", "validation_report_json", "build_finished_at"])
-        if progress_callback is not None:
-            progress_callback(release)
+        _record_build_progress(
+            release,
+            stage="ready",
+            step=5,
+            steps_total=5,
+            message="Release is ready for promotion",
+            progress_callback=progress_callback,
+        )
         audit(event_type="release_ready", world=world, release=release, actor=actor, metadata=validation)
         if promote:
             promote_release(world=world, release=release, actor=actor)
         return release
     except Exception as exc:
-        release.status = WorldRelease.STATUS_FAILED
-        release.build_finished_at = timezone.now()
-        release.validation_report_json = {"ok": False, "error": str(exc)}
-        release.save(update_fields=["status", "build_finished_at", "validation_report_json"])
-        if progress_callback is not None:
-            progress_callback(release)
-        audit(
-            event_type="release_build_failed",
-            world=world,
-            release=release,
-            actor=actor,
-            metadata={"error": str(exc)},
-        )
+        # A failed provider DDL operation (notably Neon capacity errors) can make
+        # the current psycopg session unusable.  Failure bookkeeping is best
+        # effort only: never replace the original build exception with a second
+        # "connection is closed" / transaction error.  The persisted build job
+        # runner/parent orchestrator will also fail-close the job if this write
+        # cannot be recorded here.
+        failure_text = str(exc)
+        try:
+            if not connection.in_atomic_block:
+                connection.close()
+                connection.ensure_connection()
+            release.status = WorldRelease.STATUS_FAILED
+            release.build_finished_at = timezone.now()
+            release.validation_report_json = {"ok": False, "error": failure_text}
+            release.save(update_fields=["status", "build_finished_at", "validation_report_json"])
+            try:
+                _record_build_progress(
+                    release,
+                    stage="failed",
+                    step=0,
+                    steps_total=5,
+                    message=failure_text,
+                    progress_callback=progress_callback,
+                )
+            except Exception:
+                pass
+            try:
+                audit(
+                    event_type="release_build_failed",
+                    world=world,
+                    release=release,
+                    actor=actor,
+                    metadata={"error": failure_text},
+                )
+            except Exception:
+                pass
+        except Exception:
+            try:
+                connection.close()
+            except Exception:
+                pass
         raise
 
 
@@ -354,14 +497,17 @@ def clone_release_state(
         raise
 
 
-def purge_release(*, release: WorldRelease, actor=None) -> None:
+def purge_release(*, release: WorldRelease, actor=None) -> dict:
     """Purge a non-current, unreferenced release atomically.
 
-    PostgreSQL DDL is transactional, so schema drops and control-plane deletion
-    either commit together or roll back together.  This prevents a failed
-    ``PROTECT`` delete from leaving a WorldRelease record whose schemas vanished.
+    The storage-critical operation is the transactional schema/control-plane
+    purge.  Post-commit housekeeping (orphan bridge-user cleanup and audit) is
+    deliberately best-effort: when a provider is already at its hard storage
+    ceiling, those follow-up writes/cascade probes must not make a successful
+    space reclaim look like a failed purge.
     """
     bridge_user_ids: list[int] = []
+    warnings: list[str] = []
     with transaction.atomic():
         world = World.objects.select_for_update().get(pk=release.world_id)
         target = WorldRelease.objects.select_for_update().get(pk=release.pk, world=world)
@@ -387,6 +533,29 @@ def purge_release(*, release: WorldRelease, actor=None) -> None:
                 "Cannot purge release because another control-plane object retains it."
             ) from exc
 
-    cleaned = cleanup_orphan_bridge_users(bridge_user_ids)
+    cleaned = 0
+    try:
+        cleaned = cleanup_orphan_bridge_users(bridge_user_ids)
+    except Exception as exc:
+        # Host User deletion can traverse release-scoped reverse relations that
+        # intentionally do not exist in public.  Retaining tiny orphan bridge
+        # accounts is safer than undoing/reclassifying a completed schema purge.
+        warnings.append(f"bridge user cleanup skipped: {exc}")
+        try:
+            connection.close()
+        except Exception:
+            pass
+
     metadata["bridge_users_cleaned"] = cleaned
-    audit(event_type="release_purged", world=world, actor=actor, metadata=metadata)
+    if warnings:
+        metadata["warnings"] = list(warnings)
+    try:
+        audit(event_type="release_purged", world=world, actor=actor, metadata=metadata)
+    except Exception as exc:
+        warnings.append(f"audit skipped: {exc}")
+        try:
+            connection.close()
+        except Exception:
+            pass
+
+    return {"bridge_users_cleaned": cleaned, "warnings": warnings}

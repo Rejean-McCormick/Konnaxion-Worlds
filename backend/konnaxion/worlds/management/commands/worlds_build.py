@@ -51,11 +51,22 @@ class Command(BaseCommand):
             )
 
         if options["sync"]:
+            def progress(current):
+                detail = dict((current.build_metadata_json or {}).get("progress") or {})
+                stage = detail.get("stage") or current.status
+                percent = detail.get("percent")
+                message = detail.get("message") or ""
+                pct = f" {percent}%" if percent is not None else ""
+                self.stderr.write(
+                    f"{world.key} r{current.release_number} {stage}{pct} {message}".rstrip()
+                )
+
             release = build_world_release(
                 world=world,
                 seed_pack_key=options["seed_pack_key"],
                 seed_version=options["seed_version"],
                 promote=options["promote"],
+                progress_callback=progress,
             )
             self.stdout.write(
                 self.style.SUCCESS(

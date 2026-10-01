@@ -62,24 +62,28 @@ def try_acquire_world_build_job_lock(job_id: int) -> bool:
         return bool(cursor.fetchone()[0])
 
 
-def release_world_build_job_lock(job_id: int) -> None:
+def _best_effort_unlock(namespace: int, value: int) -> None:
     if connection.vendor != "postgresql":
         return
-    with connection.cursor() as cursor:
-        cursor.execute(
-            "SELECT pg_advisory_unlock(%s, %s)",
-            [_WORLD_BUILD_JOB_LOCK_NAMESPACE, int(job_id)],
-        )
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT pg_advisory_unlock(%s, %s)", [namespace, int(value)])
+    except Exception:
+        # Advisory locks are session-scoped. If the provider killed/poisoned the
+        # session (for example after a hard storage error), closing the wrapper
+        # releases them automatically and avoids masking the original build error.
+        try:
+            connection.close()
+        except Exception:
+            pass
+
+
+def release_world_build_job_lock(job_id: int) -> None:
+    _best_effort_unlock(_WORLD_BUILD_JOB_LOCK_NAMESPACE, int(job_id))
 
 
 def release_world_build_slot(slot: int) -> None:
-    if connection.vendor != "postgresql":
-        return
-    with connection.cursor() as cursor:
-        cursor.execute(
-            "SELECT pg_advisory_unlock(%s, %s)",
-            [_WORLD_BUILD_LOCK_NAMESPACE, int(slot)],
-        )
+    _best_effort_unlock(_WORLD_BUILD_LOCK_NAMESPACE, int(slot))
 
 
 @contextmanager
