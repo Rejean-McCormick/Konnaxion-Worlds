@@ -103,6 +103,7 @@ def test_middleware_rejects_hostname_path_universe_conflict_before_resolution():
         HTTP_HOST="unesco.konnaxion.com",
     )
     with override_settings(
+        ALLOWED_HOSTS=["unesco.konnaxion.com"],
         KONNAXION_UNIVERSE_HOST_ROUTING_ENABLED=True,
         KONNAXION_UNIVERSE_BASE_DOMAINS=["konnaxion.com"],
     ):
