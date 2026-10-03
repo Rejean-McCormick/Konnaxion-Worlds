@@ -1,0 +1,199 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "desjardins_seed",
+  "scenario_title": "Desjardins — Finance coopérative",
+  "mode": "replace_scenario",
+  "metadata": {
+    "world_key": "desjardins",
+    "simulation": true,
+    "simulation_only": true,
+    "purpose": "Desjardins — Finance coopérative",
+    "fiction_boundary": "Narrative/sociotechnical simulation. No claim that simulated institutions, collective authorship, events, relationships or platform reactions exist outside this Universe.",
+    "persona_contract": "kx-world-personas/v1",
+    "persona_projection": {
+      "mode": "identity_binding_only",
+      "epistemic_authority": "external"
+    },
+    "actor_profiles": {
+      "actor_thomas_antoine": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/THOMAS_ANTOINE"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "actor_aida": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/AIDA_ELOISE"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "actor_simon": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/SIMON_SOTANIRAM"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      }
+    },
+    "knowledge_authority": "Kristal-KingKlown-5.0.0-KONVERGENCE for narrative referents; World-local deliberation for simulation state."
+  },
+  "actors": [
+    {
+      "key": "actor_thomas_antoine",
+      "username": "sim_thomas_antoine",
+      "display_name": "Thomas / Antoine",
+      "role": "finance coopérative et stratégie institutionnelle",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "actor_aida",
+      "username": "sim_aida",
+      "display_name": "Aïda Éloïse",
+      "role": "éthique, droit, gouvernance et écologie",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "actor_simon",
+      "username": "sim_simon",
+      "display_name": "Simon Sotaniram",
+      "role": "routage de l’information, workflow et Orgo",
+      "is_ethikos_elite": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "deliberation",
+      "name": "Délibération",
+      "description": "Questions, hypothèses et décisions de simulation."
+    },
+    {
+      "key": "project",
+      "name": "Projet",
+      "description": "Construction et exécution collaborative."
+    },
+    {
+      "key": "learning",
+      "name": "Apprentissage",
+      "description": "Retour d’expérience et transmission."
+    }
+  ],
+  "topics": [
+    {
+      "key": "coop_reform",
+      "title": "Comment rendre le pouvoir financier réellement coopératif ?",
+      "description": "Explorer la transparence, la participation des membres, les garde-fous et le financement des communs.",
+      "status": "open",
+      "category": "deliberation"
+    },
+    {
+      "key": "common_fund",
+      "title": "Fonds commun pour les projets kOA",
+      "description": "Définir comment des projets tels que Kristal Farms et les outils communs sont financés sans capture par un acteur unique.",
+      "status": "open",
+      "category": "project"
+    }
+  ],
+  "stances": [],
+  "arguments": [
+    {
+      "key": "arg_1",
+      "topic": "coop_reform",
+      "actor": "actor_thomas_antoine",
+      "content": "La gouvernance doit partir des membres et des structures démocratiques existantes plutôt que d’un sauveur central.",
+      "side": "neutral"
+    },
+    {
+      "key": "arg_2",
+      "topic": "coop_reform",
+      "actor": "actor_aida",
+      "content": "La transparence et le vote ne suffisent pas : les conflits d’intérêts, les droits de retrait et les voies de contestation doivent être explicites.",
+      "side": "neutral"
+    }
+  ],
+  "argument_sources": [],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "actor_thomas_antoine",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0412",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.85,
+          "weighted_score": 0.85
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    },
+    {
+      "actor": "actor_aida",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "raw_score": 0.94,
+          "weighted_score": 0.94
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.84,
+          "weighted_score": 0.84
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    },
+    {
+      "actor": "actor_simon",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0613",
+          "raw_score": 0.98,
+          "weighted_score": 0.98
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.65,
+          "weighted_score": 0.65
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    }
+  ]
+}

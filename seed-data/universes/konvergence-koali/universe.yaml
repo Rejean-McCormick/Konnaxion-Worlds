@@ -1,0 +1,309 @@
+universe_contract: kx-universe-pack/v1
+universe_key: konvergence-koali
+title: Konvergence Koali — kOA Genesis Universe
+description: Univers de simulation où cinq protagonistes et leurs alliés font converger expertise, art, finance,
+  éthique, éducation et technologie à travers des Worlds autonomes; Konnaxion compose la connaissance et les coalitions,
+  Orgo coordonne l’exécution.
+pack_version: 1.0.0
+visibility: private
+default_world: uckk
+requires:
+  world_contract: kx-world-pack/v1
+  host_contracts:
+  - kx-world-personas/v1
+  external_authorities:
+  - kristal_v5_runtime_pack
+worlds:
+- world_key: desjardins
+  seed_pack_key: desjardins
+  seed_version: 1.0.0
+  title: Desjardins — Finance coopérative
+  description: Simulation de réforme coopérative, financement des communs et agrégation démocratique des capacités
+    financières.
+  visibility: private
+- world_key: kristal-farms
+  seed_pack_key: kristal-farms
+  seed_version: 1.0.0
+  title: Kristal Farms — Infrastructure et communautés
+  description: World de simulation pour infrastructure locale, énergie, calcul, chaleur utile, communautés et gouvernance
+    territoriale.
+  visibility: private
+- world_key: tech-development
+  seed_pack_key: tech-development
+  seed_version: 1.0.0
+  title: Développement technologique — kOA/Koali/Konnaxion
+  description: 'Atelier technique du kOA Digital Ecosystem : Worlds, Universes, réplication, réconciliation, interfaces
+    et mécanismes abstraits.'
+  visibility: private
+- world_key: amusement-kreative
+  seed_pack_key: amusement-kreative
+  seed_version: 1.0.0
+  title: Amusement / Kreative — Art, jeu et mythologie
+  description: 'World artistique : danse, musique, performances, humour, mythologie King Klown et expériences de
+    résonance.'
+  visibility: private
+- world_key: orgo-internal-ops
+  seed_pack_key: orgo-internal-ops
+  seed_version: 1.0.0
+  title: Orgo — Coordination logistique interne
+  description: 'World de coordination quotidienne : signaux, cas, tâches, propriétaires, dépendances, délais, escalade,
+    clôture et mémoire opérationnelle.'
+  visibility: private
+- world_key: orgo-events
+  seed_pack_key: orgo-events
+  seed_version: 1.0.0
+  title: Orgo — Coordination des événements
+  description: Planification et exécution de spectacles, consultations, conférences, mobilisations et exercices
+    publics.
+  visibility: private
+- world_key: uckk
+  seed_pack_key: uckk
+  seed_version: 1.0.0
+  title: UCKK — Univers-Cité King Klown
+  description: 'Institution de transmission : apprendre à lire les systèmes, les mécanismes, les preuves, les symboles
+    et les limites du pouvoir.'
+  visibility: private
+- world_key: media-network
+  seed_pack_key: media-network
+  seed_version: 1.0.0
+  title: Réseau de plateformes — Visite guidée des traces
+  description: 'World de médiation entre publications distribuées et récit interne : plateformes publiques, réactions,
+    provenance et parcours guidés.'
+  visibility: private
+- world_key: member-thomas-antoine
+  seed_pack_key: member-thomas-antoine
+  seed_version: 1.0.0
+  title: World personnel — Thomas / Antoine
+  description: Espace de travail finance, stratégie institutionnelle et démocratie coopérative. L’ambiguïté Thomas/Antoine
+    est conservée comme question éditoriale du manuscrit.
+  visibility: private
+- world_key: member-simon
+  seed_pack_key: member-simon
+  seed_version: 1.0.0
+  title: World personnel — Simon
+  description: Espace de travail technique sur Orgo, information critique, accountability et architecture locale/offline.
+  visibility: private
+- world_key: member-jeremie
+  seed_pack_key: member-jeremie
+  seed_version: 1.0.0
+  title: World personnel — Jérémie
+  description: 'Espace de création : performance, symboles, vidéo, danse, provocation éthique et mobilisation.'
+  visibility: private
+- world_key: member-aida
+  seed_pack_key: member-aida
+  seed_version: 1.0.0
+  title: World personnel — Aïda
+  description: Espace d’éthique, droit, gouvernance, consentement, limites et anti-capture.
+  visibility: private
+- world_key: member-elias
+  seed_pack_key: member-elias
+  seed_version: 1.0.0
+  title: World personnel — Elias
+  description: Espace d’éducation, mathématiques, empathie, Pi, intuition et interprétation logique.
+  visibility: private
+relations:
+- source: member-thomas-antoine
+  target: uckk
+  type: publishes_to
+  title: Transmettre les apprentissages sélectionnés
+  description: Seulement les éléments explicitement publiés quittent le World personnel.
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: member-simon
+  target: uckk
+  type: publishes_to
+  title: Transmettre les apprentissages sélectionnés
+  description: Seulement les éléments explicitement publiés quittent le World personnel.
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: member-jeremie
+  target: uckk
+  type: publishes_to
+  title: Transmettre les apprentissages sélectionnés
+  description: Seulement les éléments explicitement publiés quittent le World personnel.
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: member-aida
+  target: uckk
+  type: publishes_to
+  title: Transmettre les apprentissages sélectionnés
+  description: Seulement les éléments explicitement publiés quittent le World personnel.
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: member-elias
+  target: uckk
+  type: publishes_to
+  title: Transmettre les apprentissages sélectionnés
+  description: Seulement les éléments explicitement publiés quittent le World personnel.
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: member-thomas-antoine
+  target: desjardins
+  type: contributes_to
+  title: Expertise finance coopérative
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: member-simon
+  target: tech-development
+  type: contributes_to
+  title: Architecture et routage
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: member-simon
+  target: orgo-internal-ops
+  type: contributes_to
+  title: Exécution opérationnelle
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: member-jeremie
+  target: amusement-kreative
+  type: contributes_to
+  title: Art et performance
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: member-aida
+  target: kristal-farms
+  type: contributes_to
+  title: Éthique et gouvernance
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: member-aida
+  target: orgo-internal-ops
+  type: reviews
+  title: Garde-fous et contestation
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: member-elias
+  target: uckk
+  type: contributes_to
+  title: Éducation et interprétation
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: tech-development
+  target: orgo-internal-ops
+  type: implements
+  title: Les décisions techniques deviennent travail opérationnel
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: desjardins
+  target: orgo-internal-ops
+  type: requests_execution
+  title: Décisions financières approuvées à exécuter
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: kristal-farms
+  target: orgo-internal-ops
+  type: requests_execution
+  title: Décisions de projet approuvées à exécuter
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: amusement-kreative
+  target: orgo-events
+  type: requests_execution
+  title: Performances et publications deviennent événements
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: orgo-events
+  target: media-network
+  type: publishes_to
+  title: Diffusion et parcours médiatique
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: amusement-kreative
+  target: media-network
+  type: publishes_to
+  title: Œuvres et traces publiques
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: tech-development
+  target: uckk
+  type: publishes_to
+  title: Documentation et apprentissage
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: orgo-internal-ops
+  target: uckk
+  type: publishes_to
+  title: Retours d’expérience et mémoire
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: uckk
+  target: media-network
+  type: publishes_to
+  title: Parcours pédagogiques publics
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: desjardins
+  target: kristal-farms
+  type: supports
+  title: Financement coopératif des communs
+  description: Relation de simulation, non engagement réel.
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: kristal-farms
+  target: tech-development
+  type: hosts
+  title: Infrastructure locale pour les outils
+  description: Relation de simulation.
+  metadata:
+    managed_by: kx-universe-pack/v1
+subscriptions: []
+metadata:
+  simulation: true
+  language: fr
+  architecture_lock: KX-UNIVERSES-1
+  knowledge_authority: Kristal-KingKlown-5.0.0-KONVERGENCE
+  core_loop:
+  - information
+  - validation
+  - choice
+  - coalition
+  - action
+  - feedback
+  - memory
+  konnaxion_role: shared exchange, validation, deliberation and coalition surface; not a single owner of truth
+  orgo_role: 'operational handoff: signals/decisions -> cases -> tasks -> owners -> escalation -> closure -> memory'
+  uckk_role: transmission, critical reading of systems and learning from outcomes
+  offline_target: Worlds may be instantiated locally and later reconciled with provenance/conflicts preserved.
+  fiction_boundary: The collective construction of “Réjean McCormick” is a belief/strategy inside this simulated
+    Universe, not a factual claim about authorship outside it.
+  sources:
+    kristal_v5:
+      path: external:Kristal-KingKlown-5.0.0-KONVERGENCE.zip
+      sha256: a87db462ea9f2b52e3710ff373f9e25b77573f577362620a224b30522cb6407e
+      authority: narrative_knowledge
+    konvergence_v4:
+      path: external:Konvergence book v4 (1)(20261002-193929).md
+      sha256: 7bdfd1146f8193db03e3ced05f63e248b422505aecaefa56ac047e280a3dcaee
+      authority: source_manuscript
+    kx_standard:
+      path: external:konnaxion-universe-seed-standard-v1.1.zip
+      sha256: 767ba0d7ac69afaa8785c018533fd30a953d7e85eba772ac2c79e7c7db656015
+      authority: technical_contract
+    worlds_collection:
+      path: external:WorldsKollection.zip
+      sha256: f1bc154c76523ab3ce86536ac90bb8d8ec45cf9d79a2d7cab8edc49a335c930b
+      authority: technical_patterns
+    smartsnap:
+      path: external:SmartSnap(20261002-204439).zip
+      sha256: a6fcca7d93adcd82a6c3d3b848c8f5e95fd414fbf831533fcf94ea425b397e0d
+      authority: architecture_analysis
+    creator_clarification:
+      path: conversation:2026-10-02
+      authority: creator_canon_clarification

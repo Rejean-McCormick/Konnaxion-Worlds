@@ -1,0 +1,97 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "member_jeremie_seed",
+  "scenario_title": "World personnel — Jérémie",
+  "mode": "replace_scenario",
+  "metadata": {
+    "world_key": "member-jeremie",
+    "simulation": true,
+    "simulation_only": true,
+    "purpose": "World personnel — Jérémie",
+    "fiction_boundary": "Narrative/sociotechnical simulation. No claim that simulated institutions, collective authorship, events, relationships or platform reactions exist outside this Universe.",
+    "persona_contract": "kx-world-personas/v1",
+    "persona_projection": {
+      "mode": "identity_binding_only",
+      "epistemic_authority": "external"
+    },
+    "actor_profiles": {
+      "actor_jeremie": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/JEREMIE_LEMOINE"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      }
+    },
+    "knowledge_authority": "Kristal-KingKlown-5.0.0-KONVERGENCE for narrative referents; World-local deliberation for simulation state."
+  },
+  "actors": [
+    {
+      "key": "actor_jeremie",
+      "username": "sim_jeremie",
+      "display_name": "Jérémie Lemoine",
+      "role": "art, performance et mobilisation culturelle",
+      "is_ethikos_elite": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "deliberation",
+      "name": "Délibération",
+      "description": "Questions, hypothèses et décisions de simulation."
+    },
+    {
+      "key": "project",
+      "name": "Projet",
+      "description": "Construction et exécution collaborative."
+    },
+    {
+      "key": "learning",
+      "name": "Apprentissage",
+      "description": "Retour d’expérience et transmission."
+    }
+  ],
+  "topics": [
+    {
+      "key": "personal_performance",
+      "title": "Carnet de performances",
+      "description": "Préparer les deux vidéos d’incarnation et documenter l’intention, le geste et les réactions.",
+      "status": "open",
+      "category": "project"
+    }
+  ],
+  "stances": [],
+  "arguments": [],
+  "argument_sources": [],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "actor_jeremie",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0215",
+          "raw_score": 0.96,
+          "weighted_score": 0.96
+        },
+        {
+          "domain_code": "0321",
+          "raw_score": 0.72,
+          "weighted_score": 0.72
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    }
+  ]
+}

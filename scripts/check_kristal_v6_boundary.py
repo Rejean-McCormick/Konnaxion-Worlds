@@ -44,7 +44,7 @@ def main() -> int:
         fail("Konnaxion runtime scope must remain distinct from Kristal applicability")
     required_text = {
         W / "22_KRISTAL_V6_BOUNDARY.md": ["actionability.mode = automatic", "execution authority", "Universe / World / Release"],
-        W / "AI_LOCK.yaml": ["WLD-046", "WLD-047", "kristal_standard: 6.0.0"],
+        W / "AI_LOCK.yaml": ["WLD-046", "WLD-047", "kristal_portable_state_compatibility: 6.0.0"],
         ROOT / "README.md": ["Kristal v6 ecosystem boundary", "Kristal Standard 6.0.0"],
     }
     for path, needles in required_text.items():
@@ -53,7 +53,7 @@ def main() -> int:
             if needle not in text:
                 fail(f"{path.relative_to(ROOT)} missing {needle!r}")
     print("Kristal v6 boundary: PASS")
-    print("  Kristal Standard 6.0.0 pinned in boundary metadata")
+    print("  Kristal Standard 6.0.0 retained as portable-state compatibility foundation")
     print("  actionability kept separate from execution authority")
     print("  Universe/World/Release provenance required for projections")
     print("  Konnaxion runtime scope kept distinct from Kristal applicability")

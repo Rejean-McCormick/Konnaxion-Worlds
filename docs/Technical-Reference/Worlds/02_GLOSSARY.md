@@ -216,3 +216,13 @@ Worlds Control Plane           != kOA ecosystem control plane
 ```
 
 Mappings require an explicit Interaction Kernel/Profile contract, may not erase source artifact identity, and may not treat Kristal `actionability` as execution authority.
+
+## Kristal v7 / Kristall boundary terms
+
+**Kristall** — Kristal v7 encyclopedic/meta-orchestration space over portable Kristals. It does not own Konnaxion Universe/World/WorldRelease lifecycle.
+
+**KQ / KP / KA / KS** — namespace-scoped Kristall semantic identifiers. They remain external semantic identities from the Worlds engine perspective and are not World/Release routing or database-isolation keys.
+
+**Semantic resonance** — candidate/vector similarity signal. It is not identity, equivalence, truth, causality, an assertion, or execution authority.
+
+**Surface** — Kristall query-time oriented view. It is not a Konnaxion runtime World or database scope.

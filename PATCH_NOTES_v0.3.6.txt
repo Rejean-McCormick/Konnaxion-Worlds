@@ -1,0 +1,10 @@
+Konnaxion Worlds v0.3.6
+Date: 2026-10-02
+
+Kristal v7 additive ecosystem-boundary alignment.
+
+- Pins Kristal Standard 7.0.0-draft.3.1 above retained v6 portable-state compatibility.
+- Adds normative/machine-readable v7 boundary and static conformance checker.
+- Preserves Universe/World/exact Release provenance requirements.
+- Locks semantic resonance, Mesh paths and KQ/KP/KA/KS away from Worlds authority.
+- Keeps the existing Kristal v6 checker active as a compatibility gate.

@@ -141,20 +141,20 @@ These are different operations.
 
 AI and implementation code MUST NOT use the word `activate` ambiguously for both concepts.
 
-Promote Release is not Kristal v6 actionability, Kristal artifact validation/recognition, publication, or kOA-Linux physical activation. It is a Konnaxion-local pointer mutation selecting which `WorldRelease` serves a logical World.
+Promote Release is not Kristal actionability, Kristall crystallization, Kristal artifact validation/recognition, publication, or kOA-Linux physical activation. It is a Konnaxion-local pointer mutation selecting which `WorldRelease` serves a logical World.
 
 
 ## 4.1 Cross-ecosystem artifact distinction
 
-A **Seed Pack** is a Konnaxion Worlds build input. It is not a Kristal v6 `kristal_state` or a Kristal build artifact.
+A **Seed Pack** is a Konnaxion Worlds build input. It is not a Kristal v6 `kristal_state`, a Kristal build artifact, or a Kristall meta-artifact.
 
-A **WorldRelease** is a Konnaxion Worlds runtime/data generation. It is not a Kristal v6 state revision or exchange artifact.
+A **WorldRelease** is a Konnaxion Worlds runtime/data generation. It is not a Kristal v6 state revision/exchange artifact or a Kristall crystallization record.
 
-A **Snapshot** is a Konnaxion Worlds runtime-state capture. It is not a Kristal v6 `kristal_state`.
+A **Snapshot** is a Konnaxion Worlds runtime-state capture. It is not a Kristal v6 `kristal_state` or a Kristall Surface/projection.
 
-Any bridge between these artifact families MUST use an explicit Interaction Kernel/Profile contract, preserve each system's identity and ownership semantics, and follow the v6 actionability/authority rules in `22_KRISTAL_V6_BOUNDARY.md`.
+Any bridge between these artifact families MUST use an explicit Interaction Kernel/Profile contract, preserve each system's identity and ownership semantics, and follow the additive v7 rules in `23_KRISTAL_V7_BOUNDARY.md` plus the retained v6 portable-state rules in `22_KRISTAL_V6_BOUNDARY.md`.
 
-See `22_KRISTAL_V6_BOUNDARY.md` for the normative Kristal v6 projection and execution-authority boundary.
+See `23_KRISTAL_V7_BOUNDARY.md` for the current additive Kristal v7 boundary and `22_KRISTAL_V6_BOUNDARY.md` for the retained v6 portable-state compatibility boundary.
 
 ## 5. Explicit World context
 

@@ -1,0 +1,67 @@
+{
+  "contract_id": "konnaxion.worlds.kristal-v7-boundary",
+  "contract_version": "1.0.0",
+  "kristal_standard": "7.0.0-draft.3.1",
+  "portable_state_compatibility": "6.0.0",
+  "architecture_lock": "KX-UNIVERSES-1",
+  "worlds_authority": {
+    "owns": [
+      "Universe",
+      "World",
+      "WorldRelease",
+      "SeedPack",
+      "Snapshot",
+      "WorldBuildJob"
+    ],
+    "does_not_own": [
+      "KristalState",
+      "Kristall",
+      "KristallManifest",
+      "KristallMesh",
+      "KristallSemanticIdentity",
+      "InteractionKernel",
+      "OrgoWorkflow",
+      "host_runtime_pack_activation"
+    ]
+  },
+  "artifact_identity": {
+    "seed_pack_is_kristal_state": false,
+    "world_release_is_kristal_state": false,
+    "snapshot_is_kristal_state": false,
+    "worlds_artifact_is_kristall_meta_artifact": false,
+    "promotion_is_kristal_actionability": false,
+    "promotion_is_crystallization": false
+  },
+  "v7_additive_rules": {
+    "v6_kristal_state_remains_valid_and_unchanged": true,
+    "v7_replaces_v6_wire_schema": false,
+    "v7_portable_projection_uses_v6_state_with_extension": "extensions.kristal_v7",
+    "kq_kp_ka_ks_are_external_semantic_ids_to_worlds": true,
+    "external_kos_ids_replace_kq_identity": false,
+    "semantic_resonance_establishes_identity_truth_or_authority": false,
+    "mesh_path_is_assertion": false,
+    "deduplication_may_delete_source_provenance": false
+  },
+  "projection_rules": {
+    "preserve_source_identity": true,
+    "preserve_universe_world_release_provenance": true,
+    "release_must_be_pinned_at_projection_time": true,
+    "display_name_is_persistent_identity": false,
+    "implicit_current_world_allowed": false,
+    "kristall_projection_may_replace_worlds_system_of_record": false
+  },
+  "actionability": {
+    "classification_is_execution_authority": false,
+    "automatic_requires_owner_admission": true,
+    "automatic_bypasses_authorization": false,
+    "automatic_bypasses_world_release_pinning": false,
+    "automatic_bypasses_lifecycle_guards": false,
+    "cross_system_mutation_requires_explicit_profile": true
+  },
+  "terminology": {
+    "konnaxion_runtime_scope_is_kristal_applicability": false,
+    "keep_world_db_scope_name": true,
+    "kristall_subject_is_konnaxion_world": false,
+    "kristall_surface_is_konnaxion_runtime_view": false
+  }
+}

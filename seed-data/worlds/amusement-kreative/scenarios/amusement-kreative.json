@@ -1,0 +1,300 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "amusement_kreative_seed",
+  "scenario_title": "Amusement / Kreative — Art, jeu et mythologie",
+  "mode": "replace_scenario",
+  "metadata": {
+    "world_key": "amusement-kreative",
+    "simulation": true,
+    "simulation_only": true,
+    "purpose": "Amusement / Kreative — Art, jeu et mythologie",
+    "fiction_boundary": "Narrative/sociotechnical simulation. No claim that simulated institutions, collective authorship, events, relationships or platform reactions exist outside this Universe.",
+    "persona_contract": "kx-world-personas/v1",
+    "persona_projection": {
+      "mode": "identity_binding_only",
+      "epistemic_authority": "external"
+    },
+    "actor_profiles": {
+      "actor_jeremie": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/JEREMIE_LEMOINE"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "actor_elias": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/ELIAS"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "actor_simon": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/SIMON_SOTANIRAM"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "actor_aida": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/AIDA_ELOISE"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "actor_gustave": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/GUSTAVE_LEBLANC"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      }
+    },
+    "knowledge_authority": "Kristal-KingKlown-5.0.0-KONVERGENCE for narrative referents; World-local deliberation for simulation state.",
+    "media_refs": [
+      {
+        "kind": "youtube",
+        "url": "https://www.youtube.com/watch?v=MllMQLphUxc",
+        "description": "User-supplied video reference: dancer with metallic red mask, red polyester shirt and red Converse; handwritten text overlay."
+      }
+    ]
+  },
+  "actors": [
+    {
+      "key": "actor_jeremie",
+      "username": "sim_jeremie",
+      "display_name": "Jérémie Lemoine",
+      "role": "art, performance et mobilisation culturelle",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "actor_elias",
+      "username": "sim_elias",
+      "display_name": "Elias",
+      "role": "éducation, mathématiques, empathie et interprétation",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "actor_simon",
+      "username": "sim_simon",
+      "display_name": "Simon Sotaniram",
+      "role": "routage de l’information, workflow et Orgo",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "actor_aida",
+      "username": "sim_aida",
+      "display_name": "Aïda Éloïse",
+      "role": "éthique, droit, gouvernance et écologie",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "actor_gustave",
+      "username": "sim_gustave",
+      "display_name": "Gustave Leblanc",
+      "role": "mécanismes abstraits et formalisation systémique",
+      "is_ethikos_elite": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "deliberation",
+      "name": "Délibération",
+      "description": "Questions, hypothèses et décisions de simulation."
+    },
+    {
+      "key": "project",
+      "name": "Projet",
+      "description": "Construction et exécution collaborative."
+    },
+    {
+      "key": "learning",
+      "name": "Apprentissage",
+      "description": "Retour d’expérience et transmission."
+    }
+  ],
+  "topics": [
+    {
+      "key": "red_mask_video",
+      "title": "Vidéo au masque rouge — résonance texte/danse",
+      "description": "Deux œuvres produites en parallèle semblent créer des correspondances lors de leur superposition. Étudier l’effet sans convertir l’intuition en certitude.",
+      "status": "open",
+      "category": "deliberation"
+    },
+    {
+      "key": "two_dance_videos",
+      "title": "Deux vidéos d’incarnation",
+      "description": "Jérémie veut produire deux vidéos qui incarnent la figure Réjean/King Klown sous deux registres distincts.",
+      "status": "open",
+      "category": "project"
+    }
+  ],
+  "stances": [],
+  "arguments": [
+    {
+      "key": "arg_1",
+      "topic": "red_mask_video",
+      "actor": "actor_jeremie",
+      "content": "La superposition semble faire apparaître une correspondance qui n’était intentionnelle dans aucune des deux œuvres prises séparément.",
+      "side": "neutral"
+    },
+    {
+      "key": "arg_2",
+      "topic": "red_mask_video",
+      "actor": "actor_elias",
+      "content": "Hypothèse de travail : deux expressions issues d’un pattern commun peuvent résonner lorsqu’elles sont superposées; je nomme cela résonance de Pi.",
+      "side": "neutral"
+    },
+    {
+      "key": "arg_3",
+      "topic": "red_mask_video",
+      "actor": "actor_simon",
+      "content": "Il faut comparer les correspondances et les non-correspondances, tester d’autres textes et préserver l’hypothèse de coïncidence.",
+      "side": "neutral"
+    },
+    {
+      "key": "arg_4",
+      "topic": "red_mask_video",
+      "actor": "actor_aida",
+      "content": "La résonance peut être explorée comme interprétation; elle ne doit pas être présentée comme preuve métaphysique.",
+      "side": "neutral"
+    }
+  ],
+  "argument_sources": [],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "actor_jeremie",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0215",
+          "raw_score": 0.96,
+          "weighted_score": 0.96
+        },
+        {
+          "domain_code": "0321",
+          "raw_score": 0.72,
+          "weighted_score": 0.72
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    },
+    {
+      "actor": "actor_elias",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0111",
+          "raw_score": 0.91,
+          "weighted_score": 0.91
+        },
+        {
+          "domain_code": "0541",
+          "raw_score": 0.86,
+          "weighted_score": 0.86
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    },
+    {
+      "actor": "actor_simon",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0613",
+          "raw_score": 0.98,
+          "weighted_score": 0.98
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.65,
+          "weighted_score": 0.65
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    },
+    {
+      "actor": "actor_aida",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "raw_score": 0.94,
+          "weighted_score": 0.94
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.84,
+          "weighted_score": 0.84
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    },
+    {
+      "actor": "actor_gustave",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0613",
+          "raw_score": 0.88,
+          "weighted_score": 0.88
+        },
+        {
+          "domain_code": "0541",
+          "raw_score": 0.9,
+          "weighted_score": 0.9
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    }
+  ]
+}
