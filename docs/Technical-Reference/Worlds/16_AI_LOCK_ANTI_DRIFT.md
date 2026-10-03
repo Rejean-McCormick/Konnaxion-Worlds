@@ -97,9 +97,9 @@ Post-separation hard boundary:
 - it MUST NOT define `DecisionRecord`, `InteractionEmission`, impact-ingress models or ethiKos delivery workers;
 - it MAY expose World/Release identifiers as routing/provenance data to the main product through an explicit contract;
 - the main `Konnaxion` repository remains the authoritative owner of those product-domain objects and integrations.
-- Kristal v6 `record_role` and `actionability` MAY annotate/project Konnaxion-derived state, but they MUST NOT transfer Konnaxion state ownership or execution authority;
-- `actionability.mode = automatic` MUST NOT bypass Konnaxion authorization, World/Release pinning, lifecycle guards, idempotency, or a required qualified IK Profile;
-- Konnaxion runtime/database `scope` is an isolation primitive and MUST NOT be renamed merely because Kristal v6 renamed its old epistemic `scope` field to `applicability`.
+- Kristal v6 `record_role`/`actionability` and Kristal v7/Kristall meta-structures MAY annotate, organize or project Konnaxion-derived state, but they MUST NOT transfer Konnaxion state ownership or execution authority;
+- `actionability.mode = automatic`, semantic resonance, Mesh paths and Kristall crystallization MUST NOT bypass Konnaxion authorization, Universe/World/Release pinning, lifecycle guards, idempotency, or a required qualified IK Profile;
+- Konnaxion runtime/database `scope` is an isolation primitive and MUST NOT be renamed or conflated with Kristal `applicability`, Kristall Subjects, axes or Surfaces.
 
 Preserve:
 - ethiKos owns deliberation source state;

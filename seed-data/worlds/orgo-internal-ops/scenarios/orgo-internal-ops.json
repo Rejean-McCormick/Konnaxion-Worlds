@@ -1,0 +1,304 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "orgo_internal_ops_seed",
+  "scenario_title": "Orgo — Coordination logistique interne",
+  "mode": "replace_scenario",
+  "metadata": {
+    "world_key": "orgo-internal-ops",
+    "simulation": true,
+    "simulation_only": true,
+    "purpose": "Orgo — Coordination logistique interne",
+    "fiction_boundary": "Narrative/sociotechnical simulation. No claim that simulated institutions, collective authorship, events, relationships or platform reactions exist outside this Universe.",
+    "persona_contract": "kx-world-personas/v1",
+    "persona_projection": {
+      "mode": "identity_binding_only",
+      "epistemic_authority": "external"
+    },
+    "actor_profiles": {
+      "actor_simon": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/SIMON_SOTANIRAM"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "actor_thomas_antoine": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/THOMAS_ANTOINE"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "actor_jeremie": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/JEREMIE_LEMOINE"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "actor_aida": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/AIDA_ELOISE"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "actor_elias": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/ELIAS"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "actor_gustave": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "representation_type": "role_simulation",
+        "external_referents": {
+          "kristal": "kristal://KingKlown-5.0.0/GUSTAVE_LEBLANC"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      }
+    },
+    "knowledge_authority": "Kristal-KingKlown-5.0.0-KONVERGENCE for narrative referents; World-local deliberation for simulation state."
+  },
+  "actors": [
+    {
+      "key": "actor_simon",
+      "username": "sim_simon",
+      "display_name": "Simon Sotaniram",
+      "role": "routage de l’information, workflow et Orgo",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "actor_thomas_antoine",
+      "username": "sim_thomas_antoine",
+      "display_name": "Thomas / Antoine",
+      "role": "finance coopérative et stratégie institutionnelle",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "actor_jeremie",
+      "username": "sim_jeremie",
+      "display_name": "Jérémie Lemoine",
+      "role": "art, performance et mobilisation culturelle",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "actor_aida",
+      "username": "sim_aida",
+      "display_name": "Aïda Éloïse",
+      "role": "éthique, droit, gouvernance et écologie",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "actor_elias",
+      "username": "sim_elias",
+      "display_name": "Elias",
+      "role": "éducation, mathématiques, empathie et interprétation",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "actor_gustave",
+      "username": "sim_gustave",
+      "display_name": "Gustave Leblanc",
+      "role": "mécanismes abstraits et formalisation systémique",
+      "is_ethikos_elite": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "deliberation",
+      "name": "Délibération",
+      "description": "Questions, hypothèses et décisions de simulation."
+    },
+    {
+      "key": "project",
+      "name": "Projet",
+      "description": "Construction et exécution collaborative."
+    },
+    {
+      "key": "learning",
+      "name": "Apprentissage",
+      "description": "Retour d’expérience et transmission."
+    }
+  ],
+  "topics": [
+    {
+      "key": "decision_to_action",
+      "title": "Du choix à l’action",
+      "description": "Comment transformer une décision Konnaxion en tâches traçables sans laisser l’administration redéfinir le mandat ?",
+      "status": "open",
+      "category": "project"
+    },
+    {
+      "key": "bottlenecks",
+      "title": "Bouchons et escalades",
+      "description": "Repérer les tâches sans propriétaire, dépendances bloquées et décisions qui expirent.",
+      "status": "open",
+      "category": "deliberation"
+    }
+  ],
+  "stances": [],
+  "arguments": [],
+  "argument_sources": [],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "actor_simon",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0613",
+          "raw_score": 0.98,
+          "weighted_score": 0.98
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.65,
+          "weighted_score": 0.65
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    },
+    {
+      "actor": "actor_thomas_antoine",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0412",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.85,
+          "weighted_score": 0.85
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    },
+    {
+      "actor": "actor_jeremie",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0215",
+          "raw_score": 0.96,
+          "weighted_score": 0.96
+        },
+        {
+          "domain_code": "0321",
+          "raw_score": 0.72,
+          "weighted_score": 0.72
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    },
+    {
+      "actor": "actor_aida",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "raw_score": 0.94,
+          "weighted_score": 0.94
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.84,
+          "weighted_score": 0.84
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    },
+    {
+      "actor": "actor_elias",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0111",
+          "raw_score": 0.91,
+          "weighted_score": 0.91
+        },
+        {
+          "domain_code": "0541",
+          "raw_score": 0.86,
+          "weighted_score": 0.86
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    },
+    {
+      "actor": "actor_gustave",
+      "rating_visibility": "public",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0613",
+          "raw_score": 0.88,
+          "weighted_score": 0.88
+        },
+        {
+          "domain_code": "0541",
+          "raw_score": 0.9,
+          "weighted_score": 0.9
+        }
+      ],
+      "publication_basis": "Synthetic Konvergence simulation calibration; advisory only and contestable within this World."
+    }
+  ]
+}

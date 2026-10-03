@@ -116,6 +116,14 @@ World selection remains request-scoped navigation and never starts/stops infrast
 
 **Decision:** existing `world_db_scope`, task scope, cache scope and World/Release routing scope remain Konnaxion isolation terminology. Kristal v6's migration from its legacy epistemic `scope` field to `applicability` does not trigger a Konnaxion rename because the concepts are different.
 
+## ADR-WLD-025 — Kristal v7 is additive over the v6 portable-state boundary
+
+**Decision:** Kristal Standard `7.0.0-draft.3.1` is the current ecosystem boundary for Worlds integrations. Existing v6 `kristal_state` remains valid and unchanged; v7 enrollment is registration/orchestration rather than destructive conversion. Portable v7 projections remain v6-compatible and may carry `extensions.kristal_v7`.
+
+## ADR-WLD-026 — Kristall semantics do not become Worlds authority
+
+**Decision:** KQ/KP/KA/KS identities, Subjects, axis types, orientation axes, Surfaces, Mesh paths, semantic resonance and crystallization are Kristall-owned semantic/meta structures. They do not become Konnaxion World/Release identifiers, runtime scope, source assertions or execution authority. Any World-derived projection must preserve Universe/World/exact Release provenance.
+
 ## KX-UNIVERSES-1 decisions
 
 ### ADR-UNI-001 — Universe is a coherence/governance boundary

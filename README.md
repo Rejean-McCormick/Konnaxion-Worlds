@@ -45,6 +45,28 @@ It defaults to `true`. `KONNAXION_WORLDS_STRICT_ROUTING` is not a supported sett
 
 Build/snapshot metadata records `KX-UNIVERSES-1` as the current `architecture_lock`; `KX-WORLDS-1` remains the lower-level World/WorldRelease foundation lock.
 
+## v0.3.6 — Kristal v7 additive ecosystem boundary
+
+Konnaxion Worlds now pins **Kristal Standard 7.0.0-draft.3.1** as the additive meta-orchestration boundary while retaining the unchanged Kristal v6 portable-state contract. The Worlds engine does not become a Kristal/Kristall runtime and does not surrender Universe/World/WorldRelease authority.
+
+Key rules:
+
+- valid v6 `kristal_state` artifacts remain valid and unchanged;
+- v7 portable projections remain v6-compatible and may carry `extensions.kristal_v7`;
+- KQ/KP/KA/KS, Subjects, axes, Surfaces, Mesh and crystallization remain Kristall-owned structures, not World/Release identity or lifecycle state;
+- semantic resonance and Mesh paths are signals/structure, not truth, identity, assertions or execution authority;
+- any World-derived Kristal projection must preserve Universe + World + exact Release provenance;
+- the previous v6 boundary remains an enforced compatibility foundation.
+
+Run both static gates:
+
+```text
+python scripts/check_kristal_v6_boundary.py
+python scripts/check_kristal_v7_boundary.py
+```
+
+See `docs/Technical-Reference/Worlds/23_KRISTAL_V7_BOUNDARY.md` and `KRISTAL_V7_BOUNDARY.json`.
+
 ## v0.3.5 — Kristal v6 ecosystem boundary
 
 Konnaxion Worlds is aligned with **Kristal Standard 6.0.0** and the ecosystem's v6 authority model without becoming a Kristal or Interaction Kernel runtime. The Worlds engine still owns only Universe/World/WorldRelease isolation and lifecycle state.

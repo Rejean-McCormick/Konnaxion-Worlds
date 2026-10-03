@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: konnaxion-worlds
-Version: 0.3.5
+Version: 0.3.6
 Summary: Canonical Konnaxion Universe/World/WorldRelease engine
 Requires-Python: >=3.12
 Requires-Dist: Django<6,>=5.1

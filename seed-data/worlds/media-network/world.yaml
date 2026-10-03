@@ -1,0 +1,24 @@
+world_contract: kx-world-pack/v1
+world_key: media-network
+title: Réseau de plateformes — Visite guidée des traces
+description: 'World de médiation entre publications distribuées et récit interne :
+  plateformes publiques, réactions, provenance et parcours guidés.'
+pack_version: 1.0.0
+requires:
+  ethikos_scenario_schema: ethikos-demo-scenario/v3
+  fixtures:
+  - isced-f
+  host_contracts:
+  - kx-world-personas/v1
+scenarios:
+- scenarios/media-network.json
+metadata:
+  language: fr
+  type: simulation
+  status: seed_ready
+  simulation: true
+  source_authority: Kristal-KingKlown-5.0.0-KONVERGENCE + creator clarification
+  offline_compatible_target: true
+  authority_boundary: World deliberation is advisory unless an explicitly authorized
+    external institution adopts a decision. Orgo execution may not silently redefine
+    Konnaxion decisions.
