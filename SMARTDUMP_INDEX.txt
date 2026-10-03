@@ -1,11 +1,12 @@
 SMART DUMPER INDEX
 ==================
-generated_at: 2026-10-02T19:16:44.792698
+generated_at: 2026-10-03T14:42:20.003470+00:00
 source_root: C:\mycode\Konnaxion\Konnaxion_Worlds
-zip_file: Code_snapshot_Konnaxion_Worlds.zip
+mode: snapshot
+zip_file: Code_snapshot_Konnaxion_Worlds_fixed_20261003.zip
 embedded_index: SMARTDUMP_INDEX.txt
-file_count: 161
-total_bytes: 864115
+file_count: 167
+total_bytes: 882024
 compression: ZIP_DEFLATED level 1
 
 FILES
@@ -13,6 +14,18 @@ FILES
 .env.example	1035 bytes
 .gitignore	266 bytes
 .smartignore	164 bytes
+Konnaxion_World_Manager.pyw	41584 bytes
+PATCH_NOTES_v0.3.1.txt	717 bytes
+PATCH_NOTES_v0.3.2.txt	836 bytes
+PATCH_NOTES_v0.3.3.txt	825 bytes
+PATCH_NOTES_v0.3.4.txt	422 bytes
+PATCH_NOTES_v0.3.5.txt	557 bytes
+PATCH_NOTES_v0.3.6.txt	480 bytes
+README.md	12720 bytes
+SETUP_KONNAXION_WORLDS.ps1	2006 bytes
+SNAPSHOT_INDEX.txt	6450 bytes
+STANDALONE_BOOTSTRAP.md	1440 bytes
+VALIDATE_KONNAXION_WORLDS.ps1	1837 bytes
 backend/konnaxion/worlds/__init__.py	140 bytes
 backend/konnaxion/worlds/admin.py	614 bytes
 backend/konnaxion/worlds/api_views.py	42401 bytes
@@ -69,23 +82,23 @@ backend/konnaxion/worlds/tests/test_health_scale.py	1654 bytes
 backend/konnaxion/worlds/tests/test_multiworld_isolation.py	2703 bytes
 backend/konnaxion/worlds/tests/test_primitives.py	4692 bytes
 backend/konnaxion/worlds/tests/test_seed_packs.py	2988 bytes
-backend/konnaxion/worlds/tests/test_strict_routing.py	3849 bytes
+backend/konnaxion/worlds/tests/test_strict_routing.py	3897 bytes
 backend/konnaxion/worlds/tests/test_universe_packs.py	5729 bytes
 backend/konnaxion/worlds/tests/test_universes.py	4103 bytes
 backend/konnaxion/worlds/tests/test_websocket_scoping.py	2638 bytes
 backend/konnaxion/worlds/urls.py	3823 bytes
-backend/konnaxion_worlds.egg-info/dependency_links.txt	1 bytes
 backend/konnaxion_worlds.egg-info/PKG-INFO	319 bytes
-backend/konnaxion_worlds.egg-info/requires.txt	96 bytes
 backend/konnaxion_worlds.egg-info/SOURCES.txt	2703 bytes
+backend/konnaxion_worlds.egg-info/dependency_links.txt	1 bytes
+backend/konnaxion_worlds.egg-info/requires.txt	96 bytes
 backend/konnaxion_worlds.egg-info/top_level.txt	10 bytes
 backend/pyproject.toml	484 bytes
 backend/requirements-worlds.txt	96 bytes
+backend/seed-data/worlds/README.md	448 bytes
 backend/seed-data/worlds/demo-alpha/scenario.json	1533 bytes
 backend/seed-data/worlds/demo-alpha/world.yaml	278 bytes
 backend/seed-data/worlds/demo-beta/scenario.json	1531 bytes
 backend/seed-data/worlds/demo-beta/world.yaml	276 bytes
-backend/seed-data/worlds/README.md	448 bytes
 backend/seed-data/worlds/uckk-a014/README.md	955 bytes
 backend/seed-data/worlds/uckk-a014/scenarios/uckk-a014.json	11738 bytes
 backend/seed-data/worlds/uckk-a014/world.yaml	1091 bytes
@@ -96,15 +109,8 @@ backend/worlds_config/settings.py	5816 bytes
 backend/worlds_config/urls.py	501 bytes
 backend/worlds_config/wsgi.py	173 bytes
 backend/worlds_manage.py	289 bytes
-docs/status/2026-09-29-universe-pack-runtime-validation.md	3835 bytes
-docs/status/2026-09-30-universe-build-orchestrator-v0.3.1.md	1075 bytes
-docs/status/2026-09-30-universe-build-orchestrator-v0.3.2.md	1082 bytes
-docs/status/2026-09-30-universe-build-orchestrator-v0.3.md	2562 bytes
-docs/status/2026-09-30-world-manager-bootstrap-v0.3.3.md	1070 bytes
-docs/status/2026-09-30-world-manager-host-runtime-v0.3.4.md	792 bytes
-docs/status/2026-10-01-kristal-v6-boundary-v0.3.5.md	1075 bytes
-docs/Technical-Reference/Worlds/00_CANONICAL_SPEC.md	13202 bytes
-docs/Technical-Reference/Worlds/02_GLOSSARY.md	4863 bytes
+docs/Technical-Reference/Worlds/00_CANONICAL_SPEC.md	13439 bytes
+docs/Technical-Reference/Worlds/02_GLOSSARY.md	5533 bytes
 docs/Technical-Reference/Worlds/03_ARCHITECTURE.md	6993 bytes
 docs/Technical-Reference/Worlds/04_DATA_OWNERSHIP_MATRIX.md	4257 bytes
 docs/Technical-Reference/Worlds/05_DATA_MODEL.md	4920 bytes
@@ -117,28 +123,32 @@ docs/Technical-Reference/Worlds/11_WORLD_MANAGER_UI.md	5590 bytes
 docs/Technical-Reference/Worlds/12_SECURITY_AND_FAILURE_MODES.md	4043 bytes
 docs/Technical-Reference/Worlds/13_TEST_AND_ACCEPTANCE_PLAN.md	5343 bytes
 docs/Technical-Reference/Worlds/15_OPERATIONS_RUNBOOK.md	7292 bytes
-docs/Technical-Reference/Worlds/16_AI_LOCK_ANTI_DRIFT.md	7031 bytes
-docs/Technical-Reference/Worlds/17_ADR_REGISTER.md	8434 bytes
+docs/Technical-Reference/Worlds/16_AI_LOCK_ANTI_DRIFT.md	7144 bytes
+docs/Technical-Reference/Worlds/17_ADR_REGISTER.md	9295 bytes
 docs/Technical-Reference/Worlds/18_IMPLEMENTATION_CHECKLIST.md	4436 bytes
 docs/Technical-Reference/Worlds/19_PRODUCTION_SCALE_120_WORLDS.md	5576 bytes
 docs/Technical-Reference/Worlds/20_UNIVERSES.md	11947 bytes
 docs/Technical-Reference/Worlds/21_UNIVERSE_PACKS.md	3957 bytes
 docs/Technical-Reference/Worlds/22_KRISTAL_V6_BOUNDARY.md	4571 bytes
-docs/Technical-Reference/Worlds/AI_LOCK.yaml	10905 bytes
+docs/Technical-Reference/Worlds/23_KRISTAL_V7_BOUNDARY.md	5066 bytes
+docs/Technical-Reference/Worlds/AI_LOCK.yaml	12584 bytes
 docs/Technical-Reference/Worlds/KONNAXION_WORLDS_FULL_SPEC.md	116317 bytes
 docs/Technical-Reference/Worlds/KRISTAL_V6_BOUNDARY.json	1586 bytes
-docs/Technical-Reference/Worlds/WORLD_SYSTEM_AI.instructions.md	3391 bytes
+docs/Technical-Reference/Worlds/KRISTAL_V7_BOUNDARY.json	2320 bytes
+docs/Technical-Reference/Worlds/WORLD_SYSTEM_AI.instructions.md	3556 bytes
+docs/status/2026-09-29-universe-pack-runtime-validation.md	3835 bytes
+docs/status/2026-09-30-universe-build-orchestrator-v0.3.1.md	1075 bytes
+docs/status/2026-09-30-universe-build-orchestrator-v0.3.2.md	1082 bytes
+docs/status/2026-09-30-universe-build-orchestrator-v0.3.md	2562 bytes
+docs/status/2026-09-30-world-manager-bootstrap-v0.3.3.md	1070 bytes
+docs/status/2026-09-30-world-manager-host-runtime-v0.3.4.md	792 bytes
+docs/status/2026-10-01-kristal-v6-boundary-v0.3.5.md	1075 bytes
+docs/status/2026-10-02-kristal-v7-boundary-v0.3.6.md	636 bytes
 examples/universe-pack.example.yaml	660 bytes
 examples/world-pack.example.yaml	676 bytes
 examples/worlds-architecture.mmd	639 bytes
-Konnaxion_World_Manager.pyw	41584 bytes
-PATCH_NOTES_v0.3.1.txt	717 bytes
-PATCH_NOTES_v0.3.2.txt	836 bytes
-PATCH_NOTES_v0.3.3.txt	825 bytes
-PATCH_NOTES_v0.3.4.txt	422 bytes
-PATCH_NOTES_v0.3.5.txt	557 bytes
-README.md	11550 bytes
-scripts/check_kristal_v6_boundary.py	2864 bytes
+scripts/check_kristal_v6_boundary.py	2908 bytes
+scripts/check_kristal_v7_boundary.py	4281 bytes
 scripts/check_repo_boundaries.py	1902 bytes
 seed-data/universes/konvergence-koali/universe.yaml	10868 bytes
 seed-data/worlds/amusement-kreative/scenarios/amusement-kreative.json	9705 bytes
@@ -167,7 +177,3 @@ seed-data/worlds/tech-development/scenarios/tech-development.json	7269 bytes
 seed-data/worlds/tech-development/world.yaml	857 bytes
 seed-data/worlds/uckk/scenarios/uckk.json	9696 bytes
 seed-data/worlds/uckk/world.yaml	815 bytes
-SETUP_KONNAXION_WORLDS.ps1	2006 bytes
-SNAPSHOT_INDEX.txt	6450 bytes
-STANDALONE_BOOTSTRAP.md	1440 bytes
-VALIDATE_KONNAXION_WORLDS.ps1	1698 bytes
