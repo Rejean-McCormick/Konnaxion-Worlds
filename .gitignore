@@ -25,3 +25,26 @@ htmlcov/
 *.bak
 *.bak_*
 *.bak-*
+# kOA engineering overlay: generated/local artifacts
+*.egg-info/
+build/
+dist/
+.konnaxion-worlds-check.sqlite3
+.konnaxion-worlds-check.sqlite3-*
+
+# Additional local/test patterns
+.pytest-tmp/
+.coverage.*
+.cache/
+*.temp
+*.bak.*
+*.backup
+*.backup-*
+*.backup_*
+*.swo
+*~
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
