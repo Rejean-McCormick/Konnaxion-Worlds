@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fast:
+    name: Fast validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      DJANGO_SETTINGS_MODULE: worlds_config.settings
+      PYTHONPATH: backend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+            backend/requirements-worlds.txt
+            backend/pyproject.toml
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r backend/requirements-worlds.txt pytest pytest-django
+
+      - name: Compile Python
+        run: python -m compileall -q backend scripts Konnaxion_World_Manager.pyw
+
+      - name: Repository boundary
+        run: python scripts/check_repo_boundaries.py
+
+      - name: Kristal v6 boundary
+        run: python scripts/check_kristal_v6_boundary.py
+
+      - name: Kristal v7 boundary
+        run: python scripts/check_kristal_v7_boundary.py
+
+      - name: Tests
+        run: python -m pytest -q
