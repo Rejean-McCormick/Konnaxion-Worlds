@@ -139,81 +139,92 @@ relations:
     managed_by: kx-universe-pack/v1
 - source: member-thomas-antoine
   target: desjardins
-  type: contributes_to
+  type: coordinates
   title: Expertise finance coopérative
   description: ''
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: contributes_to
 - source: member-simon
   target: tech-development
-  type: contributes_to
+  type: coordinates
   title: Architecture et routage
   description: ''
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: contributes_to
 - source: member-simon
   target: orgo-internal-ops
-  type: contributes_to
+  type: coordinates
   title: Exécution opérationnelle
   description: ''
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: contributes_to
 - source: member-jeremie
   target: amusement-kreative
-  type: contributes_to
+  type: coordinates
   title: Art et performance
   description: ''
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: contributes_to
 - source: member-aida
   target: kristal-farms
-  type: contributes_to
+  type: coordinates
   title: Éthique et gouvernance
   description: ''
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: contributes_to
 - source: member-aida
   target: orgo-internal-ops
-  type: reviews
+  type: constrains
   title: Garde-fous et contestation
   description: ''
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: reviews
 - source: member-elias
   target: uckk
-  type: contributes_to
+  type: coordinates
   title: Éducation et interprétation
   description: ''
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: contributes_to
 - source: tech-development
   target: orgo-internal-ops
-  type: implements
+  type: coordinates
   title: Les décisions techniques deviennent travail opérationnel
   description: ''
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: implements
 - source: desjardins
   target: orgo-internal-ops
-  type: requests_execution
+  type: coordinates
   title: Décisions financières approuvées à exécuter
   description: ''
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: requests_execution
 - source: kristal-farms
   target: orgo-internal-ops
-  type: requests_execution
+  type: coordinates
   title: Décisions de projet approuvées à exécuter
   description: ''
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: requests_execution
 - source: amusement-kreative
   target: orgo-events
-  type: requests_execution
+  type: coordinates
   title: Performances et publications deviennent événements
   description: ''
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: requests_execution
 - source: orgo-events
   target: media-network
   type: publishes_to
@@ -251,18 +262,20 @@ relations:
     managed_by: kx-universe-pack/v1
 - source: desjardins
   target: kristal-farms
-  type: supports
+  type: coordinates
   title: Financement coopératif des communs
   description: Relation de simulation, non engagement réel.
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: supports
 - source: kristal-farms
   target: tech-development
-  type: hosts
+  type: coordinates
   title: Infrastructure locale pour les outils
   description: Relation de simulation.
   metadata:
     managed_by: kx-universe-pack/v1
+    semantic_relation: hosts
 subscriptions: []
 metadata:
   simulation: true
