@@ -1,0 +1,197 @@
+{
+  "entries": [
+    {
+      "id": "FP-K-COST-T4",
+      "intent": "Référentiel coût agrégé trimestriel",
+      "owning_world": "Administration",
+      "master_source_type": "ERP/Snowflake finance",
+      "revision_cadence": "Trimestriel ou révocation",
+      "scenario_refs": [
+        "FP-S01",
+        "FP-S08"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-cost-t4",
+      "availability": "registry_entry_with_embedded_demo_excerpt",
+      "published_commitment": null,
+      "synthetic": true,
+      "embedded_seed": {
+        "kind": "synthetic_demo_excerpt",
+        "document_markdown": "# Snapshot financier fictif FP-COST-2026-Q3\n\nOrigine simulée : ERP / Snowflake; devise CAD; validité de démonstration jusqu'au 2026-12-31. Les valeurs ne sont pas des prix réels et n'engagent aucun fournisseur.\n\n| Variante | Composition | Base CAD | Délai fictif | Réserve |\n|---|---|---:|---:|---|\n| A | Acier standard | 18 500 | 36 jours | Faible |\n| B | Acier renforcé | 21 400 | 29 jours | Moyen |\n| C | Aluminium hybride | 23 900 | 25 jours | Validation qualité requise |\n\nL'agent peut comparer les variantes après contrôle de la fraîcheur, des hypothèses et du périmètre de prix. Une marge, un engagement client ou une commande exigent une décision et une autorisation propres à l'hôte. La publication d'une révision de coûts reprend un identifiant de source, un horodatage d'extraction, un vérificateur et un engagement calculable.\n",
+        "content_sha256": "70e7f002af395cfc10e0aed22017b6923c9090587db66cd921ff0fa77e41d02f",
+        "source_claim": "authored_demo_content",
+        "complete_external_manual": false
+      }
+    },
+    {
+      "id": "FP-K-PRN17",
+      "intent": "Taxonomie + diagnostic causal laser/fuser",
+      "owning_world": "Électromécanique",
+      "master_source_type": "Manuel de fiction / TI",
+      "revision_cadence": "Après revue du cas",
+      "scenario_refs": [
+        "FP-S02",
+        "FP-S05"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-prn17",
+      "availability": "registry_entry_with_embedded_demo_excerpt",
+      "published_commitment": null,
+      "synthetic": true,
+      "embedded_seed": {
+        "kind": "synthetic_demo_excerpt",
+        "document_markdown": "# Imprimante laser PRN-17 — guide de diagnostic fictif (extrait pédagogique)\n\nDocument synthétique **SIM-2026-01**. Ne constitue pas un manuel constructeur. Aucun modèle réel ni paramètre de sécurité machine ne peut être inféré de ce contenu.\n\n## Symptôme : le toner n'adhère pas\n\n1. Identifier l'équipement par son étiquette locale PRN-17, noter le papier utilisé et conserver les messages affichés. 2. Interrompre le dépannage si chaleur anormale, odeur, bruit ou risque électrique; confier l'intervention à une personne habilitée. 3. Vérifier la compatibilité du support et les instructions du fabricant authentifié. 4. Faire vérifier le module de fusion (fuser) seulement selon la procédure agréée. 5. Documenter l'hypothèse et les résultats, sans attribuer à une cause non vérifiée le statut de diagnostic certain.\n\n## Savoir terrain transmis\n\nUn ancien technicien a noté qu'un réglage « carton » avait amélioré l'adhésion du toner sur une imprimante de démonstration. Cette **observation n'est pas une consigne technique validée** : modifier la température du fuser peut poser un risque ou endommager le matériel. Référer au manuel constructeur du modèle réel et aux responsables sécurité avant un essai.\n\n## Remplacement éventuel\n\nLa pièce simulée FU-17-LSR et le dossier FP-REQ-FU17-001 peuvent être proposés dans Orgo. « Commander » produit une intention d'achat, non un bon de commande externe. Le service achat vérifie les références, les coûts, la délégation et les doubles commandes; seule une preuve ERP valide établit l'achat. La décision de remplacement suit une validation technique, pas cette note seule.\n",
+        "content_sha256": "77aa3818c244daec49e15f0f737fcf240edbdc7bea413be8e86294e20f315fbd",
+        "source_claim": "authored_demo_content",
+        "complete_external_manual": false
+      }
+    },
+    {
+      "id": "FP-K-SW04",
+      "intent": "Hypothèses qualité & chronologie atelier",
+      "owning_world": "Électromécanique",
+      "master_source_type": "Qualité/atelier",
+      "revision_cadence": "À confirmation qualité",
+      "scenario_refs": [
+        "FP-S03",
+        "FP-S11"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-sw04",
+      "availability": "registry_entry_only",
+      "published_commitment": null,
+      "synthetic": true
+    },
+    {
+      "id": "FP-K-MAINT-CR12",
+      "intent": "Procédure et dépendances d’arrêt",
+      "owning_world": "Électromécanique",
+      "master_source_type": "Maintenance/SST",
+      "revision_cadence": "Chaque rev de procédure",
+      "scenario_refs": [
+        "FP-S04"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-maint-cr12",
+      "availability": "registry_entry_only",
+      "published_commitment": null,
+      "synthetic": true
+    },
+    {
+      "id": "FP-K-ATLAS47",
+      "intent": "Dossier décision et carte preuves",
+      "owning_world": "Direction",
+      "master_source_type": "Vente/Planification",
+      "revision_cadence": "Événement majeur",
+      "scenario_refs": [
+        "FP-S01",
+        "FP-S18"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-atlas47",
+      "availability": "registry_entry_only",
+      "published_commitment": null,
+      "synthetic": true
+    },
+    {
+      "id": "FP-K-CHANGE-REV",
+      "intent": "Lignée des révisions CAD / BOM",
+      "owning_world": "Électromécanique",
+      "master_source_type": "GED/CAD/qualité",
+      "revision_cadence": "À rev approuvée",
+      "scenario_refs": [
+        "FP-S09"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-change-rev",
+      "availability": "registry_entry_only",
+      "published_commitment": null,
+      "synthetic": true
+    },
+    {
+      "id": "FP-K-EXPERTISE",
+      "intent": "Carte de compétences consenties",
+      "owning_world": "Direction",
+      "master_source_type": "Contributeurs/relecteurs",
+      "revision_cadence": "Selon accord et échéance",
+      "scenario_refs": [
+        "FP-S05",
+        "FP-S12"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-expertise",
+      "availability": "registry_entry_only",
+      "published_commitment": null,
+      "synthetic": true
+    },
+    {
+      "id": "FP-K-SUPPLY",
+      "intent": "Sources achats et continuité",
+      "owning_world": "Administration",
+      "master_source_type": "Achats/ERP",
+      "revision_cadence": "Mensuelle ou incident",
+      "scenario_refs": [
+        "FP-S08"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-supply",
+      "availability": "registry_entry_only",
+      "published_commitment": null,
+      "synthetic": true
+    },
+    {
+      "id": "FP-K-INCIDENT-CYBER",
+      "intent": "Chronologie d’incident expurgée",
+      "owning_world": "Électromécanique",
+      "master_source_type": "Sécurité TI",
+      "revision_cadence": "Incident et RETEX",
+      "scenario_refs": [
+        "FP-S10"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-incident-cyber",
+      "availability": "registry_entry_only",
+      "published_commitment": null,
+      "synthetic": true
+    },
+    {
+      "id": "FP-K-RETEX",
+      "intent": "Leçons et effets J30/J90",
+      "owning_world": "Direction",
+      "master_source_type": "Propriétaires des dossiers",
+      "revision_cadence": "Clôture vérifiée et revue",
+      "scenario_refs": [
+        "FP-S11",
+        "FP-S17",
+        "FP-S18"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-retex",
+      "availability": "registry_entry_only",
+      "published_commitment": null,
+      "synthetic": true
+    },
+    {
+      "id": "FP-K-RH-AGG",
+      "intent": "Mesures de travail agrégées",
+      "owning_world": "Direction",
+      "master_source_type": "RH/paie",
+      "revision_cadence": "Mensuelle approuvée",
+      "scenario_refs": [
+        "FP-S06",
+        "FP-S15"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-rh-agg",
+      "availability": "registry_entry_only",
+      "published_commitment": null,
+      "synthetic": true
+    },
+    {
+      "id": "FP-K-REFERENCES",
+      "intent": "Référentiel de manuels / pièces",
+      "owning_world": "Administration",
+      "master_source_type": "Responsables du référentiel",
+      "revision_cadence": "À vérification documentaire",
+      "scenario_refs": [
+        "FP-S02",
+        "FP-S04"
+      ],
+      "state_ref": "urn:kristal:state:fakeplant:fp-k-references",
+      "availability": "registry_entry_only",
+      "published_commitment": null,
+      "synthetic": true
+    }
+  ],
+  "composite_rule": "registry_only_no_independent_state_merging",
+  "registry_completeness": "Two knowledge entries have embedded fictional excerpts; ten remain registry-only. This is not a 12-Kristal self-contained publication."
+}

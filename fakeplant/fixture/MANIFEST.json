@@ -1,0 +1,15 @@
+{
+  "schema": "fakeplant.fixture.projection.v1",
+  "canonical": "FakePlant Organisation Portable v1.1",
+  "sha256": {
+    "acces-worlds.json": "b80a8f6055fdc532bb60ad89758abe5b77cef7aa30bfb04501b2c748f11dffe0",
+    "employes.json": "2269f676feaa0aef8e775034308ccffdcbf94cc71dd619167a2c1d5b54bae662",
+    "ethikos.json": "d953a7d52ba0d7e9a1e44ebf11d60a2efbeebe3fa571499aa5a99089d09b1904",
+    "keenkonnect.json": "1c26d598aeb30297ba298b76e8b147894fcb207fd34e3d3af96309ae1222d0cc",
+    "kristals-lies.json": "2f011e99c7381376ec28f6162bf8b5b71125ed4994336a33d028ac413e56791e",
+    "organigramme.json": "383b5c29479ad98de5ed969b12311a6dc179d7759cd972a051cf840c4dd1a70c",
+    "orgo.json": "c5e0ff9d2c3a222e3bd2204a5d52a3f9bbac2d46d7e8fd57ab2e4bf023f44004",
+    "scenario-e2e.json": "2cbd444ec4ece5c7d13a90ff9c0fcaa8bbcc37ebc7e173340e1af4df519607e1",
+    "traces-signatures.json": "85933e7920608c98e099dd687ca4661786f46231b7b8c870339942a7ce0c9cb9"
+  }
+}

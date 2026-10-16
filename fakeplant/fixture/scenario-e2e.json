@@ -1,0 +1,778 @@
+{
+  "scenarios": [
+    {
+      "id": "FP-S01",
+      "title": "FP-S01 — Coûts trimestriels : l’agent choisit la bonne combinaison",
+      "source_document": "04_SCENARIOS/FP-S01.md",
+      "narrative_markdown": "# FP-S01 — Coûts trimestriels : l’agent choisit la bonne combinaison\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Administration, Vente, Direction, Électromécanique. **Corrélation canonique :** `fp.s01.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Victor demande « Peut-on livrer Atlas-47 sept jours plus tôt avec la meilleure marge raisonnable ? ». Le dernier tarif matière d’un tableur du service des ventes diffère du dernier snapshot financier autorisé. **Acteurs.** Victor, Amélie, Salomé, agent FP-Assistant et Mireille. **Mondes.** Administration → Vente, PR, marketing → Direction, Management et HR → Électromécanique et informatique. **Objets.** Kristal `FP-K-COST-T4`, projet keenKonnect `FP-P-ATLAS47`, proposition `FP-QUOTE-47-R2`, dossier Orgo `FP-O-ATLAS47`.\n\n**Parcours.** (1) Amélie publie une **projection trimestrielle approuvée** issue des exports ERP/Snowflake, limitée à des paramètres utiles aux soumissions : matériaux, opération, sous-traitance, énergie, incertitude, devise CAD, validité, conditions contractuelles. (2) Le Kristal garde le *source_id*, la version, la date d’extraction, l’approbation et les exclusions. (3) L’agent récupère la projection autorisée et les contraintes de capacités/risques; il calcule trois combinaisons et expose hypothèses et provenance. (4) Victor annote l’espace de projet. (5) Une délibération Ethikos réunit coût, délai, pénalités, sécurité, service client et charge humaine. (6) Mireille choisit une option et enregistre son mandat. (7) Orgo crée les tâches et demande confirmations aux systèmes propriétaires. (8) Le résultat client est publié dans le World vente après retour effectif, et les comparaisons sont conservées pour la prochaine période.\n\n**Moment démo.** L’utilisateur modifie le paramètre « prix de l’acier +8 % » : l’agent réordonne les options **sans réécrire le Kristal validé**. S’il manque le prix d’une pièce ou si le snapshot a plus de 90 jours, l’agent montre *indéterminé / approbation nécessaire*, au lieu de choisir une combinaison faussement optimale. **Indicateurs.** Temps d’assemblage d’une estimation, erreurs de reprise, nombre de demandes de clarification, proportion d’options avec sources complètes. **Références :** M-SCN-046, M-SCN-050, M-SCN-056; C-SCN-023, C-SCN-026.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** snapshot approuvé T4; devis R1; contraintes Atlas-47.\n- **Transitions observables :** cost_summary→options→mandate→Orgo→réponse ERP.\n- **Branches négatives à prévoir :** expiration snapshot; matière manquante; vote non mandaté.\n- **Invariant d'acceptation :** rejeu de recommandation cohérente; provenance par option; pas de commande implicite.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s01"
+    },
+    {
+      "id": "FP-S02",
+      "title": "FP-S02 — Imprimante PRN-17 : dépannage causal et demande en un clic",
+      "source_document": "04_SCENARIOS/FP-S02.md",
+      "narrative_markdown": "# FP-S02 — Imprimante PRN-17 : dépannage causal et demande en un clic\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Électromécanique, Administration. **Corrélation canonique :** `fp.s02.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Les pages sortent avec du toner qui s’efface au doigt. **Acteurs.** Nadia, Luc, Amélie (si seuil), agent interne et approvisionnement. **Mondes.** Électromécanique et informatique → Administration; retour vers Espace discussion pour une astuce validée. **Objets.** Kristal `FP-K-PRN17`, arbre de symptômes, source manuel `DOC-PRN17-M01`, note `NOTE-LUC-08`, Orgo `CASE-PRN17-021`, demande `PART-FU17`, intégration `ACH-204`.\n\n**Parcours visuel exact.** `Konstellation → Équipement de bureau → Imprimante → Laser → Dépannage → Encre ne tient pas → Fuser / unité de fusion`. Le lecteur peut alterner « parcours », « preuve » et « historique ». Le Kristal présente : causes alternatives, méthode de diagnostic compatible avec le modèle, version du manuel et note contextualisée de Luc. La note rapporte qu’un **réglage constructeur de type média « carton »** a pu améliorer la fixation de toner lors d’un cas antérieur sur du papier compatible; une pastille « observation historique — à vérifier » le distingue d’une instruction sûre et universelle. Le technicien ne touche pas au fuser chaud, n’ajuste pas de température hors procédure et suit les limites du fabricant.\n\n**Action.** Après validation que le fuser est à remplacer, le bouton « Demander le fuser » produit **une demande**, pas une commande irréversible : catégorie, matériel, série fictive, quantité, justification, source, emplacement et centre de coûts sont préremplis. Orgo admet la demande et crée une `IntegrationOperation`; l’adaptateur vers FP-Assistant/outil d’achats transmet une requête idempotente. Si budget + seuil + fournisseur autorisent l’automatique, l’outil d’achats peut confirmer l’ordre; sinon Thomas ou Amélie valide. Retour de receipt, ETA, référence d’achat et changement de statut visible à Nadia. Une fois remplacé, Nadia ajoute diagnostic final et résultat; Luc confirme ou nuance sa note dans le Kristal suivant.\n\n**Variantes de panne.** Manuel absent → on n’invente aucune instruction; prix périmé → on demande un devis; outil achats indisponible → Orgo affiche *à reprendre*, jamais *commandé*; erreur de pièce → demande bloquée. **Effet WOW.** Un clic remplace six messages et trois copiés-collés, **sans abolir les contrôles**. **Références :** M-SCN-017, M-SCN-070, M-SCN-096, M-SCN-119; C-SCN-009, C-SCN-034.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** PRN-17; manuel rev M01; note Luc; catalogue FU-17.\n- **Transitions observables :** symptôme→Kristal→Konstellation→Orgo requête→agent→achats→receipt.\n- **Branches négatives à prévoir :** SKU erroné; doublon; pièce non compatible; achat offline.\n- **Invariant d'acceptation :** même corrélation du clic au reçu; une seule requête admissible.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s02"
+    },
+    {
+      "id": "FP-S03",
+      "title": "FP-S03 — Défaut intermittent SW-04 : le quart de nuit change le diagnostic",
+      "source_document": "04_SCENARIOS/FP-S03.md",
+      "narrative_markdown": "# FP-S03 — Défaut intermittent SW-04 : le quart de nuit change le diagnostic\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Électromécanique, Espace discussion, Direction. **Corrélation canonique :** `fp.s03.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Trois semaines après fabrication, une petite série présente un défaut récurrent qui n’apparaissait pas aux contrôles habituels. **Acteurs.** Karim, Salomé, deux opérateurs fictifs, responsable maintenance, directrice. **Mondes.** Électromécanique et informatique → Espace discussion → Direction. **Parcours.** Un signal d’écart qualité est reçu par Orgo **en référence** au système qualité; l’équipe relie chronologie d’atelier, fournisseur du consommable, lot L-882, version de l’instruction, relevé environnemental et observations humaines dans un Kristal de diagnostic causal. Konstellation expose « hypothèses », « faits », « éléments contradictoires », « révisions » et « cause non encore démontrée ». Un message du quart de nuit — un changement de consommable à 01 h 12 — est qualifié et cité. Orgo assigne des analyses distinctes, attend des résultats qualité et bloque la clôture tant que la validation du correctif n’est pas observée sur une période définie. La capacité projet Atlas-47 est recalculée **seulement** après publication d’un risque vérifié.\n\n**À ne pas simuler comme vrai.** Ne pas inventer la validation d’une soudure structurelle ou prescrire de paramètres de soudage. **WOW.** Un indice humain devient un signal vérifiable au lieu d’être noyé dans les fichiers. **Références :** M-SCN-004, M-SCN-092, M-SCN-103; C-SCN-006, C-SCN-007, C-SCN-030.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** signal SW-04; lot L-882; témoignage de Mina.\n- **Transitions observables :** observations→qualification qualité→risque publié→plan révisé.\n- **Branches négatives à prévoir :** source non qualifiée; retour qualité tardif.\n- **Invariant d'acceptation :** Atlas-47 inchangé jusqu’à vérification; relecture de preuve.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s03"
+    },
+    {
+      "id": "FP-S04",
+      "title": "FP-S04 — Pièce critique CR-12 : planifier sans immobiliser la production",
+      "source_document": "04_SCENARIOS/FP-S04.md",
+      "narrative_markdown": "# FP-S04 — Pièce critique CR-12 : planifier sans immobiliser la production\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Électromécanique, Administration, Direction. **Corrélation canonique :** `fp.s04.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Un roulement du pont roulant CR-12 doit être changé, mais le prochain lot Atlas-47 doit traverser cette zone. **Acteurs.** Salomé, maintenance, SST, approvisionnement, direction. **Mondes.** Électromécanique et informatique, Administration, Direction. **Parcours.** Konstellation présente un graphe **préconditions → dépendances → validations → retour arrière**, élaboré à partir de procédures approuvées. Une équipe keenKonnect prépare le changement et les justificatifs; Orgo prend en charge la fenêtre, les tâches, l’acquittement des prérequis, l’autorisation de consignation par les responsables et le plan de reprise. Deux options de pièce sont comparées à partir du catalogue d’achat et du snapshot de coûts autorisé. La procédure de sûreté et la remise en service restent du ressort des personnes et des systèmes compétents. Chaque preuve de fin rejoint le dossier sans écraser l’historique.\n\n**WOW.** On ne mesure pas seulement le temps pour changer la pièce : on voit pourquoi le changement n’a pas créé d’arrêt secondaire. **Références :** M-SCN-062, M-SCN-070, M-SCN-075; C-SCN-008, C-SCN-026.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** machine CR-12; calendrier; prérequis SST.\n- **Transitions observables :** fenêtre→plan collab→Orgo tâches→validation SST→preuve.\n- **Branches négatives à prévoir :** précondition absente; pièce non disponible.\n- **Invariant d'acceptation :** interdit de déclarer remise en service sans validation humaine.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s04"
+    },
+    {
+      "id": "FP-S05",
+      "title": "FP-S05 — Luc part vendredi : faire passer l’expertise plutôt que les fichiers",
+      "source_document": "04_SCENARIOS/FP-S05.md",
+      "narrative_markdown": "# FP-S05 — Luc part vendredi : faire passer l’expertise plutôt que les fichiers\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Direction/HR, Électromécanique, Espace discussion. **Corrélation canonique :** `fp.s05.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Luc quitte après vingt-sept ans; cinquante cas rares ne sont documentés qu’en courriels et cahiers. **Acteurs.** Luc, Nadia, RH, maintenance et validation qualité. **Mondes.** Électromécanique et informatique, Direction, Espace discussion. **Parcours.** KeenKonnect héberge un projet de passation, des ressources et les questions des collègues. Luc dépose 12 cas de départ, chacun structuré en **signal / indices / hypothèses / contraintes / gestes autorisés / résultat / preuve / exceptions / limite**. Arketype suggère `diagnostic-causal + registre-evenementiel + procedure-protocole`; le concepteur publie des Kristals versionnés, pas une simple transcription. Les relecteurs indiquent *confirmé*, *contredit* ou *à vérifier*. Konstellation permet à Nadia de suivre le raisonnement dans le cas PRN-17. Orgo attribue une obligation de vérification et une date pour les notes les plus risquées. RH suit le progrès **agrégé** de passation, sans publier le dossier personnel de Luc.\n\n**WOW.** On retrouve le pourquoi d’une pratique et qui l’a validée après le départ de son auteur. **Références :** M-SCN-017, M-SCN-018, M-SCN-096, M-SCN-111; C-SCN-009, C-SCN-012.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** 12 cas Luc; relecteurs; marqueurs de fiabilité.\n- **Transitions observables :** capture→évaluation→Kristal rev→recherche→retour terrain.\n- **Branches négatives à prévoir :** note contredite; auteur parti; instruction expirée.\n- **Invariant d'acceptation :** un cas attribué, sourcé, corrigible, révisable.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s05"
+    },
+    {
+      "id": "FP-S06",
+      "title": "FP-S06 — Consultation sur les quarts : participation sans fausse démocratie",
+      "source_document": "04_SCENARIOS/FP-S06.md",
+      "narrative_markdown": "# FP-S06 — Consultation sur les quarts : participation sans fausse démocratie\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Direction/HR, Espace discussion, Électromécanique. **Corrélation canonique :** `fp.s06.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Atlas-47 pourrait exiger deux samedis volontaires ou un décalage de livraison. **Acteurs.** Mireille, Éliane, chefs d’équipe, représentants du personnel et collaborateurs simulés. **Mondes.** Direction, Management et HR → Espace discussion → Électromécanique et informatique. **Parcours.** Ethikos présente trois options et leurs effets attendus : salaire et volontariat, santé/sécurité, coûts, délai. Korum reçoit arguments et sources; Konsultations recueille des avis ou votes **bruts**; EkoH peut fournir, si activé et expliqué, une lecture contextuelle d’expertise sans effacer le vote brut. Une décision est enregistrée avec mandat, limites et raisons; elle ne prétend pas remplacer la convention collective, les exigences légales ni les approbations RH. Orgo diffuse uniquement les tâches admises et suit les réponses, sans révéler qui a exprimé un avis individuel à un gestionnaire non autorisé.\n\n**WOW.** Deux résultats visibles — participation brute et lecture facultative —, puis une décision traçable et des engagements réellement suivis. **Références :** M-SCN-051, M-SCN-056, M-SCN-107; C-SCN-024, C-SCN-025, C-SCN-027.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** options horaires; consultation; fenêtres opérationnelles.\n- **Transitions observables :** arguments→avis bruts→mandat→opérations RH→J30.\n- **Branches négatives à prévoir :** avis non représentatif; absence de mandat.\n- **Invariant d'acceptation :** statistiques d’avis séparées de la décision; consentement.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s06"
+    },
+    {
+      "id": "FP-S07",
+      "title": "FP-S07 — Client impatient : communiquer ce qui est vrai, sans exposer l’usine",
+      "source_document": "04_SCENARIOS/FP-S07.md",
+      "narrative_markdown": "# FP-S07 — Client impatient : communiquer ce qui est vrai, sans exposer l’usine\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Vente, Direction, Qualité. **Corrélation canonique :** `fp.s07.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Le client demande à midi si son lot partira vendredi. **Acteurs.** Victor, Farah, Mireille et Salomé. **Mondes.** Vente, PR, marketing, Direction, Électromécanique. **Parcours.** L’offre Atlas-47 version R2 est dans keenKonnect avec la matrice de contraintes et les pièces sources accessibles aux rôles adéquats. Le statut d’atelier provient du système propriétaire/Orgo, pas d’une déclaration non confirmée. Farah compose trois messages autorisés : interne technique, commercial client et information générale. Une publication de type `approved-delivery-position/v1` transporte uniquement les conclusions et dates valides. L’agent IA aide à expliquer les raisons mais refuse de présenter comme acquise une mesure qualité ouverte. Les versions précédentes ne disparaissent pas : elles sont marquées supplantées et liées au fondement de leur remplacement.\n\n**WOW.** Une communication simple permet de remonter à la version de décision dont elle découle, sans fuite de détails confidentiels. **Références :** M-SCN-107, M-SCN-113, M-SCN-120; C-SCN-006, C-SCN-025.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** proposition client; risques qualifiés; message R2.\n- **Transitions observables :** risque approuvé→position officielle→publication client→accusé.\n- **Branches négatives à prévoir :** rumeur non qualifiée; version antérieure publiée.\n- **Invariant d'acceptation :** aucune information qualité confidentielle fuitée.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s07"
+    },
+    {
+      "id": "FP-S08",
+      "title": "FP-S08 — Fournisseur unique : payer moins ou protéger la continuité ?",
+      "source_document": "04_SCENARIOS/FP-S08.md",
+      "narrative_markdown": "# FP-S08 — Fournisseur unique : payer moins ou protéger la continuité ?\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Administration, Électromécanique, Direction. **Corrélation canonique :** `fp.s08.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Un fournisseur propose une remise sur une pièce critique, mais aucune solution de relève n’est qualifiée. **Acteurs.** Thomas, Amélie, Salomé et Mireille. **Mondes.** Administration, Direction, Électromécanique. **Parcours.** L’agent prépare un tableau *prix/stock/délai/risque/conditions*, avec chaque entrée attribuée à la bonne source (ERP, catalogue fournisseur, historique Orgo, Kristal de qualification). Ethikos expose les objections à chacune des options, sans convertir un score en décision automatique. La direction explicite le risque accepté et la durée du mandat. Orgo ouvre le dossier d’homologation de relève; le système d’achats reçoit seulement l’instruction validée. Au trimestre suivant, le snapshot de coûts est actualisé; les comparaisons historiques demeurent lisibles avec leur époque de validité.\n\n**WOW.** Le gain est dans la **raison attribuable** au choix, pas simplement dans un classement AI. **Références :** M-SCN-046, M-SCN-050; C-SCN-023, C-SCN-026.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** fournisseurs A/B; coût T4; continuité.\n- **Transitions observables :** comparatif→arbitrage→préqualification→décision achat.\n- **Branches négatives à prévoir :** fournisseur non certifié; coût manquant.\n- **Invariant d'acceptation :** option sélectionnée avec réserves, aucun achat sans mandat.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s08"
+    },
+    {
+      "id": "FP-S09",
+      "title": "FP-S09 — Renseignements qualité : une révision de dessin a-t-elle tout changé ?",
+      "source_document": "04_SCENARIOS/FP-S09.md",
+      "narrative_markdown": "# FP-S09 — Renseignements qualité : une révision de dessin a-t-elle tout changé ?\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Électromécanique, Vente, Qualité. **Corrélation canonique :** `fp.s09.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Un écart observé sur le chantier semble contredire le plan de fabrication R7. **Acteurs.** Ingénierie, qualité, ventes, client simulé. **Mondes.** Électromécanique, Vente, Direction. **Parcours.** Les systèmes CAD/BIM et la GED conservent dessins et autorité sur la révision; le Kristal n’expose que les références approuvées, identités de lot, demandes de changement, raisons et liens de provenance. Dans Konstellation, la vue « évolution » distingue R6, R7, l’approbation, le lot concerné et les hypothèses concurrentes. Orgo assigne la vérification documentaire et l’analyse technique. La décision d’accepter, retoucher ou remplacer la pièce revient exclusivement aux rôles et systèmes qualité/ingénierie compétents; la communication client est dérivée d’une publication autorisée.\n\n**WOW.** Reconstituer **qui savait quoi à quelle version** sans prétendre remplacer la GED. **Références :** M-SCN-008, M-SCN-100, M-SCN-101; C-SCN-023, C-SCN-034.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** révisions plan CAD; lot et BOM; impact.\n- **Transitions observables :** révision→qualification→avis impact→devis/atelier.\n- **Branches négatives à prévoir :** rev non signée; fichier périmé.\n- **Invariant d'acceptation :** chaîne de provenance affichée; modifications non appliquées sans validation.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s09"
+    },
+    {
+      "id": "FP-S10",
+      "title": "FP-S10 — Cyberincident un mardi : six équipes, une situation gouvernée",
+      "source_document": "04_SCENARIOS/FP-S10.md",
+      "narrative_markdown": "# FP-S10 — Cyberincident un mardi : six équipes, une situation gouvernée\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Électromécanique/TI, Direction, Communication. **Corrélation canonique :** `fp.s10.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Un compte externe envoie des factures suspectes, puis des connexions anormales apparaissent. **Acteurs.** TI, finances, direction, production, ventes et communications. **Mondes.** Tous sauf Activités sociales au début; Espace discussion filtré. **Parcours.** Un signal ITSM/SIEM synthétique ouvre un Case Orgo; les observations sont conservées avec leur horodatage, leur portée et leur niveau de confiance. Le Kristal reconstruit une chronologie de ce qui était **connu à l’instant T**, en distinguant le constat rétrospectif. Trois audiences disposent de vues différentes : équipe cyber restreinte, direction synthétique et communiqué client approuvé. Orgo distribue actions et responsabilités; les systèmes de sécurité demeurent seuls aptes à isoler les accès selon leurs politiques. Après l’incident, un scénario reproductible refait jouer aux équipes les décisions avec information partielle.\n\n**WOW.** Le spectateur comprend la différence entre un message transmis et un message compris et admis dans une situation d’urgence. **Références :** M-SCN-020, M-SCN-087, M-SCN-091; C-SCN-005, C-SCN-006, C-SCN-029.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** alerte cyber; faits datés; plans de crise.\n- **Transitions observables :** signal→triage→cases/équipes→position expurgée→retour.\n- **Branches négatives à prévoir :** fausses alertes; accès indisponible.\n- **Invariant d'acceptation :** pas de diffusion d’instructions offensives ou secrets; timeline révisable.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s10"
+    },
+    {
+      "id": "FP-S11",
+      "title": "FP-S11 — Audit : la même non-conformité sous trois noms",
+      "source_document": "04_SCENARIOS/FP-S11.md",
+      "narrative_markdown": "# FP-S11 — Audit : la même non-conformité sous trois noms\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Qualité, Direction, Espace discussion. **Corrélation canonique :** `fp.s11.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Un nouvel audit constate une répétition du défaut SW-04, désormais décrit dans un autre vocabulaire. **Acteurs.** Qualité, maintenance, direction. **Mondes.** Électromécanique, Direction, Administration pour coût du défaut. **Parcours.** La constellation causale regroupe des signaux aux intitulés distincts si des preuves justifient la même famille, sans fusionner leurs identifiants maîtres. Un nouveau cas Orgo fait apparaître les actions passées, les dates de fermeture et **les effets retardés**. Le comité Ethikos débat d’une mesure structurelle versus plusieurs correctifs ponctuels; la direction choisit et signe. Le cycle de vérification à J30/J90 est assigné dans Orgo. Le Kristal devient le registre des hypothèses et résultats, y compris celles qui n’ont pas fonctionné.\n\n**WOW.** Un rapport d’audit ne peut plus se déclarer « résolu » uniquement parce qu’on a renommé la cause. **Références :** M-SCN-092, M-SCN-101, M-SCN-103; C-SCN-028, C-SCN-030.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** constats récurrents; catégories anciennes.\n- **Transitions observables :** normalisation→graphe des causes→suivi J30.\n- **Branches négatives à prévoir :** faux rapprochement; source différente.\n- **Invariant d'acceptation :** auditeur remonte chaque source et chaque qualification.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s11"
+    },
+    {
+      "id": "FP-S12",
+      "title": "FP-S12 — Recruter l’expertise, pas seulement un intitulé de poste",
+      "source_document": "04_SCENARIOS/FP-S12.md",
+      "narrative_markdown": "# FP-S12 — Recruter l’expertise, pas seulement un intitulé de poste\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Direction/HR, Électromécanique. **Corrélation canonique :** `fp.s12.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Une équipe d’amélioration doit trouver quelqu’un qui connaît une panne très particulière des automates. **Acteurs.** RH, Salomé, Nadia et volontaires simulés. **Mondes.** Direction, Espace discussion, Électromécanique. **Parcours.** Les contributions techniques publiées et les compétences déclarées/validées dans le périmètre autorisé servent à **suggérer** des contacts, non à classer les personnes socialement ou à prendre une décision RH automatisée. Une personne issue de l’administration se révèle avoir une expérience d’automatisation. Le projet keenKonnect invite les participants volontaires; Orgo peut leur confier des tâches après accord des gestionnaires. Ethikos sert à comparer les propositions techniques, pas à attribuer des « mérites humains » globaux.\n\n**WOW.** Le réseau d’expertise suit des preuves situées, plutôt que l’organigramme. **Références :** M-SCN-015, M-SCN-029, M-SCN-034; C-SCN-014, C-SCN-024.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** besoin compétences; contributions volontaires.\n- **Transitions observables :** carte compétences→offre de projet→plan de relève.\n- **Branches négatives à prévoir :** profil sensible; score trompeur.\n- **Invariant d'acceptation :** expertise contextualisée, aucune évaluation RH automatique.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s12"
+    },
+    {
+      "id": "FP-S13",
+      "title": "FP-S13 — Une idée d’opérateur traverse réellement la hiérarchie",
+      "source_document": "04_SCENARIOS/FP-S13.md",
+      "narrative_markdown": "# FP-S13 — Une idée d’opérateur traverse réellement la hiérarchie\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Espace discussion, Électromécanique, Direction. **Corrélation canonique :** `fp.s13.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Dans Espace discussion, une opératrice propose d’étiqueter différemment les caisses destinées à Atlas-47. **Acteurs.** Opératrice, Salomé, transport, qualité, direction. **Mondes.** Espace discussion → Électromécanique → Direction → Vente. **Parcours.** Un fil Korum expose le problème et ses observations. Le signal est qualifié : si les tests démontrent une économie de manutention, keenKonnect accueille un mini-projet de prototypage; Orgo suit l’essai et sa mesure. Ethikos rend visibles bénéfices et objections, y compris coût d’adoption et problèmes d’accessibilité. Une décision limitée à un pilote est prise; le changement au processus d’expédition n’est valide qu’après admission par son système maître. Une publication revient au fil de discussion : proposition, résultat, décision, suite.\n\n**WOW.** « Merci pour votre suggestion » devient une preuve d’écoute avec résultat, pas un formulaire sans réponse. **Références :** M-SCN-010, M-SCN-034, M-SCN-059; C-SCN-016, C-SCN-017, C-SCN-027.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** idée de Mina; mini-prototype; données pilote.\n- **Transitions observables :** suggestion→triage→projet→essai→décision→retour.\n- **Branches négatives à prévoir :** idée refusée; pilote échoué.\n- **Invariant d'acceptation :** auteur reçoit un motif; le refus est tracé.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s13"
+    },
+    {
+      "id": "FP-S14",
+      "title": "FP-S14 — Portes ouvertes : petite coordination, vraie participation",
+      "source_document": "04_SCENARIOS/FP-S14.md",
+      "narrative_markdown": "# FP-S14 — Portes ouvertes : petite coordination, vraie participation\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Activités sociales, Direction, Administration. **Corrélation canonique :** `fp.s14.001`.\n\n## Histoire et usage\n\n**Déclencheur.** FakePlant organise une journée portes ouvertes et veut reconnaître les savoirs transmis par Luc. **Acteurs.** Joanie, Farah, RH, sécurité des visiteurs, employés volontaires. **Mondes.** Activités sociales → Vente, PR, marketing → Direction → Espace discussion. **Parcours.** Une consultation Ethikos recueille les préférences sur le programme et les contraintes; un projet keenKonnect héberge documents, bénévolat et communications. Orgo gère les tâches à contraintes : accès autorisés, plan d’accueil, fournisseur de repas, transport et confirmations. Les éléments privés (présences nominatives, conditions RH, restrictions d’accès) ne traversent pas les publications publiques. La présentation raconte l’astuce de Luc **sans divulguer une instruction technique dangereuse ou non validée**. Un bilan visible en retour indique ce qui a été réalisé et ce qui sera amélioré.\n\n**WOW.** Le monde social fait partie des opérations sans être transformé en deuxième ERP. **Références :** M-SCN-066, M-SCN-072, M-SCN-107; C-SCN-027, C-SCN-031.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** programme portes ouvertes; exigences visiteurs.\n- **Transitions observables :** consultation→budget→projet→logistique→bilan.\n- **Branches négatives à prévoir :** volontaires absents; sécurité visiteurs.\n- **Invariant d'acceptation :** organisateurs voient leurs tâches; bilan sans PII.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s14"
+    },
+    {
+      "id": "FP-S15",
+      "title": "FP-S15 — Tableau vert, groupe oublié : la décision RH évolue",
+      "source_document": "04_SCENARIOS/FP-S15.md",
+      "narrative_markdown": "# FP-S15 — Tableau vert, groupe oublié : la décision RH évolue\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Direction/HR, Espace discussion. **Corrélation canonique :** `fp.s15.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Le tableau général des heures supplémentaires est « dans le vert », mais les nouveaux employés du quart de nuit signalent une surcharge. **Acteurs.** RH, directrice, chefs d’équipes, salariés simulés. **Mondes.** Direction, Management et HR; Espace discussion à portée limitée. **Parcours.** Les mesures agrégées autorisées depuis la paie/planning montrent l’ensemble; une lecture par cohortes et des observations anonymisées révèlent un problème non visible dans la moyenne. Les données individuelles restent hors Kristal partagé. Ethikos présente les compromis et les limites statistiques; les employés contribuent sans attribution publique forcée. Orgo suit ajustements et réévaluation à J30/J90. Aucune recommandation IA ne devient une décision sur une personne.\n\n**WOW.** La gouvernance protège la minorité que le KPI global rend invisible. **Références :** M-SCN-056, M-SCN-103; C-SCN-031, C-SCN-027.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** agrégats par quart; retours J30.\n- **Transitions observables :** impact→signal disproportion→révision mandat.\n- **Branches négatives à prévoir :** petit groupe réidentifiable; erreur d’agrégation.\n- **Invariant d'acceptation :** seuil de confidentialité appliqué; suivi non cosmétique.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s15"
+    },
+    {
+      "id": "FP-S16",
+      "title": "FP-S16 — Un plan de maintenance fonctionne même sans réseau",
+      "source_document": "04_SCENARIOS/FP-S16.md",
+      "narrative_markdown": "# FP-S16 — Un plan de maintenance fonctionne même sans réseau\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Électromécanique, IT. **Corrélation canonique :** `fp.s16.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Le Wi-Fi de l’atelier tombe pendant une inspection non urgente. **Acteurs.** Nadia, maintenance, TI. **Mondes.** Électromécanique, Orgo mobile si scénario Kor activé. **Parcours cible.** Les procédures **autorisées et non périmées** préalablement publiées dans un pack approuvé restent consultables sur un appareil préparé; les formulaires de capture sont conservés localement puis envoyés à la reconnexion selon les capacités Kor/offline effectivement validées. L’écran distingue « capturé localement », « transporté », « admis », « résultat confirmé ». Une action de maintenance critique impossible à valider hors ligne demeure bloquée. La reprise est idempotente et préserve l’heure réelle de l’observation.\n\n**WOW.** Une coupure de réseau n’efface ni la connaissance ni la trace, mais n’autorise jamais à inventer une confirmation serveur. **Références :** M-SCN-077, M-SCN-079, M-SCN-115; C-SCN-036.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** procédure offline approuvée; dernière synchro.\n- **Transitions observables :** pack signé→intervention terrain→queue locale→reconcile.\n- **Branches négatives à prévoir :** pack expiré; conflit; réseau absent.\n- **Invariant d'acceptation :** pas de fausse synchronisation; conflit explicite.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s16"
+    },
+    {
+      "id": "FP-S17",
+      "title": "FP-S17 — Prototype raté : ne pas perdre les trois mois de travail",
+      "source_document": "04_SCENARIOS/FP-S17.md",
+      "narrative_markdown": "# FP-S17 — Prototype raté : ne pas perdre les trois mois de travail\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Électromécanique, Espace discussion, Direction. **Corrélation canonique :** `fp.s17.001`.\n\n## Histoire et usage\n\n**Déclencheur.** Un essai de nouvel agencement de soudage ne produit pas l’amélioration attendue. **Acteurs.** Qualité, production, finance et direction. **Mondes.** Électromécanique, Administration, Direction. **Parcours.** Le projet keenKonnect conserve essais, hypothèses, annotations et ressources; les mesures chiffrées restent dans la plateforme de données. Le Kristal enregistre la lignée des hypothèses et les raisons de l’abandon, pas seulement la conclusion. Ethikos compare arrêt/pivot/poursuite avec coûts d’opportunité explicites; Orgo clôt les travaux, conserve les obligations d’inspection et déclenche un contrôle de reprise si les conditions changent. Six mois plus tard, un changement de consommable réouvre la pertinence d’un résultat autrefois négatif.\n\n**WOW.** Une expérience rejetée peut devenir une ressource économique sans être qualifiée rétroactivement de succès. **Références :** M-SCN-059, M-SCN-095, M-SCN-103; C-SCN-013, C-SCN-028.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** prototype échoué; preuves négatives.\n- **Transitions observables :** hypothèse→test→résultat négatif→leçon réutilisée.\n- **Branches négatives à prévoir :** autre équipe relance sans consulter.\n- **Invariant d'acceptation :** échec trouvable et utile avec provenance.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s17"
+    },
+    {
+      "id": "FP-S18",
+      "title": "FP-S18 — Le bilan vivant : chaque engagement a une preuve",
+      "source_document": "04_SCENARIOS/FP-S18.md",
+      "narrative_markdown": "# FP-S18 — Le bilan vivant : chaque engagement a une preuve\n\n**Nature :** scénario cible synthétique, non injecté. **Mondes :** Direction, Administration, Vente, Électromécanique. **Corrélation canonique :** `fp.s18.001`.\n\n## Histoire et usage\n\n**Déclencheur.** La directrice présente le rapport trimestriel de FakePlant. **Acteurs.** Finance, direction, RH, ventes et qualité. **Mondes.** Tous les mondes via publications filtrées. **Parcours.** Une publication de synthèse relie les engagements du début du trimestre aux cas Orgo, aux décisions Ethikos, aux actualisations documentaires et aux chiffres des systèmes de mesure. Chaque indicateur indique sa période, sa source, les filtres et les restrictions. Le rapport statique exporté demeure une photographie datée; la vue vivante révèle les faits nouveaux et les engagements encore ouverts. On distingue résultats validés, résultats contestés et actions suspendues. Une discussion peut remettre en cause une hypothèse avec source, mais ne réécrit pas l’historique du rapport.\n\n**WOW.** La phrase « nous avons réglé le problème » mène à un résultat d’essai et à son propriétaire, pas à une diapositive opaque. **Références :** M-SCN-101, M-SCN-113, M-SCN-118, M-SCN-120; C-SCN-023, C-SCN-028.\n\n## Contrat d'implémentation\n\n- **Jeu initial minimal :** mandats et résultats J30/J90.\n- **Transitions observables :** décisions→mesures→écarts→rétroaction→nouveau plan.\n- **Branches négatives à prévoir :** preuves absentes; promesse non réalisée.\n- **Invariant d'acceptation :** aucun indicateur “vert” sans donnée source valide.\n- **Logique d'autorité :** décision de personnes autorisées quand la valeur, la sûreté, la confidentialité ou la conformité l'exige; l'agent peut préparer mais ne se substitue pas à l'autorité.\n- **Propriétaires :** Ethikos possède discussions/consultations; keenKonnect les projets/contributions; Orgo les cases/tasks/operations; systèmes existants les actes métier; Kristal la connaissance publiée.\n\n## Plan de test manuel (Given / When / Then)\n\n**État de départ.** Charger uniquement les fixtures pertinentes et relever les références de version, le rôle du visiteur et l'état initial des systèmes concernés.\n\n**Action nominale.** Déclencher la première interaction à partir du monde d'origine, suivre la chaîne de corrélation et vérifier séparément la validation humaine, l'admission Orgo et le receipt externe.\n\n**Assertion positive.** L'utilisateur doit retrouver l'histoire complète dans les vues accessibles à son rôle; le résultat publié cite sa source, sa version, l'horodatage et son degré de confirmation.\n\n**Assertion négative.** Répéter l'action ou bloquer l'étape externe ne doit jamais créer un second acte métier ou un faux statut de succès; un lecteur d'un autre World ne peut pas lire le détail non publié.\n\n## Artefacts de production\n\n- Storyboard humain, jeu de données synthétiques, références source/version, état `D-1 / D0 / D1 / J30` applicable.\n- Topic(s) et consultation(s) Ethikos; projet, équipe, ressources, messages et tâches keenKonnect en rapport réel avec la scène.\n- Kristal(s) et projections Konstellation si pertinents; Case/Task/Signal Orgo seulement quand le parcours le requiert.\n- Receipt d'intégration simulée ou vérifiée, cas d'échec et capture de la chaîne de preuve.\n\n## Critère de démontrabilité\n\nNe compter le scénario « complet E2E » que si l'état final est remonté depuis son owner et qu'un audit de corrélation relie au minimum : question/demande initiale, contexte, décision/admission, action, résultat et rétroaction. En l'absence d'un runtime qualifié, le scénario reste **documenté ou partiellement simulé**, jamais déclaré intégralement opérationnel.\n",
+      "orchestration_status": "synthetic_proposed",
+      "state": "prepared",
+      "correlation_id": "corr.fakeplant.fp-s18"
+    }
+  ],
+  "satellite_markdown": "# 9. Répertoire de scénarios satellites à semer\n\nCes micro-histoires peuplent les pages et les discussions; chacune doit avoir au moins un auteur, une date, un objet, un état, un lien de preuve et une conséquence. **Un monde rempli de titres vides n’est pas une démo.**\n\n| ID | Monde de départ | Incident ou sujet | Traversée prévue | Motif principal |\n|---|---|---|---|---|\n| FP-M01 | Électromécanique | Capteur vibrant uniquement le mardi soir | Maintenance → qualité | Signal intermittent |\n| FP-M02 | Électromécanique | Variation d’adhérence sur un lot peint | Qualité → fournisseur → direction | Causes concurrentes |\n| FP-M03 | Électromécanique | Une version de procédure est remplacée | Kristal → Orgo → atelier | Obsolescence et preuve |\n| FP-M04 | Électromécanique | Perte temporaire de supervision | TI → production → direction | Coordination d’incident |\n| FP-M05 | Administration | Deux factures semblent doublonnées | ERP → Orgo → acheteur | Signal qualifié et validation |\n| FP-M06 | Administration | Prévision d’énergie à scénarios | Snowflake → finance → ventes | Options datées |\n| FP-M07 | Administration | Snapshot de prix dépasse sa validité | Kristal → agent IA → finance | Connaissance périmée |\n| FP-M08 | Administration | Seuil d’achat d’une pièce modifié | Approbation → Orgo → achats | Autorité explicite |\n| FP-M09 | Direction / HR | Rotation dans une équipe experte | RH → projet passation → atelier | Perte de savoir |\n| FP-M10 | Direction / HR | Investir dans une machine ou réparer ? | Finance/maintenance → Ethikos → Orgo | Arbitrage réversible |\n| FP-M11 | Direction / HR | Réorganisation de la permanence de nuit | Consultation → décision → planning | Avis et mandat distincts |\n| FP-M12 | Direction / HR | Suivi de recommandation après audit | Orgo → preuve J90 → synthèse | Action/impact |\n| FP-M13 | Vente / PR | Modification de portée client R3 | Vente → projet → ingénierie | Version et responsabilité |\n| FP-M14 | Vente / PR | Le client demande la source d’un délai | Commande → provenance → réponse | Explicabilité |\n| FP-M15 | Vente / PR | Un message externe doit être corrigé | Source supplantée → révision validée | Média vivant |\n| FP-M16 | Vente / PR | Promesse commerciale non réalisable | Contradiction → décision → communication | Conflit explicite |\n| FP-M17 | Activités sociales | Choix d’une activité de fin d’année | Consultation → projet → Orgo | Participation suivie |\n| FP-M18 | Activités sociales | Reconnaissance des mentors techniques | Volontariat → validation → communication | Mémoire collective |\n| FP-M19 | Activités sociales | Transport des visiteurs | Plan → tâches → confirmations | Dépendances |\n| FP-M20 | Activités sociales | Collecte locale sur base volontaire | Propositions → décision → bilan | Périmètre social |\n| FP-M21 | Espace discussion | Une question « naïve » révèle une lacune | Forum → enquête → Kristal | Signal faible |\n| FP-M22 | Espace discussion | Deux explications d’un défaut se contredisent | Korum → preuves → arbitrage | Désaccord explicite |\n| FP-M23 | Espace discussion | Suggestion déjà testée en 2024 | Recherche → échec documenté | Réutilisation d’expérience |\n| FP-M24 | Espace discussion | Une idée populaire est non conforme | Discussion → contrôle → réponse | Participation ≠ mandat |\n| FP-M25 | Administration | Achat d’urgence sans fournisseur qualifié | Demande → approbation → receipt | Fail-closed |\n| FP-M26 | Électromécanique | Mauvais QR sur machine | Capture → vérification → bonne procédure | Identité d’actif |\n| FP-M27 | Direction / HR | Indicateur moyen cache deux cohortes | Analyse → consultation → mesure | Équité et segmentation |\n| FP-M28 | Vente / PR | Mauvaise version d’un visuel d’offre | Ressource → supersession → rappel | Traçabilité |\n| FP-M29 | Administration | Variation de devise à la fin d’un trimestre | Agent → hypothèses → approbation | Incertitude financière |\n| FP-M30 | Espace discussion | Controverse sur une décision passée | Preuves → débat → réponse publiée | Reconstitution du pourquoi |\n\n## 9.1 Trames d’amorçage inter-mondes\n\n**Trame production.** FP-S01 → FP-S03 → FP-S04 → FP-S07 → FP-S18. La capacité et le coût modifient la promesse client et sa mesure. **Trame mémoire.** FP-S05 → FP-S02 → FP-M21 → FP-S11. Une astuce écrite aide immédiatement, puis sa fiabilité augmente ou diminue avec les retours. **Trame personnes.** FP-S06 → FP-S15 → FP-S14. Consultation, arbitrage, effet constaté et reconnaissance. **Trame risque.** FP-S08 → FP-S09 → FP-S10 → FP-S18. Arbitrage fournisseur, provenance technique, incident et transparence après-coup. Chaque trame possède des identifiants corrélés, de sorte que l’utilisateur peut naviguer entre histoires sans perdre le fil.\n\n## Exploitation optimale\n\nPour chaque FP-Mxx, semer **au moins un** signal ou message avec une date, une source, un propriétaire de réponse et une conséquence; il n'est pas nécessaire de créer un workflow Orgo pour tous. Les satellites peuvent amplifier les arcs sans rallonger la démo live. Ils donnent surtout l'impression qu'une usine a une histoire avant l'arrivée du visiteur. Ne pas créer 30 « fausses réussites » : conserver des demandes ouvertes, des refus justifiés, des hypothèses non résolues et des décisions corrigées.\n",
+  "links": [
+    {
+      "id": "FP-L-FP-ETH-E-01",
+      "from": "FP-ETH-E-01",
+      "to": "FP-S03",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-E-02",
+      "from": "FP-ETH-E-02",
+      "to": "FP-S03",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-E-03",
+      "from": "FP-ETH-E-03",
+      "to": "FP-S04",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-E-04",
+      "from": "FP-ETH-E-04",
+      "to": "FP-S02",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-E-05",
+      "from": "FP-ETH-E-05",
+      "to": "FP-S02",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-E-06",
+      "from": "FP-ETH-E-06",
+      "to": "FP-S04",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-E-07",
+      "from": "FP-ETH-E-07",
+      "to": "FP-S17",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-E-08",
+      "from": "FP-ETH-E-08",
+      "to": "FP-S09",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-E-09",
+      "from": "FP-ETH-E-09",
+      "to": "FP-S03",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-A-01",
+      "from": "FP-ETH-A-01",
+      "to": "FP-S01",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-A-02",
+      "from": "FP-ETH-A-02",
+      "to": "FP-S01",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-A-03",
+      "from": "FP-ETH-A-03",
+      "to": "FP-S02",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-A-04",
+      "from": "FP-ETH-A-04",
+      "to": "FP-S08",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-A-05",
+      "from": "FP-ETH-A-05",
+      "to": "FP-S02",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-A-06",
+      "from": "FP-ETH-A-06",
+      "to": "FP-S01",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-D-01",
+      "from": "FP-ETH-D-01",
+      "to": "FP-S01",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-D-02",
+      "from": "FP-ETH-D-02",
+      "to": "FP-S06",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-D-03",
+      "from": "FP-ETH-D-03",
+      "to": "FP-S15",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-D-04",
+      "from": "FP-ETH-D-04",
+      "to": "FP-S05",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-D-05",
+      "from": "FP-ETH-D-05",
+      "to": "FP-S06",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-D-06",
+      "from": "FP-ETH-D-06",
+      "to": "FP-S18",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-D-07",
+      "from": "FP-ETH-D-07",
+      "to": "FP-S10",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-D-08",
+      "from": "FP-ETH-D-08",
+      "to": "FP-S04",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-D-09",
+      "from": "FP-ETH-D-09",
+      "to": "FP-S13",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-V-01",
+      "from": "FP-ETH-V-01",
+      "to": "FP-S07",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-V-02",
+      "from": "FP-ETH-V-02",
+      "to": "FP-S01",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-V-03",
+      "from": "FP-ETH-V-03",
+      "to": "FP-S07",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-V-04",
+      "from": "FP-ETH-V-04",
+      "to": "FP-S01",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-V-05",
+      "from": "FP-ETH-V-05",
+      "to": "FP-S09",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-V-06",
+      "from": "FP-ETH-V-06",
+      "to": "FP-S10",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-S-01",
+      "from": "FP-ETH-S-01",
+      "to": "FP-S14",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-S-02",
+      "from": "FP-ETH-S-02",
+      "to": "FP-S05",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-S-03",
+      "from": "FP-ETH-S-03",
+      "to": "FP-S14",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-S-04",
+      "from": "FP-ETH-S-04",
+      "to": "FP-S14",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-S-05",
+      "from": "FP-ETH-S-05",
+      "to": "FP-S14",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-01",
+      "from": "FP-ETH-X-01",
+      "to": "FP-S03",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-02",
+      "from": "FP-ETH-X-02",
+      "to": "FP-S13",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-03",
+      "from": "FP-ETH-X-03",
+      "to": "FP-S02",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-04",
+      "from": "FP-ETH-X-04",
+      "to": "FP-S05",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-05",
+      "from": "FP-ETH-X-05",
+      "to": "FP-S17",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-06",
+      "from": "FP-ETH-X-06",
+      "to": "FP-S03",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-07",
+      "from": "FP-ETH-X-07",
+      "to": "FP-S02",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-08",
+      "from": "FP-ETH-X-08",
+      "to": "FP-S13",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-09",
+      "from": "FP-ETH-X-09",
+      "to": "FP-S18",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-10",
+      "from": "FP-ETH-X-10",
+      "to": "FP-S03",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-11",
+      "from": "FP-ETH-X-11",
+      "to": "FP-S12",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-FP-ETH-X-12",
+      "from": "FP-ETH-X-12",
+      "to": "FP-S13",
+      "kind": "documents_issue",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-PRN17-FP-S02",
+      "from": "KCP-PRN17",
+      "to": "FP-S02",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-PRN17-FP-S05",
+      "from": "KCP-PRN17",
+      "to": "FP-S05",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-SW04-FP-S03",
+      "from": "KCP-SW04",
+      "to": "FP-S03",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-SW04-FP-S11",
+      "from": "KCP-SW04",
+      "to": "FP-S11",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-CR12-FP-S04",
+      "from": "KCP-CR12",
+      "to": "FP-S04",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-REV-PLANS-FP-S09",
+      "from": "KCP-REV-PLANS",
+      "to": "FP-S09",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-RETEX-TEST-FP-S17",
+      "from": "KCP-RETEX-TEST",
+      "to": "FP-S17",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-TRANSFERT-QUART-FP-S03",
+      "from": "KCP-TRANSFERT-QUART",
+      "to": "FP-S03",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-TRANSFERT-QUART-FP-S16",
+      "from": "KCP-TRANSFERT-QUART",
+      "to": "FP-S16",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-PRIX-T4-FP-S01",
+      "from": "KCP-PRIX-T4",
+      "to": "FP-S01",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-ACH-FU17-FP-S02",
+      "from": "KCP-ACH-FU17",
+      "to": "FP-S02",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-FOURNISSEUR-B-FP-S08",
+      "from": "KCP-FOURNISSEUR-B",
+      "to": "FP-S08",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-PERF-ACHATS-FP-S02",
+      "from": "KCP-PERF-ACHATS",
+      "to": "FP-S02",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-PERF-ACHATS-FP-S18",
+      "from": "KCP-PERF-ACHATS",
+      "to": "FP-S18",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-REFERENTIEL-FP-S02",
+      "from": "KCP-REFERENTIEL",
+      "to": "FP-S02",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-CAPACITE47-FP-S01",
+      "from": "KCP-CAPACITE47",
+      "to": "FP-S01",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-CAPACITE47-FP-S06",
+      "from": "KCP-CAPACITE47",
+      "to": "FP-S06",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-PASSATION-LUC-FP-S05",
+      "from": "KCP-PASSATION-LUC",
+      "to": "FP-S05",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-EQUITE-QUARTS-FP-S06",
+      "from": "KCP-EQUITE-QUARTS",
+      "to": "FP-S06",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-EQUITE-QUARTS-FP-S15",
+      "from": "KCP-EQUITE-QUARTS",
+      "to": "FP-S15",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-TRANSFO-IDEES-FP-S13",
+      "from": "KCP-TRANSFO-IDEES",
+      "to": "FP-S13",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-BILAN-IMPACTS-FP-S18",
+      "from": "KCP-BILAN-IMPACTS",
+      "to": "FP-S18",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-ATLAS47-FP-S01",
+      "from": "KCP-ATLAS47",
+      "to": "FP-S01",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-ATLAS47-FP-S07",
+      "from": "KCP-ATLAS47",
+      "to": "FP-S07",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-MESSAGE-RISQUE-FP-S07",
+      "from": "KCP-MESSAGE-RISQUE",
+      "to": "FP-S07",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-MESSAGE-RISQUE-FP-S10",
+      "from": "KCP-MESSAGE-RISQUE",
+      "to": "FP-S10",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-PLAN-MARCHE-FP-S01",
+      "from": "KCP-PLAN-MARCHE",
+      "to": "FP-S01",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-SUIVI-CLIENT-FP-S07",
+      "from": "KCP-SUIVI-CLIENT",
+      "to": "FP-S07",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-BIBLIO-PRODUIT-FP-S09",
+      "from": "KCP-BIBLIO-PRODUIT",
+      "to": "FP-S09",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-PORTES-OUVERTES-FP-S14",
+      "from": "KCP-PORTES-OUVERTES",
+      "to": "FP-S14",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-MENTORAT-FP-S05",
+      "from": "KCP-MENTORAT",
+      "to": "FP-S05",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-MENTORAT-FP-S14",
+      "from": "KCP-MENTORAT",
+      "to": "FP-S14",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-NAVETTES-FP-S14",
+      "from": "KCP-NAVETTES",
+      "to": "FP-S14",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-BILAN-SOCIAL-FP-S14",
+      "from": "KCP-BILAN-SOCIAL",
+      "to": "FP-S14",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-IDEES-ATELIER-FP-S13",
+      "from": "KCP-IDEES-ATELIER",
+      "to": "FP-S13",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-QUESTION-MATIERE-FP-S03",
+      "from": "KCP-QUESTION-MATIERE",
+      "to": "FP-S03",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-FAQ-TRANSVERSE-FP-S02",
+      "from": "KCP-FAQ-TRANSVERSE",
+      "to": "FP-S02",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-FAQ-TRANSVERSE-FP-S12",
+      "from": "KCP-FAQ-TRANSVERSE",
+      "to": "FP-S12",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-RETOUR-DECISION-FP-S06",
+      "from": "KCP-RETOUR-DECISION",
+      "to": "FP-S06",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    },
+    {
+      "id": "FP-L-KCP-RETOUR-DECISION-FP-S18",
+      "from": "KCP-RETOUR-DECISION",
+      "to": "FP-S18",
+      "kind": "cooperates_on",
+      "visibility": "reference_only"
+    }
+  ]
+}

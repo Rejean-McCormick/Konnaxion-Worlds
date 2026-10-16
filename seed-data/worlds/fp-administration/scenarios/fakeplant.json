@@ -1,0 +1,549 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "fp-administration-v1",
+  "scenario_title": "FakePlant — Administration",
+  "mode": "replace_scenario",
+  "metadata": {
+    "world_key": "fp-administration",
+    "universe_key": "fakeplant",
+    "simulation": true,
+    "state_ref": "urn:kristal:state:fakeplant-organisation",
+    "source_contract": "koa.organization-state/1.0",
+    "simulation_only": true,
+    "persona_contract": "kx-world-personas/v1",
+    "persona_projection": {
+      "mode": "identity_binding_only",
+      "epistemic_authority": "external"
+    },
+    "actor_profiles": {
+      "FP-E0674": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "fd690d47-cad1-554b-9ff9-23c0ba9cd822"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0671": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "6fef60be-0e40-5cb5-a03c-0e466f8d7329"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0675": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "9ed4e50e-d0c7-5439-a922-6648f1226726"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0669": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "9301b4d6-d7e6-58ab-b623-79d2c366082a"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0736": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0741": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "a59dab30-48bf-51ef-8766-e27c82508dc9"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0677": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "2304ff95-5a68-5ed9-bc54-19df079a3844"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0672": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "b3e13147-2b51-5ece-a10a-1fb2f8505a28"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0673": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "b849e229-8eb5-5854-a606-c9123e418913"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0670": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "c5aefcda-4129-50bd-959f-874d34303e97"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0676": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "c6b951cc-59bb-5391-a220-4241de89f9ba"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      }
+    },
+    "canonical_fixture_ref": "fakeplant/fixture"
+  },
+  "actors": [
+    {
+      "key": "FP-E0674",
+      "username": "demo_fp_approvisionneur_006",
+      "display_name": "Approvisionneur6",
+      "email": "fp-e0674@fakeplant.example.test",
+      "role": "Approvisionneur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0671",
+      "username": "demo_fp_approvisionneur_003",
+      "display_name": "Approvisionneur3",
+      "email": "fp-e0671@fakeplant.example.test",
+      "role": "Approvisionneur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0675",
+      "username": "demo_fp_approvisionneur_007",
+      "display_name": "Approvisionneur7",
+      "email": "fp-e0675@fakeplant.example.test",
+      "role": "Approvisionneur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0669",
+      "username": "demo_fp_approvisionneur_001",
+      "display_name": "Approvisionneur1",
+      "email": "fp-e0669@fakeplant.example.test",
+      "role": "Approvisionneur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0736",
+      "username": "demo_fp_secretaire_004",
+      "display_name": "Secrétaire4",
+      "email": "fp-e0736@fakeplant.example.test",
+      "role": "Secrétaire",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0741",
+      "username": "demo_fp_secretaire_009",
+      "display_name": "Secrétaire9",
+      "email": "fp-e0741@fakeplant.example.test",
+      "role": "Secrétaire",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0677",
+      "username": "demo_fp_approvisionneur_009",
+      "display_name": "Approvisionneur9",
+      "email": "fp-e0677@fakeplant.example.test",
+      "role": "Approvisionneur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0672",
+      "username": "demo_fp_approvisionneur_004",
+      "display_name": "Approvisionneur4",
+      "email": "fp-e0672@fakeplant.example.test",
+      "role": "Approvisionneur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0673",
+      "username": "demo_fp_approvisionneur_005",
+      "display_name": "Approvisionneur5",
+      "email": "fp-e0673@fakeplant.example.test",
+      "role": "Approvisionneur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0670",
+      "username": "demo_fp_approvisionneur_002",
+      "display_name": "Approvisionneur2",
+      "email": "fp-e0670@fakeplant.example.test",
+      "role": "Approvisionneur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0676",
+      "username": "demo_fp_approvisionneur_008",
+      "display_name": "Approvisionneur8",
+      "email": "fp-e0676@fakeplant.example.test",
+      "role": "Approvisionneur",
+      "is_ethikos_elite": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "category-administration",
+      "name": "Administration"
+    }
+  ],
+  "topics": [
+    {
+      "key": "FP-ETH-A-01",
+      "title": "[DEMO] Quelle granularité de coûts autoriser ?",
+      "status": "open",
+      "category": "category-administration",
+      "description": "Contexte : Meilleure option vs fuite commerciale. Dossier FP-S01."
+    },
+    {
+      "key": "FP-ETH-A-02",
+      "title": "[DEMO] Que faire d'un prix T4 expiré ?",
+      "status": "open",
+      "category": "category-administration",
+      "description": "Contexte : Poursuite provisoire vs refus du calcul. Dossier FP-S01."
+    },
+    {
+      "key": "FP-ETH-A-03",
+      "title": "[DEMO] Un achat sous seuil peut-il partir sans relance ?",
+      "status": "open",
+      "category": "category-administration",
+      "description": "Contexte : Fluidité vs délégation. Dossier FP-S02."
+    },
+    {
+      "key": "FP-ETH-A-04",
+      "title": "[DEMO] Second fournisseur ou stock de précaution ?",
+      "status": "open",
+      "category": "category-administration",
+      "description": "Contexte : Prix vs continuité. Dossier FP-S08."
+    },
+    {
+      "key": "FP-ETH-A-05",
+      "title": "[DEMO] Comment traiter un accusé ERP absent ?",
+      "status": "open",
+      "category": "category-administration",
+      "description": "Contexte : Réessayer vs éviter doublon. Dossier FP-S02."
+    },
+    {
+      "key": "FP-ETH-A-06",
+      "title": "[DEMO] Quelles hypothèses commerciales sont publiables ?",
+      "status": "open",
+      "category": "category-administration",
+      "description": "Contexte : Transparence vs confidentialité. Dossier FP-S01."
+    }
+  ],
+  "stances": [
+    {
+      "topic": "FP-ETH-A-01",
+      "actor": "FP-E0674",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-A-01",
+      "actor": "FP-E0671",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-A-02",
+      "actor": "FP-E0671",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-A-02",
+      "actor": "FP-E0675",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-A-03",
+      "actor": "FP-E0675",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-A-03",
+      "actor": "FP-E0669",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-A-04",
+      "actor": "FP-E0669",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-A-04",
+      "actor": "FP-E0736",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-A-05",
+      "actor": "FP-E0736",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-A-05",
+      "actor": "FP-E0741",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-A-06",
+      "actor": "FP-E0741",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-A-06",
+      "actor": "FP-E0677",
+      "value": -1
+    }
+  ],
+  "arguments": [
+    {
+      "key": "FP-ETH-A-01-A1",
+      "topic": "FP-ETH-A-01",
+      "actor": "FP-E0674",
+      "content": "Proposition initiale : Meilleure option vs fuite commerciale. La conclusion doit être vérifiée dans FP-S01.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-A-01-A2",
+      "topic": "FP-ETH-A-01",
+      "actor": "FP-E0671",
+      "content": "Objection à traiter : Meilleure option vs fuite commerciale. La conclusion doit être vérifiée dans FP-S01.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-A-02-A1",
+      "topic": "FP-ETH-A-02",
+      "actor": "FP-E0671",
+      "content": "Proposition initiale : Poursuite provisoire vs refus du calcul. La conclusion doit être vérifiée dans FP-S01.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-A-02-A2",
+      "topic": "FP-ETH-A-02",
+      "actor": "FP-E0675",
+      "content": "Objection à traiter : Poursuite provisoire vs refus du calcul. La conclusion doit être vérifiée dans FP-S01.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-A-03-A1",
+      "topic": "FP-ETH-A-03",
+      "actor": "FP-E0675",
+      "content": "Proposition initiale : Fluidité vs délégation. La conclusion doit être vérifiée dans FP-S02.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-A-03-A2",
+      "topic": "FP-ETH-A-03",
+      "actor": "FP-E0669",
+      "content": "Objection à traiter : Fluidité vs délégation. La conclusion doit être vérifiée dans FP-S02.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-A-04-A1",
+      "topic": "FP-ETH-A-04",
+      "actor": "FP-E0669",
+      "content": "Proposition initiale : Prix vs continuité. La conclusion doit être vérifiée dans FP-S08.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-A-04-A2",
+      "topic": "FP-ETH-A-04",
+      "actor": "FP-E0736",
+      "content": "Objection à traiter : Prix vs continuité. La conclusion doit être vérifiée dans FP-S08.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-A-05-A1",
+      "topic": "FP-ETH-A-05",
+      "actor": "FP-E0736",
+      "content": "Proposition initiale : Réessayer vs éviter doublon. La conclusion doit être vérifiée dans FP-S02.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-A-05-A2",
+      "topic": "FP-ETH-A-05",
+      "actor": "FP-E0741",
+      "content": "Objection à traiter : Réessayer vs éviter doublon. La conclusion doit être vérifiée dans FP-S02.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-A-06-A1",
+      "topic": "FP-ETH-A-06",
+      "actor": "FP-E0741",
+      "content": "Proposition initiale : Transparence vs confidentialité. La conclusion doit être vérifiée dans FP-S01.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-A-06-A2",
+      "topic": "FP-ETH-A-06",
+      "actor": "FP-E0677",
+      "content": "Objection à traiter : Transparence vs confidentialité. La conclusion doit être vérifiée dans FP-S01.",
+      "side": "con"
+    }
+  ],
+  "consultations": [
+    {
+      "key": "FP-KON-A-01",
+      "title": "Diffusion de coûts T4 aux agents",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "description": "Approbation finance obligatoire. Consultation advisory — pas une autorisation.",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ]
+    },
+    {
+      "key": "FP-KON-A-02",
+      "title": "Automatisation des demandes sous seuil",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "description": "Délégation achats vérifiée. Consultation advisory — pas une autorisation.",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ]
+    }
+  ],
+  "consultation_votes": [
+    {
+      "consultation": "FP-KON-A-01",
+      "actor": "FP-E0674",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-A-01",
+      "actor": "FP-E0671",
+      "option": "option-b",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-A-01",
+      "actor": "FP-E0675",
+      "option": "option-c",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-A-01",
+      "actor": "FP-E0669",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-A-02",
+      "actor": "FP-E0674",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-A-02",
+      "actor": "FP-E0671",
+      "option": "option-b",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-A-02",
+      "actor": "FP-E0675",
+      "option": "option-c",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-A-02",
+      "actor": "FP-E0669",
+      "option": "option-a",
+      "raw_value": 1
+    }
+  ]
+}

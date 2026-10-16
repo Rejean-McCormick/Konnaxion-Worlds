@@ -1,0 +1,18 @@
+world_contract: kx-world-pack/v1
+world_key: fp-vente-pr-marketing
+title: Vente, PR, marketing
+description: World de démonstration, projection dérivée du Kristal FakePlant (lecture/versionnement, non autorité)
+pack_version: 1.0.0
+requires:
+  ethikos_scenario_schema: ethikos-demo-scenario/v3
+  host_contracts:
+  - kx-world-personas/v1
+scenarios:
+- scenarios/fakeplant.json
+metadata:
+  language: fr
+  synthetic: true
+  source_state_ref: urn:kristal:state:fakeplant-organisation
+  portable_world_key: vente-pr-marketing
+  no_konnected: true
+  no_kreative: true

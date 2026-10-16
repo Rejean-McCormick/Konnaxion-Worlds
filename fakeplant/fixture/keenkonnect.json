@@ -1,0 +1,3224 @@
+{
+  "projects": [
+    {
+      "id": "KCP-PRN17",
+      "world_key": "electromecanique-informatique",
+      "title": "Centre de diagnostic PRN-17",
+      "description": "Centre de diagnostic PRN-17. Dossier de démonstration lié à FP-S02, FP-S05. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S02",
+        "FP-S05"
+      ],
+      "team": [
+        "7b0d2746-0ced-51a9-be1e-28151839d808",
+        "f94538aa-0943-5463-8540-8c8f26e1437b"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-SW04",
+      "world_key": "electromecanique-informatique",
+      "title": "Investigation qualité SW-04",
+      "description": "Investigation qualité SW-04. Dossier de démonstration lié à FP-S03, FP-S11. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S03",
+        "FP-S11"
+      ],
+      "team": [
+        "57547d2f-8566-5140-872d-dad7b83c7f09",
+        "f3591ac3-56b0-5b84-9739-554f9ab4b30d"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-CR12",
+      "world_key": "electromecanique-informatique",
+      "title": "Maintenance planifiée CR-12",
+      "description": "Maintenance planifiée CR-12. Dossier de démonstration lié à FP-S04. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S04"
+      ],
+      "team": [
+        "11ddea94-60f3-5679-a449-89827353f9c2",
+        "588985b7-1ee7-54c0-a438-d754c5e8b023"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-REV-PLANS",
+      "world_key": "electromecanique-informatique",
+      "title": "Révisions plan et BOM Atlas-47",
+      "description": "Révisions plan et BOM Atlas-47. Dossier de démonstration lié à FP-S09. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S09"
+      ],
+      "team": [
+        "57547d2f-8566-5140-872d-dad7b83c7f09",
+        "426d4e84-9a91-52ad-8a34-b998a26012d7"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-RETEX-TEST",
+      "world_key": "electromecanique-informatique",
+      "title": "Essais avortés et mémoire de laboratoire",
+      "description": "Essais avortés et mémoire de laboratoire. Dossier de démonstration lié à FP-S17. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S17"
+      ],
+      "team": [
+        "f94538aa-0943-5463-8540-8c8f26e1437b",
+        "7b0d2746-0ced-51a9-be1e-28151839d808"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-TRANSFERT-QUART",
+      "world_key": "electromecanique-informatique",
+      "title": "Passage de consignes inter-quarts",
+      "description": "Passage de consignes inter-quarts. Dossier de démonstration lié à FP-S03, FP-S16. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S03",
+        "FP-S16"
+      ],
+      "team": [
+        "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+        "4734cf9d-e17e-59ac-b371-020704dbb945"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-PRIX-T4",
+      "world_key": "administration",
+      "title": "Publication trimestrielle des coûts autorisés",
+      "description": "Publication trimestrielle des coûts autorisés. Dossier de démonstration lié à FP-S01. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S01"
+      ],
+      "team": [
+        "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+        "a59dab30-48bf-51ef-8766-e27c82508dc9"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-ACH-FU17",
+      "world_key": "administration",
+      "title": "Circuit des réquisitions TI",
+      "description": "Circuit des réquisitions TI. Dossier de démonstration lié à FP-S02. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S02"
+      ],
+      "team": [
+        "c6b951cc-59bb-5391-a220-4241de89f9ba",
+        "9e91d39f-d7c2-505b-b1c9-ba217ce74b73"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B",
+      "world_key": "administration",
+      "title": "Diversification fournisseur critique",
+      "description": "Diversification fournisseur critique. Dossier de démonstration lié à FP-S08. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S08"
+      ],
+      "team": [
+        "c6b951cc-59bb-5391-a220-4241de89f9ba",
+        "9301b4d6-d7e6-58ab-b623-79d2c366082a"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-PERF-ACHATS",
+      "world_key": "administration",
+      "title": "Réduction des relances achats",
+      "description": "Réduction des relances achats. Dossier de démonstration lié à FP-S02, FP-S18. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S02",
+        "FP-S18"
+      ],
+      "team": [
+        "a59dab30-48bf-51ef-8766-e27c82508dc9",
+        "c6b951cc-59bb-5391-a220-4241de89f9ba"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-REFERENTIEL",
+      "world_key": "administration",
+      "title": "Catalogue de pièces et centres de coûts",
+      "description": "Catalogue de pièces et centres de coûts. Dossier de démonstration lié à FP-S02. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S02"
+      ],
+      "team": [
+        "c6b951cc-59bb-5391-a220-4241de89f9ba",
+        "a59dab30-48bf-51ef-8766-e27c82508dc9"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-CAPACITE47",
+      "world_key": "direction-management-hr",
+      "title": "Arbitrage de capacité Atlas-47",
+      "description": "Arbitrage de capacité Atlas-47. Dossier de démonstration lié à FP-S01, FP-S06. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S01",
+        "FP-S06"
+      ],
+      "team": [
+        "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+        "576a6493-a86f-57f2-a0e4-df1c0de5e37f"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-PASSATION-LUC",
+      "world_key": "direction-management-hr",
+      "title": "Passation du savoir de Luc",
+      "description": "Passation du savoir de Luc. Dossier de démonstration lié à FP-S05. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S05"
+      ],
+      "team": [
+        "11d6d83f-d075-5881-91ca-216ac38112c2",
+        "422c5838-18ab-5f54-8703-a256b3c523ef"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-EQUITE-QUARTS",
+      "world_key": "direction-management-hr",
+      "title": "Suivi agrégé des quarts",
+      "description": "Suivi agrégé des quarts. Dossier de démonstration lié à FP-S06, FP-S15. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S06",
+        "FP-S15"
+      ],
+      "team": [
+        "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+        "a75da9b5-18dd-58de-9fbd-b34ad6f74802"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-TRANSFO-IDEES",
+      "world_key": "direction-management-hr",
+      "title": "Gouvernance des suggestions concrètes",
+      "description": "Gouvernance des suggestions concrètes. Dossier de démonstration lié à FP-S13. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S13"
+      ],
+      "team": [
+        "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+        "18c6ba57-c426-505e-a979-d01e10758c0b"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS",
+      "world_key": "direction-management-hr",
+      "title": "Engagements et preuves J30/J90",
+      "description": "Engagements et preuves J30/J90. Dossier de démonstration lié à FP-S18. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S18"
+      ],
+      "team": [
+        "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+        "37e4db84-fd75-5ce3-aee9-f94926c6143b"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-ATLAS47",
+      "world_key": "vente-pr-marketing",
+      "title": "Offre client Atlas-47",
+      "description": "Offre client Atlas-47. Dossier de démonstration lié à FP-S01, FP-S07. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S01",
+        "FP-S07"
+      ],
+      "team": [
+        "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+        "6e2b6368-9769-5abb-93e5-931ee9b56e47"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-MESSAGE-RISQUE",
+      "world_key": "vente-pr-marketing",
+      "title": "Communication de risques validés",
+      "description": "Communication de risques validés. Dossier de démonstration lié à FP-S07, FP-S10. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S07",
+        "FP-S10"
+      ],
+      "team": [
+        "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+        "8a83a935-a389-5c20-b139-2ee3e9c930ed"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-PLAN-MARCHE",
+      "world_key": "vente-pr-marketing",
+      "title": "Analyse commerciale des options",
+      "description": "Analyse commerciale des options. Dossier de démonstration lié à FP-S01. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S01"
+      ],
+      "team": [
+        "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+        "6e2b6368-9769-5abb-93e5-931ee9b56e47"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-SUIVI-CLIENT",
+      "world_key": "vente-pr-marketing",
+      "title": "Retours client et confirmation du mandat",
+      "description": "Retours client et confirmation du mandat. Dossier de démonstration lié à FP-S07. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S07"
+      ],
+      "team": [
+        "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+        "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-BIBLIO-PRODUIT",
+      "world_key": "vente-pr-marketing",
+      "title": "Sources produits et révisions diffusibles",
+      "description": "Sources produits et révisions diffusibles. Dossier de démonstration lié à FP-S09. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S09"
+      ],
+      "team": [
+        "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+        "0a6f5367-2c68-5eac-b2a6-92d39d23000e"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-PORTES-OUVERTES",
+      "world_key": "activites-sociales",
+      "title": "Journée portes ouvertes FakePlant",
+      "description": "Journée portes ouvertes FakePlant. Dossier de démonstration lié à FP-S14. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S14"
+      ],
+      "team": [
+        "4f64b1df-9ce5-572a-9207-844ca924a310",
+        "a75da9b5-18dd-58de-9fbd-b34ad6f74802"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-MENTORAT",
+      "world_key": "activites-sociales",
+      "title": "Reconnaissance des mentors volontaires",
+      "description": "Reconnaissance des mentors volontaires. Dossier de démonstration lié à FP-S05, FP-S14. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S05",
+        "FP-S14"
+      ],
+      "team": [
+        "4f64b1df-9ce5-572a-9207-844ca924a310",
+        "f94538aa-0943-5463-8540-8c8f26e1437b"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-NAVETTES",
+      "world_key": "activites-sociales",
+      "title": "Transport pour activités multi-quarts",
+      "description": "Transport pour activités multi-quarts. Dossier de démonstration lié à FP-S14. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S14"
+      ],
+      "team": [
+        "4f64b1df-9ce5-572a-9207-844ca924a310",
+        "9e91d39f-d7c2-505b-b1c9-ba217ce74b73"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-BILAN-SOCIAL",
+      "world_key": "activites-sociales",
+      "title": "Retour des événements et contributions",
+      "description": "Retour des événements et contributions. Dossier de démonstration lié à FP-S14. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S14"
+      ],
+      "team": [
+        "4f64b1df-9ce5-572a-9207-844ca924a310",
+        "4bd98c19-b37e-5a3f-9d63-04b636f21694"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-IDEES-ATELIER",
+      "world_key": "espace-discussion",
+      "title": "Répertoire de propositions de terrain",
+      "description": "Répertoire de propositions de terrain. Dossier de démonstration lié à FP-S13. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S13"
+      ],
+      "team": [
+        "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+        "a75da9b5-18dd-58de-9fbd-b34ad6f74802"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-QUESTION-MATIERE",
+      "world_key": "espace-discussion",
+      "title": "Observations matière et fournisseurs",
+      "description": "Observations matière et fournisseurs. Dossier de démonstration lié à FP-S03. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S03"
+      ],
+      "team": [
+        "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+        "57547d2f-8566-5140-872d-dad7b83c7f09"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-FAQ-TRANSVERSE",
+      "world_key": "espace-discussion",
+      "title": "Questions inter-équipes et aiguillage",
+      "description": "Questions inter-équipes et aiguillage. Dossier de démonstration lié à FP-S02, FP-S12. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S02",
+        "FP-S12"
+      ],
+      "team": [
+        "7b0d2746-0ced-51a9-be1e-28151839d808",
+        "4f64b1df-9ce5-572a-9207-844ca924a310"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    },
+    {
+      "id": "KCP-RETOUR-DECISION",
+      "world_key": "espace-discussion",
+      "title": "Pourquoi cette décision ?",
+      "description": "Pourquoi cette décision ?. Dossier de démonstration lié à FP-S06, FP-S18. Suivi transversal avec preuves, propriétaire, hypothèses et prochaine décision.",
+      "status": "progress",
+      "category": "integration_industrielle",
+      "scenario_refs": [
+        "FP-S06",
+        "FP-S18"
+      ],
+      "team": [
+        "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+        "a75da9b5-18dd-58de-9fbd-b34ad6f74802"
+      ],
+      "fictional": true,
+      "created_at": "2026-10-10T09:00:00-04:00"
+    }
+  ],
+  "teams": [
+    {
+      "project_id": "KCP-PRN17",
+      "person_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-PRN17",
+      "person_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-SW04",
+      "person_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-SW04",
+      "person_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-CR12",
+      "person_id": "11ddea94-60f3-5679-a449-89827353f9c2",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-CR12",
+      "person_id": "588985b7-1ee7-54c0-a438-d754c5e8b023",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-REV-PLANS",
+      "person_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-REV-PLANS",
+      "person_id": "426d4e84-9a91-52ad-8a34-b998a26012d7",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-RETEX-TEST",
+      "person_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-RETEX-TEST",
+      "person_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-TRANSFERT-QUART",
+      "person_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-TRANSFERT-QUART",
+      "person_id": "4734cf9d-e17e-59ac-b371-020704dbb945",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-PRIX-T4",
+      "person_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-PRIX-T4",
+      "person_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-ACH-FU17",
+      "person_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-ACH-FU17",
+      "person_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-FOURNISSEUR-B",
+      "person_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-FOURNISSEUR-B",
+      "person_id": "9301b4d6-d7e6-58ab-b623-79d2c366082a",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-PERF-ACHATS",
+      "person_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-PERF-ACHATS",
+      "person_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-REFERENTIEL",
+      "person_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-REFERENTIEL",
+      "person_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-CAPACITE47",
+      "person_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-CAPACITE47",
+      "person_id": "576a6493-a86f-57f2-a0e4-df1c0de5e37f",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-PASSATION-LUC",
+      "person_id": "11d6d83f-d075-5881-91ca-216ac38112c2",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-PASSATION-LUC",
+      "person_id": "422c5838-18ab-5f54-8703-a256b3c523ef",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-EQUITE-QUARTS",
+      "person_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-EQUITE-QUARTS",
+      "person_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-TRANSFO-IDEES",
+      "person_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-TRANSFO-IDEES",
+      "person_id": "18c6ba57-c426-505e-a979-d01e10758c0b",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-BILAN-IMPACTS",
+      "person_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-BILAN-IMPACTS",
+      "person_id": "37e4db84-fd75-5ce3-aee9-f94926c6143b",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-ATLAS47",
+      "person_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-ATLAS47",
+      "person_id": "6e2b6368-9769-5abb-93e5-931ee9b56e47",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "person_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "person_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-PLAN-MARCHE",
+      "person_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-PLAN-MARCHE",
+      "person_id": "6e2b6368-9769-5abb-93e5-931ee9b56e47",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-SUIVI-CLIENT",
+      "person_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-SUIVI-CLIENT",
+      "person_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "person_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "person_id": "0a6f5367-2c68-5eac-b2a6-92d39d23000e",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-PORTES-OUVERTES",
+      "person_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-PORTES-OUVERTES",
+      "person_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-MENTORAT",
+      "person_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-MENTORAT",
+      "person_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-NAVETTES",
+      "person_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-NAVETTES",
+      "person_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-BILAN-SOCIAL",
+      "person_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-BILAN-SOCIAL",
+      "person_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-IDEES-ATELIER",
+      "person_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-IDEES-ATELIER",
+      "person_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-QUESTION-MATIERE",
+      "person_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-QUESTION-MATIERE",
+      "person_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-FAQ-TRANSVERSE",
+      "person_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-FAQ-TRANSVERSE",
+      "person_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "role": "collaborator"
+    },
+    {
+      "project_id": "KCP-RETOUR-DECISION",
+      "person_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "role": "owner"
+    },
+    {
+      "project_id": "KCP-RETOUR-DECISION",
+      "person_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "role": "collaborator"
+    }
+  ],
+  "resources": [
+    {
+      "id": "KCP-PRN17-R01",
+      "project_id": "KCP-PRN17",
+      "title": "Historique ticket",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-prn17:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PRN17-R02",
+      "project_id": "KCP-PRN17",
+      "title": "manuel rev",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-prn17:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PRN17-R03",
+      "project_id": "KCP-PRN17",
+      "title": "note fuser",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-prn17:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PRN17-R04",
+      "project_id": "KCP-PRN17",
+      "title": "demande FU-17",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-prn17:4",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-SW04-R01",
+      "project_id": "KCP-SW04",
+      "title": "Signal quart",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-sw04:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-SW04-R02",
+      "project_id": "KCP-SW04",
+      "title": "lot L-882",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-sw04:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-SW04-R03",
+      "project_id": "KCP-SW04",
+      "title": "enquête",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-sw04:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-SW04-R04",
+      "project_id": "KCP-SW04",
+      "title": "état qualifié",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-sw04:4",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-CR12-R01",
+      "project_id": "KCP-CR12",
+      "title": "Fenêtre arrêt",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-cr12:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-CR12-R02",
+      "project_id": "KCP-CR12",
+      "title": "prérequis SST",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-cr12:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-CR12-R03",
+      "project_id": "KCP-CR12",
+      "title": "plan de reprise",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-cr12:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-REV-PLANS-R01",
+      "project_id": "KCP-REV-PLANS",
+      "title": "Matrice dessins",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-rev-plans:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-REV-PLANS-R02",
+      "project_id": "KCP-REV-PLANS",
+      "title": "liens CAD",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-rev-plans:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-REV-PLANS-R03",
+      "project_id": "KCP-REV-PLANS",
+      "title": "diffusion approuvée",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-rev-plans:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-RETEX-TEST-R01",
+      "project_id": "KCP-RETEX-TEST",
+      "title": "Hypothèses",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-retex-test:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-RETEX-TEST-R02",
+      "project_id": "KCP-RETEX-TEST",
+      "title": "résultats négatifs",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-retex-test:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-RETEX-TEST-R03",
+      "project_id": "KCP-RETEX-TEST",
+      "title": "comparatif versions",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-retex-test:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-TRANSFERT-QUART-R01",
+      "project_id": "KCP-TRANSFERT-QUART",
+      "title": "Journal des passages",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-transfert-quart:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-TRANSFERT-QUART-R02",
+      "project_id": "KCP-TRANSFERT-QUART",
+      "title": "questions",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-transfert-quart:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-TRANSFERT-QUART-R03",
+      "project_id": "KCP-TRANSFERT-QUART",
+      "title": "obstacles",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-transfert-quart:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PRIX-T4-R01",
+      "project_id": "KCP-PRIX-T4",
+      "title": "Dictionnaire",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-prix-t4:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PRIX-T4-R02",
+      "project_id": "KCP-PRIX-T4",
+      "title": "extraction",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-prix-t4:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PRIX-T4-R03",
+      "project_id": "KCP-PRIX-T4",
+      "title": "contrôles",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-prix-t4:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PRIX-T4-R04",
+      "project_id": "KCP-PRIX-T4",
+      "title": "approbation",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-prix-t4:4",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-ACH-FU17-R01",
+      "project_id": "KCP-ACH-FU17",
+      "title": "SKU",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-ach-fu17:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-ACH-FU17-R02",
+      "project_id": "KCP-ACH-FU17",
+      "title": "état sandbox",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-ach-fu17:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-ACH-FU17-R03",
+      "project_id": "KCP-ACH-FU17",
+      "title": "délégation",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-ach-fu17:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-ACH-FU17-R04",
+      "project_id": "KCP-ACH-FU17",
+      "title": "reçu",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-ach-fu17:4",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B-R01",
+      "project_id": "KCP-FOURNISSEUR-B",
+      "title": "Qualification B",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-fournisseur-b:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B-R02",
+      "project_id": "KCP-FOURNISSEUR-B",
+      "title": "coût",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-fournisseur-b:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B-R03",
+      "project_id": "KCP-FOURNISSEUR-B",
+      "title": "délais",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-fournisseur-b:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B-R04",
+      "project_id": "KCP-FOURNISSEUR-B",
+      "title": "risques",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-fournisseur-b:4",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PERF-ACHATS-R01",
+      "project_id": "KCP-PERF-ACHATS",
+      "title": "Délais",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-perf-achats:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PERF-ACHATS-R02",
+      "project_id": "KCP-PERF-ACHATS",
+      "title": "demandes sans réponse",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-perf-achats:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PERF-ACHATS-R03",
+      "project_id": "KCP-PERF-ACHATS",
+      "title": "reprises",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-perf-achats:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-REFERENTIEL-R01",
+      "project_id": "KCP-REFERENTIEL",
+      "title": "Versions",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-referentiel:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-REFERENTIEL-R02",
+      "project_id": "KCP-REFERENTIEL",
+      "title": "mapping SKU",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-referentiel:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-REFERENTIEL-R03",
+      "project_id": "KCP-REFERENTIEL",
+      "title": "politiques",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-referentiel:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-CAPACITE47-R01",
+      "project_id": "KCP-CAPACITE47",
+      "title": "Options",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-capacite47:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-CAPACITE47-R02",
+      "project_id": "KCP-CAPACITE47",
+      "title": "mandats",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-capacite47:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-CAPACITE47-R03",
+      "project_id": "KCP-CAPACITE47",
+      "title": "contrôles",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-capacite47:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-CAPACITE47-R04",
+      "project_id": "KCP-CAPACITE47",
+      "title": "échéances",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-capacite47:4",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PASSATION-LUC-R01",
+      "project_id": "KCP-PASSATION-LUC",
+      "title": "Cas",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-passation-luc:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PASSATION-LUC-R02",
+      "project_id": "KCP-PASSATION-LUC",
+      "title": "entretiens",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-passation-luc:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PASSATION-LUC-R03",
+      "project_id": "KCP-PASSATION-LUC",
+      "title": "relectures",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-passation-luc:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PASSATION-LUC-R04",
+      "project_id": "KCP-PASSATION-LUC",
+      "title": "fiabilité",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-passation-luc:4",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-EQUITE-QUARTS-R01",
+      "project_id": "KCP-EQUITE-QUARTS",
+      "title": "Consultation",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-equite-quarts:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-EQUITE-QUARTS-R02",
+      "project_id": "KCP-EQUITE-QUARTS",
+      "title": "décisions",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-equite-quarts:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-EQUITE-QUARTS-R03",
+      "project_id": "KCP-EQUITE-QUARTS",
+      "title": "impact J30",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-equite-quarts:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-TRANSFO-IDEES-R01",
+      "project_id": "KCP-TRANSFO-IDEES",
+      "title": "Critères",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-transfo-idees:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-TRANSFO-IDEES-R02",
+      "project_id": "KCP-TRANSFO-IDEES",
+      "title": "triage",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-transfo-idees:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-TRANSFO-IDEES-R03",
+      "project_id": "KCP-TRANSFO-IDEES",
+      "title": "retours",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-transfo-idees:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS-R01",
+      "project_id": "KCP-BILAN-IMPACTS",
+      "title": "Promesses",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-bilan-impacts:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS-R02",
+      "project_id": "KCP-BILAN-IMPACTS",
+      "title": "preuves",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-bilan-impacts:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS-R03",
+      "project_id": "KCP-BILAN-IMPACTS",
+      "title": "écarts",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-bilan-impacts:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS-R04",
+      "project_id": "KCP-BILAN-IMPACTS",
+      "title": "révisions",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-bilan-impacts:4",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-ATLAS47-R01",
+      "project_id": "KCP-ATLAS47",
+      "title": "Devis R1/R2",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-atlas47:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-ATLAS47-R02",
+      "project_id": "KCP-ATLAS47",
+      "title": "contraintes",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-atlas47:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-ATLAS47-R03",
+      "project_id": "KCP-ATLAS47",
+      "title": "échanges fictifs",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-atlas47:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-MESSAGE-RISQUE-R01",
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "title": "Sources expurgées",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-message-risque:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-MESSAGE-RISQUE-R02",
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "title": "approbations",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-message-risque:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-MESSAGE-RISQUE-R03",
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "title": "versions",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-message-risque:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PLAN-MARCHE-R01",
+      "project_id": "KCP-PLAN-MARCHE",
+      "title": "Comparaison marge/délai",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-plan-marche:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PLAN-MARCHE-R02",
+      "project_id": "KCP-PLAN-MARCHE",
+      "title": "hypothèses",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-plan-marche:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-SUIVI-CLIENT-R01",
+      "project_id": "KCP-SUIVI-CLIENT",
+      "title": "Questions",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-suivi-client:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-SUIVI-CLIENT-R02",
+      "project_id": "KCP-SUIVI-CLIENT",
+      "title": "accusés",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-suivi-client:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-SUIVI-CLIENT-R03",
+      "project_id": "KCP-SUIVI-CLIENT",
+      "title": "option retenue",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-suivi-client:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-BIBLIO-PRODUIT-R01",
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "title": "Versions catalogue",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-biblio-produit:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-BIBLIO-PRODUIT-R02",
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "title": "fiches",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-biblio-produit:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-BIBLIO-PRODUIT-R03",
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "title": "corrigenda",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-biblio-produit:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PORTES-OUVERTES-R01",
+      "project_id": "KCP-PORTES-OUVERTES",
+      "title": "Programme",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-portes-ouvertes:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PORTES-OUVERTES-R02",
+      "project_id": "KCP-PORTES-OUVERTES",
+      "title": "capacités visiteurs",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-portes-ouvertes:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-PORTES-OUVERTES-R03",
+      "project_id": "KCP-PORTES-OUVERTES",
+      "title": "autorisations",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-portes-ouvertes:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-MENTORAT-R01",
+      "project_id": "KCP-MENTORAT",
+      "title": "Témoignages consentis",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-mentorat:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-MENTORAT-R02",
+      "project_id": "KCP-MENTORAT",
+      "title": "mise en relation",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-mentorat:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-NAVETTES-R01",
+      "project_id": "KCP-NAVETTES",
+      "title": "Préférences agrégées",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-navettes:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-NAVETTES-R02",
+      "project_id": "KCP-NAVETTES",
+      "title": "demandes",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-navettes:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-NAVETTES-R03",
+      "project_id": "KCP-NAVETTES",
+      "title": "état",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-navettes:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-BILAN-SOCIAL-R01",
+      "project_id": "KCP-BILAN-SOCIAL",
+      "title": "Feedback expurgé",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-bilan-social:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-BILAN-SOCIAL-R02",
+      "project_id": "KCP-BILAN-SOCIAL",
+      "title": "participation",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-bilan-social:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-IDEES-ATELIER-R01",
+      "project_id": "KCP-IDEES-ATELIER",
+      "title": "Questions",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-idees-atelier:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-IDEES-ATELIER-R02",
+      "project_id": "KCP-IDEES-ATELIER",
+      "title": "prises en charge",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-idees-atelier:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-IDEES-ATELIER-R03",
+      "project_id": "KCP-IDEES-ATELIER",
+      "title": "preuves",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-idees-atelier:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-QUESTION-MATIERE-R01",
+      "project_id": "KCP-QUESTION-MATIERE",
+      "title": "Discussions",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-question-matiere:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-QUESTION-MATIERE-R02",
+      "project_id": "KCP-QUESTION-MATIERE",
+      "title": "correction",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-question-matiere:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-QUESTION-MATIERE-R03",
+      "project_id": "KCP-QUESTION-MATIERE",
+      "title": "réponse aux auteurs",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-question-matiere:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-FAQ-TRANSVERSE-R01",
+      "project_id": "KCP-FAQ-TRANSVERSE",
+      "title": "Fils de discussion",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-faq-transverse:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-FAQ-TRANSVERSE-R02",
+      "project_id": "KCP-FAQ-TRANSVERSE",
+      "title": "ressources permises",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-faq-transverse:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-RETOUR-DECISION-R01",
+      "project_id": "KCP-RETOUR-DECISION",
+      "title": "Synthèses",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-retour-decision:1",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-RETOUR-DECISION-R02",
+      "project_id": "KCP-RETOUR-DECISION",
+      "title": "objections",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-retour-decision:2",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    },
+    {
+      "id": "KCP-RETOUR-DECISION-R03",
+      "project_id": "KCP-RETOUR-DECISION",
+      "title": "résultat J30",
+      "kind": "document_reference",
+      "reference": "urn:fakeplant:demo:resource:kcp-retour-decision:3",
+      "verified": false,
+      "license": "fictional",
+      "version": 1
+    }
+  ],
+  "messages": [
+    {
+      "id": "KCP-PRN17-M01",
+      "project_id": "KCP-PRN17",
+      "author_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "content": "Le toner n’adhère pas. Je confirme PRN-17 et consulte les étapes du manuel.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-PRN17-M02",
+      "project_id": "KCP-PRN17",
+      "author_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "content": "J’avais noté le mode carton comme essai sur papier compatible; vérifier le constructeur et la température avant tout changement.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-PRN17-M03",
+      "project_id": "KCP-PRN17",
+      "author_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "content": "La référence FU-17-LSR peut alimenter REQ-FU17-001, mais aucun achat ne part sans la délégation applicable.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-PRN17-M04",
+      "project_id": "KCP-PRN17",
+      "author_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "content": "L’essai a échoué dans cette branche du scénario; je joins le compte rendu pour réévaluer le diagnostic.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-SW04-M01",
+      "project_id": "KCP-SW04",
+      "author_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "content": "Ouverture : Investigation qualité SW-04. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-SW04-M02",
+      "project_id": "KCP-SW04",
+      "author_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "content": "Je soulève un risque : Signal quart doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-SW04-M03",
+      "project_id": "KCP-SW04",
+      "author_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "content": "Décision attendue : associer les preuves au dossier FP-S03, FP-S11; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-SW04-M04",
+      "project_id": "KCP-SW04",
+      "author_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-CR12-M01",
+      "project_id": "KCP-CR12",
+      "author_id": "11ddea94-60f3-5679-a449-89827353f9c2",
+      "content": "Ouverture : Maintenance planifiée CR-12. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-CR12-M02",
+      "project_id": "KCP-CR12",
+      "author_id": "588985b7-1ee7-54c0-a438-d754c5e8b023",
+      "content": "Je soulève un risque : Fenêtre arrêt doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-CR12-M03",
+      "project_id": "KCP-CR12",
+      "author_id": "11ddea94-60f3-5679-a449-89827353f9c2",
+      "content": "Décision attendue : associer les preuves au dossier FP-S04; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-CR12-M04",
+      "project_id": "KCP-CR12",
+      "author_id": "588985b7-1ee7-54c0-a438-d754c5e8b023",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-REV-PLANS-M01",
+      "project_id": "KCP-REV-PLANS",
+      "author_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "content": "Ouverture : Révisions plan et BOM Atlas-47. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-REV-PLANS-M02",
+      "project_id": "KCP-REV-PLANS",
+      "author_id": "426d4e84-9a91-52ad-8a34-b998a26012d7",
+      "content": "Je soulève un risque : Matrice dessins doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-REV-PLANS-M03",
+      "project_id": "KCP-REV-PLANS",
+      "author_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "content": "Décision attendue : associer les preuves au dossier FP-S09; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-REV-PLANS-M04",
+      "project_id": "KCP-REV-PLANS",
+      "author_id": "426d4e84-9a91-52ad-8a34-b998a26012d7",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-RETEX-TEST-M01",
+      "project_id": "KCP-RETEX-TEST",
+      "author_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "content": "Ouverture : Essais avortés et mémoire de laboratoire. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-RETEX-TEST-M02",
+      "project_id": "KCP-RETEX-TEST",
+      "author_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "content": "Je soulève un risque : Hypothèses doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-RETEX-TEST-M03",
+      "project_id": "KCP-RETEX-TEST",
+      "author_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "content": "Décision attendue : associer les preuves au dossier FP-S17; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-RETEX-TEST-M04",
+      "project_id": "KCP-RETEX-TEST",
+      "author_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-TRANSFERT-QUART-M01",
+      "project_id": "KCP-TRANSFERT-QUART",
+      "author_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "content": "Ouverture : Passage de consignes inter-quarts. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-TRANSFERT-QUART-M02",
+      "project_id": "KCP-TRANSFERT-QUART",
+      "author_id": "4734cf9d-e17e-59ac-b371-020704dbb945",
+      "content": "Je soulève un risque : Journal des passages doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-TRANSFERT-QUART-M03",
+      "project_id": "KCP-TRANSFERT-QUART",
+      "author_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "content": "Décision attendue : associer les preuves au dossier FP-S03, FP-S16; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-TRANSFERT-QUART-M04",
+      "project_id": "KCP-TRANSFERT-QUART",
+      "author_id": "4734cf9d-e17e-59ac-b371-020704dbb945",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-PRIX-T4-M01",
+      "project_id": "KCP-PRIX-T4",
+      "author_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "content": "L’extraction trimestrielle est arrivée des systèmes financiers; elle reste non approuvée.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-PRIX-T4-M02",
+      "project_id": "KCP-PRIX-T4",
+      "author_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "content": "J’ai contrôlé devise, période et familles matière. Deux postes nécessitent une clarification.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-PRIX-T4-M03",
+      "project_id": "KCP-PRIX-T4",
+      "author_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "content": "La finance signe la version d’utilisation agent; elle ne remplace pas le grand livre.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-PRIX-T4-M04",
+      "project_id": "KCP-PRIX-T4",
+      "author_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "content": "La nouvelle révision reste traçable et retire l’ancienne du calcul courant, sans l’effacer.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-ACH-FU17-M01",
+      "project_id": "KCP-ACH-FU17",
+      "author_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "content": "Ouverture : Circuit des réquisitions TI. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-ACH-FU17-M02",
+      "project_id": "KCP-ACH-FU17",
+      "author_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "content": "Je soulève un risque : SKU doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-ACH-FU17-M03",
+      "project_id": "KCP-ACH-FU17",
+      "author_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "content": "Décision attendue : associer les preuves au dossier FP-S02; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-ACH-FU17-M04",
+      "project_id": "KCP-ACH-FU17",
+      "author_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B-M01",
+      "project_id": "KCP-FOURNISSEUR-B",
+      "author_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "content": "Ouverture : Diversification fournisseur critique. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B-M02",
+      "project_id": "KCP-FOURNISSEUR-B",
+      "author_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "content": "Je soulève un risque : Qualification B doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B-M03",
+      "project_id": "KCP-FOURNISSEUR-B",
+      "author_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "content": "Décision attendue : associer les preuves au dossier FP-S08; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B-M04",
+      "project_id": "KCP-FOURNISSEUR-B",
+      "author_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-PERF-ACHATS-M01",
+      "project_id": "KCP-PERF-ACHATS",
+      "author_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "content": "Ouverture : Réduction des relances achats. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-PERF-ACHATS-M02",
+      "project_id": "KCP-PERF-ACHATS",
+      "author_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "content": "Je soulève un risque : Délais doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-PERF-ACHATS-M03",
+      "project_id": "KCP-PERF-ACHATS",
+      "author_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "content": "Décision attendue : associer les preuves au dossier FP-S02, FP-S18; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-PERF-ACHATS-M04",
+      "project_id": "KCP-PERF-ACHATS",
+      "author_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-REFERENTIEL-M01",
+      "project_id": "KCP-REFERENTIEL",
+      "author_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "content": "Ouverture : Catalogue de pièces et centres de coûts. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-REFERENTIEL-M02",
+      "project_id": "KCP-REFERENTIEL",
+      "author_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "content": "Je soulève un risque : Versions doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-REFERENTIEL-M03",
+      "project_id": "KCP-REFERENTIEL",
+      "author_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "content": "Décision attendue : associer les preuves au dossier FP-S02; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-REFERENTIEL-M04",
+      "project_id": "KCP-REFERENTIEL",
+      "author_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-CAPACITE47-M01",
+      "project_id": "KCP-CAPACITE47",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Ouverture : Arbitrage de capacité Atlas-47. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-CAPACITE47-M02",
+      "project_id": "KCP-CAPACITE47",
+      "author_id": "576a6493-a86f-57f2-a0e4-df1c0de5e37f",
+      "content": "Je soulève un risque : Options doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-CAPACITE47-M03",
+      "project_id": "KCP-CAPACITE47",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Décision attendue : associer les preuves au dossier FP-S01, FP-S06; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-CAPACITE47-M04",
+      "project_id": "KCP-CAPACITE47",
+      "author_id": "576a6493-a86f-57f2-a0e4-df1c0de5e37f",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-PASSATION-LUC-M01",
+      "project_id": "KCP-PASSATION-LUC",
+      "author_id": "11d6d83f-d075-5881-91ca-216ac38112c2",
+      "content": "Ouverture : Passation du savoir de Luc. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-PASSATION-LUC-M02",
+      "project_id": "KCP-PASSATION-LUC",
+      "author_id": "422c5838-18ab-5f54-8703-a256b3c523ef",
+      "content": "Je soulève un risque : Cas doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-PASSATION-LUC-M03",
+      "project_id": "KCP-PASSATION-LUC",
+      "author_id": "11d6d83f-d075-5881-91ca-216ac38112c2",
+      "content": "Décision attendue : associer les preuves au dossier FP-S05; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-PASSATION-LUC-M04",
+      "project_id": "KCP-PASSATION-LUC",
+      "author_id": "422c5838-18ab-5f54-8703-a256b3c523ef",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-EQUITE-QUARTS-M01",
+      "project_id": "KCP-EQUITE-QUARTS",
+      "author_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "content": "Ouverture : Suivi agrégé des quarts. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-EQUITE-QUARTS-M02",
+      "project_id": "KCP-EQUITE-QUARTS",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Je soulève un risque : Consultation doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-EQUITE-QUARTS-M03",
+      "project_id": "KCP-EQUITE-QUARTS",
+      "author_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "content": "Décision attendue : associer les preuves au dossier FP-S06, FP-S15; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-EQUITE-QUARTS-M04",
+      "project_id": "KCP-EQUITE-QUARTS",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-TRANSFO-IDEES-M01",
+      "project_id": "KCP-TRANSFO-IDEES",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Ouverture : Gouvernance des suggestions concrètes. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-TRANSFO-IDEES-M02",
+      "project_id": "KCP-TRANSFO-IDEES",
+      "author_id": "18c6ba57-c426-505e-a979-d01e10758c0b",
+      "content": "Je soulève un risque : Critères doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-TRANSFO-IDEES-M03",
+      "project_id": "KCP-TRANSFO-IDEES",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Décision attendue : associer les preuves au dossier FP-S13; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-TRANSFO-IDEES-M04",
+      "project_id": "KCP-TRANSFO-IDEES",
+      "author_id": "18c6ba57-c426-505e-a979-d01e10758c0b",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS-M01",
+      "project_id": "KCP-BILAN-IMPACTS",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Ouverture : Engagements et preuves J30/J90. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS-M02",
+      "project_id": "KCP-BILAN-IMPACTS",
+      "author_id": "37e4db84-fd75-5ce3-aee9-f94926c6143b",
+      "content": "Je soulève un risque : Promesses doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS-M03",
+      "project_id": "KCP-BILAN-IMPACTS",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Décision attendue : associer les preuves au dossier FP-S18; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS-M04",
+      "project_id": "KCP-BILAN-IMPACTS",
+      "author_id": "37e4db84-fd75-5ce3-aee9-f94926c6143b",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-ATLAS47-M01",
+      "project_id": "KCP-ATLAS47",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Ouverture : Offre client Atlas-47. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-ATLAS47-M02",
+      "project_id": "KCP-ATLAS47",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Je soulève un risque : Devis R1/R2 doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-ATLAS47-M03",
+      "project_id": "KCP-ATLAS47",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Décision attendue : associer les preuves au dossier FP-S01, FP-S07; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-ATLAS47-M04",
+      "project_id": "KCP-ATLAS47",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-MESSAGE-RISQUE-M01",
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "author_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "content": "Ouverture : Communication de risques validés. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-MESSAGE-RISQUE-M02",
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Je soulève un risque : Sources expurgées doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-MESSAGE-RISQUE-M03",
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "author_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "content": "Décision attendue : associer les preuves au dossier FP-S07, FP-S10; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-MESSAGE-RISQUE-M04",
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-PLAN-MARCHE-M01",
+      "project_id": "KCP-PLAN-MARCHE",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Ouverture : Analyse commerciale des options. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-PLAN-MARCHE-M02",
+      "project_id": "KCP-PLAN-MARCHE",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Je soulève un risque : Comparaison marge/délai doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-PLAN-MARCHE-M03",
+      "project_id": "KCP-PLAN-MARCHE",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Décision attendue : associer les preuves au dossier FP-S01; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-PLAN-MARCHE-M04",
+      "project_id": "KCP-PLAN-MARCHE",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-SUIVI-CLIENT-M01",
+      "project_id": "KCP-SUIVI-CLIENT",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Ouverture : Retours client et confirmation du mandat. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-SUIVI-CLIENT-M02",
+      "project_id": "KCP-SUIVI-CLIENT",
+      "author_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "content": "Je soulève un risque : Questions doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-SUIVI-CLIENT-M03",
+      "project_id": "KCP-SUIVI-CLIENT",
+      "author_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "content": "Décision attendue : associer les preuves au dossier FP-S07; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-SUIVI-CLIENT-M04",
+      "project_id": "KCP-SUIVI-CLIENT",
+      "author_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-BIBLIO-PRODUIT-M01",
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "author_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "content": "Ouverture : Sources produits et révisions diffusibles. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-BIBLIO-PRODUIT-M02",
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "author_id": "0a6f5367-2c68-5eac-b2a6-92d39d23000e",
+      "content": "Je soulève un risque : Versions catalogue doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-BIBLIO-PRODUIT-M03",
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "author_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "content": "Décision attendue : associer les preuves au dossier FP-S09; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-BIBLIO-PRODUIT-M04",
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "author_id": "0a6f5367-2c68-5eac-b2a6-92d39d23000e",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-PORTES-OUVERTES-M01",
+      "project_id": "KCP-PORTES-OUVERTES",
+      "author_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "content": "Ouverture : Journée portes ouvertes FakePlant. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-PORTES-OUVERTES-M02",
+      "project_id": "KCP-PORTES-OUVERTES",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Je soulève un risque : Programme doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-PORTES-OUVERTES-M03",
+      "project_id": "KCP-PORTES-OUVERTES",
+      "author_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "content": "Décision attendue : associer les preuves au dossier FP-S14; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-PORTES-OUVERTES-M04",
+      "project_id": "KCP-PORTES-OUVERTES",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-MENTORAT-M01",
+      "project_id": "KCP-MENTORAT",
+      "author_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "content": "Ouverture : Reconnaissance des mentors volontaires. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-MENTORAT-M02",
+      "project_id": "KCP-MENTORAT",
+      "author_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "content": "Je soulève un risque : Témoignages consentis doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-MENTORAT-M03",
+      "project_id": "KCP-MENTORAT",
+      "author_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "content": "Décision attendue : associer les preuves au dossier FP-S05, FP-S14; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-MENTORAT-M04",
+      "project_id": "KCP-MENTORAT",
+      "author_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-NAVETTES-M01",
+      "project_id": "KCP-NAVETTES",
+      "author_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "content": "Ouverture : Transport pour activités multi-quarts. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-NAVETTES-M02",
+      "project_id": "KCP-NAVETTES",
+      "author_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "content": "Je soulève un risque : Préférences agrégées doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-NAVETTES-M03",
+      "project_id": "KCP-NAVETTES",
+      "author_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "content": "Décision attendue : associer les preuves au dossier FP-S14; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-NAVETTES-M04",
+      "project_id": "KCP-NAVETTES",
+      "author_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-BILAN-SOCIAL-M01",
+      "project_id": "KCP-BILAN-SOCIAL",
+      "author_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "content": "Ouverture : Retour des événements et contributions. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-BILAN-SOCIAL-M02",
+      "project_id": "KCP-BILAN-SOCIAL",
+      "author_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "content": "Je soulève un risque : Feedback expurgé doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-BILAN-SOCIAL-M03",
+      "project_id": "KCP-BILAN-SOCIAL",
+      "author_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "content": "Décision attendue : associer les preuves au dossier FP-S14; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-BILAN-SOCIAL-M04",
+      "project_id": "KCP-BILAN-SOCIAL",
+      "author_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-IDEES-ATELIER-M01",
+      "project_id": "KCP-IDEES-ATELIER",
+      "author_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "content": "Ouverture : Répertoire de propositions de terrain. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-IDEES-ATELIER-M02",
+      "project_id": "KCP-IDEES-ATELIER",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Je soulève un risque : Questions doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-IDEES-ATELIER-M03",
+      "project_id": "KCP-IDEES-ATELIER",
+      "author_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "content": "Décision attendue : associer les preuves au dossier FP-S13; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-IDEES-ATELIER-M04",
+      "project_id": "KCP-IDEES-ATELIER",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-QUESTION-MATIERE-M01",
+      "project_id": "KCP-QUESTION-MATIERE",
+      "author_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "content": "Ouverture : Observations matière et fournisseurs. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-QUESTION-MATIERE-M02",
+      "project_id": "KCP-QUESTION-MATIERE",
+      "author_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "content": "Je soulève un risque : Discussions doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-QUESTION-MATIERE-M03",
+      "project_id": "KCP-QUESTION-MATIERE",
+      "author_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "content": "Décision attendue : associer les preuves au dossier FP-S03; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-QUESTION-MATIERE-M04",
+      "project_id": "KCP-QUESTION-MATIERE",
+      "author_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-FAQ-TRANSVERSE-M01",
+      "project_id": "KCP-FAQ-TRANSVERSE",
+      "author_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "content": "Ouverture : Questions inter-équipes et aiguillage. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-FAQ-TRANSVERSE-M02",
+      "project_id": "KCP-FAQ-TRANSVERSE",
+      "author_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "content": "Je soulève un risque : Fils de discussion doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-FAQ-TRANSVERSE-M03",
+      "project_id": "KCP-FAQ-TRANSVERSE",
+      "author_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "content": "Décision attendue : associer les preuves au dossier FP-S02, FP-S12; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-FAQ-TRANSVERSE-M04",
+      "project_id": "KCP-FAQ-TRANSVERSE",
+      "author_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    },
+    {
+      "id": "KCP-RETOUR-DECISION-M01",
+      "project_id": "KCP-RETOUR-DECISION",
+      "author_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "content": "Ouverture : Pourquoi cette décision ?. Notre hypothèse doit être vérifiée avant toute exécution.",
+      "at": "2026-10-12T08:30:00-04:00"
+    },
+    {
+      "id": "KCP-RETOUR-DECISION-M02",
+      "project_id": "KCP-RETOUR-DECISION",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Je soulève un risque : Synthèses doit être daté et retrouver son propriétaire.",
+      "at": "2026-10-13T09:30:00-04:00"
+    },
+    {
+      "id": "KCP-RETOUR-DECISION-M03",
+      "project_id": "KCP-RETOUR-DECISION",
+      "author_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "content": "Décision attendue : associer les preuves au dossier FP-S06, FP-S18; ne pas confondre consultation et autorisation.",
+      "at": "2026-10-14T010:30:00-04:00"
+    },
+    {
+      "id": "KCP-RETOUR-DECISION-M04",
+      "project_id": "KCP-RETOUR-DECISION",
+      "author_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "content": "Prochaine action : documenter le résultat dans le dossier et informer les personnes des Worlds habilités.",
+      "at": "2026-10-15T011:30:00-04:00"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "KCP-PRN17-T01",
+      "project_id": "KCP-PRN17",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-PRN17-T02",
+      "project_id": "KCP-PRN17",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-PRN17-T03",
+      "project_id": "KCP-PRN17",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-SW04-T01",
+      "project_id": "KCP-SW04",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-SW04-T02",
+      "project_id": "KCP-SW04",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-SW04-T03",
+      "project_id": "KCP-SW04",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-CR12-T01",
+      "project_id": "KCP-CR12",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "11ddea94-60f3-5679-a449-89827353f9c2",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-CR12-T02",
+      "project_id": "KCP-CR12",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "588985b7-1ee7-54c0-a438-d754c5e8b023",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-CR12-T03",
+      "project_id": "KCP-CR12",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "11ddea94-60f3-5679-a449-89827353f9c2",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-REV-PLANS-T01",
+      "project_id": "KCP-REV-PLANS",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-REV-PLANS-T02",
+      "project_id": "KCP-REV-PLANS",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "426d4e84-9a91-52ad-8a34-b998a26012d7",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-REV-PLANS-T03",
+      "project_id": "KCP-REV-PLANS",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-RETEX-TEST-T01",
+      "project_id": "KCP-RETEX-TEST",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-RETEX-TEST-T02",
+      "project_id": "KCP-RETEX-TEST",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-RETEX-TEST-T03",
+      "project_id": "KCP-RETEX-TEST",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-TRANSFERT-QUART-T01",
+      "project_id": "KCP-TRANSFERT-QUART",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-TRANSFERT-QUART-T02",
+      "project_id": "KCP-TRANSFERT-QUART",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "4734cf9d-e17e-59ac-b371-020704dbb945",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-TRANSFERT-QUART-T03",
+      "project_id": "KCP-TRANSFERT-QUART",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-PRIX-T4-T01",
+      "project_id": "KCP-PRIX-T4",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-PRIX-T4-T02",
+      "project_id": "KCP-PRIX-T4",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-PRIX-T4-T03",
+      "project_id": "KCP-PRIX-T4",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-ACH-FU17-T01",
+      "project_id": "KCP-ACH-FU17",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-ACH-FU17-T02",
+      "project_id": "KCP-ACH-FU17",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-ACH-FU17-T03",
+      "project_id": "KCP-ACH-FU17",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B-T01",
+      "project_id": "KCP-FOURNISSEUR-B",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B-T02",
+      "project_id": "KCP-FOURNISSEUR-B",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-FOURNISSEUR-B-T03",
+      "project_id": "KCP-FOURNISSEUR-B",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-PERF-ACHATS-T01",
+      "project_id": "KCP-PERF-ACHATS",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-PERF-ACHATS-T02",
+      "project_id": "KCP-PERF-ACHATS",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-PERF-ACHATS-T03",
+      "project_id": "KCP-PERF-ACHATS",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-REFERENTIEL-T01",
+      "project_id": "KCP-REFERENTIEL",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-REFERENTIEL-T02",
+      "project_id": "KCP-REFERENTIEL",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-REFERENTIEL-T03",
+      "project_id": "KCP-REFERENTIEL",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-CAPACITE47-T01",
+      "project_id": "KCP-CAPACITE47",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-CAPACITE47-T02",
+      "project_id": "KCP-CAPACITE47",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "576a6493-a86f-57f2-a0e4-df1c0de5e37f",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-CAPACITE47-T03",
+      "project_id": "KCP-CAPACITE47",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-PASSATION-LUC-T01",
+      "project_id": "KCP-PASSATION-LUC",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "11d6d83f-d075-5881-91ca-216ac38112c2",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-PASSATION-LUC-T02",
+      "project_id": "KCP-PASSATION-LUC",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "422c5838-18ab-5f54-8703-a256b3c523ef",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-PASSATION-LUC-T03",
+      "project_id": "KCP-PASSATION-LUC",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "11d6d83f-d075-5881-91ca-216ac38112c2",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-EQUITE-QUARTS-T01",
+      "project_id": "KCP-EQUITE-QUARTS",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-EQUITE-QUARTS-T02",
+      "project_id": "KCP-EQUITE-QUARTS",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-EQUITE-QUARTS-T03",
+      "project_id": "KCP-EQUITE-QUARTS",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-TRANSFO-IDEES-T01",
+      "project_id": "KCP-TRANSFO-IDEES",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-TRANSFO-IDEES-T02",
+      "project_id": "KCP-TRANSFO-IDEES",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "18c6ba57-c426-505e-a979-d01e10758c0b",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-TRANSFO-IDEES-T03",
+      "project_id": "KCP-TRANSFO-IDEES",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS-T01",
+      "project_id": "KCP-BILAN-IMPACTS",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS-T02",
+      "project_id": "KCP-BILAN-IMPACTS",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "37e4db84-fd75-5ce3-aee9-f94926c6143b",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-BILAN-IMPACTS-T03",
+      "project_id": "KCP-BILAN-IMPACTS",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-ATLAS47-T01",
+      "project_id": "KCP-ATLAS47",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-ATLAS47-T02",
+      "project_id": "KCP-ATLAS47",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-ATLAS47-T03",
+      "project_id": "KCP-ATLAS47",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-MESSAGE-RISQUE-T01",
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-MESSAGE-RISQUE-T02",
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-MESSAGE-RISQUE-T03",
+      "project_id": "KCP-MESSAGE-RISQUE",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-PLAN-MARCHE-T01",
+      "project_id": "KCP-PLAN-MARCHE",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-PLAN-MARCHE-T02",
+      "project_id": "KCP-PLAN-MARCHE",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-PLAN-MARCHE-T03",
+      "project_id": "KCP-PLAN-MARCHE",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-SUIVI-CLIENT-T01",
+      "project_id": "KCP-SUIVI-CLIENT",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-SUIVI-CLIENT-T02",
+      "project_id": "KCP-SUIVI-CLIENT",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-SUIVI-CLIENT-T03",
+      "project_id": "KCP-SUIVI-CLIENT",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-BIBLIO-PRODUIT-T01",
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-BIBLIO-PRODUIT-T02",
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "0a6f5367-2c68-5eac-b2a6-92d39d23000e",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-BIBLIO-PRODUIT-T03",
+      "project_id": "KCP-BIBLIO-PRODUIT",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-PORTES-OUVERTES-T01",
+      "project_id": "KCP-PORTES-OUVERTES",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-PORTES-OUVERTES-T02",
+      "project_id": "KCP-PORTES-OUVERTES",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-PORTES-OUVERTES-T03",
+      "project_id": "KCP-PORTES-OUVERTES",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-MENTORAT-T01",
+      "project_id": "KCP-MENTORAT",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-MENTORAT-T02",
+      "project_id": "KCP-MENTORAT",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-MENTORAT-T03",
+      "project_id": "KCP-MENTORAT",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-NAVETTES-T01",
+      "project_id": "KCP-NAVETTES",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-NAVETTES-T02",
+      "project_id": "KCP-NAVETTES",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-NAVETTES-T03",
+      "project_id": "KCP-NAVETTES",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-BILAN-SOCIAL-T01",
+      "project_id": "KCP-BILAN-SOCIAL",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-BILAN-SOCIAL-T02",
+      "project_id": "KCP-BILAN-SOCIAL",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-BILAN-SOCIAL-T03",
+      "project_id": "KCP-BILAN-SOCIAL",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-IDEES-ATELIER-T01",
+      "project_id": "KCP-IDEES-ATELIER",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-IDEES-ATELIER-T02",
+      "project_id": "KCP-IDEES-ATELIER",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-IDEES-ATELIER-T03",
+      "project_id": "KCP-IDEES-ATELIER",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-QUESTION-MATIERE-T01",
+      "project_id": "KCP-QUESTION-MATIERE",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-QUESTION-MATIERE-T02",
+      "project_id": "KCP-QUESTION-MATIERE",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-QUESTION-MATIERE-T03",
+      "project_id": "KCP-QUESTION-MATIERE",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-FAQ-TRANSVERSE-T01",
+      "project_id": "KCP-FAQ-TRANSVERSE",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-FAQ-TRANSVERSE-T02",
+      "project_id": "KCP-FAQ-TRANSVERSE",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "4f64b1df-9ce5-572a-9207-844ca924a310",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-FAQ-TRANSVERSE-T03",
+      "project_id": "KCP-FAQ-TRANSVERSE",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    },
+    {
+      "id": "KCP-RETOUR-DECISION-T01",
+      "project_id": "KCP-RETOUR-DECISION",
+      "title": "Qualifier les sources et les personnes habilitées",
+      "assignee_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "status": "done",
+      "due_date": "2026-10-20"
+    },
+    {
+      "id": "KCP-RETOUR-DECISION-T02",
+      "project_id": "KCP-RETOUR-DECISION",
+      "title": "Arbitrer les contraintes et consigner la décision",
+      "assignee_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "doing",
+      "due_date": "2026-10-21"
+    },
+    {
+      "id": "KCP-RETOUR-DECISION-T03",
+      "project_id": "KCP-RETOUR-DECISION",
+      "title": "Produire la preuve de résultat et clore le suivi",
+      "assignee_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "status": "todo",
+      "due_date": "2026-10-22"
+    }
+  ]
+}

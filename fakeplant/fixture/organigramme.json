@@ -1,0 +1,218 @@
+{
+  "organization": {
+    "organization_id": "987c96cc-141f-59b6-9445-1104b6d3f646",
+    "slug": "fakeplant",
+    "title": "FakePlant — Usine industrielle fictive",
+    "sites": [
+      {
+        "key": "fakeplant-site-principal",
+        "name": "Usine principale"
+      }
+    ],
+    "universe_key": "fakeplant",
+    "worlds": [
+      {
+        "key": "electromecanique-informatique",
+        "title": "électromécanique et informatique",
+        "visibility": "private",
+        "isolation": "world-scoped",
+        "content_apps": [
+          "ethikos",
+          "keenkonnect"
+        ],
+        "expected_people": 676
+      },
+      {
+        "key": "administration",
+        "title": "Administration",
+        "visibility": "private",
+        "isolation": "world-scoped",
+        "content_apps": [
+          "ethikos",
+          "keenkonnect"
+        ],
+        "expected_people": 117
+      },
+      {
+        "key": "direction-management-hr",
+        "title": "Direction, Management et HR",
+        "visibility": "private",
+        "isolation": "world-scoped",
+        "content_apps": [
+          "ethikos",
+          "keenkonnect"
+        ],
+        "expected_people": 78
+      },
+      {
+        "key": "vente-pr-marketing",
+        "title": "Vente, PR, marketing",
+        "visibility": "private",
+        "isolation": "world-scoped",
+        "content_apps": [
+          "ethikos",
+          "keenkonnect"
+        ],
+        "expected_people": 65
+      },
+      {
+        "key": "activites-sociales",
+        "title": "Activités sociales",
+        "visibility": "private",
+        "isolation": "world-scoped",
+        "content_apps": [
+          "ethikos",
+          "keenkonnect"
+        ],
+        "expected_people": 900
+      },
+      {
+        "key": "espace-discussion",
+        "title": "Espace discussion",
+        "visibility": "private",
+        "isolation": "world-scoped",
+        "content_apps": [
+          "ethikos",
+          "keenkonnect"
+        ],
+        "expected_people": 900
+      }
+    ],
+    "departments": [
+      {
+        "id": "dep:assemblage-et-montage",
+        "name": "Assemblage et montage",
+        "count": 276,
+        "primary_world": "electromecanique-informatique",
+        "job_family": "Assembleur"
+      },
+      {
+        "id": "dep:soudage-et-fabrication",
+        "name": "Soudage et fabrication",
+        "count": 175,
+        "primary_world": "electromecanique-informatique",
+        "job_family": "Soudeur"
+      },
+      {
+        "id": "dep:peinture-et-finition",
+        "name": "Peinture et finition",
+        "count": 70,
+        "primary_world": "electromecanique-informatique",
+        "job_family": "Peintre industriel"
+      },
+      {
+        "id": "dep:qualite",
+        "name": "Qualité",
+        "count": 34,
+        "primary_world": "electromecanique-informatique",
+        "job_family": "Inspecteur qualité"
+      },
+      {
+        "id": "dep:maintenance-electromecanique",
+        "name": "Maintenance électromécanique",
+        "count": 46,
+        "primary_world": "electromecanique-informatique",
+        "job_family": "Électricien"
+      },
+      {
+        "id": "dep:ingenierie-et-developpement",
+        "name": "Ingénierie et développement",
+        "count": 53,
+        "primary_world": "electromecanique-informatique",
+        "job_family": "Ingénieur mécanique"
+      },
+      {
+        "id": "dep:informatique-et-systemes",
+        "name": "Informatique et systèmes",
+        "count": 14,
+        "primary_world": "electromecanique-informatique",
+        "job_family": "Technicien informatique"
+      },
+      {
+        "id": "dep:approvisionnement-et-logistique",
+        "name": "Approvisionnement et logistique",
+        "count": 64,
+        "primary_world": "administration",
+        "job_family": "Approvisionneur"
+      },
+      {
+        "id": "dep:administration-et-finances",
+        "name": "Administration et finances",
+        "count": 39,
+        "primary_world": "administration",
+        "job_family": "Secrétaire"
+      },
+      {
+        "id": "dep:direction-gestion-et-rh",
+        "name": "Direction, gestion et RH",
+        "count": 51,
+        "primary_world": "direction-management-hr",
+        "job_family": "Gestionnaire"
+      },
+      {
+        "id": "dep:ventes-relations-publiques-et-marketing",
+        "name": "Ventes, relations publiques et marketing",
+        "count": 33,
+        "primary_world": "vente-pr-marketing",
+        "job_family": "Conseiller ventes"
+      },
+      {
+        "id": "dep:sst-et-formation",
+        "name": "SST et formation",
+        "count": 17,
+        "primary_world": "direction-management-hr",
+        "job_family": "Conseiller SST"
+      },
+      {
+        "id": "dep:pieces-et-service-apres-vente",
+        "name": "Pièces et service après-vente",
+        "count": 24,
+        "primary_world": "vente-pr-marketing",
+        "job_family": "Technicien service"
+      },
+      {
+        "id": "dep:vie-sociale-et-comite",
+        "name": "Vie sociale et comité",
+        "count": 4,
+        "primary_world": "activites-sociales",
+        "job_family": "Animateur social"
+      }
+    ],
+    "people_count": 900,
+    "narrative_anchors": {
+      "Nadia": "7b0d2746-0ced-51a9-be1e-28151839d808",
+      "Luc": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "Mina": "f3591ac3-56b0-5b84-9739-554f9ab4b30d",
+      "Karim": "57547d2f-8566-5140-872d-dad7b83c7f09",
+      "Salomé": "576a6493-a86f-57f2-a0e4-df1c0de5e37f",
+      "Éric": "11ddea94-60f3-5679-a449-89827353f9c2",
+      "Amélie": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "Sophie": "a59dab30-48bf-51ef-8766-e27c82508dc9",
+      "Thomas": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "Mireille": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "Victor": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "Farah": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07",
+      "Éliane": "4bd98c19-b37e-5a3f-9d63-04b636f21694",
+      "Joanie": "4f64b1df-9ce5-572a-9207-844ca924a310"
+    },
+    "narrative_anchor_displays": {
+      "Nadia": "Technicien informatique7",
+      "Luc": "Électricien6",
+      "Mina": "Soudeur11",
+      "Karim": "Inspecteur qualité3",
+      "Salomé": "Gestionnaire5",
+      "Éric": "Électricien13",
+      "Amélie": "Secrétaire4",
+      "Sophie": "Secrétaire9",
+      "Thomas": "Approvisionneur8",
+      "Mireille": "Gestionnaire2",
+      "Victor": "Conseiller ventes5",
+      "Farah": "Conseiller ventes8",
+      "Éliane": "Gestionnaire9",
+      "Joanie": "Animateur social2"
+    },
+    "fictional": true,
+    "owner": "FakePlant simulation",
+    "schema_version": "koa.organization-state/1.0"
+  }
+}

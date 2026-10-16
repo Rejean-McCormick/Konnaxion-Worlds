@@ -1,0 +1,3882 @@
+{
+  "topics": [
+    {
+      "id": "FP-ETH-E-01",
+      "world_key": "electromecanique-informatique",
+      "title": "Arrêter SW-04 pendant l'enquête ?",
+      "conflict": "Sécurité/qualité vs capacité",
+      "speakers": "Karim / Salomé",
+      "scenario_ref": "FP-S03",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-E-02",
+      "world_key": "electromecanique-informatique",
+      "title": "Une observation de quart sans preuve vaut-elle alerte ?",
+      "conflict": "Risque du silence vs bruit",
+      "speakers": "Mina / Karim",
+      "scenario_ref": "FP-S03",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-E-03",
+      "world_key": "electromecanique-informatique",
+      "title": "Stocker le roulement CR-12 ?",
+      "conflict": "Continuité vs obsolescence",
+      "speakers": "Éric / Thomas",
+      "scenario_ref": "FP-S04",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-E-04",
+      "world_key": "electromecanique-informatique",
+      "title": "Priorité des incidents TI et atelier ?",
+      "conflict": "SLA critique vs impact cumulatif",
+      "speakers": "Nadia / Salomé",
+      "scenario_ref": "FP-S02",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-E-05",
+      "world_key": "electromecanique-informatique",
+      "title": "Réglage constructeur ou remplacement PRN-17 ?",
+      "conflict": "Diagnostic vs coût d'une pièce inutile",
+      "speakers": "Nadia / Luc",
+      "scenario_ref": "FP-S02",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-E-06",
+      "world_key": "electromecanique-informatique",
+      "title": "Quels prérequis conditionnent l'arrêt CR-12 ?",
+      "conflict": "Production vs consignation obligatoire",
+      "speakers": "Éric / Mireille",
+      "scenario_ref": "FP-S04",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-E-07",
+      "world_key": "electromecanique-informatique",
+      "title": "Faut-il consigner les tests qui échouent ?",
+      "conflict": "Temps de saisie vs mémoire",
+      "speakers": "Luc / Mina",
+      "scenario_ref": "FP-S17",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-E-08",
+      "world_key": "electromecanique-informatique",
+      "title": "Deux versions du plan peuvent-elles circuler ?",
+      "conflict": "Rapidité vs maîtrise de révision",
+      "speakers": "Karim / Victor",
+      "scenario_ref": "FP-S09",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-E-09",
+      "world_key": "electromecanique-informatique",
+      "title": "Quel signal franchit la frontière vers Direction ?",
+      "conflict": "Alerte précoce vs risque non qualifié",
+      "speakers": "Salomé / Karim",
+      "scenario_ref": "FP-S03",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-A-01",
+      "world_key": "administration",
+      "title": "Quelle granularité de coûts autoriser ?",
+      "conflict": "Meilleure option vs fuite commerciale",
+      "speakers": "Amélie / Victor",
+      "scenario_ref": "FP-S01",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-A-02",
+      "world_key": "administration",
+      "title": "Que faire d'un prix T4 expiré ?",
+      "conflict": "Poursuite provisoire vs refus du calcul",
+      "speakers": "Amélie / Sophie",
+      "scenario_ref": "FP-S01",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-A-03",
+      "world_key": "administration",
+      "title": "Un achat sous seuil peut-il partir sans relance ?",
+      "conflict": "Fluidité vs délégation",
+      "speakers": "Thomas / Amélie",
+      "scenario_ref": "FP-S02",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-A-04",
+      "world_key": "administration",
+      "title": "Second fournisseur ou stock de précaution ?",
+      "conflict": "Prix vs continuité",
+      "speakers": "Thomas / Salomé",
+      "scenario_ref": "FP-S08",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-A-05",
+      "world_key": "administration",
+      "title": "Comment traiter un accusé ERP absent ?",
+      "conflict": "Réessayer vs éviter doublon",
+      "speakers": "Sophie / Thomas",
+      "scenario_ref": "FP-S02",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-A-06",
+      "world_key": "administration",
+      "title": "Quelles hypothèses commerciales sont publiables ?",
+      "conflict": "Transparence vs confidentialité",
+      "speakers": "Amélie / Farah",
+      "scenario_ref": "FP-S01",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-D-01",
+      "world_key": "direction-management-hr",
+      "title": "Peut-on avancer Atlas-47 de sept jours ?",
+      "conflict": "Délai vs coût/sécurité",
+      "speakers": "Mireille / Victor",
+      "scenario_ref": "FP-S01",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-D-02",
+      "world_key": "direction-management-hr",
+      "title": "Quel scénario de quarts préserverait l'équité ?",
+      "conflict": "Souplesse vs charge inégale",
+      "speakers": "Éliane / Salomé",
+      "scenario_ref": "FP-S06",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-D-03",
+      "world_key": "direction-management-hr",
+      "title": "Un sondage RH représente-t-il le quart de nuit ?",
+      "conflict": "Majorité vs absentéisme de participation",
+      "speakers": "Éliane / Mina",
+      "scenario_ref": "FP-S15",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-D-04",
+      "world_key": "direction-management-hr",
+      "title": "Comment prioriser les savoirs de Luc ?",
+      "conflict": "Cas fréquents vs cas à haut risque",
+      "speakers": "Luc / Nadia",
+      "scenario_ref": "FP-S05",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-D-05",
+      "world_key": "direction-management-hr",
+      "title": "Quand un avis devient-il un mandat exécutable ?",
+      "conflict": "Participation vs autorité",
+      "speakers": "Mireille / Éliane",
+      "scenario_ref": "FP-S06",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-D-06",
+      "world_key": "direction-management-hr",
+      "title": "Quel indicateur peut réellement clôturer un engagement ?",
+      "conflict": "Progrès affiché vs preuve",
+      "speakers": "Mireille / Sophie",
+      "scenario_ref": "FP-S18",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-D-07",
+      "world_key": "direction-management-hr",
+      "title": "Quels incidents méritent une communication externe ?",
+      "conflict": "Transparence vs confidentialité",
+      "speakers": "Farah / Mireille",
+      "scenario_ref": "FP-S10",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-D-08",
+      "world_key": "direction-management-hr",
+      "title": "Qui autorise la remise en service CR-12 ?",
+      "conflict": "Pression du délai vs SST",
+      "speakers": "Éric / Mireille",
+      "scenario_ref": "FP-S04",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-D-09",
+      "world_key": "direction-management-hr",
+      "title": "Comment évaluer une idée écartée ?",
+      "conflict": "Redevabilité vs charge d'analyse",
+      "speakers": "Mina / Mireille",
+      "scenario_ref": "FP-S13",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-V-01",
+      "world_key": "vente-pr-marketing",
+      "title": "Promettre la date client avant confirmation qualité ?",
+      "conflict": "Service vs risque",
+      "speakers": "Victor / Karim",
+      "scenario_ref": "FP-S07",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-V-02",
+      "world_key": "vente-pr-marketing",
+      "title": "Présenter trois options ou une recommandation ?",
+      "conflict": "Choix éclairé vs surcharge",
+      "speakers": "Victor / Amélie",
+      "scenario_ref": "FP-S01",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-V-03",
+      "world_key": "vente-pr-marketing",
+      "title": "Une mauvaise nouvelle au client, quand et comment ?",
+      "conflict": "Confiance vs spéculation",
+      "speakers": "Farah / Victor",
+      "scenario_ref": "FP-S07",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-V-04",
+      "world_key": "vente-pr-marketing",
+      "title": "Réviser le devis sur une source de coûts provisoire ?",
+      "conflict": "Vitesse vs preuve",
+      "speakers": "Victor / Sophie",
+      "scenario_ref": "FP-S01",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-V-05",
+      "world_key": "vente-pr-marketing",
+      "title": "Quelle révision CAD fait foi pour l'offre ?",
+      "conflict": "Délai vs exactitude",
+      "speakers": "Victor / Karim",
+      "scenario_ref": "FP-S09",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-V-06",
+      "world_key": "vente-pr-marketing",
+      "title": "Faut-il publier une leçon d'incident anonymisée ?",
+      "conflict": "Confiance vs exposition",
+      "speakers": "Farah / Mireille",
+      "scenario_ref": "FP-S10",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-S-01",
+      "world_key": "activites-sociales",
+      "title": "Comment organiser les portes ouvertes pour trois quarts ?",
+      "conflict": "Accès équitable vs logistique",
+      "speakers": "Joanie / Mina",
+      "scenario_ref": "FP-S14",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-S-02",
+      "world_key": "activites-sociales",
+      "title": "Mentorat volontaire ou programme imposé ?",
+      "conflict": "Reconnaissance vs pression sociale",
+      "speakers": "Joanie / Luc",
+      "scenario_ref": "FP-S05",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-S-03",
+      "world_key": "activites-sociales",
+      "title": "Comment reconnaître des experts sans classement ?",
+      "conflict": "Gratitude vs compétition",
+      "speakers": "Joanie / Éliane",
+      "scenario_ref": "FP-S14",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-S-04",
+      "world_key": "activites-sociales",
+      "title": "Transport collectif pour événements d'usine ?",
+      "conflict": "Inclusion vs coût",
+      "speakers": "Joanie / Amélie",
+      "scenario_ref": "FP-S14",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-S-05",
+      "world_key": "activites-sociales",
+      "title": "Quels retours sur une activité sont publiables ?",
+      "conflict": "Apprentissage vs confidentialité",
+      "speakers": "Joanie / Éliane",
+      "scenario_ref": "FP-S14",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-01",
+      "world_key": "espace-discussion",
+      "title": "Pourquoi le défaut SW-04 n'apparaît-il que de nuit ?",
+      "conflict": "Expérience locale vs chiffres",
+      "speakers": "Mina / Karim",
+      "scenario_ref": "FP-S03",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-02",
+      "world_key": "espace-discussion",
+      "title": "A-t-on répondu aux idées anciennes ?",
+      "conflict": "Confiance vs suivi incomplet",
+      "speakers": "Mina / Mireille",
+      "scenario_ref": "FP-S13",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-03",
+      "world_key": "espace-discussion",
+      "title": "Où retrouver la note du fuser de Luc ?",
+      "conflict": "Récit oral vs source validée",
+      "speakers": "Nadia / Luc",
+      "scenario_ref": "FP-S02",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-04",
+      "world_key": "espace-discussion",
+      "title": "Une procédure révisée doit-elle invalider une astuce ?",
+      "conflict": "Mémoire vs conformité",
+      "speakers": "Luc / Nadia",
+      "scenario_ref": "FP-S05",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-05",
+      "world_key": "espace-discussion",
+      "title": "Que faire des cas où aucune cause n'est connue ?",
+      "conflict": "Incertitude vs besoin de conclure",
+      "speakers": "Karim / Mina",
+      "scenario_ref": "FP-S17",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-06",
+      "world_key": "espace-discussion",
+      "title": "Qui doit être averti d'un changement matière ?",
+      "conflict": "Transversalité vs bruit",
+      "speakers": "Salomé / Thomas",
+      "scenario_ref": "FP-S03",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-07",
+      "world_key": "espace-discussion",
+      "title": "Que faire lorsqu'un manuel manque ?",
+      "conflict": "Réparation immédiate vs risque",
+      "speakers": "Nadia / Éric",
+      "scenario_ref": "FP-S02",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-08",
+      "world_key": "espace-discussion",
+      "title": "Quel irritant coûte le plus de relances ?",
+      "conflict": "Perception vs mesure",
+      "speakers": "Sophie / Joanie",
+      "scenario_ref": "FP-S13",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-09",
+      "world_key": "espace-discussion",
+      "title": "Pourquoi une décision passée semble-t-elle illogique ?",
+      "conflict": "Historique vs jugement actuel",
+      "speakers": "Mireille / Mina",
+      "scenario_ref": "FP-S18",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-10",
+      "world_key": "espace-discussion",
+      "title": "Le prochain quart reçoit-il les incidents ouverts ?",
+      "conflict": "Passation vs surcharge",
+      "speakers": "Salomé / Mina",
+      "scenario_ref": "FP-S03",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-11",
+      "world_key": "espace-discussion",
+      "title": "Qui sait résoudre un problème rare de convoyeur ?",
+      "conflict": "Annuaire vs expertise prouvée",
+      "speakers": "Luc / Nadia",
+      "scenario_ref": "FP-S12",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    },
+    {
+      "id": "FP-ETH-X-12",
+      "world_key": "espace-discussion",
+      "title": "Que faire d'une suggestion non retenue ?",
+      "conflict": "Motifs publics vs protection des personnes",
+      "speakers": "Joanie / Éliane",
+      "scenario_ref": "FP-S13",
+      "status": "open",
+      "provenance": "simulation:documentation-v2"
+    }
+  ],
+  "consultations": [
+    {
+      "id": "FP-KON-E-01",
+      "world_key": "electromecanique-informatique",
+      "title": "Arrêt conditionnel SW-04",
+      "kind": "advisory",
+      "authority_boundary": "Qualification qualité à obtenir",
+      "scenario_ref": "FP-S03",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-E-02",
+      "world_key": "electromecanique-informatique",
+      "title": "Politique de stock CR-12",
+      "kind": "advisory",
+      "authority_boundary": "Finance + maintenance signent",
+      "scenario_ref": "FP-S04",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-A-01",
+      "world_key": "administration",
+      "title": "Diffusion de coûts T4 aux agents",
+      "kind": "advisory",
+      "authority_boundary": "Approbation finance obligatoire",
+      "scenario_ref": "FP-S01",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-A-02",
+      "world_key": "administration",
+      "title": "Automatisation des demandes sous seuil",
+      "kind": "advisory",
+      "authority_boundary": "Délégation achats vérifiée",
+      "scenario_ref": "FP-S02",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-D-01",
+      "world_key": "direction-management-hr",
+      "title": "Capacité et devis Atlas-47",
+      "kind": "advisory",
+      "authority_boundary": "Mandat signé par direction",
+      "scenario_ref": "FP-S01",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-D-02",
+      "world_key": "direction-management-hr",
+      "title": "Aménagement temporaire des quarts",
+      "kind": "advisory",
+      "authority_boundary": "Consentement, règles RH et SST",
+      "scenario_ref": "FP-S06",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-D-03",
+      "world_key": "direction-management-hr",
+      "title": "Priorité de capture des cas Luc",
+      "kind": "advisory",
+      "authority_boundary": "Validation des relecteurs",
+      "scenario_ref": "FP-S05",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-D-04",
+      "world_key": "direction-management-hr",
+      "title": "Revue J30 de l'équité des quarts",
+      "kind": "advisory",
+      "authority_boundary": "Réexamen obligatoire si écart",
+      "scenario_ref": "FP-S15",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-V-01",
+      "world_key": "vente-pr-marketing",
+      "title": "Position commerciale Atlas-47",
+      "kind": "advisory",
+      "authority_boundary": "Offre finale validée",
+      "scenario_ref": "FP-S07",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-V-02",
+      "world_key": "vente-pr-marketing",
+      "title": "Niveau de transparence d'un risque",
+      "kind": "advisory",
+      "authority_boundary": "Communication autorisée",
+      "scenario_ref": "FP-S07",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-S-01",
+      "world_key": "activites-sociales",
+      "title": "Date et formule des portes ouvertes",
+      "kind": "participative",
+      "authority_boundary": "Autorisations logistiques",
+      "scenario_ref": "FP-S14",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-S-02",
+      "world_key": "activites-sociales",
+      "title": "Reconnaissance du mentorat",
+      "kind": "participative",
+      "authority_boundary": "Participation volontaire",
+      "scenario_ref": "FP-S14",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-S-03",
+      "world_key": "activites-sociales",
+      "title": "Navettes lors des événements",
+      "kind": "participative",
+      "authority_boundary": "Budget et besoin confirmé",
+      "scenario_ref": "FP-S14",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-X-01",
+      "world_key": "espace-discussion",
+      "title": "Priorité des irritants de l'atelier",
+      "kind": "participative",
+      "authority_boundary": "Triage vers propriétaire",
+      "scenario_ref": "FP-S13",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-X-02",
+      "world_key": "espace-discussion",
+      "title": "Accessibilité des informations de quart",
+      "kind": "participative",
+      "authority_boundary": "Règles de diffusion",
+      "scenario_ref": "FP-S06",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    },
+    {
+      "id": "FP-KON-X-03",
+      "world_key": "espace-discussion",
+      "title": "Qualité des réponses aux suggestions",
+      "kind": "participative",
+      "authority_boundary": "Rétroaction avec motifs",
+      "scenario_ref": "FP-S13",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ],
+      "results_authoritative": false
+    }
+  ],
+  "external_authority": "ethikos-demo-scenario/v3",
+  "opinions_are_decisions": false,
+  "ethikos_v3_world_snapshots": {
+    "activites-sociales": {
+      "schema_version": "ethikos-demo-scenario/v3",
+      "scenario_key": "fakeplant-activites-sociales-v1",
+      "scenario_title": "FakePlant — Activités sociales",
+      "mode": "replace_scenario",
+      "metadata": {
+        "world_key": "activites-sociales",
+        "universe_key": "fakeplant",
+        "simulation": true,
+        "state_ref": "urn:kristal:state:fakeplant-organisation",
+        "source_contract": "koa.organization-state/1.0",
+        "simulation_only": true
+      },
+      "actors": [
+        {
+          "key": "FP-E0572",
+          "username": "demo_fp_electricien_013",
+          "display_name": "Électricien13",
+          "email": "fp-e0572@fakeplant.example.test",
+          "role": "Électricien",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0004",
+          "username": "demo_fp_assembleur_004",
+          "display_name": "Assembleur4",
+          "email": "fp-e0004@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0780",
+          "username": "demo_fp_gestionnaire_009",
+          "display_name": "Gestionnaire9",
+          "email": "fp-e0780@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0898",
+          "username": "demo_fp_animateur_social_002",
+          "display_name": "Animateur social2",
+          "email": "fp-e0898@fakeplant.example.test",
+          "role": "Animateur social",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0528",
+          "username": "demo_fp_inspecteur_qualite_003",
+          "display_name": "Inspecteur qualité3",
+          "email": "fp-e0528@fakeplant.example.test",
+          "role": "Inspecteur qualité",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0776",
+          "username": "demo_fp_gestionnaire_005",
+          "display_name": "Gestionnaire5",
+          "email": "fp-e0776@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0830",
+          "username": "demo_fp_conseiller_ventes_008",
+          "display_name": "Conseiller ventes8",
+          "email": "fp-e0830@fakeplant.example.test",
+          "role": "Conseiller ventes",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0661",
+          "username": "demo_fp_technicien_informatique_007",
+          "display_name": "Technicien informatique7",
+          "email": "fp-e0661@fakeplant.example.test",
+          "role": "Technicien informatique",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0002",
+          "username": "demo_fp_assembleur_002",
+          "display_name": "Assembleur2",
+          "email": "fp-e0002@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0827",
+          "username": "demo_fp_conseiller_ventes_005",
+          "display_name": "Conseiller ventes5",
+          "email": "fp-e0827@fakeplant.example.test",
+          "role": "Conseiller ventes",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0736",
+          "username": "demo_fp_secretaire_004",
+          "display_name": "Secrétaire4",
+          "email": "fp-e0736@fakeplant.example.test",
+          "role": "Secrétaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0741",
+          "username": "demo_fp_secretaire_009",
+          "display_name": "Secrétaire9",
+          "email": "fp-e0741@fakeplant.example.test",
+          "role": "Secrétaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0773",
+          "username": "demo_fp_gestionnaire_002",
+          "display_name": "Gestionnaire2",
+          "email": "fp-e0773@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0003",
+          "username": "demo_fp_assembleur_003",
+          "display_name": "Assembleur3",
+          "email": "fp-e0003@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0676",
+          "username": "demo_fp_approvisionneur_008",
+          "display_name": "Approvisionneur8",
+          "email": "fp-e0676@fakeplant.example.test",
+          "role": "Approvisionneur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0005",
+          "username": "demo_fp_assembleur_005",
+          "display_name": "Assembleur5",
+          "email": "fp-e0005@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0001",
+          "username": "demo_fp_assembleur_001",
+          "display_name": "Assembleur1",
+          "email": "fp-e0001@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0291",
+          "username": "demo_fp_soudeur_011",
+          "display_name": "Soudeur11",
+          "email": "fp-e0291@fakeplant.example.test",
+          "role": "Soudeur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0565",
+          "username": "demo_fp_electricien_006",
+          "display_name": "Électricien6",
+          "email": "fp-e0565@fakeplant.example.test",
+          "role": "Électricien",
+          "is_ethikos_elite": false
+        }
+      ],
+      "categories": [
+        {
+          "key": "category-activites-sociales",
+          "name": "Activités sociales"
+        }
+      ],
+      "topics": [
+        {
+          "key": "FP-ETH-S-01",
+          "title": "[DEMO] Comment organiser les portes ouvertes pour trois quarts ?",
+          "status": "open",
+          "category": "category-activites-sociales",
+          "description": "Contexte : Accès équitable vs logistique. Dossier FP-S14."
+        },
+        {
+          "key": "FP-ETH-S-02",
+          "title": "[DEMO] Mentorat volontaire ou programme imposé ?",
+          "status": "open",
+          "category": "category-activites-sociales",
+          "description": "Contexte : Reconnaissance vs pression sociale. Dossier FP-S05."
+        },
+        {
+          "key": "FP-ETH-S-03",
+          "title": "[DEMO] Comment reconnaître des experts sans classement ?",
+          "status": "open",
+          "category": "category-activites-sociales",
+          "description": "Contexte : Gratitude vs compétition. Dossier FP-S14."
+        },
+        {
+          "key": "FP-ETH-S-04",
+          "title": "[DEMO] Transport collectif pour événements d'usine ?",
+          "status": "open",
+          "category": "category-activites-sociales",
+          "description": "Contexte : Inclusion vs coût. Dossier FP-S14."
+        },
+        {
+          "key": "FP-ETH-S-05",
+          "title": "[DEMO] Quels retours sur une activité sont publiables ?",
+          "status": "open",
+          "category": "category-activites-sociales",
+          "description": "Contexte : Apprentissage vs confidentialité. Dossier FP-S14."
+        }
+      ],
+      "stances": [
+        {
+          "topic": "FP-ETH-S-01",
+          "actor": "FP-E0572",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-S-01",
+          "actor": "FP-E0004",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-S-02",
+          "actor": "FP-E0004",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-S-02",
+          "actor": "FP-E0780",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-S-03",
+          "actor": "FP-E0780",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-S-03",
+          "actor": "FP-E0898",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-S-04",
+          "actor": "FP-E0898",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-S-04",
+          "actor": "FP-E0528",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-S-05",
+          "actor": "FP-E0528",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-S-05",
+          "actor": "FP-E0776",
+          "value": -1
+        }
+      ],
+      "arguments": [
+        {
+          "key": "FP-ETH-S-01-A1",
+          "topic": "FP-ETH-S-01",
+          "actor": "FP-E0572",
+          "content": "Proposition initiale : Accès équitable vs logistique. La conclusion doit être vérifiée dans FP-S14.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-S-01-A2",
+          "topic": "FP-ETH-S-01",
+          "actor": "FP-E0004",
+          "content": "Objection à traiter : Accès équitable vs logistique. La conclusion doit être vérifiée dans FP-S14.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-S-02-A1",
+          "topic": "FP-ETH-S-02",
+          "actor": "FP-E0004",
+          "content": "Proposition initiale : Reconnaissance vs pression sociale. La conclusion doit être vérifiée dans FP-S05.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-S-02-A2",
+          "topic": "FP-ETH-S-02",
+          "actor": "FP-E0780",
+          "content": "Objection à traiter : Reconnaissance vs pression sociale. La conclusion doit être vérifiée dans FP-S05.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-S-03-A1",
+          "topic": "FP-ETH-S-03",
+          "actor": "FP-E0780",
+          "content": "Proposition initiale : Gratitude vs compétition. La conclusion doit être vérifiée dans FP-S14.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-S-03-A2",
+          "topic": "FP-ETH-S-03",
+          "actor": "FP-E0898",
+          "content": "Objection à traiter : Gratitude vs compétition. La conclusion doit être vérifiée dans FP-S14.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-S-04-A1",
+          "topic": "FP-ETH-S-04",
+          "actor": "FP-E0898",
+          "content": "Proposition initiale : Inclusion vs coût. La conclusion doit être vérifiée dans FP-S14.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-S-04-A2",
+          "topic": "FP-ETH-S-04",
+          "actor": "FP-E0528",
+          "content": "Objection à traiter : Inclusion vs coût. La conclusion doit être vérifiée dans FP-S14.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-S-05-A1",
+          "topic": "FP-ETH-S-05",
+          "actor": "FP-E0528",
+          "content": "Proposition initiale : Apprentissage vs confidentialité. La conclusion doit être vérifiée dans FP-S14.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-S-05-A2",
+          "topic": "FP-ETH-S-05",
+          "actor": "FP-E0776",
+          "content": "Objection à traiter : Apprentissage vs confidentialité. La conclusion doit être vérifiée dans FP-S14.",
+          "side": "con"
+        }
+      ],
+      "consultations": [
+        {
+          "key": "FP-KON-S-01",
+          "title": "Date et formule des portes ouvertes",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Autorisations logistiques. Consultation participative — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        },
+        {
+          "key": "FP-KON-S-02",
+          "title": "Reconnaissance du mentorat",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Participation volontaire. Consultation participative — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        },
+        {
+          "key": "FP-KON-S-03",
+          "title": "Navettes lors des événements",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Budget et besoin confirmé. Consultation participative — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        }
+      ],
+      "consultation_votes": [
+        {
+          "consultation": "FP-KON-S-01",
+          "actor": "FP-E0572",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-S-01",
+          "actor": "FP-E0004",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-S-01",
+          "actor": "FP-E0780",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-S-01",
+          "actor": "FP-E0898",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-S-02",
+          "actor": "FP-E0572",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-S-02",
+          "actor": "FP-E0004",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-S-02",
+          "actor": "FP-E0780",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-S-02",
+          "actor": "FP-E0898",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-S-03",
+          "actor": "FP-E0572",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-S-03",
+          "actor": "FP-E0004",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-S-03",
+          "actor": "FP-E0780",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-S-03",
+          "actor": "FP-E0898",
+          "option": "option-a",
+          "raw_value": 1
+        }
+      ]
+    },
+    "administration": {
+      "schema_version": "ethikos-demo-scenario/v3",
+      "scenario_key": "fakeplant-administration-v1",
+      "scenario_title": "FakePlant — Administration",
+      "mode": "replace_scenario",
+      "metadata": {
+        "world_key": "administration",
+        "universe_key": "fakeplant",
+        "simulation": true,
+        "state_ref": "urn:kristal:state:fakeplant-organisation",
+        "source_contract": "koa.organization-state/1.0",
+        "simulation_only": true
+      },
+      "actors": [
+        {
+          "key": "FP-E0674",
+          "username": "demo_fp_approvisionneur_006",
+          "display_name": "Approvisionneur6",
+          "email": "fp-e0674@fakeplant.example.test",
+          "role": "Approvisionneur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0671",
+          "username": "demo_fp_approvisionneur_003",
+          "display_name": "Approvisionneur3",
+          "email": "fp-e0671@fakeplant.example.test",
+          "role": "Approvisionneur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0675",
+          "username": "demo_fp_approvisionneur_007",
+          "display_name": "Approvisionneur7",
+          "email": "fp-e0675@fakeplant.example.test",
+          "role": "Approvisionneur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0669",
+          "username": "demo_fp_approvisionneur_001",
+          "display_name": "Approvisionneur1",
+          "email": "fp-e0669@fakeplant.example.test",
+          "role": "Approvisionneur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0736",
+          "username": "demo_fp_secretaire_004",
+          "display_name": "Secrétaire4",
+          "email": "fp-e0736@fakeplant.example.test",
+          "role": "Secrétaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0741",
+          "username": "demo_fp_secretaire_009",
+          "display_name": "Secrétaire9",
+          "email": "fp-e0741@fakeplant.example.test",
+          "role": "Secrétaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0677",
+          "username": "demo_fp_approvisionneur_009",
+          "display_name": "Approvisionneur9",
+          "email": "fp-e0677@fakeplant.example.test",
+          "role": "Approvisionneur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0672",
+          "username": "demo_fp_approvisionneur_004",
+          "display_name": "Approvisionneur4",
+          "email": "fp-e0672@fakeplant.example.test",
+          "role": "Approvisionneur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0673",
+          "username": "demo_fp_approvisionneur_005",
+          "display_name": "Approvisionneur5",
+          "email": "fp-e0673@fakeplant.example.test",
+          "role": "Approvisionneur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0670",
+          "username": "demo_fp_approvisionneur_002",
+          "display_name": "Approvisionneur2",
+          "email": "fp-e0670@fakeplant.example.test",
+          "role": "Approvisionneur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0676",
+          "username": "demo_fp_approvisionneur_008",
+          "display_name": "Approvisionneur8",
+          "email": "fp-e0676@fakeplant.example.test",
+          "role": "Approvisionneur",
+          "is_ethikos_elite": false
+        }
+      ],
+      "categories": [
+        {
+          "key": "category-administration",
+          "name": "Administration"
+        }
+      ],
+      "topics": [
+        {
+          "key": "FP-ETH-A-01",
+          "title": "[DEMO] Quelle granularité de coûts autoriser ?",
+          "status": "open",
+          "category": "category-administration",
+          "description": "Contexte : Meilleure option vs fuite commerciale. Dossier FP-S01."
+        },
+        {
+          "key": "FP-ETH-A-02",
+          "title": "[DEMO] Que faire d'un prix T4 expiré ?",
+          "status": "open",
+          "category": "category-administration",
+          "description": "Contexte : Poursuite provisoire vs refus du calcul. Dossier FP-S01."
+        },
+        {
+          "key": "FP-ETH-A-03",
+          "title": "[DEMO] Un achat sous seuil peut-il partir sans relance ?",
+          "status": "open",
+          "category": "category-administration",
+          "description": "Contexte : Fluidité vs délégation. Dossier FP-S02."
+        },
+        {
+          "key": "FP-ETH-A-04",
+          "title": "[DEMO] Second fournisseur ou stock de précaution ?",
+          "status": "open",
+          "category": "category-administration",
+          "description": "Contexte : Prix vs continuité. Dossier FP-S08."
+        },
+        {
+          "key": "FP-ETH-A-05",
+          "title": "[DEMO] Comment traiter un accusé ERP absent ?",
+          "status": "open",
+          "category": "category-administration",
+          "description": "Contexte : Réessayer vs éviter doublon. Dossier FP-S02."
+        },
+        {
+          "key": "FP-ETH-A-06",
+          "title": "[DEMO] Quelles hypothèses commerciales sont publiables ?",
+          "status": "open",
+          "category": "category-administration",
+          "description": "Contexte : Transparence vs confidentialité. Dossier FP-S01."
+        }
+      ],
+      "stances": [
+        {
+          "topic": "FP-ETH-A-01",
+          "actor": "FP-E0674",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-A-01",
+          "actor": "FP-E0671",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-A-02",
+          "actor": "FP-E0671",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-A-02",
+          "actor": "FP-E0675",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-A-03",
+          "actor": "FP-E0675",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-A-03",
+          "actor": "FP-E0669",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-A-04",
+          "actor": "FP-E0669",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-A-04",
+          "actor": "FP-E0736",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-A-05",
+          "actor": "FP-E0736",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-A-05",
+          "actor": "FP-E0741",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-A-06",
+          "actor": "FP-E0741",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-A-06",
+          "actor": "FP-E0677",
+          "value": -1
+        }
+      ],
+      "arguments": [
+        {
+          "key": "FP-ETH-A-01-A1",
+          "topic": "FP-ETH-A-01",
+          "actor": "FP-E0674",
+          "content": "Proposition initiale : Meilleure option vs fuite commerciale. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-A-01-A2",
+          "topic": "FP-ETH-A-01",
+          "actor": "FP-E0671",
+          "content": "Objection à traiter : Meilleure option vs fuite commerciale. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-A-02-A1",
+          "topic": "FP-ETH-A-02",
+          "actor": "FP-E0671",
+          "content": "Proposition initiale : Poursuite provisoire vs refus du calcul. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-A-02-A2",
+          "topic": "FP-ETH-A-02",
+          "actor": "FP-E0675",
+          "content": "Objection à traiter : Poursuite provisoire vs refus du calcul. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-A-03-A1",
+          "topic": "FP-ETH-A-03",
+          "actor": "FP-E0675",
+          "content": "Proposition initiale : Fluidité vs délégation. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-A-03-A2",
+          "topic": "FP-ETH-A-03",
+          "actor": "FP-E0669",
+          "content": "Objection à traiter : Fluidité vs délégation. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-A-04-A1",
+          "topic": "FP-ETH-A-04",
+          "actor": "FP-E0669",
+          "content": "Proposition initiale : Prix vs continuité. La conclusion doit être vérifiée dans FP-S08.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-A-04-A2",
+          "topic": "FP-ETH-A-04",
+          "actor": "FP-E0736",
+          "content": "Objection à traiter : Prix vs continuité. La conclusion doit être vérifiée dans FP-S08.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-A-05-A1",
+          "topic": "FP-ETH-A-05",
+          "actor": "FP-E0736",
+          "content": "Proposition initiale : Réessayer vs éviter doublon. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-A-05-A2",
+          "topic": "FP-ETH-A-05",
+          "actor": "FP-E0741",
+          "content": "Objection à traiter : Réessayer vs éviter doublon. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-A-06-A1",
+          "topic": "FP-ETH-A-06",
+          "actor": "FP-E0741",
+          "content": "Proposition initiale : Transparence vs confidentialité. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-A-06-A2",
+          "topic": "FP-ETH-A-06",
+          "actor": "FP-E0677",
+          "content": "Objection à traiter : Transparence vs confidentialité. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "con"
+        }
+      ],
+      "consultations": [
+        {
+          "key": "FP-KON-A-01",
+          "title": "Diffusion de coûts T4 aux agents",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Approbation finance obligatoire. Consultation advisory — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        },
+        {
+          "key": "FP-KON-A-02",
+          "title": "Automatisation des demandes sous seuil",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Délégation achats vérifiée. Consultation advisory — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        }
+      ],
+      "consultation_votes": [
+        {
+          "consultation": "FP-KON-A-01",
+          "actor": "FP-E0674",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-A-01",
+          "actor": "FP-E0671",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-A-01",
+          "actor": "FP-E0675",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-A-01",
+          "actor": "FP-E0669",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-A-02",
+          "actor": "FP-E0674",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-A-02",
+          "actor": "FP-E0671",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-A-02",
+          "actor": "FP-E0675",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-A-02",
+          "actor": "FP-E0669",
+          "option": "option-a",
+          "raw_value": 1
+        }
+      ]
+    },
+    "direction-management-hr": {
+      "schema_version": "ethikos-demo-scenario/v3",
+      "scenario_key": "fakeplant-direction-management-hr-v1",
+      "scenario_title": "FakePlant — Direction, Management et HR",
+      "mode": "replace_scenario",
+      "metadata": {
+        "world_key": "direction-management-hr",
+        "universe_key": "fakeplant",
+        "simulation": true,
+        "state_ref": "urn:kristal:state:fakeplant-organisation",
+        "source_contract": "koa.organization-state/1.0",
+        "simulation_only": true
+      },
+      "actors": [
+        {
+          "key": "FP-E0772",
+          "username": "demo_fp_gestionnaire_001",
+          "display_name": "Gestionnaire1",
+          "email": "fp-e0772@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0780",
+          "username": "demo_fp_gestionnaire_009",
+          "display_name": "Gestionnaire9",
+          "email": "fp-e0780@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0774",
+          "username": "demo_fp_gestionnaire_003",
+          "display_name": "Gestionnaire3",
+          "email": "fp-e0774@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0776",
+          "username": "demo_fp_gestionnaire_005",
+          "display_name": "Gestionnaire5",
+          "email": "fp-e0776@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0775",
+          "username": "demo_fp_gestionnaire_004",
+          "display_name": "Gestionnaire4",
+          "email": "fp-e0775@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0777",
+          "username": "demo_fp_gestionnaire_006",
+          "display_name": "Gestionnaire6",
+          "email": "fp-e0777@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0773",
+          "username": "demo_fp_gestionnaire_002",
+          "display_name": "Gestionnaire2",
+          "email": "fp-e0773@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0778",
+          "username": "demo_fp_gestionnaire_007",
+          "display_name": "Gestionnaire7",
+          "email": "fp-e0778@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        }
+      ],
+      "categories": [
+        {
+          "key": "category-direction-management-hr",
+          "name": "Direction, Management et HR"
+        }
+      ],
+      "topics": [
+        {
+          "key": "FP-ETH-D-01",
+          "title": "[DEMO] Peut-on avancer Atlas-47 de sept jours ?",
+          "status": "open",
+          "category": "category-direction-management-hr",
+          "description": "Contexte : Délai vs coût/sécurité. Dossier FP-S01."
+        },
+        {
+          "key": "FP-ETH-D-02",
+          "title": "[DEMO] Quel scénario de quarts préserverait l'équité ?",
+          "status": "open",
+          "category": "category-direction-management-hr",
+          "description": "Contexte : Souplesse vs charge inégale. Dossier FP-S06."
+        },
+        {
+          "key": "FP-ETH-D-03",
+          "title": "[DEMO] Un sondage RH représente-t-il le quart de nuit ?",
+          "status": "open",
+          "category": "category-direction-management-hr",
+          "description": "Contexte : Majorité vs absentéisme de participation. Dossier FP-S15."
+        },
+        {
+          "key": "FP-ETH-D-04",
+          "title": "[DEMO] Comment prioriser les savoirs de Luc ?",
+          "status": "open",
+          "category": "category-direction-management-hr",
+          "description": "Contexte : Cas fréquents vs cas à haut risque. Dossier FP-S05."
+        },
+        {
+          "key": "FP-ETH-D-05",
+          "title": "[DEMO] Quand un avis devient-il un mandat exécutable ?",
+          "status": "open",
+          "category": "category-direction-management-hr",
+          "description": "Contexte : Participation vs autorité. Dossier FP-S06."
+        },
+        {
+          "key": "FP-ETH-D-06",
+          "title": "[DEMO] Quel indicateur peut réellement clôturer un engagement ?",
+          "status": "open",
+          "category": "category-direction-management-hr",
+          "description": "Contexte : Progrès affiché vs preuve. Dossier FP-S18."
+        },
+        {
+          "key": "FP-ETH-D-07",
+          "title": "[DEMO] Quels incidents méritent une communication externe ?",
+          "status": "open",
+          "category": "category-direction-management-hr",
+          "description": "Contexte : Transparence vs confidentialité. Dossier FP-S10."
+        },
+        {
+          "key": "FP-ETH-D-08",
+          "title": "[DEMO] Qui autorise la remise en service CR-12 ?",
+          "status": "open",
+          "category": "category-direction-management-hr",
+          "description": "Contexte : Pression du délai vs SST. Dossier FP-S04."
+        },
+        {
+          "key": "FP-ETH-D-09",
+          "title": "[DEMO] Comment évaluer une idée écartée ?",
+          "status": "open",
+          "category": "category-direction-management-hr",
+          "description": "Contexte : Redevabilité vs charge d'analyse. Dossier FP-S13."
+        }
+      ],
+      "stances": [
+        {
+          "topic": "FP-ETH-D-01",
+          "actor": "FP-E0772",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-D-01",
+          "actor": "FP-E0780",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-D-02",
+          "actor": "FP-E0780",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-D-02",
+          "actor": "FP-E0774",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-D-03",
+          "actor": "FP-E0774",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-D-03",
+          "actor": "FP-E0776",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-D-04",
+          "actor": "FP-E0776",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-D-04",
+          "actor": "FP-E0775",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-D-05",
+          "actor": "FP-E0775",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-D-05",
+          "actor": "FP-E0777",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-D-06",
+          "actor": "FP-E0777",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-D-06",
+          "actor": "FP-E0773",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-D-07",
+          "actor": "FP-E0773",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-D-07",
+          "actor": "FP-E0778",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-D-08",
+          "actor": "FP-E0778",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-D-08",
+          "actor": "FP-E0772",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-D-09",
+          "actor": "FP-E0772",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-D-09",
+          "actor": "FP-E0780",
+          "value": -1
+        }
+      ],
+      "arguments": [
+        {
+          "key": "FP-ETH-D-01-A1",
+          "topic": "FP-ETH-D-01",
+          "actor": "FP-E0772",
+          "content": "Proposition initiale : Délai vs coût/sécurité. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-D-01-A2",
+          "topic": "FP-ETH-D-01",
+          "actor": "FP-E0780",
+          "content": "Objection à traiter : Délai vs coût/sécurité. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-D-02-A1",
+          "topic": "FP-ETH-D-02",
+          "actor": "FP-E0780",
+          "content": "Proposition initiale : Souplesse vs charge inégale. La conclusion doit être vérifiée dans FP-S06.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-D-02-A2",
+          "topic": "FP-ETH-D-02",
+          "actor": "FP-E0774",
+          "content": "Objection à traiter : Souplesse vs charge inégale. La conclusion doit être vérifiée dans FP-S06.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-D-03-A1",
+          "topic": "FP-ETH-D-03",
+          "actor": "FP-E0774",
+          "content": "Proposition initiale : Majorité vs absentéisme de participation. La conclusion doit être vérifiée dans FP-S15.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-D-03-A2",
+          "topic": "FP-ETH-D-03",
+          "actor": "FP-E0776",
+          "content": "Objection à traiter : Majorité vs absentéisme de participation. La conclusion doit être vérifiée dans FP-S15.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-D-04-A1",
+          "topic": "FP-ETH-D-04",
+          "actor": "FP-E0776",
+          "content": "Proposition initiale : Cas fréquents vs cas à haut risque. La conclusion doit être vérifiée dans FP-S05.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-D-04-A2",
+          "topic": "FP-ETH-D-04",
+          "actor": "FP-E0775",
+          "content": "Objection à traiter : Cas fréquents vs cas à haut risque. La conclusion doit être vérifiée dans FP-S05.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-D-05-A1",
+          "topic": "FP-ETH-D-05",
+          "actor": "FP-E0775",
+          "content": "Proposition initiale : Participation vs autorité. La conclusion doit être vérifiée dans FP-S06.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-D-05-A2",
+          "topic": "FP-ETH-D-05",
+          "actor": "FP-E0777",
+          "content": "Objection à traiter : Participation vs autorité. La conclusion doit être vérifiée dans FP-S06.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-D-06-A1",
+          "topic": "FP-ETH-D-06",
+          "actor": "FP-E0777",
+          "content": "Proposition initiale : Progrès affiché vs preuve. La conclusion doit être vérifiée dans FP-S18.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-D-06-A2",
+          "topic": "FP-ETH-D-06",
+          "actor": "FP-E0773",
+          "content": "Objection à traiter : Progrès affiché vs preuve. La conclusion doit être vérifiée dans FP-S18.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-D-07-A1",
+          "topic": "FP-ETH-D-07",
+          "actor": "FP-E0773",
+          "content": "Proposition initiale : Transparence vs confidentialité. La conclusion doit être vérifiée dans FP-S10.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-D-07-A2",
+          "topic": "FP-ETH-D-07",
+          "actor": "FP-E0778",
+          "content": "Objection à traiter : Transparence vs confidentialité. La conclusion doit être vérifiée dans FP-S10.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-D-08-A1",
+          "topic": "FP-ETH-D-08",
+          "actor": "FP-E0778",
+          "content": "Proposition initiale : Pression du délai vs SST. La conclusion doit être vérifiée dans FP-S04.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-D-08-A2",
+          "topic": "FP-ETH-D-08",
+          "actor": "FP-E0772",
+          "content": "Objection à traiter : Pression du délai vs SST. La conclusion doit être vérifiée dans FP-S04.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-D-09-A1",
+          "topic": "FP-ETH-D-09",
+          "actor": "FP-E0772",
+          "content": "Proposition initiale : Redevabilité vs charge d'analyse. La conclusion doit être vérifiée dans FP-S13.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-D-09-A2",
+          "topic": "FP-ETH-D-09",
+          "actor": "FP-E0780",
+          "content": "Objection à traiter : Redevabilité vs charge d'analyse. La conclusion doit être vérifiée dans FP-S13.",
+          "side": "con"
+        }
+      ],
+      "consultations": [
+        {
+          "key": "FP-KON-D-01",
+          "title": "Capacité et devis Atlas-47",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Mandat signé par direction. Consultation advisory — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        },
+        {
+          "key": "FP-KON-D-02",
+          "title": "Aménagement temporaire des quarts",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Consentement, règles RH et SST. Consultation advisory — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        },
+        {
+          "key": "FP-KON-D-03",
+          "title": "Priorité de capture des cas Luc",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Validation des relecteurs. Consultation advisory — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        },
+        {
+          "key": "FP-KON-D-04",
+          "title": "Revue J30 de l'équité des quarts",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Réexamen obligatoire si écart. Consultation advisory — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        }
+      ],
+      "consultation_votes": [
+        {
+          "consultation": "FP-KON-D-01",
+          "actor": "FP-E0772",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-01",
+          "actor": "FP-E0780",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-01",
+          "actor": "FP-E0774",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-01",
+          "actor": "FP-E0776",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-02",
+          "actor": "FP-E0772",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-02",
+          "actor": "FP-E0780",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-02",
+          "actor": "FP-E0774",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-02",
+          "actor": "FP-E0776",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-03",
+          "actor": "FP-E0772",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-03",
+          "actor": "FP-E0780",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-03",
+          "actor": "FP-E0774",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-03",
+          "actor": "FP-E0776",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-04",
+          "actor": "FP-E0772",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-04",
+          "actor": "FP-E0780",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-04",
+          "actor": "FP-E0774",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-D-04",
+          "actor": "FP-E0776",
+          "option": "option-a",
+          "raw_value": 1
+        }
+      ]
+    },
+    "electromecanique-informatique": {
+      "schema_version": "ethikos-demo-scenario/v3",
+      "scenario_key": "fakeplant-electromecanique-informatique-v1",
+      "scenario_title": "FakePlant — électromécanique et informatique",
+      "mode": "replace_scenario",
+      "metadata": {
+        "world_key": "electromecanique-informatique",
+        "universe_key": "fakeplant",
+        "simulation": true,
+        "state_ref": "urn:kristal:state:fakeplant-organisation",
+        "source_contract": "koa.organization-state/1.0",
+        "simulation_only": true
+      },
+      "actors": [
+        {
+          "key": "FP-E0572",
+          "username": "demo_fp_electricien_013",
+          "display_name": "Électricien13",
+          "email": "fp-e0572@fakeplant.example.test",
+          "role": "Électricien",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0004",
+          "username": "demo_fp_assembleur_004",
+          "display_name": "Assembleur4",
+          "email": "fp-e0004@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0528",
+          "username": "demo_fp_inspecteur_qualite_003",
+          "display_name": "Inspecteur qualité3",
+          "email": "fp-e0528@fakeplant.example.test",
+          "role": "Inspecteur qualité",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0661",
+          "username": "demo_fp_technicien_informatique_007",
+          "display_name": "Technicien informatique7",
+          "email": "fp-e0661@fakeplant.example.test",
+          "role": "Technicien informatique",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0002",
+          "username": "demo_fp_assembleur_002",
+          "display_name": "Assembleur2",
+          "email": "fp-e0002@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0003",
+          "username": "demo_fp_assembleur_003",
+          "display_name": "Assembleur3",
+          "email": "fp-e0003@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0006",
+          "username": "demo_fp_assembleur_006",
+          "display_name": "Assembleur6",
+          "email": "fp-e0006@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0005",
+          "username": "demo_fp_assembleur_005",
+          "display_name": "Assembleur5",
+          "email": "fp-e0005@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0001",
+          "username": "demo_fp_assembleur_001",
+          "display_name": "Assembleur1",
+          "email": "fp-e0001@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0291",
+          "username": "demo_fp_soudeur_011",
+          "display_name": "Soudeur11",
+          "email": "fp-e0291@fakeplant.example.test",
+          "role": "Soudeur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0565",
+          "username": "demo_fp_electricien_006",
+          "display_name": "Électricien6",
+          "email": "fp-e0565@fakeplant.example.test",
+          "role": "Électricien",
+          "is_ethikos_elite": false
+        }
+      ],
+      "categories": [
+        {
+          "key": "category-electromecanique-informatique",
+          "name": "électromécanique et informatique"
+        }
+      ],
+      "topics": [
+        {
+          "key": "FP-ETH-E-01",
+          "title": "[DEMO] Arrêter SW-04 pendant l'enquête ?",
+          "status": "open",
+          "category": "category-electromecanique-informatique",
+          "description": "Contexte : Sécurité/qualité vs capacité. Dossier FP-S03."
+        },
+        {
+          "key": "FP-ETH-E-02",
+          "title": "[DEMO] Une observation de quart sans preuve vaut-elle alerte ?",
+          "status": "open",
+          "category": "category-electromecanique-informatique",
+          "description": "Contexte : Risque du silence vs bruit. Dossier FP-S03."
+        },
+        {
+          "key": "FP-ETH-E-03",
+          "title": "[DEMO] Stocker le roulement CR-12 ?",
+          "status": "open",
+          "category": "category-electromecanique-informatique",
+          "description": "Contexte : Continuité vs obsolescence. Dossier FP-S04."
+        },
+        {
+          "key": "FP-ETH-E-04",
+          "title": "[DEMO] Priorité des incidents TI et atelier ?",
+          "status": "open",
+          "category": "category-electromecanique-informatique",
+          "description": "Contexte : SLA critique vs impact cumulatif. Dossier FP-S02."
+        },
+        {
+          "key": "FP-ETH-E-05",
+          "title": "[DEMO] Réglage constructeur ou remplacement PRN-17 ?",
+          "status": "open",
+          "category": "category-electromecanique-informatique",
+          "description": "Contexte : Diagnostic vs coût d'une pièce inutile. Dossier FP-S02."
+        },
+        {
+          "key": "FP-ETH-E-06",
+          "title": "[DEMO] Quels prérequis conditionnent l'arrêt CR-12 ?",
+          "status": "open",
+          "category": "category-electromecanique-informatique",
+          "description": "Contexte : Production vs consignation obligatoire. Dossier FP-S04."
+        },
+        {
+          "key": "FP-ETH-E-07",
+          "title": "[DEMO] Faut-il consigner les tests qui échouent ?",
+          "status": "open",
+          "category": "category-electromecanique-informatique",
+          "description": "Contexte : Temps de saisie vs mémoire. Dossier FP-S17."
+        },
+        {
+          "key": "FP-ETH-E-08",
+          "title": "[DEMO] Deux versions du plan peuvent-elles circuler ?",
+          "status": "open",
+          "category": "category-electromecanique-informatique",
+          "description": "Contexte : Rapidité vs maîtrise de révision. Dossier FP-S09."
+        },
+        {
+          "key": "FP-ETH-E-09",
+          "title": "[DEMO] Quel signal franchit la frontière vers Direction ?",
+          "status": "open",
+          "category": "category-electromecanique-informatique",
+          "description": "Contexte : Alerte précoce vs risque non qualifié. Dossier FP-S03."
+        }
+      ],
+      "stances": [
+        {
+          "topic": "FP-ETH-E-01",
+          "actor": "FP-E0572",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-E-01",
+          "actor": "FP-E0004",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-E-02",
+          "actor": "FP-E0004",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-E-02",
+          "actor": "FP-E0528",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-E-03",
+          "actor": "FP-E0528",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-E-03",
+          "actor": "FP-E0661",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-E-04",
+          "actor": "FP-E0661",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-E-04",
+          "actor": "FP-E0002",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-E-05",
+          "actor": "FP-E0002",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-E-05",
+          "actor": "FP-E0003",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-E-06",
+          "actor": "FP-E0003",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-E-06",
+          "actor": "FP-E0006",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-E-07",
+          "actor": "FP-E0006",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-E-07",
+          "actor": "FP-E0005",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-E-08",
+          "actor": "FP-E0005",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-E-08",
+          "actor": "FP-E0001",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-E-09",
+          "actor": "FP-E0001",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-E-09",
+          "actor": "FP-E0291",
+          "value": -1
+        }
+      ],
+      "arguments": [
+        {
+          "key": "FP-ETH-E-01-A1",
+          "topic": "FP-ETH-E-01",
+          "actor": "FP-E0572",
+          "content": "Proposition initiale : Sécurité/qualité vs capacité. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-E-01-A2",
+          "topic": "FP-ETH-E-01",
+          "actor": "FP-E0004",
+          "content": "Objection à traiter : Sécurité/qualité vs capacité. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-E-02-A1",
+          "topic": "FP-ETH-E-02",
+          "actor": "FP-E0004",
+          "content": "Proposition initiale : Risque du silence vs bruit. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-E-02-A2",
+          "topic": "FP-ETH-E-02",
+          "actor": "FP-E0528",
+          "content": "Objection à traiter : Risque du silence vs bruit. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-E-03-A1",
+          "topic": "FP-ETH-E-03",
+          "actor": "FP-E0528",
+          "content": "Proposition initiale : Continuité vs obsolescence. La conclusion doit être vérifiée dans FP-S04.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-E-03-A2",
+          "topic": "FP-ETH-E-03",
+          "actor": "FP-E0661",
+          "content": "Objection à traiter : Continuité vs obsolescence. La conclusion doit être vérifiée dans FP-S04.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-E-04-A1",
+          "topic": "FP-ETH-E-04",
+          "actor": "FP-E0661",
+          "content": "Proposition initiale : SLA critique vs impact cumulatif. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-E-04-A2",
+          "topic": "FP-ETH-E-04",
+          "actor": "FP-E0002",
+          "content": "Objection à traiter : SLA critique vs impact cumulatif. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-E-05-A1",
+          "topic": "FP-ETH-E-05",
+          "actor": "FP-E0002",
+          "content": "Proposition initiale : Diagnostic vs coût d'une pièce inutile. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-E-05-A2",
+          "topic": "FP-ETH-E-05",
+          "actor": "FP-E0003",
+          "content": "Objection à traiter : Diagnostic vs coût d'une pièce inutile. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-E-06-A1",
+          "topic": "FP-ETH-E-06",
+          "actor": "FP-E0003",
+          "content": "Proposition initiale : Production vs consignation obligatoire. La conclusion doit être vérifiée dans FP-S04.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-E-06-A2",
+          "topic": "FP-ETH-E-06",
+          "actor": "FP-E0006",
+          "content": "Objection à traiter : Production vs consignation obligatoire. La conclusion doit être vérifiée dans FP-S04.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-E-07-A1",
+          "topic": "FP-ETH-E-07",
+          "actor": "FP-E0006",
+          "content": "Proposition initiale : Temps de saisie vs mémoire. La conclusion doit être vérifiée dans FP-S17.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-E-07-A2",
+          "topic": "FP-ETH-E-07",
+          "actor": "FP-E0005",
+          "content": "Objection à traiter : Temps de saisie vs mémoire. La conclusion doit être vérifiée dans FP-S17.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-E-08-A1",
+          "topic": "FP-ETH-E-08",
+          "actor": "FP-E0005",
+          "content": "Proposition initiale : Rapidité vs maîtrise de révision. La conclusion doit être vérifiée dans FP-S09.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-E-08-A2",
+          "topic": "FP-ETH-E-08",
+          "actor": "FP-E0001",
+          "content": "Objection à traiter : Rapidité vs maîtrise de révision. La conclusion doit être vérifiée dans FP-S09.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-E-09-A1",
+          "topic": "FP-ETH-E-09",
+          "actor": "FP-E0001",
+          "content": "Proposition initiale : Alerte précoce vs risque non qualifié. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-E-09-A2",
+          "topic": "FP-ETH-E-09",
+          "actor": "FP-E0291",
+          "content": "Objection à traiter : Alerte précoce vs risque non qualifié. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "con"
+        }
+      ],
+      "consultations": [
+        {
+          "key": "FP-KON-E-01",
+          "title": "Arrêt conditionnel SW-04",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Qualification qualité à obtenir. Consultation advisory — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        },
+        {
+          "key": "FP-KON-E-02",
+          "title": "Politique de stock CR-12",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Finance + maintenance signent. Consultation advisory — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        }
+      ],
+      "consultation_votes": [
+        {
+          "consultation": "FP-KON-E-01",
+          "actor": "FP-E0572",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-E-01",
+          "actor": "FP-E0004",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-E-01",
+          "actor": "FP-E0528",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-E-01",
+          "actor": "FP-E0661",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-E-02",
+          "actor": "FP-E0572",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-E-02",
+          "actor": "FP-E0004",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-E-02",
+          "actor": "FP-E0528",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-E-02",
+          "actor": "FP-E0661",
+          "option": "option-a",
+          "raw_value": 1
+        }
+      ]
+    },
+    "espace-discussion": {
+      "schema_version": "ethikos-demo-scenario/v3",
+      "scenario_key": "fakeplant-espace-discussion-v1",
+      "scenario_title": "FakePlant — Espace discussion",
+      "mode": "replace_scenario",
+      "metadata": {
+        "world_key": "espace-discussion",
+        "universe_key": "fakeplant",
+        "simulation": true,
+        "state_ref": "urn:kristal:state:fakeplant-organisation",
+        "source_contract": "koa.organization-state/1.0",
+        "simulation_only": true
+      },
+      "actors": [
+        {
+          "key": "FP-E0572",
+          "username": "demo_fp_electricien_013",
+          "display_name": "Électricien13",
+          "email": "fp-e0572@fakeplant.example.test",
+          "role": "Électricien",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0004",
+          "username": "demo_fp_assembleur_004",
+          "display_name": "Assembleur4",
+          "email": "fp-e0004@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0780",
+          "username": "demo_fp_gestionnaire_009",
+          "display_name": "Gestionnaire9",
+          "email": "fp-e0780@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0898",
+          "username": "demo_fp_animateur_social_002",
+          "display_name": "Animateur social2",
+          "email": "fp-e0898@fakeplant.example.test",
+          "role": "Animateur social",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0528",
+          "username": "demo_fp_inspecteur_qualite_003",
+          "display_name": "Inspecteur qualité3",
+          "email": "fp-e0528@fakeplant.example.test",
+          "role": "Inspecteur qualité",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0776",
+          "username": "demo_fp_gestionnaire_005",
+          "display_name": "Gestionnaire5",
+          "email": "fp-e0776@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0830",
+          "username": "demo_fp_conseiller_ventes_008",
+          "display_name": "Conseiller ventes8",
+          "email": "fp-e0830@fakeplant.example.test",
+          "role": "Conseiller ventes",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0661",
+          "username": "demo_fp_technicien_informatique_007",
+          "display_name": "Technicien informatique7",
+          "email": "fp-e0661@fakeplant.example.test",
+          "role": "Technicien informatique",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0002",
+          "username": "demo_fp_assembleur_002",
+          "display_name": "Assembleur2",
+          "email": "fp-e0002@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0827",
+          "username": "demo_fp_conseiller_ventes_005",
+          "display_name": "Conseiller ventes5",
+          "email": "fp-e0827@fakeplant.example.test",
+          "role": "Conseiller ventes",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0736",
+          "username": "demo_fp_secretaire_004",
+          "display_name": "Secrétaire4",
+          "email": "fp-e0736@fakeplant.example.test",
+          "role": "Secrétaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0741",
+          "username": "demo_fp_secretaire_009",
+          "display_name": "Secrétaire9",
+          "email": "fp-e0741@fakeplant.example.test",
+          "role": "Secrétaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0773",
+          "username": "demo_fp_gestionnaire_002",
+          "display_name": "Gestionnaire2",
+          "email": "fp-e0773@fakeplant.example.test",
+          "role": "Gestionnaire",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0003",
+          "username": "demo_fp_assembleur_003",
+          "display_name": "Assembleur3",
+          "email": "fp-e0003@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0676",
+          "username": "demo_fp_approvisionneur_008",
+          "display_name": "Approvisionneur8",
+          "email": "fp-e0676@fakeplant.example.test",
+          "role": "Approvisionneur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0005",
+          "username": "demo_fp_assembleur_005",
+          "display_name": "Assembleur5",
+          "email": "fp-e0005@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0001",
+          "username": "demo_fp_assembleur_001",
+          "display_name": "Assembleur1",
+          "email": "fp-e0001@fakeplant.example.test",
+          "role": "Assembleur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0291",
+          "username": "demo_fp_soudeur_011",
+          "display_name": "Soudeur11",
+          "email": "fp-e0291@fakeplant.example.test",
+          "role": "Soudeur",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0565",
+          "username": "demo_fp_electricien_006",
+          "display_name": "Électricien6",
+          "email": "fp-e0565@fakeplant.example.test",
+          "role": "Électricien",
+          "is_ethikos_elite": false
+        }
+      ],
+      "categories": [
+        {
+          "key": "category-espace-discussion",
+          "name": "Espace discussion"
+        }
+      ],
+      "topics": [
+        {
+          "key": "FP-ETH-X-01",
+          "title": "[DEMO] Pourquoi le défaut SW-04 n'apparaît-il que de nuit ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Expérience locale vs chiffres. Dossier FP-S03."
+        },
+        {
+          "key": "FP-ETH-X-02",
+          "title": "[DEMO] A-t-on répondu aux idées anciennes ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Confiance vs suivi incomplet. Dossier FP-S13."
+        },
+        {
+          "key": "FP-ETH-X-03",
+          "title": "[DEMO] Où retrouver la note du fuser de Luc ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Récit oral vs source validée. Dossier FP-S02."
+        },
+        {
+          "key": "FP-ETH-X-04",
+          "title": "[DEMO] Une procédure révisée doit-elle invalider une astuce ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Mémoire vs conformité. Dossier FP-S05."
+        },
+        {
+          "key": "FP-ETH-X-05",
+          "title": "[DEMO] Que faire des cas où aucune cause n'est connue ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Incertitude vs besoin de conclure. Dossier FP-S17."
+        },
+        {
+          "key": "FP-ETH-X-06",
+          "title": "[DEMO] Qui doit être averti d'un changement matière ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Transversalité vs bruit. Dossier FP-S03."
+        },
+        {
+          "key": "FP-ETH-X-07",
+          "title": "[DEMO] Que faire lorsqu'un manuel manque ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Réparation immédiate vs risque. Dossier FP-S02."
+        },
+        {
+          "key": "FP-ETH-X-08",
+          "title": "[DEMO] Quel irritant coûte le plus de relances ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Perception vs mesure. Dossier FP-S13."
+        },
+        {
+          "key": "FP-ETH-X-09",
+          "title": "[DEMO] Pourquoi une décision passée semble-t-elle illogique ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Historique vs jugement actuel. Dossier FP-S18."
+        },
+        {
+          "key": "FP-ETH-X-10",
+          "title": "[DEMO] Le prochain quart reçoit-il les incidents ouverts ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Passation vs surcharge. Dossier FP-S03."
+        },
+        {
+          "key": "FP-ETH-X-11",
+          "title": "[DEMO] Qui sait résoudre un problème rare de convoyeur ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Annuaire vs expertise prouvée. Dossier FP-S12."
+        },
+        {
+          "key": "FP-ETH-X-12",
+          "title": "[DEMO] Que faire d'une suggestion non retenue ?",
+          "status": "open",
+          "category": "category-espace-discussion",
+          "description": "Contexte : Motifs publics vs protection des personnes. Dossier FP-S13."
+        }
+      ],
+      "stances": [
+        {
+          "topic": "FP-ETH-X-01",
+          "actor": "FP-E0572",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-01",
+          "actor": "FP-E0004",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-X-02",
+          "actor": "FP-E0004",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-02",
+          "actor": "FP-E0780",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-X-03",
+          "actor": "FP-E0780",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-03",
+          "actor": "FP-E0898",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-X-04",
+          "actor": "FP-E0898",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-04",
+          "actor": "FP-E0528",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-X-05",
+          "actor": "FP-E0528",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-05",
+          "actor": "FP-E0776",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-X-06",
+          "actor": "FP-E0776",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-06",
+          "actor": "FP-E0830",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-X-07",
+          "actor": "FP-E0830",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-07",
+          "actor": "FP-E0661",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-X-08",
+          "actor": "FP-E0661",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-08",
+          "actor": "FP-E0002",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-X-09",
+          "actor": "FP-E0002",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-09",
+          "actor": "FP-E0827",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-X-10",
+          "actor": "FP-E0827",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-10",
+          "actor": "FP-E0736",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-X-11",
+          "actor": "FP-E0736",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-11",
+          "actor": "FP-E0741",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-X-12",
+          "actor": "FP-E0741",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-X-12",
+          "actor": "FP-E0773",
+          "value": -1
+        }
+      ],
+      "arguments": [
+        {
+          "key": "FP-ETH-X-01-A1",
+          "topic": "FP-ETH-X-01",
+          "actor": "FP-E0572",
+          "content": "Proposition initiale : Expérience locale vs chiffres. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-01-A2",
+          "topic": "FP-ETH-X-01",
+          "actor": "FP-E0004",
+          "content": "Objection à traiter : Expérience locale vs chiffres. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-X-02-A1",
+          "topic": "FP-ETH-X-02",
+          "actor": "FP-E0004",
+          "content": "Proposition initiale : Confiance vs suivi incomplet. La conclusion doit être vérifiée dans FP-S13.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-02-A2",
+          "topic": "FP-ETH-X-02",
+          "actor": "FP-E0780",
+          "content": "Objection à traiter : Confiance vs suivi incomplet. La conclusion doit être vérifiée dans FP-S13.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-X-03-A1",
+          "topic": "FP-ETH-X-03",
+          "actor": "FP-E0780",
+          "content": "Proposition initiale : Récit oral vs source validée. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-03-A2",
+          "topic": "FP-ETH-X-03",
+          "actor": "FP-E0898",
+          "content": "Objection à traiter : Récit oral vs source validée. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-X-04-A1",
+          "topic": "FP-ETH-X-04",
+          "actor": "FP-E0898",
+          "content": "Proposition initiale : Mémoire vs conformité. La conclusion doit être vérifiée dans FP-S05.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-04-A2",
+          "topic": "FP-ETH-X-04",
+          "actor": "FP-E0528",
+          "content": "Objection à traiter : Mémoire vs conformité. La conclusion doit être vérifiée dans FP-S05.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-X-05-A1",
+          "topic": "FP-ETH-X-05",
+          "actor": "FP-E0528",
+          "content": "Proposition initiale : Incertitude vs besoin de conclure. La conclusion doit être vérifiée dans FP-S17.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-05-A2",
+          "topic": "FP-ETH-X-05",
+          "actor": "FP-E0776",
+          "content": "Objection à traiter : Incertitude vs besoin de conclure. La conclusion doit être vérifiée dans FP-S17.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-X-06-A1",
+          "topic": "FP-ETH-X-06",
+          "actor": "FP-E0776",
+          "content": "Proposition initiale : Transversalité vs bruit. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-06-A2",
+          "topic": "FP-ETH-X-06",
+          "actor": "FP-E0830",
+          "content": "Objection à traiter : Transversalité vs bruit. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-X-07-A1",
+          "topic": "FP-ETH-X-07",
+          "actor": "FP-E0830",
+          "content": "Proposition initiale : Réparation immédiate vs risque. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-07-A2",
+          "topic": "FP-ETH-X-07",
+          "actor": "FP-E0661",
+          "content": "Objection à traiter : Réparation immédiate vs risque. La conclusion doit être vérifiée dans FP-S02.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-X-08-A1",
+          "topic": "FP-ETH-X-08",
+          "actor": "FP-E0661",
+          "content": "Proposition initiale : Perception vs mesure. La conclusion doit être vérifiée dans FP-S13.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-08-A2",
+          "topic": "FP-ETH-X-08",
+          "actor": "FP-E0002",
+          "content": "Objection à traiter : Perception vs mesure. La conclusion doit être vérifiée dans FP-S13.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-X-09-A1",
+          "topic": "FP-ETH-X-09",
+          "actor": "FP-E0002",
+          "content": "Proposition initiale : Historique vs jugement actuel. La conclusion doit être vérifiée dans FP-S18.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-09-A2",
+          "topic": "FP-ETH-X-09",
+          "actor": "FP-E0827",
+          "content": "Objection à traiter : Historique vs jugement actuel. La conclusion doit être vérifiée dans FP-S18.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-X-10-A1",
+          "topic": "FP-ETH-X-10",
+          "actor": "FP-E0827",
+          "content": "Proposition initiale : Passation vs surcharge. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-10-A2",
+          "topic": "FP-ETH-X-10",
+          "actor": "FP-E0736",
+          "content": "Objection à traiter : Passation vs surcharge. La conclusion doit être vérifiée dans FP-S03.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-X-11-A1",
+          "topic": "FP-ETH-X-11",
+          "actor": "FP-E0736",
+          "content": "Proposition initiale : Annuaire vs expertise prouvée. La conclusion doit être vérifiée dans FP-S12.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-11-A2",
+          "topic": "FP-ETH-X-11",
+          "actor": "FP-E0741",
+          "content": "Objection à traiter : Annuaire vs expertise prouvée. La conclusion doit être vérifiée dans FP-S12.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-X-12-A1",
+          "topic": "FP-ETH-X-12",
+          "actor": "FP-E0741",
+          "content": "Proposition initiale : Motifs publics vs protection des personnes. La conclusion doit être vérifiée dans FP-S13.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-X-12-A2",
+          "topic": "FP-ETH-X-12",
+          "actor": "FP-E0773",
+          "content": "Objection à traiter : Motifs publics vs protection des personnes. La conclusion doit être vérifiée dans FP-S13.",
+          "side": "con"
+        }
+      ],
+      "consultations": [
+        {
+          "key": "FP-KON-X-01",
+          "title": "Priorité des irritants de l'atelier",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Triage vers propriétaire. Consultation participative — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        },
+        {
+          "key": "FP-KON-X-02",
+          "title": "Accessibilité des informations de quart",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Règles de diffusion. Consultation participative — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        },
+        {
+          "key": "FP-KON-X-03",
+          "title": "Qualité des réponses aux suggestions",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Rétroaction avec motifs. Consultation participative — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        }
+      ],
+      "consultation_votes": [
+        {
+          "consultation": "FP-KON-X-01",
+          "actor": "FP-E0572",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-X-01",
+          "actor": "FP-E0004",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-X-01",
+          "actor": "FP-E0780",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-X-01",
+          "actor": "FP-E0898",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-X-02",
+          "actor": "FP-E0572",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-X-02",
+          "actor": "FP-E0004",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-X-02",
+          "actor": "FP-E0780",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-X-02",
+          "actor": "FP-E0898",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-X-03",
+          "actor": "FP-E0572",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-X-03",
+          "actor": "FP-E0004",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-X-03",
+          "actor": "FP-E0780",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-X-03",
+          "actor": "FP-E0898",
+          "option": "option-a",
+          "raw_value": 1
+        }
+      ]
+    },
+    "vente-pr-marketing": {
+      "schema_version": "ethikos-demo-scenario/v3",
+      "scenario_key": "fakeplant-vente-pr-marketing-v1",
+      "scenario_title": "FakePlant — Vente, PR, marketing",
+      "mode": "replace_scenario",
+      "metadata": {
+        "world_key": "vente-pr-marketing",
+        "universe_key": "fakeplant",
+        "simulation": true,
+        "state_ref": "urn:kristal:state:fakeplant-organisation",
+        "source_contract": "koa.organization-state/1.0",
+        "simulation_only": true
+      },
+      "actors": [
+        {
+          "key": "FP-E0823",
+          "username": "demo_fp_conseiller_ventes_001",
+          "display_name": "Conseiller ventes1",
+          "email": "fp-e0823@fakeplant.example.test",
+          "role": "Conseiller ventes",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0824",
+          "username": "demo_fp_conseiller_ventes_002",
+          "display_name": "Conseiller ventes2",
+          "email": "fp-e0824@fakeplant.example.test",
+          "role": "Conseiller ventes",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0830",
+          "username": "demo_fp_conseiller_ventes_008",
+          "display_name": "Conseiller ventes8",
+          "email": "fp-e0830@fakeplant.example.test",
+          "role": "Conseiller ventes",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0827",
+          "username": "demo_fp_conseiller_ventes_005",
+          "display_name": "Conseiller ventes5",
+          "email": "fp-e0827@fakeplant.example.test",
+          "role": "Conseiller ventes",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0825",
+          "username": "demo_fp_conseiller_ventes_003",
+          "display_name": "Conseiller ventes3",
+          "email": "fp-e0825@fakeplant.example.test",
+          "role": "Conseiller ventes",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0826",
+          "username": "demo_fp_conseiller_ventes_004",
+          "display_name": "Conseiller ventes4",
+          "email": "fp-e0826@fakeplant.example.test",
+          "role": "Conseiller ventes",
+          "is_ethikos_elite": false
+        },
+        {
+          "key": "FP-E0828",
+          "username": "demo_fp_conseiller_ventes_006",
+          "display_name": "Conseiller ventes6",
+          "email": "fp-e0828@fakeplant.example.test",
+          "role": "Conseiller ventes",
+          "is_ethikos_elite": false
+        }
+      ],
+      "categories": [
+        {
+          "key": "category-vente-pr-marketing",
+          "name": "Vente, PR, marketing"
+        }
+      ],
+      "topics": [
+        {
+          "key": "FP-ETH-V-01",
+          "title": "[DEMO] Promettre la date client avant confirmation qualité ?",
+          "status": "open",
+          "category": "category-vente-pr-marketing",
+          "description": "Contexte : Service vs risque. Dossier FP-S07."
+        },
+        {
+          "key": "FP-ETH-V-02",
+          "title": "[DEMO] Présenter trois options ou une recommandation ?",
+          "status": "open",
+          "category": "category-vente-pr-marketing",
+          "description": "Contexte : Choix éclairé vs surcharge. Dossier FP-S01."
+        },
+        {
+          "key": "FP-ETH-V-03",
+          "title": "[DEMO] Une mauvaise nouvelle au client, quand et comment ?",
+          "status": "open",
+          "category": "category-vente-pr-marketing",
+          "description": "Contexte : Confiance vs spéculation. Dossier FP-S07."
+        },
+        {
+          "key": "FP-ETH-V-04",
+          "title": "[DEMO] Réviser le devis sur une source de coûts provisoire ?",
+          "status": "open",
+          "category": "category-vente-pr-marketing",
+          "description": "Contexte : Vitesse vs preuve. Dossier FP-S01."
+        },
+        {
+          "key": "FP-ETH-V-05",
+          "title": "[DEMO] Quelle révision CAD fait foi pour l'offre ?",
+          "status": "open",
+          "category": "category-vente-pr-marketing",
+          "description": "Contexte : Délai vs exactitude. Dossier FP-S09."
+        },
+        {
+          "key": "FP-ETH-V-06",
+          "title": "[DEMO] Faut-il publier une leçon d'incident anonymisée ?",
+          "status": "open",
+          "category": "category-vente-pr-marketing",
+          "description": "Contexte : Confiance vs exposition. Dossier FP-S10."
+        }
+      ],
+      "stances": [
+        {
+          "topic": "FP-ETH-V-01",
+          "actor": "FP-E0823",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-V-01",
+          "actor": "FP-E0824",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-V-02",
+          "actor": "FP-E0824",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-V-02",
+          "actor": "FP-E0830",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-V-03",
+          "actor": "FP-E0830",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-V-03",
+          "actor": "FP-E0827",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-V-04",
+          "actor": "FP-E0827",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-V-04",
+          "actor": "FP-E0825",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-V-05",
+          "actor": "FP-E0825",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-V-05",
+          "actor": "FP-E0826",
+          "value": -1
+        },
+        {
+          "topic": "FP-ETH-V-06",
+          "actor": "FP-E0826",
+          "value": 1
+        },
+        {
+          "topic": "FP-ETH-V-06",
+          "actor": "FP-E0828",
+          "value": -1
+        }
+      ],
+      "arguments": [
+        {
+          "key": "FP-ETH-V-01-A1",
+          "topic": "FP-ETH-V-01",
+          "actor": "FP-E0823",
+          "content": "Proposition initiale : Service vs risque. La conclusion doit être vérifiée dans FP-S07.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-V-01-A2",
+          "topic": "FP-ETH-V-01",
+          "actor": "FP-E0824",
+          "content": "Objection à traiter : Service vs risque. La conclusion doit être vérifiée dans FP-S07.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-V-02-A1",
+          "topic": "FP-ETH-V-02",
+          "actor": "FP-E0824",
+          "content": "Proposition initiale : Choix éclairé vs surcharge. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-V-02-A2",
+          "topic": "FP-ETH-V-02",
+          "actor": "FP-E0830",
+          "content": "Objection à traiter : Choix éclairé vs surcharge. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-V-03-A1",
+          "topic": "FP-ETH-V-03",
+          "actor": "FP-E0830",
+          "content": "Proposition initiale : Confiance vs spéculation. La conclusion doit être vérifiée dans FP-S07.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-V-03-A2",
+          "topic": "FP-ETH-V-03",
+          "actor": "FP-E0827",
+          "content": "Objection à traiter : Confiance vs spéculation. La conclusion doit être vérifiée dans FP-S07.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-V-04-A1",
+          "topic": "FP-ETH-V-04",
+          "actor": "FP-E0827",
+          "content": "Proposition initiale : Vitesse vs preuve. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-V-04-A2",
+          "topic": "FP-ETH-V-04",
+          "actor": "FP-E0825",
+          "content": "Objection à traiter : Vitesse vs preuve. La conclusion doit être vérifiée dans FP-S01.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-V-05-A1",
+          "topic": "FP-ETH-V-05",
+          "actor": "FP-E0825",
+          "content": "Proposition initiale : Délai vs exactitude. La conclusion doit être vérifiée dans FP-S09.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-V-05-A2",
+          "topic": "FP-ETH-V-05",
+          "actor": "FP-E0826",
+          "content": "Objection à traiter : Délai vs exactitude. La conclusion doit être vérifiée dans FP-S09.",
+          "side": "con"
+        },
+        {
+          "key": "FP-ETH-V-06-A1",
+          "topic": "FP-ETH-V-06",
+          "actor": "FP-E0826",
+          "content": "Proposition initiale : Confiance vs exposition. La conclusion doit être vérifiée dans FP-S10.",
+          "side": "pro"
+        },
+        {
+          "key": "FP-ETH-V-06-A2",
+          "topic": "FP-ETH-V-06",
+          "actor": "FP-E0828",
+          "content": "Objection à traiter : Confiance vs exposition. La conclusion doit être vérifiée dans FP-S10.",
+          "side": "con"
+        }
+      ],
+      "consultations": [
+        {
+          "key": "FP-KON-V-01",
+          "title": "Position commerciale Atlas-47",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Offre finale validée. Consultation advisory — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        },
+        {
+          "key": "FP-KON-V-02",
+          "title": "Niveau de transparence d'un risque",
+          "status": "open",
+          "open_date": "2026-10-12",
+          "close_date": "2026-10-30",
+          "description": "Communication autorisée. Consultation advisory — pas une autorisation.",
+          "options": [
+            {
+              "key": "option-a",
+              "label": "Maintenir la pratique avec revue datée"
+            },
+            {
+              "key": "option-b",
+              "label": "Pilote encadré avec critères de sortie"
+            },
+            {
+              "key": "option-c",
+              "label": "Reporter après vérification indépendante"
+            }
+          ]
+        }
+      ],
+      "consultation_votes": [
+        {
+          "consultation": "FP-KON-V-01",
+          "actor": "FP-E0823",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-V-01",
+          "actor": "FP-E0824",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-V-01",
+          "actor": "FP-E0830",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-V-01",
+          "actor": "FP-E0827",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-V-02",
+          "actor": "FP-E0823",
+          "option": "option-a",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-V-02",
+          "actor": "FP-E0824",
+          "option": "option-b",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-V-02",
+          "actor": "FP-E0830",
+          "option": "option-c",
+          "raw_value": 1
+        },
+        {
+          "consultation": "FP-KON-V-02",
+          "actor": "FP-E0827",
+          "option": "option-a",
+          "raw_value": 1
+        }
+      ]
+    }
+  },
+  "world_snapshot_provenance": "canonical_initial_seed; exports in projections/konnaxion/ethikos are generated mirrors and must be checked on delivery"
+}

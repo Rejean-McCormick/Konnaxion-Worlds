@@ -1,0 +1,61 @@
+{
+  "prn17": {
+    "asset": "PRN-17",
+    "hierarchy": [
+      "Équipement de bureau",
+      "Imprimante",
+      "Laser",
+      "Troubleshooting",
+      "L’encre ne tient pas",
+      "Fuser"
+    ],
+    "manual_title": "Manuel fictif imprimante laser PRN-17 (extrait de démonstration)",
+    "manual_revision": "SIM-2026-01",
+    "note": {
+      "author_id": "f94538aa-0943-5463-8540-8c8f26e1437b",
+      "kind": "astuce_terrain_non_verifiee",
+      "text": "Pour un papier compatible, l’ancien technicien avait utilisé le mode « carton » qui augmente la température de fusion. Essai à comparer aux consignes constructeur du modèle; ne pas contourner des sécurités.",
+      "verification": "manufacturer_model_check_required"
+    },
+    "spare_part": "FU-17-LSR",
+    "request_id": "FP-REQ-FU17-001",
+    "order_automatically": false
+  },
+  "atlas47": {
+    "quote": "ATLAS-47",
+    "cost_snapshot": "FP-COST-2026-Q3",
+    "expires_at": "2026-12-31",
+    "currency": "CAD",
+    "assumptions": "prix standards anonymisés, sans coût réel",
+    "options": [
+      {
+        "id": "atlas-option-a",
+        "material": "acier standard",
+        "base_cost_cad": 18500,
+        "lead_days": 36,
+        "risk": "faible"
+      },
+      {
+        "id": "atlas-option-b",
+        "material": "acier renforcé",
+        "base_cost_cad": 21400,
+        "lead_days": 29,
+        "risk": "moyen"
+      },
+      {
+        "id": "atlas-option-c",
+        "material": "aluminium hybride",
+        "base_cost_cad": 23900,
+        "lead_days": 25,
+        "risk": "validation qualité nécessaire"
+      }
+    ],
+    "financial_provenance": {
+      "source": "simulation:ERP/Snowflake",
+      "approved_by": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73",
+      "approval": "fictional_approved_snapshot",
+      "refresh_every_days_approx": 90
+    },
+    "commercial_authority": "human_approval_required"
+  }
+}
