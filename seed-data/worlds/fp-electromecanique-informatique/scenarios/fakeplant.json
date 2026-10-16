@@ -1,0 +1,642 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "fp-electromecanique-informatique-v1",
+  "scenario_title": "FakePlant — électromécanique et informatique",
+  "mode": "replace_scenario",
+  "metadata": {
+    "world_key": "fp-electromecanique-informatique",
+    "universe_key": "fakeplant",
+    "simulation": true,
+    "state_ref": "urn:kristal:state:fakeplant-organisation",
+    "source_contract": "koa.organization-state/1.0",
+    "simulation_only": true,
+    "persona_contract": "kx-world-personas/v1",
+    "persona_projection": {
+      "mode": "identity_binding_only",
+      "epistemic_authority": "external"
+    },
+    "actor_profiles": {
+      "FP-E0572": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "11ddea94-60f3-5679-a449-89827353f9c2"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0004": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "2f4514b4-3beb-51f5-a6eb-7937ee286797"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0528": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "57547d2f-8566-5140-872d-dad7b83c7f09"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0661": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "7b0d2746-0ced-51a9-be1e-28151839d808"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0002": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "821e247c-8162-551d-9474-8580e13af9fd"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0003": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "ab8543ac-4ed7-5f40-869c-b372217448f1"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0006": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "7bdacb7b-1bd3-58cb-8fbe-feeedf1ef82f"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0005": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "d03cd77a-5b44-5f50-b28f-ce1829c48e53"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0001": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "efd43757-ac14-5177-bcab-6364dc9de0a6"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0291": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0565": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "f94538aa-0943-5463-8540-8c8f26e1437b"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      }
+    },
+    "canonical_fixture_ref": "fakeplant/fixture"
+  },
+  "actors": [
+    {
+      "key": "FP-E0572",
+      "username": "demo_fp_electricien_013",
+      "display_name": "Électricien13",
+      "email": "fp-e0572@fakeplant.example.test",
+      "role": "Électricien",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0004",
+      "username": "demo_fp_assembleur_004",
+      "display_name": "Assembleur4",
+      "email": "fp-e0004@fakeplant.example.test",
+      "role": "Assembleur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0528",
+      "username": "demo_fp_inspecteur_qualite_003",
+      "display_name": "Inspecteur qualité3",
+      "email": "fp-e0528@fakeplant.example.test",
+      "role": "Inspecteur qualité",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0661",
+      "username": "demo_fp_technicien_informatique_007",
+      "display_name": "Technicien informatique7",
+      "email": "fp-e0661@fakeplant.example.test",
+      "role": "Technicien informatique",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0002",
+      "username": "demo_fp_assembleur_002",
+      "display_name": "Assembleur2",
+      "email": "fp-e0002@fakeplant.example.test",
+      "role": "Assembleur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0003",
+      "username": "demo_fp_assembleur_003",
+      "display_name": "Assembleur3",
+      "email": "fp-e0003@fakeplant.example.test",
+      "role": "Assembleur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0006",
+      "username": "demo_fp_assembleur_006",
+      "display_name": "Assembleur6",
+      "email": "fp-e0006@fakeplant.example.test",
+      "role": "Assembleur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0005",
+      "username": "demo_fp_assembleur_005",
+      "display_name": "Assembleur5",
+      "email": "fp-e0005@fakeplant.example.test",
+      "role": "Assembleur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0001",
+      "username": "demo_fp_assembleur_001",
+      "display_name": "Assembleur1",
+      "email": "fp-e0001@fakeplant.example.test",
+      "role": "Assembleur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0291",
+      "username": "demo_fp_soudeur_011",
+      "display_name": "Soudeur11",
+      "email": "fp-e0291@fakeplant.example.test",
+      "role": "Soudeur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0565",
+      "username": "demo_fp_electricien_006",
+      "display_name": "Électricien6",
+      "email": "fp-e0565@fakeplant.example.test",
+      "role": "Électricien",
+      "is_ethikos_elite": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "category-electromecanique-informatique",
+      "name": "électromécanique et informatique"
+    }
+  ],
+  "topics": [
+    {
+      "key": "FP-ETH-E-01",
+      "title": "[DEMO] Arrêter SW-04 pendant l'enquête ?",
+      "status": "open",
+      "category": "category-electromecanique-informatique",
+      "description": "Contexte : Sécurité/qualité vs capacité. Dossier FP-S03."
+    },
+    {
+      "key": "FP-ETH-E-02",
+      "title": "[DEMO] Une observation de quart sans preuve vaut-elle alerte ?",
+      "status": "open",
+      "category": "category-electromecanique-informatique",
+      "description": "Contexte : Risque du silence vs bruit. Dossier FP-S03."
+    },
+    {
+      "key": "FP-ETH-E-03",
+      "title": "[DEMO] Stocker le roulement CR-12 ?",
+      "status": "open",
+      "category": "category-electromecanique-informatique",
+      "description": "Contexte : Continuité vs obsolescence. Dossier FP-S04."
+    },
+    {
+      "key": "FP-ETH-E-04",
+      "title": "[DEMO] Priorité des incidents TI et atelier ?",
+      "status": "open",
+      "category": "category-electromecanique-informatique",
+      "description": "Contexte : SLA critique vs impact cumulatif. Dossier FP-S02."
+    },
+    {
+      "key": "FP-ETH-E-05",
+      "title": "[DEMO] Réglage constructeur ou remplacement PRN-17 ?",
+      "status": "open",
+      "category": "category-electromecanique-informatique",
+      "description": "Contexte : Diagnostic vs coût d'une pièce inutile. Dossier FP-S02."
+    },
+    {
+      "key": "FP-ETH-E-06",
+      "title": "[DEMO] Quels prérequis conditionnent l'arrêt CR-12 ?",
+      "status": "open",
+      "category": "category-electromecanique-informatique",
+      "description": "Contexte : Production vs consignation obligatoire. Dossier FP-S04."
+    },
+    {
+      "key": "FP-ETH-E-07",
+      "title": "[DEMO] Faut-il consigner les tests qui échouent ?",
+      "status": "open",
+      "category": "category-electromecanique-informatique",
+      "description": "Contexte : Temps de saisie vs mémoire. Dossier FP-S17."
+    },
+    {
+      "key": "FP-ETH-E-08",
+      "title": "[DEMO] Deux versions du plan peuvent-elles circuler ?",
+      "status": "open",
+      "category": "category-electromecanique-informatique",
+      "description": "Contexte : Rapidité vs maîtrise de révision. Dossier FP-S09."
+    },
+    {
+      "key": "FP-ETH-E-09",
+      "title": "[DEMO] Quel signal franchit la frontière vers Direction ?",
+      "status": "open",
+      "category": "category-electromecanique-informatique",
+      "description": "Contexte : Alerte précoce vs risque non qualifié. Dossier FP-S03."
+    }
+  ],
+  "stances": [
+    {
+      "topic": "FP-ETH-E-01",
+      "actor": "FP-E0572",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-E-01",
+      "actor": "FP-E0004",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-E-02",
+      "actor": "FP-E0004",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-E-02",
+      "actor": "FP-E0528",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-E-03",
+      "actor": "FP-E0528",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-E-03",
+      "actor": "FP-E0661",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-E-04",
+      "actor": "FP-E0661",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-E-04",
+      "actor": "FP-E0002",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-E-05",
+      "actor": "FP-E0002",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-E-05",
+      "actor": "FP-E0003",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-E-06",
+      "actor": "FP-E0003",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-E-06",
+      "actor": "FP-E0006",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-E-07",
+      "actor": "FP-E0006",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-E-07",
+      "actor": "FP-E0005",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-E-08",
+      "actor": "FP-E0005",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-E-08",
+      "actor": "FP-E0001",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-E-09",
+      "actor": "FP-E0001",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-E-09",
+      "actor": "FP-E0291",
+      "value": -1
+    }
+  ],
+  "arguments": [
+    {
+      "key": "FP-ETH-E-01-A1",
+      "topic": "FP-ETH-E-01",
+      "actor": "FP-E0572",
+      "content": "Proposition initiale : Sécurité/qualité vs capacité. La conclusion doit être vérifiée dans FP-S03.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-E-01-A2",
+      "topic": "FP-ETH-E-01",
+      "actor": "FP-E0004",
+      "content": "Objection à traiter : Sécurité/qualité vs capacité. La conclusion doit être vérifiée dans FP-S03.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-E-02-A1",
+      "topic": "FP-ETH-E-02",
+      "actor": "FP-E0004",
+      "content": "Proposition initiale : Risque du silence vs bruit. La conclusion doit être vérifiée dans FP-S03.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-E-02-A2",
+      "topic": "FP-ETH-E-02",
+      "actor": "FP-E0528",
+      "content": "Objection à traiter : Risque du silence vs bruit. La conclusion doit être vérifiée dans FP-S03.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-E-03-A1",
+      "topic": "FP-ETH-E-03",
+      "actor": "FP-E0528",
+      "content": "Proposition initiale : Continuité vs obsolescence. La conclusion doit être vérifiée dans FP-S04.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-E-03-A2",
+      "topic": "FP-ETH-E-03",
+      "actor": "FP-E0661",
+      "content": "Objection à traiter : Continuité vs obsolescence. La conclusion doit être vérifiée dans FP-S04.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-E-04-A1",
+      "topic": "FP-ETH-E-04",
+      "actor": "FP-E0661",
+      "content": "Proposition initiale : SLA critique vs impact cumulatif. La conclusion doit être vérifiée dans FP-S02.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-E-04-A2",
+      "topic": "FP-ETH-E-04",
+      "actor": "FP-E0002",
+      "content": "Objection à traiter : SLA critique vs impact cumulatif. La conclusion doit être vérifiée dans FP-S02.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-E-05-A1",
+      "topic": "FP-ETH-E-05",
+      "actor": "FP-E0002",
+      "content": "Proposition initiale : Diagnostic vs coût d'une pièce inutile. La conclusion doit être vérifiée dans FP-S02.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-E-05-A2",
+      "topic": "FP-ETH-E-05",
+      "actor": "FP-E0003",
+      "content": "Objection à traiter : Diagnostic vs coût d'une pièce inutile. La conclusion doit être vérifiée dans FP-S02.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-E-06-A1",
+      "topic": "FP-ETH-E-06",
+      "actor": "FP-E0003",
+      "content": "Proposition initiale : Production vs consignation obligatoire. La conclusion doit être vérifiée dans FP-S04.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-E-06-A2",
+      "topic": "FP-ETH-E-06",
+      "actor": "FP-E0006",
+      "content": "Objection à traiter : Production vs consignation obligatoire. La conclusion doit être vérifiée dans FP-S04.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-E-07-A1",
+      "topic": "FP-ETH-E-07",
+      "actor": "FP-E0006",
+      "content": "Proposition initiale : Temps de saisie vs mémoire. La conclusion doit être vérifiée dans FP-S17.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-E-07-A2",
+      "topic": "FP-ETH-E-07",
+      "actor": "FP-E0005",
+      "content": "Objection à traiter : Temps de saisie vs mémoire. La conclusion doit être vérifiée dans FP-S17.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-E-08-A1",
+      "topic": "FP-ETH-E-08",
+      "actor": "FP-E0005",
+      "content": "Proposition initiale : Rapidité vs maîtrise de révision. La conclusion doit être vérifiée dans FP-S09.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-E-08-A2",
+      "topic": "FP-ETH-E-08",
+      "actor": "FP-E0001",
+      "content": "Objection à traiter : Rapidité vs maîtrise de révision. La conclusion doit être vérifiée dans FP-S09.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-E-09-A1",
+      "topic": "FP-ETH-E-09",
+      "actor": "FP-E0001",
+      "content": "Proposition initiale : Alerte précoce vs risque non qualifié. La conclusion doit être vérifiée dans FP-S03.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-E-09-A2",
+      "topic": "FP-ETH-E-09",
+      "actor": "FP-E0291",
+      "content": "Objection à traiter : Alerte précoce vs risque non qualifié. La conclusion doit être vérifiée dans FP-S03.",
+      "side": "con"
+    }
+  ],
+  "consultations": [
+    {
+      "key": "FP-KON-E-01",
+      "title": "Arrêt conditionnel SW-04",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "description": "Qualification qualité à obtenir. Consultation advisory — pas une autorisation.",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ]
+    },
+    {
+      "key": "FP-KON-E-02",
+      "title": "Politique de stock CR-12",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "description": "Finance + maintenance signent. Consultation advisory — pas une autorisation.",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ]
+    }
+  ],
+  "consultation_votes": [
+    {
+      "consultation": "FP-KON-E-01",
+      "actor": "FP-E0572",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-E-01",
+      "actor": "FP-E0004",
+      "option": "option-b",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-E-01",
+      "actor": "FP-E0528",
+      "option": "option-c",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-E-01",
+      "actor": "FP-E0661",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-E-02",
+      "actor": "FP-E0572",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-E-02",
+      "actor": "FP-E0004",
+      "option": "option-b",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-E-02",
+      "actor": "FP-E0528",
+      "option": "option-c",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-E-02",
+      "actor": "FP-E0661",
+      "option": "option-a",
+      "raw_value": 1
+    }
+  ]
+}

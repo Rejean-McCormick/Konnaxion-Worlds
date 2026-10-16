@@ -1,0 +1,465 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "fp-vente-pr-marketing-v1",
+  "scenario_title": "FakePlant — Vente, PR, marketing",
+  "mode": "replace_scenario",
+  "metadata": {
+    "world_key": "fp-vente-pr-marketing",
+    "universe_key": "fakeplant",
+    "simulation": true,
+    "state_ref": "urn:kristal:state:fakeplant-organisation",
+    "source_contract": "koa.organization-state/1.0",
+    "simulation_only": true,
+    "persona_contract": "kx-world-personas/v1",
+    "persona_projection": {
+      "mode": "identity_binding_only",
+      "epistemic_authority": "external"
+    },
+    "actor_profiles": {
+      "FP-E0823": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "6e2b6368-9769-5abb-93e5-931ee9b56e47"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0824": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "53a383f3-01af-5cbb-8c08-dfad0484ffea"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0830": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0827": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0825": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "8d4c3536-554f-5f79-931f-d9f81c1f7709"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0826": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "174ccf67-bb90-513e-8a36-f0c862546873"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0828": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "9b04e149-06b9-530a-8f9f-96d7d41fdd21"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      }
+    },
+    "canonical_fixture_ref": "fakeplant/fixture"
+  },
+  "actors": [
+    {
+      "key": "FP-E0823",
+      "username": "demo_fp_conseiller_ventes_001",
+      "display_name": "Conseiller ventes1",
+      "email": "fp-e0823@fakeplant.example.test",
+      "role": "Conseiller ventes",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0824",
+      "username": "demo_fp_conseiller_ventes_002",
+      "display_name": "Conseiller ventes2",
+      "email": "fp-e0824@fakeplant.example.test",
+      "role": "Conseiller ventes",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0830",
+      "username": "demo_fp_conseiller_ventes_008",
+      "display_name": "Conseiller ventes8",
+      "email": "fp-e0830@fakeplant.example.test",
+      "role": "Conseiller ventes",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0827",
+      "username": "demo_fp_conseiller_ventes_005",
+      "display_name": "Conseiller ventes5",
+      "email": "fp-e0827@fakeplant.example.test",
+      "role": "Conseiller ventes",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0825",
+      "username": "demo_fp_conseiller_ventes_003",
+      "display_name": "Conseiller ventes3",
+      "email": "fp-e0825@fakeplant.example.test",
+      "role": "Conseiller ventes",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0826",
+      "username": "demo_fp_conseiller_ventes_004",
+      "display_name": "Conseiller ventes4",
+      "email": "fp-e0826@fakeplant.example.test",
+      "role": "Conseiller ventes",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0828",
+      "username": "demo_fp_conseiller_ventes_006",
+      "display_name": "Conseiller ventes6",
+      "email": "fp-e0828@fakeplant.example.test",
+      "role": "Conseiller ventes",
+      "is_ethikos_elite": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "category-vente-pr-marketing",
+      "name": "Vente, PR, marketing"
+    }
+  ],
+  "topics": [
+    {
+      "key": "FP-ETH-V-01",
+      "title": "[DEMO] Promettre la date client avant confirmation qualité ?",
+      "status": "open",
+      "category": "category-vente-pr-marketing",
+      "description": "Contexte : Service vs risque. Dossier FP-S07."
+    },
+    {
+      "key": "FP-ETH-V-02",
+      "title": "[DEMO] Présenter trois options ou une recommandation ?",
+      "status": "open",
+      "category": "category-vente-pr-marketing",
+      "description": "Contexte : Choix éclairé vs surcharge. Dossier FP-S01."
+    },
+    {
+      "key": "FP-ETH-V-03",
+      "title": "[DEMO] Une mauvaise nouvelle au client, quand et comment ?",
+      "status": "open",
+      "category": "category-vente-pr-marketing",
+      "description": "Contexte : Confiance vs spéculation. Dossier FP-S07."
+    },
+    {
+      "key": "FP-ETH-V-04",
+      "title": "[DEMO] Réviser le devis sur une source de coûts provisoire ?",
+      "status": "open",
+      "category": "category-vente-pr-marketing",
+      "description": "Contexte : Vitesse vs preuve. Dossier FP-S01."
+    },
+    {
+      "key": "FP-ETH-V-05",
+      "title": "[DEMO] Quelle révision CAD fait foi pour l'offre ?",
+      "status": "open",
+      "category": "category-vente-pr-marketing",
+      "description": "Contexte : Délai vs exactitude. Dossier FP-S09."
+    },
+    {
+      "key": "FP-ETH-V-06",
+      "title": "[DEMO] Faut-il publier une leçon d'incident anonymisée ?",
+      "status": "open",
+      "category": "category-vente-pr-marketing",
+      "description": "Contexte : Confiance vs exposition. Dossier FP-S10."
+    }
+  ],
+  "stances": [
+    {
+      "topic": "FP-ETH-V-01",
+      "actor": "FP-E0823",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-V-01",
+      "actor": "FP-E0824",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-V-02",
+      "actor": "FP-E0824",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-V-02",
+      "actor": "FP-E0830",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-V-03",
+      "actor": "FP-E0830",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-V-03",
+      "actor": "FP-E0827",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-V-04",
+      "actor": "FP-E0827",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-V-04",
+      "actor": "FP-E0825",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-V-05",
+      "actor": "FP-E0825",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-V-05",
+      "actor": "FP-E0826",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-V-06",
+      "actor": "FP-E0826",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-V-06",
+      "actor": "FP-E0828",
+      "value": -1
+    }
+  ],
+  "arguments": [
+    {
+      "key": "FP-ETH-V-01-A1",
+      "topic": "FP-ETH-V-01",
+      "actor": "FP-E0823",
+      "content": "Proposition initiale : Service vs risque. La conclusion doit être vérifiée dans FP-S07.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-V-01-A2",
+      "topic": "FP-ETH-V-01",
+      "actor": "FP-E0824",
+      "content": "Objection à traiter : Service vs risque. La conclusion doit être vérifiée dans FP-S07.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-V-02-A1",
+      "topic": "FP-ETH-V-02",
+      "actor": "FP-E0824",
+      "content": "Proposition initiale : Choix éclairé vs surcharge. La conclusion doit être vérifiée dans FP-S01.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-V-02-A2",
+      "topic": "FP-ETH-V-02",
+      "actor": "FP-E0830",
+      "content": "Objection à traiter : Choix éclairé vs surcharge. La conclusion doit être vérifiée dans FP-S01.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-V-03-A1",
+      "topic": "FP-ETH-V-03",
+      "actor": "FP-E0830",
+      "content": "Proposition initiale : Confiance vs spéculation. La conclusion doit être vérifiée dans FP-S07.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-V-03-A2",
+      "topic": "FP-ETH-V-03",
+      "actor": "FP-E0827",
+      "content": "Objection à traiter : Confiance vs spéculation. La conclusion doit être vérifiée dans FP-S07.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-V-04-A1",
+      "topic": "FP-ETH-V-04",
+      "actor": "FP-E0827",
+      "content": "Proposition initiale : Vitesse vs preuve. La conclusion doit être vérifiée dans FP-S01.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-V-04-A2",
+      "topic": "FP-ETH-V-04",
+      "actor": "FP-E0825",
+      "content": "Objection à traiter : Vitesse vs preuve. La conclusion doit être vérifiée dans FP-S01.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-V-05-A1",
+      "topic": "FP-ETH-V-05",
+      "actor": "FP-E0825",
+      "content": "Proposition initiale : Délai vs exactitude. La conclusion doit être vérifiée dans FP-S09.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-V-05-A2",
+      "topic": "FP-ETH-V-05",
+      "actor": "FP-E0826",
+      "content": "Objection à traiter : Délai vs exactitude. La conclusion doit être vérifiée dans FP-S09.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-V-06-A1",
+      "topic": "FP-ETH-V-06",
+      "actor": "FP-E0826",
+      "content": "Proposition initiale : Confiance vs exposition. La conclusion doit être vérifiée dans FP-S10.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-V-06-A2",
+      "topic": "FP-ETH-V-06",
+      "actor": "FP-E0828",
+      "content": "Objection à traiter : Confiance vs exposition. La conclusion doit être vérifiée dans FP-S10.",
+      "side": "con"
+    }
+  ],
+  "consultations": [
+    {
+      "key": "FP-KON-V-01",
+      "title": "Position commerciale Atlas-47",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "description": "Offre finale validée. Consultation advisory — pas une autorisation.",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ]
+    },
+    {
+      "key": "FP-KON-V-02",
+      "title": "Niveau de transparence d'un risque",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "description": "Communication autorisée. Consultation advisory — pas une autorisation.",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ]
+    }
+  ],
+  "consultation_votes": [
+    {
+      "consultation": "FP-KON-V-01",
+      "actor": "FP-E0823",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-V-01",
+      "actor": "FP-E0824",
+      "option": "option-b",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-V-01",
+      "actor": "FP-E0830",
+      "option": "option-c",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-V-01",
+      "actor": "FP-E0827",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-V-02",
+      "actor": "FP-E0823",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-V-02",
+      "actor": "FP-E0824",
+      "option": "option-b",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-V-02",
+      "actor": "FP-E0830",
+      "option": "option-c",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-V-02",
+      "actor": "FP-E0827",
+      "option": "option-a",
+      "raw_value": 1
+    }
+  ]
+}

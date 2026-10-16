@@ -1,0 +1,732 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "fp-activites-sociales-v1",
+  "scenario_title": "FakePlant — Activités sociales",
+  "mode": "replace_scenario",
+  "metadata": {
+    "world_key": "fp-activites-sociales",
+    "universe_key": "fakeplant",
+    "simulation": true,
+    "state_ref": "urn:kristal:state:fakeplant-organisation",
+    "source_contract": "koa.organization-state/1.0",
+    "simulation_only": true,
+    "persona_contract": "kx-world-personas/v1",
+    "persona_projection": {
+      "mode": "identity_binding_only",
+      "epistemic_authority": "external"
+    },
+    "actor_profiles": {
+      "FP-E0572": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "11ddea94-60f3-5679-a449-89827353f9c2"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0004": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "2f4514b4-3beb-51f5-a6eb-7937ee286797"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0780": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "4bd98c19-b37e-5a3f-9d63-04b636f21694"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0898": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "4f64b1df-9ce5-572a-9207-844ca924a310"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0528": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "57547d2f-8566-5140-872d-dad7b83c7f09"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0776": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "576a6493-a86f-57f2-a0e4-df1c0de5e37f"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0830": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "5cf9d893-bad1-5d08-a0f7-5cd2f3a39b07"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0661": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "7b0d2746-0ced-51a9-be1e-28151839d808"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0002": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "821e247c-8162-551d-9474-8580e13af9fd"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0827": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0736": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "9e91d39f-d7c2-505b-b1c9-ba217ce74b73"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0741": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "a59dab30-48bf-51ef-8766-e27c82508dc9"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0773": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0003": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "ab8543ac-4ed7-5f40-869c-b372217448f1"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0676": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "c6b951cc-59bb-5391-a220-4241de89f9ba"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0005": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "d03cd77a-5b44-5f50-b28f-ce1829c48e53"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0001": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "efd43757-ac14-5177-bcab-6364dc9de0a6"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0291": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "f3591ac3-56b0-5b84-9739-554f9ab4b30d"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "FP-E0565": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "external_referents": {
+          "kristal_person_id": "f94538aa-0943-5463-8540-8c8f26e1437b"
+        },
+        "knowledge_projection": {
+          "authority": "kristal.organisation-portable/1.0",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      }
+    },
+    "canonical_fixture_ref": "fakeplant/fixture"
+  },
+  "actors": [
+    {
+      "key": "FP-E0572",
+      "username": "demo_fp_electricien_013",
+      "display_name": "Électricien13",
+      "email": "fp-e0572@fakeplant.example.test",
+      "role": "Électricien",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0004",
+      "username": "demo_fp_assembleur_004",
+      "display_name": "Assembleur4",
+      "email": "fp-e0004@fakeplant.example.test",
+      "role": "Assembleur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0780",
+      "username": "demo_fp_gestionnaire_009",
+      "display_name": "Gestionnaire9",
+      "email": "fp-e0780@fakeplant.example.test",
+      "role": "Gestionnaire",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0898",
+      "username": "demo_fp_animateur_social_002",
+      "display_name": "Animateur social2",
+      "email": "fp-e0898@fakeplant.example.test",
+      "role": "Animateur social",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0528",
+      "username": "demo_fp_inspecteur_qualite_003",
+      "display_name": "Inspecteur qualité3",
+      "email": "fp-e0528@fakeplant.example.test",
+      "role": "Inspecteur qualité",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0776",
+      "username": "demo_fp_gestionnaire_005",
+      "display_name": "Gestionnaire5",
+      "email": "fp-e0776@fakeplant.example.test",
+      "role": "Gestionnaire",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0830",
+      "username": "demo_fp_conseiller_ventes_008",
+      "display_name": "Conseiller ventes8",
+      "email": "fp-e0830@fakeplant.example.test",
+      "role": "Conseiller ventes",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0661",
+      "username": "demo_fp_technicien_informatique_007",
+      "display_name": "Technicien informatique7",
+      "email": "fp-e0661@fakeplant.example.test",
+      "role": "Technicien informatique",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0002",
+      "username": "demo_fp_assembleur_002",
+      "display_name": "Assembleur2",
+      "email": "fp-e0002@fakeplant.example.test",
+      "role": "Assembleur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0827",
+      "username": "demo_fp_conseiller_ventes_005",
+      "display_name": "Conseiller ventes5",
+      "email": "fp-e0827@fakeplant.example.test",
+      "role": "Conseiller ventes",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0736",
+      "username": "demo_fp_secretaire_004",
+      "display_name": "Secrétaire4",
+      "email": "fp-e0736@fakeplant.example.test",
+      "role": "Secrétaire",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0741",
+      "username": "demo_fp_secretaire_009",
+      "display_name": "Secrétaire9",
+      "email": "fp-e0741@fakeplant.example.test",
+      "role": "Secrétaire",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0773",
+      "username": "demo_fp_gestionnaire_002",
+      "display_name": "Gestionnaire2",
+      "email": "fp-e0773@fakeplant.example.test",
+      "role": "Gestionnaire",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0003",
+      "username": "demo_fp_assembleur_003",
+      "display_name": "Assembleur3",
+      "email": "fp-e0003@fakeplant.example.test",
+      "role": "Assembleur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0676",
+      "username": "demo_fp_approvisionneur_008",
+      "display_name": "Approvisionneur8",
+      "email": "fp-e0676@fakeplant.example.test",
+      "role": "Approvisionneur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0005",
+      "username": "demo_fp_assembleur_005",
+      "display_name": "Assembleur5",
+      "email": "fp-e0005@fakeplant.example.test",
+      "role": "Assembleur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0001",
+      "username": "demo_fp_assembleur_001",
+      "display_name": "Assembleur1",
+      "email": "fp-e0001@fakeplant.example.test",
+      "role": "Assembleur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0291",
+      "username": "demo_fp_soudeur_011",
+      "display_name": "Soudeur11",
+      "email": "fp-e0291@fakeplant.example.test",
+      "role": "Soudeur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "FP-E0565",
+      "username": "demo_fp_electricien_006",
+      "display_name": "Électricien6",
+      "email": "fp-e0565@fakeplant.example.test",
+      "role": "Électricien",
+      "is_ethikos_elite": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "category-activites-sociales",
+      "name": "Activités sociales"
+    }
+  ],
+  "topics": [
+    {
+      "key": "FP-ETH-S-01",
+      "title": "[DEMO] Comment organiser les portes ouvertes pour trois quarts ?",
+      "status": "open",
+      "category": "category-activites-sociales",
+      "description": "Contexte : Accès équitable vs logistique. Dossier FP-S14."
+    },
+    {
+      "key": "FP-ETH-S-02",
+      "title": "[DEMO] Mentorat volontaire ou programme imposé ?",
+      "status": "open",
+      "category": "category-activites-sociales",
+      "description": "Contexte : Reconnaissance vs pression sociale. Dossier FP-S05."
+    },
+    {
+      "key": "FP-ETH-S-03",
+      "title": "[DEMO] Comment reconnaître des experts sans classement ?",
+      "status": "open",
+      "category": "category-activites-sociales",
+      "description": "Contexte : Gratitude vs compétition. Dossier FP-S14."
+    },
+    {
+      "key": "FP-ETH-S-04",
+      "title": "[DEMO] Transport collectif pour événements d'usine ?",
+      "status": "open",
+      "category": "category-activites-sociales",
+      "description": "Contexte : Inclusion vs coût. Dossier FP-S14."
+    },
+    {
+      "key": "FP-ETH-S-05",
+      "title": "[DEMO] Quels retours sur une activité sont publiables ?",
+      "status": "open",
+      "category": "category-activites-sociales",
+      "description": "Contexte : Apprentissage vs confidentialité. Dossier FP-S14."
+    }
+  ],
+  "stances": [
+    {
+      "topic": "FP-ETH-S-01",
+      "actor": "FP-E0572",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-S-01",
+      "actor": "FP-E0004",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-S-02",
+      "actor": "FP-E0004",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-S-02",
+      "actor": "FP-E0780",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-S-03",
+      "actor": "FP-E0780",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-S-03",
+      "actor": "FP-E0898",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-S-04",
+      "actor": "FP-E0898",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-S-04",
+      "actor": "FP-E0528",
+      "value": -1
+    },
+    {
+      "topic": "FP-ETH-S-05",
+      "actor": "FP-E0528",
+      "value": 1
+    },
+    {
+      "topic": "FP-ETH-S-05",
+      "actor": "FP-E0776",
+      "value": -1
+    }
+  ],
+  "arguments": [
+    {
+      "key": "FP-ETH-S-01-A1",
+      "topic": "FP-ETH-S-01",
+      "actor": "FP-E0572",
+      "content": "Proposition initiale : Accès équitable vs logistique. La conclusion doit être vérifiée dans FP-S14.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-S-01-A2",
+      "topic": "FP-ETH-S-01",
+      "actor": "FP-E0004",
+      "content": "Objection à traiter : Accès équitable vs logistique. La conclusion doit être vérifiée dans FP-S14.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-S-02-A1",
+      "topic": "FP-ETH-S-02",
+      "actor": "FP-E0004",
+      "content": "Proposition initiale : Reconnaissance vs pression sociale. La conclusion doit être vérifiée dans FP-S05.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-S-02-A2",
+      "topic": "FP-ETH-S-02",
+      "actor": "FP-E0780",
+      "content": "Objection à traiter : Reconnaissance vs pression sociale. La conclusion doit être vérifiée dans FP-S05.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-S-03-A1",
+      "topic": "FP-ETH-S-03",
+      "actor": "FP-E0780",
+      "content": "Proposition initiale : Gratitude vs compétition. La conclusion doit être vérifiée dans FP-S14.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-S-03-A2",
+      "topic": "FP-ETH-S-03",
+      "actor": "FP-E0898",
+      "content": "Objection à traiter : Gratitude vs compétition. La conclusion doit être vérifiée dans FP-S14.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-S-04-A1",
+      "topic": "FP-ETH-S-04",
+      "actor": "FP-E0898",
+      "content": "Proposition initiale : Inclusion vs coût. La conclusion doit être vérifiée dans FP-S14.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-S-04-A2",
+      "topic": "FP-ETH-S-04",
+      "actor": "FP-E0528",
+      "content": "Objection à traiter : Inclusion vs coût. La conclusion doit être vérifiée dans FP-S14.",
+      "side": "con"
+    },
+    {
+      "key": "FP-ETH-S-05-A1",
+      "topic": "FP-ETH-S-05",
+      "actor": "FP-E0528",
+      "content": "Proposition initiale : Apprentissage vs confidentialité. La conclusion doit être vérifiée dans FP-S14.",
+      "side": "pro"
+    },
+    {
+      "key": "FP-ETH-S-05-A2",
+      "topic": "FP-ETH-S-05",
+      "actor": "FP-E0776",
+      "content": "Objection à traiter : Apprentissage vs confidentialité. La conclusion doit être vérifiée dans FP-S14.",
+      "side": "con"
+    }
+  ],
+  "consultations": [
+    {
+      "key": "FP-KON-S-01",
+      "title": "Date et formule des portes ouvertes",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "description": "Autorisations logistiques. Consultation participative — pas une autorisation.",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ]
+    },
+    {
+      "key": "FP-KON-S-02",
+      "title": "Reconnaissance du mentorat",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "description": "Participation volontaire. Consultation participative — pas une autorisation.",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ]
+    },
+    {
+      "key": "FP-KON-S-03",
+      "title": "Navettes lors des événements",
+      "status": "open",
+      "open_date": "2026-10-12",
+      "close_date": "2026-10-30",
+      "description": "Budget et besoin confirmé. Consultation participative — pas une autorisation.",
+      "options": [
+        {
+          "key": "option-a",
+          "label": "Maintenir la pratique avec revue datée"
+        },
+        {
+          "key": "option-b",
+          "label": "Pilote encadré avec critères de sortie"
+        },
+        {
+          "key": "option-c",
+          "label": "Reporter après vérification indépendante"
+        }
+      ]
+    }
+  ],
+  "consultation_votes": [
+    {
+      "consultation": "FP-KON-S-01",
+      "actor": "FP-E0572",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-S-01",
+      "actor": "FP-E0004",
+      "option": "option-b",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-S-01",
+      "actor": "FP-E0780",
+      "option": "option-c",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-S-01",
+      "actor": "FP-E0898",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-S-02",
+      "actor": "FP-E0572",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-S-02",
+      "actor": "FP-E0004",
+      "option": "option-b",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-S-02",
+      "actor": "FP-E0780",
+      "option": "option-c",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-S-02",
+      "actor": "FP-E0898",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-S-03",
+      "actor": "FP-E0572",
+      "option": "option-a",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-S-03",
+      "actor": "FP-E0004",
+      "option": "option-b",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-S-03",
+      "actor": "FP-E0780",
+      "option": "option-c",
+      "raw_value": 1
+    },
+    {
+      "consultation": "FP-KON-S-03",
+      "actor": "FP-E0898",
+      "option": "option-a",
+      "raw_value": 1
+    }
+  ]
+}

@@ -1,0 +1,864 @@
+{
+  "cases_and_requests": [
+    {
+      "id": "FP-CASE-01",
+      "scenario_ref": "FP-S01",
+      "title": "FP-S01 — Coûts trimestriels : l’agent choisit la bonne combinaison",
+      "owner_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "open",
+      "priority": "HIGH",
+      "source_ref": "urn:fp:scenario:FP-S01",
+      "correlation_id": "corr.fakeplant.fp-s01",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-02",
+      "scenario_ref": "FP-S02",
+      "title": "FP-S02 — Imprimante PRN-17 : dépannage causal et demande en un clic",
+      "owner_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "status": "open",
+      "priority": "HIGH",
+      "source_ref": "urn:fp:scenario:FP-S02",
+      "correlation_id": "corr.fakeplant.fp-s02",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-03",
+      "scenario_ref": "FP-S03",
+      "title": "FP-S03 — Défaut intermittent SW-04 : le quart de nuit change le diagnostic",
+      "owner_id": "2fbd778d-086f-545c-8424-01f937120190",
+      "status": "open",
+      "priority": "HIGH",
+      "source_ref": "urn:fp:scenario:FP-S03",
+      "correlation_id": "corr.fakeplant.fp-s03",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-04",
+      "scenario_ref": "FP-S04",
+      "title": "FP-S04 — Pièce critique CR-12 : planifier sans immobiliser la production",
+      "owner_id": "298915eb-c0ea-5a0d-aa4b-85dad8b27345",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S04",
+      "correlation_id": "corr.fakeplant.fp-s04",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-05",
+      "scenario_ref": "FP-S05",
+      "title": "FP-S05 — Luc part vendredi : faire passer l’expertise plutôt que les fichiers",
+      "owner_id": "1d0d0f75-3869-50b6-9e87-e06c1797636a",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S05",
+      "correlation_id": "corr.fakeplant.fp-s05",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-06",
+      "scenario_ref": "FP-S06",
+      "title": "FP-S06 — Consultation sur les quarts : participation sans fausse démocratie",
+      "owner_id": "d7ebe1a8-6ade-5069-afc9-22501ce399dd",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S06",
+      "correlation_id": "corr.fakeplant.fp-s06",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-07",
+      "scenario_ref": "FP-S07",
+      "title": "FP-S07 — Client impatient : communiquer ce qui est vrai, sans exposer l’usine",
+      "owner_id": "0c901851-79cb-56e2-a1e5-4603d68ec97a",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S07",
+      "correlation_id": "corr.fakeplant.fp-s07",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-08",
+      "scenario_ref": "FP-S08",
+      "title": "FP-S08 — Fournisseur unique : payer moins ou protéger la continuité ?",
+      "owner_id": "5beaccc9-8759-5341-ac9a-df3789f6eb04",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S08",
+      "correlation_id": "corr.fakeplant.fp-s08",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-09",
+      "scenario_ref": "FP-S09",
+      "title": "FP-S09 — Renseignements qualité : une révision de dessin a-t-elle tout changé ?",
+      "owner_id": "adfc93e0-210e-54e2-9250-937575d49fbe",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S09",
+      "correlation_id": "corr.fakeplant.fp-s09",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-10",
+      "scenario_ref": "FP-S10",
+      "title": "FP-S10 — Cyberincident un mardi : six équipes, une situation gouvernée",
+      "owner_id": "3c7d9211-2dde-5790-8a25-508487414c41",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S10",
+      "correlation_id": "corr.fakeplant.fp-s10",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-11",
+      "scenario_ref": "FP-S11",
+      "title": "FP-S11 — Audit : la même non-conformité sous trois noms",
+      "owner_id": "0c6e13ba-effb-5bb1-9854-4c491b23e4e5",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S11",
+      "correlation_id": "corr.fakeplant.fp-s11",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-12",
+      "scenario_ref": "FP-S12",
+      "title": "FP-S12 — Recruter l’expertise, pas seulement un intitulé de poste",
+      "owner_id": "64ce7625-bb2d-541b-85da-787b2972fa18",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S12",
+      "correlation_id": "corr.fakeplant.fp-s12",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-13",
+      "scenario_ref": "FP-S13",
+      "title": "FP-S13 — Une idée d’opérateur traverse réellement la hiérarchie",
+      "owner_id": "06d66cf6-25ac-5577-b103-b5eb3269a4e1",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S13",
+      "correlation_id": "corr.fakeplant.fp-s13",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-14",
+      "scenario_ref": "FP-S14",
+      "title": "FP-S14 — Portes ouvertes : petite coordination, vraie participation",
+      "owner_id": "27ef3396-465c-5ca5-9289-4f30201d0d81",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S14",
+      "correlation_id": "corr.fakeplant.fp-s14",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-15",
+      "scenario_ref": "FP-S15",
+      "title": "FP-S15 — Tableau vert, groupe oublié : la décision RH évolue",
+      "owner_id": "a48741cd-289a-5d75-8c4a-5d3b4bcc5dd5",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S15",
+      "correlation_id": "corr.fakeplant.fp-s15",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-16",
+      "scenario_ref": "FP-S16",
+      "title": "FP-S16 — Un plan de maintenance fonctionne même sans réseau",
+      "owner_id": "bf7ce6a1-e68b-5253-98e6-d11b9ccf8d09",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S16",
+      "correlation_id": "corr.fakeplant.fp-s16",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-17",
+      "scenario_ref": "FP-S17",
+      "title": "FP-S17 — Prototype raté : ne pas perdre les trois mois de travail",
+      "owner_id": "264bd0bc-b365-54ec-8dc8-9eb32c62ded5",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S17",
+      "correlation_id": "corr.fakeplant.fp-s17",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-CASE-18",
+      "scenario_ref": "FP-S18",
+      "title": "FP-S18 — Le bilan vivant : chaque engagement a une preuve",
+      "owner_id": "a75da9b5-18dd-58de-9fbd-b34ad6f74802",
+      "status": "open",
+      "priority": "MEDIUM",
+      "source_ref": "urn:fp:scenario:FP-S18",
+      "correlation_id": "corr.fakeplant.fp-s18",
+      "operation_kind": "case",
+      "source_system": "fictional_orchestrator",
+      "execution": "not_applied"
+    },
+    {
+      "id": "FP-REQ-FU17-001",
+      "scenario_ref": "FP-S02",
+      "title": "Commande fuser FU-17-LSR",
+      "owner_id": "c6b951cc-59bb-5391-a220-4241de89f9ba",
+      "status": "draft",
+      "priority": "HIGH",
+      "source_ref": "urn:fp:knowledge:PRN17",
+      "correlation_id": "corr.fakeplant.prn17",
+      "operation_kind": "requisition",
+      "execution": "simulation_only",
+      "external_receipt": null,
+      "idempotency_key": "fp-v1:FP-REQ-FU17-001"
+    },
+    {
+      "id": "FP-REQ-ATLAS-001",
+      "scenario_ref": "FP-S01",
+      "title": "Révision devis Atlas-47",
+      "owner_id": "8a83a935-a389-5c20-b139-2ee3e9c930ed",
+      "status": "awaiting_human_approval",
+      "priority": "HIGH",
+      "source_ref": "urn:fp:knowledge:COST-2026-Q3",
+      "correlation_id": "corr.fakeplant.atlas47",
+      "operation_kind": "commercial_action",
+      "execution": "simulation_only",
+      "external_receipt": null,
+      "idempotency_key": "fp-v1:FP-REQ-ATLAS-001"
+    }
+  ],
+  "events": [
+    {
+      "id": "FP-EVT-01-1",
+      "case_ref": "FP-CASE-01",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S01"
+      }
+    },
+    {
+      "id": "FP-EVT-01-2",
+      "case_ref": "FP-CASE-01",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S01"
+      }
+    },
+    {
+      "id": "FP-EVT-01-3",
+      "case_ref": "FP-CASE-01",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S01"
+      }
+    },
+    {
+      "id": "FP-EVT-02-1",
+      "case_ref": "FP-CASE-02",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S02"
+      }
+    },
+    {
+      "id": "FP-EVT-02-2",
+      "case_ref": "FP-CASE-02",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S02"
+      }
+    },
+    {
+      "id": "FP-EVT-02-3",
+      "case_ref": "FP-CASE-02",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S02"
+      }
+    },
+    {
+      "id": "FP-EVT-03-1",
+      "case_ref": "FP-CASE-03",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S03"
+      }
+    },
+    {
+      "id": "FP-EVT-03-2",
+      "case_ref": "FP-CASE-03",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S03"
+      }
+    },
+    {
+      "id": "FP-EVT-03-3",
+      "case_ref": "FP-CASE-03",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S03"
+      }
+    },
+    {
+      "id": "FP-EVT-04-1",
+      "case_ref": "FP-CASE-04",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S04"
+      }
+    },
+    {
+      "id": "FP-EVT-04-2",
+      "case_ref": "FP-CASE-04",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S04"
+      }
+    },
+    {
+      "id": "FP-EVT-04-3",
+      "case_ref": "FP-CASE-04",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S04"
+      }
+    },
+    {
+      "id": "FP-EVT-05-1",
+      "case_ref": "FP-CASE-05",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S05"
+      }
+    },
+    {
+      "id": "FP-EVT-05-2",
+      "case_ref": "FP-CASE-05",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S05"
+      }
+    },
+    {
+      "id": "FP-EVT-05-3",
+      "case_ref": "FP-CASE-05",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S05"
+      }
+    },
+    {
+      "id": "FP-EVT-06-1",
+      "case_ref": "FP-CASE-06",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S06"
+      }
+    },
+    {
+      "id": "FP-EVT-06-2",
+      "case_ref": "FP-CASE-06",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S06"
+      }
+    },
+    {
+      "id": "FP-EVT-06-3",
+      "case_ref": "FP-CASE-06",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S06"
+      }
+    },
+    {
+      "id": "FP-EVT-07-1",
+      "case_ref": "FP-CASE-07",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S07"
+      }
+    },
+    {
+      "id": "FP-EVT-07-2",
+      "case_ref": "FP-CASE-07",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S07"
+      }
+    },
+    {
+      "id": "FP-EVT-07-3",
+      "case_ref": "FP-CASE-07",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S07"
+      }
+    },
+    {
+      "id": "FP-EVT-08-1",
+      "case_ref": "FP-CASE-08",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S08"
+      }
+    },
+    {
+      "id": "FP-EVT-08-2",
+      "case_ref": "FP-CASE-08",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S08"
+      }
+    },
+    {
+      "id": "FP-EVT-08-3",
+      "case_ref": "FP-CASE-08",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S08"
+      }
+    },
+    {
+      "id": "FP-EVT-09-1",
+      "case_ref": "FP-CASE-09",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S09"
+      }
+    },
+    {
+      "id": "FP-EVT-09-2",
+      "case_ref": "FP-CASE-09",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S09"
+      }
+    },
+    {
+      "id": "FP-EVT-09-3",
+      "case_ref": "FP-CASE-09",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S09"
+      }
+    },
+    {
+      "id": "FP-EVT-10-1",
+      "case_ref": "FP-CASE-10",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S10"
+      }
+    },
+    {
+      "id": "FP-EVT-10-2",
+      "case_ref": "FP-CASE-10",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S10"
+      }
+    },
+    {
+      "id": "FP-EVT-10-3",
+      "case_ref": "FP-CASE-10",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S10"
+      }
+    },
+    {
+      "id": "FP-EVT-11-1",
+      "case_ref": "FP-CASE-11",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S11"
+      }
+    },
+    {
+      "id": "FP-EVT-11-2",
+      "case_ref": "FP-CASE-11",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S11"
+      }
+    },
+    {
+      "id": "FP-EVT-11-3",
+      "case_ref": "FP-CASE-11",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S11"
+      }
+    },
+    {
+      "id": "FP-EVT-12-1",
+      "case_ref": "FP-CASE-12",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S12"
+      }
+    },
+    {
+      "id": "FP-EVT-12-2",
+      "case_ref": "FP-CASE-12",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S12"
+      }
+    },
+    {
+      "id": "FP-EVT-12-3",
+      "case_ref": "FP-CASE-12",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S12"
+      }
+    },
+    {
+      "id": "FP-EVT-13-1",
+      "case_ref": "FP-CASE-13",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S13"
+      }
+    },
+    {
+      "id": "FP-EVT-13-2",
+      "case_ref": "FP-CASE-13",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S13"
+      }
+    },
+    {
+      "id": "FP-EVT-13-3",
+      "case_ref": "FP-CASE-13",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S13"
+      }
+    },
+    {
+      "id": "FP-EVT-14-1",
+      "case_ref": "FP-CASE-14",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S14"
+      }
+    },
+    {
+      "id": "FP-EVT-14-2",
+      "case_ref": "FP-CASE-14",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S14"
+      }
+    },
+    {
+      "id": "FP-EVT-14-3",
+      "case_ref": "FP-CASE-14",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S14"
+      }
+    },
+    {
+      "id": "FP-EVT-15-1",
+      "case_ref": "FP-CASE-15",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S15"
+      }
+    },
+    {
+      "id": "FP-EVT-15-2",
+      "case_ref": "FP-CASE-15",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S15"
+      }
+    },
+    {
+      "id": "FP-EVT-15-3",
+      "case_ref": "FP-CASE-15",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S15"
+      }
+    },
+    {
+      "id": "FP-EVT-16-1",
+      "case_ref": "FP-CASE-16",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S16"
+      }
+    },
+    {
+      "id": "FP-EVT-16-2",
+      "case_ref": "FP-CASE-16",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S16"
+      }
+    },
+    {
+      "id": "FP-EVT-16-3",
+      "case_ref": "FP-CASE-16",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S16"
+      }
+    },
+    {
+      "id": "FP-EVT-17-1",
+      "case_ref": "FP-CASE-17",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S17"
+      }
+    },
+    {
+      "id": "FP-EVT-17-2",
+      "case_ref": "FP-CASE-17",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S17"
+      }
+    },
+    {
+      "id": "FP-EVT-17-3",
+      "case_ref": "FP-CASE-17",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S17"
+      }
+    },
+    {
+      "id": "FP-EVT-18-1",
+      "case_ref": "FP-CASE-18",
+      "seq": 1,
+      "kind": "received",
+      "occurred_at": "2026-10-13T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S18"
+      }
+    },
+    {
+      "id": "FP-EVT-18-2",
+      "case_ref": "FP-CASE-18",
+      "seq": 2,
+      "kind": "triaged",
+      "occurred_at": "2026-10-14T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S18"
+      }
+    },
+    {
+      "id": "FP-EVT-18-3",
+      "case_ref": "FP-CASE-18",
+      "seq": 3,
+      "kind": "awaiting_authority",
+      "occurred_at": "2026-10-15T10:00:00-04:00",
+      "synthetic": true,
+      "payload": {
+        "scenario": "FP-S18"
+      }
+    }
+  ],
+  "operational_status": "simulated_not_committed",
+  "source_api": "orgo.scenario.v1"
+}
