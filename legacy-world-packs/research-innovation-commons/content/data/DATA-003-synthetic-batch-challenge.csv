@@ -1,0 +1,7 @@
+batch,reference_id,kx17_normalized,condition_note
+B1,R1,1.00,reference
+B2,R1,1.19,temperature_shift
+B3,R1,0.82,reagent_lot_shift
+B1,R2,0.73,reference
+B2,R2,0.88,temperature_shift
+B3,R2,0.61,reagent_lot_shift

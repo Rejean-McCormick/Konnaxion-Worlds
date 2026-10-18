@@ -1,0 +1,354 @@
+universe_contract: kx-universe-pack/v1
+universe_key: unesco
+title: UNESCO
+description: Dynamic simulation and deliberation universe aligned to UNESCO mission domains.
+pack_version: 1.5.0
+visibility: public
+default_world: unesco-commons
+requires:
+  world_contract: kx-world-pack/v1
+  host_contracts:
+  - kx-world-personas/v1
+worlds:
+- world_key: unesco-commons
+  seed_pack_key: unesco-commons
+  seed_version: 1.5.0
+  title: UNESCO Commons
+  description: 'Universe hub: actor directory, provenance and cross-World discovery. No shared business-data schema.'
+  visibility: public
+- world_key: unesco-education
+  seed_pack_key: unesco-education
+  seed_version: 1.5.0
+  title: UNESCO — Education
+  description: Dynamic simulations and structured deliberation on education, learning and SDG 4.
+  visibility: public
+- world_key: unesco-science-planet
+  seed_pack_key: unesco-science-planet
+  seed_version: 1.5.0
+  title: UNESCO — Science & Planet
+  description: Dynamic simulations on open science, environmental knowledge, evidence and science-policy interfaces.
+  visibility: public
+- world_key: unesco-ocean
+  seed_pack_key: unesco-ocean
+  seed_version: 1.5.0
+  title: UNESCO — Ocean
+  description: IOC-aligned simulations on ocean science, observation, governance and coastal resilience.
+  visibility: public
+- world_key: unesco-culture-heritage
+  seed_pack_key: unesco-culture-heritage
+  seed_version: 1.5.0
+  title: UNESCO — Culture & Heritage
+  description: Dynamic simulations on heritage, cultural policy, safeguarding and digital access.
+  visibility: public
+- world_key: unesco-humanity-society
+  seed_pack_key: unesco-humanity-society
+  seed_version: 1.5.0
+  title: UNESCO — Humanity & Society
+  description: Dynamic simulations on ethics, inclusion, youth, rights and social transformation.
+  visibility: public
+- world_key: unesco-information-digital
+  seed_pack_key: unesco-information-digital
+  seed_version: 1.5.0
+  title: UNESCO — Information & Digital Society
+  description: Dynamic simulations on freedom of expression, journalism, media literacy, information integrity and digital governance.
+  visibility: public
+relations:
+- source: unesco-education
+  target: unesco-commons
+  type: publishes_to
+  title: Publish selected outcomes to UNESCO Commons
+  description: ''
+  metadata: {}
+- source: unesco-science-planet
+  target: unesco-commons
+  type: publishes_to
+  title: Publish selected outcomes to UNESCO Commons
+  description: ''
+  metadata: {}
+- source: unesco-ocean
+  target: unesco-commons
+  type: publishes_to
+  title: Publish selected outcomes to UNESCO Commons
+  description: ''
+  metadata: {}
+- source: unesco-culture-heritage
+  target: unesco-commons
+  type: publishes_to
+  title: Publish selected outcomes to UNESCO Commons
+  description: ''
+  metadata: {}
+- source: unesco-humanity-society
+  target: unesco-commons
+  type: publishes_to
+  title: Publish selected outcomes to UNESCO Commons
+  description: ''
+  metadata: {}
+- source: unesco-information-digital
+  target: unesco-commons
+  type: publishes_to
+  title: Publish selected outcomes to UNESCO Commons
+  description: ''
+  metadata: {}
+- source: unesco-commons
+  target: unesco-education
+  type: coordinates
+  title: Universe navigation and cross-World coordination
+  description: ''
+  metadata: {}
+- source: unesco-commons
+  target: unesco-science-planet
+  type: coordinates
+  title: Universe navigation and cross-World coordination
+  description: ''
+  metadata: {}
+- source: unesco-commons
+  target: unesco-ocean
+  type: coordinates
+  title: Universe navigation and cross-World coordination
+  description: ''
+  metadata: {}
+- source: unesco-commons
+  target: unesco-culture-heritage
+  type: coordinates
+  title: Universe navigation and cross-World coordination
+  description: ''
+  metadata: {}
+- source: unesco-commons
+  target: unesco-humanity-society
+  type: coordinates
+  title: Universe navigation and cross-World coordination
+  description: ''
+  metadata: {}
+- source: unesco-commons
+  target: unesco-information-digital
+  type: coordinates
+  title: Universe navigation and cross-World coordination
+  description: ''
+  metadata: {}
+- source: unesco-culture-heritage
+  target: unesco-education
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: digital_cultural_collections
+      flagship: flagship_culture_digital_heritage
+      reason: education and reuse of documentary heritage
+    seed_version: 1.3.0
+- source: unesco-culture-heritage
+  target: unesco-humanity-society
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: heritage_reconstruction
+      flagship: flagship_culture_reconstruction
+      reason: community participation, identity and ethics
+    seed_version: 1.3.0
+- source: unesco-culture-heritage
+  target: unesco-information-digital
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: digital_cultural_collections
+      flagship: flagship_culture_digital_heritage
+      reason: access to information, infrastructure and platform governance
+    seed_version: 1.3.0
+- source: unesco-culture-heritage
+  target: unesco-science-planet
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: heritage_reconstruction
+      flagship: flagship_culture_reconstruction
+      reason: materials, risk and evidence
+    seed_version: 1.3.0
+- source: unesco-education
+  target: unesco-humanity-society
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: ai_assessment_governance
+      flagship: flagship_edu_ai_assessment
+      reason: AI ethics, rights and accountability
+    - source_topic: digital_inclusion_learning
+      flagship: flagship_edu_digital_inclusion
+      reason: inclusion, equality and disability rights
+    seed_version: 1.3.0
+- source: unesco-education
+  target: unesco-information-digital
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: ai_assessment_governance
+      flagship: flagship_edu_ai_assessment
+      reason: data governance, platforms and information literacy
+    - source_topic: digital_inclusion_learning
+      flagship: flagship_edu_digital_inclusion
+      reason: digital access and platform accountability
+    seed_version: 1.3.0
+- source: unesco-humanity-society
+  target: unesco-education
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: youth_public_decisions
+      flagship: flagship_humanity_youth_participation
+      reason: youth/student participation in education decisions
+    seed_version: 1.3.0
+- source: unesco-humanity-society
+  target: unesco-information-digital
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: youth_public_decisions
+      flagship: flagship_humanity_youth_participation
+      reason: digital participation and information access
+    - source_topic: bioethics_emerging_technology
+      flagship: flagship_humanity_neurotechnology
+      reason: data governance, AI and privacy
+    seed_version: 1.3.0
+- source: unesco-humanity-society
+  target: unesco-science-planet
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: bioethics_emerging_technology
+      flagship: flagship_humanity_neurotechnology
+      reason: scientific validity, research and emerging technology
+    seed_version: 1.3.0
+- source: unesco-information-digital
+  target: unesco-education
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: expression_platform_harms
+      flagship: flagship_info_platform_governance
+      reason: media/information literacy and youth
+    seed_version: 1.3.0
+- source: unesco-information-digital
+  target: unesco-humanity-society
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: expression_platform_harms
+      flagship: flagship_info_platform_governance
+      reason: human rights, AI ethics and social impacts
+    - source_topic: journalist_safety_accountability
+      flagship: flagship_info_journalist_safety
+      reason: rights, institutional trust and protection
+    seed_version: 1.3.0
+- source: unesco-ocean
+  target: unesco-humanity-society
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: coastal_resilience_planning
+      flagship: flagship_ocean_coastal_resilience
+      reason: equity, participation and displacement impacts
+    seed_version: 1.3.0
+- source: unesco-ocean
+  target: unesco-information-digital
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: ocean_observation_data_sharing
+      flagship: flagship_ocean_data
+      reason: digital infrastructure and data governance
+    seed_version: 1.3.0
+- source: unesco-ocean
+  target: unesco-science-planet
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: ocean_observation_data_sharing
+      flagship: flagship_ocean_data
+      reason: open science, scientific data and capacity
+    - source_topic: coastal_resilience_planning
+      flagship: flagship_ocean_coastal_resilience
+      reason: environmental evidence and monitoring
+    seed_version: 1.3.0
+- source: unesco-science-planet
+  target: unesco-education
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: open_science_access_integrity
+      flagship: flagship_sci_open_science
+      reason: research training and learning capacity
+    seed_version: 1.3.0
+- source: unesco-science-planet
+  target: unesco-humanity-society
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: biodiversity_evidence_thresholds
+      flagship: flagship_sci_biodiversity_knowledge
+      reason: Indigenous participation and knowledge governance
+    seed_version: 1.3.0
+- source: unesco-science-planet
+  target: unesco-information-digital
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: open_science_access_integrity
+      flagship: flagship_sci_open_science
+      reason: digital infrastructure, access and information governance
+    seed_version: 1.3.0
+- source: unesco-science-planet
+  target: unesco-ocean
+  type: references
+  title: Flagship cross-World reference
+  description: Topology/reference only; no cross-World data access is granted.
+  metadata:
+    flagship_links:
+    - source_topic: biodiversity_evidence_thresholds
+      flagship: flagship_sci_biodiversity_knowledge
+      reason: marine biodiversity and ocean data
+    seed_version: 1.3.0
+subscriptions: []
+metadata:
+  architecture_lock: KX-UNIVERSES-1
+  seed_version: 1.5.0
+  experience: dynamic_simulation
+  primary_deliberation: ethikos/korum
+  natural_extensions:
+  - keenkonnect
+  - konnected
+  excluded_from_workflow_seed:
+  - kreative
+  mega_update_version: 1.0.0
+  mega_update_date: '2026-09-30'
+  demo_smart_vote_enabled: true

@@ -94,7 +94,7 @@ def seed_root() -> Path:
     configured = getattr(settings, "KONNAXION_WORLD_SEED_ROOT", None)
     if configured:
         return Path(configured).resolve()
-    return (Path(settings.BASE_DIR).parent / "seed-data" / "worlds").resolve()
+    return (Path(settings.BASE_DIR).parent / "universes").resolve()
 
 
 def _inside(root: Path, candidate: Path) -> Path:
@@ -202,10 +202,24 @@ def discover_seed_packs(*, persist: bool = True) -> list[SeedPack]:
         return []
     packs: list[SeedPack] = []
     identities: dict[tuple[str, str], Path] = {}
-    manifests = sorted((*root.glob("*/world.yaml"), *root.glob("*/world.yml")))
+    # Canonical layout: universes/<universe_key>/worlds/<world_key>/world.yaml.
+    # Legacy paths are accepted ONLY when the explicitly configured root itself
+    # is named "worlds" (test/backward-compatibility), never as a second runtime
+    # discovery location. A host using the new root cannot silently mix both.
+    if root.name.lower() == "worlds":
+        manifests = sorted((*root.glob("*/world.yaml"), *root.glob("*/world.yml")))
+    else:
+        manifests = sorted((*root.glob("*/worlds/*/world.yaml"), *root.glob("*/worlds/*/world.yml")))
     for candidate in manifests:
         manifest = _inside(root, candidate)
         pack = load_seed_pack(manifest, configured_root=root)
+        if root.name.lower() != "worlds":
+            # Prevent a World from silently belonging to the wrong Universe tree.
+            universe_manifest = manifest.parent.parent.parent / "universe.yaml"
+            if not universe_manifest.is_file():
+                raise SeedPackError(f"Orphan World Pack without Universe manifest: {manifest}")
+            if manifest.parent.name != pack.world_key:
+                raise SeedPackError(f"World directory/key mismatch: {manifest}")
         identity = (pack.world_key, pack.version)
         previous = identities.get(identity)
         if previous is not None and previous != pack.manifest_path:

@@ -69,10 +69,13 @@ def universe_seed_root() -> Path:
     # layout from the installed Konnaxion_Worlds package.
     configured_world_root = getattr(settings, "KONNAXION_WORLD_SEED_ROOT", None)
     if configured_world_root:
-        return (Path(configured_world_root).resolve().parent / "universes").resolve()
+        world_root = Path(configured_world_root).resolve()
+        # Nested v3: both discovery roots point to universes/ itself.
+        # The legacy sibling layout is supported only for explicit legacy tests.
+        return world_root if world_root.name.lower() != "worlds" else world_root.parent / "universes"
 
     # Standalone Worlds keeps BASE_DIR at backend/.
-    return (Path(settings.BASE_DIR) / "seed-data" / "universes").resolve()
+    return (Path(settings.BASE_DIR).parent / "universes").resolve()
 
 
 def _inside(root: Path, candidate: Path) -> Path:

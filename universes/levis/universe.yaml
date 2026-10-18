@@ -1,0 +1,245 @@
+universe_contract: kx-universe-pack/v1
+universe_key: levis
+title: Ville de Lévis
+description: Simulation civique dynamique de la Ville de Lévis. Les Worlds suivent les unités administratives actuelles; la Direction générale est le World d’intégration.
+pack_version: 0.5.0
+visibility: public
+default_world: levis-direction-generale
+requires:
+  world_contract: kx-world-pack/v1
+  host_contracts:
+  - kx-world-personas/v1
+  external_authorities:
+  - kristal_v5_runtime_pack
+worlds:
+- world_key: levis-direction-generale
+  seed_pack_key: levis-direction-generale
+  seed_version: 0.5.0
+  title: Ville de Lévis — Direction générale
+  description: Gouvernance, coordination municipale, conseil municipal et enjeux transversaux.
+  visibility: public
+- world_key: levis-capital-humain
+  seed_pack_key: levis-capital-humain
+  seed_version: 0.5.0
+  title: Ville de Lévis — Gestion du capital humain
+  description: Gestion des talents, relations de travail et développement organisationnel.
+  visibility: public
+- world_key: levis-finances
+  seed_pack_key: levis-finances
+  seed_version: 0.5.0
+  title: Ville de Lévis — Finances et trésorerie
+  description: Budget, trésorerie, comptabilité, évaluation et planification financière.
+  visibility: public
+- world_key: levis-developpement-economique
+  seed_pack_key: levis-developpement-economique
+  seed_version: 0.5.0
+  title: Ville de Lévis — Développement économique et promotion
+  description: Développement économique, entreprises, tourisme et promotion du territoire.
+  visibility: public
+- world_key: levis-environnement
+  seed_pack_key: levis-environnement
+  seed_version: 0.5.0
+  title: Ville de Lévis — Environnement
+  description: Biodiversité, matières résiduelles, suivi environnemental et transition climatique.
+  visibility: public
+- world_key: levis-genie
+  seed_pack_key: levis-genie
+  seed_version: 0.5.0
+  title: Ville de Lévis — Génie
+  description: Analyse, planification, conception et réalisation des infrastructures municipales.
+  visibility: public
+- world_key: levis-urbanisme
+  seed_pack_key: levis-urbanisme
+  seed_version: 0.5.0
+  title: Ville de Lévis — Urbanisme
+  description: Aménagement du territoire, urbanisme, patrimoine, cadre bâti, permis et développement.
+  visibility: public
+- world_key: levis-mobilite
+  seed_pack_key: levis-mobilite
+  seed_version: 0.5.0
+  title: Ville de Lévis — Transports et mobilité durable
+  description: Planification des transports, circulation, mobilité durable, sécurité et accessibilité des déplacements.
+  visibility: public
+- world_key: levis-securite-civile
+  seed_pack_key: levis-securite-civile
+  seed_version: 0.5.0
+  title: Ville de Lévis — Bureau de la sécurité civile
+  description: Préparation aux sinistres, gestion des risques, coordination des ressources et résilience municipale.
+  visibility: public
+- world_key: levis-police
+  seed_pack_key: levis-police
+  seed_version: 0.5.0
+  title: Ville de Lévis — Service de police
+  description: Sécurité publique, prévention et opérations policières.
+  visibility: public
+- world_key: levis-incendie
+  seed_pack_key: levis-incendie
+  seed_version: 0.5.0
+  title: Ville de Lévis — Sécurité incendie
+  description: Prévention incendie, protection des personnes et des biens, et intervention d’urgence.
+  visibility: public
+- world_key: levis-approvisionnement-immobilier
+  seed_pack_key: levis-approvisionnement-immobilier
+  seed_version: 0.5.0
+  title: Ville de Lévis — Approvisionnement et gestion immobilière
+  description: Approvisionnement public, contrats, immeubles municipaux, espaces et projets immobiliers.
+  visibility: public
+- world_key: levis-affaires-juridiques-greffe
+  seed_pack_key: levis-affaires-juridiques-greffe
+  seed_version: 0.5.0
+  title: Ville de Lévis — Affaires juridiques et greffe
+  description: Droit municipal, litiges, cour municipale, greffe, accès aux documents et gouvernance documentaire.
+  visibility: public
+- world_key: levis-entretien-infrastructures
+  seed_pack_key: levis-entretien-infrastructures
+  seed_version: 0.5.0
+  title: Ville de Lévis — Entretien des infrastructures
+  description: Voirie, aqueducs et égouts, équipements, bâtiments, parcs, déneigement et traitement des eaux.
+  visibility: public
+- world_key: levis-vie-communautaire
+  seed_pack_key: levis-vie-communautaire
+  seed_version: 0.5.0
+  title: Ville de Lévis — Vie communautaire
+  description: Culture, sports, plein air, bibliothèques, loisirs et développement communautaire.
+  visibility: public
+- world_key: levis-communications-citoyens
+  seed_pack_key: levis-communications-citoyens
+  seed_version: 0.5.0
+  title: Ville de Lévis — Communications et interaction citoyenne
+  description: Communications publiques, médias, interaction citoyenne, plateformes numériques et image de marque.
+  visibility: public
+- world_key: levis-ti-transformation
+  seed_pack_key: levis-ti-transformation
+  seed_version: 0.5.0
+  title: Ville de Lévis — Technologies de l’information et transformation numérique
+  description: Infrastructure TI, cybersécurité, données, solutions numériques et transformation des services.
+  visibility: public
+relations:
+- source: levis-direction-generale
+  target: levis-capital-humain
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-finances
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-developpement-economique
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-environnement
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-genie
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-urbanisme
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-mobilite
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-securite-civile
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-police
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-incendie
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-approvisionnement-immobilier
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-affaires-juridiques-greffe
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-entretien-infrastructures
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-vie-communautaire
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-communications-citoyens
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+- source: levis-direction-generale
+  target: levis-ti-transformation
+  type: coordinates
+  title: Coordination municipale
+  description: ''
+  metadata:
+    managed_by: kx-universe-pack/v1
+subscriptions: []
+metadata:
+  host: levis.konnaxion.com
+  host_binding_status: declared_not_enforced_by_seed
+  jurisdiction: Ville de Lévis, Québec, Canada
+  baseline_date: '2026-09-29'
+  seed_version: 0.5.0
+  purpose: civic_simulation
+  source_of_structure: city_orgchart_2026_02
+  kristal_authoring_bundle_version: 0.3.0
+  knowledge_authority: kristal_v5_runtime_pack
+  projection_policy: identity_binding_only
+  runtime_pack_activation_owner: external_explicit_owner
+  mega_update_version: 1.0.0
+  mega_update_date: '2026-09-30'
+  demo_smart_vote_enabled: true

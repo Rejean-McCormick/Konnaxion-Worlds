@@ -1,0 +1,12 @@
+world_contract: kx-world-pack/v1
+world_key: demo-alpha
+title: Demo Alpha
+pack_version: 1.0.0
+requires:
+  ethikos_scenario_schema: ethikos-demo-scenario/v3
+  fixtures:
+  - isced-f
+scenarios:
+- scenario.json
+metadata:
+  purpose: KX-WORLDS-1 collision/isolation acceptance fixture

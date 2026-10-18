@@ -1,0 +1,6 @@
+site,analysis,direction,stability,status
+site-A,KX-17 association,positive,moderate,replicated direction
+site-B,KX-17 association,positive,low,batch-sensitive
+site-C,KX-17 association,positive,moderate,replicated direction
+site-D,KX-17 intervention prediction,null,moderate,prediction not observed
+site-E,KX-17 external replication,weak positive,moderate,smaller than original

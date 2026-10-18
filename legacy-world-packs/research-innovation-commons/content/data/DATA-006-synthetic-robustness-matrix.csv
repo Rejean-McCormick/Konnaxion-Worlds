@@ -1,0 +1,6 @@
+analysis_choice,claim_immune_signature,claim_kx17_strong_effect
+primary,supported,weak
+alternative_scaling,supported,weak
+complete_case,supported,not_supported
+robust_regression,supported,not_supported
+subtype_adjusted,supported,weak

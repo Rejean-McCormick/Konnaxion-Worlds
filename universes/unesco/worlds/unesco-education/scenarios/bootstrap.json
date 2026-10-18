@@ -1,0 +1,1536 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "unesco_education_bootstrap_v12",
+  "scenario_title": "UNESCO — Education — bootstrap v1.2",
+  "mode": "replace_scenario",
+  "metadata": {
+    "universe": "unesco",
+    "world_key": "unesco-education",
+    "seed_version": "1.5.0",
+    "simulation_mode": "dynamic_deliberation",
+    "position_seed_policy": "none",
+    "vote_seed_policy": "none",
+    "ekoh_seed_policy": "no scores; canonical Konnaxion ISCED-F topic relevance only",
+    "actor_registry": "unesco/source-v1@1.2.0",
+    "source_pages": [
+      "https://www.unesco.org/en/education"
+    ],
+    "topic_metadata": {
+      "ai_assessment_governance": {
+        "question": "How should generative AI be governed in student assessment?",
+        "description": "Deliberate safeguards, disclosure, pedagogical value, accountability and proportionality without presuming a preferred policy outcome.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/education"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position",
+        "flagship": true,
+        "flagship_key": "flagship_edu_ai_assessment",
+        "title_fr": "Évaluation scolaire et IA générative",
+        "question_fr": "Comment gouverner l’usage de l’IA générative dans l’évaluation des élèves sans présumer qu’elle doit être interdite ou généralisée ?",
+        "question_en": "How should generative AI be governed in student assessment without presuming it should be banned or universally adopted?",
+        "evidence_refs": [
+          "edu_genai_guidance",
+          "edu_gem_technology_2023",
+          "ai_ethics_recommendation",
+          "edu_ai_competency_students",
+          "edu_ai_competency_teachers"
+        ],
+        "core_cast": [
+          "unesco_education_sector",
+          "unesco_ci_sector",
+          "unicef",
+          "itu",
+          "education_international",
+          "sdg4_youth_student_network",
+          "stakeholder_teachers",
+          "stakeholder_learners",
+          "stakeholder_youth",
+          "stakeholder_civil_society"
+        ],
+        "source_path": "source/flagships/unesco-education/flagship_edu_ai_assessment.yaml",
+        "cross_world_links": [
+          {
+            "target_world": "unesco-humanity-society",
+            "relation": "references",
+            "reason": "AI ethics, rights and accountability"
+          },
+          {
+            "target_world": "unesco-information-digital",
+            "relation": "references",
+            "reason": "data governance, platforms and information literacy"
+          }
+        ]
+      },
+      "teacher_autonomy_ai": {
+        "question": "How should teacher professional autonomy interact with AI-supported teaching systems?",
+        "description": "Explore decision authority, professional judgement, evidence, accountability and support for teachers.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/education"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position"
+      },
+      "digital_inclusion_learning": {
+        "question": "What obligations should education systems adopt to prevent digital learning from widening exclusion?",
+        "description": "Compare access, infrastructure, learner support, disability inclusion and institutional capacity.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/education"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position",
+        "flagship": true,
+        "flagship_key": "flagship_edu_digital_inclusion",
+        "title_fr": "Inclusion numérique et apprentissage",
+        "question_fr": "Quelles obligations minimales un système éducatif devrait-il adopter pour que l’apprentissage numérique n’accroisse pas l’exclusion ?",
+        "question_en": "What minimum obligations should an education system adopt so digital learning does not widen exclusion?",
+        "evidence_refs": [
+          "edu_gem_technology_2023",
+          "edu_disability_odl",
+          "edu_gem_access_equity_2026",
+          "edu_gender_strategy_2026"
+        ],
+        "core_cast": [
+          "unesco_education_sector",
+          "unicef",
+          "gpe",
+          "world_bank",
+          "itu",
+          "stakeholder_disability",
+          "stakeholder_learners",
+          "stakeholder_teachers",
+          "stakeholder_local_communities",
+          "stakeholder_civil_society"
+        ],
+        "source_path": "source/flagships/unesco-education/flagship_edu_digital_inclusion.yaml",
+        "cross_world_links": [
+          {
+            "target_world": "unesco-humanity-society",
+            "relation": "references",
+            "reason": "inclusion, equality and disability rights"
+          },
+          {
+            "target_world": "unesco-information-digital",
+            "relation": "references",
+            "reason": "digital access and platform accountability"
+          }
+        ]
+      },
+      "education_data_governance": {
+        "question": "How should learner data be governed across public education systems and digital platforms?",
+        "description": "Examine educational purpose, privacy, security, law, measurement and institutional accountability.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/education"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position"
+      }
+    },
+    "actor_projection_policy": "curated_bootstrap; states and named real persons activate per later scenario",
+    "topic_owner_actor": "unesco_education_sector",
+    "runtime_identity": "WorldPersona + release-local bridge User",
+    "flagship_profile": "12-flagship-v1",
+    "flagship_topics": [
+      "ai_assessment_governance",
+      "digital_inclusion_learning"
+    ],
+    "persona_contract": "kx-world-personas/v1",
+    "actor_profiles": {
+      "unesco_education_sector": {
+        "registry_key": "unesco_education_sector",
+        "role": "Education Sector",
+        "collections": [
+          "education",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "abegs": {
+        "registry_key": "abegs",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "regional_intergovernmental",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "caf": {
+        "registry_key": "caf",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "multilateral_bank",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "ccngo_education_2030": {
+        "registry_key": "ccngo_education_2030",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "civil_society_network",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "education_international": {
+        "registry_key": "education_international",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "teacher_organization",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "global_business_coalition_education": {
+        "registry_key": "global_business_coalition_education",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "private_sector_coalition",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "global_campaign_for_education": {
+        "registry_key": "global_campaign_for_education",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "civil_society",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "gpe": {
+        "registry_key": "gpe",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "multilateral_fund",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "idb": {
+        "registry_key": "idb",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "multilateral_bank",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "ilo": {
+        "registry_key": "ilo",
+        "role": "Labour and skills actor",
+        "collections": [
+          "education",
+          "external_ecosystem",
+          "humanity_society"
+        ],
+        "sources": [
+          "https://www.ilo.org/"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "itu": {
+        "registry_key": "itu",
+        "role": "UN digital/telecommunications actor",
+        "collections": [
+          "external_ecosystem",
+          "information_digital"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/artificial-intelligence/ai-public-sector/empowering-digital-transformation"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "maitri_trust": {
+        "registry_key": "maitri_trust",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "foundation",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "microsoft": {
+        "registry_key": "microsoft",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "private_sector",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "oecd": {
+        "registry_key": "oecd",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "intergovernmental_organization",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "sdg4_youth_student_network": {
+        "registry_key": "sdg4_youth_student_network",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "youth_student_network",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_civil_society": {
+        "registry_key": "stakeholder_civil_society",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_disability": {
+        "registry_key": "stakeholder_disability",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_indigenous_peoples": {
+        "registry_key": "stakeholder_indigenous_peoples",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_learners": {
+        "registry_key": "stakeholder_learners",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "education",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_local_communities": {
+        "registry_key": "stakeholder_local_communities",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_private_sector": {
+        "registry_key": "stakeholder_private_sector",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_teachers": {
+        "registry_key": "stakeholder_teachers",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "education",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_youth": {
+        "registry_key": "stakeholder_youth",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco": {
+        "registry_key": "unesco",
+        "role": "UNESCO Secretariat",
+        "collections": [
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_ci_sector": {
+        "registry_key": "unesco_ci_sector",
+        "role": "Communication and Information Sector",
+        "collections": [
+          "information_digital",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_executive_board": {
+        "registry_key": "unesco_executive_board",
+        "role": "Executive Board",
+        "collections": [
+          "governance",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_gender_equality": {
+        "registry_key": "unesco_gender_equality",
+        "role": "Gender Equality",
+        "collections": [
+          "cross_cutting",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_general_conference": {
+        "registry_key": "unesco_general_conference",
+        "role": "General Conference",
+        "collections": [
+          "governance",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_priority_africa_external_relations": {
+        "registry_key": "unesco_priority_africa_external_relations",
+        "role": "Priority Africa and External Relations",
+        "collections": [
+          "cross_cutting",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unicef": {
+        "registry_key": "unicef",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "varkey_foundation": {
+        "registry_key": "varkey_foundation",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "foundation",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "world_bank": {
+        "registry_key": "world_bank",
+        "role": "SDG4/HLSC ecosystem actor",
+        "collections": [
+          "education",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://www.unesco.org/sdg4education2030/en/high-level-steering-committee/incoming-members"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "multilateral_bank",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_education__sim_expert_1": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "unesco_education__sim_expert_2": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "unesco_education__sim_expert_3": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      }
+    },
+    "mega_update": {
+      "version": "1.0.0",
+      "date": "2026-09-30",
+      "purpose": "simulation_deliberation_plus_contextual_ekoh_readings",
+      "real_person_ekoh_scores_generated": false,
+      "baseline_always_visible": true
+    }
+  },
+  "actors": [
+    {
+      "key": "unesco_education_sector",
+      "username": "demo_unesco_education_sector",
+      "display_name": "UNESCO Education Sector",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "abegs",
+      "username": "demo_abegs",
+      "display_name": "Arab Bureau of Education for the Gulf States (ABEGS)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "caf",
+      "username": "demo_caf",
+      "display_name": "Development Bank of Latin America and the Caribbean (CAF)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "ccngo_education_2030",
+      "username": "demo_ccngo_education_2030",
+      "display_name": "Collective Consultation of NGOs on Education 2030",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "education_international",
+      "username": "demo_education_international",
+      "display_name": "Education International",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "global_business_coalition_education",
+      "username": "demo_global_business_coalition_education",
+      "display_name": "Global Business Coalition for Education",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "global_campaign_for_education",
+      "username": "demo_global_campaign_for_education",
+      "display_name": "Global Campaign for Education",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "gpe",
+      "username": "demo_gpe",
+      "display_name": "Global Partnership for Education",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "idb",
+      "username": "demo_idb",
+      "display_name": "Inter-American Development Bank (IDB)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "ilo",
+      "username": "demo_ilo",
+      "display_name": "International Labour Organization (ILO)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "itu",
+      "username": "demo_itu",
+      "display_name": "International Telecommunication Union (ITU)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "maitri_trust",
+      "username": "demo_maitri_trust",
+      "display_name": "Maitri Trust",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "microsoft",
+      "username": "demo_microsoft",
+      "display_name": "Microsoft",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "oecd",
+      "username": "demo_oecd",
+      "display_name": "Organisation for Economic Co-operation and Development",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "sdg4_youth_student_network",
+      "username": "demo_sdg4_youth_student_network",
+      "display_name": "SDG 4 Youth & Student Network",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_civil_society",
+      "username": "demo_stakeholder_civil_society",
+      "display_name": "Civil society constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_disability",
+      "username": "demo_stakeholder_disability",
+      "display_name": "Persons with disabilities constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_indigenous_peoples",
+      "username": "demo_stakeholder_indigenous_peoples",
+      "display_name": "Indigenous Peoples constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_learners",
+      "username": "demo_stakeholder_learners",
+      "display_name": "Learners and students constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_local_communities",
+      "username": "demo_stakeholder_local_communities",
+      "display_name": "Local communities constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_private_sector",
+      "username": "demo_stakeholder_private_sector",
+      "display_name": "Private sector constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_teachers",
+      "username": "demo_stakeholder_teachers",
+      "display_name": "Teachers constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_youth",
+      "username": "demo_stakeholder_youth",
+      "display_name": "Youth constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco",
+      "username": "demo_unesco",
+      "display_name": "UNESCO",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_ci_sector",
+      "username": "demo_unesco_ci_sector",
+      "display_name": "UNESCO Communication and Information Sector",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_executive_board",
+      "username": "demo_unesco_executive_board",
+      "display_name": "UNESCO Executive Board",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_gender_equality",
+      "username": "demo_unesco_gender_equality",
+      "display_name": "UNESCO Gender Equality",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_general_conference",
+      "username": "demo_unesco_general_conference",
+      "display_name": "UNESCO General Conference",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_priority_africa_external_relations",
+      "username": "demo_unesco_priority_africa_external_relations",
+      "display_name": "UNESCO Priority Africa and External Relations",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unicef",
+      "username": "demo_unicef",
+      "display_name": "United Nations Children's Fund (UNICEF)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "varkey_foundation",
+      "username": "demo_varkey_foundation",
+      "display_name": "Varkey Foundation",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "world_bank",
+      "username": "demo_world_bank",
+      "display_name": "World Bank",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_education__sim_expert_1",
+      "username": "demo_unesco_education_sim_expert_1",
+      "display_name": "[SIMULATION] Systems expert — UNESCO — Education",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_education__sim_expert_2",
+      "username": "demo_unesco_education_sim_expert_2",
+      "display_name": "[SIMULATION] Governance expert — UNESCO — Education",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_education__sim_expert_3",
+      "username": "demo_unesco_education_sim_expert_3",
+      "display_name": "[SIMULATION] Evidence & community expert — UNESCO — Education",
+      "is_ethikos_elite": true
+    }
+  ],
+  "categories": [
+    {
+      "key": "digital-learning",
+      "name": "Digital learning"
+    },
+    {
+      "key": "teachers",
+      "name": "Teachers and professional practice"
+    },
+    {
+      "key": "equity-access",
+      "name": "Equity and access"
+    },
+    {
+      "key": "education-governance",
+      "name": "Education governance"
+    }
+  ],
+  "topics": [
+    {
+      "key": "ai_assessment_governance",
+      "title": "[DEMO] How should generative AI be governed in student assessment?",
+      "description": "FLAGSHIP SIMULATION — no initial position is implied.\n\nContext: Education systems are adapting assessment practice while generative AI changes how learners can produce, revise and explain work. UNESCO guidance emphasizes human-centred, age-appropriate, ethical and pedagogically validated use rather than treating AI as a universal solution.\n\nTrigger: A fictional education authority asks for an assessment policy before the next academic year after inconsistent school-level rules create uncertainty for learners and teachers.\n\nDecision task: Produce a policy framework covering disclosure, permitted uses, teacher judgement, learner rights, data protection, assessment validity and review.\n\nCommon evidence baseline: Guidance for generative AI in education and research; 2023 Global Education Monitoring Report: Technology in education — A tool on whose terms?; Recommendation on the Ethics of Artificial Intelligence; AI competency framework for students; AI competency framework for teachers.\n\nStructured casting, evidence URLs, uncertainties, event injects, round plan and cross-World links are in the seed flagship source file.",
+      "status": "open",
+      "category": "digital-learning"
+    },
+    {
+      "key": "teacher_autonomy_ai",
+      "title": "[DEMO] How should teacher professional autonomy interact with AI-supported teaching systems?",
+      "description": "Explore decision authority, professional judgement, evidence, accountability and support for teachers.",
+      "status": "open",
+      "category": "teachers"
+    },
+    {
+      "key": "digital_inclusion_learning",
+      "title": "[DEMO] What obligations should education systems adopt to prevent digital learning from widening exclusion?",
+      "description": "FLAGSHIP SIMULATION — no initial position is implied.\n\nContext: Digital learning can expand access but may reproduce barriers involving devices, connectivity, language, disability, teacher support and household conditions. UNESCO monitoring frames technology choices through equity, relevance and sustainability.\n\nTrigger: A fictional system is expanding blended learning nationally but has a fixed budget and evidence of unequal access among regions and learner groups.\n\nDecision task: Define a minimum inclusion standard, priority investments, monitoring indicators and escalation rules for inaccessible or ineffective digital provision.\n\nCommon evidence baseline: 2023 Global Education Monitoring Report: Technology in education — A tool on whose terms?; Revised guidelines on the inclusion of learners with disabilities in open and distance learning; 2026 Global Education Monitoring Report: Access and equity; From access to agency: UNESCO strategy for gender equality in and through education 2026–2029.\n\nStructured casting, evidence URLs, uncertainties, event injects, round plan and cross-World links are in the seed flagship source file.",
+      "status": "open",
+      "category": "equity-access"
+    },
+    {
+      "key": "education_data_governance",
+      "title": "[DEMO] How should learner data be governed across public education systems and digital platforms?",
+      "description": "Examine educational purpose, privacy, security, law, measurement and institutional accountability.",
+      "status": "open",
+      "category": "education-governance"
+    }
+  ],
+  "stances": [
+    {
+      "topic": "ai_assessment_governance",
+      "actor": "unesco_education__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "ai_assessment_governance",
+      "actor": "unesco_education__sim_expert_3",
+      "value": -1
+    },
+    {
+      "topic": "ai_assessment_governance",
+      "actor": "unesco_education__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "teacher_autonomy_ai",
+      "actor": "unesco_education__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "teacher_autonomy_ai",
+      "actor": "unesco_education__sim_expert_3",
+      "value": 1
+    },
+    {
+      "topic": "teacher_autonomy_ai",
+      "actor": "unesco_education__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "digital_inclusion_learning",
+      "actor": "unesco_education__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "digital_inclusion_learning",
+      "actor": "unesco_education__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "digital_inclusion_learning",
+      "actor": "unesco_education__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "education_data_governance",
+      "actor": "unesco_education__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "education_data_governance",
+      "actor": "unesco_education__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "education_data_governance",
+      "actor": "unesco_education__sim_expert_3",
+      "value": 0
+    }
+  ],
+  "arguments": [
+    {
+      "key": "mega_ai_assessment_governance_1",
+      "topic": "ai_assessment_governance",
+      "actor": "unesco_education__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_ai_assessment_governance_2",
+      "topic": "ai_assessment_governance",
+      "actor": "unesco_education__sim_expert_3",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_teacher_autonomy_ai_1",
+      "topic": "teacher_autonomy_ai",
+      "actor": "unesco_education__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_teacher_autonomy_ai_2",
+      "topic": "teacher_autonomy_ai",
+      "actor": "unesco_education__sim_expert_3",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_digital_inclusion_learning_1",
+      "topic": "digital_inclusion_learning",
+      "actor": "unesco_education__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_digital_inclusion_learning_2",
+      "topic": "digital_inclusion_learning",
+      "actor": "unesco_education__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_education_data_governance_1",
+      "topic": "education_data_governance",
+      "actor": "unesco_education__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_education_data_governance_2",
+      "topic": "education_data_governance",
+      "actor": "unesco_education__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    }
+  ],
+  "argument_sources": [
+    {
+      "key": "mega_ai_assessment_governance_1_source",
+      "argument": "mega_ai_assessment_governance_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_ai_assessment_governance_2_source",
+      "argument": "mega_ai_assessment_governance_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_teacher_autonomy_ai_1_source",
+      "argument": "mega_teacher_autonomy_ai_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_teacher_autonomy_ai_2_source",
+      "argument": "mega_teacher_autonomy_ai_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_digital_inclusion_learning_1_source",
+      "argument": "mega_digital_inclusion_learning_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_digital_inclusion_learning_2_source",
+      "argument": "mega_digital_inclusion_learning_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_education_data_governance_1_source",
+      "argument": "mega_education_data_governance_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_education_data_governance_2_source",
+      "argument": "mega_education_data_governance_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    }
+  ],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "unesco_education__sim_expert_1",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0111",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0114",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0922",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "unesco_education__sim_expert_2",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0612",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0114",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0922",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "unesco_education__sim_expert_3",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0613",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0114",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0922",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [
+    {
+      "topic": "ai_assessment_governance",
+      "domain_code": "0111",
+      "weight": 0.45,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ai_assessment_governance",
+      "domain_code": "0613",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ai_assessment_governance",
+      "domain_code": "0223",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ai_assessment_governance",
+      "domain_code": "0421",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "teacher_autonomy_ai",
+      "domain_code": "0114",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "teacher_autonomy_ai",
+      "domain_code": "0111",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "teacher_autonomy_ai",
+      "domain_code": "0613",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "teacher_autonomy_ai",
+      "domain_code": "0314",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "teacher_autonomy_ai",
+      "domain_code": "0223",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "digital_inclusion_learning",
+      "domain_code": "0111",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "digital_inclusion_learning",
+      "domain_code": "0612",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "digital_inclusion_learning",
+      "domain_code": "0314",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "digital_inclusion_learning",
+      "domain_code": "0922",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "digital_inclusion_learning",
+      "domain_code": "0413",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "education_data_governance",
+      "domain_code": "0111",
+      "weight": 0.3,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "education_data_governance",
+      "domain_code": "0612",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "education_data_governance",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "education_data_governance",
+      "domain_code": "0312",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "education_data_governance",
+      "domain_code": "0542",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    }
+  ],
+  "reading_exclusions": []
+}

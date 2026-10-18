@@ -1,3 +1,5 @@
+> **Format de fichiers canonique v3 (2026-10-16) :** voir [README_UNIVERSES_NESTED_V3.md](../../../README_UNIVERSES_NESTED_V3.md). `Konnaxion_Worlds/universes/<universe>/worlds/<world>/` remplace le rangement global `seed-data/worlds`. Les contrats `kx-*-pack/v1`, les références exactes et l’atomicité de promotion restent inchangés.
+
 # Universe Packs — canonical composition contract
 
 Contract: `kx-universe-pack/v1`
@@ -54,7 +56,7 @@ promotion/visibility changes are applied.
 python manage.py worlds_apply_universe my-universe --pack-version 1.0.0 --promote
 ```
 
-`KONNAXION_UNIVERSE_SEED_ROOT` may override the default `seed-data/universes` discovery root.
+`KONNAXION_UNIVERSE_SEED_ROOT` may override the default `Konnaxion_Worlds/universes` discovery root.
 
 ## Upgrade semantics
 

@@ -1,0 +1,1190 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "unesco_science-planet_bootstrap_v12",
+  "scenario_title": "UNESCO — Science & Planet — bootstrap v1.2",
+  "mode": "replace_scenario",
+  "metadata": {
+    "universe": "unesco",
+    "world_key": "unesco-science-planet",
+    "seed_version": "1.5.0",
+    "simulation_mode": "dynamic_deliberation",
+    "position_seed_policy": "none",
+    "vote_seed_policy": "none",
+    "ekoh_seed_policy": "no scores; canonical Konnaxion ISCED-F topic relevance only",
+    "actor_registry": "unesco/source-v1@1.2.0",
+    "source_pages": [
+      "https://www.unesco.org/en/sciences/aboutus"
+    ],
+    "topic_metadata": {
+      "open_science_access_integrity": {
+        "question": "How should open access goals be balanced with research integrity, capacity and data stewardship?",
+        "description": "Deliberate openness, reproducibility, infrastructure, unequal capacity and responsible reuse.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/sciences/aboutus"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position",
+        "flagship": true,
+        "flagship_key": "flagship_sci_open_science",
+        "title_fr": "Science ouverte : accès, intégrité et équité",
+        "question_fr": "Comment élargir l’ouverture de la science tout en protégeant l’intégrité, la soutenabilité des infrastructures et l’équité entre systèmes scientifiques ?",
+        "question_en": "How should science be opened while protecting integrity, infrastructure sustainability and equity between scientific systems?",
+        "evidence_refs": [
+          "open_science_recommendation",
+          "open_science_implementation",
+          "open_science_2025_reporting",
+          "biodiversity_knowledge_2026"
+        ],
+        "core_cast": [
+          "unesco_sciences_sector",
+          "unesco_ci_sector",
+          "wikimedia_foundation",
+          "stakeholder_researchers",
+          "stakeholder_indigenous_peoples",
+          "stakeholder_civil_society",
+          "stakeholder_youth"
+        ],
+        "source_path": "source/flagships/unesco-science-planet/flagship_sci_open_science.yaml",
+        "cross_world_links": [
+          {
+            "target_world": "unesco-information-digital",
+            "relation": "references",
+            "reason": "digital infrastructure, access and information governance"
+          },
+          {
+            "target_world": "unesco-education",
+            "relation": "references",
+            "reason": "research training and learning capacity"
+          }
+        ]
+      },
+      "biodiversity_evidence_thresholds": {
+        "question": "What evidence threshold should guide action when biodiversity risks are uncertain?",
+        "description": "Compare precaution, uncertainty, monitoring, governance legitimacy and reversibility.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/sciences/aboutus"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position",
+        "flagship": true,
+        "flagship_key": "flagship_sci_biodiversity_knowledge",
+        "title_fr": "Décider avec des connaissances incomplètes sur la biodiversité",
+        "question_fr": "Quel niveau de preuve devrait déclencher l’action lorsque les risques pour la biodiversité sont plausibles mais les données restent incomplètes ?",
+        "question_en": "What evidence threshold should trigger action when biodiversity risks are plausible but data remain incomplete?",
+        "evidence_refs": [
+          "biodiversity_knowledge_2026",
+          "biodiversity_ilk_outlook_2025",
+          "biodiversity_ilk_action_2025",
+          "open_science_recommendation"
+        ],
+        "core_cast": [
+          "unesco_sciences_sector",
+          "iucn",
+          "unep",
+          "fao",
+          "stakeholder_researchers",
+          "stakeholder_indigenous_peoples",
+          "stakeholder_local_communities",
+          "stakeholder_civil_society"
+        ],
+        "source_path": "source/flagships/unesco-science-planet/flagship_sci_biodiversity_knowledge.yaml",
+        "cross_world_links": [
+          {
+            "target_world": "unesco-ocean",
+            "relation": "references",
+            "reason": "marine biodiversity and ocean data"
+          },
+          {
+            "target_world": "unesco-humanity-society",
+            "relation": "references",
+            "reason": "Indigenous participation and knowledge governance"
+          }
+        ]
+      },
+      "climate_adaptation_priorities": {
+        "question": "How should limited climate-adaptation resources be prioritized across communities and infrastructure?",
+        "description": "Deliberate scientific evidence, planning, distributional effects, economics and legal responsibilities.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/sciences/aboutus"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position"
+      },
+      "scientific_data_governance": {
+        "question": "Which governance model best supports international sharing of high-value scientific data?",
+        "description": "Examine interoperability, stewardship, access, legal constraints and statistical reliability.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/sciences/aboutus"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position"
+      }
+    },
+    "actor_projection_policy": "curated_bootstrap; states and named real persons activate per later scenario",
+    "topic_owner_actor": "unesco_sciences_sector",
+    "runtime_identity": "WorldPersona + release-local bridge User",
+    "flagship_profile": "12-flagship-v1",
+    "flagship_topics": [
+      "open_science_access_integrity",
+      "biodiversity_evidence_thresholds"
+    ],
+    "persona_contract": "kx-world-personas/v1",
+    "actor_profiles": {
+      "unesco_sciences_sector": {
+        "registry_key": "unesco_sciences_sector",
+        "role": "Sciences Sector",
+        "collections": [
+          "science_planet",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "fao": {
+        "registry_key": "fao",
+        "role": "Food/agriculture science actor",
+        "collections": [
+          "external_ecosystem",
+          "science_planet"
+        ],
+        "sources": [
+          "https://www.fao.org/"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "iucn": {
+        "registry_key": "iucn",
+        "role": "World Heritage advisory body",
+        "collections": [
+          "culture_heritage",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://whc.unesco.org/en/advisorybodies"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "international_organization",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_civil_society": {
+        "registry_key": "stakeholder_civil_society",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_indigenous_peoples": {
+        "registry_key": "stakeholder_indigenous_peoples",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_local_communities": {
+        "registry_key": "stakeholder_local_communities",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_private_sector": {
+        "registry_key": "stakeholder_private_sector",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_researchers": {
+        "registry_key": "stakeholder_researchers",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "scenario_templates",
+          "science_planet"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_youth": {
+        "registry_key": "stakeholder_youth",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unep": {
+        "registry_key": "unep",
+        "role": "Environment actor",
+        "collections": [
+          "external_ecosystem",
+          "science_planet"
+        ],
+        "sources": [
+          "https://www.unep.org/"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco": {
+        "registry_key": "unesco",
+        "role": "UNESCO Secretariat",
+        "collections": [
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_ci_sector": {
+        "registry_key": "unesco_ci_sector",
+        "role": "Communication and Information Sector",
+        "collections": [
+          "information_digital",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_executive_board": {
+        "registry_key": "unesco_executive_board",
+        "role": "Executive Board",
+        "collections": [
+          "governance",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_gender_equality": {
+        "registry_key": "unesco_gender_equality",
+        "role": "Gender Equality",
+        "collections": [
+          "cross_cutting",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_general_conference": {
+        "registry_key": "unesco_general_conference",
+        "role": "General Conference",
+        "collections": [
+          "governance",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_priority_africa_external_relations": {
+        "registry_key": "unesco_priority_africa_external_relations",
+        "role": "Priority Africa and External Relations",
+        "collections": [
+          "cross_cutting",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "wikimedia_foundation": {
+        "registry_key": "wikimedia_foundation",
+        "role": "Open knowledge actor",
+        "collections": [
+          "external_ecosystem",
+          "information_digital"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/articles/wikipedias-25th-anniversary-advancing-open-knowledge-and-information-integrity"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "civil_society",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "wmo": {
+        "registry_key": "wmo",
+        "role": "GOOS co-sponsoring organization",
+        "collections": [
+          "external_ecosystem",
+          "ocean",
+          "science_planet"
+        ],
+        "sources": [
+          "https://www.ioc.unesco.org/en/articles/governments-un-general-assembly-support-global-ocean-observation"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_science_planet__sim_expert_1": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "unesco_science_planet__sim_expert_2": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "unesco_science_planet__sim_expert_3": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      }
+    },
+    "mega_update": {
+      "version": "1.0.0",
+      "date": "2026-09-30",
+      "purpose": "simulation_deliberation_plus_contextual_ekoh_readings",
+      "real_person_ekoh_scores_generated": false,
+      "baseline_always_visible": true
+    }
+  },
+  "actors": [
+    {
+      "key": "unesco_sciences_sector",
+      "username": "demo_unesco_sciences_sector",
+      "display_name": "UNESCO Sciences Sector",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "fao",
+      "username": "demo_fao",
+      "display_name": "Food and Agriculture Organization of the United Nations (FAO)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "iucn",
+      "username": "demo_iucn",
+      "display_name": "International Union for Conservation of Nature (IUCN)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_civil_society",
+      "username": "demo_stakeholder_civil_society",
+      "display_name": "Civil society constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_indigenous_peoples",
+      "username": "demo_stakeholder_indigenous_peoples",
+      "display_name": "Indigenous Peoples constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_local_communities",
+      "username": "demo_stakeholder_local_communities",
+      "display_name": "Local communities constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_private_sector",
+      "username": "demo_stakeholder_private_sector",
+      "display_name": "Private sector constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_researchers",
+      "username": "demo_stakeholder_researchers",
+      "display_name": "Researchers and scientific community constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_youth",
+      "username": "demo_stakeholder_youth",
+      "display_name": "Youth constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unep",
+      "username": "demo_unep",
+      "display_name": "United Nations Environment Programme (UNEP)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco",
+      "username": "demo_unesco",
+      "display_name": "UNESCO",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_ci_sector",
+      "username": "demo_unesco_ci_sector",
+      "display_name": "UNESCO Communication and Information Sector",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_executive_board",
+      "username": "demo_unesco_executive_board",
+      "display_name": "UNESCO Executive Board",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_gender_equality",
+      "username": "demo_unesco_gender_equality",
+      "display_name": "UNESCO Gender Equality",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_general_conference",
+      "username": "demo_unesco_general_conference",
+      "display_name": "UNESCO General Conference",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_priority_africa_external_relations",
+      "username": "demo_unesco_priority_africa_external_relations",
+      "display_name": "UNESCO Priority Africa and External Relations",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "wikimedia_foundation",
+      "username": "demo_wikimedia_foundation",
+      "display_name": "Wikimedia Foundation",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "wmo",
+      "username": "demo_wmo",
+      "display_name": "World Meteorological Organization (WMO)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_science_planet__sim_expert_1",
+      "username": "demo_unesco_science_planet_sim_expert_1",
+      "display_name": "[SIMULATION] Systems expert — UNESCO — Science & Planet",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_science_planet__sim_expert_2",
+      "username": "demo_unesco_science_planet_sim_expert_2",
+      "display_name": "[SIMULATION] Governance expert — UNESCO — Science & Planet",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_science_planet__sim_expert_3",
+      "username": "demo_unesco_science_planet_sim_expert_3",
+      "display_name": "[SIMULATION] Evidence & community expert — UNESCO — Science & Planet",
+      "is_ethikos_elite": true
+    }
+  ],
+  "categories": [
+    {
+      "key": "open-science",
+      "name": "Open science"
+    },
+    {
+      "key": "environment",
+      "name": "Environment and biodiversity"
+    },
+    {
+      "key": "science-policy",
+      "name": "Science-policy interfaces"
+    },
+    {
+      "key": "science-data",
+      "name": "Scientific data"
+    }
+  ],
+  "topics": [
+    {
+      "key": "open_science_access_integrity",
+      "title": "[DEMO] How should open access goals be balanced with research integrity, capacity and data stewardship?",
+      "description": "FLAGSHIP SIMULATION — no initial position is implied.\n\nContext: UNESCO’s Open Science Recommendation frames openness as access to knowledge, infrastructure, societal engagement and dialogue with diverse knowledge systems, while emphasizing quality, equity and capacity.\n\nTrigger: A fictional consortium must design a common open-science policy for publicly funded research across institutions with very different infrastructure and funding capacity.\n\nDecision task: Agree on minimum openness rules, exceptions, infrastructure responsibilities, incentives, capacity measures and monitoring.\n\nCommon evidence baseline: Recommendation on Open Science; Implementation of the UNESCO Recommendation on Open Science; First consultation on implementation of the 2021 Recommendation on Open Science; Biodiversity: Local, indigenous and scientific knowledge.\n\nStructured casting, evidence URLs, uncertainties, event injects, round plan and cross-World links are in the seed flagship source file.",
+      "status": "open",
+      "category": "open-science"
+    },
+    {
+      "key": "biodiversity_evidence_thresholds",
+      "title": "[DEMO] What evidence threshold should guide action when biodiversity risks are uncertain?",
+      "description": "FLAGSHIP SIMULATION — no initial position is implied.\n\nContext: UNESCO notes persistent biodiversity data gaps, unequal science capacity and the importance of combining scientific, Indigenous and local knowledge without collapsing their different methods and governance conditions.\n\nTrigger: A fictional regional authority must decide whether to restrict a high-impact activity while monitoring data are incomplete and local knowledge indicates ecosystem change.\n\nDecision task: Define an evidence threshold, precaution conditions, monitoring plan, knowledge-governance safeguards and criteria for revising the decision.\n\nCommon evidence baseline: Biodiversity: Local, indigenous and scientific knowledge; National Outlook on Indigenous and Local Knowledge of Biodiversity; Advancing Indigenous and local knowledge for biodiversity policy and action; Recommendation on Open Science.\n\nStructured casting, evidence URLs, uncertainties, event injects, round plan and cross-World links are in the seed flagship source file.",
+      "status": "open",
+      "category": "environment"
+    },
+    {
+      "key": "climate_adaptation_priorities",
+      "title": "[DEMO] How should limited climate-adaptation resources be prioritized across communities and infrastructure?",
+      "description": "Deliberate scientific evidence, planning, distributional effects, economics and legal responsibilities.",
+      "status": "open",
+      "category": "science-policy"
+    },
+    {
+      "key": "scientific_data_governance",
+      "title": "[DEMO] Which governance model best supports international sharing of high-value scientific data?",
+      "description": "Examine interoperability, stewardship, access, legal constraints and statistical reliability.",
+      "status": "open",
+      "category": "science-data"
+    }
+  ],
+  "stances": [
+    {
+      "topic": "open_science_access_integrity",
+      "actor": "unesco_science_planet__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "open_science_access_integrity",
+      "actor": "unesco_science_planet__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "open_science_access_integrity",
+      "actor": "unesco_science_planet__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "biodiversity_evidence_thresholds",
+      "actor": "unesco_science_planet__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "biodiversity_evidence_thresholds",
+      "actor": "unesco_science_planet__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "biodiversity_evidence_thresholds",
+      "actor": "unesco_science_planet__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "climate_adaptation_priorities",
+      "actor": "unesco_science_planet__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "climate_adaptation_priorities",
+      "actor": "unesco_science_planet__sim_expert_3",
+      "value": -1
+    },
+    {
+      "topic": "climate_adaptation_priorities",
+      "actor": "unesco_science_planet__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "scientific_data_governance",
+      "actor": "unesco_science_planet__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "scientific_data_governance",
+      "actor": "unesco_science_planet__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "scientific_data_governance",
+      "actor": "unesco_science_planet__sim_expert_3",
+      "value": 0
+    }
+  ],
+  "arguments": [
+    {
+      "key": "mega_open_science_access_integrity_1",
+      "topic": "open_science_access_integrity",
+      "actor": "unesco_science_planet__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_open_science_access_integrity_2",
+      "topic": "open_science_access_integrity",
+      "actor": "unesco_science_planet__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_biodiversity_evidence_thresholds_1",
+      "topic": "biodiversity_evidence_thresholds",
+      "actor": "unesco_science_planet__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_biodiversity_evidence_thresholds_2",
+      "topic": "biodiversity_evidence_thresholds",
+      "actor": "unesco_science_planet__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_climate_adaptation_priorities_1",
+      "topic": "climate_adaptation_priorities",
+      "actor": "unesco_science_planet__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_climate_adaptation_priorities_2",
+      "topic": "climate_adaptation_priorities",
+      "actor": "unesco_science_planet__sim_expert_3",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_scientific_data_governance_1",
+      "topic": "scientific_data_governance",
+      "actor": "unesco_science_planet__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_scientific_data_governance_2",
+      "topic": "scientific_data_governance",
+      "actor": "unesco_science_planet__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    }
+  ],
+  "argument_sources": [
+    {
+      "key": "mega_open_science_access_integrity_1_source",
+      "argument": "mega_open_science_access_integrity_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_open_science_access_integrity_2_source",
+      "argument": "mega_open_science_access_integrity_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_biodiversity_evidence_thresholds_1_source",
+      "argument": "mega_biodiversity_evidence_thresholds_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_biodiversity_evidence_thresholds_2_source",
+      "argument": "mega_biodiversity_evidence_thresholds_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_climate_adaptation_priorities_1_source",
+      "argument": "mega_climate_adaptation_priorities_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_climate_adaptation_priorities_2_source",
+      "argument": "mega_climate_adaptation_priorities_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_scientific_data_governance_1_source",
+      "argument": "mega_scientific_data_governance_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_scientific_data_governance_2_source",
+      "argument": "mega_scientific_data_governance_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    }
+  ],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "unesco_science_planet__sim_expert_1",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0521",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0731",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "unesco_science_planet__sim_expert_2",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0542",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0731",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "unesco_science_planet__sim_expert_3",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0612",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0731",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0521",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [
+    {
+      "topic": "open_science_access_integrity",
+      "domain_code": "0521",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "open_science_access_integrity",
+      "domain_code": "0542",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "open_science_access_integrity",
+      "domain_code": "0612",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "open_science_access_integrity",
+      "domain_code": "0312",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "open_science_access_integrity",
+      "domain_code": "0223",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "biodiversity_evidence_thresholds",
+      "domain_code": "0521",
+      "weight": 0.55,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "biodiversity_evidence_thresholds",
+      "domain_code": "0542",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "biodiversity_evidence_thresholds",
+      "domain_code": "0312",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "biodiversity_evidence_thresholds",
+      "domain_code": "0223",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "climate_adaptation_priorities",
+      "domain_code": "0521",
+      "weight": 0.45,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "climate_adaptation_priorities",
+      "domain_code": "0731",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "climate_adaptation_priorities",
+      "domain_code": "0311",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "climate_adaptation_priorities",
+      "domain_code": "0312",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "climate_adaptation_priorities",
+      "domain_code": "0421",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "scientific_data_governance",
+      "domain_code": "0542",
+      "weight": 0.3,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "scientific_data_governance",
+      "domain_code": "0612",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "scientific_data_governance",
+      "domain_code": "0521",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "scientific_data_governance",
+      "domain_code": "0421",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "scientific_data_governance",
+      "domain_code": "0223",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    }
+  ],
+  "reading_exclusions": []
+}

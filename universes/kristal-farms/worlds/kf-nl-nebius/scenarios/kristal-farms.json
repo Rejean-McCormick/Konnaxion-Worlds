@@ -1,0 +1,2053 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "kf_nl_nebius",
+  "scenario_title": "Kristal Farms — Étude internationale 02 — Nebius — état initial",
+  "mode": "replace_scenario",
+  "metadata": {
+    "universe_key": "kristal-farms",
+    "portfolio_slot": 2,
+    "portfolio_slots_total": 12,
+    "portfolio_status": "research_target",
+    "target_organization": "Nebius",
+    "target_jurisdiction": "Pays-Bas",
+    "target_country_code": "NL",
+    "target_interest_status": "not_established",
+    "epistemic_status": "research_simulation_seed",
+    "verified_official_roles_at": "2026-09-29",
+    "source_plan_url": "https://github.com/Rejean-McCormick/Kristal-Farms/blob/main/docs/10-core/strategy/PLAN_MOBILISATION_INTERNATIONALE_KRISTAL_FARMS_FR.md",
+    "anti_promises": [
+      "No tenant commitment is implied.",
+      "No government commitment is implied.",
+      "No site, MW, fibre route, port capability or community authorization is established by this seed.",
+      "Real-person actors may only be attributed sourced public positions; hypothetical responses must use an institutional or synthetic persona."
+    ],
+    "runtime_policy": {
+      "seed_scope": "initial_state_only",
+      "ethikos": "owns_live_deliberation",
+      "smart_vote": "derived_reading_only; no canonical result seeded",
+      "ekoh": "no fabricated scores for real people",
+      "keenkonnect": "post-decision execution handoff; not seeded here",
+      "konnected": "post-deliberation knowledge/community handoff; not seeded here",
+      "kreative": "no Kristal Farms handoff",
+      "promotion": "build_all_ready_then_atomic_portfolio_promotion",
+      "real_person_voice": "source_only; hypothetical speech must use paired office/institution actor",
+      "persona_bridge": "kx-world-personas/v1"
+    },
+    "required_unresolved_actors": [
+      "site-specific community and/or rights-holder authority",
+      "site-specific energy developer/operator if distinct from Hydro-Québec",
+      "site-specific telecom carrier(s)",
+      "site-specific port/marine authority",
+      "site-specific environmental/regulatory authorities"
+    ],
+    "actor_profiles": {
+      "qc_economy_innovation_energy_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "host_government_economy_innovation_energy_office",
+        "global_entity_key": "office:qc:host-government-economy-innovation-energy",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_bernard_drainville",
+        "source_basis": [
+          "actor:qc_economy_innovation_energy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_bernard_drainville": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:qc_economy_innovation_energy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:bernard-drainville",
+        "office_actor_key": "qc_economy_innovation_energy_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "qc_cybersecurity_digital_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "host_government_digital_office",
+        "global_entity_key": "office:qc:host-government-digital",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_france_elaine_duranceau",
+        "source_basis": [
+          "actor:qc_cybersecurity_digital:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_france_elaine_duranceau": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:qc_cybersecurity_digital:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:france-elaine-duranceau",
+        "office_actor_key": "qc_cybersecurity_digital_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "qc_innovation_council": {
+        "entity_type": "institution",
+        "persona_type": "organization",
+        "role": "host_innovation_institution",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "source_basis": [
+          "actor:qc_innovation_council:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "institution:qc:conseil-de-linnovation-du-quebec",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_luc_sirois",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_luc_sirois": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "institution_head_reference",
+        "global_entity_key": "person:luc-sirois",
+        "institution_actor_key": "qc_innovation_council",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "simulation_eligible": false,
+        "source_basis": [
+          "actor:qc_innovation_council:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "hydro_quebec": {
+        "entity_type": "institution",
+        "persona_type": "organization",
+        "role": "host_energy_system",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "source_basis": [
+          "actor:hydro_quebec:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "institution:qc:hydro-quebec",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_claudine_bouchard",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_claudine_bouchard": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "institution_head_reference",
+        "global_entity_key": "person:claudine-bouchard",
+        "institution_actor_key": "hydro_quebec",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "simulation_eligible": false,
+        "source_basis": [
+          "actor:hydro_quebec:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "ca_ai_digital_innovation_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "host_government_ai_digital_office",
+        "global_entity_key": "office:ca:host-government-ai-digital",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_evan_solomon",
+        "source_basis": [
+          "actor:ca_ai_digital_innovation:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_evan_solomon": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:ca_ai_digital_innovation:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:evan-solomon",
+        "office_actor_key": "ca_ai_digital_innovation_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "ca_energy_natural_resources_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "host_government_energy_office",
+        "global_entity_key": "office:ca:host-government-energy",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_tim_hodgson",
+        "source_basis": [
+          "actor:ca_energy_natural_resources:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_tim_hodgson": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:ca_energy_natural_resources:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:tim-hodgson",
+        "office_actor_key": "ca_energy_natural_resources_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "kristal_moderator": {
+        "entity_type": "synthetic_facilitator",
+        "persona_type": "simulated_person",
+        "role": "simulation_facilitator",
+        "representation_type": "synthetic",
+        "speaking_policy": "facilitator_only",
+        "source_basis": [
+          "actor:kristal_moderator:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "synthetic:kristal-farms:moderator",
+        "simulation_eligible": true,
+        "account_type": "human",
+        "is_klone": true,
+        "ethikos_write": false
+      },
+      "foreign_tech_policy_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "foreign_government_technology_digital_office",
+        "global_entity_key": "office:nl:foreign-government-technology-digital",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_willemijn_aerdts",
+        "source_basis": [
+          "actor:foreign_tech_policy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_willemijn_aerdts": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:foreign_tech_policy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:willemijn-aerdts",
+        "office_actor_key": "foreign_tech_policy_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "foreign_energy_policy_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "foreign_government_energy_office",
+        "global_entity_key": "office:nl:foreign-government-energy",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_jo_annes_de_bat",
+        "source_basis": [
+          "actor:foreign_energy_policy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_jo_annes_de_bat": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:foreign_energy_policy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:jo-annes-de-bat",
+        "office_actor_key": "foreign_energy_policy_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "foreign_innovation_institution": {
+        "entity_type": "institution",
+        "persona_type": "organization",
+        "role": "foreign_innovation_institution",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "source_basis": [
+          "actor:foreign_innovation_institution:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "institution:nl:awti",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_mirjam_van_praag",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "org_nebius": {
+        "entity_type": "organization",
+        "persona_type": "organization",
+        "role": "international_compute_operator_research_target",
+        "representation_type": "simulated_institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "source_basis": [
+          "portfolio:international_mobilisation",
+          "target:official_homepage"
+        ],
+        "verified_at": "2026-09-29",
+        "interest_status": "not_established",
+        "global_entity_key": "org:nebius",
+        "simulation_eligible": true,
+        "target_role": "research_target",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_arkady_volozh": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "target_executive_reference",
+        "global_entity_key": "person:arkady-volozh",
+        "organization_actor_key": "org_nebius",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "simulation_eligible": false,
+        "source_basis": [
+          "target:executive:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "person_mirjam_van_praag": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "institution_head_reference",
+        "global_entity_key": "person:mirjam-van-praag",
+        "institution_actor_key": "foreign_innovation_institution",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "simulation_eligible": false,
+        "source_basis": [
+          "actor:awti_chair:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "kf_nl_nebius__sim_expert_1": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "kf_nl_nebius__sim_expert_2": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "kf_nl_nebius__sim_expert_3": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      }
+    },
+    "source_registry": {
+      "actor:qc_economy_innovation_energy:official": {
+        "title": "Conseil des ministres — Gouvernement du Québec",
+        "url": "https://www.quebec.ca/premiere-ministre/equipe/conseil-des-ministres",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:qc_cybersecurity_digital:official": {
+        "title": "Ministère de la Cybersécurité et du Numérique — Gouvernement du Québec",
+        "url": "https://www.quebec.ca/gouvernement/ministeres-organismes/cybersecurite-numerique",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:qc_innovation_council:official": {
+        "title": "Conseil de l’innovation du Québec — À propos",
+        "url": "https://conseilinnovation.quebec/a-propos/",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:hydro_quebec:official": {
+        "title": "Équipe de direction d’Hydro-Québec",
+        "url": "https://www.hydroquebec.com/a-propos/gouvernance/equipe-direction.html",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:ca_ai_digital_innovation:official": {
+        "title": "Innovation, Science and Economic Development Canada — ALL IN 2026",
+        "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/09/ai-leadership-takes-centre-stage-at-all-in-2026.html",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:ca_energy_natural_resources:official": {
+        "title": "Natural Resources Canada — 2026–27 Departmental Plan",
+        "url": "https://natural-resources.canada.ca/corporate/planning-reporting/departmental-plan/nrcan-2026-27-departmental-plan",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:kristal_moderator:official": {
+        "title": "Plan de mobilisation internationale — Kristal Farms",
+        "url": "https://github.com/Rejean-McCormick/Kristal-Farms/blob/main/docs/10-core/strategy/PLAN_MOBILISATION_INTERNATIONALE_KRISTAL_FARMS_FR.md",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:foreign_tech_policy:official": {
+        "title": "Ministry of Economic Affairs and Climate Policy — Government.nl",
+        "url": "https://www.government.nl/ministries/ministry-of-economic-affairs-and-climate-policy",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:foreign_energy_policy:official": {
+        "title": "Ministry of Economic Affairs and Climate Policy — Government.nl",
+        "url": "https://www.government.nl/ministries/ministry-of-economic-affairs-and-climate-policy",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:foreign_innovation_institution:official": {
+        "title": "AWTI — Adviesraad voor wetenschap, technologie en innovatie",
+        "url": "https://www.awti.nl/",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "target:official_homepage": {
+        "title": "Nebius — official website",
+        "url": "https://nebius.com/",
+        "source_type": "organization_official",
+        "verified_at": "2026-09-29",
+        "note": "Identity/reference source only; not evidence of interest in Kristal Farms."
+      },
+      "portfolio:international_mobilisation": {
+        "title": "Plan de mobilisation internationale — Kristal Farms",
+        "url": "https://github.com/Rejean-McCormick/Kristal-Farms/blob/main/docs/10-core/strategy/PLAN_MOBILISATION_INTERNATIONALE_KRISTAL_FARMS_FR.md",
+        "source_type": "kristal_strategy_source",
+        "verified_at": "2026-09-29"
+      },
+      "kristal:repository": {
+        "title": "Kristal Farms — canonical repository",
+        "url": "https://github.com/Rejean-McCormick/Kristal-Farms",
+        "source_type": "kristal_canonical_repository",
+        "verified_at": "2026-09-29"
+      },
+      "target:executive:official": {
+        "title": "Nebius — Q1 2026 financial results",
+        "url": "https://nebius.com/newsroom/nebius-reports-first-quarter-2026-financial-results",
+        "source_type": "organization_leadership_official",
+        "verified_at": "2026-09-29",
+        "note": "Leadership identity/reference source only; not evidence of interest in Kristal Farms."
+      },
+      "actor:awti_chair:official": {
+        "title": "AWTI — Mirjam van Praag stopt als voorzitter op 1 januari 2027",
+        "url": "https://www.awti.nl/actueel/nieuws/2026/09/11/mirjam-van-praag-stopt-op-1-januari-als-voorzitter-van-de-awti",
+        "source_type": "institution_leadership_official",
+        "verified_at": "2026-09-29"
+      },
+      "host:responsible_data_centre_principles": {
+        "title": "Canada’s Responsible Data Centre Development Principles",
+        "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/09/government-of-canada-launches-canadas-responsible-data-centre-development-principles.html",
+        "source_type": "host_policy_official",
+        "published_at": "2026-09-03",
+        "verified_at": "2026-09-29",
+        "note": "Cadre fédéral annoncé en 2026: bénéfices locaux durables, protection des contribuables d’électricité, réduction de l’usage de l’eau et des impacts environnementaux, transparence locale et valeur stratégique pour le Canada."
+      },
+      "research:nebius_partner_model_2026": {
+        "title": "Nebius introduces business model to scale AI cloud globally through infrastructure partnerships",
+        "url": "https://nebius.com/newsroom/nebius-introduces-business-model-to-scale-ai-cloud-globally-through-infrastructure-partnerships",
+        "source_type": "organization_official",
+        "published_at": "2026-07-15",
+        "verified_at": "2026-09-29",
+        "note": "Source de contexte pour la simulation; ne constitue pas une manifestation d’intérêt envers Kristal Farms."
+      },
+      "research:nebius_sustainability_2026": {
+        "title": "Nebius publishes 2025 Sustainability Report",
+        "url": "https://nebius.com/newsroom/nebius-publishes-2025-sustainability-report-outlining-blueprint-for-scaling-responsibly",
+        "source_type": "organization_official",
+        "published_at": "2026-07-30",
+        "verified_at": "2026-09-29",
+        "note": "Source de contexte pour la simulation; ne constitue pas une manifestation d’intérêt envers Kristal Farms."
+      },
+      "research:nl_ai_strategy_2026": {
+        "title": "Dutch Government Launches International AI Strategy",
+        "url": "https://www.government.nl/latest/news/2026/07/03/international-strategy-for-safe-and-responsible-ai-transition",
+        "source_type": "government_official",
+        "published_at": "2026-07-03",
+        "verified_at": "2026-09-29",
+        "note": "Source de contexte pour la simulation; ne constitue pas une manifestation d’intérêt envers Kristal Farms."
+      }
+    },
+    "seed_version": "0.5.0",
+    "architecture_revision": "KF-SEED-0.3",
+    "project": {
+      "key": "kf-intl-02",
+      "type": "international_reference_study",
+      "phase": "reference_screening",
+      "title": "Kristal Farms — Étude internationale 02 — Nebius",
+      "technical_world_key": "kf-nl-nebius",
+      "target_organization": "Nebius",
+      "target_organization_global_entity_key": "org:nebius",
+      "jurisdiction": "Pays-Bas",
+      "country_code": "NL",
+      "identity_semantics": "The World represents a Kristal Farms research/simulation project. The target organization is an actor/research target, not the conceptual World identity.",
+      "seed_enrichment": "world_specific_evidence_v1"
+    },
+    "target_capability_focus": {
+      "status": "research_prompt_only",
+      "focus": "infrastructure IA, cloud de calcul et AI factories",
+      "source": "target:official_homepage"
+    },
+    "research_refresh_at": "2026-09-29",
+    "evidence_events": [
+      {
+        "key": "nebius_partner_model_2026",
+        "date": "2026-07-15",
+        "status": "documented_external_event",
+        "source_key": "research:nebius_partner_model_2026",
+        "fact": "Nebius a présenté un modèle permettant à des partenaires d’infrastructure de déployer sa plateforme AI Cloud dans leurs propres centres de données.",
+        "activates_topic": "partner_owned_ai_infrastructure",
+        "interpretation": "simulation_trigger_not_commercial_signal"
+      },
+      {
+        "key": "nebius_sustainability_2026",
+        "date": "2026-07-30",
+        "status": "documented_external_event",
+        "source_key": "research:nebius_sustainability_2026",
+        "fact": "Nebius a publié un rapport de durabilité indiquant notamment un PUE moyen de 1,25 en 2025 et des initiatives de récupération de chaleur.",
+        "activates_topic": "ai_efficiency_heat_recovery",
+        "interpretation": "simulation_trigger_not_commercial_signal"
+      },
+      {
+        "key": "nl_ai_strategy_2026",
+        "date": "2026-07-03",
+        "status": "documented_external_event",
+        "source_key": "research:nl_ai_strategy_2026",
+        "fact": "Le gouvernement néerlandais a publié une stratégie internationale IA visant notamment à renforcer les capacités et infrastructures IA européennes et à réduire les dépendances stratégiques.",
+        "activates_topic": "european_ai_capacity",
+        "interpretation": "simulation_trigger_not_commercial_signal"
+      }
+    ],
+    "persona_contract": "kx-world-personas/v1",
+    "mega_update": {
+      "version": "1.0.0",
+      "date": "2026-09-30",
+      "purpose": "simulation_deliberation_plus_contextual_ekoh_readings",
+      "real_person_ekoh_scores_generated": false,
+      "baseline_always_visible": true
+    }
+  },
+  "actors": [
+    {
+      "key": "qc_economy_innovation_energy_office",
+      "username": "demo_kf_qc_economy_innovation_energy_office",
+      "display_name": "Québec — ministre de l’Économie, de l’Innovation et de l’Énergie (Québec) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_bernard_drainville",
+      "username": "demo_kf_person_bernard_drainville",
+      "display_name": "Bernard Drainville — ministre de l’Économie, de l’Innovation et de l’Énergie (Québec)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "qc_cybersecurity_digital_office",
+      "username": "demo_kf_qc_cybersecurity_digital_office",
+      "display_name": "Québec — ministre de la Cybersécurité et du Numérique (Québec) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_france_elaine_duranceau",
+      "username": "demo_kf_person_france_elaine_duranceau",
+      "display_name": "France-Élaine Duranceau — ministre de la Cybersécurité et du Numérique (Québec)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "qc_innovation_council",
+      "username": "demo_kf_qc_innovation_council",
+      "display_name": "Conseil de l’innovation du Québec",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_luc_sirois",
+      "username": "demo_kf_person_luc_sirois",
+      "display_name": "Luc Sirois — innovateur en chef (Conseil de l’innovation du Québec)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "hydro_quebec",
+      "username": "demo_kf_hydro_quebec",
+      "display_name": "Hydro-Québec",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_claudine_bouchard",
+      "username": "demo_kf_person_claudine_bouchard",
+      "display_name": "Claudine Bouchard — présidente-directrice générale (Hydro-Québec)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "ca_ai_digital_innovation_office",
+      "username": "demo_kf_ca_ai_digital_innovation_office",
+      "display_name": "Canada — ministre de l’Intelligence artificielle et de l’Innovation numérique (Canada) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_evan_solomon",
+      "username": "demo_kf_person_evan_solomon",
+      "display_name": "Evan Solomon — ministre de l’Intelligence artificielle et de l’Innovation numérique (Canada)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "ca_energy_natural_resources_office",
+      "username": "demo_kf_ca_energy_natural_resources_office",
+      "display_name": "Canada — ministre de l’Énergie et des Ressources naturelles (Canada) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_tim_hodgson",
+      "username": "demo_kf_person_tim_hodgson",
+      "display_name": "Tim Hodgson — ministre de l’Énergie et des Ressources naturelles (Canada)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "kristal_moderator",
+      "username": "demo_kf_kristal_moderator",
+      "display_name": "Kristal Farms — facilitation de la simulation",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "foreign_tech_policy_office",
+      "username": "demo_kf_foreign_tech_policy_office",
+      "display_name": "Pays-Bas — ministre de l’Économie numérique et de la Souveraineté (Pays-Bas) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_willemijn_aerdts",
+      "username": "demo_kf_person_willemijn_aerdts",
+      "display_name": "Willemijn Aerdts — ministre de l’Économie numérique et de la Souveraineté (Pays-Bas)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "foreign_energy_policy_office",
+      "username": "demo_kf_foreign_energy_policy_office",
+      "display_name": "Pays-Bas — ministre des Infrastructures énergétiques et des Affaires nucléaires (Pays-Bas) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_jo_annes_de_bat",
+      "username": "demo_kf_person_jo_annes_de_bat",
+      "display_name": "Jo-Annes de Bat — ministre des Infrastructures énergétiques et des Affaires nucléaires (Pays-Bas)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "foreign_innovation_institution",
+      "username": "demo_kf_foreign_innovation_institution",
+      "display_name": "AWTI",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_mirjam_van_praag",
+      "username": "demo_kf_person_mirjam_van_praag",
+      "display_name": "Mirjam van Praag — présidente de l’AWTI (jusqu’au 1er janvier 2027)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "org_nebius",
+      "username": "demo_kf_org_nebius",
+      "display_name": "Nebius",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_arkady_volozh",
+      "username": "demo_kf_person_arkady_volozh",
+      "display_name": "Arkady Volozh — fondateur et CEO de Nebius",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "kf_nl_nebius__sim_expert_1",
+      "username": "demo_kf_nl_nebius_sim_expert_1",
+      "display_name": "[SIMULATION] Expert·e systèmes — Kristal Farms — Étude internationale 02 — Nebius",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "kf_nl_nebius__sim_expert_2",
+      "username": "demo_kf_nl_nebius_sim_expert_2",
+      "display_name": "[SIMULATION] Expert·e gouvernance — Kristal Farms — Étude internationale 02 — Nebius",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "kf_nl_nebius__sim_expert_3",
+      "username": "demo_kf_nl_nebius_sim_expert_3",
+      "display_name": "[SIMULATION] Expert·e données et communauté — Kristal Farms — Étude internationale 02 — Nebius",
+      "is_ethikos_elite": true
+    }
+  ],
+  "categories": [
+    {
+      "key": "portfolio_governance",
+      "name": "[KF] Portefeuille international et gouvernance",
+      "description": "Statut de recherche, admissibilité, gouvernance et passage éventuel vers un engagement réel."
+    },
+    {
+      "key": "energy_grid",
+      "name": "[KF] Énergie et réseau",
+      "description": "Nouvelle production renouvelable, priorité des charges communautaires, qualité de puissance, interruption et croissance."
+    },
+    {
+      "key": "compute_sovereignty",
+      "name": "[KF] Calcul, sécurité et souveraineté numérique",
+      "description": "Contrôle locataire du matériel, données, clés, sécurité physique et conformité."
+    },
+    {
+      "key": "innovation_investment",
+      "name": "[KF] Innovation, politique industrielle et investissement",
+      "description": "Coordination institutionnelle, innovation, investissement et développement économique."
+    },
+    {
+      "key": "telecom_logistics",
+      "name": "[KF] Télécom, latence et logistique",
+      "description": "Fibre, redondance, SLA, réparation nordique, ports, transport et maintenance."
+    },
+    {
+      "key": "community_environment",
+      "name": "[KF] Communautés, droits et environnement",
+      "description": "Décision communautaire, titulaires de droits, bénéfices, autorisations et contraintes environnementales."
+    }
+  ],
+  "topics": [
+    {
+      "key": "demand_signal",
+      "title": "[KF] Nebius — Signal de demande et conditions d’intérêt",
+      "description": "Quelles conditions permettraient de passer d’une organisation de référence étudiée à un échange direct de besoins, sans présumer d’un intérêt commercial?",
+      "status": "open",
+      "category": "portfolio_governance"
+    },
+    {
+      "key": "energy_conditions",
+      "title": "[KF] Nebius — Conditions énergétiques et priorité des charges",
+      "description": "Quelles exigences de puissance, qualité, interruption, montée en charge et nouvelle production renouvelable seraient compatibles avec la priorité absolue des charges communautaires et critiques?",
+      "status": "open",
+      "category": "energy_grid"
+    },
+    {
+      "key": "digital_sovereignty",
+      "title": "[KF] Nebius — Souveraineté numérique et frontière black-box",
+      "description": "Quelles exigences de résidence des données, sécurité, contrôle du matériel, clés cryptographiques et responsabilités opérationnelles devraient encadrer un déploiement contrôlé par le locataire?",
+      "status": "open",
+      "category": "compute_sovereignty"
+    },
+    {
+      "key": "innovation_coordination",
+      "title": "[KF] Nebius — Coordination innovation, industrie et investissement",
+      "description": "Quels ministères, conseils d’innovation, outils d’investissement et mécanismes de coopération seraient nécessaires pour étudier le projet sans créer de promesse institutionnelle prématurée?",
+      "status": "open",
+      "category": "innovation_investment"
+    },
+    {
+      "key": "connectivity_logistics",
+      "title": "[KF] Nebius — Fibre, latence, redondance et logistique lourde",
+      "description": "Quelles capacités de fibre, routes redondantes, SLA, délais de réparation, accès maritime et interfaces de maintenance devraient être démontrés?",
+      "status": "open",
+      "category": "telecom_logistics"
+    },
+    {
+      "key": "community_rights",
+      "title": "[KF] Nebius — Communautés, titulaires de droits et bénéfices",
+      "description": "Quelles décisions, consultations ou consentements doivent être obtenus et quelles structures de bénéfices ou de participation doivent être définies avant toute sélection de site?",
+      "status": "open",
+      "category": "community_environment"
+    },
+    {
+      "key": "evidence_gate",
+      "title": "[KF] Nebius — Gate de preuve avant engagement",
+      "description": "Quelles preuves commerciales, techniques, juridiques, environnementales et communautaires sont nécessaires avant de reclassifier ce World d’étude de référence vers une démarche d’engagement?",
+      "status": "open",
+      "category": "portfolio_governance"
+    },
+    {
+      "key": "target_capability_fit",
+      "title": "[KF] Nebius — Adéquation des capacités publiques au scénario Kristal Farms",
+      "description": "Quelles capacités publiquement documentées de Nebius, notamment autour de infrastructure IA, cloud de calcul et AI factories, sont réellement pertinentes pour ce projet d’étude, lesquelles doivent être vérifiées directement, et quelles exigences resteraient hors périmètre?",
+      "status": "open",
+      "category": "compute_sovereignty"
+    },
+    {
+      "key": "partner_owned_ai_infrastructure",
+      "title": "[KF] Nebius — Modèle d’infrastructure détenue par des partenaires",
+      "description": "Un modèle où le partenaire finance et possède l’infrastructure tandis que Nebius apporte architecture, matériel et stack logiciel pourrait-il réduire le risque capitalistique d’un nœud Kristal Farms?",
+      "status": "open",
+      "category": "innovation_investment"
+    },
+    {
+      "key": "ai_efficiency_heat_recovery",
+      "title": "[KF] Nebius — Efficacité énergétique et récupération de chaleur",
+      "description": "Quels objectifs vérifiables de PUE, refroidissement liquide et récupération de chaleur seraient pertinents dans un climat nordique et pour quelles charges communautaires?",
+      "status": "open",
+      "category": "community_environment"
+    },
+    {
+      "key": "european_ai_capacity",
+      "title": "[KF] Nebius — Capacité IA européenne et dépendances stratégiques",
+      "description": "Comment une implantation canadienne pourrait-elle compléter une stratégie visant à renforcer la capacité IA européenne sans créer de nouvelles dépendances critiques?",
+      "status": "open",
+      "category": "compute_sovereignty"
+    }
+  ],
+  "stances": [
+    {
+      "topic": "demand_signal",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "demand_signal",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "demand_signal",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "energy_conditions",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "value": -2
+    },
+    {
+      "topic": "energy_conditions",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "value": 1
+    },
+    {
+      "topic": "energy_conditions",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "digital_sovereignty",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "digital_sovereignty",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "digital_sovereignty",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "innovation_coordination",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "innovation_coordination",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "value": 1
+    },
+    {
+      "topic": "innovation_coordination",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "connectivity_logistics",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "connectivity_logistics",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "value": -1
+    },
+    {
+      "topic": "connectivity_logistics",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "community_rights",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "community_rights",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "community_rights",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "evidence_gate",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "evidence_gate",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "evidence_gate",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "target_capability_fit",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "target_capability_fit",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "target_capability_fit",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "partner_owned_ai_infrastructure",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "partner_owned_ai_infrastructure",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "value": -1
+    },
+    {
+      "topic": "partner_owned_ai_infrastructure",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "ai_efficiency_heat_recovery",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "ai_efficiency_heat_recovery",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "ai_efficiency_heat_recovery",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "european_ai_capacity",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "european_ai_capacity",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "european_ai_capacity",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "value": 0
+    }
+  ],
+  "arguments": [
+    {
+      "key": "opening_portfolio_status",
+      "topic": "demand_signal",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Nebius figure dans le portefeuille international de recherche de Kristal Farms. Cette présence ne constitue ni une manifestation d’intérêt, ni un engagement, ni une sélection de locataire."
+    },
+    {
+      "key": "opening_host_guardrail",
+      "topic": "energy_conditions",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "La simulation conserve la règle Kristal Farms selon laquelle les charges communautaires et critiques sont prioritaires sur le calcul interruptible."
+    },
+    {
+      "key": "opening_evidence_gate",
+      "topic": "evidence_gate",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Ce World est un espace d’étude et de délibération. Il ne prouve ni site sélectionné, ni capacité énergétique constructible, ni fibre contractée, ni autorisation communautaire, ni accord commercial."
+    },
+    {
+      "key": "opening_target_capability_fit",
+      "topic": "target_capability_fit",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Les capacités publiques de Nebius servent uniquement à formuler des questions de compatibilité. Elles ne constituent ni une validation technique pour Kristal Farms, ni un intérêt commercial, ni un engagement de déploiement."
+    },
+    {
+      "key": "host_responsible_dc_principles",
+      "topic": "community_rights",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Le cadre canadien annoncé en septembre 2026 demande que les centres de données produisent des bénéfices locaux durables, n’augmentent pas les coûts d’électricité supportés par les Canadiens, réduisent l’usage de l’eau et les impacts environnementaux, soient transparents sur leurs impacts locaux et apportent une valeur stratégique au Canada."
+    },
+    {
+      "key": "evidence_nebius_partner_model_2026",
+      "topic": "partner_owned_ai_infrastructure",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Nebius a présenté un modèle permettant à des partenaires d’infrastructure de déployer sa plateforme AI Cloud dans leurs propres centres de données. Ce fait est utilisé comme déclencheur de simulation; il ne prouve aucun intérêt pour Kristal Farms."
+    },
+    {
+      "key": "evidence_nebius_sustainability_2026",
+      "topic": "ai_efficiency_heat_recovery",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Nebius a publié un rapport de durabilité indiquant notamment un PUE moyen de 1,25 en 2025 et des initiatives de récupération de chaleur. Ce fait est utilisé comme déclencheur de simulation; il ne prouve aucun intérêt pour Kristal Farms."
+    },
+    {
+      "key": "evidence_nl_ai_strategy_2026",
+      "topic": "european_ai_capacity",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Le gouvernement néerlandais a publié une stratégie internationale IA visant notamment à renforcer les capacités et infrastructures IA européennes et à réduire les dépendances stratégiques. Ce fait est utilisé comme déclencheur de simulation; il ne prouve aucun intérêt pour Kristal Farms."
+    },
+    {
+      "key": "mega_demand_signal_1",
+      "topic": "demand_signal",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_demand_signal_2",
+      "topic": "demand_signal",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_energy_conditions_1",
+      "topic": "energy_conditions",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_energy_conditions_2",
+      "topic": "energy_conditions",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_digital_sovereignty_1",
+      "topic": "digital_sovereignty",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_digital_sovereignty_2",
+      "topic": "digital_sovereignty",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_innovation_coordination_1",
+      "topic": "innovation_coordination",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_innovation_coordination_2",
+      "topic": "innovation_coordination",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_connectivity_logistics_1",
+      "topic": "connectivity_logistics",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_connectivity_logistics_2",
+      "topic": "connectivity_logistics",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_community_rights_1",
+      "topic": "community_rights",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_community_rights_2",
+      "topic": "community_rights",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_evidence_gate_1",
+      "topic": "evidence_gate",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_evidence_gate_2",
+      "topic": "evidence_gate",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_target_capability_fit_1",
+      "topic": "target_capability_fit",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_target_capability_fit_2",
+      "topic": "target_capability_fit",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_partner_owned_ai_infrastructure_1",
+      "topic": "partner_owned_ai_infrastructure",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_partner_owned_ai_infrastructure_2",
+      "topic": "partner_owned_ai_infrastructure",
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_ai_efficiency_heat_recovery_1",
+      "topic": "ai_efficiency_heat_recovery",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_ai_efficiency_heat_recovery_2",
+      "topic": "ai_efficiency_heat_recovery",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_european_ai_capacity_1",
+      "topic": "european_ai_capacity",
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_european_ai_capacity_2",
+      "topic": "european_ai_capacity",
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    }
+  ],
+  "argument_sources": [
+    {
+      "key": "src_opening_portfolio_status",
+      "argument": "opening_portfolio_status",
+      "url": "https://github.com/Rejean-McCormick/Kristal-Farms/blob/main/docs/10-core/strategy/PLAN_MOBILISATION_INTERNATIONALE_KRISTAL_FARMS_FR.md",
+      "title": "Plan de mobilisation internationale — Kristal Farms",
+      "source_type": "kristal_strategy_source",
+      "note": "Le portefeuille identifie des organisations à étudier sans présumer leur intérêt."
+    },
+    {
+      "key": "src_opening_host_guardrail",
+      "argument": "opening_host_guardrail",
+      "url": "https://github.com/Rejean-McCormick/Kristal-Farms",
+      "title": "Kristal Farms — canonical repository",
+      "source_type": "kristal_canonical_repository",
+      "note": "La doctrine publique protège les charges communautaires et critiques avant le calcul flexible."
+    },
+    {
+      "key": "src_opening_evidence_gate",
+      "argument": "opening_evidence_gate",
+      "url": "https://github.com/Rejean-McCormick/Kristal-Farms",
+      "title": "Kristal Farms — canonical repository",
+      "source_type": "kristal_canonical_repository",
+      "note": "Le dépôt distingue références, hypothèses, inconnues et décisions de projet; aucun site ou locataire n’est établi par le seul portefeuille."
+    },
+    {
+      "key": "src_opening_target_capability_fit",
+      "argument": "opening_target_capability_fit",
+      "url": "https://nebius.com/",
+      "title": "Nebius — official website",
+      "source_type": "organization_official",
+      "note": "Source d’identité/capacités publiques seulement; aucune manifestation d’intérêt Kristal Farms n’est inférée."
+    },
+    {
+      "key": "src_host_responsible_dc_principles",
+      "argument": "host_responsible_dc_principles",
+      "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/09/government-of-canada-launches-canadas-responsible-data-centre-development-principles.html",
+      "title": "Canada’s Responsible Data Centre Development Principles",
+      "source_type": "host_policy_official",
+      "note": "Cadre hôte commun à tous les Worlds; il ne constitue pas une approbation d’un projet particulier."
+    },
+    {
+      "key": "src_evidence_nebius_partner_model_2026",
+      "argument": "evidence_nebius_partner_model_2026",
+      "url": "https://nebius.com/newsroom/nebius-introduces-business-model-to-scale-ai-cloud-globally-through-infrastructure-partnerships",
+      "title": "Nebius introduces business model to scale AI cloud globally through infrastructure partnerships",
+      "source_type": "organization_official",
+      "note": "Fait externe documenté utilisé pour ouvrir un débat, sans attribution de position hypothétique à une personne réelle."
+    },
+    {
+      "key": "src_evidence_nebius_sustainability_2026",
+      "argument": "evidence_nebius_sustainability_2026",
+      "url": "https://nebius.com/newsroom/nebius-publishes-2025-sustainability-report-outlining-blueprint-for-scaling-responsibly",
+      "title": "Nebius publishes 2025 Sustainability Report",
+      "source_type": "organization_official",
+      "note": "Fait externe documenté utilisé pour ouvrir un débat, sans attribution de position hypothétique à une personne réelle."
+    },
+    {
+      "key": "src_evidence_nl_ai_strategy_2026",
+      "argument": "evidence_nl_ai_strategy_2026",
+      "url": "https://www.government.nl/latest/news/2026/07/03/international-strategy-for-safe-and-responsible-ai-transition",
+      "title": "Dutch Government Launches International AI Strategy",
+      "source_type": "government_official",
+      "note": "Fait externe documenté utilisé pour ouvrir un débat, sans attribution de position hypothétique à une personne réelle."
+    },
+    {
+      "key": "mega_demand_signal_1_source",
+      "argument": "mega_demand_signal_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_demand_signal_2_source",
+      "argument": "mega_demand_signal_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_energy_conditions_1_source",
+      "argument": "mega_energy_conditions_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_energy_conditions_2_source",
+      "argument": "mega_energy_conditions_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_digital_sovereignty_1_source",
+      "argument": "mega_digital_sovereignty_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_digital_sovereignty_2_source",
+      "argument": "mega_digital_sovereignty_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_innovation_coordination_1_source",
+      "argument": "mega_innovation_coordination_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_innovation_coordination_2_source",
+      "argument": "mega_innovation_coordination_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_connectivity_logistics_1_source",
+      "argument": "mega_connectivity_logistics_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_connectivity_logistics_2_source",
+      "argument": "mega_connectivity_logistics_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_community_rights_1_source",
+      "argument": "mega_community_rights_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_community_rights_2_source",
+      "argument": "mega_community_rights_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_evidence_gate_1_source",
+      "argument": "mega_evidence_gate_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_evidence_gate_2_source",
+      "argument": "mega_evidence_gate_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_target_capability_fit_1_source",
+      "argument": "mega_target_capability_fit_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_target_capability_fit_2_source",
+      "argument": "mega_target_capability_fit_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_partner_owned_ai_infrastructure_1_source",
+      "argument": "mega_partner_owned_ai_infrastructure_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_partner_owned_ai_infrastructure_2_source",
+      "argument": "mega_partner_owned_ai_infrastructure_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_ai_efficiency_heat_recovery_1_source",
+      "argument": "mega_ai_efficiency_heat_recovery_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_ai_efficiency_heat_recovery_2_source",
+      "argument": "mega_ai_efficiency_heat_recovery_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_european_ai_capacity_1_source",
+      "argument": "mega_european_ai_capacity_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_european_ai_capacity_2_source",
+      "argument": "mega_european_ai_capacity_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    }
+  ],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "kf_nl_nebius__sim_expert_1",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0413",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0521",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "kf_nl_nebius__sim_expert_2",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0521",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "kf_nl_nebius__sim_expert_3",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0612",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0521",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0713",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [
+    {
+      "topic": "demand_signal",
+      "domain_code": "0413",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "demand_signal",
+      "domain_code": "0421",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "demand_signal",
+      "domain_code": "0312",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "demand_signal",
+      "domain_code": "0542",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "energy_conditions",
+      "domain_code": "0713",
+      "weight": 0.45,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "energy_conditions",
+      "domain_code": "0521",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "energy_conditions",
+      "domain_code": "0413",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "energy_conditions",
+      "domain_code": "0542",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "digital_sovereignty",
+      "domain_code": "0612",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "digital_sovereignty",
+      "domain_code": "0613",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "digital_sovereignty",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "digital_sovereignty",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "innovation_coordination",
+      "domain_code": "0311",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "innovation_coordination",
+      "domain_code": "0413",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "innovation_coordination",
+      "domain_code": "0542",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "innovation_coordination",
+      "domain_code": "0312",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "connectivity_logistics",
+      "domain_code": "0612",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "connectivity_logistics",
+      "domain_code": "071",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "connectivity_logistics",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "connectivity_logistics",
+      "domain_code": "0542",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "community_rights",
+      "domain_code": "0521",
+      "weight": 0.3,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "community_rights",
+      "domain_code": "0314",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "community_rights",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "community_rights",
+      "domain_code": "0413",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "community_rights",
+      "domain_code": "0321",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "evidence_gate",
+      "domain_code": "0413",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "evidence_gate",
+      "domain_code": "0421",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "evidence_gate",
+      "domain_code": "0312",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "evidence_gate",
+      "domain_code": "0542",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "target_capability_fit",
+      "domain_code": "0612",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "target_capability_fit",
+      "domain_code": "0613",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "target_capability_fit",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "target_capability_fit",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "partner_owned_ai_infrastructure",
+      "domain_code": "0311",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "partner_owned_ai_infrastructure",
+      "domain_code": "0413",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "partner_owned_ai_infrastructure",
+      "domain_code": "0542",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "partner_owned_ai_infrastructure",
+      "domain_code": "0312",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "ai_efficiency_heat_recovery",
+      "domain_code": "0521",
+      "weight": 0.3,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "ai_efficiency_heat_recovery",
+      "domain_code": "0314",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "ai_efficiency_heat_recovery",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "ai_efficiency_heat_recovery",
+      "domain_code": "0413",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "ai_efficiency_heat_recovery",
+      "domain_code": "0321",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "european_ai_capacity",
+      "domain_code": "0612",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "european_ai_capacity",
+      "domain_code": "0613",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "european_ai_capacity",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "european_ai_capacity",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    }
+  ],
+  "reading_exclusions": []
+}

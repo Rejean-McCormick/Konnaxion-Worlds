@@ -1,0 +1,1133 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "unesco_information-digital_bootstrap_v12",
+  "scenario_title": "UNESCO — Information & Digital Society — bootstrap v1.2",
+  "mode": "replace_scenario",
+  "metadata": {
+    "universe": "unesco",
+    "world_key": "unesco-information-digital",
+    "seed_version": "1.5.0",
+    "simulation_mode": "dynamic_deliberation",
+    "position_seed_policy": "none",
+    "vote_seed_policy": "none",
+    "ekoh_seed_policy": "no scores; canonical Konnaxion ISCED-F topic relevance only",
+    "actor_registry": "unesco/source-v1@1.2.0",
+    "source_pages": [
+      "https://www.unesco.org/en/communication-information?hub=80094"
+    ],
+    "topic_metadata": {
+      "expression_platform_harms": {
+        "question": "How should online services address serious harms while protecting freedom of expression?",
+        "description": "Deliberate journalism, law, civic governance, social effects and ethics.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/communication-information?hub=80094"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position",
+        "flagship": true,
+        "flagship_key": "flagship_info_platform_governance",
+        "title_fr": "Gouvernance des plateformes : réduire les préjudices sans étouffer l’expression",
+        "question_fr": "Comment réduire les risques systémiques et les contenus préjudiciables sur les plateformes tout en protégeant liberté d’expression, accès à l’information et garanties procédurales ?",
+        "question_en": "How should platforms address systemic risks and harmful content while protecting freedom of expression, access to information and due process?",
+        "evidence_refs": [
+          "internet_for_trust",
+          "digital_platform_guidelines",
+          "world_trends_2025",
+          "ai_ethics_recommendation"
+        ],
+        "core_cast": [
+          "unesco_ci_sector",
+          "itu",
+          "wikimedia_foundation",
+          "stakeholder_journalists",
+          "stakeholder_civil_society",
+          "stakeholder_private_sector",
+          "stakeholder_youth",
+          "stakeholder_researchers"
+        ],
+        "source_path": "source/flagships/unesco-information-digital/flagship_info_platform_governance.yaml",
+        "cross_world_links": [
+          {
+            "target_world": "unesco-humanity-society",
+            "relation": "references",
+            "reason": "human rights, AI ethics and social impacts"
+          },
+          {
+            "target_world": "unesco-education",
+            "relation": "references",
+            "reason": "media/information literacy and youth"
+          }
+        ]
+      },
+      "journalist_safety_accountability": {
+        "question": "Which accountability mechanisms best protect journalists facing threats and attacks?",
+        "description": "Examine journalism, law, protection, political institutions and social conditions.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/communication-information?hub=80094"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position",
+        "flagship": true,
+        "flagship_key": "flagship_info_journalist_safety",
+        "title_fr": "Sécurité des journalistes : de la réaction à un mécanisme durable",
+        "question_fr": "Quels mécanismes de prévention, protection, enquête et reddition de comptes réduisent durablement les risques contre les journalistes ?",
+        "question_en": "What prevention, protection, investigation and accountability mechanisms can sustainably reduce risks to journalists?",
+        "evidence_refs": [
+          "journalist_observatory",
+          "journalist_dg_report",
+          "journalist_safety_mechanisms_2025",
+          "world_trends_2025"
+        ],
+        "core_cast": [
+          "unesco_ci_sector",
+          "ohchr",
+          "stakeholder_journalists",
+          "stakeholder_civil_society",
+          "stakeholder_local_communities"
+        ],
+        "source_path": "source/flagships/unesco-information-digital/flagship_info_journalist_safety.yaml",
+        "cross_world_links": [
+          {
+            "target_world": "unesco-humanity-society",
+            "relation": "references",
+            "reason": "rights, institutional trust and protection"
+          }
+        ]
+      },
+      "media_literacy_synthetic_media": {
+        "question": "How should media and information literacy adapt to synthetic media and generative AI?",
+        "description": "Compare journalism, education, technology, psychology, social context and ethics.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/communication-information?hub=80094"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position"
+      },
+      "ai_information_integrity": {
+        "question": "What governance measures can improve information integrity without centralizing control of legitimate speech?",
+        "description": "Deliberate technology, journalism, law, governance, ethics and social effects.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.unesco.org/en/communication-information?hub=80094"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position"
+      }
+    },
+    "actor_projection_policy": "curated_bootstrap; states and named real persons activate per later scenario",
+    "topic_owner_actor": "unesco_ci_sector",
+    "runtime_identity": "WorldPersona + release-local bridge User",
+    "flagship_profile": "12-flagship-v1",
+    "flagship_topics": [
+      "expression_platform_harms",
+      "journalist_safety_accountability"
+    ],
+    "persona_contract": "kx-world-personas/v1",
+    "actor_profiles": {
+      "unesco_ci_sector": {
+        "registry_key": "unesco_ci_sector",
+        "role": "Communication and Information Sector",
+        "collections": [
+          "information_digital",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "itu": {
+        "registry_key": "itu",
+        "role": "UN digital/telecommunications actor",
+        "collections": [
+          "external_ecosystem",
+          "information_digital"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/artificial-intelligence/ai-public-sector/empowering-digital-transformation"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "ohchr": {
+        "registry_key": "ohchr",
+        "role": "Human rights actor",
+        "collections": [
+          "external_ecosystem",
+          "humanity_society"
+        ],
+        "sources": [
+          "https://www.ohchr.org/"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_civil_society": {
+        "registry_key": "stakeholder_civil_society",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_journalists": {
+        "registry_key": "stakeholder_journalists",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "information_digital",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_local_communities": {
+        "registry_key": "stakeholder_local_communities",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_private_sector": {
+        "registry_key": "stakeholder_private_sector",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_researchers": {
+        "registry_key": "stakeholder_researchers",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "scenario_templates",
+          "science_planet"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_youth": {
+        "registry_key": "stakeholder_youth",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco": {
+        "registry_key": "unesco",
+        "role": "UNESCO Secretariat",
+        "collections": [
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_executive_board": {
+        "registry_key": "unesco_executive_board",
+        "role": "Executive Board",
+        "collections": [
+          "governance",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_gender_equality": {
+        "registry_key": "unesco_gender_equality",
+        "role": "Gender Equality",
+        "collections": [
+          "cross_cutting",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_general_conference": {
+        "registry_key": "unesco_general_conference",
+        "role": "General Conference",
+        "collections": [
+          "governance",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_priority_africa_external_relations": {
+        "registry_key": "unesco_priority_africa_external_relations",
+        "role": "Priority Africa and External Relations",
+        "collections": [
+          "cross_cutting",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "wikimedia_foundation": {
+        "registry_key": "wikimedia_foundation",
+        "role": "Open knowledge actor",
+        "collections": [
+          "external_ecosystem",
+          "information_digital"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/articles/wikipedias-25th-anniversary-advancing-open-knowledge-and-information-integrity"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "civil_society",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_information_digital__sim_expert_1": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "unesco_information_digital__sim_expert_2": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "unesco_information_digital__sim_expert_3": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      }
+    },
+    "mega_update": {
+      "version": "1.0.0",
+      "date": "2026-09-30",
+      "purpose": "simulation_deliberation_plus_contextual_ekoh_readings",
+      "real_person_ekoh_scores_generated": false,
+      "baseline_always_visible": true
+    }
+  },
+  "actors": [
+    {
+      "key": "unesco_ci_sector",
+      "username": "demo_unesco_ci_sector",
+      "display_name": "UNESCO Communication and Information Sector",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "itu",
+      "username": "demo_itu",
+      "display_name": "International Telecommunication Union (ITU)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "ohchr",
+      "username": "demo_ohchr",
+      "display_name": "Office of the UN High Commissioner for Human Rights (OHCHR)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_civil_society",
+      "username": "demo_stakeholder_civil_society",
+      "display_name": "Civil society constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_journalists",
+      "username": "demo_stakeholder_journalists",
+      "display_name": "Journalists and media workers constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_local_communities",
+      "username": "demo_stakeholder_local_communities",
+      "display_name": "Local communities constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_private_sector",
+      "username": "demo_stakeholder_private_sector",
+      "display_name": "Private sector constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_researchers",
+      "username": "demo_stakeholder_researchers",
+      "display_name": "Researchers and scientific community constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_youth",
+      "username": "demo_stakeholder_youth",
+      "display_name": "Youth constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco",
+      "username": "demo_unesco",
+      "display_name": "UNESCO",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_executive_board",
+      "username": "demo_unesco_executive_board",
+      "display_name": "UNESCO Executive Board",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_gender_equality",
+      "username": "demo_unesco_gender_equality",
+      "display_name": "UNESCO Gender Equality",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_general_conference",
+      "username": "demo_unesco_general_conference",
+      "display_name": "UNESCO General Conference",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_priority_africa_external_relations",
+      "username": "demo_unesco_priority_africa_external_relations",
+      "display_name": "UNESCO Priority Africa and External Relations",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "wikimedia_foundation",
+      "username": "demo_wikimedia_foundation",
+      "display_name": "Wikimedia Foundation",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_information_digital__sim_expert_1",
+      "username": "demo_unesco_information_digital_sim_expert_1",
+      "display_name": "[SIMULATION] Systems expert — UNESCO — Information & Digital Society",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_information_digital__sim_expert_2",
+      "username": "demo_unesco_information_digital_sim_expert_2",
+      "display_name": "[SIMULATION] Governance expert — UNESCO — Information & Digital Society",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_information_digital__sim_expert_3",
+      "username": "demo_unesco_information_digital_sim_expert_3",
+      "display_name": "[SIMULATION] Evidence & community expert — UNESCO — Information & Digital Society",
+      "is_ethikos_elite": true
+    }
+  ],
+  "categories": [
+    {
+      "key": "freedom-expression",
+      "name": "Freedom of expression"
+    },
+    {
+      "key": "journalism",
+      "name": "Journalism and safety"
+    },
+    {
+      "key": "media-literacy",
+      "name": "Media and information literacy"
+    },
+    {
+      "key": "digital-governance",
+      "name": "Digital governance"
+    }
+  ],
+  "topics": [
+    {
+      "key": "expression_platform_harms",
+      "title": "[DEMO] How should online services address serious harms while protecting freedom of expression?",
+      "description": "FLAGSHIP SIMULATION — no initial position is implied.\n\nContext: UNESCO’s Internet for Trust approach frames platform governance as human-rights-based, multistakeholder, transparent and accountable, with attention to systemic risks rather than only individual content removal.\n\nTrigger: A fictional regulator and major platforms must agree on a governance framework after evidence of harmful amplification and inconsistent moderation practices.\n\nDecision task: Define due-diligence duties, transparency, risk assessment, user redress, regulator independence, research access and emergency safeguards.\n\nCommon evidence baseline: Internet for Trust; Guidelines for the Governance of Digital Platforms; 2025 World Trends Report: Journalism — Shaping a World at Peace; Recommendation on the Ethics of Artificial Intelligence.\n\nStructured casting, evidence URLs, uncertainties, event injects, round plan and cross-World links are in the seed flagship source file.",
+      "status": "open",
+      "category": "freedom-expression"
+    },
+    {
+      "key": "journalist_safety_accountability",
+      "title": "[DEMO] Which accountability mechanisms best protect journalists facing threats and attacks?",
+      "description": "FLAGSHIP SIMULATION — no initial position is implied.\n\nContext: UNESCO maintains global monitoring on killings of journalists and judicial follow-up, reports regularly on impunity, and documents national safety mechanisms and action plans.\n\nTrigger: A fictional country is designing or reforming a national safety mechanism after threats and attacks expose fragmented institutional responsibilities.\n\nDecision task: Agree on institutional roles, emergency protection, independent oversight, investigation follow-up, data/reporting and safeguards against misuse.\n\nCommon evidence baseline: Observatory of Killed Journalists; Director-General's Report on the Safety of Journalists and the Danger of Impunity; Global trends and recommendations for strengthening National Safety Mechanisms for Journalists; 2025 World Trends Report: Journalism — Shaping a World at Peace.\n\nStructured casting, evidence URLs, uncertainties, event injects, round plan and cross-World links are in the seed flagship source file.",
+      "status": "open",
+      "category": "journalism"
+    },
+    {
+      "key": "media_literacy_synthetic_media",
+      "title": "[DEMO] How should media and information literacy adapt to synthetic media and generative AI?",
+      "description": "Compare journalism, education, technology, psychology, social context and ethics.",
+      "status": "open",
+      "category": "media-literacy"
+    },
+    {
+      "key": "ai_information_integrity",
+      "title": "[DEMO] What governance measures can improve information integrity without centralizing control of legitimate speech?",
+      "description": "Deliberate technology, journalism, law, governance, ethics and social effects.",
+      "status": "open",
+      "category": "digital-governance"
+    }
+  ],
+  "stances": [
+    {
+      "topic": "expression_platform_harms",
+      "actor": "unesco_information_digital__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "expression_platform_harms",
+      "actor": "unesco_information_digital__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "expression_platform_harms",
+      "actor": "unesco_information_digital__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "journalist_safety_accountability",
+      "actor": "unesco_information_digital__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "journalist_safety_accountability",
+      "actor": "unesco_information_digital__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "journalist_safety_accountability",
+      "actor": "unesco_information_digital__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "media_literacy_synthetic_media",
+      "actor": "unesco_information_digital__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "media_literacy_synthetic_media",
+      "actor": "unesco_information_digital__sim_expert_3",
+      "value": -1
+    },
+    {
+      "topic": "media_literacy_synthetic_media",
+      "actor": "unesco_information_digital__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "ai_information_integrity",
+      "actor": "unesco_information_digital__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "ai_information_integrity",
+      "actor": "unesco_information_digital__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "ai_information_integrity",
+      "actor": "unesco_information_digital__sim_expert_3",
+      "value": 0
+    }
+  ],
+  "arguments": [
+    {
+      "key": "mega_expression_platform_harms_1",
+      "topic": "expression_platform_harms",
+      "actor": "unesco_information_digital__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_expression_platform_harms_2",
+      "topic": "expression_platform_harms",
+      "actor": "unesco_information_digital__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_journalist_safety_accountability_1",
+      "topic": "journalist_safety_accountability",
+      "actor": "unesco_information_digital__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_journalist_safety_accountability_2",
+      "topic": "journalist_safety_accountability",
+      "actor": "unesco_information_digital__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_media_literacy_synthetic_media_1",
+      "topic": "media_literacy_synthetic_media",
+      "actor": "unesco_information_digital__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_media_literacy_synthetic_media_2",
+      "topic": "media_literacy_synthetic_media",
+      "actor": "unesco_information_digital__sim_expert_3",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_ai_information_integrity_1",
+      "topic": "ai_information_integrity",
+      "actor": "unesco_information_digital__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_ai_information_integrity_2",
+      "topic": "ai_information_integrity",
+      "actor": "unesco_information_digital__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    }
+  ],
+  "argument_sources": [
+    {
+      "key": "mega_expression_platform_harms_1_source",
+      "argument": "mega_expression_platform_harms_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_expression_platform_harms_2_source",
+      "argument": "mega_expression_platform_harms_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_journalist_safety_accountability_1_source",
+      "argument": "mega_journalist_safety_accountability_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_journalist_safety_accountability_2_source",
+      "argument": "mega_journalist_safety_accountability_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_media_literacy_synthetic_media_1_source",
+      "argument": "mega_media_literacy_synthetic_media_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_media_literacy_synthetic_media_2_source",
+      "argument": "mega_media_literacy_synthetic_media_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_ai_information_integrity_1_source",
+      "argument": "mega_ai_information_integrity_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_ai_information_integrity_2_source",
+      "argument": "mega_ai_information_integrity_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    }
+  ],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "unesco_information_digital__sim_expert_1",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0321",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0111",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "1032",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "unesco_information_digital__sim_expert_2",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0111",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "1032",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0313",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "unesco_information_digital__sim_expert_3",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0111",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "1032",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0313",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [
+    {
+      "topic": "expression_platform_harms",
+      "domain_code": "0321",
+      "weight": 0.3,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "expression_platform_harms",
+      "domain_code": "0421",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "expression_platform_harms",
+      "domain_code": "0312",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "expression_platform_harms",
+      "domain_code": "0314",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "expression_platform_harms",
+      "domain_code": "0223",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "journalist_safety_accountability",
+      "domain_code": "0321",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "journalist_safety_accountability",
+      "domain_code": "0421",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "journalist_safety_accountability",
+      "domain_code": "1032",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "journalist_safety_accountability",
+      "domain_code": "0312",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "journalist_safety_accountability",
+      "domain_code": "0314",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "media_literacy_synthetic_media",
+      "domain_code": "0321",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "media_literacy_synthetic_media",
+      "domain_code": "0111",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "media_literacy_synthetic_media",
+      "domain_code": "0613",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "media_literacy_synthetic_media",
+      "domain_code": "0313",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "media_literacy_synthetic_media",
+      "domain_code": "0314",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "media_literacy_synthetic_media",
+      "domain_code": "0223",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ai_information_integrity",
+      "domain_code": "0613",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ai_information_integrity",
+      "domain_code": "0321",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ai_information_integrity",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ai_information_integrity",
+      "domain_code": "0312",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ai_information_integrity",
+      "domain_code": "0223",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ai_information_integrity",
+      "domain_code": "0314",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    }
+  ],
+  "reading_exclusions": []
+}
