@@ -1,0 +1,71 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "collision_demo",
+  "scenario_title": "World collision demo B",
+  "mode": "replace_scenario",
+  "metadata": {
+    "world_fixture": "beta"
+  },
+  "actors": [
+    {
+      "key": "shared_actor",
+      "username": "demo_shared",
+      "display_name": "Shared Actor",
+      "role": "expert"
+    }
+  ],
+  "categories": [
+    {
+      "key": "shared_category",
+      "name": "Shared Category",
+      "description": "Beta description"
+    }
+  ],
+  "topics": [
+    {
+      "key": "shared_topic",
+      "title": "[DEMO] Shared Topic",
+      "description": "Beta World topic",
+      "status": "open",
+      "category": "shared_category"
+    }
+  ],
+  "stances": [
+    {
+      "topic": "shared_topic",
+      "actor": "shared_actor",
+      "value": -2
+    }
+  ],
+  "arguments": [
+    {
+      "key": "shared_argument",
+      "topic": "shared_topic",
+      "actor": "shared_actor",
+      "side": "con",
+      "content": "Beta-specific argument."
+    }
+  ],
+  "argument_sources": [],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "shared_actor",
+      "rating_visibility": "private",
+      "publication_basis": "KX-WORLDS-1 collision fixture",
+      "ethics_score": 0.8,
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.37,
+          "raw_score": 0.37
+        }
+      ]
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [],
+  "reading_exclusions": []
+}

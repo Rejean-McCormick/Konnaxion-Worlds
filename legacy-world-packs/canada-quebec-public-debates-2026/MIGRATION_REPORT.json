@@ -1,0 +1,15 @@
+{
+  "seed_actor_count": 31,
+  "sidecar_profile_count": 25,
+  "merged_ekoh_profile_count": 25,
+  "seed_topic_count": 14,
+  "merged_topic_relevance_rows": 73,
+  "missing_sidecar_actors_in_seed": [],
+  "missing_sidecar_topics_in_seed": [],
+  "excluded_from_canonical_import": {
+    "proposed_topic_domain_relevance": 2,
+    "alignment_preview": 15,
+    "reason": "Proposed topics and derived alignment previews are preserved in the sidecar/source files but are not promoted to canonical Ethikos seed facts."
+  },
+  "pack_sha256": "77a93df069183f062129e99bc06db46039db5202b8e9adeff69806c771de8b74"
+}

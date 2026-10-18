@@ -1,0 +1,349 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "uckk_pedagogy_pilot_a014",
+  "scenario_title": "UCKK-A014 — Pilote pédagogique expérimental",
+  "mode": "replace_scenario",
+  "metadata": {
+    "description": "SYNTHETIC DEMO FIXTURE — institutional deliberation fixture for UCKK-A014. NOT A RESEARCH FINDING.",
+    "language": "fr",
+    "demo_id": "uckk-pedagogy-pilot-a014",
+    "epistemic_status": "synthetic_demo_fixture",
+    "assembly_ref": "UCKK-A014",
+    "motion_ref": "UCKK-M014",
+    "decision_ref": "UCKK-D009",
+    "archive_ref": "UCKK-ARCH-A014-D009",
+    "topic_ref": "ethikos-topic:UCKK-A014",
+    "baseline_ref": "baseline:UCKK-A014:v1",
+    "smart_vote_ref": "sv:UCKK-A014:v1",
+    "impact_day30_ref": "impact:UCKK-A014:day30:v1",
+    "impact_day90_ref": "impact:UCKK-A014:day90:v1",
+    "followup_topic_ref": "ethikos-topic:UCKK-A014-R1",
+    "correlation_id": "corr:uckk:A014:D009",
+    "baseline_fixture": {
+      "approve": 0.58,
+      "approve_with_conditions": 0.29,
+      "reject": 0.13,
+      "display": "DEMO DATA — Source participation / baseline"
+    },
+    "smart_vote_contract": {
+      "expected_interpretation": "approve_with_conditions",
+      "confidence_display": "moderate",
+      "authority": "computed_reading_only",
+      "display": "ADVISORY READING — DEMO DATA — DOES NOT REPLACE BASELINE"
+    },
+    "decision_fixture": {
+      "outcome": "approved_with_conditions",
+      "scope_sections": 3,
+      "team_size_min": 4,
+      "team_size_max": 6,
+      "sprint_weeks": 2,
+      "rotating_roles": true,
+      "contribution_journaling": true,
+      "evaluation": {
+        "individual": 0.50,
+        "peer_engagement": 0.30,
+        "traced_contribution": 0.20
+      },
+      "amendment": "A014.2",
+      "review_days": [3, 30, 90],
+      "authority_note": "UCKK-D009 becomes authoritative only when published by UCKK Assembly; this Konnaxion seed does not publish that decision."
+    }
+  },
+  "actors": [
+    {
+      "key": "p01",
+      "username": "demo_uckk_p01",
+      "display_name": "Maya Tremblay",
+      "email": "demo_uckk_p01@example.test",
+      "role": "etudiante",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "p02",
+      "username": "demo_uckk_p02",
+      "display_name": "Elias Chen",
+      "email": "demo_uckk_p02@example.test",
+      "role": "professeur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "p03",
+      "username": "demo_uckk_p03",
+      "display_name": "Nadia Bouchard",
+      "email": "demo_uckk_p03@example.test",
+      "role": "accessibilite",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "p04",
+      "username": "demo_uckk_p04",
+      "display_name": "Amélie Fortin",
+      "email": "demo_uckk_p04@example.test",
+      "role": "evaluation",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "p05",
+      "username": "demo_uckk_p05",
+      "display_name": "Karim El-Mansouri",
+      "email": "demo_uckk_p05@example.test",
+      "role": "facilitateur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "p06",
+      "username": "demo_uckk_p06",
+      "display_name": "Jordan Roy",
+      "email": "demo_uckk_p06@example.test",
+      "role": "etudiant-coordinateur",
+      "is_ethikos_elite": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "pedagogy",
+      "name": "[DEMO] UCKK — Pédagogie expérimentale",
+      "description": "SYNTHETIC DEMO FIXTURE — deliberation about a bounded, reversible pedagogical pilot."
+    }
+  ],
+  "topics": [
+    {
+      "key": "uckk_a014",
+      "title": "[DEMO] UCKK-A014 — Pilote pédagogique expérimental",
+      "description": "Autoriser pour une session un pilote dans trois sections: équipes de 4 à 6, rôles tournants, sprints de deux semaines, journalisation des contributions et évaluation provisoire 50/30/20, avec rubriques publiques, appel humain, revue d'accessibilité, revue J30 et reconsidération J90. SYNTHETIC DEMO FIXTURE.",
+      "status": "open",
+      "category": "pedagogy",
+      "start_date": "2026-09-01",
+      "end_date": "2026-09-30"
+    },
+    {
+      "key": "uckk_a014_r1",
+      "title": "[DEMO] UCKK-A014-R1 — Reconsidération J90 (masquée avant J90)",
+      "description": "SYNTHETIC DEMO FIXTURE — follow-up deliberation placeholder. Archived in the initial release so it is not active before the J90 reconsideration checkpoint.",
+      "status": "archived",
+      "category": "pedagogy",
+      "start_date": "2026-12-01",
+      "end_date": "2026-12-31"
+    }
+  ],
+  "stances": [
+    {"topic": "uckk_a014", "actor": "p01", "value": 2},
+    {"topic": "uckk_a014", "actor": "p02", "value": 2},
+    {"topic": "uckk_a014", "actor": "p03", "value": 1},
+    {"topic": "uckk_a014", "actor": "p04", "value": 1},
+    {"topic": "uckk_a014", "actor": "p05", "value": 0},
+    {"topic": "uckk_a014", "actor": "p06", "value": -1}
+  ],
+  "arguments": [
+    {
+      "key": "arg01",
+      "topic": "uckk_a014",
+      "actor": "p02",
+      "side": "pro",
+      "content": "Les sprints rendent les problèmes visibles plus tôt."
+    },
+    {
+      "key": "arg02",
+      "topic": "uckk_a014",
+      "actor": "p01",
+      "side": "pro",
+      "content": "La rotation donne une expérience plus diversifiée des rôles."
+    },
+    {
+      "key": "arg03",
+      "topic": "uckk_a014",
+      "actor": "p04",
+      "side": "pro",
+      "content": "Une contribution tracée peut améliorer la discussion lors des appels."
+    },
+    {
+      "key": "arg04",
+      "topic": "uckk_a014",
+      "actor": "p01",
+      "side": "con",
+      "content": "Le peer review peut refléter la popularité plus que la contribution."
+    },
+    {
+      "key": "arg05",
+      "topic": "uckk_a014",
+      "actor": "p02",
+      "side": "con",
+      "content": "Les sprints peuvent augmenter la charge de mentorat."
+    },
+    {
+      "key": "arg06",
+      "topic": "uckk_a014",
+      "actor": "p03",
+      "side": "con",
+      "content": "Les journaux peuvent invisibiliser le travail non observable."
+    },
+    {
+      "key": "arg07",
+      "topic": "uckk_a014",
+      "actor": "p06",
+      "side": "con",
+      "content": "La coordination peut devenir une charge asymétrique."
+    },
+    {
+      "key": "arg08",
+      "topic": "uckk_a014",
+      "actor": "p04",
+      "side": "neutral",
+      "content": "Le 50/30/20 doit être traité comme hypothèse expérimentale."
+    },
+    {
+      "key": "arg09",
+      "topic": "uckk_a014",
+      "actor": "p05",
+      "side": "neutral",
+      "content": "Amendement A014.2: publier les rubriques avant le début des travaux."
+    },
+    {
+      "key": "arg10",
+      "topic": "uckk_a014",
+      "actor": "p03",
+      "side": "neutral",
+      "content": "Amendement A014.2: préserver un mécanisme humain d'appel."
+    }
+  ],
+  "argument_sources": [
+    {
+      "key": "arg09_contract",
+      "argument": "arg09",
+      "source_type": "demo_contract",
+      "note": "SYNTHETIC DEMO FIXTURE — UCKK-A014.2 requires public rubrics before work begins."
+    },
+    {
+      "key": "arg10_contract",
+      "argument": "arg10",
+      "source_type": "demo_contract",
+      "note": "SYNTHETIC DEMO FIXTURE — UCKK-A014.2 preserves a human appeal mechanism."
+    }
+  ],
+  "consultations": [
+    {
+      "key": "uckk_a014_baseline",
+      "title": "[DEMO] UCKK-A014 — Baseline / source participation",
+      "status": "closed",
+      "open_date": "2026-09-01",
+      "close_date": "2026-09-10",
+      "options": [
+        {"key": "approve", "label": "Approve"},
+        {"key": "approve_with_conditions", "label": "Approve with conditions"},
+        {"key": "reject", "label": "Reject"}
+      ]
+    }
+  ],
+  "consultation_votes": [
+    {"consultation": "uckk_a014_baseline", "actor": "p01", "option": "approve", "raw_value": 29},
+    {"consultation": "uckk_a014_baseline", "actor": "p02", "option": "approve", "raw_value": 29},
+    {"consultation": "uckk_a014_baseline", "actor": "p03", "option": "approve_with_conditions", "raw_value": 15},
+    {"consultation": "uckk_a014_baseline", "actor": "p04", "option": "approve_with_conditions", "raw_value": 14},
+    {"consultation": "uckk_a014_baseline", "actor": "p05", "option": "reject", "raw_value": 6},
+    {"consultation": "uckk_a014_baseline", "actor": "p06", "option": "reject", "raw_value": 7}
+  ],
+  "impact_items": [
+    {
+      "consultation": "uckk_a014_baseline",
+      "action": "Reserve Day-30 accountable Impact slot — impact:UCKK-A014:day30:v1",
+      "status": "planned",
+      "date": "2026-10-30"
+    },
+    {
+      "consultation": "uckk_a014_baseline",
+      "action": "Reserve Day-90 reconsideration Impact slot — impact:UCKK-A014:day90:v1",
+      "status": "planned",
+      "date": "2026-12-29"
+    }
+  ],
+  "ekoh_profiles": [
+    {
+      "actor": "p01",
+      "ethics_score": 1.0,
+      "rating_visibility": "scoped",
+      "publication_basis": "SYNTHETIC DEMO PERSONA",
+      "expertise": [
+        {"domain_code": "0111", "raw_score": 0.55, "weighted_score": 0.55},
+        {"domain_code": "0314", "raw_score": 0.35, "weighted_score": 0.35},
+        {"domain_code": "0413", "raw_score": 0.25, "weighted_score": 0.25}
+      ]
+    },
+    {
+      "actor": "p02",
+      "ethics_score": 1.0,
+      "rating_visibility": "scoped",
+      "publication_basis": "SYNTHETIC DEMO PERSONA",
+      "expertise": [
+        {"domain_code": "0111", "raw_score": 0.95, "weighted_score": 0.95},
+        {"domain_code": "0314", "raw_score": 0.50, "weighted_score": 0.50},
+        {"domain_code": "0413", "raw_score": 0.55, "weighted_score": 0.55}
+      ]
+    },
+    {
+      "actor": "p03",
+      "ethics_score": 1.0,
+      "rating_visibility": "scoped",
+      "publication_basis": "SYNTHETIC DEMO PERSONA",
+      "expertise": [
+        {"domain_code": "0111", "raw_score": 0.65, "weighted_score": 0.65},
+        {"domain_code": "0314", "raw_score": 0.70, "weighted_score": 0.70},
+        {"domain_code": "0413", "raw_score": 0.30, "weighted_score": 0.30}
+      ]
+    },
+    {
+      "actor": "p04",
+      "ethics_score": 1.0,
+      "rating_visibility": "scoped",
+      "publication_basis": "SYNTHETIC DEMO PERSONA",
+      "expertise": [
+        {"domain_code": "0111", "raw_score": 0.85, "weighted_score": 0.85},
+        {"domain_code": "0314", "raw_score": 0.55, "weighted_score": 0.55},
+        {"domain_code": "0413", "raw_score": 0.65, "weighted_score": 0.65}
+      ]
+    },
+    {
+      "actor": "p05",
+      "ethics_score": 1.0,
+      "rating_visibility": "scoped",
+      "publication_basis": "SYNTHETIC DEMO PERSONA",
+      "expertise": [
+        {"domain_code": "0111", "raw_score": 0.60, "weighted_score": 0.60},
+        {"domain_code": "0314", "raw_score": 0.75, "weighted_score": 0.75},
+        {"domain_code": "0413", "raw_score": 0.75, "weighted_score": 0.75}
+      ]
+    },
+    {
+      "actor": "p06",
+      "ethics_score": 1.0,
+      "rating_visibility": "scoped",
+      "publication_basis": "SYNTHETIC DEMO PERSONA",
+      "expertise": [
+        {"domain_code": "0111", "raw_score": 0.45, "weighted_score": 0.45},
+        {"domain_code": "0314", "raw_score": 0.45, "weighted_score": 0.45},
+        {"domain_code": "0413", "raw_score": 0.85, "weighted_score": 0.85}
+      ]
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [
+    {
+      "topic": "uckk_a014",
+      "domain_code": "0111",
+      "weight": 0.50,
+      "criteria": "Pedagogy / education science"
+    },
+    {
+      "topic": "uckk_a014",
+      "domain_code": "0314",
+      "weight": 0.30,
+      "criteria": "Accessibility, group dynamics and social context"
+    },
+    {
+      "topic": "uckk_a014",
+      "domain_code": "0413",
+      "weight": 0.20,
+      "criteria": "Coordination and administration burden"
+    }
+  ],
+  "reading_exclusions": []
+}

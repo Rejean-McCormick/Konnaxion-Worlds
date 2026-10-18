@@ -1,0 +1,1227 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "unesco_culture-heritage_bootstrap_v12",
+  "scenario_title": "UNESCO — Culture & Heritage — bootstrap v1.2",
+  "mode": "replace_scenario",
+  "metadata": {
+    "universe": "unesco",
+    "world_key": "unesco-culture-heritage",
+    "seed_version": "1.5.0",
+    "simulation_mode": "dynamic_deliberation",
+    "position_seed_policy": "none",
+    "vote_seed_policy": "none",
+    "ekoh_seed_policy": "no scores; canonical Konnaxion ISCED-F topic relevance only",
+    "actor_registry": "unesco/source-v1@1.2.0",
+    "source_pages": [
+      "https://whc.unesco.org/en/",
+      "https://ich.unesco.org/"
+    ],
+    "topic_metadata": {
+      "heritage_reconstruction": {
+        "question": "How should damaged heritage be reconstructed when authenticity, community needs and future use conflict?",
+        "description": "Explore architecture, cultural meaning, ethics, law and project governance.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://whc.unesco.org/en/",
+          "https://ich.unesco.org/"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position",
+        "flagship": true,
+        "flagship_key": "flagship_culture_reconstruction",
+        "title_fr": "Reconstruire un patrimoine endommagé",
+        "question_fr": "Comment décider de reconstruire un patrimoine endommagé lorsque authenticité, documentation, usages communautaires et besoins futurs ne pointent pas tous dans la même direction ?",
+        "question_en": "How should damaged heritage be reconstructed when authenticity, documentation, community use and future needs do not all point in the same direction?",
+        "evidence_refs": [
+          "wh_operational_guidelines_2025",
+          "wh_authenticity_2025",
+          "wh_reconstruction_context"
+        ],
+        "core_cast": [
+          "unesco_culture_sector",
+          "unesco_world_heritage_centre",
+          "icomos",
+          "iccrom",
+          "stakeholder_cultural_practitioners",
+          "stakeholder_local_communities",
+          "stakeholder_indigenous_peoples",
+          "stakeholder_civil_society"
+        ],
+        "source_path": "source/flagships/unesco-culture-heritage/flagship_culture_reconstruction.yaml",
+        "cross_world_links": [
+          {
+            "target_world": "unesco-humanity-society",
+            "relation": "references",
+            "reason": "community participation, identity and ethics"
+          },
+          {
+            "target_world": "unesco-science-planet",
+            "relation": "references",
+            "reason": "materials, risk and evidence"
+          }
+        ]
+      },
+      "living_heritage_safeguarding": {
+        "question": "How should institutions safeguard living heritage without freezing or appropriating it?",
+        "description": "Deliberate cultural change, community agency, ethics, law and public policy.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://whc.unesco.org/en/",
+          "https://ich.unesco.org/"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position"
+      },
+      "heritage_tourism_capacity": {
+        "question": "How should heritage destinations manage tourism pressure while sustaining local benefit?",
+        "description": "Compare cultural impacts, economics, management, planning and environmental pressures.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://whc.unesco.org/en/",
+          "https://ich.unesco.org/"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position"
+      },
+      "digital_cultural_collections": {
+        "question": "What access model should govern digitized cultural collections and documentary heritage?",
+        "description": "Examine cultural context, digital infrastructure, software, law and ethics.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://whc.unesco.org/en/",
+          "https://ich.unesco.org/"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position",
+        "flagship": true,
+        "flagship_key": "flagship_culture_digital_heritage",
+        "title_fr": "Préserver et ouvrir le patrimoine documentaire numérique",
+        "question_fr": "Quel modèle d’accès et de préservation devrait gouverner les collections patrimoniales numérisées lorsque accès public, droits, contexte culturel et continuité numérique entrent en tension ?",
+        "question_en": "What preservation and access model should govern digitized heritage collections when public access, rights, cultural context and digital continuity are in tension?",
+        "evidence_refs": [
+          "mow_about_2026",
+          "mow_recommendation_2015",
+          "mow_monitoring_2026"
+        ],
+        "core_cast": [
+          "unesco_culture_sector",
+          "unesco_ci_sector",
+          "wikimedia_foundation",
+          "stakeholder_cultural_practitioners",
+          "stakeholder_indigenous_peoples",
+          "stakeholder_civil_society",
+          "stakeholder_researchers"
+        ],
+        "source_path": "source/flagships/unesco-culture-heritage/flagship_culture_digital_heritage.yaml",
+        "cross_world_links": [
+          {
+            "target_world": "unesco-information-digital",
+            "relation": "references",
+            "reason": "access to information, infrastructure and platform governance"
+          },
+          {
+            "target_world": "unesco-education",
+            "relation": "references",
+            "reason": "education and reuse of documentary heritage"
+          }
+        ]
+      }
+    },
+    "actor_projection_policy": "curated_bootstrap; states and named real persons activate per later scenario",
+    "topic_owner_actor": "unesco_culture_sector",
+    "runtime_identity": "WorldPersona + release-local bridge User",
+    "flagship_profile": "12-flagship-v1",
+    "flagship_topics": [
+      "heritage_reconstruction",
+      "digital_cultural_collections"
+    ],
+    "persona_contract": "kx-world-personas/v1",
+    "actor_profiles": {
+      "unesco_culture_sector": {
+        "registry_key": "unesco_culture_sector",
+        "role": "Culture Sector",
+        "collections": [
+          "culture_heritage",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "iccrom": {
+        "registry_key": "iccrom",
+        "role": "World Heritage advisory body",
+        "collections": [
+          "culture_heritage",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://whc.unesco.org/en/advisorybodies"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "intergovernmental_organization",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "icomos": {
+        "registry_key": "icomos",
+        "role": "World Heritage advisory body",
+        "collections": [
+          "culture_heritage",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://whc.unesco.org/en/advisorybodies"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "civil_society",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "iucn": {
+        "registry_key": "iucn",
+        "role": "World Heritage advisory body",
+        "collections": [
+          "culture_heritage",
+          "external_ecosystem"
+        ],
+        "sources": [
+          "https://whc.unesco.org/en/advisorybodies"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "international_organization",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_civil_society": {
+        "registry_key": "stakeholder_civil_society",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_cultural_practitioners": {
+        "registry_key": "stakeholder_cultural_practitioners",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "culture_heritage",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_indigenous_peoples": {
+        "registry_key": "stakeholder_indigenous_peoples",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_local_communities": {
+        "registry_key": "stakeholder_local_communities",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_private_sector": {
+        "registry_key": "stakeholder_private_sector",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_researchers": {
+        "registry_key": "stakeholder_researchers",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "scenario_templates",
+          "science_planet"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_youth": {
+        "registry_key": "stakeholder_youth",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco": {
+        "registry_key": "unesco",
+        "role": "UNESCO Secretariat",
+        "collections": [
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_ci_sector": {
+        "registry_key": "unesco_ci_sector",
+        "role": "Communication and Information Sector",
+        "collections": [
+          "information_digital",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_executive_board": {
+        "registry_key": "unesco_executive_board",
+        "role": "Executive Board",
+        "collections": [
+          "governance",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_gender_equality": {
+        "registry_key": "unesco_gender_equality",
+        "role": "Gender Equality",
+        "collections": [
+          "cross_cutting",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_general_conference": {
+        "registry_key": "unesco_general_conference",
+        "role": "General Conference",
+        "collections": [
+          "governance",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_priority_africa_external_relations": {
+        "registry_key": "unesco_priority_africa_external_relations",
+        "role": "Priority Africa and External Relations",
+        "collections": [
+          "cross_cutting",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_world_heritage_centre": {
+        "registry_key": "unesco_world_heritage_centre",
+        "role": "World Heritage Centre",
+        "collections": [
+          "culture_heritage",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "wikimedia_foundation": {
+        "registry_key": "wikimedia_foundation",
+        "role": "Open knowledge actor",
+        "collections": [
+          "external_ecosystem",
+          "information_digital"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/articles/wikipedias-25th-anniversary-advancing-open-knowledge-and-information-integrity"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "civil_society",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_culture_heritage__sim_expert_1": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "unesco_culture_heritage__sim_expert_2": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "unesco_culture_heritage__sim_expert_3": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      }
+    },
+    "mega_update": {
+      "version": "1.0.0",
+      "date": "2026-09-30",
+      "purpose": "simulation_deliberation_plus_contextual_ekoh_readings",
+      "real_person_ekoh_scores_generated": false,
+      "baseline_always_visible": true
+    }
+  },
+  "actors": [
+    {
+      "key": "unesco_culture_sector",
+      "username": "demo_unesco_culture_sector",
+      "display_name": "UNESCO Culture Sector",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "iccrom",
+      "username": "demo_iccrom",
+      "display_name": "International Centre for the Study of the Preservation and Restoration of Cultural Property (ICCROM)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "icomos",
+      "username": "demo_icomos",
+      "display_name": "International Council on Monuments and Sites (ICOMOS)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "iucn",
+      "username": "demo_iucn",
+      "display_name": "International Union for Conservation of Nature (IUCN)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_civil_society",
+      "username": "demo_stakeholder_civil_society",
+      "display_name": "Civil society constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_cultural_practitioners",
+      "username": "demo_stakeholder_cultural_practitioners",
+      "display_name": "Cultural practitioners constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_indigenous_peoples",
+      "username": "demo_stakeholder_indigenous_peoples",
+      "display_name": "Indigenous Peoples constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_local_communities",
+      "username": "demo_stakeholder_local_communities",
+      "display_name": "Local communities constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_private_sector",
+      "username": "demo_stakeholder_private_sector",
+      "display_name": "Private sector constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_researchers",
+      "username": "demo_stakeholder_researchers",
+      "display_name": "Researchers and scientific community constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_youth",
+      "username": "demo_stakeholder_youth",
+      "display_name": "Youth constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco",
+      "username": "demo_unesco",
+      "display_name": "UNESCO",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_ci_sector",
+      "username": "demo_unesco_ci_sector",
+      "display_name": "UNESCO Communication and Information Sector",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_executive_board",
+      "username": "demo_unesco_executive_board",
+      "display_name": "UNESCO Executive Board",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_gender_equality",
+      "username": "demo_unesco_gender_equality",
+      "display_name": "UNESCO Gender Equality",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_general_conference",
+      "username": "demo_unesco_general_conference",
+      "display_name": "UNESCO General Conference",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_priority_africa_external_relations",
+      "username": "demo_unesco_priority_africa_external_relations",
+      "display_name": "UNESCO Priority Africa and External Relations",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_world_heritage_centre",
+      "username": "demo_unesco_world_heritage_centre",
+      "display_name": "UNESCO World Heritage Centre",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "wikimedia_foundation",
+      "username": "demo_wikimedia_foundation",
+      "display_name": "Wikimedia Foundation",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_culture_heritage__sim_expert_1",
+      "username": "demo_unesco_culture_heritage_sim_expert_1",
+      "display_name": "[SIMULATION] Systems expert — UNESCO — Culture & Heritage",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_culture_heritage__sim_expert_2",
+      "username": "demo_unesco_culture_heritage_sim_expert_2",
+      "display_name": "[SIMULATION] Governance expert — UNESCO — Culture & Heritage",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_culture_heritage__sim_expert_3",
+      "username": "demo_unesco_culture_heritage_sim_expert_3",
+      "display_name": "[SIMULATION] Evidence & community expert — UNESCO — Culture & Heritage",
+      "is_ethikos_elite": true
+    }
+  ],
+  "categories": [
+    {
+      "key": "built-heritage",
+      "name": "Built heritage"
+    },
+    {
+      "key": "living-heritage",
+      "name": "Living heritage"
+    },
+    {
+      "key": "cultural-policy",
+      "name": "Cultural policy"
+    },
+    {
+      "key": "digital-heritage",
+      "name": "Digital heritage"
+    }
+  ],
+  "topics": [
+    {
+      "key": "heritage_reconstruction",
+      "title": "[DEMO] How should damaged heritage be reconstructed when authenticity, community needs and future use conflict?",
+      "description": "FLAGSHIP SIMULATION — no initial position is implied.\n\nContext: World Heritage practice treats authenticity, documentation, conservation and cultural context as central, while reconstruction debates increasingly consider community and intangible values alongside material evidence.\n\nTrigger: A fictional heritage property suffers major damage. Documentation is strong for some elements but incomplete for others, while the surrounding community seeks rapid restoration of use.\n\nDecision task: Agree on what may be reconstructed, what must remain legible as loss, documentation thresholds, community participation and a staged conservation plan.\n\nCommon evidence baseline: Operational Guidelines for the Implementation of the World Heritage Convention (2025); Authenticity in the context of the World Heritage Convention: Evolution and Impact; Reconstruction: changing attitudes.\n\nStructured casting, evidence URLs, uncertainties, event injects, round plan and cross-World links are in the seed flagship source file.",
+      "status": "open",
+      "category": "built-heritage"
+    },
+    {
+      "key": "living_heritage_safeguarding",
+      "title": "[DEMO] How should institutions safeguard living heritage without freezing or appropriating it?",
+      "description": "Deliberate cultural change, community agency, ethics, law and public policy.",
+      "status": "open",
+      "category": "living-heritage"
+    },
+    {
+      "key": "heritage_tourism_capacity",
+      "title": "[DEMO] How should heritage destinations manage tourism pressure while sustaining local benefit?",
+      "description": "Compare cultural impacts, economics, management, planning and environmental pressures.",
+      "status": "open",
+      "category": "cultural-policy"
+    },
+    {
+      "key": "digital_cultural_collections",
+      "title": "[DEMO] What access model should govern digitized cultural collections and documentary heritage?",
+      "description": "FLAGSHIP SIMULATION — no initial position is implied.\n\nContext: UNESCO’s Memory of the World programme combines preservation and access. Its normative framework recognizes digital continuity, technological obsolescence, rights-holder interests and public value.\n\nTrigger: A fictional consortium of memory institutions must publish a large digitized collection while replacing an obsolete repository platform.\n\nDecision task: Define preservation responsibilities, access tiers, rights/context controls, interoperability, migration policy and long-term stewardship.\n\nCommon evidence baseline: Memory of the World: About the programme; Recommendation concerning the preservation of, and access to, documentary heritage including in digital form; Monitoring of the 2015 documentary heritage Recommendation.\n\nStructured casting, evidence URLs, uncertainties, event injects, round plan and cross-World links are in the seed flagship source file.",
+      "status": "open",
+      "category": "digital-heritage"
+    }
+  ],
+  "stances": [
+    {
+      "topic": "heritage_reconstruction",
+      "actor": "unesco_culture_heritage__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "heritage_reconstruction",
+      "actor": "unesco_culture_heritage__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "heritage_reconstruction",
+      "actor": "unesco_culture_heritage__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "living_heritage_safeguarding",
+      "actor": "unesco_culture_heritage__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "living_heritage_safeguarding",
+      "actor": "unesco_culture_heritage__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "living_heritage_safeguarding",
+      "actor": "unesco_culture_heritage__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "heritage_tourism_capacity",
+      "actor": "unesco_culture_heritage__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "heritage_tourism_capacity",
+      "actor": "unesco_culture_heritage__sim_expert_3",
+      "value": -1
+    },
+    {
+      "topic": "heritage_tourism_capacity",
+      "actor": "unesco_culture_heritage__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "digital_cultural_collections",
+      "actor": "unesco_culture_heritage__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "digital_cultural_collections",
+      "actor": "unesco_culture_heritage__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "digital_cultural_collections",
+      "actor": "unesco_culture_heritage__sim_expert_3",
+      "value": 0
+    }
+  ],
+  "arguments": [
+    {
+      "key": "mega_heritage_reconstruction_1",
+      "topic": "heritage_reconstruction",
+      "actor": "unesco_culture_heritage__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_heritage_reconstruction_2",
+      "topic": "heritage_reconstruction",
+      "actor": "unesco_culture_heritage__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_living_heritage_safeguarding_1",
+      "topic": "living_heritage_safeguarding",
+      "actor": "unesco_culture_heritage__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_living_heritage_safeguarding_2",
+      "topic": "living_heritage_safeguarding",
+      "actor": "unesco_culture_heritage__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_heritage_tourism_capacity_1",
+      "topic": "heritage_tourism_capacity",
+      "actor": "unesco_culture_heritage__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_heritage_tourism_capacity_2",
+      "topic": "heritage_tourism_capacity",
+      "actor": "unesco_culture_heritage__sim_expert_3",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_digital_cultural_collections_1",
+      "topic": "digital_cultural_collections",
+      "actor": "unesco_culture_heritage__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_digital_cultural_collections_2",
+      "topic": "digital_cultural_collections",
+      "actor": "unesco_culture_heritage__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    }
+  ],
+  "argument_sources": [
+    {
+      "key": "mega_heritage_reconstruction_1_source",
+      "argument": "mega_heritage_reconstruction_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_heritage_reconstruction_2_source",
+      "argument": "mega_heritage_reconstruction_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_living_heritage_safeguarding_1_source",
+      "argument": "mega_living_heritage_safeguarding_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_living_heritage_safeguarding_2_source",
+      "argument": "mega_living_heritage_safeguarding_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_heritage_tourism_capacity_1_source",
+      "argument": "mega_heritage_tourism_capacity_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_heritage_tourism_capacity_2_source",
+      "argument": "mega_heritage_tourism_capacity_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_digital_cultural_collections_1_source",
+      "argument": "mega_digital_cultural_collections_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_digital_cultural_collections_2_source",
+      "argument": "mega_digital_cultural_collections_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    }
+  ],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "unesco_culture_heritage__sim_expert_1",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0314",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0731",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "unesco_culture_heritage__sim_expert_2",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0223",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0731",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "unesco_culture_heritage__sim_expert_3",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0731",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0521",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [
+    {
+      "topic": "heritage_reconstruction",
+      "domain_code": "0731",
+      "weight": 0.3,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "heritage_reconstruction",
+      "domain_code": "0314",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "heritage_reconstruction",
+      "domain_code": "0223",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "heritage_reconstruction",
+      "domain_code": "0421",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "heritage_reconstruction",
+      "domain_code": "0413",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "living_heritage_safeguarding",
+      "domain_code": "0314",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "living_heritage_safeguarding",
+      "domain_code": "0223",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "living_heritage_safeguarding",
+      "domain_code": "0421",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "living_heritage_safeguarding",
+      "domain_code": "0312",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "living_heritage_safeguarding",
+      "domain_code": "0413",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "heritage_tourism_capacity",
+      "domain_code": "0314",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "heritage_tourism_capacity",
+      "domain_code": "0311",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "heritage_tourism_capacity",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "heritage_tourism_capacity",
+      "domain_code": "0731",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "heritage_tourism_capacity",
+      "domain_code": "0521",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "digital_cultural_collections",
+      "domain_code": "0314",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "digital_cultural_collections",
+      "domain_code": "0612",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "digital_cultural_collections",
+      "domain_code": "0613",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "digital_cultural_collections",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "digital_cultural_collections",
+      "domain_code": "0223",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    }
+  ],
+  "reading_exclusions": []
+}

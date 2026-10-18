@@ -1,0 +1,33 @@
+world_contract: kx-world-pack/v1
+world_key: uckk-a014
+title: "UCKK A014 — Pilote pédagogique expérimental"
+pack_version: 1.0.0
+requires:
+  ethikos_scenario_schema: ethikos-demo-scenario/v3
+  fixtures:
+    - isced-f
+scenarios:
+  - scenarios/uckk-a014.json
+metadata:
+  demo_id: uckk-pedagogy-pilot-a014
+  epistemic_status: synthetic_demo_fixture
+  labels:
+    - SYNTHETIC
+    - DEMO FIXTURE
+    - NOT A RESEARCH FINDING
+  stable_refs:
+    assembly_ref: UCKK-A014
+    motion_ref: UCKK-M014
+    decision_ref: UCKK-D009
+    archive_ref: UCKK-ARCH-A014-D009
+    topic_ref: ethikos-topic:UCKK-A014
+    baseline_ref: baseline:UCKK-A014:v1
+    smart_vote_ref: sv:UCKK-A014:v1
+    impact_day30_ref: impact:UCKK-A014:day30:v1
+    impact_day90_ref: impact:UCKK-A014:day90:v1
+    followup_topic_ref: ethikos-topic:UCKK-A014-R1
+    correlation_id: corr:uckk:A014:D009
+  note: >-
+    Synthetic deterministic demo pack. Smart Vote output is not supplied as a
+    canonical result; the pack seeds source stances, EkoH profiles and topic
+    relevance so the advisory reading can be derived by Konnaxion.

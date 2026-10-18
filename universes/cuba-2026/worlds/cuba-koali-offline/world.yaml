@@ -1,0 +1,38 @@
+world_contract: kx-world-pack/v1
+world_key: cuba-koali-offline
+title: Cuba 2026 — Koali Offline
+pack_version: 0.3.0
+requires:
+  ethikos_scenario_schema: ethikos-demo-scenario/v3
+  fixtures:
+  - isced-f
+  host_contracts:
+  - kx-world-personas/v1
+scenarios:
+- scenarios/cuba-koali.json
+metadata:
+  universe_key: cuba-2026
+  world_kind: fictional_governance_simulation
+  offline_mode: true
+  persona_count: 12
+  public_accounts:
+  - catherine_idealiste
+  - peter_tyran
+  - marial_rusee
+  - orlo_reformateur
+  - elizabeth_folle
+  - archie_archeveque
+  - velementov_ivrogne
+  - grigor_loyal
+  - georgina_intrigante
+  - leo_romantique
+  - arkady_courtisan
+  - dd44_colosse
+  seed_version: 0.3.0
+  political_reality_boundary: fictional simulation; no real political organization or operational activity is asserted
+  universe_standard: kx-universe-pack/v1
+  persona_contract: kx-world-personas/v1
+  mega_update_version: 1.0.0
+  mega_update_date: '2026-09-30'
+  demo_smart_vote_enabled: true
+  demo_visibility: public

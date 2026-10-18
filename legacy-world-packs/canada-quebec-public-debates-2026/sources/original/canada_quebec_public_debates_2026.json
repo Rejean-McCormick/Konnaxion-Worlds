@@ -1,0 +1,4408 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "canada_quebec_public_debates_2026",
+  "scenario_title": "Quebec–Canada Public Debates — 2026 Snapshot",
+  "mode": "replace_scenario",
+  "metadata": {
+    "description": "A structured Ethikos corpus of consequential public-policy debates in Quebec and Canada, combining federal and Quebec perspectives, counter-expertise, hierarchical arguments, source-backed claims, and a DEMO EkoH/Smart Vote advisory-reading scenario with a declared recusal. The Canada–U.S. autonomy walkthrough uses the Kristal Farms infrastructure model to show four distinct layers: King Klown as an independent global mobilizer and governance figure, Réjean McCormick as technical counsel who explicitly refuses a governance post, political parties confronting the implications of influence they do not control, and Ethikos turning that conflict into a separate governance question with transparent conflict disclosure and recusal.",
+    "created_for": "Konnaxion Ethikos Demo Importer",
+    "language": "en-CA",
+    "focus": "Public-policy debates + federal/Quebec actors + counter-expertise + structured argument graphs + source-backed deliberation + strategic infrastructure + technical/governance role separation + independent civic mobilization + contextual expertise + transparent recusal",
+    "snapshot_date": "2026-08-17",
+    "source_sidecar": "canada_quebec_public_debates_2026_sources.json",
+    "source_policy": [
+      "Arguments are concise paraphrases of public positions, never verbatim quotations.",
+      "Stances are editorial readings from -3 to +3 used to place actors on the axis described in stance_scale.",
+      "An actor's absence from a topic does not imply the absence of a position; the corpus prioritizes major actors for whom a primary or official source has been inventoried.",
+      "Source references are normalized into ArgumentSource records while registry keys are retained for traceability.",
+      "Positions should be reviewed whenever a party, government, or organization officially changes policy.",
+      "When federal and Quebec frameworks are placed on the same axis—for example multiculturalism and national integration—the stance expresses a conceptual contrast between policies, not a claim that one actor explicitly opposes another.",
+      "Walkthrough-only dialogue involving King Klown, Réjean McCormick, the Inquisitor, and the fictionalized party-room exchange is DEMO FICTION. It must not be attributed to the real Government of Canada, Conservative Party, New Democratic Party, Bloc Québécois, or any other real-world person or institution."
+    ],
+    "stance_scale": {
+      "federal_deficit": {
+        "positive": "Faster deficit reduction and stronger fiscal discipline",
+        "negative": "Greater tolerance for deficits to preserve priority public investment"
+      },
+      "canada_us_autonomy": {
+        "positive": "Greater diversification and strategic autonomy",
+        "negative": "Priority on restoring North American integration and freer trade"
+      },
+      "support_ukraine": {
+        "positive": "Maintain or increase support for Ukraine",
+        "negative": "Reduce or substantially condition support"
+      },
+      "middle_east_policy": {
+        "positive": "More independent diplomacy centred on international law",
+        "negative": "Closer security alignment with the United States and Israel against Iran"
+      },
+      "wealth_inequality": {
+        "positive": "More redistributive taxation of very large fortunes and profits",
+        "negative": "Prioritize growth and tax reductions over new wealth taxes"
+      },
+      "regulatory_delays": {
+        "positive": "Accelerate approvals and reduce regulatory overlap",
+        "negative": "Preserve longer processes to maximize safeguards and consultation"
+      },
+      "justice_efficiency": {
+        "positive": "Give greater weight to speed, enforcement, and public safety",
+        "negative": "Give greater weight to access, procedural safeguards, and legal aid"
+      },
+      "ai_education": {
+        "positive": "Broad but governed integration of AI in education",
+        "negative": "Highly restricted or delayed use of AI in education"
+      },
+      "immigration_capacity": {
+        "positive": "Further reduce immigration levels until reception capacity catches up",
+        "negative": "Maintain higher levels and prioritize rights and permanent status over reductions"
+      },
+      "plastic_waste": {
+        "positive": "Stricter rules and stronger producer responsibility",
+        "negative": "Relax or remove restrictions to limit costs"
+      },
+      "social_cohesion": {
+        "positive": "Shared civic culture, French, and national integration as the primary framework",
+        "negative": "Multiculturalism and pluralism as the primary framework for cohesion"
+      },
+      "clean_energy_climate": {
+        "positive": "Faster electrification and energy transition despite short-term costs",
+        "negative": "A more gradual transition that retains high hydrocarbon production and emphasizes technology"
+      },
+      "tech_sovereignty": {
+        "positive": "More interventionist industrial policy and technological sovereignty",
+        "negative": "A more market-led approach with greater openness to international capital and ownership"
+      },
+      "trump_service_access": {
+        "positive": "Permit a Canada–movement strategic-infrastructure partnership to refuse access to Donald Trump or organizations acting on his behalf",
+        "negative": "Reject named-person exclusion and require neutral, published, reviewable access criteria"
+      }
+    },
+    "editorial_pass": "v5_kristal_farms_governance_split_party_conflict_promo",
+    "argument_graph_note": "Arguments use parent + side when the support/opposition relationship to an existing argument is sufficiently clear.",
+    "source_of_truth": "single_scenario_json",
+    "argument_source_model": "ArgumentSource",
+    "unique_reference_sources": 86,
+    "argument_source_links": 95,
+    "source_registry_origin": "Merged from ethikos-argument-source-sidecar/v1 during seed package normalization.",
+    "ekoh_import_note": "EkoH profiles and Ethikos topic relevance are first-class v3 import data. The importer binds each source topic explicitly to a Smart Vote consultation; derived readings remain separate from canonical stances.",
+    "narrative_events": [
+      {
+        "key": "inquisiteur_removes_king_klown",
+        "event_type": "participant_removed",
+        "topic": "canada_us_autonomy",
+        "actor": "inquisiteur",
+        "target_actor": "king_klown",
+        "after_argument": "us_kk_headlines",
+        "display_text": "Inquisitor removes King Klown from the discussion after premature public disclosure.",
+        "reason": "premature_public_disclosure"
+      },
+      {
+        "key": "rejean_declines_governance",
+        "event_type": "role_boundary",
+        "topic": "canada_us_autonomy",
+        "actor": "rejean_mccormick",
+        "after_argument": "us_rejean_answer_obstacle",
+        "display_text": "Réjean recommends King Klown for governance, offers himself only as technical counsel, and refuses a governance position.",
+        "reason": "technical_counsel_not_governance"
+      },
+      {
+        "key": "rejean_does_not_answer_why",
+        "event_type": "participant_silence",
+        "topic": "canada_us_autonomy",
+        "actor": "rejean_mccormick",
+        "after_argument": "us_gov_diversify",
+        "display_text": "Government asks Réjean why he refuses governance. Réjean does not answer.",
+        "reason": "deliberate_scope_boundary"
+      },
+      {
+        "key": "ndp_reframes_control_problem",
+        "event_type": "party_conflict_reframe",
+        "topic": "canada_us_autonomy",
+        "actor": "ndp",
+        "after_argument": "us_ndp_independence",
+        "display_text": "DEMO FICTION — An NDP participant mocks the larger parties' fixation on controlling King Klown and reframes his independence as the source of his influence.",
+        "reason": "independence_vs_command"
+      },
+      {
+        "key": "ndp_proposes_independent_movement_partnership",
+        "event_type": "emergent_question_trigger",
+        "topic": "canada_us_autonomy",
+        "actor": "ndp",
+        "after_argument": "us_ndp_independence",
+        "emergent_topic": "trump_service_access",
+        "display_text": "DEMO FICTION — The party exchange turns into a new question: if Canada partners with King Klown's independent global movement on strategic AI infrastructure, what happens when the movement's political commitments conflict with Canada's public obligations?",
+        "reason": "independent_governance_partner_creates_access_conflict"
+      }
+    ],
+    "feed_items": [
+      {
+        "key": "king_klown_trump_background_report",
+        "type": "background_report",
+        "topic": "trump_service_access",
+        "subject_actor": "king_klown",
+        "demo_fiction": true,
+        "content": "In this fictional demonstration scenario, a background report identifies King Klown as the head of an independent global social-mobilization movement whose stated governance philosophy is to shift influence away from title and party proximity toward demonstrated expertise, ethical conduct, and contribution. The same fictional report documents large-scale anti-capitalist and anti-Trump mobilization, opposition to collaboration with Trump-aligned organizations, and outreach to Indigenous nations near candidate strategic-infrastructure sites. The report becomes relevant only after party participants debate whether Canada can work with a movement whose influence does not depend on government appointment or control."
+      }
+    ],
+    "character_notes": {
+      "king_klown": "Fictional public-facing leader of a global social-mobilization movement. His influence is framed as independent of incumbent governments and party machinery: the movement claims to stand with participants and communities rather than the government of the day, and to redistribute influence toward demonstrated expertise, ethical conduct, and actual contribution. That independence is both his political strength and a governance risk. He is candid, theatrical, difficult to command, and willing to disclose conflicts and recuse himself when his movement role or prior advocacy makes an advisory judgment non-neutral.",
+      "rejean_mccormick": "Technology and systems architect. Reserved, brief, and technically precise. He explains energy, compute, fiber, thermal systems, deployment constraints, and feasibility. When asked who should govern the initiative, he recommends King Klown for governance and limits himself to technical counsel. He explicitly refuses a governance position. When government asks why, he does not answer and does not enter the subsequent party dispute over King Klown's political independence."
+    }
+  },
+  "actors": [
+    {
+      "key": "gov_canada",
+      "username": "demo_gov_canada",
+      "display_name": "Government of Canada",
+      "email": "demo_gov_canada@example.test",
+      "role": "federal_government",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "cpc",
+      "username": "demo_cpc",
+      "display_name": "Conservative Party of Canada",
+      "email": "demo_cpc@example.test",
+      "role": "federal_official_opposition",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "ndp",
+      "username": "demo_ndp",
+      "display_name": "New Democratic Party",
+      "email": "demo_ndp@example.test",
+      "role": "federal_political_party",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "pbo",
+      "username": "demo_pbo",
+      "display_name": "Parliamentary Budget Officer",
+      "email": "demo_pbo@example.test",
+      "role": "independent_fiscal_officer",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "statcan",
+      "username": "demo_statcan",
+      "display_name": "Statistics Canada",
+      "email": "demo_statcan@example.test",
+      "role": "official_statistics_agency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "gov_quebec",
+      "username": "demo_gov_quebec",
+      "display_name": "Government of Quebec",
+      "email": "demo_gov_quebec@example.test",
+      "role": "provincial_government",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "quebec_education",
+      "username": "demo_quebec_education",
+      "display_name": "Government of Quebec — Education",
+      "email": "demo_quebec_education@example.test",
+      "role": "provincial_education_authority",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "gov_alberta",
+      "username": "demo_gov_alberta",
+      "display_name": "Government of Alberta",
+      "email": "demo_gov_alberta@example.test",
+      "role": "provincial_government",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "justice_canada",
+      "username": "demo_justice_canada",
+      "display_name": "Justice Canada — Access to Justice",
+      "email": "demo_justice_canada@example.test",
+      "role": "justice_policy_and_research",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "ecojustice",
+      "username": "demo_ecojustice",
+      "display_name": "Ecojustice",
+      "email": "demo_ecojustice@example.test",
+      "role": "environmental_legal_advocacy",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "cci",
+      "username": "demo_cci",
+      "display_name": "Council of Canadian Innovators",
+      "email": "demo_cci@example.test",
+      "role": "technology_industry_advocacy",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "ai_advisory",
+      "username": "demo_ai_advisory",
+      "display_name": "Canada Advisory Council on Artificial Intelligence",
+      "email": "demo_ai_advisory@example.test",
+      "role": "ai_policy_advisory_body",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "pq",
+      "username": "demo_pq",
+      "display_name": "Parti Québécois",
+      "email": "demo_pq@example.test",
+      "role": "provincial_party",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "plq",
+      "username": "demo_plq",
+      "display_name": "Quebec Liberal Party",
+      "email": "demo_plq@example.test",
+      "role": "provincial_party",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "qs",
+      "username": "demo_qs",
+      "display_name": "Québec solidaire",
+      "email": "demo_qs@example.test",
+      "role": "provincial_party",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "bq",
+      "username": "demo_bq",
+      "display_name": "Bloc Québécois",
+      "email": "demo_bq@example.test",
+      "role": "federal_party_quebec",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "cpq",
+      "username": "demo_cpq",
+      "display_name": "Quebec Employers Council (CPQ)",
+      "email": "demo_cpq@example.test",
+      "role": "employer_association",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "ftq",
+      "username": "demo_ftq",
+      "display_name": "Quebec Federation of Labour (FTQ)",
+      "email": "demo_ftq@example.test",
+      "role": "labour_union",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "barreau_qc",
+      "username": "demo_barreau_qc",
+      "display_name": "Quebec Bar",
+      "email": "demo_barreau_qc@example.test",
+      "role": "professional_order",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "equiterre_qc",
+      "username": "demo_equiterre_qc",
+      "display_name": "Équiterre",
+      "email": "demo_equiterre_qc@example.test",
+      "role": "environmental_civil_society",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "apnql",
+      "username": "demo_apnql",
+      "display_name": "Assembly of First Nations Quebec-Labrador (AFNQL)",
+      "email": "demo_apnql@example.test",
+      "role": "first_nations_political_organization",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "fqppu",
+      "username": "demo_fqppu",
+      "display_name": "Quebec Federation of University Professors (FQPPU)",
+      "email": "demo_fqppu@example.test",
+      "role": "higher_education_federation",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "unesco",
+      "username": "demo_unesco",
+      "display_name": "UNESCO — Education and AI",
+      "email": "demo_unesco@example.test",
+      "role": "international_standard_setter",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "rejean_mccormick",
+      "username": "demo_rejean_mccormick",
+      "display_name": "Réjean McCormick",
+      "email": "demo_rejean_mccormick@example.test",
+      "role": "technology_systems_architect",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "king_klown",
+      "username": "demo_king_klown",
+      "display_name": "King Klown",
+      "email": "demo_king_klown@example.test",
+      "role": "global_social_mobilization_leader",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "inquisiteur",
+      "username": "demo_inquisiteur",
+      "display_name": "Inquisitor",
+      "email": "demo_inquisiteur@example.test",
+      "role": "ethikos_moderator",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "trade_law_specialist_demo",
+      "username": "demo_trade_law_specialist",
+      "display_name": "Trade law specialist (DEMO)",
+      "email": "demo_trade_law_specialist@example.test",
+      "role": "trade_law_specialist",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "diplomatic_policy_advisor_demo",
+      "username": "demo_diplomatic_policy_advisor",
+      "display_name": "Diplomatic policy advisor (DEMO)",
+      "email": "demo_diplomatic_policy_advisor@example.test",
+      "role": "diplomatic_policy_advisor",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "security_analysis_desk_demo",
+      "username": "demo_security_analysis_desk",
+      "display_name": "Security analysis desk (DEMO)",
+      "email": "demo_security_analysis_desk@example.test",
+      "role": "security_analysis_desk",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "indigenous_governance_desk_demo",
+      "username": "demo_indigenous_governance_desk",
+      "display_name": "Indigenous governance desk (DEMO)",
+      "email": "demo_indigenous_governance_desk@example.test",
+      "role": "indigenous_governance_advisory",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "open_access_advocate_demo",
+      "username": "demo_open_access_advocate",
+      "display_name": "Open-access advocate (DEMO)",
+      "email": "demo_open_access_advocate@example.test",
+      "role": "civic_access_advocate",
+      "is_ethikos_elite": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "finances_publiques",
+      "name": "Public finance",
+      "description": "Deficits, debt, taxation, and trade-offs between operating spending and long-term public investment."
+    },
+    {
+      "key": "relations_internationales",
+      "name": "International relations",
+      "description": "Canada–United States relations, defence, Ukraine, and Canadian policy in the Middle East."
+    },
+    {
+      "key": "economie_inegalites",
+      "name": "Economy and inequality",
+      "description": "Affordability, wealth concentration, productivity, investment, and how economic gains are distributed."
+    },
+    {
+      "key": "gouvernance_justice",
+      "name": "Governance and justice",
+      "description": "Regulatory timelines, public decision capacity, access to justice, safety, and procedural safeguards."
+    },
+    {
+      "key": "education_ia",
+      "name": "Education and AI",
+      "description": "Artificial-intelligence literacy, learning, assessment integrity, privacy, access, and ethical governance."
+    },
+    {
+      "key": "immigration_cohesion",
+      "name": "Immigration and social cohesion",
+      "description": "Reception capacity, temporary and permanent immigration, integration, language, and social cohesion."
+    },
+    {
+      "key": "environnement_energie",
+      "name": "Environment and energy",
+      "description": "Plastic waste, producer responsibility, clean energy, hydrocarbons, emissions, and climate policy."
+    },
+    {
+      "key": "innovation_souverainete",
+      "name": "Innovation and technological sovereignty",
+      "description": "AI, research commercialization, intellectual property, data, procurement, scale-up capital, and Canadian technology firms."
+    }
+  ],
+  "topics": [
+    {
+      "key": "federal_deficit",
+      "title": "[DEMO] Should Canada reduce the federal deficit faster, even if that means delaying some public investment?",
+      "description": "Tests the trade-off between faster deficit reduction, debt-service costs, and preserving long-term investment in housing, infrastructure, defence, and economic capacity.",
+      "status": "open",
+      "category": "finances_publiques",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "canada_us_autonomy",
+      "title": "[DEMO] Should Canada reduce its strategic dependence on the United States, even if it raises short-term costs?",
+      "description": "Explores whether Canada can reduce strategic dependence on the United States by converting domestic energy advantages into sovereign compute, knowledge, and industrial capacity. The walkthrough uses a fictional Kristal Farms proposal built around the core economic inversion: consume hydroelectricity near generation, avoid long-distance bulk-power transport where possible, convert energy into computation locally, and export the high-value result through fiber. Cold climate, low-density or low-impact siting, modular coastal logistics, heat reuse, local connectivity, Indigenous consent, and reversibility compound that advantage. The discussion then separates technical counsel from political governance and tests what happens when established parties confront an independent movement whose influence they do not control.",
+      "status": "open",
+      "category": "relations_internationales",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "support_ukraine",
+      "title": "[DEMO] Should Canada maintain or increase its military, financial, and diplomatic support for Ukraine?",
+      "description": "Examines the scale and duration of Canadian support, sanctions, military assistance, financial aid, diplomacy, and the pursuit of a durable peace.",
+      "status": "open",
+      "category": "relations_internationales",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "middle_east_policy",
+      "title": "[DEMO] Should Canada pursue a more independent Middle East policy centred on international law, even when it diverges from U.S. policy?",
+      "description": "Covers Israel–Palestine and Iran: Israel's security, civilian protection, international law, a two-state solution, sanctions, Iran's nuclear program, diplomacy, and regional escalation risk.",
+      "status": "open",
+      "category": "relations_internationales",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "wealth_inequality",
+      "title": "[DEMO] Should Canada raise taxes on very large fortunes and highly profitable corporations to reduce inequality and fund public priorities?",
+      "description": "Examines wealth concentration, purchasing power, taxation of high-wealth households and corporations, private investment, public services, and redistribution.",
+      "status": "open",
+      "category": "economie_inegalites",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "regulatory_delays",
+      "title": "[DEMO] Should Canada accelerate major-project approvals by reducing regulatory overlap and imposing firmer decision deadlines?",
+      "description": "Weighs the economic cost of delay against federal-provincial coordination, predictable permitting, Indigenous and public consultation, and environmental and social safeguards.",
+      "status": "open",
+      "category": "gouvernance_justice",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "justice_efficiency",
+      "title": "[DEMO] Should Canada's justice system give greater weight to speed and public safety, even when that narrows some procedural safeguards?",
+      "description": "Examines court delay, access to justice, legal aid, bail, constitutional protections, enforcement, and public confidence in the justice system.",
+      "status": "open",
+      "category": "gouvernance_justice",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "ai_education",
+      "title": "[DEMO] Should schools and universities integrate generative AI broadly into learning and assessment under a common ethical framework?",
+      "description": "Examines AI literacy, pedagogical use, assessment integrity, privacy, equitable access, academic governance, and educator training.",
+      "status": "open",
+      "category": "education_ia",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "immigration_capacity",
+      "title": "[DEMO] Should Canada and Quebec reduce immigration further until housing, health care, and infrastructure catch up with population growth?",
+      "description": "Examines temporary and permanent immigration levels, reception capacity, labour shortages, temporary-worker rights, French-language integration, and pathways to permanent status.",
+      "status": "open",
+      "category": "immigration_cohesion",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "plastic_waste",
+      "title": "[DEMO] Should governments tighten single-use plastic rules and producer responsibility, even if compliance costs rise?",
+      "description": "Examines single-use plastic restrictions, consumer and business costs, extended producer responsibility, recycling, reuse, and source reduction.",
+      "status": "open",
+      "category": "environnement_energie",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "social_cohesion",
+      "title": "[DEMO] Should Quebec prioritize French-language integration and a shared civic culture over multiculturalism as its primary model of social cohesion?",
+      "description": "Examines competing integration models, the French language, shared civic reference points, pluralism, anti-discrimination, and belonging.",
+      "status": "open",
+      "category": "immigration_cohesion",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "clean_energy_climate",
+      "title": "[DEMO] Should Canada accelerate the clean-energy transition even if it raises short-term costs for fossil-fuel industries?",
+      "description": "Examines electrification, emissions reduction, oil and gas production, carbon capture, energy costs, industrial competitiveness, and climate targets.",
+      "status": "open",
+      "category": "environnement_energie",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "tech_sovereignty",
+      "title": "[DEMO] Should Canada use a more interventionist industrial policy to keep strategic AI capacity, intellectual property, data, and technology firms under Canadian control?",
+      "description": "Examines research commercialization, intellectual property, AI adoption, compute infrastructure, public procurement, scale-up capital, ownership, and technological sovereignty.",
+      "status": "open",
+      "category": "innovation_souverainete",
+      "start_date": "2026-08-17",
+      "end_date": "2027-08-17"
+    },
+    {
+      "key": "trump_service_access",
+      "title": "[DEMO] If Canada partners with King Klown's global movement on strategic AI infrastructure, should that partnership be allowed to deny access to Donald Trump or organizations acting on his behalf?",
+      "description": "An emergent governance question created after a fictional party-room exchange about King Klown's independence and political influence. Réjean recommends King Klown for governance while refusing a governance role for himself; when asked why, Réjean does not answer. Other parties then debate whether government can work with a movement it cannot command. Donald Trump becomes the concrete stress test: can an independent governance partner refuse a named political actor, or must access remain bound to neutral, published, reviewable security, legal, jurisdictional, and governance criteria?",
+      "status": "open",
+      "category": "relations_internationales",
+      "start_date": "2026-08-19",
+      "end_date": "2027-08-19"
+    }
+  ],
+  "stances": [
+    {
+      "topic": "federal_deficit",
+      "actor": "gov_canada",
+      "value": -1
+    },
+    {
+      "topic": "federal_deficit",
+      "actor": "cpc",
+      "value": 3
+    },
+    {
+      "topic": "federal_deficit",
+      "actor": "pbo",
+      "value": 0
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "actor": "gov_canada",
+      "value": 2
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "actor": "cpc",
+      "value": -1
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "actor": "ndp",
+      "value": 3
+    },
+    {
+      "topic": "support_ukraine",
+      "actor": "gov_canada",
+      "value": 3
+    },
+    {
+      "topic": "support_ukraine",
+      "actor": "cpc",
+      "value": 3
+    },
+    {
+      "topic": "support_ukraine",
+      "actor": "ndp",
+      "value": 2
+    },
+    {
+      "topic": "middle_east_policy",
+      "actor": "gov_canada",
+      "value": 1
+    },
+    {
+      "topic": "middle_east_policy",
+      "actor": "cpc",
+      "value": -3
+    },
+    {
+      "topic": "middle_east_policy",
+      "actor": "ndp",
+      "value": 3
+    },
+    {
+      "topic": "wealth_inequality",
+      "actor": "ndp",
+      "value": 3
+    },
+    {
+      "topic": "wealth_inequality",
+      "actor": "cpc",
+      "value": -3
+    },
+    {
+      "topic": "wealth_inequality",
+      "actor": "statcan",
+      "value": 0
+    },
+    {
+      "topic": "regulatory_delays",
+      "actor": "gov_canada",
+      "value": 2
+    },
+    {
+      "topic": "regulatory_delays",
+      "actor": "cpc",
+      "value": 3
+    },
+    {
+      "topic": "justice_efficiency",
+      "actor": "gov_canada",
+      "value": 1
+    },
+    {
+      "topic": "justice_efficiency",
+      "actor": "justice_canada",
+      "value": 0
+    },
+    {
+      "topic": "justice_efficiency",
+      "actor": "cpc",
+      "value": 3
+    },
+    {
+      "topic": "ai_education",
+      "actor": "quebec_education",
+      "value": 2
+    },
+    {
+      "topic": "ai_education",
+      "actor": "ai_advisory",
+      "value": 2
+    },
+    {
+      "topic": "immigration_capacity",
+      "actor": "gov_canada",
+      "value": 1
+    },
+    {
+      "topic": "immigration_capacity",
+      "actor": "gov_quebec",
+      "value": 2
+    },
+    {
+      "topic": "immigration_capacity",
+      "actor": "cpc",
+      "value": 3
+    },
+    {
+      "topic": "immigration_capacity",
+      "actor": "ndp",
+      "value": -1
+    },
+    {
+      "topic": "plastic_waste",
+      "actor": "gov_canada",
+      "value": 2
+    },
+    {
+      "topic": "plastic_waste",
+      "actor": "cpc",
+      "value": -3
+    },
+    {
+      "topic": "plastic_waste",
+      "actor": "ecojustice",
+      "value": 3
+    },
+    {
+      "topic": "social_cohesion",
+      "actor": "gov_quebec",
+      "value": 3
+    },
+    {
+      "topic": "social_cohesion",
+      "actor": "gov_canada",
+      "value": -2
+    },
+    {
+      "topic": "clean_energy_climate",
+      "actor": "gov_canada",
+      "value": 2
+    },
+    {
+      "topic": "clean_energy_climate",
+      "actor": "gov_quebec",
+      "value": 3
+    },
+    {
+      "topic": "clean_energy_climate",
+      "actor": "gov_alberta",
+      "value": -1
+    },
+    {
+      "topic": "tech_sovereignty",
+      "actor": "gov_canada",
+      "value": 2
+    },
+    {
+      "topic": "tech_sovereignty",
+      "actor": "cci",
+      "value": 3
+    },
+    {
+      "topic": "tech_sovereignty",
+      "actor": "statcan",
+      "value": 0
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "actor": "bq",
+      "value": 2
+    },
+    {
+      "topic": "support_ukraine",
+      "actor": "bq",
+      "value": 3
+    },
+    {
+      "topic": "wealth_inequality",
+      "actor": "qs",
+      "value": 3
+    },
+    {
+      "topic": "wealth_inequality",
+      "actor": "ftq",
+      "value": 2
+    },
+    {
+      "topic": "regulatory_delays",
+      "actor": "plq",
+      "value": 3
+    },
+    {
+      "topic": "regulatory_delays",
+      "actor": "cpq",
+      "value": 3
+    },
+    {
+      "topic": "regulatory_delays",
+      "actor": "equiterre_qc",
+      "value": -2
+    },
+    {
+      "topic": "regulatory_delays",
+      "actor": "apnql",
+      "value": -3
+    },
+    {
+      "topic": "justice_efficiency",
+      "actor": "gov_quebec",
+      "value": 0
+    },
+    {
+      "topic": "justice_efficiency",
+      "actor": "barreau_qc",
+      "value": -1
+    },
+    {
+      "topic": "ai_education",
+      "actor": "fqppu",
+      "value": 0
+    },
+    {
+      "topic": "ai_education",
+      "actor": "unesco",
+      "value": 1
+    },
+    {
+      "topic": "immigration_capacity",
+      "actor": "pq",
+      "value": 3
+    },
+    {
+      "topic": "immigration_capacity",
+      "actor": "plq",
+      "value": 1
+    },
+    {
+      "topic": "immigration_capacity",
+      "actor": "bq",
+      "value": 2
+    },
+    {
+      "topic": "plastic_waste",
+      "actor": "equiterre_qc",
+      "value": 3
+    },
+    {
+      "topic": "social_cohesion",
+      "actor": "pq",
+      "value": 3
+    },
+    {
+      "topic": "social_cohesion",
+      "actor": "bq",
+      "value": 3
+    },
+    {
+      "topic": "clean_energy_climate",
+      "actor": "pq",
+      "value": 3
+    },
+    {
+      "topic": "clean_energy_climate",
+      "actor": "qs",
+      "value": 3
+    },
+    {
+      "topic": "clean_energy_climate",
+      "actor": "equiterre_qc",
+      "value": 3
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "actor": "king_klown",
+      "value": 3
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "actor": "rejean_mccormick",
+      "value": 2
+    },
+    {
+      "topic": "trump_service_access",
+      "actor": "king_klown",
+      "value": 3
+    },
+    {
+      "topic": "trump_service_access",
+      "actor": "rejean_mccormick",
+      "value": -1
+    },
+    {
+      "topic": "trump_service_access",
+      "actor": "trade_law_specialist_demo",
+      "value": -2
+    },
+    {
+      "topic": "trump_service_access",
+      "actor": "diplomatic_policy_advisor_demo",
+      "value": -2
+    },
+    {
+      "topic": "trump_service_access",
+      "actor": "security_analysis_desk_demo",
+      "value": 0
+    },
+    {
+      "topic": "trump_service_access",
+      "actor": "indigenous_governance_desk_demo",
+      "value": 0
+    },
+    {
+      "topic": "trump_service_access",
+      "actor": "open_access_advocate_demo",
+      "value": 3
+    }
+  ],
+  "arguments": [
+    {
+      "key": "deficit_gov_investment",
+      "topic": "federal_deficit",
+      "actor": "gov_canada",
+      "side": "con",
+      "content": "The federal government argues that operating spending should be distinguished from long-term investment, and that a gradual return to operating balance can coexist with investment in housing, infrastructure, defence, and productive capacity."
+    },
+    {
+      "key": "deficit_cpc_restraint",
+      "topic": "federal_deficit",
+      "actor": "cpc",
+      "side": "pro",
+      "content": "Conservatives argue that large, persistent deficits increase debt, interest costs, and future tax pressure; they favour faster spending restraint and deficit reduction."
+    },
+    {
+      "key": "deficit_pbo_scrutiny",
+      "topic": "federal_deficit",
+      "actor": "pbo",
+      "side": "neutral",
+      "content": "The Parliamentary Budget Officer finds the announced fiscal anchors achievable under 2026 projections, while flagging insufficient precision in how some spending is classified as capital, which limits independent scrutiny."
+    },
+    {
+      "key": "ukraine_gov_support",
+      "topic": "support_ukraine",
+      "actor": "gov_canada",
+      "side": "pro",
+      "content": "The Government of Canada presents military, financial, humanitarian, and diplomatic support for Ukraine as a sustained commitment to Ukrainian sovereignty and resistance to Russian aggression."
+    },
+    {
+      "key": "ukraine_cpc_support",
+      "topic": "support_ukraine",
+      "actor": "cpc",
+      "side": "pro",
+      "content": "Conservatives support Ukraine, sanctions on Russia, and directing seized or frozen Russian assets toward Ukraine, while emphasizing a hard line toward the Kremlin."
+    },
+    {
+      "key": "ukraine_ndp_support",
+      "topic": "support_ukraine",
+      "actor": "ndp",
+      "side": "pro",
+      "content": "The NDP supports Ukraine and calls for stronger sanctions enforcement and international accountability, with greater emphasis on institutions, rights, and multilateral diplomacy."
+    },
+    {
+      "key": "mideast_gov_law_diplomacy",
+      "topic": "middle_east_policy",
+      "actor": "gov_canada",
+      "side": "pro",
+      "content": "The federal government supports humanitarian aid, civilian protection, a two-state solution, and diplomatic engagement on Iran's nuclear program while condemning threats to regional security."
+    },
+    {
+      "key": "mideast_cpc_security_alignment",
+      "topic": "middle_east_policy",
+      "actor": "cpc",
+      "side": "con",
+      "content": "Conservatives favour a more explicitly pro-Israel security posture and close cooperation with the United States and allies against the Iranian regime, emphasizing deterrence and pressure on Tehran."
+    },
+    {
+      "key": "mideast_ndp_deescalation",
+      "topic": "middle_east_policy",
+      "actor": "ndp",
+      "side": "pro",
+      "content": "The NDP places greater emphasis on international law, accountability, civilian protection, and de-escalation, including when criticizing military actions by Israel or Iran."
+    },
+    {
+      "key": "wealth_ndp_tax",
+      "topic": "wealth_inequality",
+      "actor": "ndp",
+      "side": "pro",
+      "content": "The NDP proposes higher taxation of very large fortunes to fund public services, reduce wealth concentration, and ease cost-of-living pressure on ordinary households."
+    },
+    {
+      "key": "wealth_cpc_growth",
+      "topic": "wealth_inequality",
+      "actor": "cpc",
+      "side": "con",
+      "content": "Conservatives favour tax cuts, lower government costs, and growth-oriented policy over new taxes on capital or wealth, which they argue could discourage investment."
+    },
+    {
+      "key": "wealth_statcan_gap",
+      "topic": "wealth_inequality",
+      "actor": "statcan",
+      "side": "neutral",
+      "content": "Statistics Canada data show that net worth is highly concentrated among the wealthiest households, with a wide wealth gap between the top and bottom of the distribution."
+    },
+    {
+      "key": "reg_gov_one_review",
+      "topic": "regulatory_delays",
+      "actor": "gov_canada",
+      "side": "pro",
+      "content": "The federal government proposes faster major-project approvals through stronger coordination, a one-project-one-review approach, and more predictable timelines, while stating that environmental and consultation obligations would remain."
+    },
+    {
+      "key": "reg_cpc_red_tape",
+      "topic": "regulatory_delays",
+      "actor": "cpc",
+      "side": "pro",
+      "content": "Conservatives argue that regulation and permitting delays have made Canada too slow to build infrastructure, energy projects, and housing; they propose repealing or simplifying rules they view as barriers."
+    },
+    {
+      "key": "justice_gov_delay_remedies",
+      "topic": "justice_efficiency",
+      "actor": "gov_canada",
+      "side": "pro",
+      "content": "The federal government seeks to reduce the consequences of court delay and strengthen public safety, including remedies other than simply staying proceedings when delays become unreasonable."
+    },
+    {
+      "key": "justice_access_people_centered",
+      "topic": "justice_efficiency",
+      "actor": "justice_canada",
+      "side": "neutral",
+      "content": "Federal access-to-justice work stresses that reform should remain people-centred, preserve legal aid, and avoid making procedural efficiency a new source of inequality for already marginalized groups."
+    },
+    {
+      "key": "justice_cpc_bail",
+      "topic": "justice_efficiency",
+      "actor": "cpc",
+      "side": "pro",
+      "content": "Conservatives propose stricter bail rules for repeat violent offenders and give greater weight to public safety and timely enforcement than to an approach they view as overly permissive."
+    },
+    {
+      "key": "aiedu_quebec_responsible",
+      "topic": "ai_education",
+      "actor": "quebec_education",
+      "side": "pro",
+      "content": "Quebec is developing resources, an expertise centre, and a digital-competency framework that incorporate AI; the policy direction is to govern responsible use rather than try to exclude AI from education."
+    },
+    {
+      "key": "aiedu_advisory_literacy",
+      "topic": "ai_education",
+      "actor": "ai_advisory",
+      "side": "pro",
+      "content": "Canada's federal AI advisory body recommends accessible AI literacy from school through lifelong learning, with attention to bias, safety, accountability, and inclusion."
+    },
+    {
+      "key": "immigration_gov_rebalance",
+      "topic": "immigration_capacity",
+      "actor": "gov_canada",
+      "side": "pro",
+      "content": "Ottawa has reduced targets for new temporary residents and aims to bring their share of the population below 5%, arguing that immigration levels should better align with housing, services, and reception capacity."
+    },
+    {
+      "key": "immigration_quebec_capacity",
+      "topic": "immigration_capacity",
+      "actor": "gov_quebec",
+      "side": "pro",
+      "content": "Quebec seeks to further limit temporary and permanent immigration to reduce pressure on housing, public services, and French-language integration, while targeting admissions to its economic and linguistic priorities."
+    },
+    {
+      "key": "immigration_cpc_lower",
+      "topic": "immigration_capacity",
+      "actor": "cpc",
+      "side": "pro",
+      "content": "Conservatives call for a larger reduction in immigration levels and an overhaul of the Temporary Foreign Worker Program so intake better reflects housing, health-care, and labour-market capacity."
+    },
+    {
+      "key": "immigration_ndp_status",
+      "topic": "immigration_capacity",
+      "actor": "ndp",
+      "side": "con",
+      "content": "The NDP acknowledges problems in the Temporary Foreign Worker Program but emphasizes reducing precarity and expanding pathways to permanent residence rather than relying mainly on broad status-based cuts."
+    },
+    {
+      "key": "plastic_gov_regulation",
+      "topic": "plastic_waste",
+      "actor": "gov_canada",
+      "side": "pro",
+      "content": "The federal government uses targeted prohibitions, a plastics registry, and reporting requirements to reduce waste and expand accountability across the product lifecycle."
+    },
+    {
+      "key": "plastic_cpc_cost",
+      "topic": "plastic_waste",
+      "actor": "cpc",
+      "side": "con",
+      "content": "Conservatives want to repeal selected federal plastic restrictions, arguing that they raise food and packaging costs without delivering sufficient benefits."
+    },
+    {
+      "key": "plastic_ecojustice_stronger",
+      "topic": "plastic_waste",
+      "actor": "ecojustice",
+      "side": "pro",
+      "content": "Ecojustice and other environmental groups argue for maintaining and strengthening federal plastic-pollution rules, which they consider necessary to reduce environmental and health harms."
+    },
+    {
+      "key": "cohesion_quebec_common_culture",
+      "topic": "social_cohesion",
+      "actor": "gov_quebec",
+      "side": "pro",
+      "content": "Quebec's national integration policy emphasizes French, a shared civic culture, and common reference points as foundations for integration and social cohesion."
+    },
+    {
+      "key": "cohesion_canada_pluralism",
+      "topic": "social_cohesion",
+      "actor": "gov_canada",
+      "side": "con",
+      "content": "Federal multiculturalism policy treats pluralism, anti-racism, and recognition of diversity as components of Canadian unity and social cohesion."
+    },
+    {
+      "key": "climate_canada_electrify",
+      "topic": "clean_energy_climate",
+      "actor": "gov_canada",
+      "side": "pro",
+      "content": "Ottawa is investing in clean electricity, electrification, and grids to reduce emissions while strengthening the competitiveness of an economy expected to use much more electricity."
+    },
+    {
+      "key": "climate_quebec_green_plan",
+      "topic": "clean_energy_climate",
+      "actor": "gov_quebec",
+      "side": "pro",
+      "content": "Quebec's 2030 Plan for a Green Economy emphasizes electrification, energy efficiency, and emissions reduction, with hydroelectricity as a strategic advantage."
+    },
+    {
+      "key": "climate_alberta_technology_oil",
+      "topic": "clean_energy_climate",
+      "actor": "gov_alberta",
+      "side": "con",
+      "content": "Alberta favours a pathway combining emissions reductions, industrial carbon pricing, carbon capture, and clean technology with continued or increased oil production; it rejects a rapid phase-out of hydrocarbons."
+    },
+    {
+      "key": "tech_gov_ai_strategy",
+      "topic": "tech_sovereignty",
+      "actor": "gov_canada",
+      "side": "pro",
+      "content": "Canada's federal AI strategy aims to accelerate business adoption, build skills, expand compute infrastructure, and strengthen domestic capacity so Canadian research translates into economic gains."
+    },
+    {
+      "key": "tech_cci_scale_ip",
+      "topic": "tech_sovereignty",
+      "actor": "cci",
+      "side": "pro",
+      "content": "The Council of Canadian Innovators calls for a more explicit economic-sovereignty strategy: retain intellectual property and data in Canada, use public procurement to scale domestic firms, and support their growth."
+    },
+    {
+      "key": "tech_statcan_productivity",
+      "topic": "tech_sovereignty",
+      "actor": "statcan",
+      "side": "neutral",
+      "content": "Statistics Canada research highlights both AI's potential to raise productivity growth and Canada's persistent productivity weakness, making technology adoption and diffusion a central economic challenge."
+    },
+    {
+      "key": "ukraine_bq_support",
+      "topic": "support_ukraine",
+      "actor": "bq",
+      "side": "pro",
+      "parent": "ukraine_gov_support",
+      "content": "The Bloc Québécois reaffirms strong support for Ukraine's independence, freedom, and security, arguing that Canada should remain engaged rather than become passive in the face of Russian aggression."
+    },
+    {
+      "key": "wealth_qs_redistribution",
+      "topic": "wealth_inequality",
+      "actor": "qs",
+      "side": "pro",
+      "parent": "wealth_ndp_tax",
+      "content": "Québec solidaire argues that affordability pressures also reflect an unequal distribution of economic gains; it favours more redistributive taxation, a larger public role, stronger public services, and wage protections."
+    },
+    {
+      "key": "wealth_ftq_services",
+      "topic": "wealth_inequality",
+      "actor": "ftq",
+      "side": "pro",
+      "parent": "wealth_ndp_tax",
+      "content": "The FTQ argues that austerity and tax cuts weaken the capacity to fund public services, and that affordability policy should provide stronger protection for workers and lower-income households."
+    },
+    {
+      "key": "reg_plq_two_for_one",
+      "topic": "regulatory_delays",
+      "actor": "plq",
+      "side": "pro",
+      "parent": "reg_gov_one_review",
+      "content": "The Quebec Liberal Party proposes quickly reducing administrative burden on businesses, including a moratorium on new rules that add costs for SMEs and a two-for-one rule for regulatory requirements."
+    },
+    {
+      "key": "reg_cpq_permitting",
+      "topic": "regulatory_delays",
+      "actor": "cpq",
+      "side": "pro",
+      "parent": "reg_gov_one_review",
+      "content": "The CPQ treats regulatory relief and shorter permitting timelines as competitiveness tools and argues that lighter, more predictable administration should become a durable practice."
+    },
+    {
+      "key": "reg_equiterre_safeguards",
+      "topic": "regulatory_delays",
+      "actor": "equiterre_qc",
+      "side": "con",
+      "parent": "reg_gov_one_review",
+      "content": "Équiterre warns that accelerating major projects by weakening environmental safeguards can produce poor decisions and shift ecological costs to the public; faster approvals should come from better planning, not weaker substantive standards."
+    },
+    {
+      "key": "reg_apnql_consultation",
+      "topic": "regulatory_delays",
+      "actor": "apnql",
+      "side": "con",
+      "parent": "reg_gov_one_review",
+      "content": "The Assembly of First Nations Quebec-Labrador argues that regulatory relief must not remove monitoring, accountability, or consultation mechanisms, especially where projects affect First Nations rights and territories."
+    },
+    {
+      "key": "justice_quebec_access_digital",
+      "topic": "justice_efficiency",
+      "actor": "gov_quebec",
+      "side": "neutral",
+      "content": "The Government of Quebec seeks to improve both access and efficiency through access-to-justice funding and digital transformation of court services, including simpler procedures and shorter processing times."
+    },
+    {
+      "key": "justice_barreau_access",
+      "topic": "justice_efficiency",
+      "actor": "barreau_qc",
+      "side": "con",
+      "parent": "justice_gov_delay_remedies",
+      "content": "The Quebec Bar recognizes the need to reduce delays but insists on accessible, high-quality justice; its initiatives also emphasize legal information, free clinics, and procedural solutions that preserve litigants' rights."
+    },
+    {
+      "key": "aiedu_fqppu_governance",
+      "topic": "ai_education",
+      "actor": "fqppu",
+      "side": "con",
+      "parent": "aiedu_quebec_responsible",
+      "content": "The FQPPU does not reject AI itself, but criticizes implementation without substantive consultation or adequate resources; it argues that university communities, academic freedom, and collegial governance must shape the decisions."
+    },
+    {
+      "key": "aiedu_unesco_human_centered",
+      "topic": "ai_education",
+      "actor": "unesco",
+      "side": "pro",
+      "parent": "aiedu_quebec_responsible",
+      "content": "UNESCO argues that AI can support learning and teaching only within a human-centred framework that protects privacy, equity, learner autonomy, and the critical capacity of teachers and students."
+    },
+    {
+      "key": "immigration_pq_lower",
+      "topic": "immigration_capacity",
+      "actor": "pq",
+      "side": "pro",
+      "parent": "immigration_quebec_capacity",
+      "content": "The Parti Québécois proposes a sharp reduction in temporary immigration and permanent-resident levels it considers compatible with Quebec's capacity for housing, health care, education, French-language integration, and social integration."
+    },
+    {
+      "key": "immigration_plq_regional_capacity",
+      "topic": "immigration_capacity",
+      "actor": "plq",
+      "side": "pro",
+      "parent": "immigration_quebec_capacity",
+      "content": "The Quebec Liberal Party proposes calibrating immigration to regional economic needs and reception capacity, with stronger French-language integration, rather than applying a uniform reduction across the province."
+    },
+    {
+      "key": "immigration_bq_quebec_control",
+      "topic": "immigration_capacity",
+      "actor": "bq",
+      "side": "pro",
+      "parent": "immigration_quebec_capacity",
+      "content": "The Bloc Québécois argues that immigration targets should match Quebec's reception capacity and calls for greater Quebec control so volumes align with the capacity to house, treat, educate, integrate in French, and support newcomers."
+    },
+    {
+      "key": "plastic_equiterre_producer",
+      "topic": "plastic_waste",
+      "actor": "equiterre_qc",
+      "side": "pro",
+      "parent": "plastic_gov_regulation",
+      "content": "Équiterre argues that waste reduction should begin upstream through source reduction and stronger producer responsibility rather than relying mainly on individual sorting and recycling."
+    },
+    {
+      "key": "cohesion_pq_common_nation",
+      "topic": "social_cohesion",
+      "actor": "pq",
+      "side": "pro",
+      "parent": "cohesion_quebec_common_culture",
+      "content": "The Parti Québécois links cohesion to integration into a French-speaking Quebec nation, immigration levels compatible with reception capacity, and protection of a shared cultural space, while also committing to fight racism and discrimination."
+    },
+    {
+      "key": "cohesion_bq_quebec_model",
+      "topic": "social_cohesion",
+      "actor": "bq",
+      "side": "pro",
+      "parent": "cohesion_quebec_common_culture",
+      "content": "The Bloc Québécois supports a Quebec integration model centred on French, the Quebec nation, and equality within diversity, and criticizes the federal multiculturalism framework when it sees it as weakening linguistic and cultural integration."
+    },
+    {
+      "key": "climate_pq_transition",
+      "topic": "clean_energy_climate",
+      "actor": "pq",
+      "side": "pro",
+      "parent": "climate_quebec_green_plan",
+      "content": "The Parti Québécois proposes a more binding green transition using carbon budgets, climate tests, electrification, energy efficiency, more renewable generation, and reduced fossil-fuel use in industry."
+    },
+    {
+      "key": "climate_qs_just_transition",
+      "topic": "clean_energy_climate",
+      "actor": "qs",
+      "side": "pro",
+      "parent": "climate_quebec_green_plan",
+      "content": "Québec solidaire advocates a rapid social and ecological transition based on electrified public transit, moving away from hydrocarbons, expanding renewables, and planning with workers, vulnerable communities, and Indigenous peoples."
+    },
+    {
+      "key": "climate_equiterre_stronger",
+      "topic": "clean_energy_climate",
+      "actor": "equiterre_qc",
+      "side": "pro",
+      "parent": "climate_quebec_green_plan",
+      "content": "Équiterre calls for a more ambitious and coherent climate policy, including a more effective carbon market and major-project decisions that do not weaken environmental protections in the name of speed."
+    },
+    {
+      "key": "us_kk_ai_infrastructure",
+      "topic": "canada_us_autonomy",
+      "actor": "king_klown",
+      "side": "pro",
+      "content": "Canada is thinking about AI infrastructure backwards. Stop moving enormous quantities of electricity to compute. Move compute to the electricity. Put modular AI compute beside existing northern hydro, consume the power locally, and export the valuable result through fiber. The first economy is avoided infrastructure: fewer long high-voltage corridors, fewer transmission losses, and less dependence on moving bulk power to distant data centres. Then stack the rest: cold-climate cooling, low-density and low-impact sites, coastal logistics where they avoid new road corridors, modular reversibility, local connectivity, and waste heat reused for buildings and food production. That is the Kristal Farms model."
+    },
+    {
+      "key": "us_rejean_discretion_first_nations",
+      "topic": "canada_us_autonomy",
+      "actor": "rejean_mccormick",
+      "side": "neutral",
+      "parent": "us_kk_ai_infrastructure",
+      "content": "Discretion. The advantage exists only if site selection is disciplined: existing hydro, short local distribution, reliable long-haul or subsea fiber, cold climate, low-density or previously disturbed land, practical logistics, usable heat sinks, and affected Indigenous nations and local communities involved early enough to shape or refuse the project."
+    },
+    {
+      "key": "us_kk_already_announced",
+      "topic": "canada_us_autonomy",
+      "actor": "king_klown",
+      "side": "pro",
+      "parent": "us_rejean_discretion_first_nations",
+      "content": "It's already announced."
+    },
+    {
+      "key": "us_kk_headlines",
+      "topic": "canada_us_autonomy",
+      "actor": "king_klown",
+      "side": "pro",
+      "parent": "us_kk_already_announced",
+      "content": "STOP SHIPPING ELECTRICITY TO COMPUTE. MOVE COMPUTE TO THE POWER. EXPORT THE RESULT BY FIBER. NORTHERN HYDRO. COLD-CLIMATE COMPUTE. MODULAR COASTAL SITES. COMMUNITY HEAT AND FOOD. BUILD THE ADVANTAGE WHERE CANADA ALREADY HAS IT."
+    },
+    {
+      "key": "us_inquisiteur_kick",
+      "topic": "canada_us_autonomy",
+      "actor": "inquisiteur",
+      "side": "neutral",
+      "parent": "us_kk_headlines",
+      "content": "MODERATION — Inquisitor removes King Klown from this discussion for premature public disclosure."
+    },
+    {
+      "key": "us_gov_question_feasibility",
+      "topic": "canada_us_autonomy",
+      "actor": "gov_canada",
+      "side": "neutral",
+      "parent": "us_inquisiteur_kick",
+      "content": "Can this scale without becoming another national transmission megaproject?"
+    },
+    {
+      "key": "us_rejean_answer_feasibility",
+      "topic": "canada_us_autonomy",
+      "actor": "rejean_mccormick",
+      "side": "pro",
+      "parent": "us_gov_question_feasibility",
+      "content": "Yes—if it scales as many local compute clusters instead of one giant remote load centre. Start with one or two modular pads where hydro, short medium-voltage distribution, fiber, cooling, community heat demand, logistics, environmental limits, and consent already align. Prove each gate, then add capacity."
+    },
+    {
+      "key": "us_gov_question_advantage",
+      "topic": "canada_us_autonomy",
+      "actor": "cpc",
+      "side": "neutral",
+      "parent": "us_rejean_answer_feasibility",
+      "content": "Where does the cost advantage actually come from?"
+    },
+    {
+      "key": "us_rejean_answer_advantage",
+      "topic": "canada_us_autonomy",
+      "actor": "rejean_mccormick",
+      "side": "pro",
+      "parent": "us_gov_question_advantage",
+      "content": "Primarily from avoided infrastructure. Consume electricity where it is generated instead of building long high-voltage corridors to move bulk power to distant data centres. That reduces grid build-out and transmission losses. Convert the energy into computation on site and move the high-value output through long-haul or subsea fiber. At suitable coastal sites, modular equipment can arrive by ship, reducing the need for new road corridors. Cold climate, low-impact siting, heat reuse, local connectivity, and reversibility compound the advantage; they are not the primary advantage."
+    },
+    {
+      "key": "us_gov_question_obstacle",
+      "topic": "canada_us_autonomy",
+      "actor": "gov_canada",
+      "side": "neutral",
+      "parent": "us_rejean_answer_advantage",
+      "content": "If this moved beyond a demonstration, who should govern it?"
+    },
+    {
+      "key": "us_rejean_answer_obstacle",
+      "topic": "canada_us_autonomy",
+      "actor": "rejean_mccormick",
+      "side": "neutral",
+      "parent": "us_gov_question_obstacle",
+      "content": "King Klown for governance. I can serve as technical counsel—energy, compute, fiber, thermal systems, deployment constraints, and feasibility. But I would not accept a governance position."
+    },
+    {
+      "key": "us_gov_diversify",
+      "topic": "canada_us_autonomy",
+      "actor": "gov_canada",
+      "side": "neutral",
+      "content": "DEMO FICTION — Why not?",
+      "parent": "us_rejean_answer_obstacle"
+    },
+    {
+      "key": "us_cpc_restore_trade",
+      "topic": "canada_us_autonomy",
+      "actor": "cpc",
+      "side": "con",
+      "content": "DEMO FICTION — That is exactly the problem. King Klown is powerful because he is independent, and he has made a virtue of being insubordinate. A government partner still needs a mandate. Why should Canadians believe that someone whose influence already exceeds party structures will follow decisions he disagrees with simply because government issued them?",
+      "parent": "us_gov_diversify"
+    },
+    {
+      "key": "us_ndp_independence",
+      "topic": "canada_us_autonomy",
+      "actor": "ndp",
+      "side": "pro",
+      "content": "DEMO FICTION — You've spent ten minutes asking whether King Klown can be controlled.\n\nYou haven't noticed that he's already changing what you have to talk about, who you have to listen to, and how power is being questioned.\n\nYou think you're deciding whether to use him.\n\nYour hubris won't let you see that he's already using your resistance to make his point.\n\nIf you want the reach of his movement, the real question is whether Canada can work with an independent governance partner without pretending that partnership means obedience.",
+      "parent": "us_gov_diversify"
+    },
+    {
+      "key": "us_bq_quebec_voice",
+      "topic": "canada_us_autonomy",
+      "actor": "bq",
+      "side": "neutral",
+      "parent": "us_ndp_independence",
+      "content": "DEMO FICTION — Influence is not a constitutional mandate. If Canada works with him, the answer cannot be blind obedience in either direction. Define what the movement can decide, what local communities and Indigenous nations decide, what elected governments retain, how expertise and ethical standing affect advice, how decisions are audited, and how the partnership can be amended or terminated."
+    },
+    {
+      "key": "trump_kk_exclude",
+      "topic": "trump_service_access",
+      "actor": "king_klown",
+      "side": "pro",
+      "content": "Yes. Our movement is not an instrument of the government of the day. It stands with the people and communities participating in it, and its governance model pushes influence toward demonstrated expertise, ethical conduct, and actual contribution rather than title or party proximity. On that basis, I would refuse strategic AI services to Donald Trump or organizations acting on his behalf.",
+      "parent": "trump_rejean_rule_based_access"
+    },
+    {
+      "key": "trump_kk_conflict_disclosure",
+      "topic": "trump_service_access",
+      "actor": "king_klown",
+      "side": "neutral",
+      "parent": "trump_kk_exclude",
+      "content": "Conflict disclosure: I lead the movement now being considered as a governance partner, and the movement's own philosophy is part of this dispute. I have also led public anti-capitalist and anti-Trump mobilization. I therefore have both an institutional interest in the partnership and a declared political position on this access question. My judgment is not neutral."
+    },
+    {
+      "key": "trump_rejean_rule_based_access",
+      "topic": "trump_service_access",
+      "actor": "gov_canada",
+      "side": "neutral",
+      "content": "DEMO FICTION — Then make the conflict concrete. If Canada partners with King Klown's movement on strategic AI infrastructure, should that partnership be allowed to deny access to Donald Trump or organizations acting on his behalf?",
+      "parent": null
+    },
+    {
+      "key": "trump_trade_law_blanket_exclusion",
+      "topic": "trump_service_access",
+      "actor": "trade_law_specialist_demo",
+      "side": "con",
+      "content": "Independence does not erase public-law obligations. A named-person exclusion inside a government-backed partnership could create procurement, trade, competition, and due-process risks. A defensible access policy should use published criteria, consistent application, review, and a clear boundary between movement advocacy and public infrastructure.",
+      "parent": null
+    },
+    {
+      "key": "trump_diplomacy_personalized_rule",
+      "topic": "trump_service_access",
+      "actor": "diplomatic_policy_advisor_demo",
+      "side": "con",
+      "content": "If an independent transnational movement becomes a governance partner, its political commitments can create state-adjacent diplomatic consequences even when government does not control the movement. Those consequences should be assessed openly, and access rules should not become personalized foreign policy by default.",
+      "parent": null
+    },
+    {
+      "key": "trump_security_conditional_access",
+      "topic": "trump_service_access",
+      "actor": "security_analysis_desk_demo",
+      "side": "neutral",
+      "content": "The decisive security question is not whether King Klown obeys government or whether government controls his movement. It is what systems, models, data, energy capacity, and operational controls would be exposed, under which jurisdiction, and against what documented risk threshold.",
+      "parent": null
+    },
+    {
+      "key": "trump_indigenous_governance_sites",
+      "topic": "trump_service_access",
+      "actor": "indigenous_governance_desk_demo",
+      "side": "neutral",
+      "content": "Neither federal authority nor global movement influence can substitute for local consent. If a strategic site affects Indigenous nations or communities, they need real authority in site governance, benefit agreements, access rules, environmental limits, and the ability to amend or terminate participation.",
+      "parent": null
+    },
+    {
+      "key": "trump_open_access_sovereignty",
+      "topic": "trump_service_access",
+      "actor": "open_access_advocate_demo",
+      "side": "pro",
+      "content": "A partnership can preserve King Klown's independence without granting unreviewable power. The principle should be accountability without obedience: transparent mandate, published boundaries, local consent, auditable decisions, and reviewable refusal criteria.",
+      "parent": null
+    },
+    {
+      "key": "trump_kk_advisory_recusal",
+      "topic": "trump_service_access",
+      "actor": "king_klown",
+      "side": "neutral",
+      "parent": "trump_kk_conflict_disclosure",
+      "content": "RECUSAL — I stand by my public position, but I lead the movement under consideration and I have declared prior political advocacy against Trump. I recuse myself from the EkoH/Smart Vote advisory reading on this question. My baseline stance remains visible."
+    }
+  ],
+  "argument_sources": [
+    {
+      "key": "deficit_gov_investment__finance_spring_update_2026",
+      "argument": "deficit_gov_investment",
+      "url": "https://budget.canada.ca/update-miseajour/2026/report-rapport/intro-en.html",
+      "title": "Spring Economic Update 2026",
+      "excerpt": "Budget trajectory, the operating-versus-capital distinction, and the fiscal framework.",
+      "source_type": "official_government",
+      "citation_text": "Department of Finance Canada — Spring Economic Update 2026 — 2026-04-28",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: finance_spring_update_2026."
+    },
+    {
+      "key": "deficit_cpc_restraint__cpc_fiscal_spending",
+      "argument": "deficit_cpc_restraint",
+      "url": "https://www.conservative.ca/liberal-inflationary-spending-by-the-numbers/",
+      "title": "Liberal Inflationary Spending by the Numbers",
+      "excerpt": "Conservative position on deficits, debt, and federal spending.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — Liberal Inflationary Spending by the Numbers",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cpc_fiscal_spending."
+    },
+    {
+      "key": "deficit_cpc_restraint__cpc_affordable_budget",
+      "argument": "deficit_cpc_restraint",
+      "url": "https://www.conservative.ca/an-affordable-budget-for-affordable-lives/",
+      "title": "An Affordable Budget for Affordable Lives",
+      "excerpt": "Conservative framework focused on lowering costs, taxes, and spending.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — An Affordable Budget for Affordable Lives",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cpc_affordable_budget."
+    },
+    {
+      "key": "deficit_pbo_scrutiny__pbo_spring_fiscal_anchors_2026",
+      "argument": "deficit_pbo_scrutiny",
+      "url": "https://www.pbo-dpb.ca/en/publications/NT-2627-002-S--pbo-assessment-spring-economic-update-fiscal-anchors-fiscal-sustainability--evaluation-dpb-mise-jour-economique-printemps-cibles-budgetaires-viabilite-financiere",
+      "title": "PBO assessment of the Spring Economic Update fiscal anchors and fiscal sustainability",
+      "excerpt": "Independent assessment of fiscal anchors and sustainability.",
+      "source_type": "independent_officer",
+      "citation_text": "Parliamentary Budget Officer — PBO assessment of the Spring Economic Update fiscal anchors and fiscal sustainability — 2026-05-04",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: pbo_spring_fiscal_anchors_2026."
+    },
+    {
+      "key": "deficit_pbo_scrutiny__pbo_budget_2025_issues",
+      "argument": "deficit_pbo_scrutiny",
+      "url": "https://www.pbo-dpb.ca/en/publications/RP-2526-017-S--budget-2025-issues-parliamentarians--budget-2025-enjeux-parlementaires",
+      "title": "Budget 2025: Issues for Parliamentarians",
+      "excerpt": "Context on the level and persistence of projected deficits.",
+      "source_type": "independent_officer",
+      "citation_text": "Parliamentary Budget Officer — Budget 2025: Issues for Parliamentarians",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: pbo_budget_2025_issues."
+    },
+    {
+      "key": "us_gov_diversify__gac_canada_us_engagement",
+      "argument": "us_gov_diversify",
+      "url": "https://international.canada.ca/en/global-affairs/campaigns/canada-us-engagement",
+      "title": "Canada–United States engagement",
+      "excerpt": "Background source retained for the actor's broader Canada–U.S. policy context. The dialogue in the seeded walkthrough is DEMO FICTION.",
+      "source_type": "official_government",
+      "citation_text": "Global Affairs Canada — Canada–United States engagement — 2026-07-02",
+      "quote": "",
+      "note": "Background context only. The seeded party-room dialogue is fictional and must not be attributed to this source or treated as an official statement by the named party or government."
+    },
+    {
+      "key": "us_gov_diversify__gac_canada_us_aug_2026",
+      "argument": "us_gov_diversify",
+      "url": "https://www.canada.ca/en/global-affairs/news/2026/08/minister-leblanc-and-chief-trade-negotiator-update-provincial-and-territorial-trade-ministers-and-advisory-committee-on-canada-us-economic-relation.html",
+      "title": "Minister LeBlanc and Chief Trade Negotiator update provincial and territorial trade ministers and advisory committee on Canada-U.S. economic relation",
+      "excerpt": "Background source retained for the actor's broader Canada–U.S. policy context. The dialogue in the seeded walkthrough is DEMO FICTION.",
+      "source_type": "official_government",
+      "citation_text": "Global Affairs Canada — Minister LeBlanc and Chief Trade Negotiator update provincial and territorial trade ministers and advisory committee on Canada-U.S. economic relation — 2026-08-14",
+      "quote": "",
+      "note": "Background context only. The seeded party-room dialogue is fictional and must not be attributed to this source or treated as an official statement by the named party or government."
+    },
+    {
+      "key": "us_gov_diversify__gac_state_trade_2026",
+      "argument": "us_gov_diversify",
+      "url": "https://international.canada.ca/en/global-affairs/corporate/reports/chief-economist/state-trade/2026",
+      "title": "State of Trade 2026",
+      "excerpt": "Background source retained for the actor's broader Canada–U.S. policy context. The dialogue in the seeded walkthrough is DEMO FICTION.",
+      "source_type": "official_government",
+      "citation_text": "Global Affairs Canada — State of Trade 2026 — 2026",
+      "quote": "",
+      "note": "Background context only. The seeded party-room dialogue is fictional and must not be attributed to this source or treated as an official statement by the named party or government."
+    },
+    {
+      "key": "us_cpc_restore_trade__cpc_good_deal_us_2026",
+      "argument": "us_cpc_restore_trade",
+      "url": "https://www.conservative.ca/canadians-need-a-good-deal/",
+      "title": "Canadians Need a Good Deal",
+      "excerpt": "Background source retained for the actor's broader Canada–U.S. policy context. The dialogue in the seeded walkthrough is DEMO FICTION.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — Canadians Need a Good Deal — 2026-08-13",
+      "quote": "",
+      "note": "Background context only. The seeded party-room dialogue is fictional and must not be attributed to this source or treated as an official statement by the named party or government."
+    },
+    {
+      "key": "us_cpc_restore_trade__cpc_fighting_for_canada_us",
+      "argument": "us_cpc_restore_trade",
+      "url": "https://www.conservative.ca/fighting-for-canada/",
+      "title": "Fighting for Canada",
+      "excerpt": "Background source retained for the actor's broader Canada–U.S. policy context. The dialogue in the seeded walkthrough is DEMO FICTION.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — Fighting for Canada — 2026-03-19",
+      "quote": "",
+      "note": "Background context only. The seeded party-room dialogue is fictional and must not be attributed to this source or treated as an official statement by the named party or government."
+    },
+    {
+      "key": "us_ndp_independence__ndp_campaign_commitments",
+      "argument": "us_ndp_independence",
+      "url": "https://www.ndp.ca/campaign-commitments",
+      "title": "Campaign commitments",
+      "excerpt": "Background source retained for the actor's broader Canada–U.S. policy context. The dialogue in the seeded walkthrough is DEMO FICTION.",
+      "source_type": "political_party",
+      "citation_text": "New Democratic Party of Canada — Campaign commitments",
+      "quote": "",
+      "note": "Background context only. The seeded party-room dialogue is fictional and must not be attributed to this source or treated as an official statement by the named party or government."
+    },
+    {
+      "key": "ukraine_gov_support__gac_ukraine_support",
+      "argument": "ukraine_gov_support",
+      "url": "https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/ukraine-dev.aspx?lang=eng",
+      "title": "Canada's response to the Russian invasion of Ukraine",
+      "excerpt": "Canadian military, financial, humanitarian, and diplomatic support for Ukraine.",
+      "source_type": "official_government",
+      "citation_text": "Global Affairs Canada — Canada's response to the Russian invasion of Ukraine — 2026-05-08",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada/Ukraine. Source registry key: gac_ukraine_support."
+    },
+    {
+      "key": "ukraine_gov_support__gac_ukraine_relations",
+      "argument": "ukraine_gov_support",
+      "url": "https://www.international.gc.ca/country-pays/ukraine/relations.aspx?lang=eng",
+      "title": "Canada-Ukraine relations",
+      "excerpt": "Bilateral relations and cumulative military support.",
+      "source_type": "official_government",
+      "citation_text": "Global Affairs Canada — Canada-Ukraine relations — 2026-05-10",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada/Ukraine. Source registry key: gac_ukraine_relations."
+    },
+    {
+      "key": "ukraine_cpc_support__cpc_ukraine_assets",
+      "argument": "ukraine_cpc_support",
+      "url": "https://www.conservative.ca/conservatives-will-provide-seized-russian-assets-to-ukraine/",
+      "title": "Conservatives Will Provide Seized Russian Assets to Ukraine",
+      "excerpt": "Conservative support for Ukraine and sanctions against Russia.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — Conservatives Will Provide Seized Russian Assets to Ukraine",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada/Ukraine. Source registry key: cpc_ukraine_assets."
+    },
+    {
+      "key": "ukraine_ndp_support__ndp_foreign_affairs_ukraine",
+      "argument": "ukraine_ndp_support",
+      "url": "https://heathermcpherson.ndp.ca/news/heather-mcpherson-mp-canada-us-relationship-and-ndps-vision-foreign-affairs-time-crisis",
+      "title": "Heather McPherson MP: Canada-U.S. relationship and the NDP's vision for foreign affairs in a time of crisis",
+      "excerpt": "NDP position on Ukraine, sanctions, and multilateral engagement.",
+      "source_type": "political_party",
+      "citation_text": "New Democratic Party of Canada — Heather McPherson MP: Canada-U.S. relationship and the NDP's vision for foreign affairs in a time of crisis — 2025-01-28",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada/International. Source registry key: ndp_foreign_affairs_ukraine."
+    },
+    {
+      "key": "mideast_gov_law_diplomacy__gac_israel_palestine_response",
+      "argument": "mideast_gov_law_diplomacy",
+      "url": "https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/israel.aspx?lang=eng",
+      "title": "Canada's response to the crisis in Israel, the West Bank and the Gaza Strip",
+      "excerpt": "Humanitarian assistance, civilian protection, and Canadian policy related to the conflict.",
+      "source_type": "official_government",
+      "citation_text": "Global Affairs Canada — Canada's response to the crisis in Israel, the West Bank and the Gaza Strip — 2026-03-03",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Middle East. Source registry key: gac_israel_palestine_response."
+    },
+    {
+      "key": "mideast_gov_law_diplomacy__gac_israel_palestine_policy",
+      "argument": "mideast_gov_law_diplomacy",
+      "url": "https://www.international.gc.ca/world-monde/international_relations-relations_internationales/mena-moan/israeli-palestinian_policy-politique_israelo-palestinien.aspx?lang=eng",
+      "title": "Canadian policy on key issues in the Israeli-Palestinian conflict",
+      "excerpt": "Official Canadian framework on international law and a two-state solution.",
+      "source_type": "official_government",
+      "citation_text": "Global Affairs Canada — Canadian policy on key issues in the Israeli-Palestinian conflict",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Middle East. Source registry key: gac_israel_palestine_policy."
+    },
+    {
+      "key": "mideast_gov_law_diplomacy__gac_iran_diplomacy_2026",
+      "argument": "mideast_gov_law_diplomacy",
+      "url": "https://www.international.gc.ca/world-monde/international_relations-relations_internationales/un-onu/statements-declarations/2026-04-28-middle-east-palestinienne.aspx?lang=eng",
+      "title": "Statement at the UN Security Council on the Middle East",
+      "excerpt": "Canadian support for negotiations as a durable path on Iran's nuclear program and destabilizing activities.",
+      "source_type": "official_government",
+      "citation_text": "Global Affairs Canada — Statement at the UN Security Council on the Middle East — 2026-04-28",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Middle East. Source registry key: gac_iran_diplomacy_2026."
+    },
+    {
+      "key": "mideast_cpc_security_alignment__cpc_iran_2026",
+      "argument": "mideast_cpc_security_alignment",
+      "url": "https://www.conservative.ca/conservative-statement-on-military-action-against-iran/",
+      "title": "Conservative Statement on Military Action Against Iran",
+      "excerpt": "Conservative position favouring a strong security posture toward the Iranian regime and regional allies.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — Conservative Statement on Military Action Against Iran — 2026",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Middle East. Source registry key: cpc_iran_2026."
+    },
+    {
+      "key": "mideast_cpc_security_alignment__cpc_israel_oct7",
+      "argument": "mideast_cpc_security_alignment",
+      "url": "https://www.conservative.ca/statement-from-conservative-leader-pierre-poilievre-on-the-second-anniversary-of-the-october-7th-attacks/",
+      "title": "Statement from Conservative Leader Pierre Poilievre on the Second Anniversary of the October 7th Attacks",
+      "excerpt": "Conservative support for Israel and the Jewish community.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — Statement from Conservative Leader Pierre Poilievre on the Second Anniversary of the October 7th Attacks — 2025-10-07",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada/Israel. Source registry key: cpc_israel_oct7."
+    },
+    {
+      "key": "mideast_ndp_deescalation__ndp_israel_iran_attacks",
+      "argument": "mideast_ndp_deescalation",
+      "url": "https://www.ndp.ca/news/ndp-statement-israels-recent-attacks",
+      "title": "NDP statement on Israel's recent attacks",
+      "excerpt": "NDP position on de-escalation, Iran, and Israeli military actions.",
+      "source_type": "political_party",
+      "citation_text": "New Democratic Party of Canada — NDP statement on Israel's recent attacks — 2025-06-13",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Middle East. Source registry key: ndp_israel_iran_attacks."
+    },
+    {
+      "key": "mideast_ndp_deescalation__ndp_war_crimes_accountability",
+      "argument": "mideast_ndp_deescalation",
+      "url": "https://heathermcpherson.ndp.ca/news/ndp-letter-ministers-re-prosecution-crimes-canadians-israel-and-palestine",
+      "title": "NDP letter to ministers re: prosecution of crimes by Canadians in Israel and Palestine",
+      "excerpt": "NDP emphasis on accountability and enforcement of international law.",
+      "source_type": "political_party",
+      "citation_text": "New Democratic Party of Canada — NDP letter to ministers re: prosecution of crimes by Canadians in Israel and Palestine",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada/Middle East. Source registry key: ndp_war_crimes_accountability."
+    },
+    {
+      "key": "wealth_ndp_tax__ndp_campaign_commitments",
+      "argument": "wealth_ndp_tax",
+      "url": "https://www.ndp.ca/campaign-commitments",
+      "title": "Campaign commitments",
+      "excerpt": "NDP commitments on economic independence, wealth taxation, and social protection.",
+      "source_type": "political_party",
+      "citation_text": "New Democratic Party of Canada — Campaign commitments",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: ndp_campaign_commitments."
+    },
+    {
+      "key": "wealth_cpc_growth__cpc_affordability_home",
+      "argument": "wealth_cpc_growth",
+      "url": "https://www.conservative.ca/poilievre-lays-out-plan-to-make-canada-affordable-at-home/",
+      "title": "Poilievre Lays Out Plan to Make Canada Affordable at Home",
+      "excerpt": "Conservative affordability approach through lower taxes and government costs.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — Poilievre Lays Out Plan to Make Canada Affordable at Home — 2026",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cpc_affordability_home."
+    },
+    {
+      "key": "wealth_cpc_growth__cpc_affordable_budget",
+      "argument": "wealth_cpc_growth",
+      "url": "https://www.conservative.ca/an-affordable-budget-for-affordable-lives/",
+      "title": "An Affordable Budget for Affordable Lives",
+      "excerpt": "Conservative framework focused on lowering costs, taxes, and spending.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — An Affordable Budget for Affordable Lives",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cpc_affordable_budget."
+    },
+    {
+      "key": "wealth_statcan_gap__statcan_wealth_q4_2025",
+      "argument": "wealth_statcan_gap",
+      "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260413/dq260413a-eng.htm",
+      "title": "Distributions of household economic accounts for income, consumption, saving and wealth of Canadian households, fourth quarter 2025",
+      "excerpt": "Measurement of wealth and income gaps across household groups.",
+      "source_type": "official_statistics",
+      "citation_text": "Statistics Canada — Distributions of household economic accounts for income, consumption, saving and wealth of Canadian households, fourth quarter 2025 — 2026-04-13",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: statcan_wealth_q4_2025."
+    },
+    {
+      "key": "wealth_statcan_gap__statcan_weekly_wealth_apr_2026",
+      "argument": "wealth_statcan_gap",
+      "url": "https://www.statcan.gc.ca/o1/en/plus/9136-weekly-review-april-13-17-2026",
+      "title": "The Weekly Review, April 13 to 17, 2026",
+      "excerpt": "Accessible summary of the share of wealth held by the richest households.",
+      "source_type": "official_statistics",
+      "citation_text": "Statistics Canada — The Weekly Review, April 13 to 17, 2026 — 2026-04-17",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: statcan_weekly_wealth_apr_2026."
+    },
+    {
+      "key": "reg_gov_one_review__canada_regulatory_acceleration_2026",
+      "argument": "reg_gov_one_review",
+      "url": "https://www.canada.ca/en/one-canadian-economy/news/2026/05/canadas-new-government-to-simplify-and-accelerate-canadas-regulatory-process.html",
+      "title": "Canada's new government to simplify and accelerate Canada's regulatory process",
+      "excerpt": "One-project, one-review principle and regulatory acceleration.",
+      "source_type": "official_government",
+      "citation_text": "Government of Canada — Canada's new government to simplify and accelerate Canada's regulatory process — 2026-05-08",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: canada_regulatory_acceleration_2026."
+    },
+    {
+      "key": "reg_gov_one_review__canada_major_projects_discussion_2026",
+      "argument": "reg_gov_one_review",
+      "url": "https://www.canada.ca/en/one-canadian-economy/services/simplifying-canada-process/engagement-supporting-timely-decision-making/getting-major-projects-built-canada-discussion-paper-proposed-legislative-regulatory-policy-reforms.html",
+      "title": "Getting major projects built in Canada: Discussion paper on proposed legislative, regulatory and policy reforms",
+      "excerpt": "Proposals to make major-project decisions faster and more predictable.",
+      "source_type": "official_government",
+      "citation_text": "Government of Canada — Getting major projects built in Canada: Discussion paper on proposed legislative, regulatory and policy reforms — 2026-07-23",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: canada_major_projects_discussion_2026."
+    },
+    {
+      "key": "reg_cpc_red_tape__cpc_red_tape_projects",
+      "argument": "reg_cpc_red_tape",
+      "url": "https://www.conservative.ca/a-new-chapter-in-an-old-friendship/",
+      "title": "A New Chapter in an Old Friendship",
+      "excerpt": "Conservative critique of construction delays and regulation.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — A New Chapter in an Old Friendship — 2026-03-04",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cpc_red_tape_projects."
+    },
+    {
+      "key": "reg_cpc_red_tape__cpc_sovereignty_act",
+      "argument": "reg_cpc_red_tape",
+      "url": "https://www.conservative.ca/canadian-sovereignty-act/",
+      "title": "Canadian Sovereignty Act",
+      "excerpt": "Proposal to repeal laws viewed as barriers to growth and selected projects.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — Canadian Sovereignty Act",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cpc_sovereignty_act."
+    },
+    {
+      "key": "justice_gov_delay_remedies__justice_c16_delays",
+      "argument": "justice_gov_delay_remedies",
+      "url": "https://www.justice.gc.ca/eng/csj-sjc/pl/c16/index.html",
+      "title": "Bill C-16: Strengthening the criminal justice system and addressing court delays",
+      "excerpt": "Proposed measures to address court delays and their consequences.",
+      "source_type": "official_government",
+      "citation_text": "Department of Justice Canada — Bill C-16: Strengthening the criminal justice system and addressing court delays — 2026",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: justice_c16_delays."
+    },
+    {
+      "key": "justice_gov_delay_remedies__justice_department_plan_2026",
+      "argument": "justice_gov_delay_remedies",
+      "url": "https://www.justice.gc.ca/eng/rp-pr/cp-pm/rpp/2026_2027/rep-rap/index.html",
+      "title": "Departmental Plan 2026–27",
+      "excerpt": "Justice priorities, access, and system performance.",
+      "source_type": "official_government",
+      "citation_text": "Department of Justice Canada — Departmental Plan 2026–27 — 2026-03-13",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: justice_department_plan_2026."
+    },
+    {
+      "key": "justice_access_people_centered__justice_access_overview",
+      "argument": "justice_access_people_centered",
+      "url": "https://www.justice.gc.ca/eng/csj-sjc/access-acces/index.html",
+      "title": "Access to Justice",
+      "excerpt": "People-centred approach and barriers to access to justice.",
+      "source_type": "official_government",
+      "citation_text": "Department of Justice Canada — Access to Justice",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: justice_access_overview."
+    },
+    {
+      "key": "justice_access_people_centered__justice_legal_aid_marginalized",
+      "argument": "justice_access_people_centered",
+      "url": "https://www.justice.gc.ca/eng/rp-pr/jr/aid-aide/2024/p11.html",
+      "title": "Legal aid and marginalized populations",
+      "excerpt": "Evidence on unequal access to legal services.",
+      "source_type": "official_research",
+      "citation_text": "Department of Justice Canada — Legal aid and marginalized populations — 2024",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: justice_legal_aid_marginalized."
+    },
+    {
+      "key": "justice_cpc_bail__cpc_restore_safe_streets",
+      "argument": "justice_cpc_bail",
+      "url": "https://www.conservative.ca/restore-safe-streets/",
+      "title": "Restore Safe Streets",
+      "excerpt": "Conservative position on bail, repeat violent offending, and public safety.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — Restore Safe Streets",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cpc_restore_safe_streets."
+    },
+    {
+      "key": "aiedu_quebec_responsible__quebec_ai_education",
+      "argument": "aiedu_quebec_responsible",
+      "url": "https://www.quebec.ca/education/numerique/intelligence-artificielle",
+      "title": "Artificial Intelligence in Education",
+      "excerpt": "Official portal on AI integration and governance in education.",
+      "source_type": "official_government",
+      "citation_text": "Government of Quebec — Artificial Intelligence in Education — 2026-06-18",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: quebec_ai_education."
+    },
+    {
+      "key": "aiedu_quebec_responsible__quebec_ai_tools",
+      "argument": "aiedu_quebec_responsible",
+      "url": "https://www.quebec.ca/education/numerique/intelligence-artificielle/reseau-education/documents-outils-ia",
+      "title": "AI Documents and Tools for the Education System",
+      "excerpt": "Resources for ethical and responsible use of AI.",
+      "source_type": "official_government",
+      "citation_text": "Government of Quebec — AI Documents and Tools for the Education System — 2026-04-28",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: quebec_ai_tools."
+    },
+    {
+      "key": "aiedu_quebec_responsible__quebec_digital_competency",
+      "argument": "aiedu_quebec_responsible",
+      "url": "https://www.quebec.ca/education/numerique/cadre-reference",
+      "title": "Digital Competency Framework",
+      "excerpt": "Updated digital competency framework incorporating AI.",
+      "source_type": "official_government",
+      "citation_text": "Government of Quebec — Digital Competency Framework — 2026-08-10",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: quebec_digital_competency."
+    },
+    {
+      "key": "aiedu_advisory_literacy__ised_ai_strategy_inputs",
+      "argument": "aiedu_advisory_literacy",
+      "url": "https://ised-isde.canada.ca/site/ised/en/public-consultations/engagements-canadas-next-ai-strategy-summary-inputs",
+      "title": "Engagements on Canada's next AI strategy: Summary of inputs",
+      "excerpt": "Consultation summary, including calls for AI literacy and education.",
+      "source_type": "official_government",
+      "citation_text": "Innovation, Science and Economic Development Canada — Engagements on Canada's next AI strategy: Summary of inputs — 2026-02-05",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: ised_ai_strategy_inputs."
+    },
+    {
+      "key": "aiedu_advisory_literacy__ai_advisory_learning_responsible",
+      "argument": "aiedu_advisory_literacy",
+      "url": "https://ised-isde.canada.ca/site/advisory-council-artificial-intelligence/en/public-awareness-working-group/learning-together-responsible-artificial-intelligence",
+      "title": "Learning together for responsible artificial intelligence",
+      "excerpt": "Recommendations on AI learning, accountability, and inclusion.",
+      "source_type": "expert_advisory",
+      "citation_text": "Advisory Council on Artificial Intelligence — Learning together for responsible artificial intelligence",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: ai_advisory_learning_responsible."
+    },
+    {
+      "key": "immigration_gov_rebalance__ircc_levels_2026_2028",
+      "argument": "immigration_gov_rebalance",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels.html",
+      "title": "Immigration Levels Plan",
+      "excerpt": "2026 targets for students, temporary workers, and permanent residents.",
+      "source_type": "official_government",
+      "citation_text": "Immigration, Refugees and Citizenship Canada — Immigration Levels Plan — 2025-11-06",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: ircc_levels_2026_2028."
+    },
+    {
+      "key": "immigration_gov_rebalance__ircc_supplementary_2026_2028",
+      "argument": "immigration_gov_rebalance",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/supplementary-immigration-levels-2026-2028.html",
+      "title": "Supplementary Information for the 2026–2028 Immigration Levels Plan",
+      "excerpt": "Temporary-resident targets and objective of bringing their share below 5% of the population by end-2027.",
+      "source_type": "official_government",
+      "citation_text": "Immigration, Refugees and Citizenship Canada — Supplementary Information for the 2026–2028 Immigration Levels Plan — 2025-11-05",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: ircc_supplementary_2026_2028."
+    },
+    {
+      "key": "immigration_quebec_capacity__quebec_immigration_2026_2029",
+      "argument": "immigration_quebec_capacity",
+      "url": "https://www.quebec.ca/en/news/actualites/detail/tabling-orientations-immigration-2026-2029-plan-2026-complementary-measures-66844",
+      "title": "Tabling of the 2026–2029 immigration orientations and 2026 plan",
+      "excerpt": "Quebec approach to limiting volumes and better aligning them with reception capacity.",
+      "source_type": "official_government",
+      "citation_text": "Government of Quebec — Tabling of the 2026–2029 immigration orientations and 2026 plan — 2025-11-07",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: quebec_immigration_2026_2029."
+    },
+    {
+      "key": "immigration_cpc_lower__cpc_immigration_numbers",
+      "argument": "immigration_cpc_lower",
+      "url": "https://www.conservative.ca/carneys-out-of-control-immigration-numbers/",
+      "title": "Carney's Out-of-Control Immigration Numbers",
+      "excerpt": "Conservative position favouring lower immigration levels tied to service capacity.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — Carney's Out-of-Control Immigration Numbers",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cpc_immigration_numbers."
+    },
+    {
+      "key": "immigration_cpc_lower__cpc_end_tfw",
+      "argument": "immigration_cpc_lower",
+      "url": "https://www.conservative.ca/end-the-tfw-program/",
+      "title": "End the TFW Program",
+      "excerpt": "Conservative proposal to overhaul or end the Temporary Foreign Worker Program.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — End the TFW Program",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cpc_end_tfw."
+    },
+    {
+      "key": "immigration_ndp_status__ndp_tfw_cuts",
+      "argument": "immigration_ndp_status",
+      "url": "https://www.ndp.ca/news/ndp-statement-temporary-foreign-worker-program-cuts",
+      "title": "NDP statement on Temporary Foreign Worker Program cuts",
+      "excerpt": "NDP position on temporary workers' rights and pathways to permanent status.",
+      "source_type": "political_party",
+      "citation_text": "New Democratic Party of Canada — NDP statement on Temporary Foreign Worker Program cuts — 2024-08-26",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: ndp_tfw_cuts."
+    },
+    {
+      "key": "plastic_gov_regulation__canada_single_use_plastics",
+      "argument": "plastic_gov_regulation",
+      "url": "https://www.canada.ca/en/environment-climate-change/services/managing-reducing-waste/reduce-plastic-waste/single-use-plastic-overview.html",
+      "title": "Single-use Plastics Prohibition Regulations — Overview",
+      "excerpt": "Federal framework for prohibitions on selected single-use plastics.",
+      "source_type": "official_government",
+      "citation_text": "Environment and Climate Change Canada — Single-use Plastics Prohibition Regulations — Overview",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: canada_single_use_plastics."
+    },
+    {
+      "key": "plastic_gov_regulation__canada_plastics_registry",
+      "argument": "plastic_gov_regulation",
+      "url": "https://www.canada.ca/en/environment-climate-change/services/managing-reducing-waste/reduce-plastic-waste/federal-plastics-registry.html",
+      "title": "Federal Plastics Registry",
+      "excerpt": "Reporting requirements and lifecycle data for plastics.",
+      "source_type": "official_government",
+      "citation_text": "Environment and Climate Change Canada — Federal Plastics Registry",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: canada_plastics_registry."
+    },
+    {
+      "key": "plastic_gov_regulation__canada_plastics_amendments_2026",
+      "argument": "plastic_gov_regulation",
+      "url": "https://www.canada.ca/en/environment-climate-change/corporate/transparency/consultations/proposed-amendments-single-use-plastics-prohibition-regulations.html",
+      "title": "Proposed amendments to the Single-use Plastics Prohibition Regulations",
+      "excerpt": "2026 regulatory changes and the trade-off between domestic prohibitions and exports.",
+      "source_type": "official_government",
+      "citation_text": "Environment and Climate Change Canada — Proposed amendments to the Single-use Plastics Prohibition Regulations — 2026-03-13",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: canada_plastics_amendments_2026."
+    },
+    {
+      "key": "plastic_cpc_cost__cpc_plastics_packaging",
+      "argument": "plastic_cpc_cost",
+      "url": "https://www.conservative.ca/axe-the-food-packaging-tax/",
+      "title": "Axe the Food Packaging Tax",
+      "excerpt": "Conservative criticism of plastic rules and their alleged effect on costs.",
+      "source_type": "political_party",
+      "citation_text": "Conservative Party of Canada — Axe the Food Packaging Tax",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cpc_plastics_packaging."
+    },
+    {
+      "key": "plastic_ecojustice_stronger__ecojustice_plastic_2026",
+      "argument": "plastic_ecojustice_stronger",
+      "url": "https://ecojustice.ca/news/health-and-environmental-groups-celebrate-victory-in-plastic-pollution-regulation-case/",
+      "title": "Health and environmental groups celebrate victory in plastic pollution regulation case",
+      "excerpt": "Environmental position supporting retention and strengthening of plastic regulation.",
+      "source_type": "civil_society",
+      "citation_text": "Ecojustice — Health and environmental groups celebrate victory in plastic pollution regulation case — 2026-01-30",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: ecojustice_plastic_2026."
+    },
+    {
+      "key": "cohesion_quebec_common_culture__quebec_integration_policy_2026",
+      "argument": "cohesion_quebec_common_culture",
+      "url": "https://www.quebec.ca/gouvernement/ministeres-organismes/langue-francaise/publications/politique-integration-nationale",
+      "title": "Quebec National Integration Policy",
+      "excerpt": "Quebec framework centred on French, shared culture, and national integration.",
+      "source_type": "official_government",
+      "citation_text": "Government of Quebec — Quebec National Integration Policy — 2026-07-16",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: quebec_integration_policy_2026."
+    },
+    {
+      "key": "cohesion_quebec_common_culture__quebec_integration_action",
+      "argument": "cohesion_quebec_common_culture",
+      "url": "https://www.quebec.ca/gouvernement/ministeres-organismes/immigration/publications/plan-action-developpement-durable-2023-2028",
+      "title": "2023–2028 Sustainable Development Action Plan — Immigration and French-Language Integration",
+      "excerpt": "Measures related to intercultural dialogue, French-language integration, and social integration.",
+      "source_type": "official_government",
+      "citation_text": "Government of Quebec — 2023–2028 Sustainable Development Action Plan — Immigration and French-Language Integration",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: quebec_integration_action."
+    },
+    {
+      "key": "cohesion_canada_pluralism__canada_multiculturalism_overview",
+      "argument": "cohesion_canada_pluralism",
+      "url": "https://www.canada.ca/en/canadian-heritage/corporate/transparency/open-government/standing-committee/guilbeault-identity-culture-september-2025/overview.html",
+      "title": "Overview — Canadian identity, culture and multiculturalism",
+      "excerpt": "Federal framework presenting diversity and multiculturalism as components of national unity.",
+      "source_type": "official_government",
+      "citation_text": "Canadian Heritage — Overview — Canadian identity, culture and multiculturalism",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: canada_multiculturalism_overview."
+    },
+    {
+      "key": "cohesion_canada_pluralism__canada_multiculturalism_cohesion_2026",
+      "argument": "cohesion_canada_pluralism",
+      "url": "https://www.canada.ca/en/canadian-heritage/corporate/transparency/open-government/standing-committee/bilodeau-pacp-public-accounts-june-2026/other-items-interest.html",
+      "title": "Other items of interest — Multiculturalism and anti-racism",
+      "excerpt": "Federal position on multiculturalism, anti-racism, and social cohesion.",
+      "source_type": "official_government",
+      "citation_text": "Canadian Heritage — Other items of interest — Multiculturalism and anti-racism — 2026-06",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: canada_multiculturalism_cohesion_2026."
+    },
+    {
+      "key": "climate_canada_electrify__canada_clean_electricity",
+      "argument": "climate_canada_electrify",
+      "url": "https://www.canada.ca/en/services/environment/weather/climatechange/climate-plan/clean-electricity.html",
+      "title": "Clean electricity",
+      "excerpt": "Clean electricity, demand growth, and competitiveness.",
+      "source_type": "official_government",
+      "citation_text": "Government of Canada — Clean electricity — 2026-05-27",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: canada_clean_electricity."
+    },
+    {
+      "key": "climate_canada_electrify__canada_2030_emissions_plan",
+      "argument": "climate_canada_electrify",
+      "url": "https://www.canada.ca/en/services/environment/weather/climatechange/climate-plan/climate-plan-overview/emissions-reduction-2030.html",
+      "title": "2030 Emissions Reduction Plan",
+      "excerpt": "Emissions-reduction targets and the path to net zero.",
+      "source_type": "official_government",
+      "citation_text": "Government of Canada — 2030 Emissions Reduction Plan",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: canada_2030_emissions_plan."
+    },
+    {
+      "key": "climate_quebec_green_plan__quebec_green_economy_plan",
+      "argument": "climate_quebec_green_plan",
+      "url": "https://www.quebec.ca/gouvernement/politiques-orientations/plan-economie-verte",
+      "title": "2030 Plan for a Green Economy",
+      "excerpt": "Quebec framework for climate transition and electrification.",
+      "source_type": "official_government",
+      "citation_text": "Government of Quebec — 2030 Plan for a Green Economy — 2026-07-29",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: quebec_green_economy_plan."
+    },
+    {
+      "key": "climate_quebec_green_plan__quebec_green_implementation",
+      "argument": "climate_quebec_green_plan",
+      "url": "https://www.quebec.ca/gouvernement/politiques-orientations/plan-economie-verte/plan-mise-en-oeuvre",
+      "title": "Implementation Plan for the 2030 Plan for a Green Economy",
+      "excerpt": "Implementation measures and climate investments.",
+      "source_type": "official_government",
+      "citation_text": "Government of Quebec — Implementation Plan for the 2030 Plan for a Green Economy — 2026-06-29",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: quebec_green_implementation."
+    },
+    {
+      "key": "climate_alberta_technology_oil__alberta_tier",
+      "argument": "climate_alberta_technology_oil",
+      "url": "https://www.alberta.ca/technology-innovation-and-emissions-reduction-regulation",
+      "title": "Technology Innovation and Emissions Reduction Regulation",
+      "excerpt": "Alberta approach to industrial carbon pricing and technology-led emissions reductions.",
+      "source_type": "official_government",
+      "citation_text": "Government of Alberta — Technology Innovation and Emissions Reduction Regulation",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Alberta. Source registry key: alberta_tier."
+    },
+    {
+      "key": "climate_alberta_technology_oil__alberta_west_coast_pipeline",
+      "argument": "climate_alberta_technology_oil",
+      "url": "https://www.alberta.ca/west-coast-oil-pipeline",
+      "title": "West Coast oil pipeline",
+      "excerpt": "Intention to expand oil export capacity while advancing emissions-reduction projects.",
+      "source_type": "official_government",
+      "citation_text": "Government of Alberta — West Coast oil pipeline — 2026-07",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Alberta/Canada. Source registry key: alberta_west_coast_pipeline."
+    },
+    {
+      "key": "tech_gov_ai_strategy__ised_national_ai_strategy_2026",
+      "argument": "tech_gov_ai_strategy",
+      "url": "https://ised-isde.canada.ca/site/ised/en/canadas-national-artificial-intelligence-strategy-ai-all",
+      "title": "Canada's National Artificial Intelligence Strategy",
+      "excerpt": "AI adoption targets, skills, compute, and economic growth.",
+      "source_type": "official_government",
+      "citation_text": "Innovation, Science and Economic Development Canada — Canada's National Artificial Intelligence Strategy — 2026-06-08",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: ised_national_ai_strategy_2026."
+    },
+    {
+      "key": "tech_cci_scale_ip__cci_innovation_power_2026",
+      "argument": "tech_cci_scale_ip",
+      "url": "https://www.canadianinnovators.org/content/innovation-as-power-the-choices-that-will-define-2026",
+      "title": "Innovation as Power: The Choices That Will Define 2026",
+      "excerpt": "Case for intellectual property, AI compute, sovereignty, and technology diversification.",
+      "source_type": "industry_advocacy",
+      "citation_text": "Council of Canadian Innovators — Innovation as Power: The Choices That Will Define 2026 — 2026-01-16",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cci_innovation_power_2026."
+    },
+    {
+      "key": "tech_cci_scale_ip__cci_quebec_election_2026",
+      "argument": "tech_cci_scale_ip",
+      "url": "https://www.canadianinnovators.org/content/2026-quebec-election-primer-what-innovators-need-to-scale",
+      "title": "2026 Quebec Election Primer: What Innovators Need to Scale",
+      "excerpt": "Priorities of Quebec technology firms: IP, digital sovereignty, AI, and growth.",
+      "source_type": "industry_advocacy",
+      "citation_text": "Council of Canadian Innovators — 2026 Quebec Election Primer: What Innovators Need to Scale — 2026-07-16",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: cci_quebec_election_2026."
+    },
+    {
+      "key": "tech_cci_scale_ip__cci_public_procurement",
+      "argument": "tech_cci_scale_ip",
+      "url": "https://www.canadianinnovators.org/content/buying-what-we-build-a-cci-policy-report-on-public-buying-for-canadian-innovation-and-prosperity",
+      "title": "Buying What We Build: A CCI Policy Report on Public Buying for Canadian Innovation and Prosperity",
+      "excerpt": "Proposal to use public procurement to scale Canadian firms and retain IP and data.",
+      "source_type": "industry_advocacy",
+      "citation_text": "Council of Canadian Innovators — Buying What We Build: A CCI Policy Report on Public Buying for Canadian Innovation and Prosperity",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: cci_public_procurement."
+    },
+    {
+      "key": "tech_statcan_productivity__statcan_ai_productivity_2026",
+      "argument": "tech_statcan_productivity",
+      "url": "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026004/article/00002-eng.htm",
+      "title": "Artificial intelligence and productivity growth in Canada",
+      "excerpt": "Estimate of AI's potential contribution to productivity growth.",
+      "source_type": "official_statistics",
+      "citation_text": "Statistics Canada — Artificial intelligence and productivity growth in Canada — 2026-04-22",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: statcan_ai_productivity_2026."
+    },
+    {
+      "key": "tech_statcan_productivity__statcan_productivity_competition_2026",
+      "argument": "tech_statcan_productivity",
+      "url": "https://www150.statcan.gc.ca/n1/pub/11f0019m/11f0019m2026002-eng.htm",
+      "title": "Productivity and competition in Canada",
+      "excerpt": "Context on Canada's productivity weakness and drivers of performance.",
+      "source_type": "official_statistics",
+      "citation_text": "Statistics Canada — Productivity and competition in Canada — 2026",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: statcan_productivity_competition_2026."
+    },
+    {
+      "key": "us_bq_quebec_voice__bq_quebec_voice_us_2025",
+      "argument": "us_bq_quebec_voice",
+      "url": "https://www.blocquebecois.org/negociations-avec-donald-trump-le-quebec-doit-parler-de-sa-propre-voix/",
+      "title": "Negotiations with Donald Trump: Quebec Must Speak with Its Own Voice",
+      "excerpt": "Background source retained for the actor's broader Canada–U.S. policy context. The dialogue in the seeded walkthrough is DEMO FICTION.",
+      "source_type": "political_party",
+      "citation_text": "Bloc Québécois — Negotiations with Donald Trump: Quebec Must Speak with Its Own Voice — 2025-04-03",
+      "quote": "",
+      "note": "Background context only. The seeded party-room dialogue is fictional and must not be attributed to this source or treated as an official statement by the named party or government."
+    },
+    {
+      "key": "us_bq_quebec_voice__bq_tariffs_pme_2026",
+      "argument": "us_bq_quebec_voice",
+      "url": "https://www.blocquebecois.org/journee-de-lopposition-du-bloc-quebecois-un-cri-dalarme-pour-soutenir-nos-pme-face-aux-tarifs-americains/",
+      "title": "Bloc Québécois Opposition Day: An Alarm Call to Support Our SMEs Against U.S. Tariffs",
+      "excerpt": "Background source retained for the actor's broader Canada–U.S. policy context. The dialogue in the seeded walkthrough is DEMO FICTION.",
+      "source_type": "political_party",
+      "citation_text": "Bloc Québécois — Bloc Québécois Opposition Day: An Alarm Call to Support Our SMEs Against U.S. Tariffs — 2026-05-01",
+      "quote": "",
+      "note": "Background context only. The seeded party-room dialogue is fictional and must not be attributed to this source or treated as an official statement by the named party or government."
+    },
+    {
+      "key": "ukraine_bq_support__bq_ukraine_2025",
+      "argument": "ukraine_bq_support",
+      "url": "https://www.blocquebecois.org/trois-ans-dinvasion-russe-en-ukraine-le-bloc-quebecois-reaffirme-son-appui-total-a-lindependance-ukrainienne/",
+      "title": "Three Years Since Russia's Invasion of Ukraine: Bloc Québécois Reaffirms Full Support for Ukrainian Independence",
+      "excerpt": "Support for Ukraine's independence and security, sanctions, and international engagement.",
+      "source_type": "political_party",
+      "citation_text": "Bloc Québécois — Three Years Since Russia's Invasion of Ukraine: Bloc Québécois Reaffirms Full Support for Ukrainian Independence — 2025-02-24",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada/Ukraine. Source registry key: bq_ukraine_2025."
+    },
+    {
+      "key": "wealth_qs_redistribution__qs_workers_manifest",
+      "argument": "wealth_qs_redistribution",
+      "url": "https://appuyez.quebecsolidaire.net/manifeste",
+      "title": "Workers’ Manifesto — Québec solidaire",
+      "excerpt": "Purchasing power, redistribution, public services, labour rights, and a just transition.",
+      "source_type": "political_party",
+      "citation_text": "Québec solidaire — Workers’ Manifesto — Québec solidaire",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: qs_workers_manifest."
+    },
+    {
+      "key": "wealth_ftq_services__ftq_may_day_2025",
+      "argument": "wealth_ftq_services",
+      "url": "https://ftq.qc.ca/1er-mai-2025/",
+      "title": "May 1, 2025 — International Workers' Day",
+      "excerpt": "Critique of austerity and tax cuts at the expense of public services and most workers.",
+      "source_type": "labour_union",
+      "citation_text": "FTQ — May 1, 2025 — International Workers' Day — 2025-05-01",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: ftq_may_day_2025."
+    },
+    {
+      "key": "reg_plq_two_for_one__plq_general_council_2026",
+      "argument": "reg_plq_two_for_one",
+      "url": "https://plq.org/conseil-general-du-parti-liberal-du-quebec-a-sherbrooke-charles-milliard-veut-reparer-le-quebec/",
+      "title": "Quebec Liberal Party General Council in Sherbrooke: Charles Milliard Wants to Repair Quebec",
+      "excerpt": "Immigration calibrated to regional needs and capacity; regulatory moratorium and two-for-one rule.",
+      "source_type": "political_party",
+      "citation_text": "Quebec Liberal Party — Quebec Liberal Party General Council in Sherbrooke: Charles Milliard Wants to Repair Quebec — 2026-06-09",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: plq_general_council_2026."
+    },
+    {
+      "key": "reg_cpq_permitting__cpq_bill11_2026",
+      "argument": "reg_cpq_permitting",
+      "url": "https://www.cpq.qc.ca/publications/projet-de-loi-11-le-cpq-salue-plusieurs-avancees-et-appel-a-ancrer-durablement-lallegement-reglementaire-dans-les-facons-de-faire-du-gouvernement/",
+      "title": "Bill 11: CPQ Welcomes Several Advances and Calls for Lasting Regulatory Relief",
+      "excerpt": "Case for regulatory relief and a durably lighter administrative burden.",
+      "source_type": "industry_advocacy",
+      "citation_text": "Quebec Employers Council (CPQ) — Bill 11: CPQ Welcomes Several Advances and Calls for Lasting Regulatory Relief — 2026-02-04",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: cpq_bill11_2026."
+    },
+    {
+      "key": "reg_equiterre_safeguards__equiterre_major_projects_2026",
+      "argument": "reg_equiterre_safeguards",
+      "url": "https://www.equiterre.org/fr/ressources/comment-b%C3%A2tir-un-canada-fort-en-freinant-la-transition",
+      "title": "How Can We Build a Strong Canada While Slowing the Transition?",
+      "excerpt": "Critique of weakening environmental safeguards to accelerate major projects.",
+      "source_type": "civil_society",
+      "citation_text": "Équiterre — How Can We Build a Strong Canada While Slowing the Transition? — 2026-06-15",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: equiterre_major_projects_2026."
+    },
+    {
+      "key": "reg_apnql_consultation__apnql_bill11_2026",
+      "argument": "reg_apnql_consultation",
+      "url": "https://www.assnat.qc.ca/Media/Process.aspx?MediaId=ANQ.Vigie.Bll.DocumentGenerique_217945&process=Default&token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe%2FvG7%2FYWzz",
+      "title": "AFNQL Submission on Bill 11 — Regulatory and Administrative Burden Reduction",
+      "excerpt": "Call to preserve monitoring, transparency, consultation, and accommodation during regulatory relief.",
+      "source_type": "first_nations_primary",
+      "citation_text": "Assembly of First Nations Quebec-Labrador / National Assembly of Quebec — AFNQL Submission on Bill 11 — Regulatory and Administrative Burden Reduction",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: apnql_bill11_2026."
+    },
+    {
+      "key": "justice_quebec_access_digital__quebec_justice_digital_2025_2026",
+      "argument": "justice_quebec_access_digital",
+      "url": "https://www.quebec.ca/gouvernement/ministeres-organismes/cybersecurite-numerique/publications/portefeuille-projets-prioritaires-gouvernemental-transformation-numerique-2025-2026",
+      "title": "Government Portfolio of Priority Digital Transformation Projects 2025–2026",
+      "excerpt": "Digital court-file program intended to simplify procedures and reduce processing delays.",
+      "source_type": "official_government",
+      "citation_text": "Government of Quebec — Government Portfolio of Priority Digital Transformation Projects 2025–2026 — 2025-09-12",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: quebec_justice_digital_2025_2026."
+    },
+    {
+      "key": "justice_quebec_access_digital__quebec_fonds_acces_justice",
+      "argument": "justice_quebec_access_digital",
+      "url": "https://www.quebec.ca/gouvernement/ministeres-organismes/justice/mission-services/faj",
+      "title": "Access to Justice Fund",
+      "excerpt": "Support for initiatives that improve legal understanding, dispute resolution, and access to justice.",
+      "source_type": "official_government",
+      "citation_text": "Quebec Ministry of Justice — Access to Justice Fund — 2025-11-11",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: quebec_fonds_acces_justice."
+    },
+    {
+      "key": "justice_barreau_access__barreau_clinic_2026",
+      "argument": "justice_barreau_access",
+      "url": "https://www.barreau.qc.ca/fr/nouvelle/communiques/clinique-juridique-ecole-barreau-levier-concret-acces-justice-formation/",
+      "title": "Quebec Bar Legal Clinic: A Practical Tool for Access to Justice and Training",
+      "excerpt": "Free access to legal information and advice.",
+      "source_type": "professional_order",
+      "citation_text": "Quebec Bar — Quebec Bar Legal Clinic: A Practical Tool for Access to Justice and Training — 2026-06-05",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: barreau_clinic_2026."
+    },
+    {
+      "key": "justice_barreau_access__barreau_delay_actions_2024",
+      "argument": "justice_barreau_access",
+      "url": "https://www.barreau.qc.ca/fr/nouvelle/avis-aux-membres/reduction-delais-criminelle-penale-barreau-propose-plusieurs-pistes-action-concretes/",
+      "title": "Quebec Bar Proposes Concrete Measures to Reduce Criminal and Penal Case Delays",
+      "excerpt": "Acknowledges delays while advocating measures compatible with the quality of justice.",
+      "source_type": "professional_order",
+      "citation_text": "Quebec Bar — Quebec Bar Proposes Concrete Measures to Reduce Criminal and Penal Case Delays — 2024-02-12",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: barreau_delay_actions_2024."
+    },
+    {
+      "key": "aiedu_fqppu_governance__fqppu_ai_governance",
+      "argument": "aiedu_fqppu_governance",
+      "url": "https://fqppu.org/la-fqppu-demande-la-demission-de-pascale-dery/",
+      "title": "FQPPU Calls for the Minister of Higher Education to Resign",
+      "excerpt": "Critique of AI consultation, insufficient resources, and protection of academic freedom and university governance.",
+      "source_type": "higher_education_stakeholder",
+      "citation_text": "FQPPU — FQPPU Calls for the Minister of Higher Education to Resign",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: fqppu_ai_governance."
+    },
+    {
+      "key": "aiedu_unesco_human_centered__unesco_genai_guidance",
+      "argument": "aiedu_unesco_human_centered",
+      "url": "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research",
+      "title": "Guidance for generative AI in education and research",
+      "excerpt": "Human-centred framework covering privacy, equity, ethical validation, pedagogical uses, and coherent policy.",
+      "source_type": "international_standard",
+      "citation_text": "UNESCO — Guidance for generative AI in education and research — 2026-01-16",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: International. Source registry key: unesco_genai_guidance."
+    },
+    {
+      "key": "immigration_pq_lower__pq_immigration_plan_2026",
+      "argument": "immigration_pq_lower",
+      "url": "https://pq.org/independance/plan-immigration/",
+      "title": "Immigration Plan — A Sustainable Model",
+      "excerpt": "Reduction in temporary immigration, target of about 35,000 permanent residents per year, and reception-capacity considerations.",
+      "source_type": "political_party",
+      "citation_text": "Parti Québécois — Immigration Plan — A Sustainable Model — 2026",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: pq_immigration_plan_2026."
+    },
+    {
+      "key": "immigration_plq_regional_capacity__plq_general_council_2026",
+      "argument": "immigration_plq_regional_capacity",
+      "url": "https://plq.org/conseil-general-du-parti-liberal-du-quebec-a-sherbrooke-charles-milliard-veut-reparer-le-quebec/",
+      "title": "Quebec Liberal Party General Council in Sherbrooke: Charles Milliard Wants to Repair Quebec",
+      "excerpt": "Immigration calibrated to regional needs and capacity; regulatory moratorium and two-for-one rule.",
+      "source_type": "political_party",
+      "citation_text": "Quebec Liberal Party — Quebec Liberal Party General Council in Sherbrooke: Charles Milliard Wants to Repair Quebec — 2026-06-09",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: plq_general_council_2026."
+    },
+    {
+      "key": "immigration_bq_quebec_control__bq_immigration_capacity_2025",
+      "argument": "immigration_bq_quebec_control",
+      "url": "https://www.blocquebecois.org/seul-le-quebec-peut-assurer-limmigration-reussie/",
+      "title": "Only Quebec Can Deliver Successful Immigration",
+      "excerpt": "Reception capacity, transfer of immigration powers, and adaptation to Quebec realities.",
+      "source_type": "political_party",
+      "citation_text": "Bloc Québécois — Only Quebec Can Deliver Successful Immigration — 2025-04-21",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec/Canada. Source registry key: bq_immigration_capacity_2025."
+    },
+    {
+      "key": "plastic_equiterre_producer__equiterre_production_consumption",
+      "argument": "plastic_equiterre_producer",
+      "url": "https://www.equiterre.org/fr/notre-travail/production-et-consommation",
+      "title": "Production and Consumption",
+      "excerpt": "Source reduction, reuse, and extended producer responsibility.",
+      "source_type": "civil_society",
+      "citation_text": "Équiterre — Production and Consumption",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: equiterre_production_consumption."
+    },
+    {
+      "key": "cohesion_pq_common_nation__pq_immigration_plan_2026",
+      "argument": "cohesion_pq_common_nation",
+      "url": "https://pq.org/independance/plan-immigration/",
+      "title": "Immigration Plan — A Sustainable Model",
+      "excerpt": "Reduction in temporary immigration, target of about 35,000 permanent residents per year, and reception-capacity considerations.",
+      "source_type": "political_party",
+      "citation_text": "Parti Québécois — Immigration Plan — A Sustainable Model — 2026",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: pq_immigration_plan_2026."
+    },
+    {
+      "key": "cohesion_pq_common_nation__pq_project_national_2026",
+      "argument": "cohesion_pq_common_nation",
+      "url": "https://pq.org/wp-content/uploads/2026/05/PQ-PROPOSITION-PRINCIPALE-PROJET-NATIONAL-V5-individuel.pdf",
+      "title": "National Project — Main Proposal 2026",
+      "excerpt": "Ecological transition, carbon budgets, climate tests, renewable energy, national integration, and anti-discrimination.",
+      "source_type": "political_party",
+      "citation_text": "Parti Québécois — National Project — Main Proposal 2026 — 2026-05",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: pq_project_national_2026."
+    },
+    {
+      "key": "cohesion_bq_quebec_model__bq_immigration_capacity_2025",
+      "argument": "cohesion_bq_quebec_model",
+      "url": "https://www.blocquebecois.org/seul-le-quebec-peut-assurer-limmigration-reussie/",
+      "title": "Only Quebec Can Deliver Successful Immigration",
+      "excerpt": "Reception capacity, transfer of immigration powers, and adaptation to Quebec realities.",
+      "source_type": "political_party",
+      "citation_text": "Bloc Québécois — Only Quebec Can Deliver Successful Immigration — 2025-04-21",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec/Canada. Source registry key: bq_immigration_capacity_2025."
+    },
+    {
+      "key": "climate_pq_transition__pq_project_national_2026",
+      "argument": "climate_pq_transition",
+      "url": "https://pq.org/wp-content/uploads/2026/05/PQ-PROPOSITION-PRINCIPALE-PROJET-NATIONAL-V5-individuel.pdf",
+      "title": "National Project — Main Proposal 2026",
+      "excerpt": "Ecological transition, carbon budgets, climate tests, renewable energy, national integration, and anti-discrimination.",
+      "source_type": "political_party",
+      "citation_text": "Parti Québécois — National Project — Main Proposal 2026 — 2026-05",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: pq_project_national_2026."
+    },
+    {
+      "key": "climate_qs_just_transition__qs_workers_manifest",
+      "argument": "climate_qs_just_transition",
+      "url": "https://appuyez.quebecsolidaire.net/manifeste",
+      "title": "Workers’ Manifesto — Québec solidaire",
+      "excerpt": "Purchasing power, redistribution, public services, labour rights, and a just transition.",
+      "source_type": "political_party",
+      "citation_text": "Québec solidaire — Workers’ Manifesto — Québec solidaire",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: qs_workers_manifest."
+    },
+    {
+      "key": "climate_equiterre_stronger__equiterre_spede_2026",
+      "argument": "climate_equiterre_stronger",
+      "url": "https://www.equiterre.org/fr/ressources/601-recommandation-politique-reforme-spede",
+      "title": "A Reform That Lacks Ambition",
+      "excerpt": "Call to increase the ambition and effectiveness of Quebec's carbon market.",
+      "source_type": "civil_society",
+      "citation_text": "Équiterre — A Reform That Lacks Ambition — 2026-07-14",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Quebec. Source registry key: equiterre_spede_2026."
+    },
+    {
+      "key": "climate_equiterre_stronger__equiterre_major_projects_2026",
+      "argument": "climate_equiterre_stronger",
+      "url": "https://www.equiterre.org/fr/ressources/comment-b%C3%A2tir-un-canada-fort-en-freinant-la-transition",
+      "title": "How Can We Build a Strong Canada While Slowing the Transition?",
+      "excerpt": "Critique of weakening environmental safeguards to accelerate major projects.",
+      "source_type": "civil_society",
+      "citation_text": "Équiterre — How Can We Build a Strong Canada While Slowing the Transition? — 2026-06-15",
+      "quote": "",
+      "note": "Concise paraphrase; consult the linked source for full wording and context. Scope: Canada. Source registry key: equiterre_major_projects_2026."
+    },
+    {
+      "key": "trump_kk_conflict_report",
+      "argument": "trump_kk_conflict_disclosure",
+      "source_type": "background_report",
+      "citation_text": "In this fictional demonstration scenario, a background report identifies King Klown as the head of an independent global social-mobilization movement whose stated governance philosophy is to shift influence away from title and party proximity toward demonstrated expertise, ethical conduct, and contribution. The same fictional report documents large-scale anti-capitalist and anti-Trump mobilization, opposition to collaboration with Trump-aligned organizations, and outreach to Indigenous nations near candidate strategic-infrastructure sites. The report becomes relevant only after party participants debate whether Canada can work with a movement whose influence does not depend on government appointment or control.",
+      "note": "Fictional demonstration context; this is not a factual claim about real-world events, real-world party endorsements, or any actual partnership."
+    }
+  ],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "gov_canada",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "federal policy",
+        "intergovernmental affairs",
+        "public administration",
+        "international relations",
+        "program delivery"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.92,
+          "raw_score": 0.92
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.9,
+          "raw_score": 0.9
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.78,
+          "raw_score": 0.78
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.72,
+          "raw_score": 0.72
+        },
+        {
+          "domain_code": "1032",
+          "weighted_score": 0.68,
+          "raw_score": 0.68
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.6,
+          "raw_score": 0.6
+        },
+        {
+          "domain_code": "0542",
+          "weighted_score": 0.58,
+          "raw_score": 0.58
+        },
+        {
+          "domain_code": "0521",
+          "weighted_score": 0.55,
+          "raw_score": 0.55
+        },
+        {
+          "domain_code": "0613",
+          "weighted_score": 0.52,
+          "raw_score": 0.52
+        },
+        {
+          "domain_code": "0713",
+          "weighted_score": 0.5,
+          "raw_score": 0.5
+        },
+        {
+          "domain_code": "0111",
+          "weighted_score": 0.48,
+          "raw_score": 0.48
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "cpc",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "federal parliamentary politics",
+        "economic policy",
+        "public safety",
+        "regulatory policy"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.76,
+          "raw_score": 0.76
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.67,
+          "raw_score": 0.67
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.58,
+          "raw_score": 0.58
+        },
+        {
+          "domain_code": "1032",
+          "weighted_score": 0.54,
+          "raw_score": 0.54
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.48,
+          "raw_score": 0.48
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.44,
+          "raw_score": 0.44
+        },
+        {
+          "domain_code": "0713",
+          "weighted_score": 0.42,
+          "raw_score": 0.42
+        },
+        {
+          "domain_code": "0613",
+          "weighted_score": 0.3,
+          "raw_score": 0.3
+        },
+        {
+          "domain_code": "0521",
+          "weighted_score": 0.25,
+          "raw_score": 0.25
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "ndp",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "federal parliamentary politics",
+        "labour and social policy",
+        "redistribution",
+        "international law advocacy"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.74,
+          "raw_score": 0.74
+        },
+        {
+          "domain_code": "092",
+          "weighted_score": 0.72,
+          "raw_score": 0.72
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.66,
+          "raw_score": 0.66
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.6,
+          "raw_score": 0.6
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.48,
+          "raw_score": 0.48
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.48,
+          "raw_score": 0.48
+        },
+        {
+          "domain_code": "0521",
+          "weighted_score": 0.38,
+          "raw_score": 0.38
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "pbo",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "fiscal analysis",
+        "budget projections",
+        "public finance",
+        "parliamentary fiscal oversight"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.98,
+          "raw_score": 0.98
+        },
+        {
+          "domain_code": "0542",
+          "weighted_score": 0.94,
+          "raw_score": 0.94
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.88,
+          "raw_score": 0.88
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.76,
+          "raw_score": 0.76
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "statcan",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "official statistics",
+        "demography",
+        "productivity measurement",
+        "household wealth",
+        "data infrastructure"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0542",
+          "weighted_score": 0.99,
+          "raw_score": 0.99
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.88,
+          "raw_score": 0.88
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.85,
+          "raw_score": 0.85
+        },
+        {
+          "domain_code": "0612",
+          "weighted_score": 0.72,
+          "raw_score": 0.72
+        },
+        {
+          "domain_code": "0613",
+          "weighted_score": 0.62,
+          "raw_score": 0.62
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.58,
+          "raw_score": 0.58
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "gov_quebec",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "provincial policy",
+        "francization",
+        "immigration administration",
+        "hydroelectricity",
+        "public services"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.9,
+          "raw_score": 0.9
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.88,
+          "raw_score": 0.88
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.72,
+          "raw_score": 0.72
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.68,
+          "raw_score": 0.68
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.67,
+          "raw_score": 0.67
+        },
+        {
+          "domain_code": "0231",
+          "weighted_score": 0.65,
+          "raw_score": 0.65
+        },
+        {
+          "domain_code": "0713",
+          "weighted_score": 0.62,
+          "raw_score": 0.62
+        },
+        {
+          "domain_code": "092",
+          "weighted_score": 0.6,
+          "raw_score": 0.6
+        },
+        {
+          "domain_code": "0521",
+          "weighted_score": 0.55,
+          "raw_score": 0.55
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "quebec_education",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "education policy",
+        "digital competency",
+        "AI in education",
+        "school governance"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0111",
+          "weighted_score": 0.96,
+          "raw_score": 0.96
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.82,
+          "raw_score": 0.82
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.62,
+          "raw_score": 0.62
+        },
+        {
+          "domain_code": "0613",
+          "weighted_score": 0.55,
+          "raw_score": 0.55
+        },
+        {
+          "domain_code": "0223",
+          "weighted_score": 0.48,
+          "raw_score": 0.48
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.38,
+          "raw_score": 0.38
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "gov_alberta",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "provincial policy",
+        "energy policy",
+        "industrial emissions",
+        "carbon capture"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.82,
+          "raw_score": 0.82
+        },
+        {
+          "domain_code": "0713",
+          "weighted_score": 0.82,
+          "raw_score": 0.82
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.78,
+          "raw_score": 0.78
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.7,
+          "raw_score": 0.7
+        },
+        {
+          "domain_code": "0521",
+          "weighted_score": 0.55,
+          "raw_score": 0.55
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.42,
+          "raw_score": 0.42
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "justice_canada",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "justice policy",
+        "access to justice",
+        "legal aid",
+        "criminal procedure",
+        "justice system research"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.97,
+          "raw_score": 0.97
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.82,
+          "raw_score": 0.82
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.78,
+          "raw_score": 0.78
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.58,
+          "raw_score": 0.58
+        },
+        {
+          "domain_code": "1032",
+          "weighted_score": 0.54,
+          "raw_score": 0.54
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "ecojustice",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "environmental law",
+        "regulatory litigation",
+        "pollution policy"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.91,
+          "raw_score": 0.91
+        },
+        {
+          "domain_code": "0521",
+          "weighted_score": 0.91,
+          "raw_score": 0.91
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.62,
+          "raw_score": 0.62
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.42,
+          "raw_score": 0.42
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "cci",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "Canadian technology firms",
+        "innovation policy",
+        "intellectual property",
+        "data sovereignty",
+        "scale-up economics"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0613",
+          "weighted_score": 0.93,
+          "raw_score": 0.93
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.88,
+          "raw_score": 0.88
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.82,
+          "raw_score": 0.82
+        },
+        {
+          "domain_code": "0612",
+          "weighted_score": 0.82,
+          "raw_score": 0.82
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.7,
+          "raw_score": 0.7
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.56,
+          "raw_score": 0.56
+        },
+        {
+          "domain_code": "0542",
+          "weighted_score": 0.42,
+          "raw_score": 0.42
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "ai_advisory",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "AI policy",
+        "AI literacy",
+        "responsible AI",
+        "skills",
+        "commercial adoption"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0613",
+          "weighted_score": 0.96,
+          "raw_score": 0.96
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.8,
+          "raw_score": 0.8
+        },
+        {
+          "domain_code": "0612",
+          "weighted_score": 0.78,
+          "raw_score": 0.78
+        },
+        {
+          "domain_code": "0223",
+          "weighted_score": 0.73,
+          "raw_score": 0.73
+        },
+        {
+          "domain_code": "0542",
+          "weighted_score": 0.58,
+          "raw_score": 0.58
+        },
+        {
+          "domain_code": "0111",
+          "weighted_score": 0.55,
+          "raw_score": 0.55
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.52,
+          "raw_score": 0.52
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.48,
+          "raw_score": 0.48
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "pq",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "Quebec nationalism",
+        "language policy",
+        "immigration policy",
+        "climate policy"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.76,
+          "raw_score": 0.76
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.71,
+          "raw_score": 0.71
+        },
+        {
+          "domain_code": "0231",
+          "weighted_score": 0.7,
+          "raw_score": 0.7
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.53,
+          "raw_score": 0.53
+        },
+        {
+          "domain_code": "0521",
+          "weighted_score": 0.47,
+          "raw_score": 0.47
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.45,
+          "raw_score": 0.45
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "plq",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "Quebec parliamentary politics",
+        "business regulation",
+        "regional immigration",
+        "francization"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.74,
+          "raw_score": 0.74
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.67,
+          "raw_score": 0.67
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.62,
+          "raw_score": 0.62
+        },
+        {
+          "domain_code": "0231",
+          "weighted_score": 0.5,
+          "raw_score": 0.5
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.46,
+          "raw_score": 0.46
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.4,
+          "raw_score": 0.4
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "qs",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "redistribution",
+        "social policy",
+        "climate transition",
+        "public transit"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.72,
+          "raw_score": 0.72
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.7,
+          "raw_score": 0.7
+        },
+        {
+          "domain_code": "092",
+          "weighted_score": 0.68,
+          "raw_score": 0.68
+        },
+        {
+          "domain_code": "0521",
+          "weighted_score": 0.64,
+          "raw_score": 0.64
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.58,
+          "raw_score": 0.58
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.42,
+          "raw_score": 0.42
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "bq",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "Quebec federal representation",
+        "Canada-US relations",
+        "language policy",
+        "immigration jurisdiction"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.77,
+          "raw_score": 0.77
+        },
+        {
+          "domain_code": "0231",
+          "weighted_score": 0.68,
+          "raw_score": 0.68
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.68,
+          "raw_score": 0.68
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.55,
+          "raw_score": 0.55
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.48,
+          "raw_score": 0.48
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "cpq",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "employer policy",
+        "business regulation",
+        "competitiveness",
+        "labour market"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.93,
+          "raw_score": 0.93
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.83,
+          "raw_score": 0.83
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.61,
+          "raw_score": 0.61
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.48,
+          "raw_score": 0.48
+        },
+        {
+          "domain_code": "0542",
+          "weighted_score": 0.42,
+          "raw_score": 0.42
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "ftq",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "labour relations",
+        "worker interests",
+        "public services",
+        "inequality",
+        "collective bargaining"
+      ],
+      "expertise": [
+        {
+          "domain_code": "092",
+          "weighted_score": 0.84,
+          "raw_score": 0.84
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.78,
+          "raw_score": 0.78
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.68,
+          "raw_score": 0.68
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.64,
+          "raw_score": 0.64
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.58,
+          "raw_score": 0.58
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "barreau_qc",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "legal profession",
+        "access to justice",
+        "legal education",
+        "court efficiency"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.99,
+          "raw_score": 0.99
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.66,
+          "raw_score": 0.66
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.55,
+          "raw_score": 0.55
+        },
+        {
+          "domain_code": "1032",
+          "weighted_score": 0.5,
+          "raw_score": 0.5
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "equiterre_qc",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "climate policy",
+        "plastic reduction",
+        "sustainable consumption",
+        "carbon markets"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0521",
+          "weighted_score": 0.94,
+          "raw_score": 0.94
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.68,
+          "raw_score": 0.68
+        },
+        {
+          "domain_code": "0713",
+          "weighted_score": 0.58,
+          "raw_score": 0.58
+        },
+        {
+          "domain_code": "0722",
+          "weighted_score": 0.56,
+          "raw_score": 0.56
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.48,
+          "raw_score": 0.48
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.47,
+          "raw_score": 0.47
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.46,
+          "raw_score": 0.46
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "apnql",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "First Nations governance",
+        "territorial rights",
+        "consultation and consent",
+        "intergovernmental relations",
+        "land stewardship"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.92,
+          "raw_score": 0.92
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.88,
+          "raw_score": 0.88
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.68,
+          "raw_score": 0.68
+        },
+        {
+          "domain_code": "0521",
+          "weighted_score": 0.65,
+          "raw_score": 0.65
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.52,
+          "raw_score": 0.52
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "fqppu",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "higher education",
+        "academic governance",
+        "faculty working conditions",
+        "research",
+        "AI in universities"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0111",
+          "weighted_score": 0.91,
+          "raw_score": 0.91
+        },
+        {
+          "domain_code": "0223",
+          "weighted_score": 0.62,
+          "raw_score": 0.62
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.61,
+          "raw_score": 0.61
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.58,
+          "raw_score": 0.58
+        },
+        {
+          "domain_code": "0542",
+          "weighted_score": 0.48,
+          "raw_score": 0.48
+        },
+        {
+          "domain_code": "0613",
+          "weighted_score": 0.47,
+          "raw_score": 0.47
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "unesco",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "international education standards",
+        "AI and education",
+        "ethics",
+        "culture",
+        "multilingualism"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0111",
+          "weighted_score": 0.94,
+          "raw_score": 0.94
+        },
+        {
+          "domain_code": "0223",
+          "weighted_score": 0.83,
+          "raw_score": 0.83
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.78,
+          "raw_score": 0.78
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.75,
+          "raw_score": 0.75
+        },
+        {
+          "domain_code": "0231",
+          "weighted_score": 0.66,
+          "raw_score": 0.66
+        },
+        {
+          "domain_code": "0613",
+          "weighted_score": 0.57,
+          "raw_score": 0.57
+        },
+        {
+          "domain_code": "0542",
+          "weighted_score": 0.47,
+          "raw_score": 0.47
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "rejean_mccormick",
+      "ethics_score": 1.0,
+      "profile_kind": "individual",
+      "specialization_tags": [
+        "software architecture",
+        "AI systems",
+        "systems thinking",
+        "knowledge infrastructure",
+        "mechanical/systemic modelling",
+        "technology strategy"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0613",
+          "weighted_score": 0.98,
+          "raw_score": 0.98
+        },
+        {
+          "domain_code": "0612",
+          "weighted_score": 0.93,
+          "raw_score": 0.93
+        },
+        {
+          "domain_code": "0713",
+          "weighted_score": 0.72,
+          "raw_score": 0.72
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.68,
+          "raw_score": 0.68
+        },
+        {
+          "domain_code": "0542",
+          "weighted_score": 0.65,
+          "raw_score": 0.65
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.52,
+          "raw_score": 0.52
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.5,
+          "raw_score": 0.5
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.48,
+          "raw_score": 0.48
+        },
+        {
+          "domain_code": "0223",
+          "weighted_score": 0.38,
+          "raw_score": 0.38
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.18,
+          "raw_score": 0.18
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "king_klown",
+      "ethics_score": 1.0,
+      "profile_kind": "individual",
+      "specialization_tags": [
+        "civic mobilization",
+        "public narrative",
+        "political performance",
+        "social movements",
+        "cultural expression",
+        "campaigning"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.88,
+          "raw_score": 0.88
+        },
+        {
+          "domain_code": "0321",
+          "weighted_score": 0.78,
+          "raw_score": 0.78
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.7,
+          "raw_score": 0.7
+        },
+        {
+          "domain_code": "0223",
+          "weighted_score": 0.62,
+          "raw_score": 0.62
+        },
+        {
+          "domain_code": "0231",
+          "weighted_score": 0.42,
+          "raw_score": 0.42
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.28,
+          "raw_score": 0.28
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.25,
+          "raw_score": 0.25
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.18,
+          "raw_score": 0.18
+        },
+        {
+          "domain_code": "0613",
+          "weighted_score": 0.12,
+          "raw_score": 0.12
+        },
+        {
+          "domain_code": "0612",
+          "weighted_score": 0.08,
+          "raw_score": 0.08
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "inquisiteur",
+      "ethics_score": 1.0,
+      "profile_kind": "individual",
+      "specialization_tags": [
+        "moderation",
+        "process stewardship"
+      ],
+      "expertise": [],
+      "note": "Moderation authority is role-based in this demo and is not converted into domain expertise or extra Smart Vote influence.",
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "trade_law_specialist_demo",
+      "ethics_score": 1.0,
+      "profile_kind": "individual",
+      "specialization_tags": [
+        "international trade law",
+        "trade agreements",
+        "sanctions",
+        "cross-border services",
+        "regulatory law"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.98,
+          "raw_score": 0.98
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.85,
+          "raw_score": 0.85
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.75,
+          "raw_score": 0.75
+        },
+        {
+          "domain_code": "1032",
+          "weighted_score": 0.35,
+          "raw_score": 0.35
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.3,
+          "raw_score": 0.3
+        },
+        {
+          "domain_code": "0612",
+          "weighted_score": 0.15,
+          "raw_score": 0.15
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "diplomatic_policy_advisor_demo",
+      "ethics_score": 1.0,
+      "profile_kind": "individual",
+      "specialization_tags": [
+        "diplomacy",
+        "foreign policy",
+        "international relations",
+        "alliance management",
+        "statecraft"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.96,
+          "raw_score": 0.96
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.82,
+          "raw_score": 0.82
+        },
+        {
+          "domain_code": "1032",
+          "weighted_score": 0.75,
+          "raw_score": 0.75
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.65,
+          "raw_score": 0.65
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.55,
+          "raw_score": 0.55
+        },
+        {
+          "domain_code": "0612",
+          "weighted_score": 0.1,
+          "raw_score": 0.1
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "security_analysis_desk_demo",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "national security",
+        "threat analysis",
+        "critical infrastructure",
+        "access control",
+        "risk assessment"
+      ],
+      "expertise": [
+        {
+          "domain_code": "1032",
+          "weighted_score": 0.98,
+          "raw_score": 0.98
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.8,
+          "raw_score": 0.8
+        },
+        {
+          "domain_code": "0612",
+          "weighted_score": 0.7,
+          "raw_score": 0.7
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.65,
+          "raw_score": 0.65
+        },
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.4,
+          "raw_score": 0.4
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.25,
+          "raw_score": 0.25
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "indigenous_governance_desk_demo",
+      "ethics_score": 1.0,
+      "profile_kind": "institutional",
+      "specialization_tags": [
+        "Indigenous governance",
+        "consultation protocols",
+        "jurisdiction",
+        "community governance",
+        "strategic-site governance"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.92,
+          "raw_score": 0.92
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.82,
+          "raw_score": 0.82
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.78,
+          "raw_score": 0.78
+        },
+        {
+          "domain_code": "0413",
+          "weighted_score": 0.75,
+          "raw_score": 0.75
+        },
+        {
+          "domain_code": "1032",
+          "weighted_score": 0.55,
+          "raw_score": 0.55
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.35,
+          "raw_score": 0.35
+        },
+        {
+          "domain_code": "0612",
+          "weighted_score": 0.3,
+          "raw_score": 0.3
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    },
+    {
+      "actor": "open_access_advocate_demo",
+      "ethics_score": 1.0,
+      "profile_kind": "individual",
+      "specialization_tags": [
+        "open access",
+        "civic participation",
+        "public-interest technology",
+        "platform access",
+        "civil society"
+      ],
+      "expertise": [
+        {
+          "domain_code": "0314",
+          "weighted_score": 0.55,
+          "raw_score": 0.55
+        },
+        {
+          "domain_code": "0312",
+          "weighted_score": 0.45,
+          "raw_score": 0.45
+        },
+        {
+          "domain_code": "0421",
+          "weighted_score": 0.25,
+          "raw_score": 0.25
+        },
+        {
+          "domain_code": "0612",
+          "weighted_score": 0.2,
+          "raw_score": 0.2
+        },
+        {
+          "domain_code": "0311",
+          "weighted_score": 0.2,
+          "raw_score": 0.2
+        },
+        {
+          "domain_code": "1032",
+          "weighted_score": 0.1,
+          "raw_score": 0.1
+        }
+      ],
+      "rating_visibility": "public",
+      "publication_basis": "DEMO/public role: EkoH ratings are intentionally disclosed for transparent decision-support review."
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [
+    {
+      "topic": "federal_deficit",
+      "domain_code": "0311",
+      "weight": 0.4
+    },
+    {
+      "topic": "federal_deficit",
+      "domain_code": "0413",
+      "weight": 0.2
+    },
+    {
+      "topic": "federal_deficit",
+      "domain_code": "0312",
+      "weight": 0.15
+    },
+    {
+      "topic": "federal_deficit",
+      "domain_code": "0542",
+      "weight": 0.15
+    },
+    {
+      "topic": "federal_deficit",
+      "domain_code": "092",
+      "weight": 0.1
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "domain_code": "0311",
+      "weight": 0.35
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "domain_code": "0312",
+      "weight": 0.25
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "domain_code": "0413",
+      "weight": 0.15
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "domain_code": "0613",
+      "weight": 0.1
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "domain_code": "0713",
+      "weight": 0.1
+    },
+    {
+      "topic": "canada_us_autonomy",
+      "domain_code": "0421",
+      "weight": 0.05
+    },
+    {
+      "topic": "support_ukraine",
+      "domain_code": "0312",
+      "weight": 0.35
+    },
+    {
+      "topic": "support_ukraine",
+      "domain_code": "1032",
+      "weight": 0.25
+    },
+    {
+      "topic": "support_ukraine",
+      "domain_code": "0421",
+      "weight": 0.2
+    },
+    {
+      "topic": "support_ukraine",
+      "domain_code": "0311",
+      "weight": 0.1
+    },
+    {
+      "topic": "support_ukraine",
+      "domain_code": "0413",
+      "weight": 0.1
+    },
+    {
+      "topic": "middle_east_policy",
+      "domain_code": "0312",
+      "weight": 0.35
+    },
+    {
+      "topic": "middle_east_policy",
+      "domain_code": "0421",
+      "weight": 0.3
+    },
+    {
+      "topic": "middle_east_policy",
+      "domain_code": "1032",
+      "weight": 0.15
+    },
+    {
+      "topic": "middle_east_policy",
+      "domain_code": "0311",
+      "weight": 0.1
+    },
+    {
+      "topic": "middle_east_policy",
+      "domain_code": "0314",
+      "weight": 0.1
+    },
+    {
+      "topic": "wealth_inequality",
+      "domain_code": "0311",
+      "weight": 0.4
+    },
+    {
+      "topic": "wealth_inequality",
+      "domain_code": "0542",
+      "weight": 0.2
+    },
+    {
+      "topic": "wealth_inequality",
+      "domain_code": "0312",
+      "weight": 0.15
+    },
+    {
+      "topic": "wealth_inequality",
+      "domain_code": "092",
+      "weight": 0.15
+    },
+    {
+      "topic": "wealth_inequality",
+      "domain_code": "0413",
+      "weight": 0.1
+    },
+    {
+      "topic": "regulatory_delays",
+      "domain_code": "0413",
+      "weight": 0.25
+    },
+    {
+      "topic": "regulatory_delays",
+      "domain_code": "0311",
+      "weight": 0.2
+    },
+    {
+      "topic": "regulatory_delays",
+      "domain_code": "0421",
+      "weight": 0.2
+    },
+    {
+      "topic": "regulatory_delays",
+      "domain_code": "0312",
+      "weight": 0.1
+    },
+    {
+      "topic": "regulatory_delays",
+      "domain_code": "0521",
+      "weight": 0.1
+    },
+    {
+      "topic": "regulatory_delays",
+      "domain_code": "0713",
+      "weight": 0.1
+    },
+    {
+      "topic": "regulatory_delays",
+      "domain_code": "0314",
+      "weight": 0.05
+    },
+    {
+      "topic": "justice_efficiency",
+      "domain_code": "0421",
+      "weight": 0.5
+    },
+    {
+      "topic": "justice_efficiency",
+      "domain_code": "0312",
+      "weight": 0.2
+    },
+    {
+      "topic": "justice_efficiency",
+      "domain_code": "0314",
+      "weight": 0.1
+    },
+    {
+      "topic": "justice_efficiency",
+      "domain_code": "0413",
+      "weight": 0.1
+    },
+    {
+      "topic": "justice_efficiency",
+      "domain_code": "1032",
+      "weight": 0.1
+    },
+    {
+      "topic": "ai_education",
+      "domain_code": "0111",
+      "weight": 0.3
+    },
+    {
+      "topic": "ai_education",
+      "domain_code": "0613",
+      "weight": 0.25
+    },
+    {
+      "topic": "ai_education",
+      "domain_code": "0223",
+      "weight": 0.15
+    },
+    {
+      "topic": "ai_education",
+      "domain_code": "0314",
+      "weight": 0.1
+    },
+    {
+      "topic": "ai_education",
+      "domain_code": "0421",
+      "weight": 0.1
+    },
+    {
+      "topic": "ai_education",
+      "domain_code": "0542",
+      "weight": 0.1
+    },
+    {
+      "topic": "immigration_capacity",
+      "domain_code": "0311",
+      "weight": 0.2
+    },
+    {
+      "topic": "immigration_capacity",
+      "domain_code": "0312",
+      "weight": 0.2
+    },
+    {
+      "topic": "immigration_capacity",
+      "domain_code": "0314",
+      "weight": 0.2
+    },
+    {
+      "topic": "immigration_capacity",
+      "domain_code": "0731",
+      "weight": 0.15
+    },
+    {
+      "topic": "immigration_capacity",
+      "domain_code": "092",
+      "weight": 0.15
+    },
+    {
+      "topic": "immigration_capacity",
+      "domain_code": "0542",
+      "weight": 0.1
+    },
+    {
+      "topic": "plastic_waste",
+      "domain_code": "0521",
+      "weight": 0.4
+    },
+    {
+      "topic": "plastic_waste",
+      "domain_code": "0722",
+      "weight": 0.2
+    },
+    {
+      "topic": "plastic_waste",
+      "domain_code": "0311",
+      "weight": 0.15
+    },
+    {
+      "topic": "plastic_waste",
+      "domain_code": "0421",
+      "weight": 0.15
+    },
+    {
+      "topic": "plastic_waste",
+      "domain_code": "0413",
+      "weight": 0.1
+    },
+    {
+      "topic": "social_cohesion",
+      "domain_code": "0314",
+      "weight": 0.35
+    },
+    {
+      "topic": "social_cohesion",
+      "domain_code": "0231",
+      "weight": 0.25
+    },
+    {
+      "topic": "social_cohesion",
+      "domain_code": "0312",
+      "weight": 0.2
+    },
+    {
+      "topic": "social_cohesion",
+      "domain_code": "0111",
+      "weight": 0.1
+    },
+    {
+      "topic": "social_cohesion",
+      "domain_code": "0421",
+      "weight": 0.1
+    },
+    {
+      "topic": "clean_energy_climate",
+      "domain_code": "0521",
+      "weight": 0.35
+    },
+    {
+      "topic": "clean_energy_climate",
+      "domain_code": "0713",
+      "weight": 0.25
+    },
+    {
+      "topic": "clean_energy_climate",
+      "domain_code": "0311",
+      "weight": 0.15
+    },
+    {
+      "topic": "clean_energy_climate",
+      "domain_code": "0312",
+      "weight": 0.1
+    },
+    {
+      "topic": "clean_energy_climate",
+      "domain_code": "0542",
+      "weight": 0.1
+    },
+    {
+      "topic": "clean_energy_climate",
+      "domain_code": "0421",
+      "weight": 0.05
+    },
+    {
+      "topic": "tech_sovereignty",
+      "domain_code": "0613",
+      "weight": 0.25
+    },
+    {
+      "topic": "tech_sovereignty",
+      "domain_code": "0311",
+      "weight": 0.2
+    },
+    {
+      "topic": "tech_sovereignty",
+      "domain_code": "0413",
+      "weight": 0.15
+    },
+    {
+      "topic": "tech_sovereignty",
+      "domain_code": "0312",
+      "weight": 0.1
+    },
+    {
+      "topic": "tech_sovereignty",
+      "domain_code": "0421",
+      "weight": 0.1
+    },
+    {
+      "topic": "tech_sovereignty",
+      "domain_code": "0612",
+      "weight": 0.1
+    },
+    {
+      "topic": "tech_sovereignty",
+      "domain_code": "0713",
+      "weight": 0.1
+    },
+    {
+      "topic": "trump_service_access",
+      "domain_code": "0312",
+      "weight": 0.3
+    },
+    {
+      "topic": "trump_service_access",
+      "domain_code": "0421",
+      "weight": 0.2
+    },
+    {
+      "topic": "trump_service_access",
+      "domain_code": "1032",
+      "weight": 0.2
+    },
+    {
+      "topic": "trump_service_access",
+      "domain_code": "0311",
+      "weight": 0.1
+    },
+    {
+      "topic": "trump_service_access",
+      "domain_code": "0314",
+      "weight": 0.1
+    },
+    {
+      "topic": "trump_service_access",
+      "domain_code": "0612",
+      "weight": 0.1
+    }
+  ],
+  "reading_exclusions": [
+    {
+      "topic": "trump_service_access",
+      "actor": "king_klown",
+      "reason": "Direct movement-leadership interest plus declared prior anti-Trump advocacy; voluntary recusal from the EkoH/Smart Vote advisory reading while the baseline stance remains visible."
+    }
+  ]
+}

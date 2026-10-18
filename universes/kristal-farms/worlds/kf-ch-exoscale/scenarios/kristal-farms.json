@@ -1,0 +1,2066 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "kf_ch_exoscale",
+  "scenario_title": "Kristal Farms — Étude internationale 11 — Exoscale — état initial",
+  "mode": "replace_scenario",
+  "metadata": {
+    "universe_key": "kristal-farms",
+    "portfolio_slot": 11,
+    "portfolio_slots_total": 12,
+    "portfolio_status": "research_target",
+    "target_organization": "Exoscale",
+    "target_jurisdiction": "Suisse",
+    "target_country_code": "CH",
+    "target_interest_status": "not_established",
+    "epistemic_status": "research_simulation_seed",
+    "verified_official_roles_at": "2026-09-29",
+    "source_plan_url": "https://github.com/Rejean-McCormick/Kristal-Farms/blob/main/docs/10-core/strategy/PLAN_MOBILISATION_INTERNATIONALE_KRISTAL_FARMS_FR.md",
+    "anti_promises": [
+      "No tenant commitment is implied.",
+      "No government commitment is implied.",
+      "No site, MW, fibre route, port capability or community authorization is established by this seed.",
+      "Real-person actors may only be attributed sourced public positions; hypothetical responses must use an institutional or synthetic persona."
+    ],
+    "runtime_policy": {
+      "seed_scope": "initial_state_only",
+      "ethikos": "owns_live_deliberation",
+      "smart_vote": "derived_reading_only; no canonical result seeded",
+      "ekoh": "no fabricated scores for real people",
+      "keenkonnect": "post-decision execution handoff; not seeded here",
+      "konnected": "post-deliberation knowledge/community handoff; not seeded here",
+      "kreative": "no Kristal Farms handoff",
+      "promotion": "build_all_ready_then_atomic_portfolio_promotion",
+      "real_person_voice": "source_only; hypothetical speech must use paired office/institution actor",
+      "persona_bridge": "kx-world-personas/v1"
+    },
+    "required_unresolved_actors": [
+      "site-specific community and/or rights-holder authority",
+      "site-specific energy developer/operator if distinct from Hydro-Québec",
+      "site-specific telecom carrier(s)",
+      "site-specific port/marine authority",
+      "site-specific environmental/regulatory authorities"
+    ],
+    "actor_profiles": {
+      "qc_economy_innovation_energy_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "host_government_economy_innovation_energy_office",
+        "global_entity_key": "office:qc:host-government-economy-innovation-energy",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_bernard_drainville",
+        "source_basis": [
+          "actor:qc_economy_innovation_energy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_bernard_drainville": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:qc_economy_innovation_energy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:bernard-drainville",
+        "office_actor_key": "qc_economy_innovation_energy_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "qc_cybersecurity_digital_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "host_government_digital_office",
+        "global_entity_key": "office:qc:host-government-digital",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_france_elaine_duranceau",
+        "source_basis": [
+          "actor:qc_cybersecurity_digital:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_france_elaine_duranceau": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:qc_cybersecurity_digital:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:france-elaine-duranceau",
+        "office_actor_key": "qc_cybersecurity_digital_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "qc_innovation_council": {
+        "entity_type": "institution",
+        "persona_type": "organization",
+        "role": "host_innovation_institution",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "source_basis": [
+          "actor:qc_innovation_council:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "institution:qc:conseil-de-linnovation-du-quebec",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_luc_sirois",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_luc_sirois": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "institution_head_reference",
+        "global_entity_key": "person:luc-sirois",
+        "institution_actor_key": "qc_innovation_council",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "simulation_eligible": false,
+        "source_basis": [
+          "actor:qc_innovation_council:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "hydro_quebec": {
+        "entity_type": "institution",
+        "persona_type": "organization",
+        "role": "host_energy_system",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "source_basis": [
+          "actor:hydro_quebec:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "institution:qc:hydro-quebec",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_claudine_bouchard",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_claudine_bouchard": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "institution_head_reference",
+        "global_entity_key": "person:claudine-bouchard",
+        "institution_actor_key": "hydro_quebec",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "simulation_eligible": false,
+        "source_basis": [
+          "actor:hydro_quebec:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "ca_ai_digital_innovation_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "host_government_ai_digital_office",
+        "global_entity_key": "office:ca:host-government-ai-digital",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_evan_solomon",
+        "source_basis": [
+          "actor:ca_ai_digital_innovation:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_evan_solomon": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:ca_ai_digital_innovation:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:evan-solomon",
+        "office_actor_key": "ca_ai_digital_innovation_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "ca_energy_natural_resources_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "host_government_energy_office",
+        "global_entity_key": "office:ca:host-government-energy",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_tim_hodgson",
+        "source_basis": [
+          "actor:ca_energy_natural_resources:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_tim_hodgson": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:ca_energy_natural_resources:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:tim-hodgson",
+        "office_actor_key": "ca_energy_natural_resources_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "kristal_moderator": {
+        "entity_type": "synthetic_facilitator",
+        "persona_type": "simulated_person",
+        "role": "simulation_facilitator",
+        "representation_type": "synthetic",
+        "speaking_policy": "facilitator_only",
+        "source_basis": [
+          "actor:kristal_moderator:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "synthetic:kristal-farms:moderator",
+        "simulation_eligible": true,
+        "account_type": "human",
+        "is_klone": true,
+        "ethikos_write": false
+      },
+      "foreign_tech_policy_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "foreign_government_economy_research_innovation_office",
+        "global_entity_key": "office:ch:foreign-government-economy-research-innovation",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_guy_parmelin",
+        "source_basis": [
+          "actor:foreign_tech_policy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_guy_parmelin": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:foreign_tech_policy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:guy-parmelin",
+        "office_actor_key": "foreign_tech_policy_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "foreign_energy_policy_office": {
+        "entity_type": "institutional_office",
+        "persona_type": "organization",
+        "role": "foreign_government_energy_communications_office",
+        "global_entity_key": "office:ch:foreign-government-energy-communications",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_albert_rosti",
+        "source_basis": [
+          "actor:foreign_energy_policy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_albert_rosti": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "incumbent_reference",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "source_basis": [
+          "actor:foreign_energy_policy:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "person:albert-rosti",
+        "office_actor_key": "foreign_energy_policy_office",
+        "simulation_eligible": false,
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "foreign_innovation_institution": {
+        "entity_type": "institution",
+        "persona_type": "organization",
+        "role": "foreign_innovation_institution",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "source_basis": [
+          "actor:foreign_innovation_institution:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "institution:ch:conseil-de-linnovation-dinnosuisse",
+        "simulation_eligible": true,
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "foreign_energy_institution": {
+        "entity_type": "institution",
+        "persona_type": "organization",
+        "role": "foreign_energy_institution",
+        "representation_type": "institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "source_basis": [
+          "actor:foreign_energy_institution:official"
+        ],
+        "verified_at": "2026-09-29",
+        "global_entity_key": "institution:ch:office-federal-de-lenergie-ofen",
+        "simulation_eligible": true,
+        "incumbent_person_key": "person_benoit_revaz",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_benoit_revaz": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "institution_head_reference",
+        "global_entity_key": "person:benoit-revaz",
+        "institution_actor_key": "foreign_energy_institution",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "simulation_eligible": false,
+        "source_basis": [
+          "actor:foreign_energy_institution:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "org_exoscale": {
+        "entity_type": "organization",
+        "persona_type": "organization",
+        "role": "international_compute_operator_research_target",
+        "representation_type": "simulated_institutional_role",
+        "speaking_policy": "simulated_institutional_role_with_disclaimer",
+        "source_basis": [
+          "portfolio:international_mobilisation",
+          "target:official_homepage"
+        ],
+        "verified_at": "2026-09-29",
+        "interest_status": "not_established",
+        "global_entity_key": "org:exoscale",
+        "simulation_eligible": true,
+        "target_role": "research_target",
+        "account_type": "service",
+        "is_klone": false,
+        "ethikos_write": true
+      },
+      "person_mathias_nobauer": {
+        "entity_type": "real_person",
+        "persona_type": "demo_actor",
+        "role": "target_executive_reference",
+        "global_entity_key": "person:mathias-nobauer",
+        "organization_actor_key": "org_exoscale",
+        "representation_type": "documented_role_only",
+        "speaking_policy": "source_only",
+        "simulation_eligible": false,
+        "source_basis": [
+          "target:executive:official"
+        ],
+        "verified_at": "2026-09-29",
+        "account_type": "human",
+        "is_klone": false,
+        "ethikos_write": false
+      },
+      "kf_ch_exoscale__sim_expert_1": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "kf_ch_exoscale__sim_expert_2": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "kf_ch_exoscale__sim_expert_3": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      }
+    },
+    "source_registry": {
+      "actor:qc_economy_innovation_energy:official": {
+        "title": "Conseil des ministres — Gouvernement du Québec",
+        "url": "https://www.quebec.ca/premiere-ministre/equipe/conseil-des-ministres",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:qc_cybersecurity_digital:official": {
+        "title": "Ministère de la Cybersécurité et du Numérique — Gouvernement du Québec",
+        "url": "https://www.quebec.ca/gouvernement/ministeres-organismes/cybersecurite-numerique",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:qc_innovation_council:official": {
+        "title": "Conseil de l’innovation du Québec — À propos",
+        "url": "https://conseilinnovation.quebec/a-propos/",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:hydro_quebec:official": {
+        "title": "Équipe de direction d’Hydro-Québec",
+        "url": "https://www.hydroquebec.com/a-propos/gouvernance/equipe-direction.html",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:ca_ai_digital_innovation:official": {
+        "title": "Innovation, Science and Economic Development Canada — ALL IN 2026",
+        "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/09/ai-leadership-takes-centre-stage-at-all-in-2026.html",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:ca_energy_natural_resources:official": {
+        "title": "Natural Resources Canada — 2026–27 Departmental Plan",
+        "url": "https://natural-resources.canada.ca/corporate/planning-reporting/departmental-plan/nrcan-2026-27-departmental-plan",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:kristal_moderator:official": {
+        "title": "Plan de mobilisation internationale — Kristal Farms",
+        "url": "https://github.com/Rejean-McCormick/Kristal-Farms/blob/main/docs/10-core/strategy/PLAN_MOBILISATION_INTERNATIONALE_KRISTAL_FARMS_FR.md",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:foreign_tech_policy:official": {
+        "title": "DEFR — Année présidentielle 2026",
+        "url": "https://www.wbf.admin.ch/fr/annee-presidentielle-2026",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:foreign_energy_policy:official": {
+        "title": "Federal Councillor Albert Rösti — admin.ch",
+        "url": "https://www.admin.ch/en/federal-councillor-albert-roesti",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:foreign_innovation_institution:official": {
+        "title": "Conseil de l’innovation d’Innosuisse — 2026",
+        "url": "https://www.innosuisse.admin.ch/fr/sept-nouveaux-membres-pour-le-conseil-de-linnovation",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "actor:foreign_energy_institution:official": {
+        "title": "OFEN — Comité de direction",
+        "url": "https://www.bfe.admin.ch/bfe/fr/home/office-federal-de-lenergie/comite-de-direction.html",
+        "source_type": "official_role_source",
+        "verified_at": "2026-09-29"
+      },
+      "target:official_homepage": {
+        "title": "Exoscale — official website",
+        "url": "https://www.exoscale.com/",
+        "source_type": "organization_official",
+        "verified_at": "2026-09-29",
+        "note": "Identity/reference source only; not evidence of interest in Kristal Farms."
+      },
+      "portfolio:international_mobilisation": {
+        "title": "Plan de mobilisation internationale — Kristal Farms",
+        "url": "https://github.com/Rejean-McCormick/Kristal-Farms/blob/main/docs/10-core/strategy/PLAN_MOBILISATION_INTERNATIONALE_KRISTAL_FARMS_FR.md",
+        "source_type": "kristal_strategy_source",
+        "verified_at": "2026-09-29"
+      },
+      "kristal:repository": {
+        "title": "Kristal Farms — canonical repository",
+        "url": "https://github.com/Rejean-McCormick/Kristal-Farms",
+        "source_type": "kristal_canonical_repository",
+        "verified_at": "2026-09-29"
+      },
+      "target:executive:official": {
+        "title": "Exoscale — About Us / Executive Team",
+        "url": "https://www.exoscale.com/about-us/",
+        "source_type": "organization_leadership_official",
+        "verified_at": "2026-09-29",
+        "note": "Leadership identity/reference source only; not evidence of interest in Kristal Farms."
+      },
+      "host:responsible_data_centre_principles": {
+        "title": "Canada’s Responsible Data Centre Development Principles",
+        "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/09/government-of-canada-launches-canadas-responsible-data-centre-development-principles.html",
+        "source_type": "host_policy_official",
+        "published_at": "2026-09-03",
+        "verified_at": "2026-09-29",
+        "note": "Cadre fédéral annoncé en 2026: bénéfices locaux durables, protection des contribuables d’électricité, réduction de l’usage de l’eau et des impacts environnementaux, transparence locale et valeur stratégique pour le Canada."
+      },
+      "research:exoscale_swiss_zones": {
+        "title": "Exoscale — Data centers in Switzerland",
+        "url": "https://www.exoscale.com/datacenters/switzerland/",
+        "source_type": "organization_official",
+        "published_at": "2026-09-29",
+        "verified_at": "2026-09-29",
+        "note": "Source de contexte pour la simulation; ne constitue pas une manifestation d’intérêt envers Kristal Farms."
+      },
+      "research:exoscale_inference": {
+        "title": "Exoscale — AI Inference",
+        "url": "https://www.exoscale.com/ai-cloud-infrastructure/inference/",
+        "source_type": "organization_official",
+        "published_at": "2026-09-29",
+        "verified_at": "2026-09-29",
+        "note": "Source de contexte pour la simulation; ne constitue pas une manifestation d’intérêt envers Kristal Farms."
+      },
+      "research:ch_agov_sovereignty_2026": {
+        "title": "AGOV — Digital sovereignty",
+        "url": "https://www.agov.admin.ch/en/agov-in-cloud-saas-hyperscaler-architectures",
+        "source_type": "government_official",
+        "published_at": "2026-09-10",
+        "verified_at": "2026-09-29",
+        "note": "Source de contexte pour la simulation; ne constitue pas une manifestation d’intérêt envers Kristal Farms."
+      }
+    },
+    "seed_version": "0.5.0",
+    "architecture_revision": "KF-SEED-0.3",
+    "project": {
+      "key": "kf-intl-11",
+      "type": "international_reference_study",
+      "phase": "reference_screening",
+      "title": "Kristal Farms — Étude internationale 11 — Exoscale",
+      "technical_world_key": "kf-ch-exoscale",
+      "target_organization": "Exoscale",
+      "target_organization_global_entity_key": "org:exoscale",
+      "jurisdiction": "Suisse",
+      "country_code": "CH",
+      "identity_semantics": "The World represents a Kristal Farms research/simulation project. The target organization is an actor/research target, not the conceptual World identity.",
+      "seed_enrichment": "world_specific_evidence_v1"
+    },
+    "target_capability_focus": {
+      "status": "research_prompt_only",
+      "focus": "cloud européen et infrastructure IaaS",
+      "source": "target:official_homepage"
+    },
+    "research_refresh_at": "2026-09-29",
+    "evidence_events": [
+      {
+        "key": "exoscale_swiss_zones",
+        "date": "2026-09-29",
+        "status": "documented_external_event",
+        "source_key": "research:exoscale_swiss_zones",
+        "fact": "Exoscale opère des zones en Suisse et décrit des services où les données restent dans la juridiction choisie, notamment Genève et Zurich.",
+        "activates_topic": "swiss_residency_zones",
+        "interpretation": "simulation_trigger_not_commercial_signal"
+      },
+      {
+        "key": "exoscale_inference",
+        "date": "2026-09-29",
+        "status": "documented_external_event",
+        "source_key": "research:exoscale_inference",
+        "fact": "Exoscale présente une offre d’inférence IA sur infrastructure européenne souveraine, avec options dédiées et managées.",
+        "activates_topic": "sovereign_ai_inference",
+        "interpretation": "simulation_trigger_not_commercial_signal"
+      },
+      {
+        "key": "ch_agov_sovereignty_2026",
+        "date": "2026-09-10",
+        "status": "documented_external_event",
+        "source_key": "research:ch_agov_sovereignty_2026",
+        "fact": "La Confédération suisse décrit la souveraineté numérique comme un degré de contrôle et de capacité d’agir, non comme un état binaire ou la seule localisation des données.",
+        "activates_topic": "sovereignty_scope_not_location",
+        "interpretation": "simulation_trigger_not_commercial_signal"
+      }
+    ],
+    "persona_contract": "kx-world-personas/v1",
+    "mega_update": {
+      "version": "1.0.0",
+      "date": "2026-09-30",
+      "purpose": "simulation_deliberation_plus_contextual_ekoh_readings",
+      "real_person_ekoh_scores_generated": false,
+      "baseline_always_visible": true
+    }
+  },
+  "actors": [
+    {
+      "key": "qc_economy_innovation_energy_office",
+      "username": "demo_kf_qc_economy_innovation_energy_office",
+      "display_name": "Québec — ministre de l’Économie, de l’Innovation et de l’Énergie (Québec) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_bernard_drainville",
+      "username": "demo_kf_person_bernard_drainville",
+      "display_name": "Bernard Drainville — ministre de l’Économie, de l’Innovation et de l’Énergie (Québec)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "qc_cybersecurity_digital_office",
+      "username": "demo_kf_qc_cybersecurity_digital_office",
+      "display_name": "Québec — ministre de la Cybersécurité et du Numérique (Québec) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_france_elaine_duranceau",
+      "username": "demo_kf_person_france_elaine_duranceau",
+      "display_name": "France-Élaine Duranceau — ministre de la Cybersécurité et du Numérique (Québec)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "qc_innovation_council",
+      "username": "demo_kf_qc_innovation_council",
+      "display_name": "Conseil de l’innovation du Québec",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_luc_sirois",
+      "username": "demo_kf_person_luc_sirois",
+      "display_name": "Luc Sirois — innovateur en chef (Conseil de l’innovation du Québec)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "hydro_quebec",
+      "username": "demo_kf_hydro_quebec",
+      "display_name": "Hydro-Québec",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_claudine_bouchard",
+      "username": "demo_kf_person_claudine_bouchard",
+      "display_name": "Claudine Bouchard — présidente-directrice générale (Hydro-Québec)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "ca_ai_digital_innovation_office",
+      "username": "demo_kf_ca_ai_digital_innovation_office",
+      "display_name": "Canada — ministre de l’Intelligence artificielle et de l’Innovation numérique (Canada) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_evan_solomon",
+      "username": "demo_kf_person_evan_solomon",
+      "display_name": "Evan Solomon — ministre de l’Intelligence artificielle et de l’Innovation numérique (Canada)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "ca_energy_natural_resources_office",
+      "username": "demo_kf_ca_energy_natural_resources_office",
+      "display_name": "Canada — ministre de l’Énergie et des Ressources naturelles (Canada) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_tim_hodgson",
+      "username": "demo_kf_person_tim_hodgson",
+      "display_name": "Tim Hodgson — ministre de l’Énergie et des Ressources naturelles (Canada)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "kristal_moderator",
+      "username": "demo_kf_kristal_moderator",
+      "display_name": "Kristal Farms — facilitation de la simulation",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "foreign_tech_policy_office",
+      "username": "demo_kf_foreign_tech_policy_office",
+      "display_name": "Suisse — chef du Département fédéral de l’économie, de la formation et de la recherche (Suisse) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_guy_parmelin",
+      "username": "demo_kf_person_guy_parmelin",
+      "display_name": "Guy Parmelin — chef du Département fédéral de l’économie, de la formation et de la recherche (Suisse)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "foreign_energy_policy_office",
+      "username": "demo_kf_foreign_energy_policy_office",
+      "display_name": "Suisse — chef du Département fédéral de l’environnement, des transports, de l’énergie et de la communication (Suisse) — voix institutionnelle simulée",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_albert_rosti",
+      "username": "demo_kf_person_albert_rosti",
+      "display_name": "Albert Rösti — chef du Département fédéral de l’environnement, des transports, de l’énergie et de la communication (Suisse)",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "foreign_innovation_institution",
+      "username": "demo_kf_foreign_innovation_institution",
+      "display_name": "Conseil de l’innovation d’Innosuisse",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "foreign_energy_institution",
+      "username": "demo_kf_foreign_energy_institution",
+      "display_name": "Office fédéral de l’énergie (OFEN)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_benoit_revaz",
+      "username": "demo_kf_person_benoit_revaz",
+      "display_name": "Benoît Revaz — directeur (Office fédéral de l’énergie (OFEN))",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "org_exoscale",
+      "username": "demo_kf_org_exoscale",
+      "display_name": "Exoscale",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "person_mathias_nobauer",
+      "username": "demo_kf_person_mathias_nobauer",
+      "display_name": "Mathias Nöbauer — CEO d’Exoscale",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "kf_ch_exoscale__sim_expert_1",
+      "username": "demo_kf_ch_exoscale_sim_expert_1",
+      "display_name": "[SIMULATION] Expert·e systèmes — Kristal Farms — Étude internationale 11 — Exoscale",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "kf_ch_exoscale__sim_expert_2",
+      "username": "demo_kf_ch_exoscale_sim_expert_2",
+      "display_name": "[SIMULATION] Expert·e gouvernance — Kristal Farms — Étude internationale 11 — Exoscale",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "kf_ch_exoscale__sim_expert_3",
+      "username": "demo_kf_ch_exoscale_sim_expert_3",
+      "display_name": "[SIMULATION] Expert·e données et communauté — Kristal Farms — Étude internationale 11 — Exoscale",
+      "is_ethikos_elite": true
+    }
+  ],
+  "categories": [
+    {
+      "key": "portfolio_governance",
+      "name": "[KF] Portefeuille international et gouvernance",
+      "description": "Statut de recherche, admissibilité, gouvernance et passage éventuel vers un engagement réel."
+    },
+    {
+      "key": "energy_grid",
+      "name": "[KF] Énergie et réseau",
+      "description": "Nouvelle production renouvelable, priorité des charges communautaires, qualité de puissance, interruption et croissance."
+    },
+    {
+      "key": "compute_sovereignty",
+      "name": "[KF] Calcul, sécurité et souveraineté numérique",
+      "description": "Contrôle locataire du matériel, données, clés, sécurité physique et conformité."
+    },
+    {
+      "key": "innovation_investment",
+      "name": "[KF] Innovation, politique industrielle et investissement",
+      "description": "Coordination institutionnelle, innovation, investissement et développement économique."
+    },
+    {
+      "key": "telecom_logistics",
+      "name": "[KF] Télécom, latence et logistique",
+      "description": "Fibre, redondance, SLA, réparation nordique, ports, transport et maintenance."
+    },
+    {
+      "key": "community_environment",
+      "name": "[KF] Communautés, droits et environnement",
+      "description": "Décision communautaire, titulaires de droits, bénéfices, autorisations et contraintes environnementales."
+    }
+  ],
+  "topics": [
+    {
+      "key": "demand_signal",
+      "title": "[KF] Exoscale — Signal de demande et conditions d’intérêt",
+      "description": "Quelles conditions permettraient de passer d’une organisation de référence étudiée à un échange direct de besoins, sans présumer d’un intérêt commercial?",
+      "status": "open",
+      "category": "portfolio_governance"
+    },
+    {
+      "key": "energy_conditions",
+      "title": "[KF] Exoscale — Conditions énergétiques et priorité des charges",
+      "description": "Quelles exigences de puissance, qualité, interruption, montée en charge et nouvelle production renouvelable seraient compatibles avec la priorité absolue des charges communautaires et critiques?",
+      "status": "open",
+      "category": "energy_grid"
+    },
+    {
+      "key": "digital_sovereignty",
+      "title": "[KF] Exoscale — Souveraineté numérique et frontière black-box",
+      "description": "Quelles exigences de résidence des données, sécurité, contrôle du matériel, clés cryptographiques et responsabilités opérationnelles devraient encadrer un déploiement contrôlé par le locataire?",
+      "status": "open",
+      "category": "compute_sovereignty"
+    },
+    {
+      "key": "innovation_coordination",
+      "title": "[KF] Exoscale — Coordination innovation, industrie et investissement",
+      "description": "Quels ministères, conseils d’innovation, outils d’investissement et mécanismes de coopération seraient nécessaires pour étudier le projet sans créer de promesse institutionnelle prématurée?",
+      "status": "open",
+      "category": "innovation_investment"
+    },
+    {
+      "key": "connectivity_logistics",
+      "title": "[KF] Exoscale — Fibre, latence, redondance et logistique lourde",
+      "description": "Quelles capacités de fibre, routes redondantes, SLA, délais de réparation, accès maritime et interfaces de maintenance devraient être démontrés?",
+      "status": "open",
+      "category": "telecom_logistics"
+    },
+    {
+      "key": "community_rights",
+      "title": "[KF] Exoscale — Communautés, titulaires de droits et bénéfices",
+      "description": "Quelles décisions, consultations ou consentements doivent être obtenus et quelles structures de bénéfices ou de participation doivent être définies avant toute sélection de site?",
+      "status": "open",
+      "category": "community_environment"
+    },
+    {
+      "key": "evidence_gate",
+      "title": "[KF] Exoscale — Gate de preuve avant engagement",
+      "description": "Quelles preuves commerciales, techniques, juridiques, environnementales et communautaires sont nécessaires avant de reclassifier ce World d’étude de référence vers une démarche d’engagement?",
+      "status": "open",
+      "category": "portfolio_governance"
+    },
+    {
+      "key": "target_capability_fit",
+      "title": "[KF] Exoscale — Adéquation des capacités publiques au scénario Kristal Farms",
+      "description": "Quelles capacités publiquement documentées de Exoscale, notamment autour de cloud européen et infrastructure IaaS, sont réellement pertinentes pour ce projet d’étude, lesquelles doivent être vérifiées directement, et quelles exigences resteraient hors périmètre?",
+      "status": "open",
+      "category": "compute_sovereignty"
+    },
+    {
+      "key": "swiss_residency_zones",
+      "title": "[KF] Exoscale — Zones suisses, résidence et contrôle des données",
+      "description": "Quels workloads Kristal Farms exigeraient une résidence canadienne stricte, et quelles garanties techniques et contractuelles doivent accompagner cette résidence?",
+      "status": "open",
+      "category": "compute_sovereignty"
+    },
+    {
+      "key": "sovereign_ai_inference",
+      "title": "[KF] Exoscale — Inférence IA souveraine européenne",
+      "description": "Un nœud Kristal Farms devrait-il viser des GPU bruts, une plateforme d’inférence managée ou les deux, et comment préserver la réversibilité?",
+      "status": "open",
+      "category": "compute_sovereignty"
+    },
+    {
+      "key": "sovereignty_scope_not_location",
+      "title": "[KF] Exoscale — Souveraineté comme capacité de contrôle et de sortie",
+      "description": "Quelles métriques de souveraineté doivent dépasser le simple critère “hébergé au Canada”: contrôle des clés, gouvernance, chaîne d’approvisionnement, réversibilité et continuité?",
+      "status": "open",
+      "category": "portfolio_governance"
+    }
+  ],
+  "stances": [
+    {
+      "topic": "demand_signal",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "demand_signal",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "demand_signal",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "energy_conditions",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "value": -2
+    },
+    {
+      "topic": "energy_conditions",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "value": 1
+    },
+    {
+      "topic": "energy_conditions",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "digital_sovereignty",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "digital_sovereignty",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "digital_sovereignty",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "innovation_coordination",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "innovation_coordination",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "value": 1
+    },
+    {
+      "topic": "innovation_coordination",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "connectivity_logistics",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "value": 2
+    },
+    {
+      "topic": "connectivity_logistics",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "value": -1
+    },
+    {
+      "topic": "connectivity_logistics",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "value": 0
+    },
+    {
+      "topic": "community_rights",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "community_rights",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "community_rights",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "evidence_gate",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "evidence_gate",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "evidence_gate",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "target_capability_fit",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "target_capability_fit",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "target_capability_fit",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "swiss_residency_zones",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "swiss_residency_zones",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "swiss_residency_zones",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "sovereign_ai_inference",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "sovereign_ai_inference",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "sovereign_ai_inference",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "sovereignty_scope_not_location",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "sovereignty_scope_not_location",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "sovereignty_scope_not_location",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "value": 0
+    }
+  ],
+  "arguments": [
+    {
+      "key": "opening_portfolio_status",
+      "topic": "demand_signal",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Exoscale figure dans le portefeuille international de recherche de Kristal Farms. Cette présence ne constitue ni une manifestation d’intérêt, ni un engagement, ni une sélection de locataire."
+    },
+    {
+      "key": "opening_host_guardrail",
+      "topic": "energy_conditions",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "La simulation conserve la règle Kristal Farms selon laquelle les charges communautaires et critiques sont prioritaires sur le calcul interruptible."
+    },
+    {
+      "key": "opening_evidence_gate",
+      "topic": "evidence_gate",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Ce World est un espace d’étude et de délibération. Il ne prouve ni site sélectionné, ni capacité énergétique constructible, ni fibre contractée, ni autorisation communautaire, ni accord commercial."
+    },
+    {
+      "key": "opening_target_capability_fit",
+      "topic": "target_capability_fit",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Les capacités publiques de Exoscale servent uniquement à formuler des questions de compatibilité. Elles ne constituent ni une validation technique pour Kristal Farms, ni un intérêt commercial, ni un engagement de déploiement."
+    },
+    {
+      "key": "host_responsible_dc_principles",
+      "topic": "community_rights",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Le cadre canadien annoncé en septembre 2026 demande que les centres de données produisent des bénéfices locaux durables, n’augmentent pas les coûts d’électricité supportés par les Canadiens, réduisent l’usage de l’eau et les impacts environnementaux, soient transparents sur leurs impacts locaux et apportent une valeur stratégique au Canada."
+    },
+    {
+      "key": "evidence_exoscale_swiss_zones",
+      "topic": "swiss_residency_zones",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Exoscale opère des zones en Suisse et décrit des services où les données restent dans la juridiction choisie, notamment Genève et Zurich. Ce fait est utilisé comme déclencheur de simulation; il ne prouve aucun intérêt pour Kristal Farms."
+    },
+    {
+      "key": "evidence_exoscale_inference",
+      "topic": "sovereign_ai_inference",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "Exoscale présente une offre d’inférence IA sur infrastructure européenne souveraine, avec options dédiées et managées. Ce fait est utilisé comme déclencheur de simulation; il ne prouve aucun intérêt pour Kristal Farms."
+    },
+    {
+      "key": "evidence_ch_agov_sovereignty_2026",
+      "topic": "sovereignty_scope_not_location",
+      "actor": "kristal_moderator",
+      "side": "neutral",
+      "content": "La Confédération suisse décrit la souveraineté numérique comme un degré de contrôle et de capacité d’agir, non comme un état binaire ou la seule localisation des données. Ce fait est utilisé comme déclencheur de simulation; il ne prouve aucun intérêt pour Kristal Farms."
+    },
+    {
+      "key": "mega_demand_signal_1",
+      "topic": "demand_signal",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_demand_signal_2",
+      "topic": "demand_signal",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_energy_conditions_1",
+      "topic": "energy_conditions",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_energy_conditions_2",
+      "topic": "energy_conditions",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_digital_sovereignty_1",
+      "topic": "digital_sovereignty",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_digital_sovereignty_2",
+      "topic": "digital_sovereignty",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_innovation_coordination_1",
+      "topic": "innovation_coordination",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_innovation_coordination_2",
+      "topic": "innovation_coordination",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_connectivity_logistics_1",
+      "topic": "connectivity_logistics",
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_connectivity_logistics_2",
+      "topic": "connectivity_logistics",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_community_rights_1",
+      "topic": "community_rights",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_community_rights_2",
+      "topic": "community_rights",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_evidence_gate_1",
+      "topic": "evidence_gate",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_evidence_gate_2",
+      "topic": "evidence_gate",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_target_capability_fit_1",
+      "topic": "target_capability_fit",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_target_capability_fit_2",
+      "topic": "target_capability_fit",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_swiss_residency_zones_1",
+      "topic": "swiss_residency_zones",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_swiss_residency_zones_2",
+      "topic": "swiss_residency_zones",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_sovereign_ai_inference_1",
+      "topic": "sovereign_ai_inference",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_sovereign_ai_inference_2",
+      "topic": "sovereign_ai_inference",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_sovereignty_scope_not_location_1",
+      "topic": "sovereignty_scope_not_location",
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_sovereignty_scope_not_location_2",
+      "topic": "sovereignty_scope_not_location",
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    }
+  ],
+  "argument_sources": [
+    {
+      "key": "src_opening_portfolio_status",
+      "argument": "opening_portfolio_status",
+      "url": "https://github.com/Rejean-McCormick/Kristal-Farms/blob/main/docs/10-core/strategy/PLAN_MOBILISATION_INTERNATIONALE_KRISTAL_FARMS_FR.md",
+      "title": "Plan de mobilisation internationale — Kristal Farms",
+      "source_type": "kristal_strategy_source",
+      "note": "Le portefeuille identifie des organisations à étudier sans présumer leur intérêt."
+    },
+    {
+      "key": "src_opening_host_guardrail",
+      "argument": "opening_host_guardrail",
+      "url": "https://github.com/Rejean-McCormick/Kristal-Farms",
+      "title": "Kristal Farms — canonical repository",
+      "source_type": "kristal_canonical_repository",
+      "note": "La doctrine publique protège les charges communautaires et critiques avant le calcul flexible."
+    },
+    {
+      "key": "src_opening_evidence_gate",
+      "argument": "opening_evidence_gate",
+      "url": "https://github.com/Rejean-McCormick/Kristal-Farms",
+      "title": "Kristal Farms — canonical repository",
+      "source_type": "kristal_canonical_repository",
+      "note": "Le dépôt distingue références, hypothèses, inconnues et décisions de projet; aucun site ou locataire n’est établi par le seul portefeuille."
+    },
+    {
+      "key": "src_opening_target_capability_fit",
+      "argument": "opening_target_capability_fit",
+      "url": "https://www.exoscale.com/",
+      "title": "Exoscale — official website",
+      "source_type": "organization_official",
+      "note": "Source d’identité/capacités publiques seulement; aucune manifestation d’intérêt Kristal Farms n’est inférée."
+    },
+    {
+      "key": "src_host_responsible_dc_principles",
+      "argument": "host_responsible_dc_principles",
+      "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/09/government-of-canada-launches-canadas-responsible-data-centre-development-principles.html",
+      "title": "Canada’s Responsible Data Centre Development Principles",
+      "source_type": "host_policy_official",
+      "note": "Cadre hôte commun à tous les Worlds; il ne constitue pas une approbation d’un projet particulier."
+    },
+    {
+      "key": "src_evidence_exoscale_swiss_zones",
+      "argument": "evidence_exoscale_swiss_zones",
+      "url": "https://www.exoscale.com/datacenters/switzerland/",
+      "title": "Exoscale — Data centers in Switzerland",
+      "source_type": "organization_official",
+      "note": "Fait externe documenté utilisé pour ouvrir un débat, sans attribution de position hypothétique à une personne réelle."
+    },
+    {
+      "key": "src_evidence_exoscale_inference",
+      "argument": "evidence_exoscale_inference",
+      "url": "https://www.exoscale.com/ai-cloud-infrastructure/inference/",
+      "title": "Exoscale — AI Inference",
+      "source_type": "organization_official",
+      "note": "Fait externe documenté utilisé pour ouvrir un débat, sans attribution de position hypothétique à une personne réelle."
+    },
+    {
+      "key": "src_evidence_ch_agov_sovereignty_2026",
+      "argument": "evidence_ch_agov_sovereignty_2026",
+      "url": "https://www.agov.admin.ch/en/agov-in-cloud-saas-hyperscaler-architectures",
+      "title": "AGOV — Digital sovereignty",
+      "source_type": "government_official",
+      "note": "Fait externe documenté utilisé pour ouvrir un débat, sans attribution de position hypothétique à une personne réelle."
+    },
+    {
+      "key": "mega_demand_signal_1_source",
+      "argument": "mega_demand_signal_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_demand_signal_2_source",
+      "argument": "mega_demand_signal_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_energy_conditions_1_source",
+      "argument": "mega_energy_conditions_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_energy_conditions_2_source",
+      "argument": "mega_energy_conditions_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_digital_sovereignty_1_source",
+      "argument": "mega_digital_sovereignty_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_digital_sovereignty_2_source",
+      "argument": "mega_digital_sovereignty_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_innovation_coordination_1_source",
+      "argument": "mega_innovation_coordination_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_innovation_coordination_2_source",
+      "argument": "mega_innovation_coordination_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_connectivity_logistics_1_source",
+      "argument": "mega_connectivity_logistics_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_connectivity_logistics_2_source",
+      "argument": "mega_connectivity_logistics_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_community_rights_1_source",
+      "argument": "mega_community_rights_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_community_rights_2_source",
+      "argument": "mega_community_rights_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_evidence_gate_1_source",
+      "argument": "mega_evidence_gate_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_evidence_gate_2_source",
+      "argument": "mega_evidence_gate_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_target_capability_fit_1_source",
+      "argument": "mega_target_capability_fit_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_target_capability_fit_2_source",
+      "argument": "mega_target_capability_fit_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_swiss_residency_zones_1_source",
+      "argument": "mega_swiss_residency_zones_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_swiss_residency_zones_2_source",
+      "argument": "mega_swiss_residency_zones_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_sovereign_ai_inference_1_source",
+      "argument": "mega_sovereign_ai_inference_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_sovereign_ai_inference_2_source",
+      "argument": "mega_sovereign_ai_inference_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_sovereignty_scope_not_location_1_source",
+      "argument": "mega_sovereignty_scope_not_location_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_sovereignty_scope_not_location_2_source",
+      "argument": "mega_sovereignty_scope_not_location_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    }
+  ],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "kf_ch_exoscale__sim_expert_1",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0413",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0521",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0713",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "kf_ch_exoscale__sim_expert_2",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0521",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0713",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "kf_ch_exoscale__sim_expert_3",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0612",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0521",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0713",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "071",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [
+    {
+      "topic": "demand_signal",
+      "domain_code": "0413",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "demand_signal",
+      "domain_code": "0421",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "demand_signal",
+      "domain_code": "0312",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "demand_signal",
+      "domain_code": "0542",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "energy_conditions",
+      "domain_code": "0713",
+      "weight": 0.45,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "energy_conditions",
+      "domain_code": "0521",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "energy_conditions",
+      "domain_code": "0413",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "energy_conditions",
+      "domain_code": "0542",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "digital_sovereignty",
+      "domain_code": "0612",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "digital_sovereignty",
+      "domain_code": "0613",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "digital_sovereignty",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "digital_sovereignty",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "innovation_coordination",
+      "domain_code": "0311",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "innovation_coordination",
+      "domain_code": "0413",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "innovation_coordination",
+      "domain_code": "0542",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "innovation_coordination",
+      "domain_code": "0312",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "connectivity_logistics",
+      "domain_code": "0612",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "connectivity_logistics",
+      "domain_code": "071",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "connectivity_logistics",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "connectivity_logistics",
+      "domain_code": "0542",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "community_rights",
+      "domain_code": "0521",
+      "weight": 0.3,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "community_rights",
+      "domain_code": "0314",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "community_rights",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "community_rights",
+      "domain_code": "0413",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "community_rights",
+      "domain_code": "0321",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "evidence_gate",
+      "domain_code": "0413",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "evidence_gate",
+      "domain_code": "0421",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "evidence_gate",
+      "domain_code": "0312",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "evidence_gate",
+      "domain_code": "0542",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "target_capability_fit",
+      "domain_code": "0612",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "target_capability_fit",
+      "domain_code": "0613",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "target_capability_fit",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "target_capability_fit",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "swiss_residency_zones",
+      "domain_code": "0612",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "swiss_residency_zones",
+      "domain_code": "0613",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "swiss_residency_zones",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "swiss_residency_zones",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "sovereign_ai_inference",
+      "domain_code": "0612",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "sovereign_ai_inference",
+      "domain_code": "0613",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "sovereign_ai_inference",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "sovereign_ai_inference",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "sovereignty_scope_not_location",
+      "domain_code": "0413",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "sovereignty_scope_not_location",
+      "domain_code": "0421",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "sovereignty_scope_not_location",
+      "domain_code": "0312",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    },
+    {
+      "topic": "sovereignty_scope_not_location",
+      "domain_code": "0542",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "category_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement or ranking"
+      }
+    }
+  ],
+  "reading_exclusions": []
+}

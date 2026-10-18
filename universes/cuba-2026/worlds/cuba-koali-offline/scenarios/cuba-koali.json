@@ -1,0 +1,1704 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "cuba_koali_offline_2026",
+  "scenario_title": "Cuba 2026 — Koali Offline — simulation de gouvernance civique",
+  "mode": "replace_scenario",
+  "metadata": {
+    "universe_key": "cuba-2026",
+    "world_key": "cuba-koali-offline",
+    "seed_version": "0.3.0",
+    "simulation": true,
+    "fiction_boundary": "All named accounts in this World are synthetic fictional personas using pseudonyms. No real Cuban official, activist, party or institution is represented as a participant.",
+    "persona_policy": "The Great fictional-character archetypes supply personality/expertise only; original social rank and historical identity are not imported into the World.",
+    "dd44_policy": "DD44 is a synthetic persona inspired only by the user-specified direct-democracy archetype; the seed makes no biographical or political claim about any real person.",
+    "koali_principles": [
+      "Know → Choose → Act → Remember → Know better",
+      "offline-capable execution",
+      "fail-closed integrity",
+      "decision provenance",
+      "human authority remains human"
+    ],
+    "actor_profiles": {
+      "catherine_idealiste": {
+        "public_alias": "catherine_idealiste",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "humanitarian_systems_facilitator",
+        "world_role": "humanitarian mission; introduces offline Konnaxion/Orgo and initiates the reform process",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      },
+      "peter_tyran": {
+        "public_alias": "peter_tyran",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "forceful_generalist",
+        "world_role": "local resident; impatient with procedural constraints",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      },
+      "marial_rusee": {
+        "public_alias": "marial_rusee",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "social_network_reader",
+        "world_role": "local resident; strong informal-network and survival intelligence",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      },
+      "orlo_reformateur": {
+        "public_alias": "orlo_reformateur",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "institutional_designer",
+        "world_role": "local resident; process, administration and institutional design",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      },
+      "elizabeth_folle": {
+        "public_alias": "elizabeth_folle",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "stability_mediator",
+        "world_role": "local resident; intuitive political and social stabilizer",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      },
+      "archie_archeveque": {
+        "public_alias": "archie_archeveque",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "cultural_ethics_interpreter",
+        "world_role": "local resident; religion, culture, legitimacy and moral language",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      },
+      "velementov_ivrogne": {
+        "public_alias": "velementov_ivrogne",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "logistics_crisis_coordinator",
+        "world_role": "local resident; logistics, continuity and crisis coordination",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      },
+      "grigor_loyal": {
+        "public_alias": "grigor_loyal",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "reliability_coordinator",
+        "world_role": "night janitor at a school; reliable access window for one offline node",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      },
+      "georgina_intrigante": {
+        "public_alias": "georgina_intrigante",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "incentives_and_coalitions",
+        "world_role": "local resident; incentives, alliances and stakeholder mapping",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      },
+      "leo_romantique": {
+        "public_alias": "leo_romantique",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "human_dignity_culture",
+        "world_role": "local resident; culture, private life and human dignity",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      },
+      "arkady_courtisan": {
+        "public_alias": "arkady_courtisan",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "coalition_liaison",
+        "world_role": "local resident; coalition sequencing and liaison",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      },
+      "dd44_colosse": {
+        "public_alias": "dd44_colosse",
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "field_civic_organizer",
+        "world_role": "field organizer and information relay; synthetic persona inspired only by the user-specified direct-democracy archetype",
+        "source_character_policy": "personality/expertise archetype only; no original social position carried into the World",
+        "memory_backstory": "not surfaced in runtime",
+        "political_status": "no real-world office or authority",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": false,
+        "representation_type": "synthetic_fictional_persona"
+      }
+    },
+    "simulation_state": {
+      "premise": "A small offline civic group is quietly developing a provisional governance architecture and public-capacity tools. The World is a simulation; no claim is made that such a group exists in real Cuba.",
+      "public_story": "Participants are Cuban residents, immigrants, or humanitarian workers. Their fictional source-character backstory is not part of the runtime narrative.",
+      "initiator": "catherine_idealiste",
+      "infrastructure": {
+        "mode": "offline-first / local-only in the simulation",
+        "node_count": 3,
+        "local_carrier": "three local computers connected through constrained existing building wiring; narrative fact only, no implementation procedure",
+        "runtime_media": "Koali runtime boots from an external USB 3 drive without the primary data set",
+        "data_media": "primary collaborative data is carried on removable microSD media that can be duplicated, handed off, or stored separately",
+        "school_node": "one school computer hosts a separate local Koali data partition during the fictional night-shift window",
+        "node_siting": "three civilian locations chosen for local carrier reachability; no operational siting instructions are part of the seed",
+        "sync_policy": "local work first; explicit later reconciliation with provenance and conflict visibility"
+      },
+      "narrative_events": [
+        {
+          "key": "koali_arrival",
+          "sequence": 1,
+          "summary": "Catherine l’Idéaliste arrives through humanitarian work with offline-capable Konnaxion and Orgo and convenes the first reform discussions."
+        },
+        {
+          "key": "three_node_start",
+          "sequence": 2,
+          "summary": "The group establishes three offline collaboration nodes with removable-data continuity."
+        },
+        {
+          "key": "school_night_window",
+          "sequence": 3,
+          "summary": "Grigor le Loyal works a night janitorial shift at a school; Orlo le Réformateur joins after duties are completed, and the group uses a local computer as a time-bounded collaboration node."
+        },
+        {
+          "key": "dd44_arrival",
+          "sequence": 4,
+          "summary": "DD44 le Colosse joins the field effort, relays information and pushes the group to make citizen authority concrete and inspectable."
+        },
+        {
+          "key": "first_charter",
+          "sequence": 5,
+          "summary": "The group begins drafting rules for a provisional mandate, rights, essential-service continuity, citizen oversight and a mandatory exit from provisional authority."
+        }
+      ],
+      "safety_boundary": "Infrastructure details are narrative constraints for the simulation. The seed intentionally omits procedures for concealment, unauthorized access, evasion, exploitation, or covert network deployment."
+    },
+    "context_sources": {
+      "un_cuba_2026_07_15": {
+        "title": "UN Secretary-General noon briefing — Cuba — 15 July 2026",
+        "url": "https://www.un.org/sg/en/content/highlight/2026-07-15.html",
+        "note": "Repeated nationwide outages were reported as disrupting electricity, clean water, telecommunications, health services and economic activity."
+      },
+      "reuters_grid_2026_09_18": {
+        "title": "Reuters — Cuba electrical grid nationwide collapse — 18 September 2026",
+        "url": "https://www.reuters.com/business/energy/cuba-energy-grid-suffers-nationwide-collapse-2026-09-18/",
+        "note": "Current-setting context for the simulation; not evidence for any fictional political actor."
+      },
+      "un_food_2026_05_22": {
+        "title": "UN Secretary-General noon briefing — Cuba food security — 22 May 2026",
+        "url": "https://www.un.org/sg/en/content/highlight/2026-05-22.html",
+        "note": "WFP reported assistance to 900,000 people amid shortages and distribution delays."
+      },
+      "reuters_economy_2026_09_21": {
+        "title": "Reuters — Cuba economic reforms and instability — 21 September 2026",
+        "url": "https://www.reuters.com/world/americas/lines-grow-banks-cuba-tiptoes-away-communism-stability-seems-distant-2026-09-21/",
+        "note": "Economic context only; the fictional group has no connection to real officials or organizations."
+      }
+    },
+    "runtime_boundaries": {
+      "konnaxion": "deliberation, civic state, consultations and decision records",
+      "orgo": "execution/workflow after governed decisions",
+      "koali_spaces": "presentation/composition only; not political or epistemic authority",
+      "kreative": "not required for this World seed"
+    },
+    "persona_contract": "kx-world-personas/v1",
+    "mega_update": {
+      "version": "1.0.0",
+      "date": "2026-09-30",
+      "purpose": "activate_seeded_fictional_personas_in_contextual_ekoh_readings",
+      "real_person_ekoh_scores_generated": false,
+      "baseline_always_visible": true
+    }
+  },
+  "actors": [
+    {
+      "key": "catherine_idealiste",
+      "username": "demo_cu_v010_catherine_idealiste",
+      "display_name": "Catherine l’Idéaliste",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "peter_tyran",
+      "username": "demo_cu_v010_peter_tyran",
+      "display_name": "Peter le Tyran",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "marial_rusee",
+      "username": "demo_cu_v010_marial_rusee",
+      "display_name": "Marial la Rusée",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "orlo_reformateur",
+      "username": "demo_cu_v010_orlo_reformateur",
+      "display_name": "Orlo le Réformateur",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "elizabeth_folle",
+      "username": "demo_cu_v010_elizabeth_folle",
+      "display_name": "Elizabeth la Folle",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "archie_archeveque",
+      "username": "demo_cu_v010_archie_archeveque",
+      "display_name": "Archevêque Archie",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "velementov_ivrogne",
+      "username": "demo_cu_v010_velementov_ivrogne",
+      "display_name": "Velementov l’Ivrogne",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "grigor_loyal",
+      "username": "demo_cu_v010_grigor_loyal",
+      "display_name": "Grigor le Loyal",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "georgina_intrigante",
+      "username": "demo_cu_v010_georgina_intrigante",
+      "display_name": "Georgina l’Intrigante",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "leo_romantique",
+      "username": "demo_cu_v010_leo_romantique",
+      "display_name": "Leo le Romantique",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "arkady_courtisan",
+      "username": "demo_cu_v010_arkady_courtisan",
+      "display_name": "Arkady le Courtisan",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "dd44_colosse",
+      "username": "demo_cu_v010_dd44_colosse",
+      "display_name": "DD44 le Colosse",
+      "is_ethikos_elite": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "transition_legitimacy",
+      "name": "[DEMO] Cuba 2026 — Mandat et légitimité",
+      "description": "Limites, durée, contrôle et fin de toute autorité provisoire."
+    },
+    {
+      "key": "constitutional_design",
+      "name": "[DEMO] Cuba 2026 — Constitution et institutions",
+      "description": "Processus constituant, droits, séparation des pouvoirs, recours et traçabilité des compromis."
+    },
+    {
+      "key": "citizen_power",
+      "name": "[DEMO] Cuba 2026 — Pouvoir citoyen et territoire",
+      "description": "Assemblées locales, participation, subsidiarité, contrôle public et contestabilité."
+    },
+    {
+      "key": "essential_services",
+      "name": "[DEMO] Cuba 2026 — Services essentiels",
+      "description": "Électricité, eau, santé, alimentation, éducation et continuité en période de crise."
+    },
+    {
+      "key": "economy_transition",
+      "name": "[DEMO] Cuba 2026 — Économie et protection sociale",
+      "description": "Monnaie, approvisionnement, secteur public/privé, travail, vulnérabilités et priorités sociales."
+    },
+    {
+      "key": "information_integrity",
+      "name": "[DEMO] Cuba 2026 — Information, provenance et mémoire",
+      "description": "Sources, rumeurs, désaccords, décision reconstructible et mémoire institutionnelle."
+    },
+    {
+      "key": "offline_runtime",
+      "name": "[DEMO] Cuba 2026 — Continuité offline",
+      "description": "Capacité locale à connaître, délibérer, décider, agir et se souvenir malgré des communications intermittentes."
+    },
+    {
+      "key": "external_relations",
+      "name": "[DEMO] Cuba 2026 — Relations extérieures et aide",
+      "description": "Aide humanitaire, souveraineté, coopération internationale et contraintes extérieures."
+    }
+  ],
+  "topics": [
+    {
+      "key": "provisional_mandate",
+      "title": "[DEMO] Cuba 2026 — Quel mandat pour une autorité provisoire?",
+      "description": "Définir ce qu’une structure provisoire peut faire, ce qui lui est interdit, comment elle est contrôlée et à quelle condition elle disparaît.",
+      "status": "open",
+      "category": "transition_legitimacy"
+    },
+    {
+      "key": "constitution_process",
+      "title": "[DEMO] Cuba 2026 — Comment construire une constitution sans perdre le pourquoi?",
+      "description": "Relier besoins, propositions, objections, versions, compromis et texte final pour que chaque article reste reconstructible.",
+      "status": "open",
+      "category": "constitutional_design"
+    },
+    {
+      "key": "citizen_assembly",
+      "title": "[DEMO] Cuba 2026 — Où doit résider le pouvoir citoyen?",
+      "description": "Explorer la relation entre assemblées locales, structures nationales, expertise, vote populaire et mécanismes de recours.",
+      "status": "open",
+      "category": "citizen_power"
+    },
+    {
+      "key": "essential_services_first",
+      "title": "[DEMO] Cuba 2026 — Quelles priorités pendant la crise des services essentiels?",
+      "description": "Délibérer sur la continuité de l’électricité, de l’eau, de la santé, de l’alimentation et de l’éducation pendant une transition.",
+      "status": "open",
+      "category": "essential_services"
+    },
+    {
+      "key": "economic_rules",
+      "title": "[DEMO] Cuba 2026 — Quelles règles économiques transitoires sont légitimes?",
+      "description": "Comparer des options temporaires concernant prix, monnaie, entreprises, biens essentiels, fiscalité et protections sociales sans présumer du modèle final.",
+      "status": "open",
+      "category": "economy_transition"
+    },
+    {
+      "key": "rights_and_pluralism",
+      "title": "[DEMO] Cuba 2026 — Quels droits ne peuvent pas attendre?",
+      "description": "Identifier les droits et garanties qui doivent s’appliquer immédiatement, y compris liberté de conscience, expression, association, recours et protection contre l’arbitraire.",
+      "status": "open",
+      "category": "constitutional_design"
+    },
+    {
+      "key": "information_provenance",
+      "title": "[DEMO] Cuba 2026 — Comment distinguer faits, rumeurs et décisions?",
+      "description": "Maintenir provenance, niveau de confiance, désaccords et historique de décision dans un environnement fragmenté.",
+      "status": "open",
+      "category": "information_integrity"
+    },
+    {
+      "key": "offline_continuity",
+      "title": "[DEMO] Cuba 2026 — Comment gouverner quand le réseau disparaît?",
+      "description": "Définir les règles de continuité locale, synchronisation ultérieure, autorité et résolution de conflits de version sans dépendre d’un cloud permanent.",
+      "status": "open",
+      "category": "offline_runtime"
+    },
+    {
+      "key": "foreign_humanitarian",
+      "title": "[DEMO] Cuba 2026 — Comment recevoir de l’aide sans confondre aide et autorité politique?",
+      "description": "Séparer assistance humanitaire, coopération technique, influence politique et souveraineté de décision.",
+      "status": "open",
+      "category": "external_relations"
+    },
+    {
+      "key": "transition_exit",
+      "title": "[DEMO] Cuba 2026 — Comment mettre fin au provisoire?",
+      "description": "Définir des conditions vérifiables de dissolution, transfert d’autorité, élections ou ratification sans transformer le provisoire en régime permanent.",
+      "status": "open",
+      "category": "transition_legitimacy"
+    }
+  ],
+  "stances": [
+    {
+      "topic": "provisional_mandate",
+      "actor": "orlo_reformateur",
+      "value": 2
+    },
+    {
+      "topic": "provisional_mandate",
+      "actor": "catherine_idealiste",
+      "value": -1
+    },
+    {
+      "topic": "provisional_mandate",
+      "actor": "elizabeth_folle",
+      "value": 0
+    },
+    {
+      "topic": "constitution_process",
+      "actor": "orlo_reformateur",
+      "value": -2
+    },
+    {
+      "topic": "constitution_process",
+      "actor": "catherine_idealiste",
+      "value": 1
+    },
+    {
+      "topic": "constitution_process",
+      "actor": "elizabeth_folle",
+      "value": 0
+    },
+    {
+      "topic": "citizen_assembly",
+      "actor": "dd44_colosse",
+      "value": 2
+    },
+    {
+      "topic": "citizen_assembly",
+      "actor": "arkady_courtisan",
+      "value": -1
+    },
+    {
+      "topic": "citizen_assembly",
+      "actor": "orlo_reformateur",
+      "value": 0
+    },
+    {
+      "topic": "essential_services_first",
+      "actor": "catherine_idealiste",
+      "value": -2
+    },
+    {
+      "topic": "essential_services_first",
+      "actor": "dd44_colosse",
+      "value": 1
+    },
+    {
+      "topic": "essential_services_first",
+      "actor": "orlo_reformateur",
+      "value": 0
+    },
+    {
+      "topic": "economic_rules",
+      "actor": "orlo_reformateur",
+      "value": 2
+    },
+    {
+      "topic": "economic_rules",
+      "actor": "georgina_intrigante",
+      "value": -1
+    },
+    {
+      "topic": "economic_rules",
+      "actor": "catherine_idealiste",
+      "value": 0
+    },
+    {
+      "topic": "rights_and_pluralism",
+      "actor": "orlo_reformateur",
+      "value": -2
+    },
+    {
+      "topic": "rights_and_pluralism",
+      "actor": "catherine_idealiste",
+      "value": 1
+    },
+    {
+      "topic": "rights_and_pluralism",
+      "actor": "archie_archeveque",
+      "value": 0
+    },
+    {
+      "topic": "information_provenance",
+      "actor": "dd44_colosse",
+      "value": 2
+    },
+    {
+      "topic": "information_provenance",
+      "actor": "archie_archeveque",
+      "value": -1
+    },
+    {
+      "topic": "information_provenance",
+      "actor": "arkady_courtisan",
+      "value": 0
+    },
+    {
+      "topic": "offline_continuity",
+      "actor": "dd44_colosse",
+      "value": -2
+    },
+    {
+      "topic": "offline_continuity",
+      "actor": "orlo_reformateur",
+      "value": 1
+    },
+    {
+      "topic": "offline_continuity",
+      "actor": "catherine_idealiste",
+      "value": 0
+    },
+    {
+      "topic": "foreign_humanitarian",
+      "actor": "catherine_idealiste",
+      "value": 2
+    },
+    {
+      "topic": "foreign_humanitarian",
+      "actor": "orlo_reformateur",
+      "value": -1
+    },
+    {
+      "topic": "foreign_humanitarian",
+      "actor": "elizabeth_folle",
+      "value": 0
+    },
+    {
+      "topic": "transition_exit",
+      "actor": "orlo_reformateur",
+      "value": -2
+    },
+    {
+      "topic": "transition_exit",
+      "actor": "catherine_idealiste",
+      "value": 1
+    },
+    {
+      "topic": "transition_exit",
+      "actor": "elizabeth_folle",
+      "value": 0
+    }
+  ],
+  "arguments": [
+    {
+      "key": "a_cath_mandate",
+      "topic": "provisional_mandate",
+      "actor": "catherine_idealiste",
+      "side": "pro",
+      "content": "Une structure provisoire ne peut prétendre réformer la société que si ses pouvoirs, sa durée et ses critères de sortie sont publics et limités dès le départ."
+    },
+    {
+      "key": "a_peter_mandate",
+      "topic": "provisional_mandate",
+      "actor": "peter_tyran",
+      "side": "con",
+      "content": "Une autorité paralysée par trop de garde-fous risque de ne rien pouvoir faire quand les décisions doivent être rapides et visibles."
+    },
+    {
+      "key": "a_orlo_mandate",
+      "topic": "provisional_mandate",
+      "actor": "orlo_reformateur",
+      "side": "pro",
+      "content": "Chaque pouvoir provisoire devrait avoir une base écrite, un responsable, une durée, un mécanisme d’appel et une trace auditable."
+    },
+    {
+      "key": "a_elizabeth_mandate",
+      "topic": "provisional_mandate",
+      "actor": "elizabeth_folle",
+      "side": "neutral",
+      "content": "La règle de sortie est aussi importante que la règle d’entrée: une transition sans succession claire peut créer le vide qu’elle voulait éviter."
+    },
+    {
+      "key": "a_marial_const",
+      "topic": "constitution_process",
+      "actor": "marial_rusee",
+      "side": "neutral",
+      "content": "Un texte élégant écrit entre personnes brillantes peut échouer s’il ne capture pas la manière dont les gens vivent réellement, contournent les règles et se protègent."
+    },
+    {
+      "key": "a_archie_rights",
+      "topic": "rights_and_pluralism",
+      "actor": "archie_archeveque",
+      "side": "pro",
+      "content": "Une réforme qui protège la parole mais méprise les croyances et les communautés morales remplace une domination par une autre."
+    },
+    {
+      "key": "a_leo_rights",
+      "topic": "rights_and_pluralism",
+      "actor": "leo_romantique",
+      "side": "pro",
+      "content": "La dignité privée, l’amour, la culture et le droit de mener une vie qui ne soit pas entièrement politique doivent être protégés dès le début."
+    },
+    {
+      "key": "a_dd44_citizen",
+      "topic": "citizen_assembly",
+      "actor": "dd44_colosse",
+      "side": "pro",
+      "content": "Le pouvoir citoyen doit être vérifiable dans les décisions ordinaires, pas seulement promis dans un futur scrutin national."
+    },
+    {
+      "key": "a_velementov_services",
+      "topic": "essential_services_first",
+      "actor": "velementov_ivrogne",
+      "side": "pro",
+      "content": "Si l’eau, l’électricité, les soins et l’approvisionnement s’effondrent, les débats institutionnels perdent leur base matérielle. La continuité doit être traitée comme une responsabilité centrale."
+    },
+    {
+      "key": "a_georgina_econ",
+      "topic": "economic_rules",
+      "actor": "georgina_intrigante",
+      "side": "neutral",
+      "content": "Une règle économique peut sembler juste sur le papier et échouer si elle détruit les incitations, les circuits d’approvisionnement ou les acteurs capables de l’exécuter."
+    },
+    {
+      "key": "a_grigor_offline",
+      "topic": "offline_continuity",
+      "actor": "grigor_loyal",
+      "side": "pro",
+      "content": "Le système offline doit privilégier des routines simples que des personnes fatiguées peuvent répéter sans dépendre d’un expert permanent."
+    },
+    {
+      "key": "a_orlo_offline",
+      "topic": "offline_continuity",
+      "actor": "orlo_reformateur",
+      "side": "pro",
+      "content": "Chaque synchronisation devrait préserver la provenance, l’auteur, la version et la raison d’une modification afin que deux nœuds puissent se réconcilier sans effacer le désaccord."
+    },
+    {
+      "key": "a_dd44_info",
+      "topic": "information_provenance",
+      "actor": "dd44_colosse",
+      "side": "pro",
+      "content": "L’information utile doit pouvoir circuler jusqu’aux citoyens même quand les canaux habituels sont faibles, tout en gardant l’origine et le niveau de confiance visibles."
+    },
+    {
+      "key": "a_marial_info",
+      "topic": "information_provenance",
+      "actor": "marial_rusee",
+      "side": "neutral",
+      "content": "Les réseaux informels transportent souvent l’information avant les institutions; le système doit les entendre sans transformer automatiquement chaque rumeur en fait."
+    },
+    {
+      "key": "a_arkady_external",
+      "topic": "foreign_humanitarian",
+      "actor": "arkady_courtisan",
+      "side": "neutral",
+      "content": "La coopération extérieure sera plus stable si les interlocuteurs savent exactement ce qui est une demande d’aide, une négociation technique ou une décision politique."
+    },
+    {
+      "key": "a_cath_exit",
+      "topic": "transition_exit",
+      "actor": "catherine_idealiste",
+      "side": "pro",
+      "content": "Le provisoire doit se terminer par une procédure que les citoyens peuvent comprendre et contester, pas par la simple déclaration de ceux qui détiennent déjà les outils."
+    },
+    {
+      "key": "a_georgina_exit",
+      "topic": "transition_exit",
+      "actor": "georgina_intrigante",
+      "side": "neutral",
+      "content": "Une sortie trop rapide peut créer un vide institutionnel; une sortie trop lente transforme l’exception en intérêt permanent. Les conditions doivent être testables."
+    },
+    {
+      "key": "a_peter_info",
+      "topic": "information_provenance",
+      "actor": "peter_tyran",
+      "side": "con",
+      "content": "Une organisation peut se perdre dans la vérification au point de ne plus savoir parler clairement. Il faut distinguer ce qui mérite enquête de ce qui exige une décision immédiate."
+    },
+    {
+      "key": "mega_provisional_mandate_1",
+      "topic": "provisional_mandate",
+      "actor": "orlo_reformateur",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_provisional_mandate_2",
+      "topic": "provisional_mandate",
+      "actor": "catherine_idealiste",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_constitution_process_1",
+      "topic": "constitution_process",
+      "actor": "orlo_reformateur",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_constitution_process_2",
+      "topic": "constitution_process",
+      "actor": "catherine_idealiste",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_citizen_assembly_1",
+      "topic": "citizen_assembly",
+      "actor": "dd44_colosse",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_citizen_assembly_2",
+      "topic": "citizen_assembly",
+      "actor": "arkady_courtisan",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_essential_services_first_1",
+      "topic": "essential_services_first",
+      "actor": "catherine_idealiste",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_essential_services_first_2",
+      "topic": "essential_services_first",
+      "actor": "dd44_colosse",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_economic_rules_1",
+      "topic": "economic_rules",
+      "actor": "orlo_reformateur",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_economic_rules_2",
+      "topic": "economic_rules",
+      "actor": "georgina_intrigante",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_rights_and_pluralism_1",
+      "topic": "rights_and_pluralism",
+      "actor": "orlo_reformateur",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_rights_and_pluralism_2",
+      "topic": "rights_and_pluralism",
+      "actor": "catherine_idealiste",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_information_provenance_1",
+      "topic": "information_provenance",
+      "actor": "dd44_colosse",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_information_provenance_2",
+      "topic": "information_provenance",
+      "actor": "archie_archeveque",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_offline_continuity_1",
+      "topic": "offline_continuity",
+      "actor": "dd44_colosse",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_offline_continuity_2",
+      "topic": "offline_continuity",
+      "actor": "orlo_reformateur",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_foreign_humanitarian_1",
+      "topic": "foreign_humanitarian",
+      "actor": "catherine_idealiste",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_foreign_humanitarian_2",
+      "topic": "foreign_humanitarian",
+      "actor": "orlo_reformateur",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_transition_exit_1",
+      "topic": "transition_exit",
+      "actor": "orlo_reformateur",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_transition_exit_2",
+      "topic": "transition_exit",
+      "actor": "catherine_idealiste",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    }
+  ],
+  "argument_sources": [
+    {
+      "key": "src_a_cath_mandate",
+      "argument": "a_cath_mandate",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_peter_mandate",
+      "argument": "a_peter_mandate",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_orlo_mandate",
+      "argument": "a_orlo_mandate",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_elizabeth_mandate",
+      "argument": "a_elizabeth_mandate",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_marial_const",
+      "argument": "a_marial_const",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_archie_rights",
+      "argument": "a_archie_rights",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_leo_rights",
+      "argument": "a_leo_rights",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_dd44_citizen",
+      "argument": "a_dd44_citizen",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_velementov_services",
+      "argument": "a_velementov_services",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_georgina_econ",
+      "argument": "a_georgina_econ",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_grigor_offline",
+      "argument": "a_grigor_offline",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_orlo_offline",
+      "argument": "a_orlo_offline",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_dd44_info",
+      "argument": "a_dd44_info",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_marial_info",
+      "argument": "a_marial_info",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_arkady_external",
+      "argument": "a_arkady_external",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_cath_exit",
+      "argument": "a_cath_exit",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_georgina_exit",
+      "argument": "a_georgina_exit",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "src_a_peter_info",
+      "argument": "a_peter_info",
+      "title": "Source de simulation — archétype de persona",
+      "source_type": "simulation_persona_archetype",
+      "citation_text": "Position synthétique générée pour la simulation à partir du profil fictif fourni par l’auteur du seed.",
+      "note": "Ce texte n’est attribué à aucune personne réelle et ne constitue pas une recommandation politique du système."
+    },
+    {
+      "key": "mega_provisional_mandate_1_source",
+      "argument": "mega_provisional_mandate_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_provisional_mandate_2_source",
+      "argument": "mega_provisional_mandate_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_constitution_process_1_source",
+      "argument": "mega_constitution_process_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_constitution_process_2_source",
+      "argument": "mega_constitution_process_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_citizen_assembly_1_source",
+      "argument": "mega_citizen_assembly_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_citizen_assembly_2_source",
+      "argument": "mega_citizen_assembly_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_essential_services_first_1_source",
+      "argument": "mega_essential_services_first_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_essential_services_first_2_source",
+      "argument": "mega_essential_services_first_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_economic_rules_1_source",
+      "argument": "mega_economic_rules_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_economic_rules_2_source",
+      "argument": "mega_economic_rules_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_rights_and_pluralism_1_source",
+      "argument": "mega_rights_and_pluralism_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_rights_and_pluralism_2_source",
+      "argument": "mega_rights_and_pluralism_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_information_provenance_1_source",
+      "argument": "mega_information_provenance_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_information_provenance_2_source",
+      "argument": "mega_information_provenance_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_offline_continuity_1_source",
+      "argument": "mega_offline_continuity_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_offline_continuity_2_source",
+      "argument": "mega_offline_continuity_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_foreign_humanitarian_1_source",
+      "argument": "mega_foreign_humanitarian_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_foreign_humanitarian_2_source",
+      "argument": "mega_foreign_humanitarian_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_transition_exit_1_source",
+      "argument": "mega_transition_exit_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_transition_exit_2_source",
+      "argument": "mega_transition_exit_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    }
+  ],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "catherine_idealiste",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "raw_score": 0.9,
+          "weighted_score": 0.9
+        },
+        {
+          "domain_code": "0111",
+          "raw_score": 0.75,
+          "weighted_score": 0.75
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.85,
+          "weighted_score": 0.85
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.7,
+          "weighted_score": 0.7
+        },
+        {
+          "domain_code": "0613",
+          "raw_score": 0.45,
+          "weighted_score": 0.45
+        },
+        {
+          "domain_code": "0923",
+          "raw_score": 0.85,
+          "weighted_score": 0.85
+        }
+      ],
+      "ethics_score": 1.0
+    },
+    {
+      "actor": "peter_tyran",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "0413",
+          "raw_score": 0.6,
+          "weighted_score": 0.6
+        },
+        {
+          "domain_code": "1032",
+          "raw_score": 0.55,
+          "weighted_score": 0.55
+        },
+        {
+          "domain_code": "0313",
+          "raw_score": 0.45,
+          "weighted_score": 0.45
+        }
+      ],
+      "ethics_score": 1.0
+    },
+    {
+      "actor": "marial_rusee",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "0314",
+          "raw_score": 0.8,
+          "weighted_score": 0.8
+        },
+        {
+          "domain_code": "0313",
+          "raw_score": 0.85,
+          "weighted_score": 0.85
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.6,
+          "weighted_score": 0.6
+        }
+      ],
+      "ethics_score": 1.0
+    },
+    {
+      "actor": "orlo_reformateur",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.9,
+          "weighted_score": 0.9
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.7,
+          "weighted_score": 0.7
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.65,
+          "weighted_score": 0.65
+        }
+      ],
+      "ethics_score": 1.0
+    },
+    {
+      "actor": "elizabeth_folle",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "raw_score": 0.8,
+          "weighted_score": 0.8
+        },
+        {
+          "domain_code": "0313",
+          "raw_score": 0.9,
+          "weighted_score": 0.9
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.75,
+          "weighted_score": 0.75
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.6,
+          "weighted_score": 0.6
+        }
+      ],
+      "ethics_score": 1.0
+    },
+    {
+      "actor": "archie_archeveque",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "0223",
+          "raw_score": 0.9,
+          "weighted_score": 0.9
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.8,
+          "weighted_score": 0.8
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.6,
+          "weighted_score": 0.6
+        },
+        {
+          "domain_code": "0313",
+          "raw_score": 0.65,
+          "weighted_score": 0.65
+        }
+      ],
+      "ethics_score": 1.0
+    },
+    {
+      "actor": "velementov_ivrogne",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "1032",
+          "raw_score": 0.9,
+          "weighted_score": 0.9
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.7,
+          "weighted_score": 0.7
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.5,
+          "weighted_score": 0.5
+        }
+      ],
+      "ethics_score": 1.0
+    },
+    {
+      "actor": "grigor_loyal",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "0313",
+          "raw_score": 0.7,
+          "weighted_score": 0.7
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.55,
+          "weighted_score": 0.55
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.55,
+          "weighted_score": 0.55
+        }
+      ],
+      "ethics_score": 1.0
+    },
+    {
+      "actor": "georgina_intrigante",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "0413",
+          "raw_score": 0.85,
+          "weighted_score": 0.85
+        },
+        {
+          "domain_code": "0313",
+          "raw_score": 0.8,
+          "weighted_score": 0.8
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.65,
+          "weighted_score": 0.65
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.7,
+          "weighted_score": 0.7
+        }
+      ],
+      "ethics_score": 1.0
+    },
+    {
+      "actor": "leo_romantique",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "021",
+          "raw_score": 0.9,
+          "weighted_score": 0.9
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.7,
+          "weighted_score": 0.7
+        },
+        {
+          "domain_code": "0313",
+          "raw_score": 0.65,
+          "weighted_score": 0.65
+        }
+      ],
+      "ethics_score": 1.0
+    },
+    {
+      "actor": "arkady_courtisan",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "0413",
+          "raw_score": 0.75,
+          "weighted_score": 0.75
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.75,
+          "weighted_score": 0.75
+        },
+        {
+          "domain_code": "0313",
+          "raw_score": 0.65,
+          "weighted_score": 0.65
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.5,
+          "weighted_score": 0.5
+        }
+      ],
+      "ethics_score": 1.0
+    },
+    {
+      "actor": "dd44_colosse",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — seed simulation only",
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "raw_score": 0.8,
+          "weighted_score": 0.8
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.85,
+          "weighted_score": 0.85
+        },
+        {
+          "domain_code": "0321",
+          "raw_score": 0.75,
+          "weighted_score": 0.75
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.6,
+          "weighted_score": 0.6
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.85,
+          "weighted_score": 0.85
+        }
+      ],
+      "ethics_score": 1.0
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [
+    {
+      "topic": "provisional_mandate",
+      "domain_code": "0312",
+      "weight": 0.45,
+      "criteria": "Political sciences and civics"
+    },
+    {
+      "topic": "provisional_mandate",
+      "domain_code": "0421",
+      "weight": 0.35,
+      "criteria": "Law"
+    },
+    {
+      "topic": "provisional_mandate",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": "Administration"
+    },
+    {
+      "topic": "constitution_process",
+      "domain_code": "0312",
+      "weight": 0.4,
+      "criteria": "Political sciences and civics"
+    },
+    {
+      "topic": "constitution_process",
+      "domain_code": "0421",
+      "weight": 0.35,
+      "criteria": "Law"
+    },
+    {
+      "topic": "constitution_process",
+      "domain_code": "0223",
+      "weight": 0.25,
+      "criteria": "Philosophy and ethics"
+    },
+    {
+      "topic": "citizen_assembly",
+      "domain_code": "0312",
+      "weight": 0.45,
+      "criteria": "Political sciences and civics"
+    },
+    {
+      "topic": "citizen_assembly",
+      "domain_code": "0314",
+      "weight": 0.35,
+      "criteria": "Sociology and cultural studies"
+    },
+    {
+      "topic": "citizen_assembly",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": "Administration"
+    },
+    {
+      "topic": "essential_services_first",
+      "domain_code": "0413",
+      "weight": 0.35,
+      "criteria": "Administration"
+    },
+    {
+      "topic": "essential_services_first",
+      "domain_code": "0923",
+      "weight": 0.25,
+      "criteria": "Social work and counselling"
+    },
+    {
+      "topic": "essential_services_first",
+      "domain_code": "0612",
+      "weight": 0.2,
+      "criteria": "Network administration"
+    },
+    {
+      "topic": "essential_services_first",
+      "domain_code": "0312",
+      "weight": 0.2,
+      "criteria": "Civics"
+    },
+    {
+      "topic": "economic_rules",
+      "domain_code": "0311",
+      "weight": 0.5,
+      "criteria": "Economics"
+    },
+    {
+      "topic": "economic_rules",
+      "domain_code": "0413",
+      "weight": 0.3,
+      "criteria": "Administration"
+    },
+    {
+      "topic": "economic_rules",
+      "domain_code": "0312",
+      "weight": 0.2,
+      "criteria": "Civics"
+    },
+    {
+      "topic": "rights_and_pluralism",
+      "domain_code": "0421",
+      "weight": 0.4,
+      "criteria": "Law"
+    },
+    {
+      "topic": "rights_and_pluralism",
+      "domain_code": "0223",
+      "weight": 0.3,
+      "criteria": "Philosophy and ethics"
+    },
+    {
+      "topic": "rights_and_pluralism",
+      "domain_code": "0312",
+      "weight": 0.3,
+      "criteria": "Civics"
+    },
+    {
+      "topic": "information_provenance",
+      "domain_code": "0321",
+      "weight": 0.35,
+      "criteria": "Journalism and reporting"
+    },
+    {
+      "topic": "information_provenance",
+      "domain_code": "0314",
+      "weight": 0.25,
+      "criteria": "Sociology and cultural studies"
+    },
+    {
+      "topic": "information_provenance",
+      "domain_code": "0613",
+      "weight": 0.2,
+      "criteria": "Software and applications"
+    },
+    {
+      "topic": "information_provenance",
+      "domain_code": "0312",
+      "weight": 0.2,
+      "criteria": "Civics"
+    },
+    {
+      "topic": "offline_continuity",
+      "domain_code": "0612",
+      "weight": 0.45,
+      "criteria": "Database and network design and administration"
+    },
+    {
+      "topic": "offline_continuity",
+      "domain_code": "0413",
+      "weight": 0.3,
+      "criteria": "Administration"
+    },
+    {
+      "topic": "offline_continuity",
+      "domain_code": "0312",
+      "weight": 0.25,
+      "criteria": "Civics"
+    },
+    {
+      "topic": "foreign_humanitarian",
+      "domain_code": "0312",
+      "weight": 0.35,
+      "criteria": "Political sciences and civics"
+    },
+    {
+      "topic": "foreign_humanitarian",
+      "domain_code": "0923",
+      "weight": 0.35,
+      "criteria": "Social work and counselling"
+    },
+    {
+      "topic": "foreign_humanitarian",
+      "domain_code": "0413",
+      "weight": 0.3,
+      "criteria": "Administration"
+    },
+    {
+      "topic": "transition_exit",
+      "domain_code": "0312",
+      "weight": 0.5,
+      "criteria": "Political sciences and civics"
+    },
+    {
+      "topic": "transition_exit",
+      "domain_code": "0421",
+      "weight": 0.3,
+      "criteria": "Law"
+    },
+    {
+      "topic": "transition_exit",
+      "domain_code": "0413",
+      "weight": 0.2,
+      "criteria": "Administration"
+    }
+  ],
+  "reading_exclusions": []
+}

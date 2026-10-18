@@ -1,3 +1,5 @@
+> **Format de fichiers canonique v3 (2026-10-16) :** voir [README_UNIVERSES_NESTED_V3.md](../../../README_UNIVERSES_NESTED_V3.md). `Konnaxion_Worlds/universes/<universe>/worlds/<world>/` remplace le rangement global `seed-data/worlds`. Les contrats `kx-*-pack/v1`, les références exactes et l’atomicité de promotion restent inchangés.
+
 # Operations Runbook
 
 ## 0. Production deployment target — one stack, ~120 Worlds

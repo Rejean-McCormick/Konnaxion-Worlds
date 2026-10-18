@@ -1,0 +1,16 @@
+synthetic_id,site,subtype,kx17_normalized,symptom_impact_index,class
+SYN-001,site-A,subtype-1,0.72,62,case
+SYN-002,site-A,subtype-2,0.31,48,case
+SYN-003,site-B,subtype-1,0.67,59,case
+SYN-004,site-B,subtype-2,0.28,44,case
+SYN-005,site-C,subtype-1,0.74,64,case
+SYN-006,site-C,subtype-3,0.22,39,case
+SYN-007,site-D,subtype-2,0.35,50,case
+SYN-008,site-D,subtype-3,0.18,34,case
+SYN-009,site-E,subtype-1,0.63,57,case
+SYN-010,site-E,subtype-2,0.33,46,case
+SYN-011,site-A,control,0.12,12,control
+SYN-012,site-B,control,0.15,15,control
+SYN-013,site-C,control,0.09,9,control
+SYN-014,site-D,control,0.14,14,control
+SYN-015,site-E,control,0.11,11,control

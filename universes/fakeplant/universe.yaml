@@ -1,0 +1,89 @@
+universe_contract: kx-universe-pack/v1
+universe_key: fakeplant
+title: FakePlant — organisation industrielle
+description: Univers privé simulé, projection dérivée du Kristal organisation-portable.
+pack_version: 1.0.1
+visibility: public
+default_world: fp-espace-discussion
+requires:
+  world_contract: kx-world-pack/v1
+  host_contracts:
+  - kx-world-personas/v1
+worlds:
+- world_key: fp-electromecanique-informatique
+  seed_pack_key: fp-electromecanique-informatique
+  seed_version: 1.0.0
+  title: électromécanique et informatique
+  description: World privé de démonstration
+  visibility: public
+- world_key: fp-administration
+  seed_pack_key: fp-administration
+  seed_version: 1.0.0
+  title: Administration
+  description: World privé de démonstration
+  visibility: public
+- world_key: fp-direction-management-hr
+  seed_pack_key: fp-direction-management-hr
+  seed_version: 1.0.0
+  title: Direction, Management et HR
+  description: World privé de démonstration
+  visibility: public
+- world_key: fp-vente-pr-marketing
+  seed_pack_key: fp-vente-pr-marketing
+  seed_version: 1.0.0
+  title: Vente, PR, marketing
+  description: World privé de démonstration
+  visibility: public
+- world_key: fp-activites-sociales
+  seed_pack_key: fp-activites-sociales
+  seed_version: 1.0.0
+  title: Activités sociales
+  description: World privé de démonstration
+  visibility: public
+- world_key: fp-espace-discussion
+  seed_pack_key: fp-espace-discussion
+  seed_version: 1.0.0
+  title: Espace discussion
+  description: World privé de démonstration
+  visibility: public
+relations:
+- source: fp-electromecanique-informatique
+  target: fp-administration
+  type: publishes_to
+  title: Demandes de pièces et impacts budgétaires
+  description: Transfert explicite de références approuvées; pas de partage automatique de discussions privées
+  metadata:
+    managed_by: kx-universe-pack/v1
+    scope: authorized_summary_only
+- source: fp-administration
+  target: fp-direction-management-hr
+  type: references
+  title: Arbitrages et coûts agrégés
+  description: Partage borné aux synthèses autorisées
+  metadata:
+    managed_by: kx-universe-pack/v1
+    scope: authorized_summary_only
+- source: fp-direction-management-hr
+  target: fp-vente-pr-marketing
+  type: coordinates
+  title: Engagements commerciaux validés
+  description: Décision publiée seulement après validation
+  metadata:
+    managed_by: kx-universe-pack/v1
+    scope: authorized_summary_only
+- source: fp-activites-sociales
+  target: fp-espace-discussion
+  type: publishes_to
+  title: Activités volontaires
+  description: Publication opt-in, sans données RH sensibles
+  metadata:
+    managed_by: kx-universe-pack/v1
+    scope: opt_in
+subscriptions: []
+metadata:
+  synthetic: true
+  source_state_ref: urn:kristal:state:fakeplant-organisation
+  authority: kristal.v9.candidate
+  canonical_source: FakePlant Organisation Portable v1.1 (Kristal v9)
+  personal_data: synthetic_only
+  deferred_runtime_capability: portable_delta_capture_and_detach

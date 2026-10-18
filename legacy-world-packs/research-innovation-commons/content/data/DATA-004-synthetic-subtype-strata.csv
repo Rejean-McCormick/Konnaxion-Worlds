@@ -1,0 +1,5 @@
+subtype,n,shared_signal_index,uncertainty_note
+A,42,0.71,moderate
+B,38,0.63,moderate
+C,24,0.18,wide
+pooled,104,0.46,masks_subtype_difference

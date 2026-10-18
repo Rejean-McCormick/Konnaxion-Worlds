@@ -1,0 +1,507 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "levis-entretien-infrastructures-baseline-v3",
+  "scenario_title": "Ville de Lévis — Entretien des infrastructures — baseline opérationnelle v3",
+  "mode": "replace_scenario",
+  "metadata": {
+    "seed_kind": "municipal_persona_projection_baseline",
+    "baseline_date": "2026-09-29",
+    "seed_version": "0.5.0",
+    "generated_statements": true,
+    "registry_fingerprint": "68b77f1c607a4195ddc4da46b0429f2fe8308e2c259af670ecd6e7b2b19d75a9",
+    "generated_from_registry": true,
+    "knowledge_authority": "kristal_v5_runtime_pack",
+    "simulation_policy": {
+      "all_real_person_interventions_must_be_labelled_simulated": true,
+      "do_not_infer_personal_opinions": true,
+      "require_kristal_source_basis_for_reconstructed_positions": true
+    },
+    "persona_contract": "kx-world-personas/v1",
+    "persona_projection": {
+      "mode": "identity_binding_only",
+      "epistemic_authority": "external",
+      "authority_ref": "kristal_v5_runtime_pack"
+    },
+    "actor_profiles": {
+      "entretien-infrastructures": {
+        "persona_type": "organization",
+        "account_type": "service",
+        "simulation_eligible": false,
+        "ethikos_elite": false,
+        "entity_type": "organization",
+        "representation_type": "institutional_role",
+        "representation": {
+          "real_person": false,
+          "simulated_voice": false,
+          "attribution_mode": "institutional_role",
+          "must_label_simulated": false,
+          "source_bound": true
+        },
+        "global_entity_key": "levis:organization:entretien-infrastructures",
+        "external_referents": {
+          "kristal": "levis:organization:entretien-infrastructures"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "annie-gaudreault": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "entity_type": "person",
+        "representation_type": "role_simulation",
+        "representation": {
+          "real_person": true,
+          "simulated_voice": true,
+          "attribution_mode": "role_simulation",
+          "must_label_simulated": true,
+          "no_personal_opinion_inference": true,
+          "source_bound": true
+        },
+        "global_entity_key": "levis:person:annie-gaudreault",
+        "external_referents": {
+          "kristal": "levis:person:annie-gaudreault"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "simon-gauthier": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "simulation_eligible": true,
+        "ethikos_elite": false,
+        "entity_type": "person",
+        "representation_type": "role_simulation",
+        "representation": {
+          "real_person": true,
+          "simulated_voice": true,
+          "attribution_mode": "role_simulation",
+          "must_label_simulated": true,
+          "no_personal_opinion_inference": true,
+          "source_bound": true
+        },
+        "global_entity_key": "levis:person:simon-gauthier",
+        "external_referents": {
+          "kristal": "levis:person:simon-gauthier"
+        },
+        "knowledge_projection": {
+          "authority": "kristal_v5_runtime_pack",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "levis_entretien_infrastructures__sim_expert_1": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_elite": true,
+        "entity_type": "synthetic_fictional_persona",
+        "representation_type": "synthetic_fictional_persona",
+        "representation": {
+          "real_person": false,
+          "simulated_voice": true,
+          "attribution_mode": "synthetic_fixture",
+          "must_label_simulated": true,
+          "source_bound": false
+        },
+        "global_entity_key": "levis:simulation:levis-entretien-infrastructures:expert-1",
+        "external_referents": {
+          "konnaxion_demo": "levis:simulation:levis-entretien-infrastructures:expert-1"
+        },
+        "knowledge_projection": {
+          "authority": "konnaxion_demo_seed",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "levis_entretien_infrastructures__sim_expert_2": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_elite": true,
+        "entity_type": "synthetic_fictional_persona",
+        "representation_type": "synthetic_fictional_persona",
+        "representation": {
+          "real_person": false,
+          "simulated_voice": true,
+          "attribution_mode": "synthetic_fixture",
+          "must_label_simulated": true,
+          "source_bound": false
+        },
+        "global_entity_key": "levis:simulation:levis-entretien-infrastructures:expert-2",
+        "external_referents": {
+          "konnaxion_demo": "levis:simulation:levis-entretien-infrastructures:expert-2"
+        },
+        "knowledge_projection": {
+          "authority": "konnaxion_demo_seed",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      },
+      "levis_entretien_infrastructures__sim_expert_3": {
+        "persona_type": "simulated_person",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_elite": true,
+        "entity_type": "synthetic_fictional_persona",
+        "representation_type": "synthetic_fictional_persona",
+        "representation": {
+          "real_person": false,
+          "simulated_voice": true,
+          "attribution_mode": "synthetic_fixture",
+          "must_label_simulated": true,
+          "source_bound": false
+        },
+        "global_entity_key": "levis:simulation:levis-entretien-infrastructures:expert-3",
+        "external_referents": {
+          "konnaxion_demo": "levis:simulation:levis-entretien-infrastructures:expert-3"
+        },
+        "knowledge_projection": {
+          "authority": "konnaxion_demo_seed",
+          "binding": "referent_ref",
+          "runtime_pack_required_for_epistemic_claims": true
+        }
+      }
+    },
+    "mega_update": {
+      "version": "1.0.0",
+      "date": "2026-09-30",
+      "purpose": "synthetic_world_scoped_deliberation_plus_contextual_ekoh_readings",
+      "real_person_ekoh_scores_generated": false,
+      "real_person_stances_generated": false,
+      "baseline_always_visible": true,
+      "note": "All new stances, arguments and EkoH scores belong only to explicitly synthetic fictional expert personas."
+    }
+  },
+  "actors": [
+    {
+      "key": "entretien-infrastructures",
+      "username": "entretien-infrastructures",
+      "display_name": "Direction de l’entretien des infrastructures",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "annie-gaudreault",
+      "username": "annie-gaudreault",
+      "display_name": "Annie Gaudreault",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "simon-gauthier",
+      "username": "simon-gauthier",
+      "display_name": "Simon Gauthier",
+      "is_ethikos_elite": false
+    },
+    {
+      "key": "levis_entretien_infrastructures__sim_expert_1",
+      "username": "demo_levis_entretien_infrastructures_sim_expert_1",
+      "display_name": "[SIMULATION] Expert·e opérations — Ville de Lévis — Entretien des infrastructures",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "levis_entretien_infrastructures__sim_expert_2",
+      "username": "demo_levis_entretien_infrastructures_sim_expert_2",
+      "display_name": "[SIMULATION] Expert·e gouvernance — Ville de Lévis — Entretien des infrastructures",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "levis_entretien_infrastructures__sim_expert_3",
+      "username": "demo_levis_entretien_infrastructures_sim_expert_3",
+      "display_name": "[SIMULATION] Expert·e données et impacts — Ville de Lévis — Entretien des infrastructures",
+      "is_ethikos_elite": true
+    }
+  ],
+  "categories": [
+    {
+      "key": "maintenance",
+      "name": "[DEMO] Maintenance"
+    }
+  ],
+  "topics": [
+    {
+      "key": "maintenance_preventive",
+      "title": "[DEMO] Lévis — Faut-il déplacer davantage de ressources vers la maintenance préventive lorsque les données de défaillance le justifient??",
+      "description": "Faut-il déplacer davantage de ressources vers la maintenance préventive lorsque les données de défaillance le justifient? Question synthétique destinée à exercer la délibération, les profils EkoH et la lecture Smart Vote dans ce World.",
+      "status": "open",
+      "category": "maintenance",
+      "start_date": "2026-09-30",
+      "end_date": "2026-12-31"
+    },
+    {
+      "key": "priorisation_saisonniere",
+      "title": "[DEMO] Lévis — Faut-il utiliser une grille explicite de criticité pour arbitrer les interventions saisonnières sur les infrastructures??",
+      "description": "Faut-il utiliser une grille explicite de criticité pour arbitrer les interventions saisonnières sur les infrastructures? Question synthétique destinée à exercer la délibération, les profils EkoH et la lecture Smart Vote dans ce World.",
+      "status": "open",
+      "category": "maintenance",
+      "start_date": "2026-09-30",
+      "end_date": "2026-12-31"
+    }
+  ],
+  "stances": [
+    {
+      "topic": "maintenance_preventive",
+      "actor": "levis_entretien_infrastructures__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "maintenance_preventive",
+      "actor": "levis_entretien_infrastructures__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "maintenance_preventive",
+      "actor": "levis_entretien_infrastructures__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "priorisation_saisonniere",
+      "actor": "levis_entretien_infrastructures__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "priorisation_saisonniere",
+      "actor": "levis_entretien_infrastructures__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "priorisation_saisonniere",
+      "actor": "levis_entretien_infrastructures__sim_expert_3",
+      "value": 0
+    }
+  ],
+  "arguments": [
+    {
+      "key": "mega_maintenance_preventive_1",
+      "topic": "maintenance_preventive",
+      "actor": "levis_entretien_infrastructures__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    },
+    {
+      "key": "mega_maintenance_preventive_2",
+      "topic": "maintenance_preventive",
+      "actor": "levis_entretien_infrastructures__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_priorisation_saisonniere_1",
+      "topic": "priorisation_saisonniere",
+      "actor": "levis_entretien_infrastructures__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] Cette position demande de ne pas privilégier l’option formulée avant d’avoir comparé les coûts, les risques, les alternatives et les conditions de réversibilité."
+    },
+    {
+      "key": "mega_priorisation_saisonniere_2",
+      "topic": "priorisation_saisonniere",
+      "actor": "levis_entretien_infrastructures__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] Cette position privilégie l’option formulée dans la question afin d’en tester les bénéfices attendus, avec critères de suivi, seuils d’arrêt et réévaluation."
+    }
+  ],
+  "argument_sources": [
+    {
+      "key": "mega_maintenance_preventive_1_source",
+      "argument": "mega_maintenance_preventive_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_maintenance_preventive_2_source",
+      "argument": "mega_maintenance_preventive_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_priorisation_saisonniere_1_source",
+      "argument": "mega_priorisation_saisonniere_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    },
+    {
+      "key": "mega_priorisation_saisonniere_2_source",
+      "argument": "mega_priorisation_saisonniere_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "FIXTURE DE SIMULATION — générée uniquement pour exercer la délibération et EkoH Smart Vote. Ce n’est ni un fait, ni un endossement, ni la position d’une personne réelle."
+    }
+  ],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "levis_entretien_infrastructures__sim_expert_1",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — Lévis demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "071",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0713",
+          "raw_score": 0.8,
+          "weighted_score": 0.8
+        },
+        {
+          "domain_code": "0731",
+          "raw_score": 0.62,
+          "weighted_score": 0.62
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.45,
+          "weighted_score": 0.45
+        }
+      ]
+    },
+    {
+      "actor": "levis_entretien_infrastructures__sim_expert_2",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — Lévis demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0713",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0731",
+          "raw_score": 0.8,
+          "weighted_score": 0.8
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.62,
+          "weighted_score": 0.62
+        },
+        {
+          "domain_code": "071",
+          "raw_score": 0.45,
+          "weighted_score": 0.45
+        }
+      ]
+    },
+    {
+      "actor": "levis_entretien_infrastructures__sim_expert_3",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — Lévis demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0731",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.8,
+          "weighted_score": 0.8
+        },
+        {
+          "domain_code": "071",
+          "raw_score": 0.62,
+          "weighted_score": 0.62
+        },
+        {
+          "domain_code": "0713",
+          "raw_score": 0.45,
+          "weighted_score": 0.45
+        }
+      ]
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [
+    {
+      "topic": "maintenance_preventive",
+      "domain_code": "071",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "world_scope_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement, competence assessment or political recommendation"
+      }
+    },
+    {
+      "topic": "maintenance_preventive",
+      "domain_code": "0713",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "world_scope_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement, competence assessment or political recommendation"
+      }
+    },
+    {
+      "topic": "maintenance_preventive",
+      "domain_code": "0731",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "world_scope_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement, competence assessment or political recommendation"
+      }
+    },
+    {
+      "topic": "maintenance_preventive",
+      "domain_code": "0542",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "world_scope_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement, competence assessment or political recommendation"
+      }
+    },
+    {
+      "topic": "priorisation_saisonniere",
+      "domain_code": "071",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "world_scope_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement, competence assessment or political recommendation"
+      }
+    },
+    {
+      "topic": "priorisation_saisonniere",
+      "domain_code": "0713",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "world_scope_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement, competence assessment or political recommendation"
+      }
+    },
+    {
+      "topic": "priorisation_saisonniere",
+      "domain_code": "0731",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "world_scope_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement, competence assessment or political recommendation"
+      }
+    },
+    {
+      "topic": "priorisation_saisonniere",
+      "domain_code": "0542",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "world_scope_to_isced_f_demo_mapping",
+        "semantic": "context relevance only; not truth, endorsement, competence assessment or political recommendation"
+      }
+    }
+  ],
+  "reading_exclusions": []
+}

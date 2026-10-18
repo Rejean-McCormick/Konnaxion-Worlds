@@ -1,0 +1,34 @@
+world_contract: kx-world-pack/v1
+world_key: unesco-information-digital
+title: UNESCO — Information & Digital Society
+description: Dynamic simulations on freedom of expression, journalism, media literacy, information integrity and digital governance.
+pack_version: 1.5.0
+requires:
+  ethikos_scenario_schema: ethikos-demo-scenario/v3
+  fixtures:
+  - isced-f
+  host_contracts:
+  - kx-world-personas/v1
+scenarios:
+- scenarios/bootstrap.json
+metadata:
+  owner: unesco-konnaxion
+  universe: unesco
+  architecture_lock: KX-UNIVERSES-1
+  actor_registry_version: 1.3.0
+  tags:
+  - unesco
+  - simulation
+  - ethikos
+  - ekoh
+  - smart-vote
+  actor_projection: world-persona-release-bridge
+  ekoh_taxonomy: canonical-konnaxion-isced-f
+  content_profile: flagship-enriched
+  flagship_index: source/flagships/index.yaml
+  universe_standard: kx-universe-pack/v1
+  persona_contract: kx-world-personas/v1
+  seed_version: 1.5.0
+  mega_update_version: 1.0.0
+  mega_update_date: '2026-09-30'
+  demo_smart_vote_enabled: true

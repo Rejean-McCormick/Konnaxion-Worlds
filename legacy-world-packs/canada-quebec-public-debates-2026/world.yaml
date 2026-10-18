@@ -1,0 +1,24 @@
+world_contract: kx-world-pack/v1
+world_key: canada-quebec-public-debates-2026
+title: "Débats publics Québec–Canada — instantané 2026"
+pack_version: 1.0.0
+requires:
+  ethikos_scenario_schema: ethikos-demo-scenario/v3
+  fixtures:
+    - isced-f
+scenarios:
+  - scenarios/canada_quebec_public_debates_2026.json
+metadata:
+  migration_source: legacy_integrated_konnaxion
+  scenario_key: canada_quebec_public_debates_2026
+  ekoh_sidecar_schema: ethikos-ekoh-demo-sidecar/v1
+  canonicality:
+    ethikos_seed: canonical_source_facts
+    ekoh_profiles: advisory_context
+    smart_vote_readings: derived_not_seeded
+  note: >-
+    World 4 extracted from the formerly integrated Canada/Quebec Ethikos demo.
+    The original canonical seed is preserved under sources/original/; the uploaded
+    EkoH sidecar is normalized into the v3 scenario's ekoh_profiles and
+    topic_relevance while proposed topics and derived alignment previews remain
+    provenance-only data.

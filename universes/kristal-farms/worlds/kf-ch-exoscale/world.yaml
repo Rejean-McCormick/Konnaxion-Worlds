@@ -1,0 +1,39 @@
+world_contract: kx-world-pack/v1
+world_key: kf-ch-exoscale
+title: Kristal Farms — Étude internationale 11 — Exoscale
+pack_version: 0.5.0
+requires:
+  ethikos_scenario_schema: ethikos-demo-scenario/v3
+  fixtures:
+  - isced-f
+  host_contracts:
+  - kx-world-personas/v1
+scenarios:
+- scenarios/kristal-farms.json
+metadata:
+  universe_key: kristal-farms
+  portfolio_slot: 11
+  portfolio_slots_total: 12
+  portfolio_status: research_target
+  target_organization: Exoscale
+  target_jurisdiction: Suisse
+  target_country_code: CH
+  target_interest_status: not_established
+  epistemic_status: research_simulation_seed
+  source_plan_url: https://github.com/Rejean-McCormick/Kristal-Farms/blob/main/docs/10-core/strategy/PLAN_MOBILISATION_INTERNATIONALE_KRISTAL_FARMS_FR.md
+  verified_official_roles_at: '2026-09-29'
+  project_key: kf-intl-11
+  project_type: international_reference_study
+  project_phase: reference_screening
+  project_identity: project-centric
+  technical_world_key_retained_for_upgrade_compatibility: true
+  target_organization_global_entity_key: org:exoscale
+  persona_bridge_contract: kf-release-persona-bridge/v1
+  promotion_policy: build_all_ready_then_atomic_portfolio_promotion
+  seed_version: 0.5.0
+  evidence_profile: world_specific_2026q3
+  universe_standard: kx-universe-pack/v1
+  persona_contract: kx-world-personas/v1
+  mega_update_version: 1.0.0
+  mega_update_date: '2026-09-30'
+  demo_smart_vote_enabled: true

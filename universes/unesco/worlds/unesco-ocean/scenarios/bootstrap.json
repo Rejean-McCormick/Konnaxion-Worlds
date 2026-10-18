@@ -1,0 +1,1175 @@
+{
+  "schema_version": "ethikos-demo-scenario/v3",
+  "scenario_key": "unesco_ocean_bootstrap_v12",
+  "scenario_title": "UNESCO — Ocean — bootstrap v1.2",
+  "mode": "replace_scenario",
+  "metadata": {
+    "universe": "unesco",
+    "world_key": "unesco-ocean",
+    "seed_version": "1.5.0",
+    "simulation_mode": "dynamic_deliberation",
+    "position_seed_policy": "none",
+    "vote_seed_policy": "none",
+    "ekoh_seed_policy": "no scores; canonical Konnaxion ISCED-F topic relevance only",
+    "actor_registry": "unesco/source-v1@1.2.0",
+    "source_pages": [
+      "https://www.ioc.unesco.org/en"
+    ],
+    "topic_metadata": {
+      "deep_sea_mining_precaution": {
+        "question": "What evidence threshold should precede high-impact activity in poorly understood deep-ocean ecosystems?",
+        "description": "Deliberate precaution, scientific uncertainty, economic interests, law and governance.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.ioc.unesco.org/en"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position"
+      },
+      "ocean_observation_data_sharing": {
+        "question": "How should countries and institutions share ocean-observation data while preserving trust and capacity?",
+        "description": "Examine data infrastructure, statistics, governance, law and equitable scientific participation.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.ioc.unesco.org/en"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position",
+        "flagship": true,
+        "flagship_key": "flagship_ocean_data",
+        "title_fr": "Partage international des données océaniques",
+        "question_fr": "Comment renforcer le partage des données d’observation océanique tout en tenant compte de la capacité, de l’interopérabilité, des intérêts légitimes et de la confiance ?",
+        "question_en": "How should ocean-observation data sharing be strengthened while accounting for capacity, interoperability, legitimate interests and trust?",
+        "evidence_refs": [
+          "ioc_exec_2026",
+          "ocean_cord_2026",
+          "ocean_2025_landmark",
+          "open_science_recommendation"
+        ],
+        "core_cast": [
+          "ioc_unesco",
+          "wmo",
+          "european_commission",
+          "unesco_sciences_sector",
+          "stakeholder_researchers",
+          "stakeholder_local_communities",
+          "stakeholder_indigenous_peoples",
+          "stakeholder_private_sector"
+        ],
+        "source_path": "source/flagships/unesco-ocean/flagship_ocean_data.yaml",
+        "cross_world_links": [
+          {
+            "target_world": "unesco-science-planet",
+            "relation": "references",
+            "reason": "open science, scientific data and capacity"
+          },
+          {
+            "target_world": "unesco-information-digital",
+            "relation": "references",
+            "reason": "digital infrastructure and data governance"
+          }
+        ]
+      },
+      "marine_protected_area_governance": {
+        "question": "How should marine protected areas balance ecological evidence, livelihoods and legitimate governance?",
+        "description": "Compare ecological protection, economic impacts, social context, law and decision legitimacy.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.ioc.unesco.org/en"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position"
+      },
+      "coastal_resilience_planning": {
+        "question": "How should coastal resilience plans allocate protection, adaptation and relocation measures?",
+        "description": "Deliberate environmental evidence, planning, economics, governance and law.",
+        "initial_state": "open_no_seeded_position",
+        "source_pages": [
+          "https://www.ioc.unesco.org/en"
+        ],
+        "provenance_mode": "seed framing; arguments require their own sources",
+        "actor_activation": "WorldPersona pool; no pre-seeded position",
+        "flagship": true,
+        "flagship_key": "flagship_ocean_coastal_resilience",
+        "title_fr": "Résilience côtière : protéger, adapter ou relocaliser",
+        "question_fr": "Comment répartir les investissements entre protection, adaptation et relocalisation lorsque les risques côtiers augmentent et que les ressources sont limitées ?",
+        "question_en": "How should investment be allocated among protection, adaptation and relocation as coastal risks increase and resources remain limited?",
+        "evidence_refs": [
+          "ocean_tsunami_capacity_2025",
+          "ocean_cord_2026",
+          "ocean_sopm_2025",
+          "ioc_exec_2026"
+        ],
+        "core_cast": [
+          "ioc_unesco",
+          "wmo",
+          "unesco_sciences_sector",
+          "stakeholder_local_communities",
+          "stakeholder_indigenous_peoples",
+          "stakeholder_civil_society",
+          "stakeholder_researchers",
+          "stakeholder_youth"
+        ],
+        "source_path": "source/flagships/unesco-ocean/flagship_ocean_coastal_resilience.yaml",
+        "cross_world_links": [
+          {
+            "target_world": "unesco-science-planet",
+            "relation": "references",
+            "reason": "environmental evidence and monitoring"
+          },
+          {
+            "target_world": "unesco-humanity-society",
+            "relation": "references",
+            "reason": "equity, participation and displacement impacts"
+          }
+        ]
+      }
+    },
+    "actor_projection_policy": "curated_bootstrap; states and named real persons activate per later scenario",
+    "topic_owner_actor": "ioc_unesco",
+    "runtime_identity": "WorldPersona + release-local bridge User",
+    "flagship_profile": "12-flagship-v1",
+    "flagship_topics": [
+      "ocean_observation_data_sharing",
+      "coastal_resilience_planning"
+    ],
+    "persona_contract": "kx-world-personas/v1",
+    "actor_profiles": {
+      "ioc_unesco": {
+        "registry_key": "ioc_unesco",
+        "role": "IOC of UNESCO",
+        "collections": [
+          "ocean",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "european_commission": {
+        "registry_key": "european_commission",
+        "role": "Ocean observing partner",
+        "collections": [
+          "external_ecosystem",
+          "ocean"
+        ],
+        "sources": [
+          "https://www.ioc.unesco.org/en/articles/governments-un-general-assembly-support-global-ocean-observation"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "regional_intergovernmental",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "fao": {
+        "registry_key": "fao",
+        "role": "Food/agriculture science actor",
+        "collections": [
+          "external_ecosystem",
+          "science_planet"
+        ],
+        "sources": [
+          "https://www.fao.org/"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_civil_society": {
+        "registry_key": "stakeholder_civil_society",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_indigenous_peoples": {
+        "registry_key": "stakeholder_indigenous_peoples",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_local_communities": {
+        "registry_key": "stakeholder_local_communities",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_private_sector": {
+        "registry_key": "stakeholder_private_sector",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_researchers": {
+        "registry_key": "stakeholder_researchers",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "scenario_templates",
+          "science_planet"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "stakeholder_youth": {
+        "registry_key": "stakeholder_youth",
+        "role": "Synthetic stakeholder proxy template",
+        "collections": [
+          "cross_cutting",
+          "scenario_templates"
+        ],
+        "sources": [],
+        "synthetic": true,
+        "not_a_real_entity": true,
+        "disclosure_required": true,
+        "disclosure": "Scenario proxy; instantiate with a named, sourced representative when possible.",
+        "persona_type": "demo_actor",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "stakeholder_constituency",
+        "representation_type": "scenario_proxy",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unep": {
+        "registry_key": "unep",
+        "role": "Environment actor",
+        "collections": [
+          "external_ecosystem",
+          "science_planet"
+        ],
+        "sources": [
+          "https://www.unep.org/"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco": {
+        "registry_key": "unesco",
+        "role": "UNESCO Secretariat",
+        "collections": [
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_executive_board": {
+        "registry_key": "unesco_executive_board",
+        "role": "Executive Board",
+        "collections": [
+          "governance",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_gender_equality": {
+        "registry_key": "unesco_gender_equality",
+        "role": "Gender Equality",
+        "collections": [
+          "cross_cutting",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_general_conference": {
+        "registry_key": "unesco_general_conference",
+        "role": "General Conference",
+        "collections": [
+          "governance",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_priority_africa_external_relations": {
+        "registry_key": "unesco_priority_africa_external_relations",
+        "role": "Priority Africa and External Relations",
+        "collections": [
+          "cross_cutting",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_sciences_sector": {
+        "registry_key": "unesco_sciences_sector",
+        "role": "Sciences Sector",
+        "collections": [
+          "science_planet",
+          "unesco_core"
+        ],
+        "sources": [
+          "https://www.unesco.org/en/strategic-management-board",
+          "https://www.unesco.org/en/member-states-portal/about"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "wmo": {
+        "registry_key": "wmo",
+        "role": "GOOS co-sponsoring organization",
+        "collections": [
+          "external_ecosystem",
+          "ocean",
+          "science_planet"
+        ],
+        "sources": [
+          "https://www.ioc.unesco.org/en/articles/governments-un-general-assembly-support-global-ocean-observation"
+        ],
+        "persona_type": "organization",
+        "account_type": "service",
+        "is_klone": false,
+        "entity_type": "un_body",
+        "representation_type": "institutional",
+        "simulation_eligible": true,
+        "ethikos_write": true
+      },
+      "unesco_ocean__sim_expert_1": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "unesco_ocean__sim_expert_2": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      },
+      "unesco_ocean__sim_expert_3": {
+        "persona_type": "simulated_person",
+        "entity_type": "synthetic_fictional_persona",
+        "role": "simulation_subject_matter_expert",
+        "account_type": "human",
+        "is_klone": true,
+        "simulation_eligible": true,
+        "ethikos_write": true,
+        "representation_type": "synthetic_fictional_persona",
+        "source_basis": [
+          "simulation_fixture"
+        ],
+        "speaking_policy": "explicit_simulation_only"
+      }
+    },
+    "mega_update": {
+      "version": "1.0.0",
+      "date": "2026-09-30",
+      "purpose": "simulation_deliberation_plus_contextual_ekoh_readings",
+      "real_person_ekoh_scores_generated": false,
+      "baseline_always_visible": true
+    }
+  },
+  "actors": [
+    {
+      "key": "ioc_unesco",
+      "username": "demo_ioc_unesco",
+      "display_name": "Intergovernmental Oceanographic Commission of UNESCO",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "european_commission",
+      "username": "demo_european_commission",
+      "display_name": "European Commission",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "fao",
+      "username": "demo_fao",
+      "display_name": "Food and Agriculture Organization of the United Nations (FAO)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_civil_society",
+      "username": "demo_stakeholder_civil_society",
+      "display_name": "Civil society constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_indigenous_peoples",
+      "username": "demo_stakeholder_indigenous_peoples",
+      "display_name": "Indigenous Peoples constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_local_communities",
+      "username": "demo_stakeholder_local_communities",
+      "display_name": "Local communities constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_private_sector",
+      "username": "demo_stakeholder_private_sector",
+      "display_name": "Private sector constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_researchers",
+      "username": "demo_stakeholder_researchers",
+      "display_name": "Researchers and scientific community constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "stakeholder_youth",
+      "username": "demo_stakeholder_youth",
+      "display_name": "Youth constituency",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unep",
+      "username": "demo_unep",
+      "display_name": "United Nations Environment Programme (UNEP)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco",
+      "username": "demo_unesco",
+      "display_name": "UNESCO",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_executive_board",
+      "username": "demo_unesco_executive_board",
+      "display_name": "UNESCO Executive Board",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_gender_equality",
+      "username": "demo_unesco_gender_equality",
+      "display_name": "UNESCO Gender Equality",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_general_conference",
+      "username": "demo_unesco_general_conference",
+      "display_name": "UNESCO General Conference",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_priority_africa_external_relations",
+      "username": "demo_unesco_priority_africa_external_relations",
+      "display_name": "UNESCO Priority Africa and External Relations",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_sciences_sector",
+      "username": "demo_unesco_sciences_sector",
+      "display_name": "UNESCO Sciences Sector",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "wmo",
+      "username": "demo_wmo",
+      "display_name": "World Meteorological Organization (WMO)",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_ocean__sim_expert_1",
+      "username": "demo_unesco_ocean_sim_expert_1",
+      "display_name": "[SIMULATION] Systems expert — UNESCO — Ocean",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_ocean__sim_expert_2",
+      "username": "demo_unesco_ocean_sim_expert_2",
+      "display_name": "[SIMULATION] Governance expert — UNESCO — Ocean",
+      "is_ethikos_elite": true
+    },
+    {
+      "key": "unesco_ocean__sim_expert_3",
+      "username": "demo_unesco_ocean_sim_expert_3",
+      "display_name": "[SIMULATION] Evidence & community expert — UNESCO — Ocean",
+      "is_ethikos_elite": true
+    }
+  ],
+  "categories": [
+    {
+      "key": "ocean-governance",
+      "name": "Ocean governance"
+    },
+    {
+      "key": "ocean-data",
+      "name": "Ocean observation and data"
+    },
+    {
+      "key": "marine-biodiversity",
+      "name": "Marine biodiversity"
+    },
+    {
+      "key": "coastal-resilience",
+      "name": "Coastal resilience"
+    }
+  ],
+  "topics": [
+    {
+      "key": "deep_sea_mining_precaution",
+      "title": "[DEMO] What evidence threshold should precede high-impact activity in poorly understood deep-ocean ecosystems?",
+      "description": "Deliberate precaution, scientific uncertainty, economic interests, law and governance.",
+      "status": "open",
+      "category": "ocean-governance"
+    },
+    {
+      "key": "ocean_observation_data_sharing",
+      "title": "[DEMO] How should countries and institutions share ocean-observation data while preserving trust and capacity?",
+      "description": "FLAGSHIP SIMULATION — no initial position is implied.\n\nContext: IOC priorities emphasize ocean observations, interoperable data architectures, international cooperation and capacity development. Current Ocean Decade initiatives also focus on turning fragmented data into actionable coastal insights.\n\nTrigger: A fictional multinational observing network must adopt a data-sharing compact after partners report incompatible systems, unequal capacity and delays in access.\n\nDecision task: Negotiate data access levels, interoperability requirements, attribution, capacity support, quality controls and emergency-access provisions.\n\nCommon evidence baseline: IOC Executive Council adopts key decisions to strengthen ocean science, resilience and international cooperation; Ocean Decade endorsement accelerates partnerships and data sharing for coastal resilience; Looking back at 2025: a landmark year for ocean science in action; Recommendation on Open Science.\n\nStructured casting, evidence URLs, uncertainties, event injects, round plan and cross-World links are in the seed flagship source file.",
+      "status": "open",
+      "category": "ocean-data"
+    },
+    {
+      "key": "marine_protected_area_governance",
+      "title": "[DEMO] How should marine protected areas balance ecological evidence, livelihoods and legitimate governance?",
+      "description": "Compare ecological protection, economic impacts, social context, law and decision legitimacy.",
+      "status": "open",
+      "category": "marine-biodiversity"
+    },
+    {
+      "key": "coastal_resilience_planning",
+      "title": "[DEMO] How should coastal resilience plans allocate protection, adaptation and relocation measures?",
+      "description": "FLAGSHIP SIMULATION — no initial position is implied.\n\nContext: UNESCO-IOC work on coastal hazards emphasizes end-to-end warning, community preparedness, data integration and locally actionable resilience. Ocean planning increasingly combines science, social data and inclusive governance.\n\nTrigger: A fictional coastal region has funding for only part of its proposed resilience programme and must prioritize measures before the next planning cycle.\n\nDecision task: Produce a phased resilience portfolio, decision criteria, community safeguards, early-warning priorities and triggers for future relocation decisions.\n\nCommon evidence baseline: Building capacities for the next generation of tsunami and coastal-hazard warning systems; Ocean Decade endorsement accelerates partnerships and data sharing for coastal resilience; IOC five-year Strategy for Ocean Planning and Management; IOC Executive Council adopts key decisions to strengthen ocean science, resilience and international cooperation.\n\nStructured casting, evidence URLs, uncertainties, event injects, round plan and cross-World links are in the seed flagship source file.",
+      "status": "open",
+      "category": "coastal-resilience"
+    }
+  ],
+  "stances": [
+    {
+      "topic": "deep_sea_mining_precaution",
+      "actor": "unesco_ocean__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "deep_sea_mining_precaution",
+      "actor": "unesco_ocean__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "deep_sea_mining_precaution",
+      "actor": "unesco_ocean__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "ocean_observation_data_sharing",
+      "actor": "unesco_ocean__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "ocean_observation_data_sharing",
+      "actor": "unesco_ocean__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "ocean_observation_data_sharing",
+      "actor": "unesco_ocean__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "marine_protected_area_governance",
+      "actor": "unesco_ocean__sim_expert_1",
+      "value": 2
+    },
+    {
+      "topic": "marine_protected_area_governance",
+      "actor": "unesco_ocean__sim_expert_2",
+      "value": -1
+    },
+    {
+      "topic": "marine_protected_area_governance",
+      "actor": "unesco_ocean__sim_expert_3",
+      "value": 0
+    },
+    {
+      "topic": "coastal_resilience_planning",
+      "actor": "unesco_ocean__sim_expert_1",
+      "value": -2
+    },
+    {
+      "topic": "coastal_resilience_planning",
+      "actor": "unesco_ocean__sim_expert_2",
+      "value": 1
+    },
+    {
+      "topic": "coastal_resilience_planning",
+      "actor": "unesco_ocean__sim_expert_3",
+      "value": 0
+    }
+  ],
+  "arguments": [
+    {
+      "key": "mega_deep_sea_mining_precaution_1",
+      "topic": "deep_sea_mining_precaution",
+      "actor": "unesco_ocean__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_deep_sea_mining_precaution_2",
+      "topic": "deep_sea_mining_precaution",
+      "actor": "unesco_ocean__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_ocean_observation_data_sharing_1",
+      "topic": "ocean_observation_data_sharing",
+      "actor": "unesco_ocean__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_ocean_observation_data_sharing_2",
+      "topic": "ocean_observation_data_sharing",
+      "actor": "unesco_ocean__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_marine_protected_area_governance_1",
+      "topic": "marine_protected_area_governance",
+      "actor": "unesco_ocean__sim_expert_1",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    },
+    {
+      "key": "mega_marine_protected_area_governance_2",
+      "topic": "marine_protected_area_governance",
+      "actor": "unesco_ocean__sim_expert_2",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_coastal_resilience_planning_1",
+      "topic": "coastal_resilience_planning",
+      "actor": "unesco_ocean__sim_expert_1",
+      "side": "con",
+      "content": "[SIMULATION] This position does not favour the stated option until costs, risks, alternatives and reversibility conditions have been compared."
+    },
+    {
+      "key": "mega_coastal_resilience_planning_2",
+      "topic": "coastal_resilience_planning",
+      "actor": "unesco_ocean__sim_expert_2",
+      "side": "pro",
+      "content": "[SIMULATION] This position favours the option stated in the question so its expected benefits can be tested with monitoring criteria, stop conditions and review."
+    }
+  ],
+  "argument_sources": [
+    {
+      "key": "mega_deep_sea_mining_precaution_1_source",
+      "argument": "mega_deep_sea_mining_precaution_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_deep_sea_mining_precaution_2_source",
+      "argument": "mega_deep_sea_mining_precaution_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_ocean_observation_data_sharing_1_source",
+      "argument": "mega_ocean_observation_data_sharing_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_ocean_observation_data_sharing_2_source",
+      "argument": "mega_ocean_observation_data_sharing_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_marine_protected_area_governance_1_source",
+      "argument": "mega_marine_protected_area_governance_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_marine_protected_area_governance_2_source",
+      "argument": "mega_marine_protected_area_governance_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_coastal_resilience_planning_1_source",
+      "argument": "mega_coastal_resilience_planning_1",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    },
+    {
+      "key": "mega_coastal_resilience_planning_2_source",
+      "argument": "mega_coastal_resilience_planning_2",
+      "source_type": "simulation_fixture",
+      "citation_text": "Konnaxion mega demo seed 2026-09-30",
+      "note": "SIMULATION FIXTURE — generated only to exercise deliberation and EkoH Smart Vote. It is not a factual claim, endorsement or real-person position."
+    }
+  ],
+  "consultations": [],
+  "consultation_votes": [],
+  "impact_items": [],
+  "ekoh_profiles": [
+    {
+      "actor": "unesco_ocean__sim_expert_1",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0521",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0421",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0731",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "unesco_ocean__sim_expert_2",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0421",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0312",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0731",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    },
+    {
+      "actor": "unesco_ocean__sim_expert_3",
+      "rating_visibility": "public",
+      "publication_basis": "SYNTHETIC FICTIONAL PERSONA — demo seed only",
+      "ethics_score": 1.0,
+      "expertise": [
+        {
+          "domain_code": "0312",
+          "raw_score": 0.95,
+          "weighted_score": 0.95
+        },
+        {
+          "domain_code": "0311",
+          "raw_score": 0.82,
+          "weighted_score": 0.82
+        },
+        {
+          "domain_code": "0731",
+          "raw_score": 0.68,
+          "weighted_score": 0.68
+        },
+        {
+          "domain_code": "0542",
+          "raw_score": 0.54,
+          "weighted_score": 0.54
+        },
+        {
+          "domain_code": "0612",
+          "raw_score": 0.42,
+          "weighted_score": 0.42
+        },
+        {
+          "domain_code": "0223",
+          "raw_score": 0.32,
+          "weighted_score": 0.32
+        },
+        {
+          "domain_code": "0314",
+          "raw_score": 0.24,
+          "weighted_score": 0.24
+        },
+        {
+          "domain_code": "0413",
+          "raw_score": 0.18,
+          "weighted_score": 0.18
+        }
+      ]
+    }
+  ],
+  "consultation_relevance": [],
+  "topic_relevance": [
+    {
+      "topic": "deep_sea_mining_precaution",
+      "domain_code": "0521",
+      "weight": 0.4,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "deep_sea_mining_precaution",
+      "domain_code": "0311",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "deep_sea_mining_precaution",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "deep_sea_mining_precaution",
+      "domain_code": "0223",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "deep_sea_mining_precaution",
+      "domain_code": "0312",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ocean_observation_data_sharing",
+      "domain_code": "0521",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ocean_observation_data_sharing",
+      "domain_code": "0542",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ocean_observation_data_sharing",
+      "domain_code": "0612",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ocean_observation_data_sharing",
+      "domain_code": "0312",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "ocean_observation_data_sharing",
+      "domain_code": "0421",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "marine_protected_area_governance",
+      "domain_code": "0521",
+      "weight": 0.4,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "marine_protected_area_governance",
+      "domain_code": "0312",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "marine_protected_area_governance",
+      "domain_code": "0421",
+      "weight": 0.2,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "marine_protected_area_governance",
+      "domain_code": "0311",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "marine_protected_area_governance",
+      "domain_code": "0314",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "coastal_resilience_planning",
+      "domain_code": "0521",
+      "weight": 0.35,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "coastal_resilience_planning",
+      "domain_code": "0731",
+      "weight": 0.25,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "coastal_resilience_planning",
+      "domain_code": "0311",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "coastal_resilience_planning",
+      "domain_code": "0312",
+      "weight": 0.15,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    },
+    {
+      "topic": "coastal_resilience_planning",
+      "domain_code": "0421",
+      "weight": 0.1,
+      "criteria": {
+        "basis": "UNESCO seed lens mapped to canonical Konnaxion ISCED-F"
+      }
+    }
+  ],
+  "reading_exclusions": []
+}

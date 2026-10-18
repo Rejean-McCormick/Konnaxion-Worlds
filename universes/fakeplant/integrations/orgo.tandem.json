@@ -1,0 +1,34 @@
+{
+  "contract": "koa.tandem-universe/v1",
+  "universe_key": "fakeplant",
+  "version": "1.0.0",
+  "synthetic": true,
+  "source_state_ref": "urn:kristal:state:fakeplant-organisation",
+  "konnaxion": {
+    "manifest": "universe.yaml",
+    "worlds_dir": "worlds"
+  },
+  "orgo": {
+    "organization_slug": "fakeplant",
+    "world_pack_key": "fakeplant",
+    "checkpoint_count": 18,
+    "injector_schema": "orgo.scenario.v1",
+    "apply_mode": "explicit-only",
+    "fake_people_import": "opt-in-only"
+  },
+  "delivery": {
+    "products": [
+      "konnaxion",
+      "orgo"
+    ],
+    "mode": "proposed-coordinated-release",
+    "runtime_deployer_available": false,
+    "health_gates": [
+      "konnaxion",
+      "orgo-api",
+      "orgo-web",
+      "orgo-worker"
+    ],
+    "rollback_scope": "product-specific"
+  }
+}
