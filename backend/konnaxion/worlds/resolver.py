@@ -41,6 +41,12 @@ def can_access_universe(user, universe: Universe) -> bool:
 def can_manage_world(user, world: World) -> bool:
     if not user or not getattr(user, "is_authenticated", False):
         return False
+    # The Universe is the outer governance boundary for every World control
+    # operation (including publication, promotion, membership and rollback).
+    # Revoking private-Universe access must revoke World-manager powers even
+    # if an old WorldMembership or World created_by reference is still present.
+    if not can_access_universe(user, world.universe):
+        return False
     if user.is_staff or user.is_superuser or world.created_by_id == user.pk:
         return True
     return WorldMembership.objects.filter(

@@ -1,0 +1,21 @@
+{
+  "release": "KW-TOUR-5-P1-v1",
+  "files": {
+    "backend/konnaxion/worlds/resolver.py": {
+      "before_sha256": "a02a62da977d234d5b730ad77c745068b72b655bde2bed90bb1dc4a31912a969",
+      "after_sha256": "d25214a6e75d53c8b91fdf0d6b866a2d383eeea82f4e6c4d3d6021e9da39cae7"
+    },
+    "backend/konnaxion/worlds/tests/test_universe_management_boundary.py": {
+      "before_sha256": null,
+      "after_sha256": "0221b80885fecbb82bf975134cde7bdc7977dbd6229d8d72f3c901d601cb6947"
+    },
+    "tools/tandem_tour_worlds/tests/test_worlds_acl_contract.py": {
+      "before_sha256": null,
+      "after_sha256": "bc95c822a306e809965e111e6dbf8c06b71e18c85982581e208bbfcd25b8973a"
+    },
+    "docs/status/2026-10-19-tandem-worlds-outer-acl.md": {
+      "before_sha256": null,
+      "after_sha256": "b82197393f0c831b781ad7e2f23bba4b744103bfae3ac77b2277c2c49fd508a5"
+    }
+  }
+}
