@@ -49,3 +49,6 @@ dist/
 Thumbs.db
 Desktop.ini
 ZmartZnap.pyw
+
+# Local credentials - never commit
+/backend/.env
