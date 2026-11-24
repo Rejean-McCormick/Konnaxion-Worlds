@@ -17,7 +17,7 @@ Architecture locks:
 - `KX-WORLDS-1`: World/WorldRelease isolation invariants.
 - `KX-UNIVERSES-1`: Universe grouping, graph relations, explicit inter-World publications, and canonical Universe-aware routing.
 
-See `docs/Technical-Reference/Worlds/20_UNIVERSES.md` and `WORLD_SYSTEM_AI.instructions.md` before modifying the engine.
+See `docs/Technical-Reference/Worlds/20_UNIVERSES.md` and [`docs/Technical-Reference/Worlds/WORLD_SYSTEM_AI.instructions.md`](docs/Technical-Reference/Worlds/WORLD_SYSTEM_AI.instructions.md) before modifying the engine.
 
 Repository boundary: this engine repository intentionally does **not** ship the Konnaxion browser shell. `WorldContext`, the Universe/World switcher, Next.js rewrites and product navigation remain Konnaxion-owned host adapters consuming this package's contracts.
 
@@ -85,6 +85,34 @@ The v6 boundary is explicit:
 See `docs/Technical-Reference/Worlds/22_KRISTAL_V6_BOUNDARY.md` and `KRISTAL_V6_BOUNDARY.json`.
 
 ## Universe build orchestration (v0.3)
+
+### Choisir le bon exécutable Django (hôte ou autonome)
+
+Dans les commandes `python manage.py ...` qui suivent, **`manage.py` est celui
+du dépôt hôte** `C:\mycode\Konnaxion\Konnaxion\backend`, pas un fichier à la racine
+de `Konnaxion_Worlds`. Sur PowerShell 7, se placer dans le backend hôte avant
+de lancer ces commandes (ou utiliser l'environnement Python hôte déjà configuré) :
+
+```powershell
+Set-Location "C:\mycode\Konnaxion\Konnaxion\backend"
+python manage.py worlds_jobs --help
+```
+
+Pour la vérification **autonome** du moteur uniquement, le lanceur existant est
+`C:\mycode\Konnaxion\Konnaxion_Worlds\backend\worlds_manage.py` :
+
+```powershell
+Set-Location "C:\mycode\Konnaxion\Konnaxion_Worlds\backend"
+python worlds_manage.py check
+```
+
+Les deux modes exigent leurs dépendances Django/DRF. Les opérations de
+WorldRelease (construction, promotion, GC, migration) nécessitent une base
+PostgreSQL correctement configurée ; une configuration de vérification seule
+ne vaut pas autorisation de mutation. La file `world-build` exige des travailleurs
+Celery et leur broker, tandis que `--local-workers` utilise des processus
+Django locaux. Ne pas exécuter les commandes de promotion, GC `--execute` ou
+migrations sans validation des paramètres, des droits et des sauvegardes.
 
 For multi-World Universe upgrades, prefer the persisted build queue instead of one long synchronous process:
 
