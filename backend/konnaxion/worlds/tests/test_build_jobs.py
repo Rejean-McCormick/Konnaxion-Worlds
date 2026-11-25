@@ -27,7 +27,7 @@ def test_world_build_concurrency_defaults_to_one_and_is_bounded():
 def test_build_api_queues_job_without_building_release(monkeypatch):
     User = get_user_model()
     owner = User.objects.create_user(username="world-build-owner")
-    universe = Universe.objects.create(key="builds", title="Builds")
+    universe = Universe.objects.create(key="builds", title="Builds", created_by=owner)
     world = World.objects.create(universe=universe, key="queued-world", title="Queued World", created_by=owner)
 
     pack = SimpleNamespace(
